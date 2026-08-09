@@ -34,7 +34,7 @@ function composeAnswer(request: LlmRequest): string {
   const grounding = request.grounding;
 
   if (!grounding) {
-    return "The current source set does not include grounding context for that question, so I would keep any read tied to early downs, field position, and the line of scrimmage until sources land. Source freshness cannot be confirmed without a corpus.";
+    return "The source record does not support that question cleanly. Keep the read to early downs, field position, and the line of scrimmage until a named source can carry more. Freshness cannot be confirmed without a matching record.";
   }
 
   switch (grounding.capability) {
@@ -87,7 +87,7 @@ function composeSourceReadiness(grounding: GroundingContext): string {
     .join(", ");
 
   return finish(
-    `Here is what the corpus is standing on right now: ${ready}. That shapes what I can say honestly — schedule and game context are on firm ground, while deeper charting on pressure, coverage, and success rate has to wait until richer sources land.`,
+    `Here is what the answer can stand on right now: ${ready}. Schedule and game context are on firm ground. Pressure, coverage, and success-rate comparisons stay provisional until season statistics are ready.`,
     grounding,
   );
 }
@@ -116,7 +116,7 @@ function composeGeneral(grounding: GroundingContext): string {
   }
 
   return finish(
-    `The source-backed read is to start with early downs, field position, and whether ${grounding.teamName} controls the line of scrimmage. The current corpus is strongest on schedule and game context, so I would keep this answer tied to the fixture until richer charting or game-note sources land.`,
+    `The source-backed read is to start with early downs, field position, and whether ${grounding.teamName} controls the line of scrimmage. The record is strongest on schedule and matchup context, so this answer should stay inside those lines until season statistics add more depth.`,
     grounding,
   );
 }
@@ -137,10 +137,10 @@ function finish(body: string, grounding: GroundingContext): string {
   }
 
   const captured = grounding.scheduleCapturedAt
-    ? ` Official schedule fixture captured ${grounding.scheduleCapturedAt}.`
+    ? ` Schedule record checked ${grounding.scheduleCapturedAt}.`
     : "";
 
-  return `${body} Source freshness: no matching documents were retrieved for this answer.${captured}`.trim();
+  return `${body} Freshness: no matching source was found for this answer.${captured}`.trim();
 }
 
 function firstSentences(content: string, count: number): string {

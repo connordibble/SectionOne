@@ -2,8 +2,13 @@ import { z } from "zod";
 import { getTeamSchedule } from "@/server/schedule/schedule";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
 
-export type SourceReadinessState = "Ready" | "Planned" | "Needs key";
-export type SourceState = { label: string; state: SourceReadinessState };
+export type SourceReadinessState = "Ready" | "Planned";
+export type SourceState = {
+  id: "schedule" | "notes" | "official" | "statistics";
+  label: string;
+  description: string;
+  state: SourceReadinessState;
+};
 
 const teamConfigSchema = z.object({
   slug: z.string().min(1),
@@ -15,11 +20,9 @@ const teamConfigSchema = z.object({
   referenceLabel: z.string().min(1),
   tagline: z.string().min(1),
   aliases: z.array(z.string().min(1)),
-  // Three numbers, not fourteen hex values. See DESIGN.md § Theme: hand-tuning
-  // a full palette per team is the biggest obstacle to "bring your own team",
-  // and because OKLCH is perceptually uniform, deriving from a hue keeps
-  // contrast relationships intact across schools instead of needing them
-  // re-checked by eye for every new deployment.
+  // Three anchors, not a hand-tuned palette. See DESIGN.md § Team portability.
+  // OKLCH keeps the shared lightness ladder predictable as team identity moves
+  // around the hue wheel; every new palette is still contrast-tested in CI.
   theme: z.object({
     // Team colour, in OKLCH degrees. 47 = burnt orange, 145 = forest green,
     // 264 = royal blue.
@@ -41,6 +44,32 @@ const teamConfigSchema = z.object({
     preferredTerms: z.array(z.string().min(1)),
     bannedPhrases: z.array(z.string().min(1)),
   }),
+  editorial: z.object({
+    lead: z.object({
+      headline: z.string().min(1),
+      body: z.string().min(1),
+      noteId: z.string().min(1),
+    }),
+    matchup: z.object({
+      thesis: z.string().min(1),
+      question: z.string().min(1),
+      answer: z.string().min(1),
+      citationNoteIds: z.array(z.string().min(1)).min(1),
+    }),
+    signals: z
+      .array(
+        z.object({
+          id: z.string().min(1),
+          title: z.string().min(1),
+          summary: z.string().min(1),
+          detail: z.string().min(1),
+          state: z.enum(["watch", "ready", "thin"]),
+          prompt: z.string().min(1),
+          noteId: z.string().min(1),
+        }),
+      )
+      .length(4),
+  }),
   nextGameNote: z.string().min(1),
   cfbd: z
     .object({
@@ -61,8 +90,8 @@ export const teamConfigs = {
     conference: "SEC",
     displayName: "Texas football",
     shortName: "Texas",
-    referenceLabel: "Texas football reference deployment",
-    tagline: "Texas context, clean sources, Saturday-level signal.",
+    referenceLabel: "Texas · 2026 season",
+    tagline: "What matters before kickoff, with the evidence attached.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
     // Burnt orange that reads Texas without using the official UT colour.
     theme: {
@@ -103,6 +132,63 @@ export const teamConfigs = {
         "guaranteed lock",
       ],
     },
+    editorial: {
+      lead: {
+        headline: "Calibration, not drama.",
+        body:
+          "The opener is a baseline read on early-down efficiency, the personnel packages the staff trusts, and how quickly the second unit earns meaningful snaps.",
+        noteId: "opponent-texas-state",
+      },
+      matchup: {
+        thesis: "Control the line",
+        question: "What tells us Texas is in control early?",
+        answer:
+          "Start with first- and second-down success. If Texas stays ahead of the sticks without leaning on gift field position, the call sheet stays open and the opener becomes the clean calibration it should be.",
+        citationNoteIds: ["early-down-identity", "opponent-texas-state"],
+      },
+      signals: [
+        {
+          id: "early-downs",
+          title: "Early downs",
+          summary: "Stay ahead of the sticks",
+          detail:
+            "Success rate matters more than raw yardage. Third-and-long is the first sign the offense has lost control of the script.",
+          state: "watch",
+          prompt: "What should Texas fans watch on early downs?",
+          noteId: "early-down-identity",
+        },
+        {
+          id: "clean-operation",
+          title: "Clean operation",
+          summary: "Checks, snaps, zero gifts",
+          detail:
+            "On-time snaps, sound checks, and no giveaways in plus territory keep field position from becoming the story.",
+          state: "watch",
+          prompt: "What are the clean-game markers for the Texas offense?",
+          noteId: "quarterback-operation",
+        },
+        {
+          id: "pressure-four",
+          title: "Pressure with four",
+          summary: "Keep the coverage shell intact",
+          detail:
+            "Interior wins let the defense move the quarterback without spending an extra defender and exposing the back end.",
+          state: "ready",
+          prompt: "Why does pressure with four matter in the opener?",
+          noteId: "defensive-front-pressure",
+        },
+        {
+          id: "interior-rotation",
+          title: "Interior OL rotation",
+          summary: "Treat projections as provisional",
+          detail:
+            "The two-deep is still unsettled at guard. Short yardage and interior pressure will show whether the rotation is hardening.",
+          state: "thin",
+          prompt: "Where is the Texas offensive-line context still thin?",
+          noteId: "interior-ol-rotation",
+        },
+      ],
+    },
     nextGameNote:
       "The opener is the first baseline check for early-down efficiency, clean operation, and whether Texas controls the line of scrimmage before the schedule tightens.",
     cfbd: {
@@ -133,40 +219,79 @@ export type TeamPalette = {
   muted: string;
   border: string;
   borderStrong: string;
-  contrast: string;
+  onAccent: string;
   steel: string;
+  steelRaised: string;
+  onSteel: string;
+  focus: string;
 };
 
-// Lightness ladder, tuned once against WCAG AA and then reused by every team.
-// The values that matter for contrast:
-//   ink 22 on page 96.5   — body copy, far past AA
-//   muted 46 on page 96.5 — secondary copy, clears AA at small sizes
-//   contrast 99 on accent 52 — white on burnt orange, clears AA for body text
-//   contrast 99 on steel 30  — masthead text, far past AA
-// Because OKLCH lightness is perceptually uniform, these hold as `hue` rotates,
-// which is the whole point of deriving rather than hand-picking.
-export function deriveTeamPalette(theme: TeamConfig["theme"]): TeamPalette {
+export type TeamPaletteSet = {
+  light: TeamPalette;
+  dark: TeamPalette;
+};
+
+// Shared lightness and chroma relationships for both modes. OKLCH makes the
+// palette predictable as hue rotates, but perceptual uniformity is not a
+// substitute for WCAG measurement; enabled team palettes are audited against
+// the rendered foreground/background pairs before release.
+export function deriveTeamPalette(
+  theme: TeamConfig["theme"],
+  mode: "light" | "dark" = "light",
+): TeamPalette {
   const { hue, chroma, neutralHue } = theme;
 
   // Surfaces and text carry a trace of the team hue so the page reads warm (or
   // cool) rather than grey, but at a chroma low enough to stay neutral.
-  const tint = Math.min(chroma * 0.22, 0.03);
+  const tint = Math.min(chroma * 0.09, 0.014);
+
+  if (mode === "dark") {
+    return {
+      page: oklch(13.5, tint * 0.65, hue),
+      surface: oklch(16.5, tint * 0.75, hue),
+      surfaceSoft: oklch(20.5, tint * 0.9, hue),
+      surfaceStrong: oklch(26, tint * 1.1, hue),
+      ink: oklch(94, tint * 0.35, hue),
+      inkSubtle: oklch(82, tint * 0.45, hue),
+      accent: oklch(70, chroma * 0.82, hue),
+      accentStrong: oklch(80, chroma * 0.68, hue),
+      accentSoft: oklch(34, chroma * 0.52, hue),
+      muted: oklch(70, tint * 0.55, hue),
+      border: oklch(29, tint * 0.8, hue),
+      borderStrong: oklch(43, tint * 0.9, hue),
+      onAccent: oklch(15, tint * 0.8, hue),
+      steel: oklch(9.5, 0.025, neutralHue),
+      steelRaised: oklch(15.5, 0.03, neutralHue),
+      onSteel: oklch(94, 0.012, neutralHue),
+      focus: oklch(84, chroma * 0.58, hue),
+    };
+  }
 
   return {
     page: oklch(96.5, tint, hue),
     surface: oklch(98.5, tint * 0.6, hue),
-    surfaceSoft: oklch(94, tint * 1.6, hue),
-    surfaceStrong: oklch(89, tint * 2.4, hue),
-    ink: oklch(22, tint * 1.1, hue),
-    inkSubtle: oklch(34, tint * 1.2, hue),
-    accent: oklch(52, chroma, hue),
-    accentStrong: oklch(42, chroma * 0.96, hue),
-    accentSoft: oklch(84, chroma * 0.54, hue),
-    muted: oklch(46, tint * 1.5, hue),
-    border: oklch(88, tint * 1.5, hue),
-    borderStrong: oklch(78, tint * 2.5, hue),
-    contrast: oklch(99, tint * 0.4, hue),
-    steel: oklch(30, 0.035, neutralHue),
+    surfaceSoft: oklch(93.5, tint * 1.6, hue),
+    surfaceStrong: oklch(88, tint * 2.4, hue),
+    ink: oklch(20, tint * 1.1, hue),
+    inkSubtle: oklch(32, tint * 1.2, hue),
+    accent: oklch(49, chroma, hue),
+    accentStrong: oklch(38, chroma * 0.96, hue),
+    accentSoft: oklch(82, chroma * 0.54, hue),
+    muted: oklch(43, tint * 1.5, hue),
+    border: oklch(86, tint * 1.5, hue),
+    borderStrong: oklch(72, tint * 2.5, hue),
+    onAccent: oklch(98.5, tint * 0.4, hue),
+    steel: oklch(23, 0.035, neutralHue),
+    steelRaised: oklch(29, 0.035, neutralHue),
+    onSteel: oklch(96, 0.012, neutralHue),
+    focus: oklch(34, chroma * 0.88, hue),
+  };
+}
+
+export function deriveTeamPalettes(theme: TeamConfig["theme"]): TeamPaletteSet {
+  return {
+    light: deriveTeamPalette(theme, "light"),
+    dark: deriveTeamPalette(theme, "dark"),
   };
 }
 
@@ -195,28 +320,44 @@ export function validateTeamConfig(config: TeamConfig): TeamConfig {
 }
 
 // Reflects the real ingest surface rather than a hand-maintained list: the
-// fixture and official links are produced on every ingest, while CFBD depends
+// schedule and official links are produced on every ingest, while statistics depend
 // on both team config and a supplied API key.
 export function getSourceReadiness(team: TeamConfig): SourceState[] {
   const states: SourceState[] = [
     {
-      label: "Schedule fixture",
+      id: "schedule",
+      label: "Schedule",
+      description: "Dates, kickoff windows, venues, and broadcast assignments.",
       state: getTeamSchedule(team.slug) ? "Ready" : "Planned",
     },
     {
-      label: "Team notes (sample)",
+      id: "notes",
+      label: "Desk notes",
+      description: "Independent matchup, roster, and identity reads.",
       state: getTeamNoteDocuments(team.slug).length > 0 ? "Ready" : "Planned",
     },
-    { label: "Official links", state: "Ready" },
+    {
+      id: "official",
+      label: "Official links",
+      description: "Primary program pages kept beside every extracted fact.",
+      state: "Ready",
+    },
   ];
 
   if (team.cfbd) {
     states.push({
-      label: "CFBD adapter",
-      state: process.env.CFBD_API_KEY ? "Ready" : "Needs key",
+      id: "statistics",
+      label: "Season statistics",
+      description: "Team and opponent efficiency data for deeper comparisons.",
+      state: process.env.CFBD_API_KEY ? "Ready" : "Planned",
     });
   } else {
-    states.push({ label: "CFBD adapter", state: "Planned" });
+    states.push({
+      id: "statistics",
+      label: "Season statistics",
+      description: "Team and opponent efficiency data for deeper comparisons.",
+      state: "Planned",
+    });
   }
 
   return states;

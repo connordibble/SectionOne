@@ -38,10 +38,9 @@ describe("GET /api/health", () => {
     expect(body.enabledTeams).toEqual(["texas-football"]);
     expect(["mock", "anthropic", "openai"]).toContain(body.llm.provider);
     expect(["mock", "openai"]).toContain(body.embeddings.provider);
-    expect(body.sources["texas-football"]).toContainEqual({
-      label: "Schedule fixture",
-      state: "Ready",
-    });
+    expect(body.sources["texas-football"]).toContainEqual(
+      expect.objectContaining({ id: "schedule", label: "Schedule", state: "Ready" }),
+    );
   });
 
   // The three states are deliberately not a boolean. A missing database costs

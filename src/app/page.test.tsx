@@ -14,10 +14,10 @@ describe("Home", () => {
       screen.getByRole("heading", { name: "Saturday Signal" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Texas football reference deployment"),
+      screen.getByText(/Texas · 2026 season/),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: "2026 schedule" }),
+      screen.getByRole("heading", { name: "Next three" }),
     ).toBeInTheDocument();
   });
 
@@ -27,7 +27,8 @@ describe("Home", () => {
 
     // Components consume --team-* and nothing else, so this is the seam that
     // has to hold when a new team is added as three OKLCH numbers.
-    expect(root?.getAttribute("style")).toContain("--team-accent: oklch(");
-    expect(root?.getAttribute("style")).toContain("--team-steel: oklch(");
+    expect(root?.getAttribute("style")).toContain("--team-light-accent: oklch(");
+    expect(root?.getAttribute("style")).toContain("--team-dark-accent: oklch(");
+    expect(root?.getAttribute("style")).toContain("--team-light-steel: oklch(");
   });
 });

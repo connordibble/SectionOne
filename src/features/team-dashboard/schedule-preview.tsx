@@ -1,73 +1,104 @@
-import { formatSite, getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
+import { ArrowRight } from "lucide-react";
+import type { ScheduleGame, TeamSchedule } from "@/server/schedule/schedule";
+import styles from "./team-workspace.module.css";
 
 type SchedulePreviewProps = {
-  teamSlug: string;
+  nextGameId?: string;
+  onOpenSchedule?: () => void;
+  schedule?: TeamSchedule;
+  variant: "compact" | "full";
 };
 
-export function SchedulePreview({ teamSlug }: SchedulePreviewProps) {
-  const schedule = getTeamSchedule(teamSlug);
-
+export function SchedulePreview({
+  nextGameId,
+  onOpenSchedule,
+  schedule,
+  variant,
+}: SchedulePreviewProps) {
   if (!schedule) {
-    return null;
+    return (
+      <section className={styles.scheduleEmpty} data-testid="schedule-strip">
+        <h2>Schedule</h2>
+        <p>No dates have been posted for this team yet.</p>
+      </section>
+    );
   }
 
-  const nextGame = getNextGame(teamSlug);
+  const nextIndex = Math.max(
+    0,
+    schedule.games.findIndex((game) => game.id === nextGameId),
+  );
+  const games =
+    variant === "compact" ? schedule.games.slice(nextIndex, nextIndex + 3) : schedule.games;
 
   return (
-    <section className="py-6 md:py-8" data-testid="schedule-strip">
-      <h2 className="text-[length:var(--text-xl)] font-semibold leading-tight tracking-tight">
-        {schedule.seasonYear} schedule
-      </h2>
+    <section
+      className={variant === "compact" ? styles.scheduleCompact : styles.scheduleFull}
+      data-testid="schedule-strip"
+    >
+      <div className={styles.scheduleHeading}>
+        <div>
+          <h2>{variant === "compact" ? "Next three" : `${schedule.seasonYear} schedule`}</h2>
+          {variant === "full" ? (
+            <p>{schedule.games.length} dates, from the opener to the regular-season finish.</p>
+          ) : null}
+        </div>
+        {variant === "compact" && onOpenSchedule ? (
+          <button className={styles.scheduleLink} onClick={onOpenSchedule} type="button">
+            Full schedule
+            <ArrowRight aria-hidden="true" />
+          </button>
+        ) : null}
+      </div>
 
-      {/* A chronological table, not a card grid. Chronology is the only thing a
-          schedule exists to convey, and a grid destroys it — the eye reads
-          across before it reads down, so week three lands beside week one. A
-          fixture list is also what every sports page has looked like for a
-          century; matching it costs the reader nothing to learn. */}
-      <ol className="mt-3">
-        {schedule.games.map((game) => {
-          const isNext = game.id === nextGame?.id;
-
-          return (
-            <li
-              // Every row is inset by the same amount and carries the same
-              // left rule; only its colour changes. Applying the inset just to
-              // the marked row would push its date out of the column and break
-              // the alignment a fixture table exists to provide.
-              className={`grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 border-t border-l-2 border-[var(--team-border)] py-2.5 pl-3 sm:grid-cols-[7.5rem_minmax(0,1fr)_auto] ${
-                isNext ? "border-l-[var(--team-accent)]" : "border-l-transparent"
-              }`}
-              key={game.id}
-            >
-              <span
-                className={`tnum order-2 text-[length:var(--text-xs)] leading-5 sm:order-none sm:text-[length:var(--text-sm)] ${
-                  isNext
-                    ? "font-semibold text-[var(--team-accent-strong)]"
-                    : "text-[var(--team-muted)]"
-                }`}
-              >
-                {game.dateLabel.replace(/^\w+day,\s*/, "")}
-              </span>
-
-              <span className="order-1 min-w-0 text-[length:var(--text-md)] font-medium leading-6 sm:order-none">
-                <span className="text-[var(--team-muted)]">{formatSite(game.site)} </span>
-                <span className="text-[var(--team-ink)]">{game.opponent}</span>
-                {isNext ? (
-                  <span className="ml-2 align-middle text-[length:var(--text-2xs)] font-semibold uppercase tracking-wide text-[var(--team-accent-strong)]">
-                    Next
-                  </span>
-                ) : null}
-              </span>
-
-              <span className="tnum order-3 whitespace-nowrap text-right text-[length:var(--text-xs)] leading-5 text-[var(--team-muted)] sm:order-none sm:text-[length:var(--text-sm)]">
-                {game.kickoff}
-                <span className="hidden text-[var(--team-border-strong)] sm:inline"> · </span>
-                <span className="block sm:inline">{game.tv ?? "TV TBD"}</span>
-              </span>
-            </li>
-          );
-        })}
+      <ol className={styles.scheduleList}>
+        {games.map((game) => (
+          <ScheduleRow
+            game={game}
+            isNext={game.id === nextGameId}
+            key={game.id}
+            variant={variant}
+          />
+        ))}
       </ol>
     </section>
   );
+}
+
+function ScheduleRow({
+  game,
+  isNext,
+  variant,
+}: {
+  game: ScheduleGame;
+  isNext: boolean;
+  variant: "compact" | "full";
+}) {
+  return (
+    <li className={styles.scheduleRow} data-next={isNext || undefined}>
+      <time className={`${styles.scheduleDate} tnum`} dateTime={game.startsAt ?? undefined}>
+        {shortDate(game.dateLabel)}
+      </time>
+      <div className={styles.scheduleOpponent}>
+        <p>
+          <span>{siteWord(game.site)} </span>
+          <strong>{game.opponent}</strong>
+          {isNext ? <span className={styles.nextGameLabel}>Next</span> : null}
+        </p>
+        {variant === "full" ? <span>{game.venue}</span> : null}
+      </div>
+      <p className={`${styles.scheduleKickoff} tnum`}>
+        <span>{game.kickoff}</span>
+        <span>{game.tv ?? "TV TBD"}</span>
+      </p>
+    </li>
+  );
+}
+
+function siteWord(site: ScheduleGame["site"]): string {
+  return site === "away" ? "at" : "vs";
+}
+
+function shortDate(dateLabel: string): string {
+  return dateLabel.replace(/^\w+day,\s*/, "");
 }

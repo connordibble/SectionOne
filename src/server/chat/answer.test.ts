@@ -71,7 +71,7 @@ describe("answerQuestion", () => {
 
     expect(result.provider).toBe("mock");
     expect(result.confidence).toBe("low");
-    expect(result.notice).toContain('Live provider "anthropic" failed');
+    expect(result.notice).toContain("live answer service was unavailable");
     // Operational messages stay out of freshness, which describes the corpus.
     expect(result.freshness).not.toContain("anthropic");
   }, 30_000);
@@ -93,7 +93,7 @@ describe("answerQuestion", () => {
 
     expect(result.provider).toBe("mock");
     expect(result.confidence).toBe("low");
-    expect(result.notice).toContain("deterministic composer");
+    expect(result.notice).toContain("verified local read");
   }, 30_000);
 
   it("never lets a fabricated citation reach the caller", async () => {
@@ -118,7 +118,7 @@ describe("answerQuestion", () => {
     // the citation check can catch it. Without that check this ships.
     expect(result.answer).not.toContain("Definitely Real Source");
     expect(result.provider).toBe("mock");
-    expect(result.notice).toContain("unknown citation");
+    expect(result.notice).toContain("sourcing gate");
     // One retry with the failure named, then the composer — two billed calls.
     expect(fetchMock).toHaveBeenCalledTimes(2);
   }, 30_000);
@@ -175,7 +175,7 @@ describe("streamAnswerEvents", () => {
     }
     expect(done.answer.provider).toBe("mock");
     expect(done.answer.confidence).toBe("low");
-    expect(done.answer.notice).toContain("deterministic composer");
+    expect(done.answer.notice).toContain("verified local read");
     expect(events.filter((event) => event.type === "delta")).not.toHaveLength(0);
   }, 30_000);
 

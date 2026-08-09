@@ -116,18 +116,16 @@ async function generateAccepted(
   provider: LlmProvider,
 ): Promise<AcceptedAttempt> {
   let request = prepared.request;
-  let lastFlags: string[] = [];
-
   for (let attempt = 0; attempt < 2; attempt += 1) {
     let result;
 
     try {
       result = await provider.generate(request);
-    } catch (error) {
-      const detail = error instanceof Error ? error.message : "unknown error";
+    } catch {
       return {
         accepted: false,
-        notice: `Live provider "${provider.name}" failed (${detail}); served the deterministic composer instead.`,
+        notice:
+          "The live answer service was unavailable. Saturday Signal used its verified local read instead.",
       };
     }
 
@@ -146,7 +144,6 @@ async function generateAccepted(
       return { accepted: true, text: result.text, model: result.model };
     }
 
-    lastFlags = evaluation.flags;
     request = {
       ...prepared.request,
       system: `${prepared.request.system}${buildRetryDirective(evaluation.flags)}`,
@@ -155,7 +152,8 @@ async function generateAccepted(
 
   return {
     accepted: false,
-    notice: `Live provider "${provider.name}" did not meet the answer standard (${lastFlags.join("; ")}); served the deterministic composer instead.`,
+    notice:
+      "The live draft did not clear the sourcing gate. Saturday Signal used its verified local read instead.",
   };
 }
 
@@ -209,7 +207,7 @@ async function prepareAnswer(
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `I would not treat that as confirmed from this source set. Saturday Signal can speak to the official schedule fixture and trusted links for ${team.displayName}, but it should not launder injury, betting, or message-board claims without a real source. Source freshness only holds for what the corpus actually verifies.`,
+        answer: `I would not treat that as confirmed from this source set. Saturday Signal can speak to the published schedule and trusted primary links for ${team.displayName}, but it should not launder injury, betting, or message-board claims without a real source. Freshness only holds for what the record actually verifies.`,
         citations: anchor.slice(0, 1),
         confidence: "low",
         freshness,
@@ -299,10 +297,23 @@ function createCitations(
 }
 
 function createFreshness(teamSlug: string, citations: ChatCitation[], warnings: string[]) {
-  const providers = [...new Set(citations.map((citation) => citation.provider))].join(", ");
+  const providers = [
+    ...new Set(citations.map((citation) => publicProviderLabel(citation.provider))),
+  ].join(", ");
   const schedule = getTeamSchedule(teamSlug);
   const captured = schedule ? formatCaptureDate(schedule.capturedAt) : "an unknown date";
-  const warningText = warnings.length > 0 ? ` ${warnings.join(" ")}` : "";
+  const coverageNote =
+    warnings.length > 0 ? " Season statistics are not yet part of this answer." : "";
 
-  return `Sources: ${providers || "fixture"}. Official schedule fixture captured ${captured}.${warningText}`;
+  return `Sources: ${providers || "schedule record"}. Schedule checked ${captured}.${coverageNote}`;
+}
+
+function publicProviderLabel(provider: string): string {
+  const labels: Record<string, string> = {
+    fixture: "schedule and desk notes",
+    official: "official links",
+    cfbd: "season statistics",
+  };
+
+  return labels[provider] ?? "source record";
 }

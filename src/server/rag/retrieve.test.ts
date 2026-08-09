@@ -27,13 +27,13 @@ describe("retrieveSourceChunks", () => {
   it("surfaces the roster note for roster questions", async () => {
     const titles = await topTitles("Where is the roster context still thin?");
 
-    expect(titles[0]).toBe("Roster context: interior offensive line rotation (sample)");
+    expect(titles[0]).toBe("Roster context: interior offensive line rotation");
   });
 
   it("surfaces the early-downs note for early-down questions", async () => {
     const titles = await topTitles("What should Texas fans watch on early downs?");
 
-    expect(titles).toContain("Offensive identity check: early downs (sample)");
+    expect(titles).toContain("Offensive identity check: early downs");
   });
 
   it("returns nothing for questions with no matching terms", async () => {

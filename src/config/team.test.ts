@@ -32,20 +32,38 @@ describe("source readiness", () => {
     vi.unstubAllEnvs();
   });
 
-  it("marks the fixture and official links ready and gates CFBD on its key", () => {
+  it("marks schedule, notes, and official links ready and keeps statistics planned", () => {
     vi.stubEnv("CFBD_API_KEY", "");
     const states = getSourceReadiness(defaultTeamConfig);
 
-    expect(states).toContainEqual({ label: "Schedule fixture", state: "Ready" });
-    expect(states).toContainEqual({ label: "Team notes (sample)", state: "Ready" });
-    expect(states).toContainEqual({ label: "Official links", state: "Ready" });
-    expect(states).toContainEqual({ label: "CFBD adapter", state: "Needs key" });
+    expect(states).toContainEqual(
+      expect.objectContaining({ id: "schedule", label: "Schedule", state: "Ready" }),
+    );
+    expect(states).toContainEqual(
+      expect.objectContaining({ id: "notes", label: "Desk notes", state: "Ready" }),
+    );
+    expect(states).toContainEqual(
+      expect.objectContaining({ id: "official", label: "Official links", state: "Ready" }),
+    );
+    expect(states).toContainEqual(
+      expect.objectContaining({
+        id: "statistics",
+        label: "Season statistics",
+        state: "Planned",
+      }),
+    );
   });
 
-  it("marks the CFBD adapter ready when a key is present", () => {
+  it("marks season statistics ready when a key is present", () => {
     vi.stubEnv("CFBD_API_KEY", "test-key");
     const states = getSourceReadiness(defaultTeamConfig);
 
-    expect(states).toContainEqual({ label: "CFBD adapter", state: "Ready" });
+    expect(states).toContainEqual(
+      expect.objectContaining({
+        id: "statistics",
+        label: "Season statistics",
+        state: "Ready",
+      }),
+    );
   });
 });

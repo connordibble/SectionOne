@@ -48,6 +48,15 @@ const answerEvents = [
   },
 ];
 
+const baseProps = {
+  mode: "brief" as const,
+  starterRead: {
+    question: "What matters?",
+    answer: "Early downs.",
+    citations: [],
+  },
+};
+
 afterEach(() => {
   vi.unstubAllGlobals();
 });
@@ -59,7 +68,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -90,7 +99,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -103,7 +112,7 @@ describe("TeamChat", () => {
     await screen.findByText("Texas opens vs Texas State.");
 
     await userEvent.type(screen.getByLabelText("Ask Saturday Signal"), "And Ohio State?");
-    await userEvent.click(screen.getByRole("button", { name: "Ask Saturday Signal" }));
+    await userEvent.click(screen.getByRole("button", { name: "Ask" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
 
@@ -123,7 +132,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -135,7 +144,7 @@ describe("TeamChat", () => {
     );
     await screen.findByText("Texas opens vs Texas State.");
 
-    await userEvent.click(screen.getByRole("button", { name: /New conversation/i }));
+    await userEvent.click(screen.getByRole("button", { name: /New thread/i }));
 
     expect(screen.queryByText("Texas opens vs Texas State.")).not.toBeInTheDocument();
     expect(
@@ -164,7 +173,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Prompt"]}
         tagline="Test tagline"
         teamSlug="nope"

@@ -1,84 +1,110 @@
 import { expect, test } from "@playwright/test";
 
-test("loads the Saturday Signal shell", async ({ page }) => {
+test("loads the finished Saturday Signal workspace", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: "Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Texas football reference deployment")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Ask Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Independent fan project")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "2026 schedule" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Saturday Signal", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText(/Texas · 2026 season · SEC · Independent coverage/)).toBeVisible();
+  await expect(page.getByRole("tab", { name: "Brief" })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  );
+  await expect(page.getByRole("heading", { name: "What matters" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ask Saturday Signal" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Next three" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Ask", exact: true })).toBeVisible();
+  await expect(page.getByText(/source desks ready/)).toBeVisible();
 });
 
-test("loads the canonical Texas football route", async ({ page }) => {
+test("loads the canonical Texas route with a real kickoff figure", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
-  await expect(page.getByRole("heading", { name: "Saturday Signal" })).toBeVisible();
-  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
-});
-
-test("leads with a real kickoff countdown, never an invented figure", async ({ page }) => {
-  await page.goto("/");
-
-  // The lead figure is the largest thing on the page, so it has to be honest:
-  // a day count, "Today", or "TBD" — never a fabricated number.
   const lead = page.getByTestId("kickoff-lead");
   await expect(lead).toBeVisible();
-  // The figure and its unit are separate elements, so textContent runs them
-  // together as "28days out" — \s* rather than \s+.
   await expect(lead).toContainText(/^(\d+\s*days?\s*out|Today|TBD)/);
   await expect(lead.getByRole("heading", { level: 2 })).toContainText("Texas");
 });
 
-test("desktop reading order runs lead, chat, schedule, sources in one column", async ({
-  page,
-}, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop", "desktop-only layout contract");
+test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
+  await page.goto("/#matchup");
 
-  await page.setViewportSize({ width: 1440, height: 900 });
+  const matchupTab = page.getByRole("tab", { name: "Matchup" });
+  await expect(matchupTab).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByTestId("signal-board")).toBeVisible();
+
+  await matchupTab.focus();
+  await matchupTab.press("ArrowRight");
+  await expect(page).toHaveURL(/#schedule$/);
+  await expect(page.getByRole("tab", { name: "Schedule" })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  );
+  await expect(page.getByRole("heading", { name: "2026 schedule" })).toBeVisible();
+
+  await page.getByRole("tab", { name: "Sources" }).click();
+  await expect(page).toHaveURL(/#sources$/);
+  await expect(page.getByRole("heading", { name: "Source ledger" })).toBeVisible();
+  await expect(page.getByText("Season statistics")).toBeVisible();
+});
+
+test("the Signal Board turns a selected cue into a focused question", async ({ page }) => {
+  await page.goto("/#matchup");
+
+  const pressureCue = page.getByRole("button", { name: /Pressure with four/ });
+  await pressureCue.click();
+  await expect(pressureCue).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText(/Interior wins let the defense move the quarterback/)).toBeVisible();
+
+  await page.getByRole("button", { name: "Ask about this" }).click();
+  const composer = page.getByLabel("Ask Saturday Signal");
+  await expect(composer).toBeFocused();
+  await expect(composer).toHaveValue("Why does pressure with four matter in the opener?");
+});
+
+test("explicit theme choices cycle and persist", async ({ page }) => {
   await page.goto("/");
+  const shell = page.locator("main[data-theme]");
 
-  // The Stat-Led contract: a single reading column with a strict vertical
-  // order — the lead figure, then the workspace, then supporting data, then
-  // sourcing. Asserted through element relationships rather than pixel
-  // heights so copy changes don't break it.
-  const layout = await page.evaluate(() => {
-    const ids = ["kickoff-lead", "team-chat-panel", "schedule-strip", "source-colophon"];
-    const rects = ids.map((id) => {
-      const node = document.querySelector(`[data-testid="${id}"]`);
+  await expect(shell).toHaveAttribute("data-theme", "system");
+  await page.getByRole("button", { name: "Color theme: Auto. Change theme." }).click();
+  await expect(shell).toHaveAttribute("data-theme", "light");
+  await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
+  await expect(shell).toHaveAttribute("data-theme", "dark");
 
-      if (!node) {
-        throw new Error(`Expected [data-testid="${id}"] to be present.`);
-      }
+  await page.reload();
+  await expect(shell).toHaveAttribute("data-theme", "dark");
+});
 
-      return node.getBoundingClientRect();
-    });
+test("reduced motion removes spatial interaction movement", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/#matchup");
 
-    return {
-      inVerticalOrder: rects.every(
-        (rect, index) => index === 0 || rect.top >= rects[index - 1].bottom - 1,
-      ),
-      sharesOneColumn: rects.every((rect) => Math.abs(rect.left - rects[0].left) <= 1),
-      columnIsReadable: rects[1].width <= 1200,
-    };
-  });
+  const cue = page.getByRole("button", { name: /Early downs/ });
+  await cue.hover();
 
-  expect(layout.inVerticalOrder).toBe(true);
-  expect(layout.sharesOneColumn).toBe(true);
-  expect(layout.columnIsReadable).toBe(true);
+  await expect(cue).toHaveCSS("transform", "none");
+  await expect(page.getByTestId("signal-board")).toBeVisible();
 });
 
 for (const width of [1440, 768, 414, 375, 320]) {
-  test(`no horizontal overflow at ${width}px`, async ({ page }) => {
+  test(`all four views avoid horizontal overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
 
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
+    for (const view of ["Brief", "Matchup", "Schedule", "Sources"]) {
+      await page.getByRole("tab", { name: view }).click();
+      await expect(page.getByRole("tab", { name: view })).toHaveAttribute(
+        "aria-selected",
+        "true",
+      );
 
-    // Allow 1px for sub-pixel rounding; anything more is a real overflow.
-    expect(overflow).toBeLessThanOrEqual(1);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `${view} overflow at ${width}px`).toBeLessThanOrEqual(1);
+    }
   });
 }
 
@@ -121,7 +147,7 @@ test("chat API returns grounded citations", async ({ request }) => {
   expect(body.citations.length).toBeGreaterThanOrEqual(2);
 });
 
-test("chat API can stream server-sent events", async ({ request }) => {
+test("chat API streams citations, answer text, and completion metadata", async ({ request }) => {
   const response = await request.post("/api/chat", {
     headers: { Accept: "text/event-stream" },
     data: {
@@ -137,23 +163,30 @@ test("chat API can stream server-sent events", async ({ request }) => {
   expect(body).toContain("event: done");
 });
 
-test("chat UI streams a grounded answer with citations", async ({ page }) => {
+test("chat streams a cited answer and keeps it across views", async ({ page }) => {
   await page.goto("/");
   await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
   await expect(page.getByRole("link", { name: /Texas football 2026 schedule/i })).toBeVisible();
+
+  await page.getByRole("tab", { name: "Matchup" }).click();
+  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The thread" })).toBeVisible();
+
+  await page.getByRole("tab", { name: "Sources" }).click();
+  await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });
 
-test("chat UI holds a multi-turn conversation", async ({ page }) => {
+test("chat supports a grounded follow-up", async ({ page }) => {
   await page.goto("/");
   await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
 
   await page.getByLabel("Ask Saturday Signal").fill("How does Ohio State look?");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   await expect(page.getByText("How does Ohio State look?")).toBeVisible();
   await expect(

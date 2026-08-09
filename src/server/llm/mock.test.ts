@@ -36,8 +36,8 @@ const baseGrounding: GroundingContext = {
     },
   ],
   sourceReadiness: [
-    { label: "Schedule fixture", state: "Ready" },
-    { label: "CFBD adapter", state: "Needs key" },
+    { label: "Schedule", state: "Ready" },
+    { label: "Season statistics", state: "Planned" },
   ],
   scheduleCapturedAt: "July 1, 2026",
   excerpts: [{ title: "Texas vs Texas State", content: "Texas vs Texas State on September 5." }],
@@ -90,8 +90,8 @@ describe("mock LLM provider", () => {
     const request = withGrounding({ capability: "source-readiness" });
     const result = await provider.generate(request);
 
-    expect(result.text).toContain("Schedule fixture (Ready)");
-    expect(result.text).toContain("CFBD adapter (Needs key)");
+    expect(result.text).toContain("Schedule (Ready)");
+    expect(result.text).toContain("Season statistics (Planned)");
     expectAccepted(result.text, request.grounding!);
   });
 
@@ -120,7 +120,7 @@ describe("mock LLM provider", () => {
     // A bracketed tag here would be an invented source, which is exactly what
     // the acceptance gate exists to reject.
     expect(result.text).not.toMatch(/\[[^\]]+\]/);
-    expect(result.text).toContain("Source freshness");
+    expect(result.text).toContain("Freshness:");
     expectAccepted(result.text, request.grounding!);
   });
 

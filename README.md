@@ -1,19 +1,24 @@
 # Saturday Signal
 
-Saturday Signal is an independent fan intelligence platform for college football coverage. MVP1 ships with a Texas football reference deployment and keeps the platform boundaries ready for future teams.
+Saturday Signal is an independent college-football intelligence desk: what matters before kickoff,
+what to watch during the game, and the evidence behind the read.
 
-## Local Development
+The current Texas edition connects four views: Brief, Matchup, Schedule, and Sources. One grounded
+chat thread follows the reader between them. Team identity, editorial cues, source
+policy, and light/dark palettes live in typed configuration so another team does not require a UI
+fork.
+
+## Local development
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open [http://127.0.0.1:3000](http://127.0.0.1:3000).
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The root route loads the default team; the
+canonical Texas route is `/teams/texas-football`.
 
-The root route loads the MVP Texas football deployment. The canonical team route is `/teams/texas-football`.
-
-## Quality Gates
+## Quality gates
 
 ```bash
 pnpm check
@@ -24,7 +29,7 @@ pnpm test:e2e
 pnpm release:check
 ```
 
-## Local Data Services
+## Local data services
 
 ```bash
 docker compose up -d
@@ -33,34 +38,50 @@ pnpm ingest
 pnpm db:seed
 ```
 
-`pnpm ingest` works offline from committed fixtures. `pnpm db:seed` requires `DATABASE_URL` and persists the team, 2026 schedule, and source documents.
+`pnpm ingest` works offline from committed source snapshots. `pnpm db:seed` requires `DATABASE_URL`
+and persists the team, 2026 schedule, and source documents.
 
-## API Surface
+## API surface
 
-- `GET /api/health` reports service status, database configuration, the active LLM provider, per-team source readiness, and enabled team slugs.
+- `GET /api/health` reports service status, database configuration, active answer provider,
+  per-team source readiness, and enabled team slugs.
 - `POST /api/ingest` returns the normalized source corpus for a team.
-- `POST /api/chat` accepts `{ message, teamSlug?, history?, sessionId? }` and returns a grounded answer with citations, confidence, freshness, and the provider that produced it. Set `Accept: text/event-stream` to receive `citations`, incremental `delta`, and `done` SSE events. When `DATABASE_URL` is configured, exchanges persist to `chat_sessions` / `chat_messages` and the response carries a `sessionId` for conversation continuity.
+- `POST /api/chat` accepts `{ message, teamSlug?, history?, sessionId? }` and returns a grounded
+  answer with citations, confidence, freshness, and provider metadata. With
+  `Accept: text/event-stream`, it emits `citations`, incremental `delta`, and `done` events. With
+  `DATABASE_URL` configured, exchanges persist to `chat_sessions` and `chat_messages`.
 
-## LLM Providers
+## Answer providers
 
-Chat generation is provider-agnostic behind a single `LlmProvider` interface (`src/server/llm`).
+Generation sits behind one `LlmProvider` interface in `src/server/llm`.
 
-- **mock** (default): deterministic offline composer grounded in the fixture corpus. No keys required; also the automatic fallback if a live provider fails.
-- **anthropic**: set `ANTHROPIC_API_KEY` (model defaults to `claude-opus-4-8`, override with `ANTHROPIC_MODEL`).
-- **openai**: set `OPENAI_API_KEY` (model defaults to `gpt-4o`, override with `OPENAI_MODEL`).
+- `mock` is the deterministic local composer. It needs no key and provides the verified local read
+  if a live provider is unavailable or fails the sourcing gate.
+- `anthropic` uses `ANTHROPIC_API_KEY`; `ANTHROPIC_MODEL` overrides the configured default.
+- `openai` uses `OPENAI_API_KEY`; `OPENAI_MODEL` overrides the configured default.
 
-Provider selection is automatic from whichever key is present (Anthropic wins when both are set); set `LLM_PROVIDER=mock|anthropic|openai` to force a choice. `GET /api/health` reports which provider is live. Adding a new provider means implementing the `LlmProvider` interface and registering it in `src/server/llm/registry.ts`.
+Provider selection follows the available key, with Anthropic first when both exist. Set
+`LLM_PROVIDER=mock|anthropic|openai` to choose explicitly. The health endpoint reports the active
+provider. Add another provider by implementing `LlmProvider` and registering it in
+`src/server/llm/registry.ts`.
 
-## Product Posture
+## Product boundaries
 
-- Open-source platform core with one polished Texas football demo.
-- Team identity, source policy, and voice should live in typed configuration.
-- No official marks, Bevo branding, or affiliation language.
-- SaaS concerns such as auth, billing, and tenant admin stay out of MVP1.
+- No official marks, mascot branding, institutional color values, or affiliation language.
+- Team-specific choices belong in the validated team config, not component copy or CSS.
+- Schedule and desk-note snapshots are usable today; official links and season statistics remain
+  visible as planned sources until ingestion is connected.
+- Retrieval is lexical today, with the storage schema ready for embeddings.
+- Auth, billing, tenant administration, and source-rights management remain outside the first
+  public edition.
 
-## Current Limits
+## Roadmap
 
-- CFBD live ingestion is optional and skipped unless `CFBD_API_KEY` is configured.
-- Team notes ship as clearly-labeled sample fixture data; swap `src/server/sources/notes.ts` for a licensed provider before production use.
-- Without an LLM API key, chat uses the deterministic offline composer over the source corpus; retrieval is lexical (term frequency + phrase matching), with the schema ready for pgvector embeddings.
-- Multi-tenant auth, billing, admin source management, and hosted SaaS operations are intentionally out of MVP1.
+- Add a validated, citation-bearing visualization specification and an accessible renderer for a
+  small chart vocabulary. Models will produce data specifications, never executable UI code.
+- Add bring-your-own-key after deployment: encrypted user-scoped credentials, explicit provider
+  selection, no platform-key fallback, redacted logs, revocation, and per-key usage attribution.
+- Connect licensed notes, official records, and season-statistic ingestion team by team.
+- Add tenant administration only when multiple editions need independent operators.
+
+The design and portability contract lives in [DESIGN.md](./DESIGN.md).

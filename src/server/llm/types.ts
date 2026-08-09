@@ -30,7 +30,7 @@ export type ScheduleGameFact = {
 
 export type SourceReadinessFact = {
   label: string;
-  state: "Ready" | "Planned" | "Needs key";
+  state: "Ready" | "Planned";
 };
 
 // Structured facts the chat layer derived from retrieval and team config.
