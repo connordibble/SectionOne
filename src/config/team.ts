@@ -34,14 +34,16 @@ const teamConfigSchema = z.object({
     //
     // When a school's own primary is already dark — navy, maroon, forest —
     // this is that colour, because a fan should see their actual colours.
-    // When the primary is bright, as burnt orange is, no amount of darkening
-    // makes it structure, and this becomes a counterweight well away from
-    // `hue` so the page does not read as a single-hue wash.
+    // A bright primary can use a low-chroma dark version of its own hue for a
+    // strong team edition, or a counterweight well away from `hue` when the
+    // page needs more restraint.
     structuralHue: z.number().min(0).max(360),
-    // Low enough that the masthead stays structure. Past roughly 0.09 a dark
-    // bar stops reading as the page's frame and starts reading as a colour
-    // field competing with the accent.
-    structuralChroma: z.number().min(0).max(0.09),
+    // Structural chroma can stay restrained for dark mastheads or move closer to
+    // the official team colour when structuralLightness defines a bright one.
+    structuralChroma: z.number().min(0).max(0.2),
+    // Optional lightness for a bright branded structural colour. Omit it for the
+    // standard dark frame used by the house theme and most editions.
+    structuralLightness: z.number().min(0).max(100).optional(),
   }),
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
@@ -102,18 +104,14 @@ export const teamConfigs = {
     referenceLabel: "Texas · Week 1 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
-    // Burnt orange, as close to the school's own as contrast allows. The
-    // published colour measures 4.13:1 against this page — under AA — so the
-    // accent keeps its hue and saturation and gives up only lightness, which
-    // is the one dimension contrast actually needs. It lands at 5.98:1.
-    //
-    // Texas has no dark primary, so the structural dark is a counterweight
-    // rather than a second school colour.
+    // Burnt orange is the edition's lead colour. The structural color tracks the
+    // university's published burnt orange rather than a brown-black derivative.
     theme: {
-      hue: 47,
-      chroma: 0.145,
-      structuralHue: 236,
-      structuralChroma: 0.035,
+      hue: 49.2,
+      chroma: 0.155,
+      structuralHue: 49.2,
+      structuralChroma: 0.1545,
+      structuralLightness: 57.8,
     },
     sourcePolicy: {
       disclaimer:
@@ -361,6 +359,7 @@ export type TeamPalette = {
   accent: string;
   accentStrong: string;
   accentSoft: string;
+  headerAccent: string;
   muted: string;
   border: string;
   borderStrong: string;
@@ -385,6 +384,8 @@ export function deriveTeamPalette(
   mode: "light" | "dark" = "light",
 ): TeamPalette {
   const { hue, chroma, structuralHue, structuralChroma } = theme;
+  const structuralLightness = theme.structuralLightness ?? 23;
+  const brightStructural = structuralLightness > 40;
 
   // Surfaces and text carry a trace of the team hue so the page reads warm (or
   // cool) rather than grey, but at a chroma low enough to stay neutral.
@@ -401,6 +402,7 @@ export function deriveTeamPalette(
       accent: oklch(70, chroma * 0.82, hue),
       accentStrong: oklch(80, chroma * 0.68, hue),
       accentSoft: oklch(34, chroma * 0.52, hue),
+      headerAccent: oklch(80, chroma * 0.68, hue),
       muted: oklch(70, tint * 0.55, hue),
       border: oklch(29, tint * 0.8, hue),
       borderStrong: oklch(43, tint * 0.9, hue),
@@ -424,13 +426,14 @@ export function deriveTeamPalette(
     accent: oklch(49, chroma, hue),
     accentStrong: oklch(38, chroma * 0.96, hue),
     accentSoft: oklch(82, chroma * 0.54, hue),
+    headerAccent: brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue),
     muted: oklch(43, tint * 1.5, hue),
     border: oklch(86, tint * 1.5, hue),
     borderStrong: oklch(72, tint * 2.5, hue),
     onAccent: oklch(98.5, tint * 0.4, hue),
-    steel: oklch(23, structuralChroma, structuralHue),
-    steelRaised: oklch(29, structuralChroma, structuralHue),
-    onSteel: oklch(96, 0.012, structuralHue),
+    steel: oklch(brightStructural ? structuralLightness : 23, structuralChroma, structuralHue),
+    steelRaised: oklch(brightStructural ? structuralLightness - 6 : 29, structuralChroma, structuralHue),
+    onSteel: brightStructural ? oklch(100, 0, structuralHue) : oklch(96, 0.012, structuralHue),
     focus: oklch(34, chroma * 0.88, hue),
   };
 }
@@ -468,6 +471,7 @@ const paletteRoles: Array<[string, keyof TeamPalette]> = [
   ["accent", "accent"],
   ["accent-strong", "accentStrong"],
   ["accent-soft", "accentSoft"],
+  ["header-accent", "headerAccent"],
   ["on-accent", "onAccent"],
   ["steel", "steel"],
   ["steel-raised", "steelRaised"],
@@ -481,11 +485,17 @@ const paletteRoles: Array<[string, keyof TeamPalette]> = [
 export function createThemeStyle(theme: TeamConfig["theme"]): Record<string, string> {
   const palettes = deriveTeamPalettes(theme);
   const customProperties: Record<string, string> = {};
+  const brightStructural = (theme.structuralLightness ?? 23) > 40;
 
   for (const mode of ["light", "dark"] as const) {
     for (const [cssRole, paletteRole] of paletteRoles) {
       customProperties[`--team-${mode}-${cssRole}`] = palettes[mode][paletteRole];
     }
+
+    customProperties[`--team-${mode}-tab-opacity`] =
+      mode === "light" && brightStructural ? "1" : "0.58";
+    customProperties[`--team-${mode}-chrome-opacity`] =
+      mode === "light" && brightStructural ? "1" : "0.82";
   }
 
   return customProperties;

@@ -100,7 +100,9 @@
   --team-steel-raised: var(--team-light-steel-raised);
   --team-on-steel: var(--team-light-on-steel);
   --team-focus: var(--team-light-focus);
-  --team-header-accent: var(--team-light-accent-soft);
+  --team-header-accent: var(--team-light-header-accent, var(--team-light-accent-soft));
+  --team-tab-opacity: var(--team-light-tab-opacity, 0.58);
+  --team-chrome-opacity: var(--team-light-chrome-opacity, 0.82);
   color-scheme: light;
 }
 
@@ -122,7 +124,9 @@
   --team-steel-raised: var(--team-dark-steel-raised);
   --team-on-steel: var(--team-dark-on-steel);
   --team-focus: var(--team-dark-focus);
-  --team-header-accent: var(--team-dark-accent-strong);
+  --team-header-accent: var(--team-dark-header-accent, var(--team-dark-accent-strong));
+  --team-tab-opacity: var(--team-dark-tab-opacity, 0.58);
+  --team-chrome-opacity: var(--team-dark-chrome-opacity, 0.82);
   color-scheme: dark;
 }
 

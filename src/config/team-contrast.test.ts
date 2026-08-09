@@ -41,18 +41,20 @@ describe("derived team palette contrast", () => {
       });
 
       it(`${team.slug} ${mode} keeps focus and masthead accents visible`, () => {
-        const headerAccent = mode === "light" ? palette.accentSoft : palette.accentStrong;
-
+        const headerAccent = palette.headerAccent;
+        const brightStructural = mode === "light" && (team.theme.structuralLightness ?? 23) > 40;
+        const tabOpacity = brightStructural ? 1 : 0.58;
+        const chromeOpacity = brightStructural ? 1 : 0.68;
         expect(contrast(palette.focus, palette.page), "focus on page").toBeGreaterThanOrEqual(3);
         expect(contrast(headerAccent, palette.steel), "header accent on steel").toBeGreaterThanOrEqual(
           3,
         );
         expect(
-          contrastAtOpacity(palette.onSteel, palette.steel, 0.58),
+          contrastAtOpacity(palette.onSteel, palette.steel, tabOpacity),
           "inactive tab on steel",
         ).toBeGreaterThanOrEqual(4.5);
         expect(
-          contrastAtOpacity(palette.onSteel, palette.steel, 0.68),
+          contrastAtOpacity(palette.onSteel, palette.steel, chromeOpacity),
           "issue line on steel",
         ).toBeGreaterThanOrEqual(4.5);
       });
