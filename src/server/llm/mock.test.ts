@@ -2,17 +2,23 @@
 import { describe, expect, it } from "vitest";
 import { evaluateVoiceSample } from "@/lib/content/voice";
 import { createMockLlmProvider } from "./mock";
-import type { LlmRequest } from "./types";
+import type { GroundingContext, LlmRequest } from "./types";
 
-const nextGameRequest: LlmRequest = {
-  system: "system prompt",
-  messages: [{ role: "user", content: "Give me the next-game briefing." }],
-  grounding: {
-    teamName: "Texas",
-    teamDisplayName: "Texas football",
-    seasonYear: 2026,
-    intent: "next-game",
-    nextGame: {
+const baseGrounding: GroundingContext = {
+  teamName: "Texas",
+  teamDisplayName: "Texas football",
+  seasonYear: 2026,
+  capability: "next-game-brief",
+  nextGame: {
+    opponent: "Texas State",
+    site: "home",
+    dateLabel: "Saturday, September 5",
+    kickoff: "2:30 p.m. CT",
+    venue: "DKR-Texas Memorial Stadium, Austin, Texas",
+    tv: "ESPN",
+  },
+  upcomingGames: [
+    {
       opponent: "Texas State",
       site: "home",
       dateLabel: "Saturday, September 5",
@@ -20,10 +26,44 @@ const nextGameRequest: LlmRequest = {
       venue: "DKR-Texas Memorial Stadium, Austin, Texas",
       tv: "ESPN",
     },
-    excerpts: [{ title: "Texas vs Texas State", content: "Texas vs Texas State on September 5." }],
-    citationTitles: ["Texas football 2026 schedule", "Texas vs Texas State"],
-  },
+    {
+      opponent: "Ohio State",
+      site: "home",
+      dateLabel: "Saturday, September 12",
+      kickoff: "6:30 p.m. CT",
+      venue: "DKR-Texas Memorial Stadium, Austin, Texas",
+      tv: "ABC",
+    },
+  ],
+  sourceReadiness: [
+    { label: "Schedule fixture", state: "Ready" },
+    { label: "CFBD adapter", state: "Needs key" },
+  ],
+  scheduleCapturedAt: "July 1, 2026",
+  excerpts: [{ title: "Texas vs Texas State", content: "Texas vs Texas State on September 5." }],
+  citationTitles: ["Texas football 2026 schedule", "Texas vs Texas State"],
 };
+
+const nextGameRequest: LlmRequest = {
+  system: "system prompt",
+  messages: [{ role: "user", content: "Give me the next-game briefing." }],
+  grounding: baseGrounding,
+};
+
+function withGrounding(overrides: Partial<GroundingContext>): LlmRequest {
+  return { ...nextGameRequest, grounding: { ...baseGrounding, ...overrides } };
+}
+
+// Every composer branch has to clear the same gate a live model does, so each
+// case asserts the voice contract passes with the citation titles it was given.
+function expectAccepted(text: string, grounding: GroundingContext) {
+  const evaluation = evaluateVoiceSample(text, {
+    validCitationTitles: grounding.citationTitles,
+  });
+
+  expect(evaluation.flags).toEqual([]);
+  expect(evaluation.passed).toBe(true);
+}
 
 describe("mock LLM provider", () => {
   it("composes a grounded next-game answer that passes the voice contract", async () => {
@@ -32,29 +72,56 @@ describe("mock LLM provider", () => {
 
     expect(result.text).toContain("Texas opens the 2026 schedule vs Texas State");
     expect(result.text).toContain("[Texas football 2026 schedule]");
-    expect(evaluateVoiceSample(result.text).passed).toBe(true);
+    expectAccepted(result.text, baseGrounding);
   });
 
-  it("quotes the top excerpt for general questions", async () => {
+  it("lists the slate for the schedule capability", async () => {
     const provider = createMockLlmProvider();
-    const result = await provider.generate({
-      ...nextGameRequest,
-      grounding: {
-        ...nextGameRequest.grounding!,
-        intent: "general",
-        excerpts: [
-          {
-            title: "Sample roster note",
-            content: "The interior offensive line rotation is still unsettled. More detail here.",
-          },
-        ],
-        citationTitles: ["Sample roster note"],
-      },
+    const request = withGrounding({ capability: "schedule" });
+    const result = await provider.generate(request);
+
+    expect(result.text).toContain("vs Texas State");
+    expect(result.text).toContain("vs Ohio State");
+    expectAccepted(result.text, request.grounding!);
+  });
+
+  it("reports the ledger for the source-readiness capability", async () => {
+    const provider = createMockLlmProvider();
+    const request = withGrounding({ capability: "source-readiness" });
+    const result = await provider.generate(request);
+
+    expect(result.text).toContain("Schedule fixture (Ready)");
+    expect(result.text).toContain("CFBD adapter (Needs key)");
+    expectAccepted(result.text, request.grounding!);
+  });
+
+  it("surfaces the curated note for the team-note capability", async () => {
+    const request = withGrounding({
+      capability: "team-note-brief",
+      excerpts: [
+        {
+          title: "Sample roster note",
+          content: "The interior offensive line rotation is still unsettled. More detail here.",
+        },
+      ],
+      citationTitles: ["Sample roster note"],
     });
+    const result = await createMockLlmProvider().generate(request);
 
     expect(result.text).toContain("The interior offensive line rotation is still unsettled.");
     expect(result.text).toContain("[Sample roster note]");
-    expect(evaluateVoiceSample(result.text).passed).toBe(true);
+    expectAccepted(result.text, request.grounding!);
+  });
+
+  it("never fabricates a citation tag when nothing was retrieved", async () => {
+    const request = withGrounding({ citationTitles: [], excerpts: [] });
+    const result = await createMockLlmProvider().generate(request);
+
+    // A bracketed tag here would be an invented source, which is exactly what
+    // the acceptance gate exists to reject.
+    expect(result.text).not.toMatch(/\[[^\]]+\]/);
+    expect(result.text).toContain("Source freshness");
+    expectAccepted(result.text, request.grounding!);
   });
 
   it("streams the exact same text it generates", async () => {

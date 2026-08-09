@@ -16,7 +16,18 @@ describe("Home", () => {
     expect(
       screen.getByText("Texas football reference deployment"),
     ).toBeInTheDocument();
-    expect(screen.getByText("Grounded assistant")).toBeInTheDocument();
-    expect(screen.getByText("First six-game stretch")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "2026 schedule" }),
+    ).toBeInTheDocument();
+  });
+
+  it("derives the team palette into --team-* custom properties", async () => {
+    const { container } = render(await Home());
+    const root = container.querySelector("main");
+
+    // Components consume --team-* and nothing else, so this is the seam that
+    // has to hold when a new team is added as three OKLCH numbers.
+    expect(root?.getAttribute("style")).toContain("--team-accent: oklch(");
+    expect(root?.getAttribute("style")).toContain("--team-steel: oklch(");
   });
 });

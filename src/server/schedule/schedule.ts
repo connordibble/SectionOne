@@ -52,6 +52,48 @@ export function formatSite(site: ScheduleSite): string {
   return site === "away" ? "at" : "vs";
 }
 
+export type KickoffCountdown =
+  | { state: "scheduled"; days: number }
+  | { state: "today" }
+  | { state: "unscheduled" };
+
+// Drives the lead figure on the dashboard. Counts whole calendar days in the
+// venue's local reckoning rather than 24-hour blocks, because a fan asking
+// "how long until the game" means sleeps, not hours — an 11 a.m. Saturday
+// kickoff is still "tomorrow" when asked at 9 p.m. Friday.
+//
+// Returns a discriminated union rather than a bare number so the caller cannot
+// render a countdown for a game that has no kickoff time yet. The lead figure
+// must always be real; "TBD" is a real answer and 0 is not a substitute for it.
+export function getKickoffCountdown(
+  game: Pick<ScheduleGame, "startsAt"> | undefined,
+  now = new Date(),
+): KickoffCountdown {
+  if (!game?.startsAt) {
+    return { state: "unscheduled" };
+  }
+
+  const kickoff = new Date(game.startsAt);
+
+  if (Number.isNaN(kickoff.getTime())) {
+    return { state: "unscheduled" };
+  }
+
+  const days = Math.ceil((startOfDay(kickoff) - startOfDay(now)) / dayInMs);
+
+  if (days <= 0) {
+    return { state: "today" };
+  }
+
+  return { state: "scheduled", days };
+}
+
+const dayInMs = 24 * 60 * 60 * 1000;
+
+function startOfDay(value: Date): number {
+  return Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate());
+}
+
 export function formatCaptureDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
     month: "long",

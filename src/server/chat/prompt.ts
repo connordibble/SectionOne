@@ -1,7 +1,17 @@
-import type { TeamConfig } from "@/config/team";
-import { getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
+import { getSourceReadiness, type TeamConfig } from "@/config/team";
+import { formatCaptureDate, getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
 import type { RetrievalHit } from "@/server/rag/retrieve";
-import type { GroundingContext, LlmMessage, LlmRequest } from "@/server/llm/types";
+import type {
+  ComposerCapability,
+  GroundingContext,
+  LlmMessage,
+  LlmRequest,
+  ScheduleGameFact,
+} from "@/server/llm/types";
+
+// How many games the schedule template lists before it stops being a scan and
+// starts being a table dump.
+const schedulePreviewLength = 6;
 
 export const maxHistoryMessages = 8;
 export const maxMessageLength = 4000;
@@ -16,12 +26,25 @@ export function buildChatRequest(
   question: string,
   hits: RetrievalHit[],
   history: ChatHistoryMessage[] = [],
+  capability?: ComposerCapability,
 ): LlmRequest {
   return {
     system: buildSystemPrompt(team, hits),
     messages: [...sanitizeHistory(history), { role: "user", content: question.trim() }],
-    grounding: buildGroundingContext(team, question, hits),
+    grounding: buildGroundingContext(team, hits, capability),
   };
+}
+
+// Appended to the system prompt on a retry after the acceptance gate rejected
+// the first attempt. Naming the specific failures does better than a generic
+// "try again" — the model gets told what tripped, not that something did.
+export function buildRetryDirective(flags: string[]): string {
+  return [
+    "",
+    "Your previous attempt was rejected for these reasons:",
+    ...flags.map((flag) => `- ${flag}`),
+    "Rewrite the answer to fix them. Only cite source titles exactly as they appear in the excerpts above; do not invent a citation.",
+  ].join("\n");
 }
 
 // The voice contract, source policy, and grounding rules all come from typed
@@ -49,35 +72,49 @@ function buildSystemPrompt(team: TeamConfig, hits: RetrievalHit[]): string {
   ].join("\n");
 }
 
+// Intent no longer lives here. Routing owns the capability decision (see
+// routing.ts) and passes it in, so this function's only job is to gather the
+// facts that capability needs.
 function buildGroundingContext(
   team: TeamConfig,
-  question: string,
   hits: RetrievalHit[],
+  capability?: ComposerCapability,
 ): GroundingContext {
   const schedule = getTeamSchedule(team.slug);
   const nextGame = getNextGame(team.slug);
-  const intent = /next|opener|brief|schedule/i.test(question) ? "next-game" : "general";
 
   return {
     teamName: team.shortName,
     teamDisplayName: team.displayName,
     seasonYear: schedule?.seasonYear,
-    intent,
-    nextGame: nextGame
-      ? {
-          opponent: nextGame.opponent,
-          site: nextGame.site,
-          dateLabel: nextGame.dateLabel,
-          kickoff: nextGame.kickoff,
-          venue: nextGame.venue,
-          tv: nextGame.tv,
-        }
-      : undefined,
+    capability,
+    nextGame: nextGame ? toScheduleFact(nextGame) : undefined,
+    upcomingGames: (schedule?.games ?? []).slice(0, schedulePreviewLength).map(toScheduleFact),
+    sourceReadiness: getSourceReadiness(team),
+    scheduleCapturedAt: schedule ? formatCaptureDate(schedule.capturedAt) : undefined,
     excerpts: hits.map((hit) => ({
       title: hit.chunk.document.title,
       content: hit.chunk.content,
     })),
     citationTitles: dedupe(hits.map((hit) => hit.chunk.document.title)),
+  };
+}
+
+function toScheduleFact(game: {
+  opponent: string;
+  site: "home" | "away" | "neutral";
+  dateLabel: string;
+  kickoff: string;
+  venue: string;
+  tv: string | null;
+}): ScheduleGameFact {
+  return {
+    opponent: game.opponent,
+    site: game.site,
+    dateLabel: game.dateLabel,
+    kickoff: game.kickoff,
+    venue: game.venue,
+    tv: game.tv,
   };
 }
 

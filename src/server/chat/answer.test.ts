@@ -9,7 +9,7 @@ function anthropicMessage(text: string) {
     id: "msg_test",
     type: "message",
     role: "assistant",
-    model: "claude-opus-4-8",
+    model: "claude-haiku-4-5-20251001",
     content: [{ type: "text", text }],
     stop_reason: "end_turn",
     stop_sequence: null,
@@ -17,45 +17,20 @@ function anthropicMessage(text: string) {
   };
 }
 
-function anthropicSseBody(deltas: string[]) {
-  return [
-    anthropicSseHead(deltas),
-    `event: content_block_stop\ndata: ${JSON.stringify({ type: "content_block_stop", index: 0 })}\n\n`,
-    `event: message_delta\ndata: ${JSON.stringify({
-      type: "message_delta",
-      delta: { stop_reason: "end_turn", stop_sequence: null },
-      usage: { output_tokens: 5 },
-    })}\n\n`,
-    `event: message_stop\ndata: ${JSON.stringify({ type: "message_stop" })}\n\n`,
-  ].join("");
-}
-
-function anthropicSseHead(deltas: string[]) {
-  return [
-    `event: message_start\ndata: ${JSON.stringify({
-      type: "message_start",
-      message: { ...anthropicMessage(""), content: [], stop_reason: null },
-    })}\n\n`,
-    `event: content_block_start\ndata: ${JSON.stringify({
-      type: "content_block_start",
-      index: 0,
-      content_block: { type: "text", text: "" },
-    })}\n\n`,
-    ...deltas.map(
-      (text) =>
-        `event: content_block_delta\ndata: ${JSON.stringify({
-          type: "content_block_delta",
-          index: 0,
-          delta: { type: "text_delta", text },
-        })}\n\n`,
-    ),
-  ].join("");
-}
+// SSE fixtures were removed along with the mid-stream fallback path: the
+// orchestrator no longer streams live providers, it buffers a full answer so
+// the acceptance gate can reject it before any text reaches the browser.
 
 afterEach(() => {
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
 });
+
+// Routing serves next-game, schedule, source-readiness and team-note questions
+// from the deterministic composer, so those never reach a provider. Exercising
+// the live path needs a question that genuinely escalates — this one is also
+// the case a bare /next/ classifier used to mis-route into a canned briefing.
+const escalatingQuestion = "What should the offense fix before the next game?";
 
 describe("answerQuestion", () => {
   it("answers next-game questions with citations and football language", async () => {
@@ -92,12 +67,13 @@ describe("answerQuestion", () => {
       ),
     );
 
-    const result = await answerQuestion("Give me the next-game briefing.");
+    const result = await answerQuestion(escalatingQuestion);
 
     expect(result.provider).toBe("mock");
     expect(result.confidence).toBe("low");
-    expect(result.freshness).toContain('Live LLM provider "anthropic" failed');
-    expect(result.answer).toContain("Texas State");
+    expect(result.notice).toContain('Live provider "anthropic" failed');
+    // Operational messages stay out of freshness, which describes the corpus.
+    expect(result.freshness).not.toContain("anthropic");
   }, 30_000);
 
   it("falls back to the deterministic composer when the live provider returns an empty answer", async () => {
@@ -113,12 +89,38 @@ describe("answerQuestion", () => {
       ),
     );
 
-    const result = await answerQuestion("Give me the next-game briefing.");
+    const result = await answerQuestion(escalatingQuestion);
 
     expect(result.provider).toBe("mock");
     expect(result.confidence).toBe("low");
-    expect(result.freshness).toContain('Live LLM provider "anthropic" failed');
-    expect(result.answer).toContain("Texas State");
+    expect(result.notice).toContain("deterministic composer");
+  }, 30_000);
+
+  it("never lets a fabricated citation reach the caller", async () => {
+    vi.stubEnv("LLM_PROVIDER", "anthropic");
+    vi.stubEnv("ANTHROPIC_API_KEY", "sk-liar");
+
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify(
+          anthropicMessage(
+            "Texas wins on early downs and field position. [Definitely Real Source]",
+          ),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion(escalatingQuestion);
+
+    // The answer reads perfectly well and carries football vocabulary, so only
+    // the citation check can catch it. Without that check this ships.
+    expect(result.answer).not.toContain("Definitely Real Source");
+    expect(result.provider).toBe("mock");
+    expect(result.notice).toContain("unknown citation");
+    // One retry with the failure named, then the composer — two billed calls.
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   }, 30_000);
 
   it("rejects unknown teams", async () => {
@@ -152,20 +154,20 @@ describe("streamAnswerEvents", () => {
     expect(done.answer.citations.length).toBeGreaterThanOrEqual(2);
   });
 
-  it("falls back when the live provider finishes a stream without answer text", async () => {
+  it("falls back to the composer when the live provider returns no answer text", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-empty");
     vi.stubGlobal(
       "fetch",
       vi.fn(async () =>
-        new Response(anthropicSseBody([]), {
+        new Response(JSON.stringify(anthropicMessage("   ")), {
           status: 200,
-          headers: { "Content-Type": "text/event-stream" },
+          headers: { "Content-Type": "application/json" },
         }),
       ),
     );
 
-    const events = await collect("Give me the next-game briefing.");
+    const events = await collect(escalatingQuestion);
     const done = events.at(-1);
 
     if (done?.type !== "done") {
@@ -173,44 +175,38 @@ describe("streamAnswerEvents", () => {
     }
     expect(done.answer.provider).toBe("mock");
     expect(done.answer.confidence).toBe("low");
-    expect(done.answer.freshness).toContain('Live LLM provider "anthropic" failed');
-    expect(done.answer.answer).toContain("Texas State");
+    expect(done.answer.notice).toContain("deterministic composer");
     expect(events.filter((event) => event.type === "delta")).not.toHaveLength(0);
   }, 30_000);
 
-  it("marks the answer incomplete when the live provider dies mid-stream", async () => {
+  it("emits no delta until the answer has passed the acceptance gate", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
-    vi.stubEnv("ANTHROPIC_API_KEY", "sk-broken");
-
-    const encoder = new TextEncoder();
-    const sseHead = anthropicSseHead(["Partial answer "]);
-
+    vi.stubEnv("ANTHROPIC_API_KEY", "sk-liar");
     vi.stubGlobal(
       "fetch",
       vi.fn(async () =>
         new Response(
-          new ReadableStream<Uint8Array>({
-            start(controller) {
-              controller.enqueue(encoder.encode(sseHead));
-              // Let the SDK consume the delta before the connection drops,
-              // so the orchestrator hits the mid-stream (partial) path.
-              setTimeout(() => controller.error(new Error("connection reset")), 25);
-            },
-          }),
-          { status: 200, headers: { "Content-Type": "text/event-stream" } },
+          JSON.stringify(
+            anthropicMessage(
+              "Texas wins on early downs and field position. [Definitely Real Source]",
+            ),
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } },
         ),
       ),
     );
 
-    const events = await collect("Give me the next-game briefing.");
-    const done = events.at(-1);
+    const events = await collect(escalatingQuestion);
+    const streamed = events
+      .filter((event) => event.type === "delta")
+      .map((event) => event.text)
+      .join("");
 
-    if (done?.type !== "done") {
-      throw new Error("expected a done event");
-    }
-    expect(done.answer.confidence).toBe("low");
-    expect(done.answer.freshness).toContain("failed mid-stream");
-    expect(done.answer.answer).toContain("[Answer truncated");
+    // The whole reason the orchestrator buffers instead of streaming the
+    // provider: a rejected answer must never reach the browser, and once a
+    // delta is on the wire no retry can take it back.
+    expect(streamed).not.toContain("Definitely Real Source");
+    expect(events.at(-1)?.type).toBe("done");
   }, 30_000);
 
   it("streams guardrail answers as a single delta", async () => {

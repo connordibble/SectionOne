@@ -15,21 +15,21 @@ const teamConfigSchema = z.object({
   referenceLabel: z.string().min(1),
   tagline: z.string().min(1),
   aliases: z.array(z.string().min(1)),
+  // Three numbers, not fourteen hex values. See DESIGN.md § Theme: hand-tuning
+  // a full palette per team is the biggest obstacle to "bring your own team",
+  // and because OKLCH is perceptually uniform, deriving from a hue keeps
+  // contrast relationships intact across schools instead of needing them
+  // re-checked by eye for every new deployment.
   theme: z.object({
-    page: z.string().min(1),
-    surface: z.string().min(1),
-    surfaceSoft: z.string().min(1),
-    surfaceStrong: z.string().min(1),
-    ink: z.string().min(1),
-    inkSubtle: z.string().min(1),
-    accent: z.string().min(1),
-    accentStrong: z.string().min(1),
-    accentSoft: z.string().min(1),
-    muted: z.string().min(1),
-    border: z.string().min(1),
-    borderStrong: z.string().min(1),
-    contrast: z.string().min(1),
-    steel: z.string().min(1),
+    // Team colour, in OKLCH degrees. 47 = burnt orange, 145 = forest green,
+    // 264 = royal blue.
+    hue: z.number().min(0).max(360),
+    // Saturation. Above ~0.16 the accent starts fighting the text for
+    // attention at the sizes this interface uses.
+    chroma: z.number().min(0).max(0.2),
+    // A cool structural counterweight so the page does not become a
+    // single-hue wash. Should sit well away from `hue`.
+    neutralHue: z.number().min(0).max(360),
   }),
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
@@ -64,21 +64,11 @@ export const teamConfigs = {
     referenceLabel: "Texas football reference deployment",
     tagline: "Texas context, clean sources, Saturday-level signal.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
+    // Burnt orange that reads Texas without using the official UT colour.
     theme: {
-      page: "#fff3e6",
-      surface: "#fffaf3",
-      surfaceSoft: "#ffead5",
-      surfaceStrong: "#f4d8bf",
-      ink: "#241711",
-      inkSubtle: "#3b2a21",
-      accent: "#b65a24",
-      accentStrong: "#873b1c",
-      accentSoft: "#efc19d",
-      muted: "#735845",
-      border: "#dec0a5",
-      borderStrong: "#bf815c",
-      contrast: "#fff8ee",
-      steel: "#2f3c44",
+      hue: 47,
+      chroma: 0.13,
+      neutralHue: 236,
     },
     sourcePolicy: {
       disclaimer:
@@ -126,6 +116,69 @@ export const teamConfigs = {
     ],
   }),
 } satisfies Record<string, TeamConfig>;
+
+// The palette roles every component consumes. Names are stable and match the
+// `--team-*` custom properties emitted onto the dashboard root, so a change to
+// how colour is *derived* never becomes a change to how it is *consumed*.
+export type TeamPalette = {
+  page: string;
+  surface: string;
+  surfaceSoft: string;
+  surfaceStrong: string;
+  ink: string;
+  inkSubtle: string;
+  accent: string;
+  accentStrong: string;
+  accentSoft: string;
+  muted: string;
+  border: string;
+  borderStrong: string;
+  contrast: string;
+  steel: string;
+};
+
+// Lightness ladder, tuned once against WCAG AA and then reused by every team.
+// The values that matter for contrast:
+//   ink 22 on page 96.5   — body copy, far past AA
+//   muted 46 on page 96.5 — secondary copy, clears AA at small sizes
+//   contrast 99 on accent 52 — white on burnt orange, clears AA for body text
+//   contrast 99 on steel 30  — masthead text, far past AA
+// Because OKLCH lightness is perceptually uniform, these hold as `hue` rotates,
+// which is the whole point of deriving rather than hand-picking.
+export function deriveTeamPalette(theme: TeamConfig["theme"]): TeamPalette {
+  const { hue, chroma, neutralHue } = theme;
+
+  // Surfaces and text carry a trace of the team hue so the page reads warm (or
+  // cool) rather than grey, but at a chroma low enough to stay neutral.
+  const tint = Math.min(chroma * 0.22, 0.03);
+
+  return {
+    page: oklch(96.5, tint, hue),
+    surface: oklch(98.5, tint * 0.6, hue),
+    surfaceSoft: oklch(94, tint * 1.6, hue),
+    surfaceStrong: oklch(89, tint * 2.4, hue),
+    ink: oklch(22, tint * 1.1, hue),
+    inkSubtle: oklch(34, tint * 1.2, hue),
+    accent: oklch(52, chroma, hue),
+    accentStrong: oklch(42, chroma * 0.96, hue),
+    accentSoft: oklch(84, chroma * 0.54, hue),
+    muted: oklch(46, tint * 1.5, hue),
+    border: oklch(88, tint * 1.5, hue),
+    borderStrong: oklch(78, tint * 2.5, hue),
+    contrast: oklch(99, tint * 0.4, hue),
+    steel: oklch(30, 0.035, neutralHue),
+  };
+}
+
+function oklch(lightness: number, chroma: number, hue: number): string {
+  return `oklch(${round(lightness)}% ${round(chroma, 4)} ${round(hue)})`;
+}
+
+function round(value: number, precision = 2): number {
+  const factor = 10 ** precision;
+
+  return Math.round(value * factor) / factor;
+}
 
 export type TeamSlug = keyof typeof teamConfigs;
 

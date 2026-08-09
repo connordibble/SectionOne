@@ -7,51 +7,65 @@ test("loads the Saturday Signal shell", async ({ page }) => {
   await expect(page.getByText("Texas football reference deployment")).toBeVisible();
   await expect(page.getByRole("button", { name: "Ask Saturday Signal" })).toBeVisible();
   await expect(page.getByText("Independent fan project")).toBeVisible();
-  await expect(page.getByText("First six-game stretch")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "2026 schedule" })).toBeVisible();
 });
 
 test("loads the canonical Texas football route", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
   await expect(page.getByRole("heading", { name: "Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Grounded assistant")).toBeVisible();
+  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
 });
 
-test("desktop keeps the source rail compact and moves schedule out of it", async ({ page }, testInfo) => {
+test("leads with a real kickoff countdown, never an invented figure", async ({ page }) => {
+  await page.goto("/");
+
+  // The lead figure is the largest thing on the page, so it has to be honest:
+  // a day count, "Today", or "TBD" — never a fabricated number.
+  const lead = page.getByTestId("kickoff-lead");
+  await expect(lead).toBeVisible();
+  // The figure and its unit are separate elements, so textContent runs them
+  // together as "28days out" — \s* rather than \s+.
+  await expect(lead).toContainText(/^(\d+\s*days?\s*out|Today|TBD)/);
+  await expect(lead.getByRole("heading", { level: 2 })).toContainText("Texas");
+});
+
+test("desktop reading order runs lead, chat, schedule, sources in one column", async ({
+  page,
+}, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "desktop-only layout contract");
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
 
-  // Assert the structural layout contract (chat is primary, the rail is
-  // trimmed to two panels, and the schedule lives in the main column below
-  // chat rather than in the rail) using relationships between elements, not
-  // absolute pixel heights that break whenever copy or source counts change.
+  // The Stat-Led contract: a single reading column with a strict vertical
+  // order — the lead figure, then the workspace, then supporting data, then
+  // sourcing. Asserted through element relationships rather than pixel
+  // heights so copy changes don't break it.
   const layout = await page.evaluate(() => {
-    const chatPanel = document.querySelector('[data-testid="team-chat-panel"]');
-    const sourceRail = document.querySelector('[data-testid="signal-rail"]');
-    const scheduleStrip = document.querySelector('[data-testid="schedule-strip"]');
+    const ids = ["kickoff-lead", "team-chat-panel", "schedule-strip", "source-colophon"];
+    const rects = ids.map((id) => {
+      const node = document.querySelector(`[data-testid="${id}"]`);
 
-    if (!chatPanel || !sourceRail || !scheduleStrip) {
-      throw new Error("Expected dashboard layout elements to be present.");
-    }
+      if (!node) {
+        throw new Error(`Expected [data-testid="${id}"] to be present.`);
+      }
 
-    const chatRect = chatPanel.getBoundingClientRect();
-    const railRect = sourceRail.getBoundingClientRect();
-    const scheduleRect = scheduleStrip.getBoundingClientRect();
+      return node.getBoundingClientRect();
+    });
 
     return {
-      railPanelCount: sourceRail.querySelectorAll("section").length,
-      scheduleIsLeftOfRail: scheduleRect.left < railRect.left,
-      scheduleIsBelowChat: scheduleRect.top >= chatRect.bottom - 1,
-      scheduleSharesChatColumn: Math.abs(scheduleRect.left - chatRect.left) <= 1,
+      inVerticalOrder: rects.every(
+        (rect, index) => index === 0 || rect.top >= rects[index - 1].bottom - 1,
+      ),
+      sharesOneColumn: rects.every((rect) => Math.abs(rect.left - rects[0].left) <= 1),
+      columnIsReadable: rects[1].width <= 1200,
     };
   });
 
-  expect(layout.railPanelCount).toBeLessThanOrEqual(2);
-  expect(layout.scheduleIsLeftOfRail).toBe(true);
-  expect(layout.scheduleIsBelowChat).toBe(true);
-  expect(layout.scheduleSharesChatColumn).toBe(true);
+  expect(layout.inVerticalOrder).toBe(true);
+  expect(layout.sharesOneColumn).toBe(true);
+  expect(layout.columnIsReadable).toBe(true);
 });
 
 for (const width of [1440, 768, 414, 375, 320]) {

@@ -1,31 +1,130 @@
-# Saturday Signal Design Direction
+# Design — Saturday Signal
 
-Saturday Signal is a configurable fan intelligence platform. The product should feel like a serious game-week desk: fast to scan, source-aware, sports-native, and sharp enough that a fan would trust it before kickoff.
+A locked design system for this app. Every page redesign reads this file before emitting code.
+Do not regenerate per page — extend or amend this file when the system needs to grow.
 
-## Product Layers
+Saturday Signal should feel like a **broadsheet sports desk**: masthead, lead story, fixture table,
+visible sourcing. That reference matters more than it sounds. Fans have decades of muscle memory for
+how football coverage is laid out, and the newspaper sports section — not a portal homepage — is
+where that muscle memory comes from. Meeting it is Jakob's Law; fighting it costs the reader
+attention we need for the actual product.
 
-- Platform identity: calm, credible, and reusable across teams. Use Saturday Signal as the system name, not as a mascot or school-branded property.
-- Team deployments: each team route may carry local color, rhythm, and fan context through config-driven theme tokens and copy.
-- Source layer: citations, freshness, and confidence are part of the interface, not footnotes hidden after the answer.
+## Genre
 
-## Texas Football Theme
+**Editorial.** Specifically the sports-desk dialect: dense, scannable, sourced, unsentimental.
+Not marketing-editorial (no generous whitespace-as-luxury), not dashboard-utilitarian (no
+undifferentiated panel grid).
 
-- Use a near-burnt-orange and warm-white palette that reads Texas without using official University of Texas RGB/hex values.
-- Do not use official logos, mascot imagery, Bevo branding, protected hand-sign graphics, or official-affiliation language.
-- Pair orange with ink, warm paper, and a cool steel neutral so the interface does not become a flat orange/brown wash.
-- The Texas page should feel like a premium fan desk: game card, schedule scan, source readiness, citations, and a chat workspace.
+## Macrostructure families
 
-## Interface Principles
+- **App pages** (`/`, `/teams/[slug]`): **Stat-Led**. The lead figure is the countdown to kickoff —
+  a real number derived from the schedule fixture. Everything below supports or qualifies it:
+  chat workspace, fixture table, source colophon.
+- **Content pages** (future: about, methodology): Long Document.
+- **Marketing pages** (future: platform landing): Marquee Hero.
 
-- Put the actual working product on the first screen: chat, next game, source freshness, schedule context, and suggested prompts.
-- Keep layouts dense but breathable. Use cards for tools or repeated items only; avoid decorative nested-card clutter.
-- Prefer compact controls, visible states, clear citations, and stable dimensions that hold up on mobile.
-- Use football-native language: early downs, line of scrimmage, field position, explosiveness, pressure, personnel, finishing drives.
-- Avoid generic AI phrasing, marketing copy, forced slang, rivalry toxicity, betting certainty, and unsupported injury speculation.
+Pages within a family share the family's shape and vary only in component archetypes.
 
-## Visual Rules
+**The lead figure must always be real.** It is computed from fixture data, never invented, and it is
+always paired with a worded headline — a bare number is not a headline.
 
-- Cards: 8px radius, one border, no stacked card-within-card styling unless the inner item is a repeated row or citation.
-- Buttons: icons when they clarify the action; text must stay readable at mobile widths.
-- Typography: no negative tracking, no viewport-scaled font sizes, and hero-scale type only in the primary chat workspace.
-- Color: team theme tokens must come from config. Hard-coded team colors in components are a bug unless they are neutral global primitives.
+## Theme — derived, not hand-tuned
+
+Team palettes are **derived from OKLCH anchors**, not hand-picked hex values. A team supplies three
+numbers; the system derives the full `--team-*` scale.
+
+```ts
+theme: { hue: 47, chroma: 0.13, neutralHue: 236 }
+```
+
+This is a platform decision, not a cosmetic one. Hand-tuning fourteen hex values per team is the
+single biggest obstacle to "bring your own team" — it makes every new deployment a design project.
+Deriving from a hue means a new team is a two-number decision, and because OKLCH is perceptually
+uniform, contrast relationships hold automatically across hues instead of needing to be re-checked
+by eye for every school.
+
+Derived roles (names are stable; components consume these and nothing else):
+
+| Token | Role |
+| --- | --- |
+| `--team-page` | Page ground. Warm, near-paper. |
+| `--team-surface` / `--team-surface-soft` / `--team-surface-strong` | Raised surfaces, ascending weight. |
+| `--team-ink` / `--team-ink-subtle` / `--team-muted` | Text, descending emphasis. |
+| `--team-accent` / `--team-accent-strong` / `--team-accent-soft` | Team colour. Actions and marks only. |
+| `--team-border` / `--team-border-strong` | Hairlines and structural rules. |
+| `--team-steel` | Cool structural counterweight — masthead, next-game band. |
+| `--team-contrast` | Text on accent/steel fills. |
+
+**Accent discipline: ≤ 5 % of any viewport.** Orange marks actions, the live fixture, and the
+wordmark. It never becomes a wash. The steel neutral is what keeps the page from reading as a
+monochrome orange bath — pair every accent area against it.
+
+## Typography
+
+- Display · Geist, weight 600, roman. Never italic. Tabular figures on all numerics.
+- Body · Geist, weight 400.
+- Mono · Geist Mono — data only (kickoff times, dates, counts), never body copy.
+- Type scale anchors live in `tokens.css` as `--text-*`. Components reference tokens, never raw sizes.
+
+**Hierarchy is carried by size and weight, not by uppercase labels.** At most **two** uppercase
+micro-labels per screen. The previous build had eight, which flattened the page — when everything is
+a label, nothing is.
+
+## Spacing
+
+4-point named scale in `tokens.css` (`--space-*`). Never raw values.
+
+## Motion
+
+Motion-cut project — no animation library, and none should be added for decoration.
+
+- Easings: `--ease-out` only. Never the browser default `ease`.
+- Reveal pattern: **none**. Server-rendered content appears; it does not perform.
+- Permitted motion: hover/active feedback on interactive elements, and the streaming caret.
+- Reduced motion: opacity-only, ≤ 150 ms.
+
+Stat-Led's default counter-tick on the lead figure is **deliberately not used** — it would require
+client JS on a server component for pure decoration.
+
+## Component voice
+
+- **Rules over boxes.** Hairline rules separate content. A border is a structural claim, not default
+  chrome.
+- **No nested cards.** A card inside a card is banned unless the inner element is a genuinely
+  repeated row (a fixture, a citation). This rule already existed and was being violated in two
+  places; it is now enforced by review.
+- **Buttons**: `--radius-input`, solid accent for the primary action, hairline outline for
+  secondary. Text stays on one line at every breakpoint.
+- **Data is tabular.** Schedules, ledgers, and figures use `font-variant-numeric: tabular-nums` and
+  align on the numeral.
+
+## Per-page allowances
+
+- App pages **must not** use enrichment — function carries the page.
+- Content pages: typography only.
+- Marketing pages may use Tier-A CSS art or Tier-B hand-built SVG.
+
+## What pages must share
+
+The wordmark, the accent placement budget, the display + body fonts, the CTA voice, and the
+source-transparency treatment (citations, freshness, confidence are interface, not footnotes).
+
+## Product and legal guardrails
+
+These are constraints, not style, and they outrank every aesthetic decision above.
+
+- Saturday Signal is the system name — never a mascot or school-branded property.
+- No official logos, mascot imagery, Bevo branding, protected hand-sign graphics, or trade dress.
+- No official-affiliation language.
+- Use a near-burnt-orange that reads Texas **without** using official University of Texas colour
+  values.
+- Team identity, source policy, and voice live in typed config. Hard-coded team colours in
+  components are a bug unless they are neutral global primitives.
+- Citations, freshness, and confidence are part of the interface, not footnotes hidden after the
+  answer.
+
+## Voice
+
+Football-native: early downs, line of scrimmage, field position, explosiveness, pressure, personnel,
+finishing drives. No generic AI phrasing, marketing copy, forced slang, rivalry toxicity, betting
+certainty, or unsupported injury speculation. Enforced in code by `src/lib/content/voice.ts`.

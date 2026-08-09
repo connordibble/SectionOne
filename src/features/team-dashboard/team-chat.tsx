@@ -25,6 +25,7 @@ type ChatMessage = {
   citations: ChatCitation[];
   confidence?: string;
   freshness?: string;
+  notice?: string;
   streaming: boolean;
   error?: string;
 };
@@ -125,6 +126,7 @@ export function TeamChat({
             citations: ChatCitation[];
             confidence: string;
             freshness: string;
+            notice?: string;
             sessionId?: string;
           };
           if (answer.sessionId) {
@@ -136,6 +138,7 @@ export function TeamChat({
             citations: answer.citations,
             confidence: answer.confidence,
             freshness: answer.freshness,
+            notice: answer.notice,
             streaming: false,
           }));
         } else if (event.event === "error") {
@@ -156,24 +159,24 @@ export function TeamChat({
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-4 p-4 sm:p-5">
+    <div className="flex min-h-0 flex-col gap-4">
       {!hasMessages ? (
-        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 [grid-template-areas:'intro'_'composer'_'prompts'] lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.72fr)] lg:items-start lg:[grid-template-areas:'intro_prompts'_'composer_composer']">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-5 [grid-template-areas:'intro'_'composer'_'prompts'] lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-start lg:[grid-template-areas:'intro_prompts'_'composer_prompts']">
           <div className="min-w-0 [grid-area:intro]">
-            <p className="text-sm font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-              Grounded assistant
-            </p>
-            <h2 className="mt-3 max-w-2xl text-2xl font-semibold leading-tight tracking-normal text-[var(--team-ink)] sm:text-3xl xl:text-4xl">
+            {/* Subordinate to the kickoff lead on purpose. Stat-Led puts one
+                figure at the top and everything below supports it; a second
+                display-scale headline here would split the page's focus. */}
+            <h2 className="max-w-[26ch] text-[length:var(--text-xl)] font-semibold leading-[1.2] tracking-tight text-balance text-[var(--team-ink)]">
               <span className="sm:hidden">{compactTagline}</span>
               <span className="hidden sm:inline">{tagline}</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--team-muted)]">
+            <p className="mt-3 max-w-[58ch] text-[length:var(--text-md)] leading-7 text-[var(--team-muted)]">
               Ask for matchup context, schedule reads, and source-backed football
-              notes. The answer should name its evidence and stay inside the lane.
+              notes. Every answer names its evidence and stays inside the lane.
             </p>
           </div>
           <ChatComposer
-            className="min-w-0 [grid-area:composer]"
+            className="min-w-0 [grid-area:composer] lg:self-end"
             hasMessages={false}
             input={input}
             isLoading={isLoading}
@@ -181,7 +184,7 @@ export function TeamChat({
             onSubmit={(message) => submit(message)}
           />
           <PromptButtons
-            className="grid min-w-0 gap-2 [grid-area:prompts] sm:grid-cols-3 lg:grid-cols-1"
+            className="grid min-w-0 gap-px [grid-area:prompts]"
             disabled={isLoading}
             onSelect={(prompt) => submit(prompt)}
             prompts={suggestedPrompts}
@@ -189,15 +192,18 @@ export function TeamChat({
           />
         </div>
       ) : (
-        <>
+        // Once there is a conversation, the whole workspace narrows to a
+        // reading measure. The answer is running prose, not dashboard data,
+        // and it should not inherit the width of a fixture table.
+        <div className="flex min-h-0 w-full max-w-[var(--measure)] flex-col gap-4">
           <div className="flex items-center justify-end">
             <button
-              className="inline-flex items-center gap-2 rounded-md border border-[var(--team-border)] bg-[var(--team-surface)] px-3 py-2 text-xs font-semibold uppercase tracking-normal text-[var(--team-ink-subtle)] transition-[border-color] duration-150 ease-out hover:border-[var(--team-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-input)] px-2 py-1.5 text-[length:var(--text-xs)] font-medium text-[var(--team-muted)] transition-colors duration-[var(--dur-short)] ease-[var(--ease-out)] hover:text-[var(--team-accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] disabled:cursor-not-allowed disabled:opacity-60"
               disabled={isLoading}
               onClick={resetConversation}
               type="button"
             >
-              <RotateCcw aria-hidden="true" size={14} />
+              <RotateCcw aria-hidden="true" size={13} />
               New conversation
             </button>
           </div>
@@ -209,7 +215,7 @@ export function TeamChat({
             {messages.map((message) =>
               message.role === "user" ? (
                 <div className="flex justify-end" key={message.id}>
-                  <p className="max-w-[85%] rounded-md bg-[var(--team-accent)] px-4 py-2.5 text-sm leading-6 text-[var(--team-contrast)] shadow-sm">
+                  <p className="max-w-[85%] rounded-[var(--radius-card)] bg-[var(--team-accent)] px-3.5 py-2 text-[length:var(--text-sm)] leading-6 text-[var(--team-contrast)]">
                     {message.content}
                   </p>
                 </div>
@@ -225,7 +231,7 @@ export function TeamChat({
             onInputChange={setInput}
             onSubmit={(message) => submit(message)}
           />
-        </>
+        </div>
       )}
     </div>
   );
@@ -247,17 +253,24 @@ function PromptButtons({
   return (
     <div className={className} data-testid={testId}>
       {prompts.map((prompt) => (
+        // Full prompt text, never truncated. The previous build clipped these
+        // to one line with an ellipsis ("What should Texas fans watch on ear…"),
+        // which turns a question the reader is meant to choose into one they
+        // have to guess at. Rows rather than tiles for the same reason a menu
+        // is a list: they are read, not scanned for shape.
         <button
-          aria-label={prompt}
-          className="min-h-12 min-w-0 rounded-md border border-[var(--team-border)] bg-[var(--team-surface-soft)] p-3 text-left text-sm font-medium leading-5 text-[var(--team-ink-subtle)] transition-[background-color,border-color,transform] duration-150 ease-out hover:-translate-y-0.5 hover:border-[var(--team-accent)] hover:bg-[var(--team-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 lg:min-h-14"
+          className="group -mx-2 grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 rounded-[var(--radius-input)] border-b border-[var(--team-border)] px-2 py-3 text-left text-[length:var(--text-sm)] font-medium leading-6 text-[var(--team-ink-subtle)] transition-colors duration-[var(--dur-short)] ease-[var(--ease-out)] last:border-b-0 hover:bg-[var(--team-surface-soft)] hover:text-[var(--team-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] disabled:cursor-not-allowed disabled:opacity-60"
           disabled={disabled}
           key={prompt}
           onClick={() => onSelect(prompt)}
-          title={prompt}
           type="button"
         >
-          <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
-            {prompt}
+          <span className="min-w-0">{prompt}</span>
+          <span
+            aria-hidden="true"
+            className="text-[var(--team-border-strong)] transition-colors duration-[var(--dur-short)] ease-[var(--ease-out)] group-hover:text-[var(--team-accent)]"
+          >
+            →
           </span>
         </button>
       ))}
@@ -293,7 +306,7 @@ function ChatComposer({
         Ask Saturday Signal
       </label>
       <input
-        className="min-h-12 flex-1 rounded-md border border-[var(--team-border-strong)] bg-[var(--team-contrast)] px-4 text-sm text-[var(--team-ink)] outline-none transition-[background-color,border-color,box-shadow] duration-150 ease-out placeholder:text-[var(--team-muted)] hover:bg-[var(--team-surface)] focus:border-[var(--team-accent)] focus:ring-2 focus:ring-[var(--team-accent-soft)]"
+        className="min-h-12 flex-1 rounded-[var(--radius-input)] border border-[var(--team-border-strong)] bg-[var(--team-contrast)] px-4 text-[length:var(--text-md)] text-[var(--team-ink)] outline-none transition-[background-color,border-color,box-shadow] duration-[var(--dur-short)] ease-[var(--ease-out)] placeholder:text-[var(--team-muted)] hover:bg-[var(--team-surface)] focus:border-[var(--team-accent)] focus:ring-2 focus:ring-[var(--team-accent-soft)]"
         id="chat-input"
         onChange={(event) => onInputChange(event.target.value)}
         placeholder="Ask a football question..."
@@ -301,7 +314,7 @@ function ChatComposer({
         value={input}
       />
       <button
-        className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[var(--team-accent)] px-5 text-sm font-semibold text-[var(--team-contrast)] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-0.5 hover:bg-[var(--team-accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+        className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-input)] bg-[var(--team-accent)] px-5 text-[length:var(--text-sm)] font-semibold text-[var(--team-contrast)] transition-[background-color,transform] duration-[var(--dur-short)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:bg-[var(--team-accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
         disabled={isLoading}
         type="submit"
       >
@@ -318,33 +331,53 @@ function ChatComposer({
 
 function AssistantMessage({ message }: { message: ChatMessage }) {
   return (
-    <section className="rounded-md border border-[var(--team-border-strong)] bg-[var(--team-surface-soft)] p-4">
-      {message.confidence || message.freshness ? (
-        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-          {message.confidence ? <span>Confidence: {message.confidence}</span> : null}
-          {message.confidence && message.freshness ? <span aria-hidden="true">/</span> : null}
-          {message.freshness ? <span className="normal-case">{message.freshness}</span> : null}
-        </div>
-      ) : null}
+    // A rule, not a box. The answer is the page's main body copy at this
+    // point, so it gets body-copy treatment; the accent rule marks it as
+    // sourced without wrapping it in card chrome.
+    //
+    // DOM order is the reading order on purpose: answer, then evidence, then
+    // metadata. The previous build led with an uppercase confidence/freshness
+    // strip, which put the least important line first for every reader and
+    // first in the accessibility tree for screen readers.
+    <section className="border-l-2 border-[var(--team-accent-soft)] pl-4">
       {message.content || !message.error ? (
-        <p className="whitespace-pre-wrap text-sm leading-6 text-[var(--team-ink-subtle)]">
+        <p className="whitespace-pre-wrap text-[length:var(--text-md)] leading-7 text-[var(--team-ink)]">
           {message.content}
           {message.streaming ? (
-            <span aria-hidden="true" className="ml-1 inline-block h-4 w-2 animate-pulse rounded-sm bg-[var(--team-accent)] align-text-bottom" />
+            <span
+              aria-hidden="true"
+              className="ml-1 inline-block h-4 w-[3px] animate-pulse rounded-sm bg-[var(--team-accent)] align-text-bottom"
+            />
           ) : null}
         </p>
       ) : null}
       {message.error ? (
-        <p className="mt-2 text-sm font-medium leading-6 text-[var(--team-accent-strong)]">
+        <p className="mt-2 text-[length:var(--text-sm)] font-medium leading-6 text-[var(--team-accent-strong)]">
           {message.error}
         </p>
       ) : null}
       {message.citations.length > 0 ? (
-        <div className="mt-3 grid gap-2">
+        <div className="mt-3 grid gap-1.5">
           {message.citations.map((citation) => (
             <CitationRow citation={citation} key={citation.id} />
           ))}
         </div>
+      ) : null}
+      {message.confidence || message.freshness ? (
+        <p className="mt-3 text-[length:var(--text-xs)] leading-5 text-[var(--team-muted)]">
+          {message.confidence ? (
+            <span className="font-medium text-[var(--team-ink-subtle)]">
+              {message.confidence} confidence
+            </span>
+          ) : null}
+          {message.confidence && message.freshness ? " · " : null}
+          {message.freshness}
+        </p>
+      ) : null}
+      {message.notice ? (
+        <p className="mt-2 text-[length:var(--text-xs)] leading-5 text-[var(--team-muted)]">
+          {message.notice}
+        </p>
       ) : null}
     </section>
   );
@@ -352,10 +385,10 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
 
 function CitationRow({ citation }: { citation: ChatCitation }) {
   const rowClass =
-    "flex min-w-0 items-start justify-between gap-3 rounded-md border border-[var(--team-border)] bg-[var(--team-surface)] px-3 py-2 text-sm font-medium text-[var(--team-ink-subtle)] sm:items-center";
+    "flex min-w-0 items-baseline justify-between gap-3 border-b border-[var(--team-border)] pb-1.5 text-[length:var(--text-sm)] leading-6 text-[var(--team-ink-subtle)] last:border-b-0";
 
   const meta = (
-    <span className="inline-flex shrink-0 items-center gap-2 text-xs uppercase text-[var(--team-muted)]">
+    <span className="inline-flex shrink-0 items-center gap-1.5 text-[length:var(--text-xs)] text-[var(--team-muted)]">
       {citation.provider}
       {citation.sourceUrl ? <ExternalLink aria-hidden="true" size={14} /> : null}
     </span>
@@ -372,7 +405,7 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
 
   return (
     <a
-      className={`${rowClass} transition-[border-color] duration-150 ease-out hover:border-[var(--team-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)]`}
+      className={`${rowClass} transition-colors duration-[var(--dur-short)] ease-[var(--ease-out)] hover:text-[var(--team-accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)]`}
       href={citation.sourceUrl}
       rel="noreferrer"
       target="_blank"

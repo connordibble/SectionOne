@@ -14,7 +14,7 @@ describe("LLM provider registry", () => {
     const resolved = resolveLlmProvider({ ANTHROPIC_API_KEY: "sk-test" });
 
     expect(resolved.provider.name).toBe("anthropic");
-    expect(resolved.provider.model).toBe("claude-opus-4-8");
+    expect(resolved.provider.model).toBe("claude-haiku-4-5");
   });
 
   it("prefers anthropic over openai when both keys are present", () => {

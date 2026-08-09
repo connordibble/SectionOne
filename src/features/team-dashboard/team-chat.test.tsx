@@ -75,7 +75,7 @@ describe("TeamChat", () => {
     expect(
       screen.getByRole("link", { name: /Texas football 2026 schedule/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Confidence: high/i)).toBeInTheDocument();
+    expect(screen.getByText(/high confidence/i)).toBeInTheDocument();
 
     const requestBody = JSON.parse(
       (fetchMock.mock.calls[0] as unknown as [string, { body: string }])[1].body,

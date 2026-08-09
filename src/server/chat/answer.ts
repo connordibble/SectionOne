@@ -1,12 +1,14 @@
 import { defaultTeamConfig, getTeamConfig, type TeamConfig } from "@/config/team";
 import { evaluateVoiceSample } from "@/lib/content/voice";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
-import { createMockLlmProvider } from "@/server/llm/mock";
+import { chunkText, createMockLlmProvider } from "@/server/llm/mock";
 import { resolveLlmProvider } from "@/server/llm/registry";
-import type { LlmEnv, LlmProvider, LlmRequest } from "@/server/llm/types";
+import type { ComposerCapability, LlmEnv, LlmProvider, LlmRequest } from "@/server/llm/types";
+import { recordLlmUsage } from "@/server/llm/usage";
 import { retrieveHybrid } from "@/server/rag/hybrid";
 import { formatCaptureDate, getTeamSchedule } from "@/server/schedule/schedule";
-import { buildChatRequest, type ChatHistoryMessage } from "./prompt";
+import { buildChatRequest, buildRetryDirective, type ChatHistoryMessage } from "./prompt";
+import { selectAnswerStrategy } from "./routing";
 import type { ChatAnswer, ChatCitation, ChatStreamEvent } from "./types";
 
 const rumorPattern = /rumou?r|message board|heard|leak|injur|out for season|bet|lock/i;
@@ -27,25 +29,7 @@ export async function answerQuestion(
     return prepared.answer;
   }
 
-  const { provider, fallback } = resolveProviders(options.env);
-
-  try {
-    const result = await provider.generate(prepared.request);
-    assertUsableAnswer(result.text, provider.name);
-    return finalizeAnswer(prepared, provider.name, result.model, result.text);
-  } catch {
-    // A misbehaving or unreachable provider must not take chat down; the
-    // deterministic composer always has a grounded answer available.
-    const result = await fallback.generate(prepared.request);
-    assertUsableAnswer(result.text, fallback.name);
-    return finalizeAnswer(
-      prepared,
-      fallback.name,
-      result.model,
-      result.text,
-      `Live LLM provider "${provider.name}" failed; served deterministic answer.`,
-    );
-  }
+  return produceAnswer(prepared, options.env);
 }
 
 export async function* streamAnswerEvents(
@@ -64,51 +48,132 @@ export async function* streamAnswerEvents(
 
   yield { type: "citations", citations: prepared.citations };
 
-  const { provider, fallback } = resolveProviders(options.env);
-  let streamed = "";
-  let active = provider;
-  let warning: string | undefined;
+  // Deliberately not streamed from the provider. The acceptance gate can reject
+  // an answer for off-tone language or a fabricated citation, and once a delta
+  // is on the wire that rejection is unenforceable — a retry cannot un-send
+  // text the browser already rendered. So: generate fully, validate, then chunk
+  // the accepted text. At ~300 output tokens the latency cost is small and the
+  // quality guarantee becomes real rather than advisory.
+  const answer = await produceAnswer(prepared, options.env);
 
-  try {
-    for await (const delta of provider.stream(prepared.request)) {
-      streamed += delta;
-      yield { type: "delta", text: delta };
-    }
-
-    assertUsableAnswer(streamed, provider.name);
-  } catch {
-    if (hasUsableAnswer(streamed)) {
-      // Partial answer already reached the client; close it out honestly
-      // rather than splicing in a second answer.
-      warning = `Live LLM provider "${provider.name}" failed mid-stream; the answer may be incomplete.`;
-      const notice = " [Answer truncated: the live provider failed mid-stream.]";
-      streamed += notice;
-      yield { type: "delta", text: notice };
-    } else {
-      active = fallback;
-      if (provider !== fallback) {
-        warning = `Live LLM provider "${provider.name}" failed; served deterministic answer.`;
-      }
-      streamed = "";
-      for await (const delta of fallback.stream(prepared.request)) {
-        streamed += delta;
-        yield { type: "delta", text: delta };
-      }
-      assertUsableAnswer(streamed, fallback.name);
-    }
-  }
-
-  const answer = finalizeAnswer(prepared, active.name, active.model, streamed, warning);
-
-  if (answer.answer !== streamed) {
-    yield { type: "delta", text: answer.answer.slice(streamed.length) };
+  for (const chunk of chunkText(answer.answer)) {
+    yield { type: "delta", text: chunk };
   }
 
   yield { type: "done", answer };
 }
 
+// Runs the composer or the live provider, applies the acceptance gate, and
+// records every billable call.
+async function produceAnswer(
+  prepared: PreparedGeneration,
+  env?: LlmEnv,
+): Promise<ChatAnswer> {
+  const composer = createMockLlmProvider();
+
+  if (prepared.strategy === "composer") {
+    const result = await composer.generate(prepared.request);
+    return finalizeAnswer(prepared, composer.name, result.model, result.text);
+  }
+
+  const resolved = resolveLlmProvider(env ?? process.env);
+  const provider = resolved.provider;
+
+  // No live provider configured: the composer is the whole product, not a
+  // degraded mode. Nothing to warn about.
+  if (provider.name === composer.name) {
+    const result = await composer.generate(prepared.request);
+    return finalizeAnswer(prepared, composer.name, result.model, result.text);
+  }
+
+  const attempt = await generateAccepted(prepared, provider);
+
+  if (attempt.accepted) {
+    return finalizeAnswer(prepared, provider.name, attempt.model, attempt.text);
+  }
+
+  const fallback = await composer.generate(prepared.request);
+
+  return finalizeAnswer(
+    prepared,
+    composer.name,
+    fallback.model,
+    fallback.text,
+    attempt.notice,
+  );
+}
+
+type AcceptedAttempt =
+  | { accepted: true; text: string; model: string }
+  | { accepted: false; notice: string };
+
+// Generate, validate, retry once with the failures named, then give up. Every
+// generation that reaches the provider is recorded, including the rejected
+// ones — a retry is two billed calls, and a ledger that only counts accepted
+// answers under-reports by exactly the expensive path.
+async function generateAccepted(
+  prepared: PreparedGeneration,
+  provider: LlmProvider,
+): Promise<AcceptedAttempt> {
+  let request = prepared.request;
+  let lastFlags: string[] = [];
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    let result;
+
+    try {
+      result = await provider.generate(request);
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "unknown error";
+      return {
+        accepted: false,
+        notice: `Live provider "${provider.name}" failed (${detail}); served the deterministic composer instead.`,
+      };
+    }
+
+    const evaluation = evaluateAnswer(prepared, result.text);
+
+    if (result.usage) {
+      await recordLlmUsage({
+        teamSlug: prepared.team.slug,
+        provider: provider.name,
+        usage: result.usage,
+        accepted: evaluation.passed,
+      });
+    }
+
+    if (evaluation.passed) {
+      return { accepted: true, text: result.text, model: result.model };
+    }
+
+    lastFlags = evaluation.flags;
+    request = {
+      ...prepared.request,
+      system: `${prepared.request.system}${buildRetryDirective(evaluation.flags)}`,
+    };
+  }
+
+  return {
+    accepted: false,
+    notice: `Live provider "${provider.name}" did not meet the answer standard (${lastFlags.join("; ")}); served the deterministic composer instead.`,
+  };
+}
+
+// The gate: the team's voice contract, plus every inline citation tag having to
+// name a source that was actually retrieved. The second check is the one that
+// protects the product's core claim — before it, a model could emit
+// "[Definitely Real Source]" and pass.
+function evaluateAnswer(prepared: PreparedGeneration, text: string) {
+  return evaluateVoiceSample(text, {
+    contract: prepared.team.voice,
+    validCitationTitles: prepared.citations.map((citation) => citation.title),
+  });
+}
+
 type PreparedGeneration = {
   kind: "generate";
+  strategy: "composer" | "escalate";
+  capability?: ComposerCapability;
   team: TeamConfig;
   request: LlmRequest;
   citations: ChatCitation[];
@@ -136,6 +201,8 @@ async function prepareAnswer(
     ingest.documents.filter((document) => document.provider === "official"),
   );
 
+  // Both guardrails short-circuit before any provider call, so a rumour probe
+  // or an unanswerable question never costs anything.
   if (rumorPattern.test(question)) {
     const anchor = officialCitations.length > 0 ? officialCitations : citations;
     return {
@@ -173,24 +240,18 @@ async function prepareAnswer(
     };
   }
 
+  const selected = selectAnswerStrategy(team, question, hits);
+  const capability = selected.strategy === "composer" ? selected.capability : undefined;
+
   return {
     kind: "generate",
+    strategy: selected.strategy,
+    capability,
     team,
-    request: buildChatRequest(team, question, hits, options.history ?? []),
+    request: buildChatRequest(team, question, hits, options.history ?? [], capability),
     citations,
     freshness,
   };
-}
-
-function resolveProviders(env?: LlmEnv): {
-  provider: LlmProvider;
-  fallback: LlmProvider;
-} {
-  const resolved = resolveLlmProvider(env ?? process.env);
-  const fallback =
-    resolved.provider.name === "mock" ? resolved.provider : createMockLlmProvider();
-
-  return { provider: resolved.provider, fallback };
 }
 
 function finalizeAnswer(
@@ -198,32 +259,19 @@ function finalizeAnswer(
   providerName: string,
   model: string,
   text: string,
-  warning?: string,
+  notice?: string,
 ): ChatAnswer {
-  const freshness = warning ? `${prepared.freshness} ${warning}` : prepared.freshness;
-  const voice = evaluateVoiceSample(text);
-  const answer = voice.passed ? text : `${text} Source freshness: ${freshness}.`;
-
   return {
     teamSlug: prepared.team.slug,
-    answer,
+    answer: text,
     citations: prepared.citations,
-    confidence: warning ? "low" : prepared.citations.length >= 2 ? "high" : "medium",
-    freshness,
+    confidence: notice ? "low" : prepared.citations.length >= 2 ? "high" : "medium",
+    freshness: prepared.freshness,
+    notice,
     mode: "grounded",
     provider: providerName,
     model,
   };
-}
-
-function assertUsableAnswer(text: string, providerName: string): void {
-  if (!hasUsableAnswer(text)) {
-    throw new Error(`LLM provider "${providerName}" returned an empty answer.`);
-  }
-}
-
-function hasUsableAnswer(text: string): boolean {
-  return text.trim().length > 0;
 }
 
 function createCitations(
