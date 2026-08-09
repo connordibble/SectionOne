@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
 import {
   defaultTeamConfig,
+  houseTheme,
   defaultTeamSlug,
   deriveTeamPalette,
   enabledTeamSlugs,
@@ -43,19 +44,34 @@ describe("team config", () => {
     expect(new Set(hues).size).toBe(hues.length);
   });
 
-  // A team whose own primary is dark puts that colour in the masthead, so the
-  // structural hue is allowed to equal the accent hue. What is not allowed is
-  // a structural colour too light to carry the text sitting on it — that is
-  // the one way honouring a school's colours can break the interface.
-  it("keeps every structural dark dark enough for the text on it", () => {
-    for (const slug of enabledTeamSlugs) {
-      for (const mode of ["light", "dark"] as const) {
-        const palette = deriveTeamPalette(getTeamConfig(slug)!.theme, mode);
+  it("keeps the Texas edition visually distinct from the house theme", () => {
+    expect(defaultTeamConfig.theme.structuralHue).not.toBe(houseTheme.structuralHue);
+    expect(defaultTeamConfig.theme.structuralChroma).toBeGreaterThan(
+      houseTheme.structuralChroma,
+    );
+    expect(defaultTeamConfig.theme.chroma).toBeGreaterThan(houseTheme.chroma);
+  });
 
-        expect(lightnessOf(palette.steel), `${slug} ${mode} steel`).toBeLessThanOrEqual(30);
-        expect(lightnessOf(palette.steelRaised), `${slug} ${mode} steel-raised`).toBeLessThanOrEqual(
-          32,
-        );
+  // Dark structural frames stay dark enough for white chrome. A team that opts
+  // into a bright branded masthead declares that lightness explicitly and gets
+  // the same contrast coverage through the palette tests.
+  it("keeps every structural masthead readable", () => {
+    for (const slug of enabledTeamSlugs) {
+      const team = getTeamConfig(slug)!;
+
+      for (const mode of ["light", "dark"] as const) {
+        const palette = deriveTeamPalette(team.theme, mode);
+        const brightStructural = mode === "light" && (team.theme.structuralLightness ?? 23) > 40;
+        const steelLightness = lightnessOf(palette.steel);
+        const raisedLightness = lightnessOf(palette.steelRaised);
+
+        if (brightStructural) {
+          expect(steelLightness, `${slug} ${mode} steel`).toBeGreaterThan(40);
+          expect(raisedLightness, `${slug} ${mode} steel-raised`).toBeGreaterThan(35);
+        } else {
+          expect(steelLightness, `${slug} ${mode} steel`).toBeLessThanOrEqual(30);
+          expect(raisedLightness, `${slug} ${mode} steel-raised`).toBeLessThanOrEqual(32);
+        }
         expect(lightnessOf(palette.onSteel), `${slug} ${mode} on-steel`).toBeGreaterThanOrEqual(90);
       }
     }

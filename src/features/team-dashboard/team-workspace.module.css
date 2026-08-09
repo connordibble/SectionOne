@@ -102,7 +102,7 @@
   font-size: var(--text-xs);
   line-height: 1.2;
   letter-spacing: 0.04em;
-  opacity: 0.82;
+  opacity: var(--team-chrome-opacity, 0.82);
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
@@ -116,7 +116,7 @@
   font-size: var(--text-xs);
   line-height: 1.2;
   letter-spacing: var(--tracking-label);
-  opacity: 0.82;
+  opacity: var(--team-chrome-opacity, 0.82);
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
@@ -150,7 +150,7 @@
   font-size: var(--text-md);
   font-weight: var(--display-weight);
   letter-spacing: var(--tracking-label);
-  opacity: 0.58;
+  opacity: var(--team-tab-opacity, 0.58);
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
