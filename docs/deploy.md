@@ -50,7 +50,7 @@ model plus $20/month for hosting once monetized.
    | `RESEND_API_KEY` | Production | Enables alert email. Absent means log-only. |
    | `ALERT_EMAIL_TO` | Production | Recipient. Overrides the fallback in `alert.ts`. |
    | `CFBD_API_KEY` | — | Only needed to run `pnpm schedule:build` locally. |
-   | `NEXT_PUBLIC_SITE_URL` | — | Leave unset. Vercel supplies the production URL, and previews then describe themselves rather than claiming to be production. |
+   | `NEXT_PUBLIC_SITE_URL` | Production | `https://www.sectiononesports.com`. www is canonical; the apex 308s to it, so canonicals must name www or they point at a redirect. Leave unset in Preview so previews describe themselves. |
 
    Do **not** set `LLM_PROVIDER` in Preview. Previews should stay on the
    composer so a pull request cannot spend money.
@@ -113,11 +113,11 @@ stops one enthusiastic visitor exhausting either.
 ## Verifying a deploy
 
 ```bash
-curl -sI https://sectiononesports.com | grep -i content-security-policy
-curl -s  https://sectiononesports.com/api/health | jq '.ok, .llm.mode'
+curl -sI https://www.sectiononesports.com | grep -i content-security-policy
+curl -s  https://www.sectiononesports.com/api/health | jq '.ok, .llm.mode'
 curl -s -H "x-health-token: $HEALTH_TOKEN" \
-     https://sectiononesports.com/api/health | jq '.llm.monthToDateUsd'
-curl -s  https://sectiononesports.com/robots.txt
+     https://www.sectiononesports.com/api/health | jq '.llm.monthToDateUsd'
+curl -s  https://www.sectiononesports.com/robots.txt
 ```
 
 Expect `llm.mode` to be `live-metered` with a key and a database,

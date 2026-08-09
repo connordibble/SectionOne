@@ -28,7 +28,9 @@ export const siteUrl = new URL(
   process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : "https://sectiononesports.com"),
+      // www is the canonical host: the apex 308s here, so a canonical tag
+      // pointing at the apex would name a URL that immediately redirects.
+      : "https://www.sectiononesports.com"),
 );
 
 // The name alone shares a search namespace with Section I Athletics, a New York
