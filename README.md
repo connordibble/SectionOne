@@ -99,6 +99,9 @@ provider. Add another provider by implementing `LlmProvider` and registering it 
 - Connect licensed notes, official records, and season-statistic ingestion team by team.
 - Add tenant administration only when multiple editions need independent operators.
 
+Deployment, CI, and the edge rate-limiting rules live in
+[docs/deploy.md](./docs/deploy.md).
+
 The design and portability contract lives in [DESIGN.md](./DESIGN.md). The story rubric lives in
 [docs/story-selection.md](./docs/story-selection.md), and repo traps and open gaps in
 [docs/working-notes.md](./docs/working-notes.md).
