@@ -46,6 +46,13 @@ function composeAnswer(request: LlmRequest): string {
       return composeSourceReadiness(grounding);
     case "team-note-brief":
       return composeTeamNoteBrief(grounding);
+    // The ranking and news documents are already written as the answer: one
+    // states the standing and the ranked weeks, the other is a headline plus
+    // its "why it matters" line. Paraphrasing them would add a chance to be
+    // wrong and nothing else.
+    case "ranking-brief":
+    case "news-brief":
+      return composeTeamNoteBrief(grounding);
     default:
       return composeGeneral(grounding);
   }

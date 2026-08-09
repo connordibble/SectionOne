@@ -1,4 +1,5 @@
 import texasSchedule from "../../../data/fixtures/texas-football/schedule.json";
+import utahStateSchedule from "../../../data/fixtures/utah-state-football/schedule.json";
 
 export type ScheduleSite = "home" | "away" | "neutral";
 
@@ -23,9 +24,15 @@ export type TeamSchedule = {
   games: ScheduleGame[];
 };
 
-const schedules: Record<string, TeamSchedule> = {
-  "texas-football": texasSchedule as unknown as TeamSchedule,
-};
+// Keyed by the fixture's own teamSlug so a new edition is a file plus an
+// import, never an edit to a hand-maintained key list that can disagree with
+// the data it points at.
+const schedules: Record<string, TeamSchedule> = Object.fromEntries(
+  [texasSchedule, utahStateSchedule].map((schedule) => [
+    schedule.teamSlug,
+    schedule as unknown as TeamSchedule,
+  ]),
+);
 
 export function getTeamSchedule(teamSlug: string): TeamSchedule | undefined {
   return schedules[teamSlug];

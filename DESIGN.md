@@ -49,8 +49,24 @@ At wide widths, Brief should read as one composed page rather than a stack of ca
 4. “The read” is two or three short sentences, followed by a source line.
 5. “Tune your signal” is one full-width input with no chat-window framing in the empty state.
 6. A “Quick questions” rail labels two short starter questions below the input.
-7. “Next three” is one horizontal schedule strip on wide screens and three clear rows on mobile.
-8. The colophon stays small and factual.
+7. “In the field” gives the team's own poll standing and the ranked weeks on its own schedule.
+8. “This week” is up to five items: headline, one takeaway sentence, and the outlet behind it.
+9. “Next three” is one horizontal schedule strip on wide screens and three clear rows on mobile.
+10. The colophon stays small and factual.
+
+Two rules govern the weekly sections:
+
+- **Rankings are read from the team outward.** Most teams are unranked, and a national top 25 answers
+  nothing for them. The standing line is one line; the list underneath is the ranked opponents on
+  that team's own schedule, hardest first. A poll that has not been released says so.
+- **We write the takeaway; we do not write the reporting.** Every news item carries its outlet and a
+  link out. The summary is ours and must be checkable against the thing it links to. An item without
+  a source is not publishable, and the fixture tests enforce that rather than trusting the author.
+- **No outlet owns the list.** Items are graded on impact, echo, and freshness, decayed by age, and
+  filled under a cap of two per outlet with at least three distinct outlets and local reporting never
+  outnumbered by national. Local beat writers are at practice and know the two-deep; a list national
+  coverage dominates is a list about the sport rather than about this team. The full rubric and its
+  anchors live in `docs/story-selection.md`.
 
 ## Surfaces
 
@@ -76,6 +92,10 @@ Home page rules:
 - Anchor targets clear the sticky masthead.
 - House colour comes from `houseTheme`, not from a team. Editions may ship in any hue; the home page
   does not follow them.
+- One exception, bounded to the edition card: the card may carry its own edition's accent on a
+  hairline rule and the countdown figure. Everything outside the card border stays house. A fan
+  should be able to see that editions are coloured for their team without the page changing colour
+  when a new one ships.
 
 ## Masthead
 
@@ -93,13 +113,29 @@ The masthead is the strongest brand surface.
 A new team is a typed configuration change, not a page redesign. `TeamConfig` owns:
 
 - team identity, aliases, conference, and route;
-- `hue`, `chroma`, and `neutralHue` theme anchors;
+- `hue`, `chroma`, `structuralHue`, and `structuralChroma` theme anchors;
 - fan-facing copy and starter questions;
 - the weekly lead, matchup read, and four keys;
 - source rules and protected-mark guidance.
 
 Components must not contain a team name, team color, matchup claim, or team-specific legal copy.
 If adding a team requires changing a component, the boundary is wrong.
+
+Two rules the second edition established, both of which cost a fix to honour:
+
+- **No team-shaped assumptions in shared logic.** The question classifier reserved a single word for
+  the team's name, which fit Texas and not Utah State. Anywhere a team's name, conference, or zone
+  appears in shared code, it comes from `TeamConfig`.
+- **Two editions must not read as one site with two names.** Every edition's accent hue is distinct
+  from every other's.
+- **The structural dark belongs to the school when the school has one.** A team whose primary is
+  already dark — navy, maroon, forest — puts that colour in the masthead. Only a team whose primary
+  is too bright to be structure, as burnt orange is, gets a counterweight instead. Getting this
+  backwards is what gave Utah State a brown masthead in its first draft.
+
+Schedules are not typed by hand. `pnpm schedule:build <slug> <IANA zone>` rebuilds a team's fixture
+from CollegeFootballData, so kickoff times, venues, and broadcast assignments come back from the
+source rather than from memory. A retyped schedule is wrong by October.
 
 ### Color roles
 
@@ -114,7 +150,7 @@ semantic roles:
 | `--team-border`, `--team-border-strong` | Rules and dividers. |
 | `--team-accent`, `--team-accent-strong`, `--team-accent-soft` | Team-derived emphasis and action. |
 | `--team-on-accent` | Text on accent. |
-| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | Masthead and dark structural areas. |
+| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | Masthead and dark structural areas. Derived from `structuralHue`/`structuralChroma`, which is the school's own dark where it has one. |
 | `--team-focus` | Keyboard focus. |
 
 Light is the default. Dark is an explicit override, and that choice persists.
@@ -204,8 +240,16 @@ The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wi
 ## Product and legal guardrails
 
 - Saturday Signal is the product name, never a mascot-branded property.
-- Do not use official logos, mascot imagery, Bevo branding, protected hand-sign graphics, official
-  color values, or official-affiliation language.
+- Do not use official logos, mascot imagery, mascot branding, protected hand-sign graphics, or
+  official-affiliation language. Those are marks, and using them claims a relationship that does not
+  exist.
+- **Colour is not a mark.** Get as close to a school's real colours as the law allows. A fan opening
+  their team's edition should see their team's colours, not a tasteful approximation, and hedging
+  the hue protects nothing.
+- The exception is contrast and usability. Where a school's own colour cannot carry the text on it
+  or fails WCAG at the size it is used, move to the nearest workable value or a complement, and say
+  in the config comment which one it is and why. Utah State's page ground is a pale tint of Aggie
+  blue rather than the navy itself, because a navy page cannot carry body text.
 - A team edition may feel local without copying institutional trade dress.
 - The independence disclaimer remains visible in the colophon.
 

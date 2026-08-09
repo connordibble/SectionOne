@@ -10,6 +10,7 @@ import { formatCaptureDate, getTeamSchedule } from "@/server/schedule/schedule";
 import {
   buildChatRequest,
   buildRetryDirective,
+  getCapabilityDocuments,
   prioritizeGroundingHits,
   type ChatHistoryMessage,
 } from "./prompt";
@@ -246,8 +247,17 @@ async function prepareAnswer(
   const selected = selectAnswerStrategy(team, question, hits);
   const capability = selected.strategy === "composer" ? selected.capability : undefined;
   const answerHits = prioritizeGroundingHits(question, hits, capability);
+  // Ranking and news answers are composed from specific documents rather than
+  // from whatever retrieval returned, so the sources shown to the fan — and
+  // the titles the acceptance gate will accept — have to be those same
+  // documents. Leaving these as the retrieved set would print one set of
+  // sources under an answer built from another, and would make the gate reject
+  // a citation that is in fact real.
+  const capabilityDocuments = getCapabilityDocuments(team, capability);
   const citations = createCitations(
-    answerHits.map((hit) => hit.chunk.document),
+    capabilityDocuments.length > 0
+      ? capabilityDocuments
+      : answerHits.map((hit) => hit.chunk.document),
     selected.strategy === "composer" ? 2 : 4,
   );
 

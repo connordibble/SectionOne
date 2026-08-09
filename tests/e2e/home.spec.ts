@@ -31,7 +31,8 @@ test("the edition card carries real schedule data and opens the edition", async 
 test("states the honest number of live editions", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByText(/one edition live/i)).toBeVisible();
+  await expect(page.getByText(/2 editions live/i)).toBeVisible();
+  await expect(page.locator('#editions a[href^="/teams/"]')).toHaveCount(2);
 });
 
 test("requesting a team confirms and replaces the form", async ({ page }) => {
@@ -136,3 +137,4 @@ test("team requests are accepted without an email and validated", async ({ reque
   expect(rejected.status()).toBe(400);
   expect(((await rejected.json()) as { error: string }).error).toMatch(/which team you follow/i);
 });
+

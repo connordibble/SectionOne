@@ -2,6 +2,8 @@ import type { TeamConfig } from "@/config/team";
 import type { ComposerCapability } from "@/server/llm/types";
 import type { RetrievalHit } from "@/server/rag/retrieve";
 import { getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
+import { getTeamRankingSummary } from "@/server/sources/rankings";
+import { getWeeklyEdition } from "@/server/sources/weekly";
 
 export type AnswerStrategy =
   | { strategy: "composer"; capability: ComposerCapability }
@@ -12,7 +14,7 @@ export type AnswerStrategy =
 // the offense fix before the next game?" was served the canned schedule
 // template. Intent lives in the ask, not in the noun.
 const briefingPattern =
-  /\b(next[\s-]game|game[\s-]week)\b|\bbrief(ing)?\b|\bpreview\b|\bopener\b|\bwho(?:'s| is| do we| do they| does \w+) (?:next|play)\b|\bwhat time\b|\bkick(?:off| off)\b/i;
+  /\b(next[\s-]game|game[\s-]week)\b|\bbrief(ing)?\b|\bpreview\b|\bopener\b|\bwho(?:'s| is| do we| do they) (?:next|play)\b|\bwhat time\b|\bkick(?:off| off)\b/i;
 
 const schedulePattern =
   /\bschedule\b|\bremaining games\b|\brest of (?:the )?season\b|\bfull slate\b|\bwho do we play this (?:season|year)\b/i;
@@ -33,6 +35,16 @@ const analysisPattern =
 const comparisonPattern =
   /\bcompare\b|\bcomparison\b|\bversus\b|\bvs\.?\b|\bboth\b|\bdifference between\b|\brather than\b|\beither\b/i;
 
+// Poll questions. "Ranked" is the word a fan uses whether they are asking
+// about their own team or their opponents, and both are answered by the same
+// per-team ranking view.
+const rankingPattern =
+  /\brank(?:ed|ing|ings)?\b|\btop 25\b|\bpolls?\b|\bap poll\b|\bcoaches poll\b/i;
+
+// "What happened this week" — the weekly package, not the season.
+const newsPattern =
+  /\bnews\b|\blatest\b|\bheadlines?\b|\bthis week\b|\bwhat'?s? (?:new|going on|happening)\b|\bany updates?\b/i;
+
 const titleStopwords = new Set(["a", "an", "and", "for", "of", "on", "the", "to", "vs", "with"]);
 
 // Picks the deterministic composer when it can genuinely answer, and escalates
@@ -52,7 +64,9 @@ export function selectAnswerStrategy(
       titleMatchesQuestion(hit.chunk.document.title, question),
   );
 
-  if (!wantsAnalysis && briefingPattern.test(question) && getNextGame(team.slug)) {
+  const wantsBriefing = briefingPattern.test(question) || asksWhoTheTeamPlays(team, question);
+
+  if (!wantsAnalysis && wantsBriefing && getNextGame(team.slug)) {
     return { strategy: "composer", capability: "next-game-brief" };
   }
 
@@ -62,6 +76,17 @@ export function selectAnswerStrategy(
 
   if (sourceReadinessPattern.test(question)) {
     return { strategy: "composer", capability: "source-readiness" };
+  }
+
+  // Same rule as every other capability: the pattern has to match and the
+  // facts have to exist. A poll question with no published poll escalates
+  // rather than being answered from whatever else retrieval turned up.
+  if (rankingPattern.test(question) && getTeamRankingSummary(team)) {
+    return { strategy: "composer", capability: "ranking-brief" };
+  }
+
+  if (newsPattern.test(question) && getWeeklyEdition(team.slug)) {
+    return { strategy: "composer", capability: "news-brief" };
   }
 
   // Curated team notes are the product's differentiated content. Schedule facts
@@ -75,6 +100,32 @@ export function selectAnswerStrategy(
   }
 
   return { strategy: "escalate" };
+}
+
+// "Who does Utah State play next?" — the team's own name sits in the middle of
+// the ask, so that slot has to come from config. The pattern this replaced put
+// a bare `\w+` there, which matched "Texas" and quietly escalated the same
+// question for every team whose name is more than one word. A promoted prompt
+// that escalates is the product paying for its own front page, so the fix
+// belongs here rather than in a carefully worded prompt.
+function asksWhoTheTeamPlays(team: TeamConfig, question: string): boolean {
+  // Longest first: alternation is ordered, so "Utah State football" must get a
+  // chance before "Utah State".
+  const names = [team.shortName, team.displayName, ...team.aliases]
+    .map(escapeRegExp)
+    .sort((left, right) => right.length - left.length)
+    .join("|");
+
+  const pattern = new RegExp(
+    `\\bwho(?:'s|\\s+is|\\s+are|\\s+do(?:es)?)?\\s+(?:the\\s+)?(?:${names})\\s+(?:play(?:s|ing)?|face|host|open against)\\b`,
+    "i",
+  );
+
+  return pattern.test(question);
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 export function titleMatchesQuestion(title: string, question: string): boolean {

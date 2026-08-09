@@ -1,0 +1,58 @@
+{
+  "teamSlug": "texas-football",
+  "weekOf": "2026-08-09",
+  "publishedAt": "2026-08-09T15:00:00.000Z",
+  "summary": "Camp is open, the quarterback is settled, and the line in front of him is the question again.",
+  "items": [
+    {
+      "id": "outland-watch-list",
+      "headline": "Two linemen land on the Outland watch list",
+      "tldr": "Brandon Baker and Trevor Goosby are on the preseason list for the best interior lineman in the country. Guard was the open question in the spring, and the two names attached to it are the ones already trusted.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-news/103673/longhorns-daily-news-texas-brandon-baker-trevor-goosby-land-on-outland-trophy-preseason-watch-list",
+      "publishedAt": "2026-08-06T00:00:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 4 }
+    },
+    {
+      "id": "line-day-one",
+      "headline": "The line took shape on day one",
+      "tldr": "Trevor Goosby at left tackle, Jaydon Chatman at left guard, Connor Robertson at center, Brandon Baker at right guard, Melvin Siani at right tackle. Dylan Sikorski is the swing man inside. A first answer, not a final one.",
+      "outlet": "Sports Illustrated",
+      "tier": "national",
+      "url": "https://www.si.com/college/texas/football/texas-offensive-line-takes-shape-on-day-1-of-fall-camp",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "grade": { "impact": 5, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "offense-beat-view",
+      "headline": "What the beat is watching on offense",
+      "tldr": "The people at practice every day are looking at the same thing: how quickly the front settles, and whether the offense can play on schedule without leaning on one player.",
+      "outlet": "Inside Texas",
+      "tier": "local",
+      "url": "https://www.on3.com/teams/texas-longhorns/news/beat-writer-pov-what-im-watching-from-the-texas-offense-at-the-start-of-fall-camp/",
+      "publishedAt": "2026-08-06T00:00:00.000Z",
+      "grade": { "impact": 3, "echo": 3, "freshness": 4 }
+    },
+    {
+      "id": "camp-opens",
+      "headline": "Camp opened Wednesday in Austin",
+      "tldr": "Four weeks until Texas State on September 5, and a sixth season under Steve Sarkisian. The interior line and the depth behind it are what to follow between now and then.",
+      "outlet": "Hookem Headlines",
+      "tier": "local",
+      "url": "https://hookemheadlines.com/texas-longhorns-news-roundup-fall-camp-kicking-off-horns-dominate-usa-softball-and-more",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "grade": { "impact": 3, "echo": 5, "freshness": 3 }
+    },
+    {
+      "id": "quarterback-settled",
+      "headline": "Arch Manning is settled at quarterback",
+      "tldr": "No competition to track here. KJ Lacey, Dia Bell and MJ Morris fill out the room behind him, which matters for depth and not for the opener.",
+      "outlet": "Sports Illustrated",
+      "tier": "national",
+      "url": "https://www.si.com/college/texas/football/what-we-learned-from-day-1-of-texas-longhorns-fall-camp",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "grade": { "impact": 4, "echo": 4, "freshness": 3 }
+    }
+  ]
+}

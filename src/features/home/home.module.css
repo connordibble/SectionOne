@@ -363,13 +363,31 @@
 }
 
 .editionCard {
+  --edition-accent: var(--edition-light-accent, var(--team-accent));
+  --edition-accent-strong: var(--edition-light-accent-strong, var(--team-accent-strong));
+
   color: inherit;
   text-decoration: none;
   transition: border-color var(--dur-micro) var(--ease-out);
 }
 
+[data-theme="dark"] .editionCard {
+  --edition-accent: var(--edition-dark-accent, var(--team-accent));
+  --edition-accent-strong: var(--edition-dark-accent-strong, var(--team-accent-strong));
+}
+
+/* A hairline of the edition's own colour, bled to the card edges. The page
+   stays house-coloured; this is a sample, not a takeover. */
+.editionCard::before {
+  content: "";
+  display: block;
+  height: var(--rule-fine);
+  margin: calc(var(--space-md) * -1) calc(var(--space-md) * -1) 0;
+  background: var(--edition-accent);
+}
+
 .editionCard:hover {
-  border-color: var(--team-accent);
+  border-color: var(--edition-accent);
 }
 
 .editionCard:focus-visible {
@@ -396,7 +414,7 @@
 
 .editionFigure {
   margin-block-start: var(--space-2xs);
-  color: var(--team-accent-strong);
+  color: var(--edition-accent-strong, var(--team-accent-strong));
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--display-weight);
@@ -693,6 +711,20 @@
 
 .footerInner a {
   color: var(--team-header-accent);
+}
+
+/* One line per edition on wide screens, wrapping on narrow ones. Separators
+   are drawn rather than typed so a single edition does not trail a bullet. */
+.footerEditions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+}
+
+.footerEditions a + a {
+  padding-inline-start: var(--space-sm);
+  border-inline-start: var(--rule-hair) solid
+    color-mix(in oklch, var(--team-on-steel) 30%, transparent);
 }
 
 /* ── Small screens ────────────────────────────────────────────────────── */

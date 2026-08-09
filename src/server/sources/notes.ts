@@ -1,13 +1,29 @@
-import teamNotes from "../../../data/fixtures/texas-football/team-notes.json";
+import texasNotes from "../../../data/fixtures/texas-football/team-notes.json";
+import utahStateNotes from "../../../data/fixtures/utah-state-football/team-notes.json";
 import { createSourceDocumentId } from "./ids";
 import type { SourceDocument } from "./types";
 
-type TeamNotesFixture = typeof teamNotes;
-type TeamNote = TeamNotesFixture["notes"][number];
-
-const fixtures: Record<string, TeamNotesFixture> = {
-  [teamNotes.teamSlug]: teamNotes,
+// Declared rather than inferred from one fixture: with more than one edition,
+// `typeof` would narrow to whichever file happened to be imported first and
+// reject the next one over an incidental difference.
+type TeamNote = {
+  id: string;
+  title: string;
+  topics: string[];
+  publishedAt: string;
+  body: string;
 };
+
+type TeamNotesFixture = {
+  teamSlug: string;
+  capturedAt: string;
+  disclaimer: string;
+  notes: TeamNote[];
+};
+
+const fixtures: Record<string, TeamNotesFixture> = Object.fromEntries(
+  [texasNotes, utahStateNotes].map((fixture) => [fixture.teamSlug, fixture]),
+);
 
 // Independent desk notes shipped with the team package. A licensed notes
 // provider can replace this adapter without touching the pipeline: the

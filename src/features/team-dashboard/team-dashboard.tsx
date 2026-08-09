@@ -12,6 +12,8 @@ import {
   getTeamSchedule,
 } from "@/server/schedule/schedule";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
+import { getTeamRankingSummary } from "@/server/sources/rankings";
+import { getWeeklyEdition } from "@/server/sources/weekly";
 import { TeamWorkspace } from "./team-workspace";
 
 type TeamDashboardProps = {
@@ -60,6 +62,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
         notesById.get(team.editorial.lead.noteId)?.title ?? "Saturday Signal note"
       }
       nextGame={nextGame}
+      ranking={getTeamRankingSummary(team)}
       schedule={schedule}
       scheduleCapturedLabel={schedule ? formatCaptureDate(schedule.capturedAt) : undefined}
       signals={signals}
@@ -67,6 +70,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
       team={team}
       teamOptions={teamOptions}
       themeStyle={createTeamThemeStyle(team)}
+      weekly={getWeeklyEdition(team.slug)}
     />
   );
 }

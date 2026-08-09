@@ -15,6 +15,8 @@ import type {
   ScheduleGame,
   TeamSchedule,
 } from "@/server/schedule/schedule";
+import type { TeamRankingSummary } from "@/server/sources/rankings";
+import { formatNewsDate, type WeeklyEdition } from "@/server/sources/weekly";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
 import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
@@ -32,6 +34,7 @@ type TeamWorkspaceProps = {
   countdown: KickoffCountdown;
   leadSourceTitle: string;
   nextGame?: ScheduleGame;
+  ranking?: TeamRankingSummary;
   schedule?: TeamSchedule;
   scheduleCapturedLabel?: string;
   signals: WorkspaceSignal[];
@@ -39,6 +42,7 @@ type TeamWorkspaceProps = {
   team: TeamConfig;
   teamOptions: TeamOption[];
   themeStyle: CSSProperties;
+  weekly?: WeeklyEdition;
 };
 
 const views: Array<{ id: WorkspaceView; label: string }> = [
@@ -57,6 +61,7 @@ export function TeamWorkspace({
   countdown,
   leadSourceTitle,
   nextGame,
+  ranking,
   schedule,
   scheduleCapturedLabel,
   signals,
@@ -64,6 +69,7 @@ export function TeamWorkspace({
   team,
   teamOptions,
   themeStyle,
+  weekly,
 }: TeamWorkspaceProps) {
   const [activeView, setActiveView] = useState<WorkspaceView>("brief");
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
@@ -242,8 +248,10 @@ export function TeamWorkspace({
               game={nextGame}
               lead={team.editorial.lead}
               leadSourceTitle={leadSourceTitle}
+              ranking={ranking}
               signals={signals}
               teamName={team.shortName}
+              weekly={weekly}
             />
           ) : null}
           {activeView === "matchup" ? (
@@ -302,20 +310,128 @@ export function TeamWorkspace({
   );
 }
 
+// The team's own place in the field, not a national top 25.
+//
+// Most teams are unranked, and for them a list of the best 25 programs in the
+// country answers nothing. What a fan of an unranked team actually wants is
+// which weeks on their own schedule are the hard ones — so that is the list,
+// and the team's own standing is one line above it either way.
+function RankingSection({
+  ranking,
+  teamName,
+}: {
+  ranking: TeamRankingSummary;
+  teamName: string;
+}) {
+  const { rankedOpponents, opponentCount, teamRank } = ranking;
+  const shown = rankedOpponents.slice(0, 5);
+  const remaining = rankedOpponents.length - shown.length;
+
+  return (
+    <section aria-labelledby="ranking-heading" className={styles.rankingSection}>
+      <div className={styles.sectionHeadingRow}>
+        <h2 id="ranking-heading">In the field</h2>
+        <p className={styles.sectionAside}>
+          {ranking.poll.name} · {ranking.weekLabel}
+        </p>
+      </div>
+
+      <div className={styles.rankingStanding}>
+        <p className={styles.rankingFigure}>
+          {teamRank === null ? (
+            "Unranked"
+          ) : (
+            <>
+              No. <span className="tnum">{teamRank}</span>
+            </>
+          )}
+        </p>
+        <p className={styles.rankingContext}>
+          {rankedOpponents.length === 0
+            ? `No ranked opponents on the ${teamName} schedule.`
+            : `${rankedOpponents.length} of ${opponentCount} opponents ranked.`}
+        </p>
+      </div>
+
+      {shown.length > 0 ? (
+        <ol className={styles.rankingList}>
+          {shown.map((opponent) => (
+            <li key={`${opponent.rank}-${opponent.opponent}`}>
+              <span className={`${styles.rankingRank} tnum`}>{opponent.rank}</span>
+              <span className={styles.rankingOpponent}>
+                {siteWord(opponent.site)} {opponent.opponent}
+              </span>
+              <span className={`${styles.rankingDate} tnum`}>{opponent.dateLabel}</span>
+            </li>
+          ))}
+        </ol>
+      ) : null}
+
+      <p className={styles.rankingNote}>
+        {remaining > 0 ? `${remaining} more ranked opponent${remaining === 1 ? "" : "s"}. ` : ""}
+        {ranking.pending
+          .map((poll) => `The ${poll.name} is out ${poll.expectedLabel}.`)
+          .join(" ")}
+      </p>
+    </section>
+  );
+}
+
+// Headline, then the one sentence that says why a fan should care, then who
+// reported it. The link is the point: we are asking a fan to trust a summary,
+// and the least we can do is hand them the thing it was summarised from.
+function WeeklyNewsSection({ weekly }: { weekly: WeeklyEdition }) {
+  return (
+    <section aria-labelledby="news-heading" className={styles.newsSection}>
+      <div className={styles.sectionHeadingRow}>
+        <h2 id="news-heading">This week</h2>
+        <p className={styles.sectionAside}>Updated {formatNewsDate(weekly.publishedAt)}</p>
+      </div>
+
+      <p className={styles.newsSummary}>{weekly.summary}</p>
+
+      <ol className={styles.newsList}>
+        {weekly.items.map((item, index) => (
+          <li key={item.id}>
+            <span className={`${styles.newsNumber} tnum`}>
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3>
+                <a href={item.url} rel="noopener noreferrer" target="_blank">
+                  {item.headline}
+                </a>
+              </h3>
+              <p>{item.tldr}</p>
+              <p className={styles.newsMeta}>
+                {item.outlet} · {formatNewsDate(item.publishedAt)}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 function BriefView({
   countdown,
   game,
   lead,
   leadSourceTitle,
+  ranking,
   signals,
   teamName,
+  weekly,
 }: {
   countdown: KickoffCountdown;
   game?: ScheduleGame;
   lead: TeamConfig["editorial"]["lead"];
   leadSourceTitle: string;
+  ranking?: TeamRankingSummary;
   signals: WorkspaceSignal[];
   teamName: string;
+  weekly?: WeeklyEdition;
 }) {
   return (
     <div className={styles.briefView}>
@@ -363,6 +479,9 @@ function BriefView({
           <p className={styles.readSource}>{leadSourceTitle}</p>
         </section>
       </div>
+
+      {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+      {weekly ? <WeeklyNewsSection weekly={weekly} /> : null}
     </div>
   );
 }

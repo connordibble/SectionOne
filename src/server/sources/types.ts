@@ -1,5 +1,9 @@
-export type SourceProvider = "fixture" | "cfbd" | "official";
-export type SourceType = "schedule" | "game" | "news" | "team-note";
+// "press" is reporting published by an outlet and summarised here under its own
+// byline and link. It stays separate from "fixture" so retrieval, the chat
+// citation list, and any future ledger can always tell our own editorial work
+// apart from someone else's reporting.
+export type SourceProvider = "fixture" | "cfbd" | "official" | "press";
+export type SourceType = "schedule" | "game" | "news" | "team-note" | "ranking";
 
 export type SourceDocument = {
   id: string;

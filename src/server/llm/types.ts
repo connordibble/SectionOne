@@ -17,7 +17,9 @@ export type ComposerCapability =
   | "next-game-brief"
   | "schedule"
   | "source-readiness"
-  | "team-note-brief";
+  | "team-note-brief"
+  | "ranking-brief"
+  | "news-brief";
 
 export type ScheduleGameFact = {
   opponent: string;

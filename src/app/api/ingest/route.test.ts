@@ -26,8 +26,13 @@ describe("POST /api/ingest", () => {
     const body = (await response.json()) as {
       teamSlug: string;
       documentCount: number;
+      counts: Record<string, number>;
     };
     expect(body.teamSlug).toBe("texas-football");
-    expect(body.documentCount).toBe(20);
+    expect(body.documentCount).toBe(26);
+    // The weekly package and the poll are retrievable, so chat can answer
+    // "what happened this week" from the same content the page shows and cite
+    // the outlet rather than us.
+    expect(body.counts.press).toBe(6);
   });
 });

@@ -30,6 +30,41 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
+  // The team name sits in the middle of this question, and the classifier used
+  // to reserve a single `\w+` for it. Texas fit; Utah State did not, so a
+  // promoted prompt escalated to a paid answer for every multi-word team.
+  it("recognises the who-do-we-play question for a multi-word team name", async () => {
+    expect(await route("Who does Utah State play next?", "utah-state-football")).toEqual({
+      strategy: "composer",
+      capability: "next-game-brief",
+    });
+    expect(await route("Who are the Aggies playing?", "utah-state-football")).toEqual({
+      strategy: "composer",
+      capability: "next-game-brief",
+    });
+  });
+
+  // Retrieval ranks by term overlap, and a team's name appears far more often
+  // across twelve game rows than in one poll entry — so before this capability
+  // existed, "are we ranked?" was answered with the schedule.
+  it("answers poll questions from the ranking view, not the schedule", async () => {
+    expect(await route("Is Utah State ranked?", "utah-state-football")).toEqual({
+      strategy: "composer",
+      capability: "ranking-brief",
+    });
+    expect(await route("Where is Texas in the poll?")).toEqual({
+      strategy: "composer",
+      capability: "ranking-brief",
+    });
+  });
+
+  it("answers this-week questions from the weekly package", async () => {
+    expect(await route("What is the latest news?", "utah-state-football")).toEqual({
+      strategy: "composer",
+      capability: "news-brief",
+    });
+  });
+
   it("serves schedule and source-readiness questions from the composer", async () => {
     expect(await route("Show me the schedule.")).toEqual({
       strategy: "composer",

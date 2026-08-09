@@ -35,7 +35,7 @@ describe("GET /api/health", () => {
     const body = await health();
 
     expect(body.ok).toBe(true);
-    expect(body.enabledTeams).toEqual(["texas-football"]);
+    expect(body.enabledTeams).toEqual(["texas-football", "utah-state-football"]);
     expect(["mock", "anthropic", "openai"]).toContain(body.llm.provider);
     expect(["mock", "openai"]).toContain(body.embeddings.provider);
     expect(body.sources["texas-football"]).toContainEqual(

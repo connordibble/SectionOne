@@ -678,7 +678,7 @@
 .promptRail {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-xs);
   align-items: center;
   margin-block-start: var(--space-2xs);
   padding-block-start: var(--space-2xs);
@@ -1625,10 +1625,6 @@
     grid-column: 1 / -1;
   }
 
-  .promptRail {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
   .promptList {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2061,5 +2057,184 @@
     to {
       opacity: 1;
     }
+  }
+}
+
+/* ── In the field (rankings) ───────────────────────────────────────────── */
+
+.rankingSection,
+.newsSection {
+  padding-block: var(--space-lg);
+  border-block-end: var(--rule-fine) solid var(--team-ink);
+}
+
+.sectionAside {
+  margin: 0;
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rankingStanding {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  margin-block-start: var(--space-sm);
+}
+
+.rankingFigure {
+  margin: 0;
+  color: var(--team-accent-strong);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--display-weight);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.rankingContext {
+  margin: 0;
+  color: var(--team-ink-subtle);
+}
+
+.rankingList {
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rankingList li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  gap: var(--space-xs);
+  align-items: baseline;
+  padding-block: var(--space-2xs);
+  border-block-start: var(--rule-hair) solid var(--team-border-strong);
+}
+
+.rankingRank {
+  color: var(--team-accent-strong);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  line-height: 1;
+}
+
+.rankingRank::before {
+  content: "No. ";
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+}
+
+.rankingOpponent {
+  min-width: 0;
+  color: var(--team-ink);
+  font-weight: 600;
+}
+
+.rankingDate {
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  text-align: end;
+}
+
+.rankingNote {
+  margin: var(--space-sm) 0 0;
+  color: var(--team-muted);
+  font-size: var(--text-sm);
+}
+
+/* ── This week (news) ──────────────────────────────────────────────────── */
+
+.newsSummary {
+  max-width: var(--measure);
+  margin: var(--space-sm) 0 0;
+  color: var(--team-ink-subtle);
+  line-height: 1.6;
+}
+
+.newsList {
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.newsList li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: var(--space-xs);
+  padding-block: var(--space-sm);
+  border-block-start: var(--rule-hair) solid var(--team-border-strong);
+}
+
+.newsNumber {
+  color: var(--team-accent-strong);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--display-weight);
+  line-height: 1;
+}
+
+.newsList h3 {
+  max-width: var(--measure);
+  margin: 0;
+  color: var(--team-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  line-height: 1.05;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.newsList h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.newsList h3 a:hover {
+  color: var(--team-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.newsList h3 a:focus-visible {
+  outline: var(--rule-fine) solid var(--team-focus);
+  outline-offset: var(--space-3xs);
+}
+
+.newsList p {
+  max-width: var(--measure);
+  margin: var(--space-2xs) 0 0;
+  color: var(--team-ink-subtle);
+  line-height: 1.6;
+}
+
+.newsMeta {
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@media (max-width: 40rem) {
+  .rankingList li {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .rankingDate {
+    grid-column: 2;
+    text-align: start;
+  }
+
+  .newsList li {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
   }
 }

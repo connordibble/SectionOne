@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { enabledTeamSlugs } from "@/config/team";
 import HomePage from "./page";
 
 vi.mock("next/server", () => ({
@@ -42,12 +43,28 @@ describe("Saturday Signal home", () => {
     expect(within(edition).getByText(/Schedule checked/)).toBeInTheDocument();
   });
 
-  // Scale is one edition. Claiming a network would be the first thing a fan
-  // caught us on.
+  // Claiming a network would be the first thing a fan caught us on, so the
+  // count is asserted against the editions that actually render rather than
+  // against a sentence someone typed.
   it("states the honest number of live editions", async () => {
-    render(await HomePage());
+    const { container } = render(await HomePage());
 
-    expect(screen.getByText(/one edition live/i)).toBeInTheDocument();
+    expect(screen.getByText(/2 editions live/i)).toBeInTheDocument();
+    expect(container.querySelectorAll('#editions a[href^="/teams/"]')).toHaveLength(
+      enabledTeamSlugs.length,
+    );
+  });
+
+  it("gives each edition card the accent of its own team", async () => {
+    const { container } = render(await HomePage());
+    const accents = [...container.querySelectorAll<HTMLElement>('#editions a[href^="/teams/"]')].map(
+      (card) => card.style.getPropertyValue("--edition-light-accent"),
+    );
+
+    // The page stays house-coloured; the card carries a sample. Identical
+    // samples would mean the theming is not actually per team.
+    expect(accents.every((accent) => accent.startsWith("oklch("))).toBe(true);
+    expect(new Set(accents).size).toBe(accents.length);
   });
 
   it("carries the independence disclaimer", async () => {

@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import {
   createThemeStyle,
+  defaultTeamConfig,
+  deriveTeamPalettes,
   enabledTeamSlugs,
   getTeamConfig,
   houseTheme,
@@ -62,8 +64,16 @@ export function Home() {
     return team ? [team] : [];
   });
 
+  // The edition a cold visitor lands in when they click through without picking
+  // one. It is the default team rather than a hardcoded route, so the home page
+  // keeps working when the roster of editions changes.
+  const featuredEdition = `/teams/${defaultTeamConfig.slug}`;
+
   return (
-    <HomeShell themeStyle={createThemeStyle(houseTheme) as CSSProperties}>
+    <HomeShell
+      editionHref={featuredEdition}
+      themeStyle={createThemeStyle(houseTheme) as CSSProperties}
+    >
       <div className={styles.page} id="main">
         <section className={styles.hero}>
           <h1 className={styles.heroHeadline}>Know what matters before kickoff</h1>
@@ -76,7 +86,7 @@ export function Home() {
               Request your team
               <ArrowRight aria-hidden="true" />
             </a>
-            <Link className={styles.secondaryAction} href="/teams/texas-football">
+            <Link className={styles.secondaryAction} href={featuredEdition}>
               See a live edition
             </Link>
           </div>
@@ -170,8 +180,12 @@ export function Home() {
             <strong>Saturday Signal</strong> · Independent coverage. Not affiliated with any school,
             conference, or athletics department.
           </p>
-          <p>
-            <Link href="/teams/texas-football">Texas edition</Link>
+          <p className={styles.footerEditions}>
+            {editions.map((team) => (
+              <Link href={`/teams/${team.slug}`} key={team.slug}>
+                {team.shortName} edition
+              </Link>
+            ))}
           </p>
         </div>
       </footer>
@@ -186,9 +200,24 @@ function EditionCard({ team }: { team: TeamConfig }) {
   const nextGame = getNextGame(team.slug);
   const schedule = getTeamSchedule(team.slug);
   const countdown = getKickoffCountdown(nextGame);
+  const palettes = deriveTeamPalettes(team.theme);
+
+  // The card carries a hairline of its own edition's colour. The page itself
+  // stays house — an edition's hue taking over the home page is exactly what
+  // the surface rules forbid — but a sample bounded to the card is the fastest
+  // honest way to show that an edition is coloured for its team.
+  const editionAccent = {
+    "--edition-light-accent": palettes.light.accent,
+    "--edition-dark-accent": palettes.dark.accent,
+    // The countdown is the loudest thing on the card, so it carries the
+    // edition's text-weight accent rather than the house one. Both modes are
+    // emitted because the bridge cannot compute them at render time.
+    "--edition-light-accent-strong": palettes.light.accentStrong,
+    "--edition-dark-accent-strong": palettes.dark.accentStrong,
+  } as CSSProperties;
 
   return (
-    <Link className={styles.editionCard} href={`/teams/${team.slug}`}>
+    <Link className={styles.editionCard} href={`/teams/${team.slug}`} style={editionAccent}>
       <span className={styles.editionKicker}>{team.conference}</span>
       <span className={styles.editionName}>{team.displayName}</span>
 

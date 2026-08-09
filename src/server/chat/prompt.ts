@@ -1,6 +1,9 @@
 import { getSourceReadiness, type TeamConfig } from "@/config/team";
 import { formatCaptureDate, getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
 import type { RetrievalHit } from "@/server/rag/retrieve";
+import { getRankingDocuments } from "@/server/sources/rankings";
+import type { SourceDocument } from "@/server/sources/types";
+import { getWeeklyNewsDocuments } from "@/server/sources/weekly";
 import type {
   ComposerCapability,
   GroundingContext,
@@ -85,6 +88,14 @@ function buildGroundingContext(
   const schedule = getTeamSchedule(team.slug);
   const nextGame = getNextGame(team.slug);
   const groundingHits = prioritizeGroundingHits(question, hits, capability);
+  const direct = directExcerpts(team, capability);
+  const excerpts =
+    direct.length > 0
+      ? direct
+      : groundingHits.map((hit) => ({
+          title: hit.chunk.document.title,
+          content: hit.chunk.content,
+        }));
 
   return {
     teamName: team.shortName,
@@ -95,12 +106,45 @@ function buildGroundingContext(
     upcomingGames: (schedule?.games ?? []).slice(0, schedulePreviewLength).map(toScheduleFact),
     sourceReadiness: getSourceReadiness(team),
     scheduleCapturedAt: schedule ? formatCaptureDate(schedule.capturedAt) : undefined,
-    excerpts: groundingHits.map((hit) => ({
-      title: hit.chunk.document.title,
-      content: hit.chunk.content,
-    })),
-    citationTitles: dedupe(groundingHits.map((hit) => hit.chunk.document.title)),
+    excerpts,
+    citationTitles: dedupe(excerpts.map((excerpt) => excerpt.title)),
   };
+}
+
+// Capabilities whose answer is a specific document rather than whatever
+// retrieval liked best.
+//
+// Reordering retrieved hits is not enough here, and that is worth spelling
+// out: retrieval ranks by term overlap, so "Utah State" scores far higher
+// across twelve game rows than in one poll entry, and the ranking document
+// never made the cut to be reordered. Sorting a list that does not contain
+// the answer produces a confident answer to a different question — which is
+// exactly what "is Utah State ranked?" got back. These capabilities read the
+// same source documents the page renders, the way next-game-brief already
+// reads the schedule.
+export function getCapabilityDocuments(
+  team: TeamConfig,
+  capability?: ComposerCapability,
+): SourceDocument[] {
+  if (capability === "ranking-brief") {
+    return getRankingDocuments(team);
+  }
+
+  if (capability === "news-brief") {
+    return getWeeklyNewsDocuments(team.slug);
+  }
+
+  return [];
+}
+
+function directExcerpts(
+  team: TeamConfig,
+  capability?: ComposerCapability,
+): Array<{ title: string; content: string }> {
+  return getCapabilityDocuments(team, capability).map((document) => ({
+    title: document.title,
+    content: document.body,
+  }));
 }
 
 export function prioritizeGroundingHits(

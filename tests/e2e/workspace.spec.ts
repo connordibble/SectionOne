@@ -128,6 +128,121 @@ for (const width of [1440, 768, 414, 375, 320]) {
   });
 }
 
+// The second edition is the test of the config thesis: a team outside the
+// blue-blood tier should be a data change, not a redesign.
+test("the Utah State edition renders its own schedule, notes, and accent", async ({ page }) => {
+  const accentOf = () =>
+    page.evaluate(() =>
+      getComputedStyle(document.querySelector("main")!).getPropertyValue("--team-accent").trim(),
+    );
+
+  await page.goto("/teams/utah-state-football");
+  await expect(page.getByText(/Utah State · Week 1 · 2026 · Pac-12/)).toBeVisible();
+  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What matters Saturday" })).toBeVisible();
+  await expect(page.getByText(/Idaho State/).first()).toBeVisible();
+
+  const aggieAccent = await accentOf();
+  expect(aggieAccent).toMatch(/^oklch\(/);
+
+  await page.goto("/teams/texas-football");
+  expect(await accentOf()).not.toBe(aggieAccent);
+});
+
+test("the team switcher moves between editions", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  await page.getByLabel("Team").selectOption("utah-state-football");
+
+  await expect(page).toHaveURL(/\/teams\/utah-state-football$/);
+  await expect(page.getByText(/Utah State · Week 1 · 2026 · Pac-12/)).toBeVisible();
+});
+
+// The promoted prompt for a two-word team name used to escalate to a paid
+// answer because the classifier reserved a single word for the team.
+test("the Utah State next-game prompt is answered from Utah State sources", async ({ page }) => {
+  await page.goto("/teams/utah-state-football");
+
+  await page.getByLabel("Ask Saturday Signal").fill("Who does Utah State play next?");
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+
+  // Scoped to the answer: the venue also appears in the hero, so an unscoped
+  // match would pass without the chat having answered anything.
+  const answer = page.getByText(/Utah State opens the 2026 schedule vs Idaho State/);
+  await expect(answer).toBeVisible();
+  await expect(answer).toContainText("Maverik Stadium, Logan, Utah");
+});
+
+// For most of the country the useful poll question is not "who is No. 1" but
+// "which of my weeks are the hard ones".
+test("the field section reads an unranked team's schedule, not a national list", async ({
+  page,
+}) => {
+  await page.goto("/teams/utah-state-football");
+  const field = page.locator('[aria-labelledby="ranking-heading"]');
+
+  await expect(field.getByText("Unranked")).toBeVisible();
+  await expect(field.getByText(/2 of 12 opponents ranked/)).toBeVisible();
+  await expect(field.getByText("at Washington")).toBeVisible();
+  await expect(field.getByText("at Utah")).toBeVisible();
+  // A poll that has not been released is not a poll with nobody in it.
+  await expect(field.getByText(/AP Top 25 is out August 17/)).toBeVisible();
+});
+
+test("the field section leads with a ranked team's own number", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+  const field = page.locator('[aria-labelledby="ranking-heading"]');
+
+  await expect(field.getByText(/No\.\s*4/).first()).toBeVisible();
+  await expect(field.getByText(/7 of 12 opponents ranked/)).toBeVisible();
+  await expect(field.locator("li")).toHaveCount(5);
+  await expect(field.getByText(/2 more ranked opponents/)).toBeVisible();
+});
+
+test("this week carries a headline, a takeaway, and the outlet behind it", async ({ page }) => {
+  await page.goto("/teams/utah-state-football");
+  const news = page.locator('[aria-labelledby="news-heading"]');
+
+  // Ranked by the rubric, not by the order the package was written: the
+  // highest-impact story leads and the official announcements sink.
+  await expect(news.locator("li").first()).toContainText(/four offensive starters/i);
+  await expect(news.getByText(/Almost the whole offense turned over/)).toBeVisible();
+  await expect(news.getByText(/Deseret News/)).toBeVisible();
+
+  // No outlet owns the list. The first Texas package was three of five from
+  // one national masthead, which is one desk's read of the week presented as
+  // the week.
+  const outlets = await news.locator("li p:last-child").allInnerTexts();
+  const mastheads = outlets.map((line) => line.split("·")[0].trim());
+  const counts = new Map<string, number>();
+  for (const masthead of mastheads) {
+    counts.set(masthead, (counts.get(masthead) ?? 0) + 1);
+  }
+  expect(new Set(mastheads).size).toBeGreaterThanOrEqual(3);
+  expect(Math.max(...counts.values())).toBeLessThanOrEqual(2);
+
+  // The summary is ours; the reporting is not. Every item has to link out to
+  // the thing it was summarised from.
+  const links = news.locator("a");
+  await expect(links).toHaveCount(5);
+  for (const link of await links.all()) {
+    await expect(link).toHaveAttribute("href", /^https:\/\//);
+    await expect(link).toHaveAttribute("rel", /noopener/);
+  }
+});
+
+test("chat answers a poll question from the poll, not the schedule", async ({ request }) => {
+  const response = await request.post("/api/chat", {
+    data: { message: "Is Utah State ranked?", teamSlug: "utah-state-football" },
+  });
+  const body = (await response.json()) as { answer: string; citations: Array<{ title: string }> };
+
+  expect(body.answer).toContain("not ranked");
+  // Retrieval ranks the twelve schedule rows above one poll entry, so this
+  // used to come back as a schedule recital under a poll question.
+  expect(body.citations.map((citation) => citation.title)).toContain("Coaches Poll: Preseason");
+});
+
 test("health and ingest APIs respond", async ({ request }) => {
   const health = await request.get("/api/health");
   expect(health.ok()).toBe(true);
@@ -136,7 +251,7 @@ test("health and ingest APIs respond", async ({ request }) => {
     enabledTeams: string[];
   };
   expect(healthBody.ok).toBe(true);
-  expect(healthBody.enabledTeams).toEqual(["texas-football"]);
+  expect(healthBody.enabledTeams).toEqual(["texas-football", "utah-state-football"]);
 
   const ingest = await request.post("/api/ingest", {
     data: { teamSlug: "texas-football" },
@@ -147,7 +262,7 @@ test("health and ingest APIs respond", async ({ request }) => {
     documentCount: number;
   };
   expect(ingestBody.teamSlug).toBe("texas-football");
-  expect(ingestBody.documentCount).toBe(20);
+  expect(ingestBody.documentCount).toBe(26);
 });
 
 test("chat API returns named sources", async ({ request }) => {

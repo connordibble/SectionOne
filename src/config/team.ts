@@ -30,9 +30,18 @@ const teamConfigSchema = z.object({
     // Saturation. Above ~0.16 the accent starts fighting the text for
     // attention at the sizes this interface uses.
     chroma: z.number().min(0).max(0.2),
-    // A cool structural counterweight so the page does not become a
-    // single-hue wash. Should sit well away from `hue`.
-    neutralHue: z.number().min(0).max(360),
+    // The dark that carries the masthead and other structural areas.
+    //
+    // When a school's own primary is already dark — navy, maroon, forest —
+    // this is that colour, because a fan should see their actual colours.
+    // When the primary is bright, as burnt orange is, no amount of darkening
+    // makes it structure, and this becomes a counterweight well away from
+    // `hue` so the page does not read as a single-hue wash.
+    structuralHue: z.number().min(0).max(360),
+    // Low enough that the masthead stays structure. Past roughly 0.09 a dark
+    // bar stops reading as the page's frame and starts reading as a colour
+    // field competing with the accent.
+    structuralChroma: z.number().min(0).max(0.09),
   }),
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
@@ -93,11 +102,18 @@ export const teamConfigs = {
     referenceLabel: "Texas · Week 1 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
-    // Burnt orange that reads Texas without using the official UT colour.
+    // Burnt orange, as close to the school's own as contrast allows. The
+    // published colour measures 4.13:1 against this page — under AA — so the
+    // accent keeps its hue and saturation and gives up only lightness, which
+    // is the one dimension contrast actually needs. It lands at 5.98:1.
+    //
+    // Texas has no dark primary, so the structural dark is a counterweight
+    // rather than a second school colour.
     theme: {
       hue: 47,
-      chroma: 0.13,
-      neutralHue: 236,
+      chroma: 0.145,
+      structuralHue: 236,
+      structuralChroma: 0.035,
     },
     sourcePolicy: {
       disclaimer:
@@ -200,6 +216,136 @@ export const teamConfigs = {
       "Who does Texas play next?",
     ],
   }),
+  "utah-state-football": teamConfigSchema.parse({
+    slug: "utah-state-football",
+    sport: "football",
+    league: "college-football",
+    conference: "Pac-12",
+    displayName: "Utah State football",
+    shortName: "Utah State",
+    referenceLabel: "Utah State · Week 1 · 2026",
+    tagline: "Get the short answer before kickoff.",
+    aliases: ["Utah State", "Aggies", "USU"],
+    // Aggie blue on white. The school's primary is already a dark navy, so it
+    // is the structural dark — the masthead is the team's actual colour rather
+    // than a neutral standing in for it. Measured against the published navy,
+    // which lands at oklch(25% 0.056 237); the structural slot sits at L23, so
+    // the bar reads as the real thing.
+    //
+    // The accent is the same blue lifted to a lightness that can carry text
+    // and figures on a pale page. One hue family, two jobs.
+    theme: {
+      hue: 250,
+      chroma: 0.12,
+      structuralHue: 250,
+      structuralChroma: 0.06,
+    },
+    sourcePolicy: {
+      disclaimer: "Independent coverage. Not affiliated with Utah State Athletics.",
+      trustedSourceLabels: [
+        "CollegeFootballData",
+        "Official schedule links",
+        "Verified game notes",
+      ],
+      protectedMarksGuidance: [
+        "Do not use official logos or mascot imagery.",
+        "Do not use Big Blue as product branding.",
+        "Do not imply official access, sponsorship, or endorsement.",
+      ],
+    },
+    voice: {
+      posture: "smart fan analyst",
+      preferredTerms: [
+        "early downs",
+        "line of scrimmage",
+        "explosiveness",
+        "field position",
+        "special teams",
+        "hidden yardage",
+        "third down",
+        "success rate",
+      ],
+      bannedPhrases: [
+        "as an AI",
+        "it is important to note",
+        "official partner",
+        "guaranteed lock",
+        // The register smaller programs get written in everywhere else, and
+        // the reason a fan of one has no good reading options. A team that is
+        // not a national story is not thereby a human interest story.
+        "little brother",
+        "plucky",
+        "cinderella",
+        "punching above",
+      ],
+    },
+    editorial: {
+      lead: {
+        headline: "Bank the opener. The road comes fast.",
+        body: "Idaho State first, then Seattle and Salt Lake City in back-to-back weeks. Watch tackling in space and who wins early downs.",
+        noteId: "opponent-idaho-state",
+      },
+      matchup: {
+        thesis: "Win the margins",
+        question: "How does Utah State stay in games in the Pac-12?",
+        answer:
+          "Field position and explosive plays. Win special teams, give up nothing behind coverage, and the roster gap stops deciding it by itself.",
+        citationNoteIds: ["special-teams-margin", "explosive-plays-allowed"],
+      },
+      signals: [
+        {
+          id: "run-game",
+          title: "Run game",
+          summary: "Stay ahead of the chains",
+          detail:
+            "First and second down decide whether this offense gets to use the rest of its playbook. Third-and-long is where the drive ends.",
+          state: "watch",
+          prompt: "What matters in the run game?",
+          noteId: "run-game-identity",
+        },
+        {
+          id: "ball-security",
+          title: "Ball security",
+          summary: "Make them drive the field",
+          detail:
+            "Get the call in, take the checkdown, and hand nothing over for free. Field position is worth more here than one big throw.",
+          state: "watch",
+          prompt: "What does a clean start look like for Utah State?",
+          noteId: "quarterback-operation",
+        },
+        {
+          id: "explosive-plays",
+          title: "Explosive plays",
+          summary: "Nothing behind coverage",
+          detail:
+            "Long, slow drives against this defense are survivable. Chunk plays over the top are what turn a close game into a bad one.",
+          state: "ready",
+          prompt: "Why do explosive plays decide these games?",
+          noteId: "explosive-plays-allowed",
+        },
+        {
+          id: "special-teams",
+          title: "Special teams",
+          summary: "Cheapest yards on the field",
+          detail:
+            "Net punting and kick coverage are where a roster without a talent edge buys itself a quarter of football.",
+          state: "thin",
+          prompt: "What should I watch on special teams?",
+          noteId: "special-teams-margin",
+        },
+      ],
+    },
+    nextGameNote:
+      "Watch tackling in space, early downs, and who earns real snaps up front before the trip to Seattle.",
+    cfbd: {
+      team: "Utah State",
+      season: 2026,
+    },
+    suggestedPrompts: [
+      "What matters in the run game?",
+      "Who does Utah State play next?",
+    ],
+  }),
 } satisfies Record<string, TeamConfig>;
 
 // The palette roles every component consumes. Names are stable and match the
@@ -238,7 +384,7 @@ export function deriveTeamPalette(
   theme: TeamConfig["theme"],
   mode: "light" | "dark" = "light",
 ): TeamPalette {
-  const { hue, chroma, neutralHue } = theme;
+  const { hue, chroma, structuralHue, structuralChroma } = theme;
 
   // Surfaces and text carry a trace of the team hue so the page reads warm (or
   // cool) rather than grey, but at a chroma low enough to stay neutral.
@@ -259,9 +405,11 @@ export function deriveTeamPalette(
       border: oklch(29, tint * 0.8, hue),
       borderStrong: oklch(43, tint * 0.9, hue),
       onAccent: oklch(15, tint * 0.8, hue),
-      steel: oklch(9.5, 0.025, neutralHue),
-      steelRaised: oklch(15.5, 0.03, neutralHue),
-      onSteel: oklch(94, 0.012, neutralHue),
+      // Dark mode pulls chroma back: the same saturation that reads as navy at
+      // L23 reads as a colour cast at L9.5.
+      steel: oklch(9.5, structuralChroma * 0.7, structuralHue),
+      steelRaised: oklch(15.5, structuralChroma * 0.85, structuralHue),
+      onSteel: oklch(94, 0.012, structuralHue),
       focus: oklch(84, chroma * 0.58, hue),
     };
   }
@@ -280,9 +428,9 @@ export function deriveTeamPalette(
     border: oklch(86, tint * 1.5, hue),
     borderStrong: oklch(72, tint * 2.5, hue),
     onAccent: oklch(98.5, tint * 0.4, hue),
-    steel: oklch(23, 0.035, neutralHue),
-    steelRaised: oklch(29, 0.035, neutralHue),
-    onSteel: oklch(96, 0.012, neutralHue),
+    steel: oklch(23, structuralChroma, structuralHue),
+    steelRaised: oklch(29, structuralChroma, structuralHue),
+    onSteel: oklch(96, 0.012, structuralHue),
     focus: oklch(34, chroma * 0.88, hue),
   };
 }
@@ -303,7 +451,8 @@ export function deriveTeamPalettes(theme: TeamConfig["theme"]): TeamPaletteSet {
 export const houseTheme: TeamConfig["theme"] = {
   hue: 47,
   chroma: 0.13,
-  neutralHue: 236,
+  structuralHue: 236,
+  structuralChroma: 0.035,
 };
 
 const paletteRoles: Array<[string, keyof TeamPalette]> = [
