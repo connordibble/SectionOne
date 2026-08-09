@@ -46,7 +46,7 @@ const answerEvents = [
         },
       ],
       confidence: "high",
-      freshness: "Schedule checked July 1, 2026.",
+      freshness: "Schedule updated July 1, 2026.",
     },
   },
 ];
@@ -161,6 +161,7 @@ describe("TeamChat", () => {
     expect(
       screen.getByRole("button", { name: "Give me the next-game briefing." }),
     ).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByLabelText("Ask Section One")).toHaveFocus());
 
     // A fresh conversation must not resend the old session id or history
     await userEvent.click(

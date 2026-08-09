@@ -64,7 +64,11 @@ describe("POST /api/chat", () => {
     };
     expect(body.answer).toContain("Texas State");
     expect(body.citations.length).toBeGreaterThanOrEqual(2);
-    expect(body.provider).toBe("mock");
+    // Which model wrote the answer is not published. It is an implementation
+    // detail, and naming it commits us to a disclosure we would have to keep
+    // current every time it changes.
+    expect(body).not.toHaveProperty("provider");
+    expect(body).not.toHaveProperty("model");
   });
 
   it("streams citations, deltas, and a done event over SSE", async () => {

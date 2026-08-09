@@ -7,6 +7,7 @@ import {
   UnknownModelPricingError,
 } from "./pricing";
 import type { LlmUsage } from "./types";
+import { reportDegradation } from "@/server/observability/report";
 
 export type UsageEntry = {
   teamSlug: string;
@@ -38,9 +39,10 @@ export async function recordLlmUsage(entry: UsageEntry, dbOverride?: Db): Promis
       accepted: entry.accepted,
     });
   } catch (error) {
-    console.warn(
-      `[llm] usage attribution skipped: ${error instanceof Error ? error.message : error}`,
-    );
+    reportDegradation(`usage attribution skipped: ${error instanceof Error ? error.message : String(error)}`, {
+      scope: "llm/usage",
+      fingerprint: "llm/usage:write",
+    });
   }
 }
 
@@ -62,9 +64,10 @@ export async function getMonthToDateSpendMicroUsd(dbOverride?: Db): Promise<numb
 
     return decimalToMicroUsd(rows[0]?.total ?? "0");
   } catch (error) {
-    console.warn(
-      `[llm] spend lookup failed: ${error instanceof Error ? error.message : error}`,
-    );
+    reportDegradation(`spend lookup failed: ${error instanceof Error ? error.message : String(error)}`, {
+      scope: "llm/usage",
+      fingerprint: "llm/usage:read",
+    });
     return null;
   }
 }
@@ -77,7 +80,10 @@ function costColumn(usage: LlmUsage): string | null {
     return microUsdToDecimalString(estimateCostMicroUsd(usage));
   } catch (error) {
     if (error instanceof UnknownModelPricingError) {
-      console.warn(`[llm] ${error.message} Recording tokens without a cost.`);
+      reportDegradation(`${error.message} Recording tokens without a cost.`, {
+        scope: "llm/pricing",
+        fingerprint: "llm/pricing:unknown-model",
+      });
       return null;
     }
 

@@ -14,6 +14,26 @@ test("leads with the fan promise and two ways in", async ({ page }) => {
   );
 });
 
+test("skip links move focus into the page content", async ({ page }) => {
+  await page.goto("/");
+
+  const skipLink = page.getByRole("link", { name: "Skip to content" });
+  await skipLink.focus();
+  await skipLink.press("Enter");
+
+  await expect(page.locator("#main")).toBeFocused();
+});
+
+test("a team edition also exposes a working skip link", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  const skipLink = page.getByRole("link", { name: "Skip to content" });
+  await skipLink.focus();
+  await skipLink.press("Enter");
+
+  await expect(page.locator("#workspace-panel")).toBeFocused();
+});
+
 test("the edition card carries real schedule data and opens the edition", async ({ page }) => {
   await page.goto("/");
 
@@ -21,7 +41,7 @@ test("the edition card carries real schedule data and opens the edition", async 
   // Same config and schedule the edition page renders — a card that can drift
   // out of sync with the product would be advertising, not proof.
   await expect(edition).toContainText(/\d+\s*days? out|Today|Kickoff TBD/);
-  await expect(edition).toContainText(/Schedule checked/);
+  await expect(edition).toContainText(/Schedule updated/);
 
   await edition.click();
   await expect(page).toHaveURL(/\/teams\/texas-football$/);
@@ -44,6 +64,7 @@ test("requesting a team confirms and replaces the form", async ({ page }) => {
   // The confirmation replaces the form rather than sitting beside it, so a
   // filled-in form cannot be submitted twice by accident.
   await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
+  await expect(page.locator("#request").getByRole("status")).toBeFocused();
   await expect(page.getByRole("button", { name: /request this team/i })).toHaveCount(0);
 });
 

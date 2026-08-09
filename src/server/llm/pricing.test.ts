@@ -45,7 +45,9 @@ describe("estimateCostMicroUsd", () => {
 
   it("reports whether a model is priced", () => {
     expect(isModelPriced("claude-haiku-4-5-20251001")).toBe(true);
-    expect(isModelPriced("gpt-4o")).toBe(false);
+    // Deliberately not a real id: a model that gets priced later would turn
+    // this assertion into a false pass.
+    expect(isModelPriced("not-a-real-model-v0")).toBe(false);
   });
 });
 

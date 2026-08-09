@@ -6,28 +6,18 @@ is for how the project is worked on.
 
 ## Verification traps
 
-### Playwright can silently test a stale server
+### Playwright used to silently test a stale server — fixed
 
-`playwright.config.ts` sets `reuseExistingServer: !process.env.CI`. Locally that
-attaches to whatever is already listening on port 3000 instead of starting a
-fresh one. If that process is a `pnpm dev` left over from manual API poking, the
-whole suite runs against a different build than the one just made.
+`playwright.config.ts` once ran on port 3000 with `reuseExistingServer` set
+outside CI, so the suite would attach to whatever dev server was already there.
+Twice that produced a wide red run — navigation, overflow and chat all failing
+at once — that was really old code being served.
 
-This has now produced two false alarms, the second a ~40-test failure that was
-entirely the stale process. The tell is a wide, unrelated failure set —
-navigation, overflow, and chat all breaking at once — rather than failures
-clustered around what changed.
-
-Before trusting a red run:
-
-```bash
-lsof -ti:3000 | xargs kill -9; pnpm build && pnpm test:e2e
-```
-
-The real fix is `reuseExistingServer: false`. The suite runs in about six
-seconds, so a cold server start is cheap next to a class of failure that has
-already cost two sessions. Not changed yet because it is a shared config and
-nobody has asked for it.
+It now builds and serves its own production build on port **3100**
+(`E2E_PORT` overrides). A dev server can stay up on 3000 while the suite runs,
+and the suite cannot test anything but what it just built. The tell for the old
+failure mode, worth remembering: failures scattered across unrelated areas
+rather than clustered around what changed.
 
 ### Fixture counts are asserted by number
 
@@ -35,6 +25,16 @@ nobody has asked for it.
 `documentCount`. Any new source document breaks them, which is intentional —
 it forces a look at what was added — but the fix is to update the number, not
 to loosen the assertion.
+
+### Standalone scripts need their own env loading
+
+Next.js reads `.env.local` for the app; `tsx` does not. Every script under
+`scripts/` therefore saw an empty environment and failed with a confusing
+"DATABASE_URL is required" on a machine where the variable was plainly set.
+
+They now run with `--env-file-if-exists=.env.local`, which loads it when
+present and continues without it in CI. That flag needs Node 22.9, so the
+`engines.node` floor moved up to match.
 
 ## Data provenance
 

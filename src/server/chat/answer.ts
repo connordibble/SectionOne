@@ -14,10 +14,17 @@ import {
   prioritizeGroundingHits,
   type ChatHistoryMessage,
 } from "./prompt";
+import { checkBudget } from "./budget";
+import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
 import { selectAnswerStrategy } from "./routing";
-import type { ChatAnswer, ChatCitation, ChatStreamEvent } from "./types";
+import { toPublicAnswer, type ChatAnswer, type ChatCitation, type ChatStreamEvent } from "./types";
 
-const rumorPattern = /rumou?r|message board|heard|leak|injur|out for season|bet|lock/i;
+// Keep the policy gate precise. Bare substring matches turned normal football
+// language such as "better" and "lock in" into betting refusals.
+const rumorPattern =
+  /\b(?:rumou?r|message board|heard|leak(?:ed|s)?|injur(?:y|ies|ed|ing)?|out for season)\b/i;
+const bettingPattern =
+  /\b(?:bet(?:ting)?|wager(?:ing)?|odds?|moneyline|spread|parlay)\b|\b(?:guaranteed|sure)\s+lock\b|\block(?:ed)?\s+(?:pick|play|of the week)\b/i;
 
 export type AnswerOptions = {
   history?: ChatHistoryMessage[];
@@ -82,6 +89,15 @@ async function produceAnswer(
     return finalizeAnswer(prepared, composer.name, result.model, result.text);
   }
 
+  // Consulted only on the escalation path. A composer answer is already free
+  // and instant, so a cache lookup there would add a database round trip to
+  // save nothing.
+  const cached = await lookupCachedAnswer(prepared.team.slug, prepared.question, env ?? process.env);
+
+  if (cached.hit) {
+    return { ...cached.answer, provider: "cache", model: cached.via };
+  }
+
   const resolved = resolveLlmProvider(env ?? process.env);
   const provider = resolved.provider;
 
@@ -92,10 +108,26 @@ async function produceAnswer(
     return finalizeAnswer(prepared, composer.name, result.model, result.text);
   }
 
+  // Checked only on the paid path. A composer answer is free and must never
+  // be blocked by a spend ceiling.
+  const budget = await checkBudget(env ?? process.env);
+
+  if (!budget.withinBudget) {
+    const capped = await composer.generate(prepared.request);
+
+    return finalizeAnswer(prepared, composer.name, capped.model, capped.text, budget.notice);
+  }
+
   const attempt = await generateAccepted(prepared, provider);
 
   if (attempt.accepted) {
-    return finalizeAnswer(prepared, provider.name, attempt.model, attempt.text);
+    const answer = finalizeAnswer(prepared, provider.name, attempt.model, attempt.text);
+
+    // Stored, not awaited on the read path's behalf: a slow write must not
+    // delay the answer a fan is already waiting on.
+    void storeCachedAnswer(prepared.team.slug, prepared.question, toPublicAnswer(answer));
+
+    return answer;
   }
 
   const fallback = await composer.generate(prepared.request);
@@ -179,6 +211,9 @@ type PreparedGeneration = {
   strategy: "composer" | "escalate";
   capability?: ComposerCapability;
   team: TeamConfig;
+  // The question as asked. The request carries a built prompt; the cache keys
+  // on what the fan actually typed.
+  question: string;
   request: LlmRequest;
   citations: ChatCitation[];
   freshness: string;
@@ -207,7 +242,7 @@ async function prepareAnswer(
 
   // Both guardrails short-circuit before any provider call, so a rumour probe
   // or an unanswerable question never costs anything.
-  if (rumorPattern.test(question)) {
+  if (rumorPattern.test(question) || bettingPattern.test(question)) {
     const anchor = officialCitations.length > 0 ? officialCitations : retrievedCitations;
     return {
       kind: "static",
@@ -266,6 +301,7 @@ async function prepareAnswer(
     strategy: selected.strategy,
     capability,
     team,
+    question,
     request: buildChatRequest(team, question, answerHits, options.history ?? [], capability),
     citations,
     freshness,
@@ -320,7 +356,7 @@ function createCitations(
 function createFreshness(teamSlug: string, warnings: string[]) {
   const schedule = getTeamSchedule(teamSlug);
   const checked = schedule
-    ? `Schedule checked ${formatCaptureDate(schedule.capturedAt)}.`
+    ? `Schedule updated ${formatCaptureDate(schedule.capturedAt)}.`
     : "Schedule date unavailable.";
   const coverageNote = warnings.length > 0 ? " No 2026 stats yet." : "";
 

@@ -11,3 +11,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Keep the product independent: do not use UT marks, Bevo branding, or official-affiliation language.
 - Preserve the platform shape: team-specific choices belong in typed config, not scattered UI copy.
 - Verify each slice with `pnpm check`, `pnpm build`, and a browser or Playwright smoke test before committing.
+- Handle failure to the standard in `docs/engineering-standards.md`: severity is `degraded` (log) or
+  `error` (log and alert), reporting never changes control flow, and nothing sensitive reaches a log
+  or an inbox.
