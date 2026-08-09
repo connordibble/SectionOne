@@ -1,5 +1,8 @@
-/* Hallmark · genre: editorial sports desk · macrostructure: Stat-Led app workspace
- * theme: derived team system · enrichment: none · nav: N6 · footer: Ft4
+/* Hallmark · genre: editorial game program · tone: focused game-day analysis
+ * palette: burnt-orange anchor (OKLCH hue 47) on midnight steel
+ * macrostructure: Stat-Led game-program canvas
+ * variation: unified ruled Brief + three-view issue masthead
+ * theme: studied-DNA (source: user-supplied image) · enrichment: none · nav: N6 · footer: Ft4
  * pre-emit critique: P5 H5 E5 S5 R5 V5 · contrast: pass (40–41) · slop: pass (42–45)
  * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49)
  * mobile: pass (34, 49, 50–57) · icons: pass (30)
@@ -24,8 +27,12 @@
   --color-danger: oklch(48% 0.16 25);
 
   --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
   --font-outlier: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --display-weight: 760;
+  --tracking-display: 0.025em;
+  --tracking-label: 0.09em;
 
   --space-3xs: 0.25rem;
   --space-2xs: 0.5rem;
@@ -45,8 +52,8 @@
   --text-xl: 1.5625rem;
   --text-2xl: 1.9531rem;
   --text-3xl: 2.4414rem;
-  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
-  --text-figure: clamp(4.5rem, 14vw, 7rem);
+  --text-display: clamp(3.25rem, 5.5vw + 1rem, 6.5rem);
+  --text-figure: clamp(5.75rem, 16vw, 9rem);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
@@ -57,15 +64,15 @@
 
   --rule-hair: 1px;
   --rule-fine: 2px;
-  --radius-tight: 2px;
-  --radius-input: 5px;
-  --radius-card: 8px;
+  --radius-tight: 0;
+  --radius-input: 2px;
+  --radius-card: 2px;
   --radius-round: 999px;
 
-  --control-height: 3rem;
-  --page-gutter: clamp(1rem, 4vw, 2.5rem);
-  --page-width: 74rem;
-  --measure: 68ch;
+  --control-height: 3.5rem;
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --page-width: 88rem;
+  --measure: 62ch;
 
   --z-base: 1;
   --z-raised: 10;
@@ -114,30 +121,6 @@
   --team-focus: var(--team-dark-focus);
   --team-header-accent: var(--team-dark-accent-strong);
   color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  .team-theme[data-theme="system"] {
-    --team-page: var(--team-dark-page);
-    --team-surface: var(--team-dark-surface);
-    --team-surface-soft: var(--team-dark-surface-soft);
-    --team-surface-strong: var(--team-dark-surface-strong);
-    --team-ink: var(--team-dark-ink);
-    --team-ink-subtle: var(--team-dark-ink-subtle);
-    --team-muted: var(--team-dark-muted);
-    --team-border: var(--team-dark-border);
-    --team-border-strong: var(--team-dark-border-strong);
-    --team-accent: var(--team-dark-accent);
-    --team-accent-strong: var(--team-dark-accent-strong);
-    --team-accent-soft: var(--team-dark-accent-soft);
-    --team-on-accent: var(--team-dark-on-accent);
-    --team-steel: var(--team-dark-steel);
-    --team-steel-raised: var(--team-dark-steel-raised);
-    --team-on-steel: var(--team-dark-on-steel);
-    --team-focus: var(--team-dark-focus);
-    --team-header-accent: var(--team-dark-accent-strong);
-    color-scheme: dark;
-  }
 }
 
 .tnum {

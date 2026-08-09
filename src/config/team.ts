@@ -90,8 +90,8 @@ export const teamConfigs = {
     conference: "SEC",
     displayName: "Texas football",
     shortName: "Texas",
-    referenceLabel: "Texas · 2026 season",
-    tagline: "What matters before kickoff, with the evidence attached.",
+    referenceLabel: "Texas · Week 1 · 2026",
+    tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
     // Burnt orange that reads Texas without using the official UT colour.
     theme: {
@@ -101,7 +101,7 @@ export const teamConfigs = {
     },
     sourcePolicy: {
       disclaimer:
-        "Saturday Signal is not affiliated with, endorsed by, or sponsored by The University of Texas at Austin or Texas Athletics.",
+        "Independent coverage. Not affiliated with Texas Athletics.",
       trustedSourceLabels: [
         "CollegeFootballData",
         "Official schedule links",
@@ -134,16 +134,16 @@ export const teamConfigs = {
     },
     editorial: {
       lead: {
-        headline: "Calibration, not drama.",
+        headline: "Start clean. Win up front.",
         body:
-          "The opener is a baseline read on early-down efficiency, the personnel packages the staff trusts, and how quickly the second unit earns meaningful snaps.",
+          "Watch the pace, tackling, and who earns real snaps. The interior line is still the biggest question.",
         noteId: "opponent-texas-state",
       },
       matchup: {
-        thesis: "Control the line",
-        question: "What tells us Texas is in control early?",
+        thesis: "Win up front",
+        question: "How does Texas take control early?",
         answer:
-          "Start with first- and second-down success. If Texas stays ahead of the sticks without leaning on gift field position, the call sheet stays open and the opener becomes the clean calibration it should be.",
+          "Watch first and second down. If Texas stays ahead of the sticks and wins up front, the whole offense opens up.",
         citationNoteIds: ["early-down-identity", "opponent-texas-state"],
       },
       signals: [
@@ -152,53 +152,52 @@ export const teamConfigs = {
           title: "Early downs",
           summary: "Stay ahead of the sticks",
           detail:
-            "Success rate matters more than raw yardage. Third-and-long is the first sign the offense has lost control of the script.",
+            "First and second down matter more than raw yards. Too many third-and-longs mean trouble.",
           state: "watch",
-          prompt: "What should Texas fans watch on early downs?",
+          prompt: "What should I watch on early downs?",
           noteId: "early-down-identity",
         },
         {
           id: "clean-operation",
           title: "Clean operation",
-          summary: "Checks, snaps, zero gifts",
+          summary: "Clean snaps. No free yards.",
           detail:
-            "On-time snaps, sound checks, and no giveaways in plus territory keep field position from becoming the story.",
+            "Get the call in, snap it on time, and protect the ball. Do not let mistakes flip the field.",
           state: "watch",
-          prompt: "What are the clean-game markers for the Texas offense?",
+          prompt: "What does a clean start look like for Texas?",
           noteId: "quarterback-operation",
         },
         {
           id: "pressure-four",
           title: "Pressure with four",
-          summary: "Keep the coverage shell intact",
+          summary: "Get home without blitzing",
           detail:
-            "Interior wins let the defense move the quarterback without spending an extra defender and exposing the back end.",
+            "Interior pressure lets Texas hurry the quarterback without giving up help in coverage.",
           state: "ready",
-          prompt: "Why does pressure with four matter in the opener?",
+          prompt: "Why does pressure with four matter?",
           noteId: "defensive-front-pressure",
         },
         {
           id: "interior-rotation",
-          title: "Interior OL rotation",
-          summary: "Treat projections as provisional",
+          title: "Interior line",
+          summary: "Find the best five",
           detail:
-            "The two-deep is still unsettled at guard. Short yardage and interior pressure will show whether the rotation is hardening.",
+            "Guard is still unsettled. Short yardage and interior pressure should reveal who the staff trusts.",
           state: "thin",
-          prompt: "Where is the Texas offensive-line context still thin?",
+          prompt: "What should I watch on the interior line?",
           noteId: "interior-ol-rotation",
         },
       ],
     },
     nextGameNote:
-      "The opener is the first baseline check for early-down efficiency, clean operation, and whether Texas controls the line of scrimmage before the schedule tightens.",
+      "Watch early downs, clean snaps, and who wins up front before the schedule gets harder.",
     cfbd: {
       team: "Texas",
       season: 2026,
     },
     suggestedPrompts: [
-      "What should Texas fans watch on early downs?",
-      "Give me the next-game briefing.",
-      "Where is the roster context still thin?",
+      "What matters on early downs?",
+      "Who does Texas play next?",
     ],
   }),
 } satisfies Record<string, TeamConfig>;
@@ -295,6 +294,54 @@ export function deriveTeamPalettes(theme: TeamConfig["theme"]): TeamPaletteSet {
   };
 }
 
+// Saturday Signal's own identity, used by surfaces that belong to the product
+// rather than to any one edition. It matches the global accent in tokens.css.
+//
+// Texas currently shares this hue because Texas is burnt orange; that is a
+// coincidence, not a coupling. When an edition ships in green or blue, the
+// house surfaces stay orange.
+export const houseTheme: TeamConfig["theme"] = {
+  hue: 47,
+  chroma: 0.13,
+  neutralHue: 236,
+};
+
+const paletteRoles: Array<[string, keyof TeamPalette]> = [
+  ["page", "page"],
+  ["surface", "surface"],
+  ["surface-soft", "surfaceSoft"],
+  ["surface-strong", "surfaceStrong"],
+  ["ink", "ink"],
+  ["ink-subtle", "inkSubtle"],
+  ["muted", "muted"],
+  ["border", "border"],
+  ["border-strong", "borderStrong"],
+  ["accent", "accent"],
+  ["accent-strong", "accentStrong"],
+  ["accent-soft", "accentSoft"],
+  ["on-accent", "onAccent"],
+  ["steel", "steel"],
+  ["steel-raised", "steelRaised"],
+  ["on-steel", "onSteel"],
+  ["focus", "focus"],
+];
+
+// Emits both modes as --team-light-* / --team-dark-* custom properties. The
+// `.team-theme` class in tokens.css bridges whichever mode is active onto the
+// live --team-* roles that components actually consume.
+export function createThemeStyle(theme: TeamConfig["theme"]): Record<string, string> {
+  const palettes = deriveTeamPalettes(theme);
+  const customProperties: Record<string, string> = {};
+
+  for (const mode of ["light", "dark"] as const) {
+    for (const [cssRole, paletteRole] of paletteRoles) {
+      customProperties[`--team-${mode}-${cssRole}`] = palettes[mode][paletteRole];
+    }
+  }
+
+  return customProperties;
+}
+
 function oklch(lightness: number, chroma: number, hue: number): string {
   return `oklch(${round(lightness)}% ${round(chroma, 4)} ${round(hue)})`;
 }
@@ -332,14 +379,14 @@ export function getSourceReadiness(team: TeamConfig): SourceState[] {
     },
     {
       id: "notes",
-      label: "Desk notes",
-      description: "Independent matchup, roster, and identity reads.",
+      label: "Matchup notes",
+      description: "Independent reads on the team and opponent.",
       state: getTeamNoteDocuments(team.slug).length > 0 ? "Ready" : "Planned",
     },
     {
       id: "official",
       label: "Official links",
-      description: "Primary program pages kept beside every extracted fact.",
+      description: "Team pages for schedules and game details.",
       state: "Ready",
     },
   ];
@@ -348,14 +395,14 @@ export function getSourceReadiness(team: TeamConfig): SourceState[] {
     states.push({
       id: "statistics",
       label: "Season statistics",
-      description: "Team and opponent efficiency data for deeper comparisons.",
+      description: "Team and opponent numbers for deeper comparisons.",
       state: process.env.CFBD_API_KEY ? "Ready" : "Planned",
     });
   } else {
     states.push({
       id: "statistics",
       label: "Season statistics",
-      description: "Team and opponent efficiency data for deeper comparisons.",
+      description: "Team and opponent numbers for deeper comparisons.",
       state: "Planned",
     });
   }

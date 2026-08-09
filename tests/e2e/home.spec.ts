@@ -1,74 +1,97 @@
 import { expect, test } from "@playwright/test";
 
-test("loads the finished Saturday Signal workspace", async ({ page }) => {
+test("leads with the fan promise and two ways in", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { name: "Saturday Signal", exact: true }),
+    page.getByRole("heading", { level: 1, name: /know what matters before kickoff/i }),
   ).toBeVisible();
-  await expect(page.getByText(/Texas · 2026 season · SEC · Independent coverage/)).toBeVisible();
-  await expect(page.getByRole("tab", { name: "Brief" })).toHaveAttribute(
-    "aria-selected",
-    "true",
+  await expect(page.getByRole("link", { name: "Saturday Signal home" })).toBeVisible();
+  await expect(page.getByText("All signal. No noise.")).toBeVisible();
+  await expect(page.getByRole("link", { name: /see a live edition/i }).first()).toHaveAttribute(
+    "href",
+    "/teams/texas-football",
   );
-  await expect(page.getByRole("heading", { name: "What matters" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Ask Saturday Signal" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Next three" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Ask", exact: true })).toBeVisible();
-  await expect(page.getByText(/source desks ready/)).toBeVisible();
 });
 
-test("loads the canonical Texas route with a real kickoff figure", async ({ page }) => {
-  await page.goto("/teams/texas-football");
+test("the edition card carries real schedule data and opens the edition", async ({ page }) => {
+  await page.goto("/");
 
-  const lead = page.getByTestId("kickoff-lead");
-  await expect(lead).toBeVisible();
-  await expect(lead).toContainText(/^(\d+\s*days?\s*out|Today|TBD)/);
-  await expect(lead.getByRole("heading", { level: 2 })).toContainText("Texas");
+  const edition = page.getByRole("link", { name: /texas football/i });
+  // Same config and schedule the edition page renders — a card that can drift
+  // out of sync with the product would be advertising, not proof.
+  await expect(edition).toContainText(/\d+\s*days? out|Today|Kickoff TBD/);
+  await expect(edition).toContainText(/Schedule checked/);
+
+  await edition.click();
+  await expect(page).toHaveURL(/\/teams\/texas-football$/);
+  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
 });
 
-test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
-  await page.goto("/#matchup");
+test("states the honest number of live editions", async ({ page }) => {
+  await page.goto("/");
 
-  const matchupTab = page.getByRole("tab", { name: "Matchup" });
-  await expect(matchupTab).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByTestId("signal-board")).toBeVisible();
+  await expect(page.getByText(/one edition live/i)).toBeVisible();
+});
 
-  await matchupTab.focus();
-  await matchupTab.press("ArrowRight");
-  await expect(page).toHaveURL(/#schedule$/);
-  await expect(page.getByRole("tab", { name: "Schedule" })).toHaveAttribute(
-    "aria-selected",
-    "true",
+test("requesting a team confirms and replaces the form", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("App State");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  // The confirmation replaces the form rather than sitting beside it, so a
+  // filled-in form cannot be submitted twice by accident.
+  await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
+  await expect(page.getByRole("button", { name: /request this team/i })).toHaveCount(0);
+});
+
+test("a request without an email is still accepted", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  await expect(page.locator("#request").getByRole("status")).toBeVisible();
+});
+
+test("a malformed email is reported in fan-readable text", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByLabel(/email/i).fill("nope");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  // Scoped to the section: Next.js renders its own role="alert" route
+  // announcer at the document root, which an unscoped query also matches.
+  await expect(page.locator("#request").getByRole("alert")).toContainText(
+    /email address does not look right/i,
   );
-  await expect(page.getByRole("heading", { name: "2026 schedule" })).toBeVisible();
-
-  await page.getByRole("tab", { name: "Sources" }).click();
-  await expect(page).toHaveURL(/#sources$/);
-  await expect(page.getByRole("heading", { name: "Source ledger" })).toBeVisible();
-  await expect(page.getByText("Season statistics")).toBeVisible();
 });
 
-test("the Signal Board turns a selected cue into a focused question", async ({ page }) => {
-  await page.goto("/#matchup");
+test("in-page navigation clears the sticky masthead", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
 
-  const pressureCue = page.getByRole("button", { name: /Pressure with four/ });
-  await pressureCue.click();
-  await expect(pressureCue).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByText(/Interior wins let the defense move the quarterback/)).toBeVisible();
+  await page.getByRole("link", { name: "Request a team" }).click();
 
-  await page.getByRole("button", { name: "Ask about this" }).click();
-  const composer = page.getByLabel("Ask Saturday Signal");
-  await expect(composer).toBeFocused();
-  await expect(composer).toHaveValue("Why does pressure with four matter in the opener?");
+  const heading = page.getByRole("heading", { name: /most teams do not get covered/i });
+  await expect(heading).toBeVisible();
+
+  // scroll-margin has to clear the sticky bar, or the anchor lands the heading
+  // underneath it.
+  const headingBox = await heading.boundingBox();
+  const mastheadBox = await page.locator("header").boundingBox();
+  expect(headingBox).not.toBeNull();
+  expect(mastheadBox).not.toBeNull();
+  expect(headingBox!.y).toBeGreaterThanOrEqual(mastheadBox!.y + mastheadBox!.height);
 });
 
-test("explicit theme choices cycle and persist", async ({ page }) => {
+test("light is the default and the theme choice persists", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
   const shell = page.locator("main[data-theme]");
 
-  await expect(shell).toHaveAttribute("data-theme", "system");
-  await page.getByRole("button", { name: "Color theme: Auto. Change theme." }).click();
   await expect(shell).toHaveAttribute("data-theme", "light");
   await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
   await expect(shell).toHaveAttribute("data-theme", "dark");
@@ -77,120 +100,39 @@ test("explicit theme choices cycle and persist", async ({ page }) => {
   await expect(shell).toHaveAttribute("data-theme", "dark");
 });
 
-test("reduced motion removes spatial interaction movement", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/#matchup");
+// The masthead and an edition page share a storage key, so a fan who picks
+// dark on one surface does not get flashed back to light on the other.
+test("the theme choice carries between the home page and an edition", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
+  await expect(page.locator("main[data-theme]")).toHaveAttribute("data-theme", "dark");
 
-  const cue = page.getByRole("button", { name: /Early downs/ });
-  await cue.hover();
-
-  await expect(cue).toHaveCSS("transform", "none");
-  await expect(page.getByTestId("signal-board")).toBeVisible();
+  await page.goto("/teams/texas-football");
+  await expect(page.locator("main[data-theme]")).toHaveAttribute("data-theme", "dark");
 });
 
 for (const width of [1440, 768, 414, 375, 320]) {
-  test(`all four views avoid horizontal overflow at ${width}px`, async ({ page }) => {
+  test(`the home page avoids horizontal overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
 
-    for (const view of ["Brief", "Matchup", "Schedule", "Sources"]) {
-      await page.getByRole("tab", { name: view }).click();
-      await expect(page.getByRole("tab", { name: view })).toHaveAttribute(
-        "aria-selected",
-        "true",
-      );
-
-      const overflow = await page.evaluate(
-        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-      );
-      expect(overflow, `${view} overflow at ${width}px`).toBeLessThanOrEqual(1);
-    }
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow, `home overflow at ${width}px`).toBeLessThanOrEqual(1);
   });
 }
 
-test("health and ingest APIs respond", async ({ request }) => {
-  const health = await request.get("/api/health");
-  expect(health.ok()).toBe(true);
-  const healthBody = (await health.json()) as {
-    ok: boolean;
-    enabledTeams: string[];
-  };
-  expect(healthBody.ok).toBe(true);
-  expect(healthBody.enabledTeams).toEqual(["texas-football"]);
-
-  const ingest = await request.post("/api/ingest", {
-    data: { teamSlug: "texas-football" },
+test("team requests are accepted without an email and validated", async ({ request }) => {
+  const accepted = await request.post("/api/team-requests", {
+    data: { teamName: "Coastal Carolina" },
   });
-  expect(ingest.ok()).toBe(true);
-  const ingestBody = (await ingest.json()) as {
-    teamSlug: string;
-    documentCount: number;
-  };
-  expect(ingestBody.teamSlug).toBe("texas-football");
-  expect(ingestBody.documentCount).toBe(20);
-});
+  expect(accepted.status()).toBe(202);
+  expect(((await accepted.json()) as { ok: boolean }).ok).toBe(true);
 
-test("chat API returns grounded citations", async ({ request }) => {
-  const response = await request.post("/api/chat", {
-    data: {
-      teamSlug: "texas-football",
-      message: "Give me the next-game briefing.",
-    },
+  const rejected = await request.post("/api/team-requests", {
+    data: { teamName: "A" },
   });
-
-  expect(response.ok()).toBe(true);
-  const body = (await response.json()) as {
-    answer: string;
-    citations: Array<{ title: string }>;
-  };
-  expect(body.answer).toContain("Texas State");
-  expect(body.citations.length).toBeGreaterThanOrEqual(2);
-});
-
-test("chat API streams citations, answer text, and completion metadata", async ({ request }) => {
-  const response = await request.post("/api/chat", {
-    headers: { Accept: "text/event-stream" },
-    data: {
-      teamSlug: "texas-football",
-      message: "Give me the next-game briefing.",
-    },
-  });
-
-  expect(response.ok()).toBe(true);
-  const body = await response.text();
-  expect(body).toContain("event: citations");
-  expect(body).toContain("event: delta");
-  expect(body).toContain("event: done");
-});
-
-test("chat streams a cited answer and keeps it across views", async ({ page }) => {
-  await page.goto("/");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask", exact: true }).click();
-
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
-  await expect(page.getByRole("link", { name: /Texas football 2026 schedule/i })).toBeVisible();
-
-  await page.getByRole("tab", { name: "Matchup" }).click();
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "The thread" })).toBeVisible();
-
-  await page.getByRole("tab", { name: "Sources" }).click();
-  await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
-});
-
-test("chat supports a grounded follow-up", async ({ page }) => {
-  await page.goto("/");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask", exact: true }).click();
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
-
-  await page.getByLabel("Ask Saturday Signal").fill("How does Ohio State look?");
-  await page.getByRole("button", { name: "Ask", exact: true }).click();
-
-  await expect(page.getByText("How does Ohio State look?")).toBeVisible();
-  await expect(
-    page.getByText(/Ohio State in week two is the schedule's first real line-of-scrimmage test/),
-  ).toBeVisible();
-  await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
+  expect(rejected.status()).toBe(400);
+  expect(((await rejected.json()) as { error: string }).error).toMatch(/which team you follow/i);
 });

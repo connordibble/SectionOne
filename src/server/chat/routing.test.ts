@@ -41,7 +41,12 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
-  it("serves a curated note when retrieval ranks one first", async () => {
+  it("serves a relevant curated note even when a schedule fact ranks first", async () => {
+    expect(await route("How does Ohio State look?")).toEqual({
+      strategy: "composer",
+      capability: "team-note-brief",
+    });
+
     expect(await route("Where is the roster context still thin?")).toEqual({
       strategy: "composer",
       capability: "team-note-brief",

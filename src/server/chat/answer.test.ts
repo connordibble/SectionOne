@@ -50,8 +50,8 @@ describe("answerQuestion", () => {
 
     expect(result.confidence).toBe("low");
     expect(result.mode).toBe("guardrail");
-    expect(result.answer).toContain("not treat that as confirmed");
-    expect(result.answer).toContain("should not launder injury");
+    expect(result.answer).toContain("That is not confirmed");
+    expect(result.answer).toContain("will not repeat injury");
   });
 
   it("falls back to the deterministic composer when the live provider fails", async () => {

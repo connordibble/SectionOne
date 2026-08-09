@@ -18,12 +18,16 @@ type SignalBoardProps = {
 const stateLabels: Record<WorkspaceSignal["state"], string> = {
   watch: "Watch",
   ready: "Ready",
-  thin: "Thin evidence",
+  thin: "Still unknown",
 };
 
 export function SignalBoard({ onAsk, signals, thesis }: SignalBoardProps) {
   const [selectedId, setSelectedId] = useState(signals[0]?.id);
   const selected = signals.find((signal) => signal.id === selectedId) ?? signals[0];
+  const selectedIndex = Math.max(
+    0,
+    signals.findIndex((signal) => signal.id === selected.id),
+  );
 
   if (!selected) {
     return null;
@@ -34,9 +38,9 @@ export function SignalBoard({ onAsk, signals, thesis }: SignalBoardProps) {
       <div className={styles.signalHeading}>
         <div>
           <h2>Signal board</h2>
-          <p>Four cues that turn the opener from a score check into a useful read.</p>
+          <p>Four keys to watch in the opener.</p>
         </div>
-        <p className={styles.boardInstruction}>Choose a cue to sharpen the read.</p>
+        <p className={styles.boardInstruction}>Choose a key.</p>
       </div>
 
       <div className={styles.signalField}>
@@ -48,29 +52,34 @@ export function SignalBoard({ onAsk, signals, thesis }: SignalBoardProps) {
           <span />
         </div>
 
-        {signals.map((signal, index) => (
-          <button
-            aria-pressed={selected.id === signal.id}
-            className={styles.signalNode}
-            data-position={index + 1}
-            data-state={signal.state}
-            key={signal.id}
-            onClick={() => setSelectedId(signal.id)}
-            type="button"
-          >
-            <span className={styles.nodeTopline}>
-              <span className={styles.nodeState}>
-                <span aria-hidden="true" />
-                {stateLabels[signal.state]}
+        <div aria-label="Signal keys" className={styles.signalChoices} role="group">
+          {signals.map((signal, index) => (
+            <button
+              aria-pressed={selected.id === signal.id}
+              className={styles.signalNode}
+              data-position={index + 1}
+              data-state={signal.state}
+              key={signal.id}
+              onClick={() => setSelectedId(signal.id)}
+              type="button"
+            >
+              <span className={styles.nodeTopline}>
+                <span className={styles.nodeState} data-state={signal.state}>
+                  <span aria-hidden="true" />
+                  {stateLabels[signal.state]}
+                </span>
+                <span className={`${styles.nodeIndex} tnum`}>0{index + 1}</span>
               </span>
-              <span className={`${styles.nodeIndex} tnum`}>0{index + 1}</span>
-            </span>
-            <strong>{signal.title}</strong>
-            <span className={styles.nodeSummary}>{signal.summary}</span>
-          </button>
-        ))}
+              <strong>{signal.title}</strong>
+              <span className={styles.nodeSummary}>{signal.summary}</span>
+            </button>
+          ))}
+        </div>
 
         <div aria-live="polite" className={styles.signalCenter} key={selected.id}>
+          <p className={styles.signalDetailLabel}>
+            Key {String(selectedIndex + 1).padStart(2, "0")} · {stateLabels[selected.state]}
+          </p>
           <p className={styles.boardThesis}>{thesis}</p>
           <h3>{selected.title}</h3>
           <p>{selected.detail}</p>

@@ -34,7 +34,7 @@ function composeAnswer(request: LlmRequest): string {
   const grounding = request.grounding;
 
   if (!grounding) {
-    return "The source record does not support that question cleanly. Keep the read to early downs, field position, and the line of scrimmage until a named source can carry more. Freshness cannot be confirmed without a matching record.";
+    return "I do not have enough source material to answer that. Try the next game, the schedule, or what to watch on early downs.";
   }
 
   switch (grounding.capability) {
@@ -62,7 +62,7 @@ function composeNextGameBrief(grounding: GroundingContext): string {
   const season = grounding.seasonYear ? `${grounding.seasonYear} ` : "";
 
   return finish(
-    `${grounding.teamName} opens the ${season}schedule ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel} at ${game.venue}, with kickoff set for ${game.kickoff}${tv}. The useful football read is not just the opponent name; it is whether ${grounding.teamName} wins early downs, owns the line of scrimmage, and keeps the operation clean before the schedule tightens.`,
+    `${grounding.teamName} opens the ${season}schedule ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff is ${game.kickoff}${tv} at ${game.venue}. Watch early downs, line play, and ball security.`,
     grounding,
   );
 }
@@ -76,7 +76,7 @@ function composeSchedule(grounding: GroundingContext): string {
   const lines = grounding.upcomingGames.map(describeGame).join("; ");
 
   return finish(
-    `The ${season}slate opens ${lines}. Field position and early-down efficiency travel week to week, so the useful read is where the schedule stacks real line-of-scrimmage tests back to back rather than any single opponent name.`,
+    `The ${season}slate opens ${lines}. Watch where the toughest line-of-scrimmage tests stack up.`,
     grounding,
   );
 }
@@ -87,7 +87,7 @@ function composeSourceReadiness(grounding: GroundingContext): string {
     .join(", ");
 
   return finish(
-    `Here is what the answer can stand on right now: ${ready}. Schedule and game context are on firm ground. Pressure, coverage, and success-rate comparisons stay provisional until season statistics are ready.`,
+    `Sources ready now: ${ready}. Schedule details are set. Line-of-scrimmage comparisons will get better once new stats arrive.`,
     grounding,
   );
 }
@@ -100,7 +100,7 @@ function composeTeamNoteBrief(grounding: GroundingContext): string {
   }
 
   return finish(
-    `${firstSentences(note.content, 3)} That is the early-down and line-of-scrimmage lens to carry into game week for ${grounding.teamName}.`,
+    firstSentences(note.content, 2),
     grounding,
   );
 }
@@ -109,14 +109,11 @@ function composeGeneral(grounding: GroundingContext): string {
   const excerpt = grounding.excerpts[0];
 
   if (excerpt) {
-    return finish(
-      `${firstSentences(excerpt.content, 2)} For ${grounding.teamName}, that is the early-down and line-of-scrimmage lens to carry into game week.`,
-      grounding,
-    );
+    return finish(firstSentences(excerpt.content, 2), grounding);
   }
 
   return finish(
-    `The source-backed read is to start with early downs, field position, and whether ${grounding.teamName} controls the line of scrimmage. The record is strongest on schedule and matchup context, so this answer should stay inside those lines until season statistics add more depth.`,
+    `Start with early downs, field position, and whether ${grounding.teamName} wins the line of scrimmage. Those are the clearest tells until new season stats arrive.`,
     grounding,
   );
 }
@@ -137,21 +134,16 @@ function finish(body: string, grounding: GroundingContext): string {
   }
 
   const captured = grounding.scheduleCapturedAt
-    ? ` Schedule record checked ${grounding.scheduleCapturedAt}.`
+    ? ` Schedule checked ${grounding.scheduleCapturedAt}.`
     : "";
 
-  return `${body} Freshness: no matching source was found for this answer.${captured}`.trim();
+  return `${body} No matching source was found.${captured}`.trim();
 }
 
 function firstSentences(content: string, count: number): string {
-  const sentences = content.match(/[^.!?]+[.!?]+(?:\s|$)/g);
-
-  if (!sentences) {
-    return content.trim();
-  }
-
-  return sentences
+  return content
+    .trim()
+    .split(/(?<=[.!?])\s+(?=[A-Z][a-z])/)
     .slice(0, count)
-    .map((sentence) => sentence.trim())
     .join(" ");
 }

@@ -172,6 +172,25 @@ export const answerCitations = pgTable("answer_citations", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+// Which programs fans want covered. See drizzle/0003_team_requests.sql for why
+// the raw entry is kept alongside a normalized form, and why nothing
+// identifying beyond an optional email is stored.
+export const teamRequests = pgTable(
+  "team_requests",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    teamName: text("team_name").notNull(),
+    teamNameNormalized: text("team_name_normalized").notNull(),
+    email: text("email"),
+    note: text("note"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("team_requests_normalized_idx").on(table.teamNameNormalized),
+    index("team_requests_created_at_idx").on(table.createdAt),
+  ],
+);
+
 export const schema = {
   teams,
   seasons,
@@ -182,6 +201,7 @@ export const schema = {
   chatMessages,
   answerCitations,
   llmUsage,
+  teamRequests,
 };
 
 export const vectorExtensionSql = sql`CREATE EXTENSION IF NOT EXISTS vector`;

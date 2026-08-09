@@ -7,9 +7,9 @@ import {
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
-import type { SourceState, TeamConfig } from "@/config/team";
+import type { TeamConfig } from "@/config/team";
 import type {
   KickoffCountdown,
   ScheduleGame,
@@ -17,17 +17,15 @@ import type {
 } from "@/server/schedule/schedule";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
-import { SourceLedger } from "./source-ledger";
 import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
 import styles from "./team-workspace.module.css";
 
-export type WorkspaceView = "brief" | "matchup" | "schedule" | "sources";
-type ThemeMode = "system" | "light" | "dark";
+export type WorkspaceView = "brief" | "matchup" | "schedule";
+type ThemeMode = "light" | "dark";
 
 type TeamOption = {
   slug: string;
   shortName: string;
-  conference: string;
 };
 
 type TeamWorkspaceProps = {
@@ -37,7 +35,6 @@ type TeamWorkspaceProps = {
   schedule?: TeamSchedule;
   scheduleCapturedLabel?: string;
   signals: WorkspaceSignal[];
-  sourceStates: SourceState[];
   starterCitations: ChatCitation[];
   team: TeamConfig;
   teamOptions: TeamOption[];
@@ -48,12 +45,10 @@ const views: Array<{ id: WorkspaceView; label: string }> = [
   { id: "brief", label: "Brief" },
   { id: "matchup", label: "Matchup" },
   { id: "schedule", label: "Schedule" },
-  { id: "sources", label: "Sources" },
 ];
 
-const themeOrder: ThemeMode[] = ["system", "light", "dark"];
+const themeOrder: ThemeMode[] = ["light", "dark"];
 const themeLabels: Record<ThemeMode, string> = {
-  system: "Auto",
   light: "Light",
   dark: "Dark",
 };
@@ -65,14 +60,13 @@ export function TeamWorkspace({
   schedule,
   scheduleCapturedLabel,
   signals,
-  sourceStates,
   starterCitations,
   team,
   teamOptions,
   themeStyle,
 }: TeamWorkspaceProps) {
   const [activeView, setActiveView] = useState<WorkspaceView>("brief");
-  const [themeMode, setThemeMode] = useState<ThemeMode>("system");
+  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
   const [draftRequest, setDraftRequest] = useState<DraftRequest>();
   const draftId = useRef(0);
 
@@ -148,8 +142,6 @@ export function TeamWorkspace({
     setDraftRequest({ id: draftId.current, value: prompt });
   }
 
-  const readySourceCount = sourceStates.filter((source) => source.state === "Ready").length;
-
   return (
     <main
       className={`team-theme ${styles.shell}`}
@@ -159,6 +151,9 @@ export function TeamWorkspace({
     >
       <header className={styles.masthead}>
         <div className={styles.mastheadInner}>
+          <p className={styles.issueLine}>
+            {team.referenceLabel} · {team.conference}
+          </p>
           <div className={styles.brandBlock}>
             <h1 aria-label="Saturday Signal" className={styles.wordmark}>
               <Link aria-label="Saturday Signal home" href="/">
@@ -166,9 +161,7 @@ export function TeamWorkspace({
                 <span className={styles.wordmarkSignal}>Signal</span>
               </Link>
             </h1>
-            <p className={styles.issueLine}>
-              {team.referenceLabel} · {team.conference} · Independent coverage
-            </p>
+            <p className={styles.brandTagline}>All signal. No noise.</p>
           </div>
 
           <nav
@@ -212,7 +205,7 @@ export function TeamWorkspace({
             >
               {teamOptions.map((option) => (
                 <option key={option.slug} value={option.slug}>
-                  {option.shortName} · {option.conference}
+                  {option.shortName}
                 </option>
               ))}
             </select>
@@ -223,7 +216,6 @@ export function TeamWorkspace({
               title={`Theme: ${themeLabels[themeMode]}`}
               type="button"
             >
-              {themeMode === "system" ? <Monitor aria-hidden="true" /> : null}
               {themeMode === "light" ? <Sun aria-hidden="true" /> : null}
               {themeMode === "dark" ? <Moon aria-hidden="true" /> : null}
               <span>{themeLabels[themeMode]}</span>
@@ -268,14 +260,6 @@ export function TeamWorkspace({
               variant="full"
             />
           ) : null}
-          {activeView === "sources" ? (
-            <SourceLedger
-              capturedLabel={scheduleCapturedLabel}
-              disclaimer={team.sourcePolicy.disclaimer}
-              scheduleUrl={schedule?.sourceUrl}
-              sources={sourceStates}
-            />
-          ) : null}
         </section>
 
         <aside className={styles.chatDock} data-testid="team-chat-panel">
@@ -308,8 +292,7 @@ export function TeamWorkspace({
       <footer className={styles.footer} data-testid="source-colophon">
         <div className={styles.footerInner}>
           <p>
-            <strong>Saturday Signal</strong> · {readySourceCount} of {sourceStates.length} source
-            desks ready
+            <strong>Saturday Signal</strong>
             {scheduleCapturedLabel ? ` · Schedule checked ${scheduleCapturedLabel}` : ""}
           </p>
           <p>{team.sourcePolicy.disclaimer}</p>
@@ -339,7 +322,6 @@ function BriefView({
       <section className={styles.briefLead} data-testid="kickoff-lead">
         <CountdownFigure countdown={countdown} />
         <div className={styles.matchupLead}>
-          <p className={styles.leadContext}>Next Saturday</p>
           <h2>
             {game ? `${teamName} ${siteWord(game.site)} ${game.opponent}` : `${teamName} kickoff`}
           </h2>
@@ -351,24 +333,25 @@ function BriefView({
             <p className={styles.gameMeta}>The next kickoff has not been posted.</p>
           )}
           {game ? <p className={styles.venue}>{game.venue}</p> : null}
+          <p className={styles.leadTakeaway}>{lead.headline}</p>
         </div>
       </section>
 
       <div className={styles.briefColumns}>
         <section className={styles.mattersSection}>
           <div className={styles.sectionHeadingRow}>
-            <h2>What matters</h2>
-            <span>{signals.length} active reads</span>
+            <h2>What matters Saturday</h2>
           </div>
           <ol className={styles.mattersList}>
             {signals.slice(0, 3).map((signal, index) => (
               <li key={signal.id}>
-                <span className={`${styles.matterNumber} tnum`}>{index + 1}</span>
+                <span className={`${styles.matterNumber} tnum`}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <div>
                   <h3>{signal.title}</h3>
                   <p>{signal.summary}</p>
                 </div>
-                <SignalState state={signal.state} />
               </li>
             ))}
           </ol>
@@ -376,7 +359,6 @@ function BriefView({
 
         <section className={styles.readSection}>
           <h2>The read</h2>
-          <p className={styles.readHeadline}>{lead.headline}</p>
           <p className={styles.readBody}>{lead.body}</p>
           <p className={styles.readSource}>{leadSourceTitle}</p>
         </section>
@@ -430,21 +412,6 @@ function GameStrip({
         </p>
       </div>
     </section>
-  );
-}
-
-function SignalState({ state }: { state: WorkspaceSignal["state"] }) {
-  const labels: Record<WorkspaceSignal["state"], string> = {
-    watch: "Watch",
-    ready: "Ready",
-    thin: "Thin evidence",
-  };
-
-  return (
-    <span className={styles.signalState} data-state={state}>
-      <span aria-hidden="true" />
-      {labels[state]}
-    </span>
   );
 }
 

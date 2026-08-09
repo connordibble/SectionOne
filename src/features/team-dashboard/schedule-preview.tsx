@@ -40,7 +40,7 @@ export function SchedulePreview({
         <div>
           <h2>{variant === "compact" ? "Next three" : `${schedule.seasonYear} schedule`}</h2>
           {variant === "full" ? (
-            <p>{schedule.games.length} dates, from the opener to the regular-season finish.</p>
+            <p>{schedule.games.length} games. Dates and TV can change.</p>
           ) : null}
         </div>
         {variant === "compact" && onOpenSchedule ? (

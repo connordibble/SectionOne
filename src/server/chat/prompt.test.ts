@@ -17,7 +17,7 @@ describe("buildChatRequest", () => {
 
     expect(request.system).toContain("Texas football");
     expect(request.system).toContain("early downs");
-    expect(request.system).toContain("not affiliated");
+    expect(request.system).toMatch(/not affiliated/i);
     expect(request.system).toContain("Source excerpts:");
     expect(request.system).toContain("[1]");
     expect(request.messages.at(-1)).toEqual({
@@ -45,6 +45,32 @@ describe("buildChatRequest", () => {
     expect(request.grounding?.sourceReadiness.length).toBeGreaterThan(0);
     expect(request.grounding?.scheduleCapturedAt).toBeTruthy();
     expect(request.grounding?.citationTitles.length).toBeGreaterThan(0);
+  });
+
+  it("puts the relevant team note first for a team-note brief", async () => {
+    const hits = await retrieve("How does Ohio State look?");
+    const request = buildChatRequest(
+      defaultTeamConfig,
+      "How does Ohio State look?",
+      hits,
+      [],
+      "team-note-brief",
+    );
+
+    expect(request.grounding?.excerpts[0]?.title).toBe("Ohio State: the first big test");
+
+    const earlyDownHits = await retrieve("What matters on early downs?");
+    const earlyDownRequest = buildChatRequest(
+      defaultTeamConfig,
+      "What matters on early downs?",
+      earlyDownHits,
+      [],
+      "team-note-brief",
+    );
+
+    expect(earlyDownRequest.grounding?.excerpts[0]?.title).toBe(
+      "Early downs: stay on schedule",
+    );
   });
 
   it("leaves capability undefined for escalated questions", async () => {

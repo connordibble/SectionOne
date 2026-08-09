@@ -113,6 +113,25 @@ describe("mock LLM provider", () => {
     expectAccepted(result.text, request.grounding!);
   });
 
+  it("keeps kickoff abbreviations inside a complete sentence", async () => {
+    const request = withGrounding({
+      capability: undefined,
+      excerpts: [
+        {
+          title: "Texas vs Ohio State",
+          content:
+            "Ohio State is the first big line-of-scrimmage test. Kickoff: 6:30 p.m. CT. Venue: Austin.",
+        },
+      ],
+      citationTitles: ["Texas vs Ohio State"],
+    });
+    const result = await createMockLlmProvider().generate(request);
+
+    expect(result.text).toContain("Kickoff: 6:30 p.m. CT.");
+    expect(result.text).not.toContain("test. m.");
+    expectAccepted(result.text, request.grounding!);
+  });
+
   it("never fabricates a citation tag when nothing was retrieved", async () => {
     const request = withGrounding({ citationTitles: [], excerpts: [] });
     const result = await createMockLlmProvider().generate(request);
@@ -120,7 +139,7 @@ describe("mock LLM provider", () => {
     // A bracketed tag here would be an invented source, which is exactly what
     // the acceptance gate exists to reject.
     expect(result.text).not.toMatch(/\[[^\]]+\]/);
-    expect(result.text).toContain("Freshness:");
+    expect(result.text).toContain("No matching source was found.");
     expectAccepted(result.text, request.grounding!);
   });
 

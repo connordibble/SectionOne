@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { ArrowRight, ExternalLink, Loader2, RotateCcw, Send } from "lucide-react";
+import { ArrowRight, ExternalLink, Loader2, RotateCcw } from "lucide-react";
 import { readSseStream } from "@/lib/sse";
 import styles from "./team-workspace.module.css";
 
-type ChatMode = "brief" | "matchup" | "schedule" | "sources";
+type ChatMode = "brief" | "matchup" | "schedule";
 
 type TeamChatProps = {
   draftRequest?: DraftRequest;
@@ -44,20 +44,21 @@ type ChatMessage = {
   error?: string;
 };
 
+type ChatExchange = {
+  question: ChatMessage;
+  answer?: ChatMessage;
+};
+
 const maxHistorySent = 8;
 
 const modeCopy: Record<Exclude<ChatMode, "matchup">, { heading: string; body: string }> = {
   brief: {
-    heading: "Ask Saturday Signal",
-    body: "Use the board’s cues, the schedule, or your own angle. The evidence stays attached.",
+    heading: "Tune your signal",
+    body: "Get the short answer before kickoff.",
   },
   schedule: {
     heading: "Ask the schedule",
-    body: "Compare stretches, kickoff windows, and opponent sequence without losing the dates.",
-  },
-  sources: {
-    heading: "Ask the evidence",
-    body: "Trace a claim to the record, or find the places where the record is still thin.",
+    body: "Ask about dates, times, or the road ahead.",
   },
 };
 
@@ -77,6 +78,8 @@ export function TeamChat({
   const threadRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const hasMessages = messages.length > 0;
+  const exchanges = groupExchanges(messages);
+  const sourceCount = countUniqueCitations(messages);
 
   useEffect(() => {
     const thread = threadRef.current;
@@ -153,7 +156,7 @@ export function TeamChat({
       if (!response.ok || !response.body) {
         const detail = (await response.json().catch(() => null)) as { error?: string } | null;
         throw new Error(
-          detail?.error ?? "That answer did not arrive. Check your connection and try again.",
+          detail?.error ?? "We couldn’t answer that question. Check your connection and try again.",
         );
       }
 
@@ -197,7 +200,7 @@ export function TeamChat({
         error:
           unknownError instanceof Error
             ? unknownError.message
-            : "That answer did not arrive. Try the question again.",
+            : "We couldn’t answer that question. Try it again.",
       }));
     } finally {
       setIsLoading(false);
@@ -223,8 +226,20 @@ export function TeamChat({
         <div className={styles.chatThreadShell}>
           <div className={styles.threadHeading}>
             <div>
-              <h2>The thread</h2>
-              <p>Grounded answers stay together as you move between views.</p>
+              <h2>Your signal</h2>
+              <p className={styles.threadSummary}>
+                <span>
+                  {exchanges.length} {exchanges.length === 1 ? "question" : "questions"}
+                </span>
+                <span aria-hidden="true">·</span>
+                <span>
+                  {sourceCount > 0
+                    ? `${sourceCount} ${sourceCount === 1 ? "source" : "sources"}`
+                    : isLoading
+                      ? "Checking sources"
+                      : "No sources"}
+                </span>
+              </p>
             </div>
             <button
               className={styles.resetChat}
@@ -233,19 +248,21 @@ export function TeamChat({
               type="button"
             >
               <RotateCcw aria-hidden="true" />
-              New thread
+              Start over
             </button>
           </div>
           <div aria-live="polite" className={styles.chatThread} ref={threadRef}>
-            {messages.map((message) =>
-              message.role === "user" ? (
-                <div className={styles.userMessage} key={message.id}>
-                  <p>{message.content}</p>
-                </div>
-              ) : (
-                <AssistantMessage key={message.id} message={message} />
-              ),
-            )}
+            {exchanges.map((exchange, index) => (
+              <article className={styles.chatExchange} key={exchange.question.id}>
+                <header className={styles.userMessage}>
+                  <span aria-hidden="true" className={`${styles.questionIndex} tnum`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p>{exchange.question.content}</p>
+                </header>
+                {exchange.answer ? <AssistantMessage message={exchange.answer} /> : null}
+              </article>
+            ))}
           </div>
           <ChatComposer
             input={input}
@@ -254,6 +271,7 @@ export function TeamChat({
             mode={mode}
             onInputChange={setInput}
             onSubmit={(message) => void submit(message)}
+            threaded
           />
         </div>
       )}
@@ -292,11 +310,7 @@ function EmptyChat({
           <p className={styles.readQuestion}>{starterRead.question}</p>
           <p>{starterRead.answer}</p>
           {starterRead.citations.length > 0 ? (
-            <div className={styles.starterCitations}>
-              {starterRead.citations.map((citation) => (
-                <CitationRow citation={citation} key={citation.id} />
-              ))}
-            </div>
+            <CitationList citations={starterRead.citations} className={styles.starterCitations} />
           ) : null}
         </div>
         <ChatComposer
@@ -328,18 +342,22 @@ function EmptyChat({
         onSubmit={onSubmit}
       />
       {mode === "brief" ? (
-        <div className={styles.promptList} data-testid="suggested-prompts">
-          {suggestedPrompts.map((prompt) => (
-            <button
-              disabled={isLoading}
-              key={prompt}
-              onClick={() => onPrompt(prompt)}
-              type="button"
-            >
-              <span>{prompt}</span>
-              <ArrowRight aria-hidden="true" />
-            </button>
-          ))}
+        <div className={styles.promptRail} data-testid="suggested-prompts">
+          <p className={styles.promptLabel}>Quick questions</p>
+          <div className={styles.promptList}>
+            {suggestedPrompts.map((prompt, index) => (
+              <button
+                aria-label={prompt}
+                disabled={isLoading}
+                key={prompt}
+                onClick={() => onPrompt(prompt)}
+                type="button"
+              >
+                <span className={styles.promptIndex}>{String(index + 1).padStart(2, "0")}</span>
+                <span className={styles.promptText}>{prompt}</span>
+              </button>
+            ))}
+          </div>
         </div>
       ) : null}
     </div>
@@ -353,6 +371,7 @@ function ChatComposer({
   mode,
   onInputChange,
   onSubmit,
+  threaded = false,
 }: {
   input: string;
   inputRef: RefObject<HTMLInputElement | null>;
@@ -360,27 +379,30 @@ function ChatComposer({
   mode: ChatMode;
   onInputChange: (value: string) => void;
   onSubmit: (message: string) => void;
+  threaded?: boolean;
 }) {
   const placeholders: Record<ChatMode, string> = {
-    brief: "What do you want to know?",
+    brief: "What should I watch?",
     matchup: "Ask about this matchup",
     schedule: "Ask about the schedule",
-    sources: "Trace a claim to its source",
   };
 
   return (
     <form
-      className={styles.composer}
+      className={`${styles.composer} ${threaded ? styles.threadComposer : ""}`}
       data-testid="chat-composer"
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit(input);
       }}
     >
-      <label className={styles.visuallyHidden} htmlFor="chat-input">
-        Ask Saturday Signal
-      </label>
+      {threaded ? (
+        <span aria-hidden="true" className={styles.composerContext}>
+          Follow up
+        </span>
+      ) : null}
       <input
+        aria-label="Ask Saturday Signal"
         autoComplete="off"
         id="chat-input"
         onChange={(event) => onInputChange(event.target.value)}
@@ -396,7 +418,7 @@ function ChatComposer({
         {isLoading ? (
           <Loader2 aria-hidden="true" className={styles.spinner} />
         ) : (
-          <Send aria-hidden="true" />
+          <ArrowRight aria-hidden="true" />
         )}
         <span>Ask</span>
       </button>
@@ -405,48 +427,88 @@ function ChatComposer({
 }
 
 function AssistantMessage({ message }: { message: ChatMessage }) {
+  const displayContent = stripCitationTags(message.content, message.citations);
+
   return (
-    <section className={styles.assistantMessage}>
-      {message.content || !message.error ? (
-        <p className={styles.answerText}>
-          {message.content}
-          {message.streaming ? (
-            <span
-              aria-label="Answer is still arriving"
-              className={styles.streamingMark}
-              role="status"
-            />
-          ) : null}
-        </p>
-      ) : null}
-      {message.error ? (
-        <p className={styles.chatError} role="alert">
-          {message.error}
-        </p>
-      ) : null}
-      {message.citations.length > 0 ? (
-        <div className={styles.citationList}>
-          {message.citations.map((citation) => (
-            <CitationRow citation={citation} key={citation.id} />
-          ))}
+    <section
+      aria-label="Saturday Signal answer"
+      className={styles.assistantMessage}
+      data-has-evidence={message.citations.length > 0 ? "true" : undefined}
+    >
+      <div className={styles.answerBody}>
+        <div className={styles.answerHeading}>
+          <h3>The read</h3>
+          {message.streaming && displayContent ? <span>Live</span> : null}
         </div>
+        {displayContent ? (
+          <p className={styles.answerText}>
+            {displayContent}
+            {message.streaming ? (
+              <span
+                aria-label="Answer is still arriving"
+                className={styles.streamingMark}
+                role="status"
+              />
+            ) : null}
+          </p>
+        ) : null}
+        {message.streaming && !displayContent ? (
+          <p className={styles.answerLoading} role="status">
+            <span aria-hidden="true" className={styles.streamingMark} />
+            Checking sources
+          </p>
+        ) : null}
+        {message.error ? (
+          <p className={styles.chatError} role="alert">
+            {message.error}
+          </p>
+        ) : null}
+      </div>
+      {message.citations.length > 0 ? (
+        <aside aria-label="Sources" className={styles.evidenceRail}>
+          <div className={styles.evidenceHeading}>
+            <h3>Sources</h3>
+            <span className="tnum">{message.citations.length}</span>
+          </div>
+          <CitationList citations={message.citations} className={styles.citationList} />
+        </aside>
       ) : null}
-      {message.confidence || message.freshness ? (
-        <p className={styles.answerMeta}>
-          {message.confidence ? <strong>{message.confidence} confidence</strong> : null}
-          {message.confidence && message.freshness ? " · " : null}
-          {message.freshness}
-        </p>
+      {message.freshness || message.notice ? (
+        <footer className={styles.answerFooter}>
+          {message.freshness ? (
+            <div className={styles.answerMeta}>
+              <p>{message.freshness}</p>
+            </div>
+          ) : null}
+          {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}
+        </footer>
       ) : null}
-      {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}
     </section>
+  );
+}
+
+function CitationList({
+  citations,
+  className,
+}: {
+  citations: ChatCitation[];
+  className: string;
+}) {
+  return (
+    <ol className={className}>
+      {citations.map((citation) => (
+        <li key={citation.id}>
+          <CitationRow citation={citation} />
+        </li>
+      ))}
+    </ol>
   );
 }
 
 function CitationRow({ citation }: { citation: ChatCitation }) {
   const content = (
     <>
-      <span>{citation.title}</span>
+      <span className={styles.citationTitle}>{citation.title}</span>
       <span className={styles.citationMeta}>
         {providerLabel(citation.provider)}
         {citation.sourceUrl ? <ExternalLink aria-hidden="true" /> : null}
@@ -470,13 +532,48 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
   );
 }
 
+function groupExchanges(messages: ChatMessage[]): ChatExchange[] {
+  const exchanges: ChatExchange[] = [];
+
+  for (const message of messages) {
+    if (message.role === "user") {
+      exchanges.push({ question: message });
+      continue;
+    }
+
+    const current = exchanges.at(-1);
+    if (current && !current.answer) {
+      current.answer = message;
+    }
+  }
+
+  return exchanges;
+}
+
+function countUniqueCitations(messages: ChatMessage[]): number {
+  return new Set(
+    messages.flatMap((message) =>
+      message.citations.map((citation) => `${citation.provider}:${citation.id}`),
+    ),
+  ).size;
+}
+
+function stripCitationTags(content: string, citations: ChatCitation[]): string {
+  const withoutTags = citations.reduce(
+    (answer, citation) => answer.split(`[${citation.title}]`).join(""),
+    content,
+  );
+
+  return withoutTags.replaceAll(/[ \t]+\n/g, "\n").replaceAll(/ {2,}/g, " ").trim();
+}
+
 function providerLabel(provider: string): string {
   const labels: Record<string, string> = {
     fixture: "Saturday Signal",
     official: "Primary source",
     cfbd: "Season data",
-    policy: "Source policy",
+    policy: "Saturday Signal",
   };
 
-  return labels[provider] ?? "Source record";
+  return labels[provider] ?? "Source";
 }

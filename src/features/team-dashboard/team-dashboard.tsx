@@ -1,11 +1,9 @@
 import type { CSSProperties } from "react";
 import {
-  deriveTeamPalettes,
+  createThemeStyle,
   enabledTeamSlugs,
-  getSourceReadiness,
   getTeamConfig,
   type TeamConfig,
-  type TeamPalette,
 } from "@/config/team";
 import {
   formatCaptureDate,
@@ -23,7 +21,6 @@ type TeamDashboardProps = {
 export function TeamDashboard({ team }: TeamDashboardProps) {
   const nextGame = getNextGame(team.slug);
   const schedule = getTeamSchedule(team.slug);
-  const sourceStates = getSourceReadiness(team);
   const noteDocuments = getTeamNoteDocuments(team.slug);
   const notesById = new Map(
     noteDocuments.map((document) => [String(document.metadata.noteId), document]),
@@ -31,7 +28,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
 
   const signals = team.editorial.signals.map((signal) => ({
     ...signal,
-    sourceTitle: notesById.get(signal.noteId)?.title ?? "Saturday Signal desk note",
+    sourceTitle: notesById.get(signal.noteId)?.title ?? "Saturday Signal note",
   }));
   const starterCitations = team.editorial.matchup.citationNoteIds.flatMap((noteId) => {
     const document = notesById.get(noteId);
@@ -52,7 +49,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
     const option = getTeamConfig(slug);
 
     return option
-      ? [{ slug: option.slug, shortName: option.shortName, conference: option.conference }]
+      ? [{ slug: option.slug, shortName: option.shortName }]
       : [];
   });
 
@@ -60,13 +57,12 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
     <TeamWorkspace
       countdown={getKickoffCountdown(nextGame)}
       leadSourceTitle={
-        notesById.get(team.editorial.lead.noteId)?.title ?? "Saturday Signal desk note"
+        notesById.get(team.editorial.lead.noteId)?.title ?? "Saturday Signal note"
       }
       nextGame={nextGame}
       schedule={schedule}
       scheduleCapturedLabel={schedule ? formatCaptureDate(schedule.capturedAt) : undefined}
       signals={signals}
-      sourceStates={sourceStates}
       starterCitations={starterCitations}
       team={team}
       teamOptions={teamOptions}
@@ -75,35 +71,6 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
   );
 }
 
-const paletteRoles: Array<[string, keyof TeamPalette]> = [
-  ["page", "page"],
-  ["surface", "surface"],
-  ["surface-soft", "surfaceSoft"],
-  ["surface-strong", "surfaceStrong"],
-  ["ink", "ink"],
-  ["ink-subtle", "inkSubtle"],
-  ["muted", "muted"],
-  ["border", "border"],
-  ["border-strong", "borderStrong"],
-  ["accent", "accent"],
-  ["accent-strong", "accentStrong"],
-  ["accent-soft", "accentSoft"],
-  ["on-accent", "onAccent"],
-  ["steel", "steel"],
-  ["steel-raised", "steelRaised"],
-  ["on-steel", "onSteel"],
-  ["focus", "focus"],
-];
-
 function createTeamThemeStyle(team: TeamConfig): CSSProperties {
-  const palettes = deriveTeamPalettes(team.theme);
-  const customProperties: Record<string, string> = {};
-
-  for (const mode of ["light", "dark"] as const) {
-    for (const [cssRole, paletteRole] of paletteRoles) {
-      customProperties[`--team-${mode}-${cssRole}`] = palettes[mode][paletteRole];
-    }
-  }
-
-  return customProperties as CSSProperties;
+  return createThemeStyle(team.theme) as CSSProperties;
 }

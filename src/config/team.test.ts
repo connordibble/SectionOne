@@ -9,7 +9,7 @@ import {
 } from "./team";
 
 describe("team config", () => {
-  it("exposes the Texas football deployment as the MVP default", () => {
+  it("exposes Texas football as the default team", () => {
     expect(defaultTeamSlug).toBe("texas-football");
     expect(enabledTeamSlugs).toEqual(["texas-football"]);
     expect(getTeamConfig("texas-football")?.displayName).toBe("Texas football");
@@ -18,7 +18,7 @@ describe("team config", () => {
   it("keeps legal and voice guardrails in config", () => {
     const config = validateTeamConfig(defaultTeamConfig);
 
-    expect(config.sourcePolicy.disclaimer).toContain("not affiliated");
+    expect(config.sourcePolicy.disclaimer).toMatch(/not affiliated/i);
     expect(config.sourcePolicy.protectedMarksGuidance).toContain(
       "Do not use Bevo as product branding.",
     );
@@ -40,7 +40,7 @@ describe("source readiness", () => {
       expect.objectContaining({ id: "schedule", label: "Schedule", state: "Ready" }),
     );
     expect(states).toContainEqual(
-      expect.objectContaining({ id: "notes", label: "Desk notes", state: "Ready" }),
+      expect.objectContaining({ id: "notes", label: "Matchup notes", state: "Ready" }),
     );
     expect(states).toContainEqual(
       expect.objectContaining({ id: "official", label: "Official links", state: "Ready" }),

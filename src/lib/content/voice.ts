@@ -40,6 +40,7 @@ const baselineFootballTerms = [
   "explosiveness",
   "field position",
   "front seven",
+  "offensive line",
   "pressure",
   "personnel",
   "success rate",

@@ -1,264 +1,296 @@
 # Saturday Signal design system
 
-This file is the product-facing design contract. Read it before changing a page, component, or
-team theme. Extend it when the system grows; do not invent a second system inside a feature.
+This is the shared design contract for every team edition. Extend this system when the product
+grows. Do not create a second visual language inside one feature.
 
-## Product idea
+## North star
 
-Saturday Signal turns a team's week into a short, sourced reading experience. It should answer
-three questions faster than a general chatbot or a crowded fan site:
+Saturday Signal should feel like the best page in a Saturday game program: quick to scan, specific
+about football, and worth opening before kickoff.
 
-1. What matters before kickoff?
-2. What should I watch once the game starts?
-3. What evidence supports that read?
+The rule is **all signal, no noise**. Every element must help a fan answer one of three questions:
 
-The feeling is a sharp Saturday sports desk: anticipatory, football-native, and enjoyable to scan.
-The working rule is **all signal, no noise**. Every element must improve orientation, judgment, or
-trust. If it only advertises the interface, remove it.
+1. What matters this week?
+2. What should I watch during the game?
+3. What supports that read?
 
-## Genre and shape
+## Visual signature
 
-The genre is **editorial sports desk**, not SaaS dashboard and not newspaper cosplay. It borrows the
-useful habits of a broadsheet—masthead, hierarchy, rules, a lead read, tabular data, named sources—
-while behaving like a modern product.
+The genre is an **editorial game program**, not a dashboard and not a newspaper costume.
 
-The application has one persistent shell and four focused views:
+- Warm paper ground, dark navy structure, and a restrained team accent.
+- Condensed display type for the masthead, section heads, matchup, and large figures.
+- Plain body type for every sentence a fan must read.
+- Mono type only for dates, times, scores, counts, and aligned labels.
+- Strong horizontal rules and squared geometry. Boxes are for real controls or repeated choices.
+- Dense, aligned rows at wide widths; calm single-column reading on small screens.
+- Accent stays near five percent of the canvas. It points; it does not flood.
 
-| View | Job | Primary material |
+## Product shape
+
+The shell holds three views and one question thread. The thread stays put when the fan changes views.
+
+| View | Job | Main content |
 | --- | --- | --- |
-| **Brief** | Orient the fan in under a minute. | Real kickoff countdown, matchup, three active reads, editorial lead, ask entry, next three games. |
-| **Matchup** | Turn watching into an informed activity. | Interactive four-cue Signal Board, selected-cue explanation, sourced starter read, ask handoff. |
-| **Schedule** | Show sequence and context without a portal table. | Full chronological schedule, next-game emphasis, kickoff and broadcast information. |
-| **Sources** | Make trust inspectable. | Readiness, descriptions, freshness, outbound records, known gaps, methodology. |
+| **Brief** | Catch up in under a minute. | Countdown, matchup, three keys, short read, question box, next three. |
+| **Matchup** | Know what to watch. | Four selectable keys and one focused explanation. |
+| **Schedule** | See what is next. | Dates, opponents, kickoff times, TV, and venue. |
 
-The chat thread is mounted once outside the view panels. Questions and answers persist while the
-reader moves between tabs. Tabs are shareable through URL fragments; chat state is intentionally
-session-local.
+The countdown always comes from schedule data. It may show a real number, `Today`, or `TBD`. It is
+never decorative.
 
-The countdown is always derived from schedule data. It may say a real number, `Today`, or `TBD`; it
-must never be invented for visual effect.
+## Brief canvas
+
+At wide widths, Brief should read as one composed page rather than a stack of cards.
+
+1. A dark masthead holds the issue line, brand, navigation, team switcher, and theme control.
+2. The hero pairs a large countdown with matchup, kickoff, venue, and one short orange takeaway.
+3. “What matters Saturday” uses three numbered rows. Title and plain-English cue share a line.
+4. “The read” is two or three short sentences, followed by a source line.
+5. “Tune your signal” is one full-width input with no chat-window framing in the empty state.
+6. A “Quick questions” rail labels two short starter questions below the input.
+7. “Next three” is one horizontal schedule strip on wide screens and three clear rows on mobile.
+8. The colophon stays small and factual.
+
+## Surfaces
+
+There are two, and they must not blur into each other.
+
+| Surface | Route | Job |
+| --- | --- | --- |
+| **Home** | `/` | Say what Saturday Signal is, show a live edition as proof, and take a team request. |
+| **Edition** | `/teams/[slug]` | The game-week product for one team. |
+
+The home page shares the tokens, masthead language, rule discipline, and voice — and deliberately
+not the shape. An edition is a Stat-Led dashboard built around a live countdown; the home page is a
+ruled argument that ends in one action. If the two ever read as the same page, the product and its
+pitch have blurred.
+
+Home page rules:
+
+- The masthead wordmark is site identity, not the page heading. The `h1` is the fan promise.
+- Every claim about scale is counted from `enabledTeamSlugs`, never written by hand. One edition is
+  one edition.
+- The edition card renders real config and schedule data. A picture of the product would drift; the
+  product itself cannot.
+- Anchor targets clear the sticky masthead.
+- House colour comes from `houseTheme`, not from a team. Editions may ship in any hue; the home page
+  does not follow them.
 
 ## Masthead
 
-The masthead is the product's strongest brand surface and must stay balanced.
+The masthead is the strongest brand surface.
 
-- Left: Saturday Signal wordmark and issue line.
-- Center: Brief, Matchup, Schedule, and Sources.
-- Right: team switcher and theme control.
-- Wide screens keep all three groups on one line without forcing the wordmark into a narrow column.
-- Medium screens move navigation to its own line.
-- Small screens use three calm rows: brand, full-width controls, then horizontally scrollable tabs.
-
-The team name supports the Saturday Signal brand; it does not replace it. Never place an official
-team logo in the masthead.
+- Wide: issue line, brand, three-view navigation, and controls share one line.
+- Medium: brand and controls lead; navigation moves to its own line.
+- Small: brand, controls, and a horizontally scrollable tab row.
+- The brand line is always “All signal. No noise.”
+- The team supports the Saturday Signal name. It never replaces it.
+- No official team logo belongs in the masthead.
 
 ## Team portability
 
-A new team is configuration work, not a redesign. Team-specific identity lives in the validated
-`TeamConfig` schema in `src/config/team.ts`:
+A new team is a typed configuration change, not a page redesign. `TeamConfig` owns:
 
-- identity, aliases, sport, conference, and canonical route;
-- three theme anchors: `hue`, `chroma`, and `neutralHue`;
-- source policy and protected-mark guidance;
-- voice rules and suggested prompts;
-- lead read, matchup thesis, and four Signal Board cues;
-- provider identifiers and schedule season.
+- team identity, aliases, conference, and route;
+- `hue`, `chroma`, and `neutralHue` theme anchors;
+- fan-facing copy and starter questions;
+- the weekly lead, matchup read, and four keys;
+- source rules and protected-mark guidance.
 
-Components must not contain team names, team colors, matchup copy, or team-specific source policy.
-If a second team requires editing a component, the platform boundary is wrong.
+Components must not contain a team name, team color, matchup claim, or team-specific legal copy.
+If adding a team requires changing a component, the boundary is wrong.
 
-### Color system
+### Color roles
 
-`deriveTeamPalettes()` creates complete light and dark palettes from the three OKLCH anchors. The
-lightness ladder and chroma relationships are shared across teams; hue supplies identity. This keeps
-new deployments fast and makes contrast review repeatable.
+`deriveTeamPalettes()` builds light and dark palettes from the three anchors. Components consume only
+semantic roles:
 
-Components consume semantic roles only:
-
-| Token | Meaning |
+| Role | Use |
 | --- | --- |
-| `--team-page` | Page ground. |
-| `--team-surface`, `--team-surface-soft`, `--team-surface-strong` | Increasingly emphasized surfaces. |
+| `--team-page` | Paper ground. |
+| `--team-surface`, `--team-surface-soft`, `--team-surface-strong` | Layered surfaces. |
 | `--team-ink`, `--team-ink-subtle`, `--team-muted` | Text hierarchy. |
-| `--team-border`, `--team-border-strong` | Hairlines and structural rules. |
-| `--team-accent`, `--team-accent-strong`, `--team-accent-soft` | Team-derived action and status color. |
-| `--team-on-accent` | Text or marks on the accent fill. |
-| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | Cool structural counterweight used by the masthead and game strip. |
-| `--team-focus` | Visible keyboard focus. |
+| `--team-border`, `--team-border-strong` | Rules and dividers. |
+| `--team-accent`, `--team-accent-strong`, `--team-accent-soft` | Team-derived emphasis and action. |
+| `--team-on-accent` | Text on accent. |
+| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | Masthead and dark structural areas. |
+| `--team-focus` | Keyboard focus. |
 
-Accent should occupy roughly five percent or less of a viewport. It marks the wordmark, the active
-view, the next game, and primary actions. Large team-color washes weaken both hierarchy and
-portability.
+Light is the default. Dark is an explicit override, and that choice persists.
 
-Light, dark, and system modes share the same role names. The explicit choice persists locally.
-System mode follows `prefers-color-scheme` without client-side palette calculations.
+## Type and spacing
 
-## Typography and data
+- **Big Shoulders:** wordmark, navigation, section heads, matchup, large figures, compact labels.
+- **Geist:** body copy, controls, questions, and answers.
+- **Geist Mono:** dates, times, counts, state indices, and tabular figures.
+- Display text may use uppercase and tracked letters. Body copy does not.
+- Display line-height never drops below `1`.
+- The named 4-point spacing scale in `tokens.css` is the only spacing scale.
+- Text that must be read stays at or below `--measure`.
 
-- Display and body: Geist Sans. Use weight and scale before adding another face.
-- Data: Geist Mono for dates, countdowns, status indices, and aligned figures only.
-- Numerics use tabular figures.
-- Sentence case is the default. Reserve uppercase for rare metadata, never section hierarchy.
-- Headings describe reader value: “What matters,” “The read,” “Source ledger.” Avoid labels such as
-  “AI insights,” “dashboard,” “demo,” or “powered by.”
+## Content rules
 
-The type scale and 4-point spacing scale live in `tokens.css`. Feature CSS consumes named tokens,
-not raw pixel values.
+Write for a college football fan, not for the team building the product.
 
-## Composition
+- Lead with the football point. Keep one idea per sentence.
+- Prefer familiar words: “sources,” “still unknown,” “checked,” and “what to watch.”
+- Keep section labels to one to four words.
+- Keep starter questions short enough to scan in one line on desktop.
+- Explain football terms only when they are not common fan vocabulary.
+- Legal copy can be formal. Everything else should sound natural at a tailgate.
 
-- **Rules over boxes.** A line separates ideas; a box indicates a real interaction or repeated unit.
-- **No nested-card grids.** Signal cues and citations may repeat inside a larger composition because
-  each is independently interactive or attributable.
-- **One dominant idea per view.** Brief owns the countdown; Matchup owns the field; Schedule owns the
-  chronology; Sources owns the ledger.
-- **Readable measures.** Long prose stays at or below `--measure`. Chat answers do not span the full
-  workspace.
-- **Data stays aligned.** Dates, kickoff times, readiness counts, and schedule rows form columns at
-  widths where columns help; on small screens they retain reading order rather than shrinking.
+Never show product-building language in the interface. Banned examples include “AI,” “LLM,”
+“provider,” “retrieval,” “model,” “confidence score,” “context thin,” “source desk,” “MVP,” “POC,”
+“prototype,” “demo,” “renderer,” “fixture,” “pipeline,” “powered by,” and “intelligence platform.”
 
-## Interaction states
+This extends to how the product describes its own rules and construction. A fan does not care that
+something is enforced in code, shipped in a release, or configured somewhere — they care what they
+get. Also banned: “code,” “codebase,” “database,” “deploy,” “goes live,” “built so,” “under the
+hood,” and “by design.” Say what happens, not how it is made.
+
+The one exception is authorship. “Written by fans” is a claim about who decides what matters, and it
+is worth making because a general assistant cannot make it. It holds only while a person who watches
+the games writes the reads a fan sees. If that stops being true, the line changes.
+
+Avoid generic helper language, forced slang, rivalry hostility, betting certainty, injury rumors, and
+claims of insider access.
+
+## Questions and answers
+
+The empty state is part of the page, not a floating chat card. After the first question, the thread
+becomes a compact reading log:
+
+- show the fan's question, the short answer, its sources, and when those sources were checked;
+- strip citation markers from the prose and show source titles separately;
+- use “Sources,” never “Evidence” or internal source labels;
+- do not show a confidence badge;
+- use “Checking sources” while an answer is on the way;
+- errors say what failed and what the fan can do next;
+- source titles link out when a public link exists.
+
+Answers should usually fit in two short paragraphs. A long answer needs a real reason.
+
+## Interaction and motion
 
 Every control needs default, hover, active or selected, focus-visible, and disabled behavior.
-Feedback must explain state rather than decorate it.
 
-- Tabs expose `role="tab"`, selection state, roving focus, arrow-key navigation, Home, and End.
-- Signal cues expose `aria-pressed`; state is conveyed by label and shape in addition to color.
-- “Ask about this” moves the selected cue into the persistent composer and focuses the input.
-- Source readiness uses text plus a mark; `Ready` and `Planned` are never color-only.
-- The composer disables empty and in-flight submissions. Streaming state is announced without a
-  blinking text caret.
-- Focus rings use `--team-focus` and must remain visible in both modes.
+- Tabs keep roving focus and arrow-key navigation.
+- Matchup keys expose their selected state in text and shape, not color alone.
+- “Ask about this” moves the selected question into the input and focuses it.
+- Ready and planned source states use a mark plus a label.
+- Touch targets are at least 44px where the layout allows.
+- Hover never hides information from touch or keyboard users.
 
-Touch targets should be at least 44px when the layout allows. Hover effects are additive; no key
-information may depend on hover.
+Motion stays quiet: a short view settle, an active tab rule, a selected-key change, and a compact
+loading mark. No entrance cascade, parallax, decorative count-up, or ambient loop.
+`prefers-reduced-motion` removes repeated and spatial movement.
 
-## Motion
+## Responsive and accessibility
 
-Motion should make the workspace feel alive on Saturday without making the content perform.
+The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wide desktop.
 
-- View change: one short opacity-and-position settle using `--dur-short` and `--ease-out`.
-- Tab change: the active rule and color transition at micro duration.
-- Signal selection: cue surface, connector emphasis, and center read settle together.
-- Controls: small press response and useful hover movement only.
-- Streaming: a compact status pulse or spinner while the answer arrives.
-- No entrance cascade, parallax, decorative counters, ambient loops, or animation library.
-
-`prefers-reduced-motion: reduce` shortens transitions to 150ms or less, removes spatial travel, and
-prevents repeated animation. The interface remains fully understandable with motion disabled.
-
-## Responsive behavior
-
-The supported floor is 320 CSS pixels.
-
-- Start with a single reading column.
-- At 40rem, regain horizontal rhythm and place masthead controls beside the brand.
-- At 60rem, use the full balanced masthead and place the primary view beside the chat dock where the
-  composition benefits.
-- At 90rem, increase breathing room but do not increase prose measure.
-- Signal cues become a clear list around the selected read on narrow screens; field geometry is an
-  enhancement, not the only way to understand the relationships.
-- Tabs may scroll horizontally. The page itself must never scroll horizontally.
-
-## Accessibility
-
-Meet WCAG 2.2 AA as a floor.
-
-- Use semantic headings, lists, forms, tables or table-like alignment, and landmarks.
-- Preserve logical DOM order when desktop columns rearrange visually.
-- Pair every visual state with text and expose live answer updates politely.
-- Keep text contrast at 4.5:1 and large text or meaningful UI graphics at 3:1.
-- Do not remove outlines. Do not place low-contrast metadata on accent fills.
-- Test keyboard-only navigation, system dark mode, explicit modes, reduced motion, 200% zoom, and
-  the 320px layout before release.
-
-## Content and trust
-
-The voice is a smart fan analyst: direct, specific, skeptical of thin evidence, and fluent in early
-downs, line play, explosiveness, field position, personnel, pressure, and finishing drives.
-
-Avoid generic assistant language, forced slang, rivalry hostility, betting certainty, unsupported
-injury speculation, and claims of insider access. `src/lib/content/voice.ts` enforces the configured
-voice at the answer boundary.
-
-Citations, freshness, confidence, and source gaps are interface elements. A polished answer without
-traceable support is a failed answer. Fallback copy describes what the reader received, not internal
-providers, fixtures, gates, or test infrastructure.
-
-## Future visualization contract
-
-Custom charts can deepen the moat, but they must enter through a controlled data contract rather
-than arbitrary model-authored code.
-
-1. The server returns a validated visualization specification with a title, question answered,
-   chart type, axes, series, units, source IDs, freshness, and a prose summary.
-2. The initial vocabulary stays small: line, bar, slope, and scatter. Add a type only when a real
-   football question cannot be answered well by the existing set.
-3. Every series cites retrieved records. Unsupported or incomparable values fail closed into a
-   sourced prose answer.
-4. The renderer owns layout, token-only color, tooltip behavior, empty/loading/error states, and
-   responsive rules. The model never emits JSX, SVG, CSS, or executable chart options.
-5. Every chart includes an accessible summary and a data-table alternative.
-6. Team accent identifies the focal series; neutral roles carry comparisons. Never generate a new
-   palette per answer.
-
-Do not add a chart dependency until the first validated specification and representative data set
-exist.
+- Start with one reading column. Add columns only when the content has room.
+- The page never scrolls horizontally.
+- Interactive labels remain on one line; their parent reflows first.
+- Display headings wrap safely within long words.
+- Tabs may scroll horizontally.
+- Desktop field geometry in Matchup becomes a compact 2×2 key picker followed by the selected read
+  on mobile.
+- Logical DOM order stays useful when columns collapse.
+- Meet WCAG 2.2 AA. Keep focus visible in every theme.
+- Test keyboard use, dark and light themes, reduced motion, and 200% zoom.
 
 ## Product and legal guardrails
 
-- Saturday Signal is the system name, never a mascot-branded property.
+- Saturday Signal is the product name, never a mascot-branded property.
 - Do not use official logos, mascot imagery, Bevo branding, protected hand-sign graphics, official
   color values, or official-affiliation language.
-- A team theme may feel locally relevant without copying institutional trade dress.
-- Source rights and availability are data concerns, not visual details to hide.
+- A team edition may feel local without copying institutional trade dress.
+- The independence disclaimer remains visible in the colophon.
 
 ## Token exports
 
-The canonical primitives and semantic aliases live in `tokens.css`; runtime team values come from
-`deriveTeamPalettes()`.
+`tokens.css` is the source of truth. Runtime team values come from `deriveTeamPalettes()`.
 
 ### CSS custom properties
 
-Use `--team-*` roles in components. `--team-light-*` and `--team-dark-*` are generated inputs and
-must not be consumed directly outside the theme bridge.
+```css
+:root {
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: var(--font-geist-mono), ui-monospace, monospace;
+  --radius-card: 2px;
+  --radius-input: 2px;
+  --page-width: 88rem;
+  --measure: 62ch;
+}
+```
+
+Feature CSS uses `--team-*` roles. Generated `--team-light-*` and `--team-dark-*` values are inputs to
+the theme bridge, not component tokens.
 
 ### Tailwind CSS v4
 
-`src/app/globals.css` maps semantic roles inside `@theme inline`, producing utilities such as
-`bg-team-page`, `text-team-ink`, `border-team-rule`, and `text-team-accent`. Add mappings there; do
-not create a parallel `tailwind.config` palette.
+`src/app/globals.css` maps the same roles through `@theme inline`:
 
-### W3C Design Tokens Community Group format
+```css
+@theme inline {
+  --color-team-page: var(--team-page, var(--color-paper));
+  --color-team-ink: var(--team-ink, var(--color-ink));
+  --color-team-rule: var(--team-border, var(--color-rule));
+  --color-team-accent: var(--team-accent, var(--color-accent));
+  --font-brand: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-outlier);
+}
+```
 
-A future exporter should serialize each derived team and mode after palette generation:
+### W3C Design Tokens Community Group
+
+Export each generated team and mode with this shape. Generated values are authoritative.
 
 ```json
 {
+  "$schema": "https://design-tokens.github.io/community-group/format/",
   "color": {
     "team": {
       "page": { "$type": "color", "$value": "oklch(96.5% 0.0117 47)" },
       "ink": { "$type": "color", "$value": "oklch(20% 0.0129 47)" },
       "accent": { "$type": "color", "$value": "oklch(49% 0.13 47)" }
     }
+  },
+  "font": {
+    "display": { "$type": "fontFamily", "$value": "Big Shoulders, Arial Narrow, sans-serif" },
+    "body": { "$type": "fontFamily", "$value": "Geist, ui-sans-serif, sans-serif" },
+    "outlier": { "$type": "fontFamily", "$value": "Geist Mono, ui-monospace, monospace" }
+  },
+  "radius": {
+    "card": { "$type": "dimension", "$value": "2px" },
+    "input": { "$type": "dimension", "$value": "2px" }
   }
 }
 ```
 
-The snippet documents the shape only. Generated values—not copied examples—are authoritative.
+### shadcn/ui bridge
 
-### shadcn/ui semantic bridge
+If shadcn/ui is introduced, map it onto Saturday Signal instead of importing its defaults:
 
-If shadcn/ui is introduced, map its roles to this system instead of importing its default palette:
-
-| shadcn role | Saturday Signal role |
-| --- | --- |
-| `--background`, `--foreground` | `--team-page`, `--team-ink` |
-| `--card`, `--card-foreground` | `--team-surface`, `--team-ink` |
-| `--primary`, `--primary-foreground` | `--team-accent`, `--team-on-accent` |
-| `--secondary`, `--secondary-foreground` | `--team-surface-soft`, `--team-ink` |
-| `--muted`, `--muted-foreground` | `--team-surface-soft`, `--team-muted` |
-| `--border`, `--input`, `--ring` | `--team-border`, `--team-border-strong`, `--team-focus` |
-
-Component geometry and voice still follow this file; installing a component kit does not authorize
-its default card density, radii, colors, or copy.
+```css
+:root {
+  --background: var(--team-page);
+  --foreground: var(--team-ink);
+  --card: var(--team-surface);
+  --card-foreground: var(--team-ink);
+  --primary: var(--team-accent);
+  --primary-foreground: var(--team-on-accent);
+  --secondary: var(--team-surface-soft);
+  --secondary-foreground: var(--team-ink);
+  --muted: var(--team-surface-soft);
+  --muted-foreground: var(--team-muted);
+  --border: var(--team-border);
+  --input: var(--team-border-strong);
+  --ring: var(--team-focus);
+  --radius: var(--radius-card);
+}
+```

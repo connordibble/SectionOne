@@ -7,7 +7,12 @@ import type { ComposerCapability, LlmEnv, LlmProvider, LlmRequest } from "@/serv
 import { recordLlmUsage } from "@/server/llm/usage";
 import { retrieveHybrid } from "@/server/rag/hybrid";
 import { formatCaptureDate, getTeamSchedule } from "@/server/schedule/schedule";
-import { buildChatRequest, buildRetryDirective, type ChatHistoryMessage } from "./prompt";
+import {
+  buildChatRequest,
+  buildRetryDirective,
+  prioritizeGroundingHits,
+  type ChatHistoryMessage,
+} from "./prompt";
 import { selectAnswerStrategy } from "./routing";
 import type { ChatAnswer, ChatCitation, ChatStreamEvent } from "./types";
 
@@ -193,8 +198,8 @@ async function prepareAnswer(
 
   const ingest = await collectSourceDocuments(team.slug);
   const hits = await retrieveHybrid(question, ingest.documents, team.slug, 4);
-  const citations = createCitations(hits.map((hit) => hit.chunk.document));
-  const freshness = createFreshness(team.slug, citations, ingest.warnings);
+  const retrievedCitations = createCitations(hits.map((hit) => hit.chunk.document));
+  const freshness = createFreshness(team.slug, ingest.warnings);
   const officialCitations = createCitations(
     ingest.documents.filter((document) => document.provider === "official"),
   );
@@ -202,12 +207,12 @@ async function prepareAnswer(
   // Both guardrails short-circuit before any provider call, so a rumour probe
   // or an unanswerable question never costs anything.
   if (rumorPattern.test(question)) {
-    const anchor = officialCitations.length > 0 ? officialCitations : citations;
+    const anchor = officialCitations.length > 0 ? officialCitations : retrievedCitations;
     return {
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `I would not treat that as confirmed from this source set. Saturday Signal can speak to the published schedule and trusted primary links for ${team.displayName}, but it should not launder injury, betting, or message-board claims without a real source. Freshness only holds for what the record actually verifies.`,
+        answer: `That is not confirmed. Saturday Signal can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
         citations: anchor.slice(0, 1),
         confidence: "low",
         freshness,
@@ -227,7 +232,7 @@ async function prepareAnswer(
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `The current source set does not confirm enough to answer that cleanly. Ask for the next-game brief, schedule context, or a sourced opponent note and I can stay on firmer ground about ${team.shortName} on early downs and field position.`,
+        answer: `There is not enough here for a clean answer. Try the next game, the schedule, or what to watch on early downs for ${team.shortName}.`,
         citations: anchor.slice(0, 1),
         confidence: "low",
         freshness,
@@ -240,13 +245,18 @@ async function prepareAnswer(
 
   const selected = selectAnswerStrategy(team, question, hits);
   const capability = selected.strategy === "composer" ? selected.capability : undefined;
+  const answerHits = prioritizeGroundingHits(question, hits, capability);
+  const citations = createCitations(
+    answerHits.map((hit) => hit.chunk.document),
+    selected.strategy === "composer" ? 2 : 4,
+  );
 
   return {
     kind: "generate",
     strategy: selected.strategy,
     capability,
     team,
-    request: buildChatRequest(team, question, hits, options.history ?? [], capability),
+    request: buildChatRequest(team, question, answerHits, options.history ?? [], capability),
     citations,
     freshness,
   };
@@ -280,6 +290,7 @@ function createCitations(
     provider: string;
     sourceType: string;
   }>,
+  limit = 4,
 ) {
   const seen = new Map<string, ChatCitation>();
 
@@ -293,27 +304,15 @@ function createCitations(
     });
   }
 
-  return [...seen.values()].slice(0, 4);
+  return [...seen.values()].slice(0, limit);
 }
 
-function createFreshness(teamSlug: string, citations: ChatCitation[], warnings: string[]) {
-  const providers = [
-    ...new Set(citations.map((citation) => publicProviderLabel(citation.provider))),
-  ].join(", ");
+function createFreshness(teamSlug: string, warnings: string[]) {
   const schedule = getTeamSchedule(teamSlug);
-  const captured = schedule ? formatCaptureDate(schedule.capturedAt) : "an unknown date";
-  const coverageNote =
-    warnings.length > 0 ? " Season statistics are not yet part of this answer." : "";
+  const checked = schedule
+    ? `Schedule checked ${formatCaptureDate(schedule.capturedAt)}.`
+    : "Schedule date unavailable.";
+  const coverageNote = warnings.length > 0 ? " No 2026 stats yet." : "";
 
-  return `Sources: ${providers || "schedule record"}. Schedule checked ${captured}.${coverageNote}`;
-}
-
-function publicProviderLabel(provider: string): string {
-  const labels: Record<string, string> = {
-    fixture: "schedule and desk notes",
-    official: "official links",
-    cfbd: "season statistics",
-  };
-
-  return labels[provider] ?? "source record";
+  return `${checked}${coverageNote}`;
 }

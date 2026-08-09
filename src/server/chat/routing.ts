@@ -33,6 +33,8 @@ const analysisPattern =
 const comparisonPattern =
   /\bcompare\b|\bcomparison\b|\bversus\b|\bvs\.?\b|\bboth\b|\bdifference between\b|\brather than\b|\beither\b/i;
 
+const titleStopwords = new Set(["a", "an", "and", "for", "of", "on", "the", "to", "vs", "with"]);
+
 // Picks the deterministic composer when it can genuinely answer, and escalates
 // otherwise. Two things must hold to route to the composer: the question has to
 // match a capability, and the facts that capability needs have to resolve.
@@ -44,6 +46,11 @@ export function selectAnswerStrategy(
   hits: RetrievalHit[],
 ): AnswerStrategy {
   const wantsAnalysis = analysisPattern.test(question);
+  const matchingTeamNote = hits.find(
+    (hit) =>
+      hit.chunk.document.sourceType === "team-note" &&
+      titleMatchesQuestion(hit.chunk.document.title, question),
+  );
 
   if (!wantsAnalysis && briefingPattern.test(question) && getNextGame(team.slug)) {
     return { strategy: "composer", capability: "next-game-brief" };
@@ -57,17 +64,41 @@ export function selectAnswerStrategy(
     return { strategy: "composer", capability: "source-readiness" };
   }
 
-  // Curated team notes are the product's differentiated content. When retrieval
-  // puts one first, surfacing that note is better than paying a model to
-  // paraphrase it — the note is the expert take, not a summary of one.
+  // Curated team notes are the product's differentiated content. Schedule facts
+  // can outrank a note on an opponent-name match, so use the best retrieved note
+  // instead of turning an analysis question into a date-and-time recital.
   if (
-    hits[0]?.chunk.document.sourceType === "team-note" &&
+    (hits[0]?.chunk.document.sourceType === "team-note" || matchingTeamNote) &&
     !comparisonPattern.test(question)
   ) {
     return { strategy: "composer", capability: "team-note-brief" };
   }
 
   return { strategy: "escalate" };
+}
+
+export function titleMatchesQuestion(title: string, question: string): boolean {
+  const titleWords = normalizeWords(title);
+  const normalizedQuestion = normalizeWords(question).join(" ");
+
+  for (let index = 0; index < titleWords.length - 1; index += 1) {
+    const left = titleWords[index];
+    const right = titleWords[index + 1];
+
+    if (titleStopwords.has(left) || titleStopwords.has(right)) {
+      continue;
+    }
+
+    if (normalizedQuestion.includes(`${left} ${right}`)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function normalizeWords(value: string): string[] {
+  return value.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(Boolean);
 }
 
 function hasSchedule(teamSlug: string): boolean {

@@ -8,6 +8,7 @@ import type {
   LlmRequest,
   ScheduleGameFact,
 } from "@/server/llm/types";
+import { titleMatchesQuestion } from "./routing";
 
 // How many games the schedule template lists before it stops being a scan and
 // starts being a table dump.
@@ -31,7 +32,7 @@ export function buildChatRequest(
   return {
     system: buildSystemPrompt(team, hits),
     messages: [...sanitizeHistory(history), { role: "user", content: question.trim() }],
-    grounding: buildGroundingContext(team, hits, capability),
+    grounding: buildGroundingContext(team, question, hits, capability),
   };
 }
 
@@ -77,11 +78,13 @@ function buildSystemPrompt(team: TeamConfig, hits: RetrievalHit[]): string {
 // facts that capability needs.
 function buildGroundingContext(
   team: TeamConfig,
+  question: string,
   hits: RetrievalHit[],
   capability?: ComposerCapability,
 ): GroundingContext {
   const schedule = getTeamSchedule(team.slug);
   const nextGame = getNextGame(team.slug);
+  const groundingHits = prioritizeGroundingHits(question, hits, capability);
 
   return {
     teamName: team.shortName,
@@ -92,12 +95,34 @@ function buildGroundingContext(
     upcomingGames: (schedule?.games ?? []).slice(0, schedulePreviewLength).map(toScheduleFact),
     sourceReadiness: getSourceReadiness(team),
     scheduleCapturedAt: schedule ? formatCaptureDate(schedule.capturedAt) : undefined,
-    excerpts: hits.map((hit) => ({
+    excerpts: groundingHits.map((hit) => ({
       title: hit.chunk.document.title,
       content: hit.chunk.content,
     })),
-    citationTitles: dedupe(hits.map((hit) => hit.chunk.document.title)),
+    citationTitles: dedupe(groundingHits.map((hit) => hit.chunk.document.title)),
   };
+}
+
+export function prioritizeGroundingHits(
+  question: string,
+  hits: RetrievalHit[],
+  capability?: ComposerCapability,
+): RetrievalHit[] {
+  if (capability !== "team-note-brief") {
+    return hits;
+  }
+
+  return [...hits].sort(
+    (left, right) => rankTeamNote(right, question) - rankTeamNote(left, question),
+  );
+}
+
+function rankTeamNote(hit: RetrievalHit, question: string): number {
+  if (hit.chunk.document.sourceType !== "team-note") {
+    return 0;
+  }
+
+  return titleMatchesQuestion(hit.chunk.document.title, question) ? 2 : 1;
 }
 
 function toScheduleFact(game: {
