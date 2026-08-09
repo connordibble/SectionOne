@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
+    // Points at the same file rather than shipping a duplicate twitter-image.
+    // X falls back to og:image on its own, but a card declared as
+    // summary_large_image with no image it can name renders as a bare text
+    // card on the platforms that do not fall back.
+    images: ["/opengraph-image.png"],
   },
 };
 
