@@ -142,6 +142,25 @@ team score as high as 0.85 simply by sharing vocabulary, so a low threshold
 does not return a slightly worse answer — it returns a confident answer to a
 question nobody asked.
 
+## 10. Deferred work goes through `after`, never a bare `void`
+
+```ts
+runAfterResponse(() => storeCachedAnswer(...), "chat/cache:write");
+```
+
+`void somePromise()` and `runAfterResponse(...)` look equivalent and are not.
+A serverless instance is frozen the moment the response is flushed, so an
+unawaited promise is discarded mid-flight. It works perfectly in development,
+where the process keeps running, and silently does nothing in production.
+
+The answer cache shipped that way and stored zero rows in production while
+passing every local test. It was only caught by querying the table after a real
+request — which is the lesson as much as the rule: **a write you never read
+back is not a write you have verified.**
+
+Awaiting instead is correct but bills the fan latency for work they are not
+waiting on. Use `runAfterResponse` for anything the response does not depend on.
+
 ## Still missing
 
 - **No error tracking service.** Logs live in Vercel and are searchable but not

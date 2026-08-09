@@ -6,6 +6,7 @@ import { resolveEmbeddingProvider } from "@/server/embeddings/registry";
 import { getTeamSchedule } from "@/server/schedule/schedule";
 import { getPollWeek } from "@/server/sources/rankings";
 import { getWeeklyEdition } from "@/server/sources/weekly";
+import { runAfterResponse } from "@/server/http/after-response";
 import { reportDegradation } from "@/server/observability/report";
 import type { PublicChatAnswer } from "./types";
 
@@ -123,7 +124,7 @@ export async function lookupCachedAnswer(
       .limit(1);
 
     if (exact) {
-      void recordHit(exact.id);
+      runAfterResponse(() => recordHit(exact.id), "chat/cache:hit");
 
       return { hit: true, answer: exact.answer as PublicChatAnswer, via: "exact" };
     }
@@ -190,7 +191,7 @@ async function lookupSemantic(
     return { hit: false };
   }
 
-  void recordHit(match.id);
+  runAfterResponse(() => recordHit(match.id), "chat/cache:hit");
 
   return { hit: true, answer: match.answer as PublicChatAnswer, via: "semantic" };
 }
