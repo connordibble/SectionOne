@@ -30,6 +30,16 @@ const baselineBannedPhrases = [
   "delve",
   "official partner",
   "guaranteed lock",
+  // The machinery, named to a fan. These shipped to production: the system
+  // prompt asked the model to "say what the corpus is missing" and it
+  // obligingly told readers about the corpus. The prompt is fixed, and these
+  // are here so the gate catches it rather than trusting the prompt to hold.
+  "the corpus",
+  "corpus does not",
+  "the excerpts",
+  "source material",
+  "retrieval",
+  "knowledge base",
 ];
 
 const baselineFootballTerms = [

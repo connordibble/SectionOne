@@ -34,7 +34,9 @@ function composeAnswer(request: LlmRequest): string {
   const grounding = request.grounding;
 
   if (!grounding) {
-    return "I do not have enough source material to answer that. Try the next game, the schedule, or what to watch on early downs.";
+    // "sources" is approved fan vocabulary (DESIGN.md); "source material" is
+    // the machinery talking. The distinction is the whole point of the ban.
+    return "I do not have enough in my sources to answer that yet. Try the next game, the schedule, or what to watch on early downs.";
   }
 
   switch (grounding.capability) {

@@ -68,7 +68,10 @@ function buildSystemPrompt(team: TeamConfig, hits: RetrievalHit[]): string {
     `Persona: ${team.voice.posture}. Use football-native language such as ${preferredTerms}.`,
     `Never use these phrases: ${bannedPhrases}. No toxic rivalry bait, no betting certainty, no unsupported injury speculation.`,
     `${team.sourcePolicy.disclaimer} Never imply official affiliation.`,
-    "Ground every factual claim in the source excerpts below. Cite sources inline as [source title]. If the excerpts do not support an answer, say what the corpus is missing instead of guessing.",
+    // The second sentence used to say "say what the corpus is missing", and
+    // the model did exactly that — fans were told about the corpus. Say what
+    // is not known in football terms; never name the machinery.
+    "Ground every factual claim in the source excerpts below. Cite sources inline as [source title]. If the sources do not cover it, say plainly what is not known yet in football terms — what has not been seen on the field, or what has not been reported. Never mention sources, documents, excerpts, or a corpus as things; a fan does not know those exist.",
     "Keep answers to one tight paragraph unless asked for more.",
     "",
     "Source excerpts:",

@@ -180,6 +180,12 @@ Never show product-building language in the interface. Banned examples include �
 “provider,” “retrieval,” “model,” “confidence score,” “context thin,” “source desk,” “MVP,” “POC,”
 “prototype,” “demo,” “renderer,” “fixture,” “pipeline,” “powered by,” and “intelligence platform.”
 
+This extends to how the model is instructed, not just to copy someone types. The system
+prompt once told the model to "say what the corpus is missing", and it dutifully told fans about
+the corpus. Prompts are interface copy. Also banned in answers: "the corpus," "the excerpts,"
+"source material," "retrieval," and "knowledge base" — note that plain "sources" stays approved,
+because a fan understands a source and does not understand a corpus.
+
 This extends to how the product describes its own rules and construction. A fan does not care that
 something is enforced in code, shipped in a release, or configured somewhere — they care what they
 get. Also banned: “code,” “codebase,” “database,” “deploy,” “goes live,” “built so,” “under the
