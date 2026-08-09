@@ -42,11 +42,14 @@ model plus $20/month for hosting once monetized.
 
    | Variable | Scope | Notes |
    | --- | --- | --- |
-   | `ANTHROPIC_API_KEY` | Production | From the **dedicated, non-default** workspace carrying the $15 monthly limit. |
-   | `ANTHROPIC_MODEL` | Production | `claude-haiku-4-5`. Omit to accept the default. |
-   | `DATABASE_URL` | Production | Neon pooled connection string. Omit to run without a ledger. |
-   | `CFBD_API_KEY` | Production | Only needed to run `pnpm schedule:build`. |
-   | `HEALTH_TOKEN` | Production | `openssl rand -hex 32`. Without it, `/api/health` withholds spend from everyone. |
+   | `OPENAI_API_KEY` | Production | Also enables real embeddings, which the semantic cache tier needs. |
+   | `LLM_PROVIDER` | Production | `openai`. Auto-detection prefers Anthropic whenever its key is present, so without this the credits sit unused. |
+   | `DATABASE_URL` | Production | Neon **pooled** string. Omit to run without a ledger, cache, or stored team requests. |
+   | `LLM_MONTHLY_BUDGET_USD` | Production | Soft ceiling. Trips before the provider limit and degrades to composer answers. `off` to disable. |
+   | `HEALTH_TOKEN` | Production | `openssl rand -hex 32`. Without it `/api/health` withholds spend and provider identity from everyone. |
+   | `RESEND_API_KEY` | Production | Enables alert email. Absent means log-only. |
+   | `ALERT_EMAIL_TO` | Production | Recipient. Overrides the fallback in `alert.ts`. |
+   | `CFBD_API_KEY` | — | Only needed to run `pnpm schedule:build` locally. |
    | `NEXT_PUBLIC_SITE_URL` | — | Leave unset. Vercel supplies the production URL, and previews then describe themselves rather than claiming to be production. |
 
    Do **not** set `LLM_PROVIDER` in Preview. Previews should stay on the
@@ -62,13 +65,29 @@ model plus $20/month for hosting once monetized.
    (strict)**; Flexible would serve the site over a plaintext hop and break the
    HSTS header this app sends.
 
-4. **Migrate the database**, if using one. From a machine with `DATABASE_URL`
-   set to the Neon connection string:
+4. **Migrate the database**, if using one. Put the **direct** (non-pooled)
+   Neon string in `.env.local` — the scripts load it via
+   `--env-file-if-exists`, and PgBouncer's transaction mode is not a reliable
+   place to run `CREATE EXTENSION` and index DDL:
 
    ```bash
-   pnpm db:migrate
+   # .env.local
+   DATABASE_URL=postgresql://...  # direct host, no -pooler
+   OPENAI_API_KEY=sk-...          # must be set BEFORE seeding
+   ```
+
+   ```bash
+   pnpm db:migrate   # idempotent; every migration is IF NOT EXISTS
    pnpm db:seed
    ```
+
+   Seeding writes embeddings using whichever provider is configured. Without
+   `OPENAI_API_KEY` it silently uses the offline hash embedder, which leaves
+   `source_chunks` populated but semantically meaningless — vector retrieval
+   and the semantic cache tier both go quiet. Check the output names `openai`.
+
+   Vercel gets the **pooled** (`-pooler`) string instead: serverless opens a
+   connection per invocation.
 
 ## Rate limiting
 
@@ -86,9 +105,10 @@ Cloudflare → Security → WAF → Rate limiting rules:
 | ingest | `http.request.uri.path eq "/api/ingest"` | 5 / 1 min per IP | Block, 60s |
 
 `/api/chat` is the one that spends money, so it gets the tightest real limit.
-The Anthropic workspace ceiling stops a catastrophic bill; this stops one
-enthusiastic visitor burning the month and denying live answers to everyone
-else. Both are needed — neither replaces the other.
+There are now three layers, and each covers what the others cannot: the OpenAI
+project limit stops a catastrophic bill, `LLM_MONTHLY_BUDGET_USD` trips first
+and degrades to composer answers instead of provider errors, and this edge rule
+stops one enthusiastic visitor exhausting either.
 
 ## Verifying a deploy
 

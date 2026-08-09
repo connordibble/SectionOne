@@ -26,6 +26,16 @@ rather than clustered around what changed.
 it forces a look at what was added — but the fix is to update the number, not
 to loosen the assertion.
 
+### Standalone scripts need their own env loading
+
+Next.js reads `.env.local` for the app; `tsx` does not. Every script under
+`scripts/` therefore saw an empty environment and failed with a confusing
+"DATABASE_URL is required" on a machine where the variable was plainly set.
+
+They now run with `--env-file-if-exists=.env.local`, which loads it when
+present and continues without it in CI. That flag needs Node 22.9, so the
+`engines.node` floor moved up to match.
+
 ## Data provenance
 
 - **Schedules are build outputs.** `pnpm schedule:build <slug> <IANA zone>`

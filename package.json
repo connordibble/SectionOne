@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=22.9.0",
     "pnpm": "10.33.0"
   },
   "scripts": {
@@ -17,10 +17,10 @@
     "test:watch": "vitest",
     "eval": "vitest run src/evals",
     "test:e2e": "playwright test",
-    "db:migrate": "tsx scripts/migrate.ts",
-    "db:seed": "tsx scripts/seed.ts",
-    "ingest": "tsx scripts/ingest.ts",
-    "schedule:build": "tsx scripts/build-schedule.ts",
+    "db:migrate": "tsx --env-file-if-exists=.env.local scripts/migrate.ts",
+    "db:seed": "tsx --env-file-if-exists=.env.local scripts/seed.ts",
+    "ingest": "tsx --env-file-if-exists=.env.local scripts/ingest.ts",
+    "schedule:build": "tsx --env-file-if-exists=.env.local scripts/build-schedule.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "release:check": "pnpm check && pnpm eval && pnpm build && pnpm test:e2e"
   },
