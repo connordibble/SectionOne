@@ -125,6 +125,23 @@ is a fallback so a deployment that forgets it still reaches a person — if this
 repository ever goes public, move it out of source and make the variable
 required.
 
+## 9. Caching is a correctness feature before it is a speed feature
+
+The answer cache keys on a **corpus version** — a hash of the weekly package,
+the schedule capture, and the poll week. When any of them moves, every existing
+row for that team stops matching. Without that, a cached answer would be served
+with this week's confidence and last week's facts, which is the one failure a
+sourced product cannot absorb.
+
+Anything added to the corpus that can change what a correct answer looks like
+must go into `corpusVersion()` in the same change.
+
+The semantic tier is gated on a real embedding provider and clamped to a
+similarity of at least 0.9, default 0.97. Different questions about the same
+team score as high as 0.85 simply by sharing vocabulary, so a low threshold
+does not return a slightly worse answer — it returns a confident answer to a
+question nobody asked.
+
 ## Still missing
 
 - **No error tracking service.** Logs live in Vercel and are searchable but not

@@ -191,6 +191,34 @@ export const teamRequests = pgTable(
   ],
 );
 
+// Answers already produced for a question someone else asked. See
+// drizzle/0004_chat_answer_cache.sql for why corpus_version is the safety
+// mechanism rather than an optimisation.
+export const chatAnswerCache = pgTable(
+  "chat_answer_cache",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    teamSlug: text("team_slug").notNull(),
+    questionNormalized: text("question_normalized").notNull(),
+    // Null unless a real embedding provider is configured; the offline
+    // embedder is a hash and its similarity carries no meaning.
+    questionEmbedding: vector("question_embedding"),
+    corpusVersion: text("corpus_version").notNull(),
+    answer: jsonb("answer").notNull(),
+    hitCount: integer("hit_count").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    lastHitAt: timestamp("last_hit_at", { withTimezone: true }),
+  },
+  (table) => [
+    unique("chat_answer_cache_exact_idx").on(
+      table.teamSlug,
+      table.corpusVersion,
+      table.questionNormalized,
+    ),
+    index("chat_answer_cache_created_at_idx").on(table.createdAt),
+  ],
+);
+
 export const schema = {
   teams,
   seasons,
@@ -202,6 +230,7 @@ export const schema = {
   answerCitations,
   llmUsage,
   teamRequests,
+  chatAnswerCache,
 };
 
 export const vectorExtensionSql = sql`CREATE EXTENSION IF NOT EXISTS vector`;
