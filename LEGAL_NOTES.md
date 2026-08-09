@@ -1,6 +1,6 @@
 # Legal Notes
 
-Saturday Signal is an independent fan project. It is not affiliated with, endorsed by, or sponsored by The University of Texas at Austin, Texas Athletics, the NCAA, or any conference.
+Section One is an independent fan project. It is not affiliated with, endorsed by, or sponsored by The University of Texas at Austin, Texas Athletics, the NCAA, or any conference.
 
 ## MVP Guardrails
 

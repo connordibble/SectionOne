@@ -1,11 +1,11 @@
-# Saturday Signal design system
+# Section One design system
 
 This is the shared design contract for every team edition. Extend this system when the product
 grows. Do not create a second visual language inside one feature.
 
 ## North star
 
-Saturday Signal should feel like the best page in a Saturday game program: quick to scan, specific
+Section One should feel like the best page in a Saturday game program: quick to scan, specific
 about football, and worth opening before kickoff.
 
 The rule is **all signal, no noise**. Every element must help a fan answer one of three questions:
@@ -74,7 +74,7 @@ There are two, and they must not blur into each other.
 
 | Surface | Route | Job |
 | --- | --- | --- |
-| **Home** | `/` | Say what Saturday Signal is, show a live edition as proof, and take a team request. |
+| **Home** | `/` | Say what Section One is, show a live edition as proof, and take a team request. |
 | **Edition** | `/teams/[slug]` | The game-week product for one team. |
 
 The home page shares the tokens, masthead language, rule discipline, and voice — and deliberately
@@ -105,7 +105,7 @@ The masthead is the strongest brand surface.
 - Medium: brand and controls lead; navigation moves to its own line.
 - Small: brand, controls, and a horizontally scrollable tab row.
 - The brand line is always “All signal. No noise.”
-- The team supports the Saturday Signal name. It never replaces it.
+- The team supports the Section One name. It never replaces it.
 - No official team logo belongs in the masthead.
 
 ## Team portability
@@ -239,7 +239,7 @@ The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wi
 
 ## Product and legal guardrails
 
-- Saturday Signal is the product name, never a mascot-branded property.
+- Section One is the product name, never a mascot-branded property.
 - Do not use official logos, mascot imagery, mascot branding, protected hand-sign graphics, or
   official-affiliation language. Those are marks, and using them claims a relationship that does not
   exist.
@@ -318,7 +318,7 @@ Export each generated team and mode with this shape. Generated values are author
 
 ### shadcn/ui bridge
 
-If shadcn/ui is introduced, map it onto Saturday Signal instead of importing its defaults:
+If shadcn/ui is introduced, map it onto Section One instead of importing its defaults:
 
 ```css
 :root {

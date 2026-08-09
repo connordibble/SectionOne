@@ -76,7 +76,14 @@ export function Home() {
     >
       <div className={styles.page} id="main">
         <section className={styles.hero}>
-          <h1 className={styles.heroHeadline}>Know what matters before kickoff</h1>
+          <h1 className={styles.heroHeadline}>
+            {/* The explicit space is for the accessible name: JSX drops
+                whitespace between elements, so without it a screen reader
+                announces "Your team.Your section." The block spans collapse
+                it visually. */}
+            <span>Your team.</span>{" "}
+            <span>Your section.</span>
+          </h1>
           <p className={styles.heroBody}>
             A short, sourced read on your team every game week. What to watch, why it matters, and
             where the answer came from.
@@ -163,7 +170,7 @@ export function Home() {
             </h2>
             <p>
               The biggest programs have four beat writers, a podcast, and a message board. Everyone
-              else gets a box score. Saturday Signal covers a Sun Belt or MAC team the same way it
+              else gets a box score. Section One covers a Sun Belt or MAC team the same way it
               covers an SEC team.
             </p>
             <p className={styles.requestSubtle}>
@@ -177,7 +184,7 @@ export function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
           <p>
-            <strong>Saturday Signal</strong> · Independent coverage. Not affiliated with any school,
+            <strong>Section One</strong> · Independent coverage. Not affiliated with any school,
             conference, or athletics department.
           </p>
           <p className={styles.footerEditions}>

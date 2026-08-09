@@ -1,6 +1,6 @@
 # MVP1 Acceptance Checklist
 
-Saturday Signal MVP1 is considered healthy when these checks pass in the real repository:
+Section One MVP1 is considered healthy when these checks pass in the real repository:
 
 ```bash
 pnpm check

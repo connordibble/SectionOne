@@ -9,7 +9,7 @@ import {
 
 export const defaultAnthropicModel = "claude-haiku-4-5";
 
-// Saturday Signal answers are one grounded paragraph. A tight ceiling bounds
+// Section One answers are one grounded paragraph. A tight ceiling bounds
 // the worst case if a model ever runs away, and costs nothing in the normal
 // case because billing is on tokens generated, not on the cap.
 const defaultMaxTokens = 1024;

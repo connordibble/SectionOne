@@ -402,7 +402,7 @@ function ChatComposer({
         </span>
       ) : null}
       <input
-        aria-label="Ask Saturday Signal"
+        aria-label="Ask Section One"
         autoComplete="off"
         id="chat-input"
         onChange={(event) => onInputChange(event.target.value)}
@@ -431,7 +431,7 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
 
   return (
     <section
-      aria-label="Saturday Signal answer"
+      aria-label="Section One answer"
       className={styles.assistantMessage}
       data-has-evidence={message.citations.length > 0 ? "true" : undefined}
     >
@@ -569,10 +569,10 @@ function stripCitationTags(content: string, citations: ChatCitation[]): string {
 
 function providerLabel(provider: string): string {
   const labels: Record<string, string> = {
-    fixture: "Saturday Signal",
+    fixture: "Section One",
     official: "Primary source",
     cfbd: "Season data",
-    policy: "Saturday Signal",
+    policy: "Section One",
   };
 
   return labels[provider] ?? "Source";

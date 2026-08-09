@@ -131,7 +131,7 @@ async function generateAccepted(
       return {
         accepted: false,
         notice:
-          "The live answer service was unavailable. Saturday Signal used its verified local read instead.",
+          "The live answer service was unavailable. Section One used its verified local read instead.",
       };
     }
 
@@ -159,7 +159,7 @@ async function generateAccepted(
   return {
     accepted: false,
     notice:
-      "The live draft did not clear the sourcing gate. Saturday Signal used its verified local read instead.",
+      "The live draft did not clear the sourcing gate. Section One used its verified local read instead.",
   };
 }
 
@@ -213,7 +213,7 @@ async function prepareAnswer(
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `That is not confirmed. Saturday Signal can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
+        answer: `That is not confirmed. Section One can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
         citations: anchor.slice(0, 1),
         confidence: "low",
         freshness,

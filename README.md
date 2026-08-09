@@ -1,6 +1,6 @@
-# Saturday Signal
+# Section One
 
-Saturday Signal is an independent college-football intelligence desk: what matters before kickoff,
+Section One is an independent college-football intelligence desk: what matters before kickoff,
 what to watch during the game, and the evidence behind the read.
 
 The current Texas edition connects four views: Brief, Matchup, Schedule, and Sources. One grounded

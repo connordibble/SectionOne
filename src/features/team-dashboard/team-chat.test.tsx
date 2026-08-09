@@ -119,7 +119,7 @@ describe("TeamChat", () => {
     );
     await screen.findByText("Texas opens vs Texas State.");
 
-    await userEvent.type(screen.getByLabelText("Ask Saturday Signal"), "And Ohio State?");
+    await userEvent.type(screen.getByLabelText("Ask Section One"), "And Ohio State?");
     await userEvent.click(screen.getByRole("button", { name: "Ask" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));

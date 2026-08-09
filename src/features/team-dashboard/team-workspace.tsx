@@ -88,7 +88,7 @@ export function TeamWorkspace({
     };
 
     const frame = window.requestAnimationFrame(() => {
-      const savedTheme = window.localStorage.getItem("saturday-signal-theme");
+      const savedTheme = window.localStorage.getItem("section-one-theme");
 
       if (isThemeMode(savedTheme)) {
         setThemeMode(savedTheme);
@@ -140,7 +140,7 @@ export function TeamWorkspace({
   function cycleTheme() {
     const nextTheme = themeOrder[(themeOrder.indexOf(themeMode) + 1) % themeOrder.length];
     setThemeMode(nextTheme);
-    window.localStorage.setItem("saturday-signal-theme", nextTheme);
+    window.localStorage.setItem("section-one-theme", nextTheme);
   }
 
   function requestSignalPrompt(prompt: string) {
@@ -161,10 +161,10 @@ export function TeamWorkspace({
             {team.referenceLabel} · {team.conference}
           </p>
           <div className={styles.brandBlock}>
-            <h1 aria-label="Saturday Signal" className={styles.wordmark}>
-              <Link aria-label="Saturday Signal home" href="/">
-                <span>Saturday </span>
-                <span className={styles.wordmarkSignal}>Signal</span>
+            <h1 aria-label="Section One" className={styles.wordmark}>
+              <Link aria-label="Section One home" href="/">
+                <span>Section </span>
+                <span className={styles.wordmarkAccent}>One</span>
               </Link>
             </h1>
             <p className={styles.brandTagline}>All signal. No noise.</p>
@@ -300,7 +300,7 @@ export function TeamWorkspace({
       <footer className={styles.footer} data-testid="source-colophon">
         <div className={styles.footerInner}>
           <p>
-            <strong>Saturday Signal</strong>
+            <strong>Section One</strong>
             {scheduleCapturedLabel ? ` · Schedule checked ${scheduleCapturedLabel}` : ""}
           </p>
           <p>{team.sourcePolicy.disclaimer}</p>

@@ -442,7 +442,7 @@ export function deriveTeamPalettes(theme: TeamConfig["theme"]): TeamPaletteSet {
   };
 }
 
-// Saturday Signal's own identity, used by surfaces that belong to the product
+// Section One's own identity, used by surfaces that belong to the product
 // rather than to any one edition. It matches the global accent in tokens.css.
 //
 // Texas currently shares this hue because Texas is burnt orange; that is a

@@ -4,9 +4,9 @@ test("leads with the fan promise and two ways in", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: /know what matters before kickoff/i }),
+    page.getByRole("heading", { level: 1, name: /your team\. your section\./i }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: "Saturday Signal home" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Section One home" })).toBeVisible();
   await expect(page.getByText("All signal. No noise.")).toBeVisible();
   await expect(page.getByRole("link", { name: /see a live edition/i }).first()).toHaveAttribute(
     "href",
@@ -138,3 +138,25 @@ test("team requests are accepted without an email and validated", async ({ reque
   expect(((await rejected.json()) as { error: string }).error).toMatch(/which team you follow/i);
 });
 
+// The headline is two parallel sentences, so it breaks on the sentence
+// boundary rather than wherever the measure lands. Left to the browser it
+// orphaned "section." on a line of its own.
+for (const width of [1440, 768, 375, 320]) {
+  test(`the hero headline holds two lines at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+
+    const lines = page.getByRole("heading", { level: 1 }).locator("span");
+    await expect(lines).toHaveCount(2);
+
+    // One rendered line each: a span taller than its own line-height means a
+    // sentence wrapped and the orphan is back.
+    for (const line of await lines.all()) {
+      const box = await line.boundingBox();
+      const fontSize = await line.evaluate((node) =>
+        Number.parseFloat(getComputedStyle(node).fontSize),
+      );
+      expect(box!.height, `wrapped at ${width}px`).toBeLessThan(fontSize * 1.5);
+    }
+  });
+}

@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 
-test("loads the finished Saturday Signal workspace", async ({ page }) => {
+test("loads the finished Section One workspace", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
   await expect(
-    page.getByRole("heading", { name: "Saturday Signal", exact: true }),
+    page.getByRole("heading", { name: "Section One", exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/Texas · Week 1 · 2026 · SEC/)).toBeVisible();
   await expect(page.getByRole("tab", { name: "Brief" })).toHaveAttribute(
@@ -55,7 +55,7 @@ test("the Signal Board turns a selected cue into a focused question", async ({ p
   await expect(page.getByText(/Interior pressure lets Texas hurry the quarterback/)).toBeVisible();
 
   await page.getByRole("button", { name: "Ask about this" }).click();
-  const composer = page.getByLabel("Ask Saturday Signal");
+  const composer = page.getByLabel("Ask Section One");
   await expect(composer).toBeFocused();
   await expect(composer).toHaveValue("Why does pressure with four matter?");
 });
@@ -163,7 +163,7 @@ test("the team switcher moves between editions", async ({ page }) => {
 test("the Utah State next-game prompt is answered from Utah State sources", async ({ page }) => {
   await page.goto("/teams/utah-state-football");
 
-  await page.getByLabel("Ask Saturday Signal").fill("Who does Utah State play next?");
+  await page.getByLabel("Ask Section One").fill("Who does Utah State play next?");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   // Scoped to the answer: the venue also appears in the hero, so an unscoped
@@ -300,7 +300,7 @@ test("chat API streams citations, answer text, and completion metadata", async (
 
 test("chat streams a cited answer and keeps it across views", async ({ page }) => {
   await page.goto("/teams/texas-football");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
+  await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
@@ -318,7 +318,7 @@ test("chat streams a cited answer and keeps it across views", async ({ page }) =
 test("the answer uses a reading column and a responsive source rail", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/teams/texas-football");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
+  await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   const answer = page.getByText("Texas opens the 2026 schedule vs Texas State");
@@ -363,11 +363,11 @@ test("the answer uses a reading column and a responsive source rail", async ({ p
 
 test("chat supports a sourced follow-up", async ({ page }) => {
   await page.goto("/teams/texas-football");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
+  await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
 
-  await page.getByLabel("Ask Saturday Signal").fill("How does Ohio State look?");
+  await page.getByLabel("Ask Section One").fill("How does Ohio State look?");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   await expect(page.getByText("How does Ohio State look?")).toBeVisible();

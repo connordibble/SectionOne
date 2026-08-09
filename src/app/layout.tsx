@@ -18,9 +18,12 @@ const bigShoulders = Big_Shoulders({
   subsets: ["latin"],
 });
 
+// The name alone shares a search namespace with Section I Athletics, a New York
+// high-school association with 78 member schools. Naming the sport in the title
+// is the cheapest way to be the right result for the people looking for us.
 export const metadata: Metadata = {
-  title: "Saturday Signal",
-  description: "What to watch before kickoff, with sources.",
+  title: "Section One · College football",
+  description: "Your team. Your section. What to watch before kickoff, with sources.",
 };
 
 export default function RootLayout({

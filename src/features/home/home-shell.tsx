@@ -29,7 +29,7 @@ export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps)
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      const savedTheme = window.localStorage.getItem("saturday-signal-theme");
+      const savedTheme = window.localStorage.getItem("section-one-theme");
 
       if (savedTheme === "light" || savedTheme === "dark") {
         setThemeMode(savedTheme);
@@ -42,7 +42,7 @@ export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps)
   function cycleTheme() {
     const nextTheme = themeMode === "light" ? "dark" : "light";
     setThemeMode(nextTheme);
-    window.localStorage.setItem("saturday-signal-theme", nextTheme);
+    window.localStorage.setItem("section-one-theme", nextTheme);
   }
 
   return (
@@ -58,9 +58,9 @@ export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps)
                 promise in the hero. The wordmark is site identity, and two
                 competing h1s would flatten the document outline. */}
             <p className={styles.wordmark}>
-              <Link aria-label="Saturday Signal home" href="/">
-                <span>Saturday </span>
-                <span className={styles.wordmarkSignal}>Signal</span>
+              <Link aria-label="Section One home" href="/">
+                <span>Section </span>
+                <span className={styles.wordmarkAccent}>One</span>
               </Link>
             </p>
             <p className={styles.brandTagline}>All signal. No noise.</p>

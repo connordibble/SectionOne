@@ -7,16 +7,16 @@ vi.mock("next/server", () => ({
   connection: vi.fn(async () => undefined),
 }));
 
-describe("Saturday Signal home", () => {
+describe("Section One home", () => {
   it("leads with the fan promise, not the product name", async () => {
     render(await HomePage());
 
     // The wordmark is site identity in the masthead; the page's own h1 is the
     // promise. Two competing h1s would flatten the document outline.
     expect(
-      screen.getByRole("heading", { level: 1, name: /know what matters before kickoff/i }),
+      screen.getByRole("heading", { level: 1, name: /your team\. your section\./i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Saturday Signal home" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Section One home" })).toHaveAttribute(
       "href",
       "/",
     );

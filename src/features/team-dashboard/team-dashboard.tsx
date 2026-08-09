@@ -30,7 +30,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
 
   const signals = team.editorial.signals.map((signal) => ({
     ...signal,
-    sourceTitle: notesById.get(signal.noteId)?.title ?? "Saturday Signal note",
+    sourceTitle: notesById.get(signal.noteId)?.title ?? "Section One note",
   }));
   const starterCitations = team.editorial.matchup.citationNoteIds.flatMap((noteId) => {
     const document = notesById.get(noteId);
@@ -59,7 +59,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
     <TeamWorkspace
       countdown={getKickoffCountdown(nextGame)}
       leadSourceTitle={
-        notesById.get(team.editorial.lead.noteId)?.title ?? "Saturday Signal note"
+        notesById.get(team.editorial.lead.noteId)?.title ?? "Section One note"
       }
       nextGame={nextGame}
       ranking={getTeamRankingSummary(team)}
