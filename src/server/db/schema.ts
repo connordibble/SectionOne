@@ -1,9 +1,11 @@
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   customType,
   index,
   integer,
   jsonb,
+  numeric,
   pgTable,
   text,
   timestamp,
@@ -138,6 +140,27 @@ export const chatMessages = pgTable(
   (table) => [index("chat_messages_session_idx").on(table.chatSessionId, table.createdAt)],
 );
 
+// Attribution ledger for paid model calls. See drizzle/0002_llm_usage.sql for
+// why team_slug carries no foreign key and why cost_usd is nullable.
+export const llmUsage = pgTable(
+  "llm_usage",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    teamSlug: text("team_slug").notNull(),
+    provider: text("provider").notNull(),
+    model: text("model").notNull(),
+    inputTokens: integer("input_tokens").notNull(),
+    outputTokens: integer("output_tokens").notNull(),
+    costUsd: numeric("cost_usd", { precision: 10, scale: 6 }),
+    accepted: boolean("accepted").notNull().default(true),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("llm_usage_created_at_idx").on(table.createdAt),
+    index("llm_usage_team_created_idx").on(table.teamSlug, table.createdAt),
+  ],
+);
+
 export const answerCitations = pgTable("answer_citations", {
   id: uuid("id").primaryKey().defaultRandom(),
   chatSessionId: uuid("chat_session_id").references(() => chatSessions.id, {
@@ -149,6 +172,25 @@ export const answerCitations = pgTable("answer_citations", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+// Which programs fans want covered. See drizzle/0003_team_requests.sql for why
+// the raw entry is kept alongside a normalized form, and why nothing
+// identifying beyond an optional email is stored.
+export const teamRequests = pgTable(
+  "team_requests",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    teamName: text("team_name").notNull(),
+    teamNameNormalized: text("team_name_normalized").notNull(),
+    email: text("email"),
+    note: text("note"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("team_requests_normalized_idx").on(table.teamNameNormalized),
+    index("team_requests_created_at_idx").on(table.createdAt),
+  ],
+);
+
 export const schema = {
   teams,
   seasons,
@@ -158,6 +200,8 @@ export const schema = {
   chatSessions,
   chatMessages,
   answerCitations,
+  llmUsage,
+  teamRequests,
 };
 
 export const vectorExtensionSql = sql`CREATE EXTENSION IF NOT EXISTS vector`;

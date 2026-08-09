@@ -1,49 +1,49 @@
 {
   "teamSlug": "texas-football",
   "capturedAt": "2026-07-01T14:10:00.000Z",
-  "disclaimer": "Sample analyst notes bundled as offline fixture data. Replace with a licensed game-notes provider before production use.",
+  "disclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
   "notes": [
     {
       "id": "early-down-identity",
-      "title": "Offensive identity check: early downs (sample)",
+      "title": "Early downs: stay on schedule",
       "topics": ["early downs", "offense", "run game"],
       "publishedAt": "2026-06-28T15:00:00.000Z",
-      "body": "The cleanest tell for this offense is early downs: when first-down runs and quick game keep the offense ahead of the sticks, the whole call sheet opens up. Watch success rate on first and second down, not raw yardage. If Texas is living in third-and-long against the better fronts on the schedule, the explosiveness numbers will not save the drive count. Sample analyst note captured July 1, 2026."
+      "body": "Early downs are the cleanest tell for this offense. When runs and quick throws keep Texas ahead of the sticks, the whole playbook opens up. Too many third-and-longs mean trouble."
     },
     {
       "id": "interior-ol-rotation",
-      "title": "Roster context: interior offensive line rotation (sample)",
+      "title": "Interior line: find the best five",
       "topics": ["roster", "offensive line", "line of scrimmage"],
       "publishedAt": "2026-06-27T18:30:00.000Z",
-      "body": "The roster context is still thin at interior offensive line, where the two-deep is unsettled and the staff has rotated combinations at both guard spots through spring. Until the rotation hardens, treat any line-of-scrimmage projection as provisional: pad-level questions inside show up first on short yardage and in pass protection versus interior pressure. Sample analyst note captured July 1, 2026."
+      "body": "Both guard spots are still unsettled after spring. Short yardage and pass protection against interior pressure should show which five linemen the staff trusts."
     },
     {
       "id": "quarterback-operation",
-      "title": "Quarterback operation and clean-game markers (sample)",
+      "title": "Clean start: checks, snaps, ball security",
       "topics": ["quarterback", "operation", "turnovers"],
       "publishedAt": "2026-06-29T16:45:00.000Z",
-      "body": "The quarterback room's job in September is a clean operation: on-time snaps, checks that keep runs out of loaded boxes, and zero gift turnovers in plus territory. Field position is the quiet stat to track; a punt team and a quarterback who both avoid disasters are worth more than a highlight throw in the opener window. Sample analyst note captured July 1, 2026."
+      "body": "The quarterback's first job is simple: get the call right, snap it on time, and protect the ball. Field position matters more than one highlight throw in the opener."
     },
     {
       "id": "defensive-front-pressure",
-      "title": "Defensive front seven: pressure without blitzing (sample)",
+      "title": "Pressure with four",
       "topics": ["defense", "pressure", "front seven"],
       "publishedAt": "2026-06-30T14:20:00.000Z",
-      "body": "The front seven's ceiling question is pressure with four: if the interior can win one-on-ones, the coverage shell stays intact and explosive passes drop. Watch pressure rate on early downs and how often the staff has to send five or more to move the quarterback off his spot. Run fits on duo and counter are the other early tell. Sample analyst note captured July 1, 2026."
+      "body": "If the front can pressure with four, Texas can keep more help in coverage. Watch early downs and how often the defense needs a fifth rusher to move the quarterback."
     },
     {
       "id": "opponent-ohio-state",
-      "title": "Opponent scan: Ohio State week two (sample)",
+      "title": "Ohio State: the first big test",
       "topics": ["opponent", "Ohio State", "line of scrimmage"],
       "publishedAt": "2026-06-30T19:10:00.000Z",
-      "body": "Ohio State in week two is the schedule's first real line-of-scrimmage test: an experienced interior defensive line and receivers who punish busted coverage. The football read is whether Texas can stay on schedule on early downs and protect without chipping on every snap; if the opener vs Texas State shows a clean operation, this matchup is where the evidence gets stress-tested. Sample analyst note captured July 1, 2026."
+      "body": "Ohio State is the first big test up front. Texas has to stay on schedule and protect without helping on every snap."
     },
     {
       "id": "opponent-texas-state",
-      "title": "Opponent scan: Texas State opener (sample)",
+      "title": "Texas State: opener watch list",
       "topics": ["opponent", "Texas State", "openers"],
       "publishedAt": "2026-06-26T13:40:00.000Z",
-      "body": "Texas State is an opener built for calibration, not drama: a tempo offense that will test tackling angles and a front that should lose the line of scrimmage. Treat the game as a baseline read on early-down efficiency, personnel packages the staff actually trusts, and how quickly the second unit gets meaningful snaps. Sample analyst note captured July 1, 2026."
+      "body": "Texas State will test tackling in space and the defense's response to tempo. Watch early downs, who gets real snaps, and whether Texas wins up front."
     }
   ]
 }

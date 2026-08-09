@@ -1,4 +1,4 @@
-# Saturday Signal Voice
+# Section One Voice
 
 The voice is a smart fan analyst: direct, matchup-aware, source-grounded, and conversational without trying too hard.
 

@@ -1,0 +1,49 @@
+{
+  "teamSlug": "utah-state-football",
+  "capturedAt": "2026-08-05T15:20:00.000Z",
+  "disclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
+  "notes": [
+    {
+      "id": "run-game-identity",
+      "title": "Run game: stay ahead of the chains",
+      "topics": ["run game", "offense", "early downs"],
+      "publishedAt": "2026-07-29T15:00:00.000Z",
+      "body": "The run game sets up everything else for this offense. When Utah State stays ahead of the chains on early downs, tempo and play-action both become real options instead of hopes. Third-and-long is where a drive in Logan goes to die."
+    },
+    {
+      "id": "quarterback-operation",
+      "title": "Quarterback play: protect the ball, protect the field",
+      "topics": ["quarterback", "operation", "turnovers"],
+      "publishedAt": "2026-07-30T17:10:00.000Z",
+      "body": "The quarterback's first job here is field position, not highlights. Get the call in on time, take the checkdown, and make the other team drive the length of the field. One free turnover swings a game Utah State would otherwise play even."
+    },
+    {
+      "id": "explosive-plays-allowed",
+      "title": "Explosive plays: the number that decides these games",
+      "topics": ["defense", "explosiveness", "coverage"],
+      "publishedAt": "2026-07-31T16:40:00.000Z",
+      "body": "Explosive plays are the cleanest tell for this defense. Utah State can live with long, slow drives against it; what it cannot live with is giving up chunk plays behind coverage. Watch how often a safety ends up as the last line."
+    },
+    {
+      "id": "special-teams-margin",
+      "title": "Special teams: the cheapest points on the field",
+      "topics": ["special teams", "field position", "kicking"],
+      "publishedAt": "2026-08-01T14:25:00.000Z",
+      "body": "Special teams is the cheapest place on the field to win yards. A net punt edge and clean kick coverage are worth more to Utah State than any single play call. Field position is how a team without a talent edge is still in a game in the fourth quarter."
+    },
+    {
+      "id": "pac-12-step-up",
+      "title": "Pac-12 move: a harder Saturday most weeks",
+      "topics": ["schedule", "Pac-12", "conference"],
+      "publishedAt": "2026-08-02T13:15:00.000Z",
+      "body": "The Pac-12 move means a harder Saturday most weeks than the old slate held. The line of scrimmage is where that shows up first, and it shows up late in games before it shows up early. Depth up front matters more in November than it does in September."
+    },
+    {
+      "id": "opponent-idaho-state",
+      "title": "Idaho State: opener watch list",
+      "topics": ["opponent", "Idaho State", "openers"],
+      "publishedAt": "2026-08-03T18:05:00.000Z",
+      "body": "Idaho State is an opener, and openers are about answers rather than the scoreboard. Watch tackling in space, who earns real snaps up front, and whether Utah State wins early downs without needing anything unusual. Sloppy field position in week one tends to show up again in Seattle."
+    }
+  ]
+}

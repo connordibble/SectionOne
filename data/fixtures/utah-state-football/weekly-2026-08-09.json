@@ -1,0 +1,58 @@
+{
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-08-09",
+  "publishedAt": "2026-08-09T15:00:00.000Z",
+  "summary": "Camp is open and the offense is nearly all new. That is the story until September 5.",
+  "items": [
+    {
+      "id": "offense-rebuilt",
+      "headline": "Four offensive starters are back",
+      "tldr": "Almost the whole offense turned over, with Robert Anae taking it over and McCae Hillstead named the starter back in April. Expect the first month to be about timing and communication more than scheme.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/08/04/utah-state-football-media-day-how-good-can-offense-be/",
+      "publishedAt": "2026-08-04T00:00:00.000Z",
+      "grade": { "impact": 5, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "newcomers",
+      "headline": "The newcomers decide how this goes",
+      "tldr": "With this much roster turnover, the transfers are not depth pieces, they are the plan. Who wins jobs up front in the next three weeks tells you more than any camp quote will.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://www.cachevalleydaily.com/sports/utah-state-2026-football-newcomers-to-watch/article_0191ddb7-2a15-4b7f-bf14-f2c72920b71f.html",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 4 }
+    },
+    {
+      "id": "pac12-contender",
+      "headline": "Can this roster hold up in the Pac-12?",
+      "tldr": "The honest read is that the schedule got heavier and the roster got younger at the same time. Depth up front in November is where that question actually gets answered.",
+      "outlet": "Salt Lake Tribune",
+      "tier": "local",
+      "url": "https://www.sltrib.com/sports/2026/08/03/can-utah-state-football-compete/",
+      "publishedAt": "2026-08-03T00:00:00.000Z",
+      "grade": { "impact": 4, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "camp-opens",
+      "headline": "Camp opened Wednesday, and it is closed to the public",
+      "tldr": "Practice started August 5 in Logan. Sessions are closed, with coaches and players available to reporters afterward, so what comes out of camp arrives second-hand all month.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/8/3/football-starts-fall-camp-on-wednesday-august-5.aspx",
+      "publishedAt": "2026-08-03T00:00:00.000Z",
+      "grade": { "impact": 3, "echo": 5, "freshness": 3 }
+    },
+    {
+      "id": "practice-one",
+      "headline": "First practice is in the books",
+      "tldr": "A first day in shells tells you about tempo and little else. Worth noting mainly as the start of the clock on who earns real snaps.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/8/5/football-fall-camp-practice-no-1.aspx",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "grade": { "impact": 2, "echo": 3, "freshness": 3 }
+    }
+  ]
+}

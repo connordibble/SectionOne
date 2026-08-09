@@ -1,9 +1,8 @@
 import { connection } from "next/server";
-import { defaultTeamConfig } from "@/config/team";
-import { TeamDashboard } from "@/features/team-dashboard/team-dashboard";
+import { Home } from "@/features/home/home";
 
-export default async function Home() {
+export default async function HomePage() {
   await connection();
 
-  return <TeamDashboard team={defaultTeamConfig} />;
+  return <Home />;
 }

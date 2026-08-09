@@ -4,7 +4,26 @@ export type VoiceEvaluation = {
   matchedFootballTerms: string[];
 };
 
-const bannedPhrases = [
+// The team's own contract, structurally compatible with `TeamConfig["voice"]`.
+// Typed structurally rather than importing TeamConfig so this module stays a
+// leaf that server and client code can both use.
+export type VoiceContract = {
+  preferredTerms?: readonly string[];
+  bannedPhrases?: readonly string[];
+};
+
+export type VoiceEvaluationOptions = {
+  // Merged with the platform baseline below. A team may add to the contract;
+  // it cannot opt out of the baseline.
+  contract?: VoiceContract;
+  // Citation titles actually retrieved for this answer. When supplied, every
+  // inline [tag] must match one of them. Omit to skip tag validation (useful
+  // when evaluating a fragment with no retrieval behind it).
+  validCitationTitles?: readonly string[];
+};
+
+// Platform-wide floor. Teams extend these; they never shrink them.
+const baselineBannedPhrases = [
   "as an ai",
   "it is important to note",
   "in conclusion",
@@ -13,7 +32,7 @@ const bannedPhrases = [
   "guaranteed lock",
 ];
 
-const footballTerms = [
+const baselineFootballTerms = [
   "early down",
   "early downs",
   "line of scrimmage",
@@ -21,6 +40,7 @@ const footballTerms = [
   "explosiveness",
   "field position",
   "front seven",
+  "offensive line",
   "pressure",
   "personnel",
   "success rate",
@@ -34,12 +54,19 @@ const footballTerms = [
 
 const toxicRivalryTerms = ["trash fanbase", "poverty program", "classless"];
 
-export function evaluateVoiceSample(text: string): VoiceEvaluation {
-  const normalized = text.toLowerCase().replaceAll(/[\u2010-\u2015-]/g, " ");
+const citationTagPattern = /\[([^\]]+)\]/g;
+
+export function evaluateVoiceSample(
+  text: string,
+  options: VoiceEvaluationOptions = {},
+): VoiceEvaluation {
+  const normalized = normalize(text);
   const flags: string[] = [];
-  const matchedFootballTerms = footballTerms.filter((term) =>
-    normalized.includes(term),
-  );
+
+  const footballTerms = mergeTerms(baselineFootballTerms, options.contract?.preferredTerms);
+  const bannedPhrases = mergeTerms(baselineBannedPhrases, options.contract?.bannedPhrases);
+
+  const matchedFootballTerms = footballTerms.filter((term) => normalized.includes(term));
 
   for (const phrase of bannedPhrases) {
     if (normalized.includes(phrase)) {
@@ -57,9 +84,13 @@ export function evaluateVoiceSample(text: string): VoiceEvaluation {
     flags.push("missing football-specific language");
   }
 
-  if (!hasCitationCue(text)) {
+  const tags = extractCitationTags(text);
+
+  if (tags.length === 0 && !hasFreshnessCue(text)) {
     flags.push("missing citation or freshness cue");
   }
+
+  flags.push(...findUnknownCitations(tags, options.validCitationTitles));
 
   return {
     passed: flags.length === 0,
@@ -68,6 +99,45 @@ export function evaluateVoiceSample(text: string): VoiceEvaluation {
   };
 }
 
-function hasCitationCue(text: string) {
-  return /\[[^\]]+\]|source|freshness|last updated|according to/i.test(text);
+export function extractCitationTags(text: string): string[] {
+  return [...text.matchAll(citationTagPattern)].map((match) => match[1].trim());
+}
+
+// The point of the citation contract is that a tag refers to something real.
+// Checking only that *a* bracket exists lets a model invent
+// "[Definitely Real Source]" and pass, which is precisely the failure this
+// product cannot afford.
+function findUnknownCitations(
+  tags: readonly string[],
+  validCitationTitles: readonly string[] | undefined,
+): string[] {
+  if (!validCitationTitles) {
+    return [];
+  }
+
+  const known = new Set(validCitationTitles.map((title) => normalize(title)));
+
+  return [...new Set(tags)]
+    .filter((tag) => !known.has(normalize(tag)))
+    .map((tag) => `unknown citation: ${tag}`);
+}
+
+function hasFreshnessCue(text: string) {
+  return /source|freshness|last updated|according to/i.test(text);
+}
+
+function mergeTerms(baseline: readonly string[], extra: readonly string[] | undefined): string[] {
+  return [...new Set([...baseline, ...(extra ?? [])].map((term) => normalize(term)))].filter(
+    (term) => term.length > 0,
+  );
+}
+
+// Lowercase and flatten the unicode dash family so "early-downs", "early–downs"
+// and "early downs" all compare equal.
+function normalize(value: string): string {
+  return value
+    .toLowerCase()
+    .replaceAll(/[‐-―−-]/gu, " ")
+    .replaceAll(/\s+/gu, " ")
+    .trim();
 }

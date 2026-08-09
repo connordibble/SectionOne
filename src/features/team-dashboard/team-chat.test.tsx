@@ -29,11 +29,14 @@ const answerEvents = [
     },
   },
   { event: "delta", data: { text: "Texas opens " } },
-  { event: "delta", data: { text: "vs Texas State." } },
+  {
+    event: "delta",
+    data: { text: "vs Texas State. [Texas football 2026 schedule]" },
+  },
   {
     event: "done",
     data: {
-      answer: "Texas opens vs Texas State.",
+      answer: "Texas opens vs Texas State. [Texas football 2026 schedule]",
       citations: [
         {
           id: "doc-1",
@@ -43,10 +46,19 @@ const answerEvents = [
         },
       ],
       confidence: "high",
-      freshness: "Sources: fixture.",
+      freshness: "Schedule checked July 1, 2026.",
     },
   },
 ];
+
+const baseProps = {
+  mode: "brief" as const,
+  starterRead: {
+    question: "What matters?",
+    answer: "Early downs.",
+    citations: [],
+  },
+};
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -59,7 +71,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -75,7 +87,12 @@ describe("TeamChat", () => {
     expect(
       screen.getByRole("link", { name: /Texas football 2026 schedule/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Confidence: high/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Your signal" })).toBeInTheDocument();
+    expect(screen.getByRole("complementary", { name: "Sources" })).toBeInTheDocument();
+    expect(screen.getByText("1 question")).toBeInTheDocument();
+    expect(screen.getByText("1 source")).toBeInTheDocument();
+    expect(screen.queryByText(/\[Texas football 2026 schedule\]/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/confidence/i)).not.toBeInTheDocument();
 
     const requestBody = JSON.parse(
       (fetchMock.mock.calls[0] as unknown as [string, { body: string }])[1].body,
@@ -90,7 +107,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -102,8 +119,8 @@ describe("TeamChat", () => {
     );
     await screen.findByText("Texas opens vs Texas State.");
 
-    await userEvent.type(screen.getByLabelText("Ask Saturday Signal"), "And Ohio State?");
-    await userEvent.click(screen.getByRole("button", { name: "Ask Saturday Signal" }));
+    await userEvent.type(screen.getByLabelText("Ask Section One"), "And Ohio State?");
+    await userEvent.click(screen.getByRole("button", { name: "Ask" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
 
@@ -113,7 +130,10 @@ describe("TeamChat", () => {
 
     expect(secondBody.history).toEqual([
       { role: "user", content: "Give me the next-game briefing." },
-      { role: "assistant", content: "Texas opens vs Texas State." },
+      {
+        role: "assistant",
+        content: "Texas opens vs Texas State. [Texas football 2026 schedule]",
+      },
     ]);
   });
 
@@ -123,7 +143,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Give me the next-game briefing."]}
         tagline="Test tagline"
         teamSlug="texas-football"
@@ -135,7 +155,7 @@ describe("TeamChat", () => {
     );
     await screen.findByText("Texas opens vs Texas State.");
 
-    await userEvent.click(screen.getByRole("button", { name: /New conversation/i }));
+    await userEvent.click(screen.getByRole("button", { name: /Start over/i }));
 
     expect(screen.queryByText("Texas opens vs Texas State.")).not.toBeInTheDocument();
     expect(
@@ -164,7 +184,7 @@ describe("TeamChat", () => {
 
     render(
       <TeamChat
-        compactTagline="Test signal."
+        {...baseProps}
         suggestedPrompts={["Prompt"]}
         tagline="Test tagline"
         teamSlug="nope"

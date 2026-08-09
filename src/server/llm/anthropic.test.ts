@@ -13,7 +13,7 @@ function messageJson(text: string) {
     id: "msg_test",
     type: "message",
     role: "assistant",
-    model: "claude-opus-4-8",
+    model: "claude-haiku-4-5-20251001",
     content: [{ type: "text", text }],
     stop_reason: "end_turn",
     stop_sequence: null,
@@ -74,7 +74,7 @@ describe("anthropic provider", () => {
     const result = await provider.generate(request);
 
     expect(result.text).toBe("Grounded answer.");
-    expect(result.model).toBe("claude-opus-4-8");
+    expect(result.model).toBe("claude-haiku-4-5-20251001");
 
     const [url, init] = fetchMock.mock.calls[0] as unknown as [
       string | URL,
@@ -82,9 +82,11 @@ describe("anthropic provider", () => {
     ];
     expect(String(url)).toContain("/v1/messages");
     const body = JSON.parse(init.body) as Record<string, unknown>;
-    expect(body.model).toBe("claude-opus-4-8");
+    expect(body.model).toBe("claude-haiku-4-5");
     expect(body.system).toBe(request.system);
-    expect(body.thinking).toEqual({ type: "adaptive" });
+    // Haiku 4.5 predates the adaptive-thinking shape and 400s on it, so the
+    // parameter must be absent rather than set to any value.
+    expect(body.thinking).toBeUndefined();
     expect(body.messages).toEqual([{ role: "user", content: "next game?" }]);
   });
 
@@ -99,12 +101,12 @@ describe("anthropic provider", () => {
 
     const provider = createAnthropicProvider({
       ANTHROPIC_API_KEY: "sk-test",
-      ANTHROPIC_MODEL: "claude-haiku-4-5",
+      ANTHROPIC_MODEL: "claude-opus-4-8",
     });
     await provider.generate(request);
 
     const [, init] = fetchMock.mock.calls[0] as unknown as [unknown, { body: string }];
-    expect((JSON.parse(init.body) as { model: string }).model).toBe("claude-haiku-4-5");
+    expect((JSON.parse(init.body) as { model: string }).model).toBe("claude-opus-4-8");
   });
 
   it("streams text deltas from SSE events", async () => {

@@ -17,7 +17,7 @@ describe("buildChatRequest", () => {
 
     expect(request.system).toContain("Texas football");
     expect(request.system).toContain("early downs");
-    expect(request.system).toContain("not affiliated");
+    expect(request.system).toMatch(/not affiliated/i);
     expect(request.system).toContain("Source excerpts:");
     expect(request.system).toContain("[1]");
     expect(request.messages.at(-1)).toEqual({
@@ -26,20 +26,62 @@ describe("buildChatRequest", () => {
     });
   });
 
-  it("classifies schedule questions as next-game intent with derived facts", async () => {
+  // Classification itself now lives in routing.ts; this only asserts that the
+  // facts each capability needs are gathered and that the chosen capability is
+  // passed straight through.
+  it("gathers the facts every composer capability needs", async () => {
     const hits = await retrieve("Give me the next-game briefing.");
-    const request = buildChatRequest(defaultTeamConfig, "Give me the next-game briefing.", hits);
+    const request = buildChatRequest(
+      defaultTeamConfig,
+      "Give me the next-game briefing.",
+      hits,
+      [],
+      "next-game-brief",
+    );
 
-    expect(request.grounding?.intent).toBe("next-game");
+    expect(request.grounding?.capability).toBe("next-game-brief");
     expect(request.grounding?.nextGame?.opponent).toBe("Texas State");
+    expect(request.grounding?.upcomingGames.length).toBeGreaterThan(0);
+    expect(request.grounding?.sourceReadiness.length).toBeGreaterThan(0);
+    expect(request.grounding?.scheduleCapturedAt).toBeTruthy();
     expect(request.grounding?.citationTitles.length).toBeGreaterThan(0);
   });
 
-  it("classifies other questions as general intent", async () => {
-    const hits = await retrieve("How does the offensive line look?");
-    const request = buildChatRequest(defaultTeamConfig, "How does the offensive line look?", hits);
+  it("puts the relevant team note first for a team-note brief", async () => {
+    const hits = await retrieve("How does Ohio State look?");
+    const request = buildChatRequest(
+      defaultTeamConfig,
+      "How does Ohio State look?",
+      hits,
+      [],
+      "team-note-brief",
+    );
 
-    expect(request.grounding?.intent).toBe("general");
+    expect(request.grounding?.excerpts[0]?.title).toBe("Ohio State: the first big test");
+
+    const earlyDownHits = await retrieve("What matters on early downs?");
+    const earlyDownRequest = buildChatRequest(
+      defaultTeamConfig,
+      "What matters on early downs?",
+      earlyDownHits,
+      [],
+      "team-note-brief",
+    );
+
+    expect(earlyDownRequest.grounding?.excerpts[0]?.title).toBe(
+      "Early downs: stay on schedule",
+    );
+  });
+
+  it("leaves capability undefined for escalated questions", async () => {
+    const hits = await retrieve("How does the offensive line look?");
+    const request = buildChatRequest(
+      defaultTeamConfig,
+      "How does the offensive line look?",
+      hits,
+    );
+
+    expect(request.grounding?.capability).toBeUndefined();
   });
 });
 

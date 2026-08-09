@@ -1,59 +1,104 @@
-import { formatCaptureDate, formatSite, getTeamSchedule } from "@/server/schedule/schedule";
+import { ArrowRight } from "lucide-react";
+import type { ScheduleGame, TeamSchedule } from "@/server/schedule/schedule";
+import styles from "./team-workspace.module.css";
 
 type SchedulePreviewProps = {
-  teamSlug: string;
+  nextGameId?: string;
+  onOpenSchedule?: () => void;
+  schedule?: TeamSchedule;
+  variant: "compact" | "full";
 };
 
-export function SchedulePreview({ teamSlug }: SchedulePreviewProps) {
-  const schedule = getTeamSchedule(teamSlug);
-
+export function SchedulePreview({
+  nextGameId,
+  onOpenSchedule,
+  schedule,
+  variant,
+}: SchedulePreviewProps) {
   if (!schedule) {
-    return null;
+    return (
+      <section className={styles.scheduleEmpty} data-testid="schedule-strip">
+        <h2>Schedule</h2>
+        <p>No dates have been posted for this team yet.</p>
+      </section>
+    );
   }
+
+  const nextIndex = Math.max(
+    0,
+    schedule.games.findIndex((game) => game.id === nextGameId),
+  );
+  const games =
+    variant === "compact" ? schedule.games.slice(nextIndex, nextIndex + 3) : schedule.games;
 
   return (
     <section
-      className="rounded-lg border border-[var(--team-border)] bg-[var(--team-surface)] p-4 shadow-sm sm:p-5"
+      className={variant === "compact" ? styles.scheduleCompact : styles.scheduleFull}
       data-testid="schedule-strip"
     >
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div className={styles.scheduleHeading}>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-            {schedule.seasonYear} schedule
-          </p>
-          <h2 className="mt-1 text-xl font-semibold tracking-normal text-[var(--team-ink)]">
-            First six-game stretch
-          </h2>
+          <h2>{variant === "compact" ? "Next three" : `${schedule.seasonYear} schedule`}</h2>
+          {variant === "full" ? (
+            <p>{schedule.games.length} games. Dates and TV can change.</p>
+          ) : null}
         </div>
-        <span className="w-fit rounded-md bg-[var(--team-surface-soft)] px-2.5 py-1 text-xs font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-          Fixture scan
-        </span>
+        {variant === "compact" && onOpenSchedule ? (
+          <button className={styles.scheduleLink} onClick={onOpenSchedule} type="button">
+            Full schedule
+            <ArrowRight aria-hidden="true" />
+          </button>
+        ) : null}
       </div>
-      <div className="mt-4 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
-        {schedule.games.slice(0, 6).map((game) => (
-          <div
-            className="grid gap-2 rounded-md border border-[var(--team-border)] bg-[var(--team-surface-soft)] px-3 py-3 text-sm"
+
+      <ol className={styles.scheduleList}>
+        {games.map((game) => (
+          <ScheduleRow
+            game={game}
+            isNext={game.id === nextGameId}
             key={game.id}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <span className="min-w-0 font-semibold text-[var(--team-ink-subtle)]">
-                {formatSite(game.site)} {game.opponent}
-              </span>
-              <span className="shrink-0 text-xs font-semibold uppercase text-[var(--team-muted)]">
-                {game.kickoff}
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--team-muted)]">
-              <span>{game.dateLabel}</span>
-              <span>{game.tv ?? "TV TBD"}</span>
-            </div>
-          </div>
+            variant={variant}
+          />
         ))}
-      </div>
-      <p className="mt-4 text-xs leading-5 text-[var(--team-muted)]">
-        Source freshness: official schedule fixture captured{" "}
-        {formatCaptureDate(schedule.capturedAt)}.
-      </p>
+      </ol>
     </section>
   );
+}
+
+function ScheduleRow({
+  game,
+  isNext,
+  variant,
+}: {
+  game: ScheduleGame;
+  isNext: boolean;
+  variant: "compact" | "full";
+}) {
+  return (
+    <li className={styles.scheduleRow} data-next={isNext || undefined}>
+      <time className={`${styles.scheduleDate} tnum`} dateTime={game.startsAt ?? undefined}>
+        {shortDate(game.dateLabel)}
+      </time>
+      <div className={styles.scheduleOpponent}>
+        <p>
+          <span>{siteWord(game.site)} </span>
+          <strong>{game.opponent}</strong>
+          {isNext ? <span className={styles.nextGameLabel}>Next</span> : null}
+        </p>
+        {variant === "full" ? <span>{game.venue}</span> : null}
+      </div>
+      <p className={`${styles.scheduleKickoff} tnum`}>
+        <span>{game.kickoff}</span>
+        <span>{game.tv ?? "TV TBD"}</span>
+      </p>
+    </li>
+  );
+}
+
+function siteWord(site: ScheduleGame["site"]): string {
+  return site === "away" ? "at" : "vs";
+}
+
+function shortDate(dateLabel: string): string {
+  return dateLabel.replace(/^\w+day,\s*/, "");
 }

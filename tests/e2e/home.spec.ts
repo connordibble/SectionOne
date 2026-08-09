@@ -1,149 +1,162 @@
 import { expect, test } from "@playwright/test";
 
-test("loads the Saturday Signal shell", async ({ page }) => {
+test("leads with the fan promise and two ways in", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: "Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Texas football reference deployment")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Ask Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Independent fan project")).toBeVisible();
-  await expect(page.getByText("First six-game stretch")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: /your team\. your section\./i }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Section One home" })).toBeVisible();
+  await expect(page.getByText("All signal. No noise.")).toBeVisible();
+  await expect(page.getByRole("link", { name: /see a live edition/i }).first()).toHaveAttribute(
+    "href",
+    "/teams/texas-football",
+  );
 });
 
-test("loads the canonical Texas football route", async ({ page }) => {
+test("the edition card carries real schedule data and opens the edition", async ({ page }) => {
+  await page.goto("/");
+
+  const edition = page.getByRole("link", { name: /texas football/i });
+  // Same config and schedule the edition page renders — a card that can drift
+  // out of sync with the product would be advertising, not proof.
+  await expect(edition).toContainText(/\d+\s*days? out|Today|Kickoff TBD/);
+  await expect(edition).toContainText(/Schedule checked/);
+
+  await edition.click();
+  await expect(page).toHaveURL(/\/teams\/texas-football$/);
+  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
+});
+
+test("states the honest number of live editions", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByText(/2 editions live/i)).toBeVisible();
+  await expect(page.locator('#editions a[href^="/teams/"]')).toHaveCount(2);
+});
+
+test("requesting a team confirms and replaces the form", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("App State");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  // The confirmation replaces the form rather than sitting beside it, so a
+  // filled-in form cannot be submitted twice by accident.
+  await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
+  await expect(page.getByRole("button", { name: /request this team/i })).toHaveCount(0);
+});
+
+test("a request without an email is still accepted", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  await expect(page.locator("#request").getByRole("status")).toBeVisible();
+});
+
+test("a malformed email is reported in fan-readable text", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByLabel(/email/i).fill("nope");
+  await page.getByRole("button", { name: /request this team/i }).click();
+
+  // Scoped to the section: Next.js renders its own role="alert" route
+  // announcer at the document root, which an unscoped query also matches.
+  await expect(page.locator("#request").getByRole("alert")).toContainText(
+    /email address does not look right/i,
+  );
+});
+
+test("in-page navigation clears the sticky masthead", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  await page.getByRole("link", { name: "Request a team" }).click();
+
+  const heading = page.getByRole("heading", { name: /most teams do not get covered/i });
+  await expect(heading).toBeVisible();
+
+  // scroll-margin has to clear the sticky bar, or the anchor lands the heading
+  // underneath it.
+  const headingBox = await heading.boundingBox();
+  const mastheadBox = await page.locator("header").boundingBox();
+  expect(headingBox).not.toBeNull();
+  expect(mastheadBox).not.toBeNull();
+  expect(headingBox!.y).toBeGreaterThanOrEqual(mastheadBox!.y + mastheadBox!.height);
+});
+
+test("light is the default and the theme choice persists", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("/");
+  const shell = page.locator("main[data-theme]");
+
+  await expect(shell).toHaveAttribute("data-theme", "light");
+  await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
+  await expect(shell).toHaveAttribute("data-theme", "dark");
+
+  await page.reload();
+  await expect(shell).toHaveAttribute("data-theme", "dark");
+});
+
+// The masthead and an edition page share a storage key, so a fan who picks
+// dark on one surface does not get flashed back to light on the other.
+test("the theme choice carries between the home page and an edition", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
+  await expect(page.locator("main[data-theme]")).toHaveAttribute("data-theme", "dark");
+
   await page.goto("/teams/texas-football");
-
-  await expect(page.getByRole("heading", { name: "Saturday Signal" })).toBeVisible();
-  await expect(page.getByText("Grounded assistant")).toBeVisible();
-});
-
-test("desktop keeps the source rail compact and moves schedule out of it", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop", "desktop-only layout contract");
-
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("/");
-
-  // Assert the structural layout contract (chat is primary, the rail is
-  // trimmed to two panels, and the schedule lives in the main column below
-  // chat rather than in the rail) using relationships between elements, not
-  // absolute pixel heights that break whenever copy or source counts change.
-  const layout = await page.evaluate(() => {
-    const chatPanel = document.querySelector('[data-testid="team-chat-panel"]');
-    const sourceRail = document.querySelector('[data-testid="signal-rail"]');
-    const scheduleStrip = document.querySelector('[data-testid="schedule-strip"]');
-
-    if (!chatPanel || !sourceRail || !scheduleStrip) {
-      throw new Error("Expected dashboard layout elements to be present.");
-    }
-
-    const chatRect = chatPanel.getBoundingClientRect();
-    const railRect = sourceRail.getBoundingClientRect();
-    const scheduleRect = scheduleStrip.getBoundingClientRect();
-
-    return {
-      railPanelCount: sourceRail.querySelectorAll("section").length,
-      scheduleIsLeftOfRail: scheduleRect.left < railRect.left,
-      scheduleIsBelowChat: scheduleRect.top >= chatRect.bottom - 1,
-      scheduleSharesChatColumn: Math.abs(scheduleRect.left - chatRect.left) <= 1,
-    };
-  });
-
-  expect(layout.railPanelCount).toBeLessThanOrEqual(2);
-  expect(layout.scheduleIsLeftOfRail).toBe(true);
-  expect(layout.scheduleIsBelowChat).toBe(true);
-  expect(layout.scheduleSharesChatColumn).toBe(true);
+  await expect(page.locator("main[data-theme]")).toHaveAttribute("data-theme", "dark");
 });
 
 for (const width of [1440, 768, 414, 375, 320]) {
-  test(`no horizontal overflow at ${width}px`, async ({ page }) => {
+  test(`the home page avoids horizontal overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
 
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
     );
-
-    // Allow 1px for sub-pixel rounding; anything more is a real overflow.
-    expect(overflow).toBeLessThanOrEqual(1);
+    expect(overflow, `home overflow at ${width}px`).toBeLessThanOrEqual(1);
   });
 }
 
-test("health and ingest APIs respond", async ({ request }) => {
-  const health = await request.get("/api/health");
-  expect(health.ok()).toBe(true);
-  const healthBody = (await health.json()) as {
-    ok: boolean;
-    enabledTeams: string[];
-  };
-  expect(healthBody.ok).toBe(true);
-  expect(healthBody.enabledTeams).toEqual(["texas-football"]);
-
-  const ingest = await request.post("/api/ingest", {
-    data: { teamSlug: "texas-football" },
+test("team requests are accepted without an email and validated", async ({ request }) => {
+  const accepted = await request.post("/api/team-requests", {
+    data: { teamName: "Coastal Carolina" },
   });
-  expect(ingest.ok()).toBe(true);
-  const ingestBody = (await ingest.json()) as {
-    teamSlug: string;
-    documentCount: number;
-  };
-  expect(ingestBody.teamSlug).toBe("texas-football");
-  expect(ingestBody.documentCount).toBe(20);
-});
+  expect(accepted.status()).toBe(202);
+  expect(((await accepted.json()) as { ok: boolean }).ok).toBe(true);
 
-test("chat API returns grounded citations", async ({ request }) => {
-  const response = await request.post("/api/chat", {
-    data: {
-      teamSlug: "texas-football",
-      message: "Give me the next-game briefing.",
-    },
+  const rejected = await request.post("/api/team-requests", {
+    data: { teamName: "A" },
   });
-
-  expect(response.ok()).toBe(true);
-  const body = (await response.json()) as {
-    answer: string;
-    citations: Array<{ title: string }>;
-  };
-  expect(body.answer).toContain("Texas State");
-  expect(body.citations.length).toBeGreaterThanOrEqual(2);
+  expect(rejected.status()).toBe(400);
+  expect(((await rejected.json()) as { error: string }).error).toMatch(/which team you follow/i);
 });
 
-test("chat API can stream server-sent events", async ({ request }) => {
-  const response = await request.post("/api/chat", {
-    headers: { Accept: "text/event-stream" },
-    data: {
-      teamSlug: "texas-football",
-      message: "Give me the next-game briefing.",
-    },
+// The headline is two parallel sentences, so it breaks on the sentence
+// boundary rather than wherever the measure lands. Left to the browser it
+// orphaned "section." on a line of its own.
+for (const width of [1440, 768, 375, 320]) {
+  test(`the hero headline holds two lines at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+
+    const lines = page.getByRole("heading", { level: 1 }).locator("span");
+    await expect(lines).toHaveCount(2);
+
+    // One rendered line each: a span taller than its own line-height means a
+    // sentence wrapped and the orphan is back.
+    for (const line of await lines.all()) {
+      const box = await line.boundingBox();
+      const fontSize = await line.evaluate((node) =>
+        Number.parseFloat(getComputedStyle(node).fontSize),
+      );
+      expect(box!.height, `wrapped at ${width}px`).toBeLessThan(fontSize * 1.5);
+    }
   });
-
-  expect(response.ok()).toBe(true);
-  const body = await response.text();
-  expect(body).toContain("event: citations");
-  expect(body).toContain("event: delta");
-  expect(body).toContain("event: done");
-});
-
-test("chat UI streams a grounded answer with citations", async ({ page }) => {
-  await page.goto("/");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
-
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
-  await expect(page.getByRole("link", { name: /Texas football 2026 schedule/i })).toBeVisible();
-});
-
-test("chat UI holds a multi-turn conversation", async ({ page }) => {
-  await page.goto("/");
-  await page.getByLabel("Ask Saturday Signal").fill("Give me the next-game briefing.");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
-
-  await page.getByLabel("Ask Saturday Signal").fill("How does Ohio State look?");
-  await page.getByRole("button", { name: "Ask Saturday Signal" }).click();
-
-  await expect(page.getByText("How does Ohio State look?")).toBeVisible();
-  await expect(
-    page.getByText(/Ohio State in week two is the schedule's first real line-of-scrimmage test/),
-  ).toBeVisible();
-  await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
-});
+}

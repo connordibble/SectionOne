@@ -13,7 +13,14 @@ export type ChatAnswer = {
   answer: string;
   citations: ChatCitation[];
   confidence: "high" | "medium" | "low";
+  // Provenance of the corpus only — which providers backed the answer and when
+  // they were captured. Operational messages do not belong here; they go in
+  // `notice`, so freshness stays a statement about sources.
   freshness: string;
+  // Operational context about how the answer was produced: a provider failure,
+  // or an answer that fell back to the deterministic composer. Absent on the
+  // normal path.
+  notice?: string;
   mode: ChatAnswerMode;
   provider: string;
   model: string;

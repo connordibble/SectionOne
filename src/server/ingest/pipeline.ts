@@ -3,9 +3,11 @@ import { getCfbdScheduleDocuments } from "@/server/sources/cfbd";
 import { getFixtureScheduleDocuments } from "@/server/sources/fixtures";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
 import { getOfficialLinkDocuments } from "@/server/sources/official";
+import { getRankingDocuments } from "@/server/sources/rankings";
 import type { IngestResult, SourceDocument, SourceProvider } from "@/server/sources/types";
+import { getWeeklyNewsDocuments } from "@/server/sources/weekly";
 
-const providers: SourceProvider[] = ["fixture", "cfbd", "official"];
+const providers: SourceProvider[] = ["fixture", "cfbd", "official", "press"];
 
 export async function collectSourceDocuments(
   teamSlug = defaultTeamConfig.slug,
@@ -24,6 +26,8 @@ export async function collectSourceDocuments(
     ...fixtureDocuments,
     ...noteDocuments,
     ...officialDocuments,
+    ...getWeeklyNewsDocuments(team.slug),
+    ...getRankingDocuments(team),
     ...cfbd.documents,
   ]);
 

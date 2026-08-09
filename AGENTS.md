@@ -4,7 +4,7 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# Saturday Signal Working Rules
+# Section One Working Rules
 
 - Use `pnpm` for all package, script, and lockfile work.
 - Keep commits in Conventional Commit style, one or two lines, with no co-author trailers.

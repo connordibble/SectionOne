@@ -38,7 +38,7 @@ function createScheduleSummaryDocument(
     sourceType: "schedule",
     sourceUrl: schedule.sourceUrl,
     title: `${schedule.teamDisplayName} ${schedule.seasonYear} schedule`,
-    body: `${schedule.teamDisplayName} has ${schedule.games.length} regular-season games on the ${schedule.seasonYear} official schedule fixture. The opener is ${formatSite(opener.site)} ${opener.opponent} on ${opener.dateLabel} at ${opener.venue}. Source freshness: captured from the official schedule on ${captured}.`,
+    body: `${schedule.teamDisplayName} has ${schedule.games.length} regular-season games on the published ${schedule.seasonYear} schedule. The opener is ${formatSite(opener.site)} ${opener.opponent} on ${opener.dateLabel} at ${opener.venue}. Source freshness: checked against the official schedule on ${captured}.`,
     metadata: {
       seasonYear: schedule.seasonYear,
       gameCount: schedule.games.length,
@@ -52,7 +52,7 @@ function createGameDocument(
   game: ScheduleGame,
   fetchedAt: string,
 ): SourceDocument {
-  const tv = game.tv ? ` TV: ${game.tv}.` : " TV assignment is not confirmed in the fixture.";
+  const tv = game.tv ? ` TV: ${game.tv}.` : " TV assignment is not confirmed on the schedule.";
   const captured = formatCaptureDate(schedule.capturedAt);
 
   return {
@@ -62,7 +62,7 @@ function createGameDocument(
     sourceType: "game",
     sourceUrl: schedule.sourceUrl,
     title: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent}`,
-    body: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff: ${game.kickoff}. Venue: ${game.venue}.${tv} Source freshness: official schedule fixture captured ${captured}.`,
+    body: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff: ${game.kickoff}. Venue: ${game.venue}.${tv} Source freshness: schedule checked ${captured}.`,
     metadata: {
       seasonYear: schedule.seasonYear,
       gameId: game.id,

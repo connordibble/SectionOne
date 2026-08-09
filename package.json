@@ -1,5 +1,5 @@
 {
-  "name": "saturday-signal",
+  "name": "section-one",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.33.0",
@@ -20,6 +20,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
     "ingest": "tsx scripts/ingest.ts",
+    "schedule:build": "tsx scripts/build-schedule.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "release:check": "pnpm check && pnpm eval && pnpm build && pnpm test:e2e"
   },

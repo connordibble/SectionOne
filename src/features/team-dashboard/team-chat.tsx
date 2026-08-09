@@ -1,17 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Activity, ExternalLink, Loader2, RotateCcw } from "lucide-react";
+import { useEffect, useRef, useState, type RefObject } from "react";
+import { ArrowRight, ExternalLink, Loader2, RotateCcw } from "lucide-react";
 import { readSseStream } from "@/lib/sse";
+import styles from "./team-workspace.module.css";
+
+type ChatMode = "brief" | "matchup" | "schedule";
 
 type TeamChatProps = {
-  compactTagline: string;
-  teamSlug: string;
+  draftRequest?: DraftRequest;
+  mode: ChatMode;
+  starterRead: {
+    question: string;
+    answer: string;
+    citations: ChatCitation[];
+  };
   suggestedPrompts: string[];
   tagline: string;
+  teamSlug: string;
 };
 
-type ChatCitation = {
+export type DraftRequest = {
+  id: number;
+  value: string;
+};
+
+export type ChatCitation = {
   id: string;
   title: string;
   sourceUrl?: string;
@@ -25,17 +39,36 @@ type ChatMessage = {
   citations: ChatCitation[];
   confidence?: string;
   freshness?: string;
+  notice?: string;
   streaming: boolean;
   error?: string;
 };
 
+type ChatExchange = {
+  question: ChatMessage;
+  answer?: ChatMessage;
+};
+
 const maxHistorySent = 8;
 
+const modeCopy: Record<Exclude<ChatMode, "matchup">, { heading: string; body: string }> = {
+  brief: {
+    heading: "Tune your signal",
+    body: "Get the short answer before kickoff.",
+  },
+  schedule: {
+    heading: "Ask the schedule",
+    body: "Ask about dates, times, or the road ahead.",
+  },
+};
+
 export function TeamChat({
-  compactTagline,
-  teamSlug,
+  draftRequest,
+  mode,
+  starterRead,
   suggestedPrompts,
   tagline,
+  teamSlug,
 }: TeamChatProps) {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -43,7 +76,10 @@ export function TeamChat({
   const nextId = useRef(0);
   const sessionId = useRef<string | undefined>(undefined);
   const threadRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const hasMessages = messages.length > 0;
+  const exchanges = groupExchanges(messages);
+  const sourceCount = countUniqueCitations(messages);
 
   useEffect(() => {
     const thread = threadRef.current;
@@ -52,6 +88,15 @@ export function TeamChat({
       thread.scrollTop = thread.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (!draftRequest) {
+      return;
+    }
+
+    setInput(draftRequest.value);
+    inputRef.current?.focus({ preventScroll: true });
+  }, [draftRequest]);
 
   function updateMessage(id: number, patch: (message: ChatMessage) => ChatMessage) {
     setMessages((current) =>
@@ -67,6 +112,7 @@ export function TeamChat({
     setMessages([]);
     sessionId.current = undefined;
     setInput("");
+    inputRef.current?.focus({ preventScroll: true });
   }
 
   async function submit(message: string) {
@@ -109,7 +155,9 @@ export function TeamChat({
 
       if (!response.ok || !response.body) {
         const detail = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(detail?.error ?? "Saturday Signal could not answer that yet.");
+        throw new Error(
+          detail?.error ?? "We couldn’t answer that question. Check your connection and try again.",
+        );
       }
 
       for await (const event of readSseStream(response.body)) {
@@ -125,6 +173,7 @@ export function TeamChat({
             citations: ChatCitation[];
             confidence: string;
             freshness: string;
+            notice?: string;
             sessionId?: string;
           };
           if (answer.sessionId) {
@@ -136,6 +185,7 @@ export function TeamChat({
             citations: answer.citations,
             confidence: answer.confidence,
             freshness: answer.freshness,
+            notice: answer.notice,
             streaming: false,
           }));
         } else if (event.event === "error") {
@@ -148,7 +198,9 @@ export function TeamChat({
         ...entry,
         streaming: false,
         error:
-          unknownError instanceof Error ? unknownError.message : "Unknown chat error.",
+          unknownError instanceof Error
+            ? unknownError.message
+            : "We couldn’t answer that question. Try it again.",
       }));
     } finally {
       setIsLoading(false);
@@ -156,229 +208,372 @@ export function TeamChat({
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-4 p-4 sm:p-5">
+    <section aria-busy={isLoading} className={styles.chat} data-mode={mode}>
       {!hasMessages ? (
-        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 [grid-template-areas:'intro'_'composer'_'prompts'] lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.72fr)] lg:items-start lg:[grid-template-areas:'intro_prompts'_'composer_composer']">
-          <div className="min-w-0 [grid-area:intro]">
-            <p className="text-sm font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-              Grounded assistant
-            </p>
-            <h2 className="mt-3 max-w-2xl text-2xl font-semibold leading-tight tracking-normal text-[var(--team-ink)] sm:text-3xl xl:text-4xl">
-              <span className="sm:hidden">{compactTagline}</span>
-              <span className="hidden sm:inline">{tagline}</span>
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--team-muted)]">
-              Ask for matchup context, schedule reads, and source-backed football
-              notes. The answer should name its evidence and stay inside the lane.
-            </p>
-          </div>
-          <ChatComposer
-            className="min-w-0 [grid-area:composer]"
-            hasMessages={false}
-            input={input}
-            isLoading={isLoading}
-            onInputChange={setInput}
-            onSubmit={(message) => submit(message)}
-          />
-          <PromptButtons
-            className="grid min-w-0 gap-2 [grid-area:prompts] sm:grid-cols-3 lg:grid-cols-1"
-            disabled={isLoading}
-            onSelect={(prompt) => submit(prompt)}
-            prompts={suggestedPrompts}
-            testId="suggested-prompts"
-          />
-        </div>
+        <EmptyChat
+          input={input}
+          inputRef={inputRef}
+          isLoading={isLoading}
+          mode={mode}
+          onInputChange={setInput}
+          onPrompt={(prompt) => void submit(prompt)}
+          onSubmit={(message) => void submit(message)}
+          starterRead={starterRead}
+          suggestedPrompts={suggestedPrompts}
+          tagline={tagline}
+        />
       ) : (
-        <>
-          <div className="flex items-center justify-end">
+        <div className={styles.chatThreadShell}>
+          <div className={styles.threadHeading}>
+            <div>
+              <h2>Your signal</h2>
+              <p className={styles.threadSummary}>
+                <span>
+                  {exchanges.length} {exchanges.length === 1 ? "question" : "questions"}
+                </span>
+                <span aria-hidden="true">·</span>
+                <span>
+                  {sourceCount > 0
+                    ? `${sourceCount} ${sourceCount === 1 ? "source" : "sources"}`
+                    : isLoading
+                      ? "Checking sources"
+                      : "No sources"}
+                </span>
+              </p>
+            </div>
             <button
-              className="inline-flex items-center gap-2 rounded-md border border-[var(--team-border)] bg-[var(--team-surface)] px-3 py-2 text-xs font-semibold uppercase tracking-normal text-[var(--team-ink-subtle)] transition-[border-color] duration-150 ease-out hover:border-[var(--team-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] disabled:cursor-not-allowed disabled:opacity-60"
+              className={styles.resetChat}
               disabled={isLoading}
               onClick={resetConversation}
               type="button"
             >
-              <RotateCcw aria-hidden="true" size={14} />
-              New conversation
+              <RotateCcw aria-hidden="true" />
+              Start over
             </button>
           </div>
-          <div
-            aria-live="polite"
-            className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto pr-1"
-            ref={threadRef}
-          >
-            {messages.map((message) =>
-              message.role === "user" ? (
-                <div className="flex justify-end" key={message.id}>
-                  <p className="max-w-[85%] rounded-md bg-[var(--team-accent)] px-4 py-2.5 text-sm leading-6 text-[var(--team-contrast)] shadow-sm">
-                    {message.content}
-                  </p>
-                </div>
-              ) : (
-                <AssistantMessage key={message.id} message={message} />
-              ),
-            )}
+          <div aria-live="polite" className={styles.chatThread} ref={threadRef}>
+            {exchanges.map((exchange, index) => (
+              <article className={styles.chatExchange} key={exchange.question.id}>
+                <header className={styles.userMessage}>
+                  <span aria-hidden="true" className={`${styles.questionIndex} tnum`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p>{exchange.question.content}</p>
+                </header>
+                {exchange.answer ? <AssistantMessage message={exchange.answer} /> : null}
+              </article>
+            ))}
           </div>
           <ChatComposer
-            hasMessages
             input={input}
+            inputRef={inputRef}
             isLoading={isLoading}
+            mode={mode}
             onInputChange={setInput}
-            onSubmit={(message) => submit(message)}
+            onSubmit={(message) => void submit(message)}
+            threaded
           />
-        </>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
 
-function PromptButtons({
-  className,
-  disabled,
-  onSelect,
-  prompts,
-  testId,
+function EmptyChat({
+  input,
+  inputRef,
+  isLoading,
+  mode,
+  onInputChange,
+  onPrompt,
+  onSubmit,
+  starterRead,
+  suggestedPrompts,
+  tagline,
 }: {
-  className: string;
-  disabled: boolean;
-  onSelect: (prompt: string) => void;
-  prompts: string[];
-  testId: string;
+  input: string;
+  inputRef: RefObject<HTMLInputElement | null>;
+  isLoading: boolean;
+  mode: ChatMode;
+  onInputChange: (value: string) => void;
+  onPrompt: (prompt: string) => void;
+  onSubmit: (message: string) => void;
+  starterRead: TeamChatProps["starterRead"];
+  suggestedPrompts: string[];
+  tagline: string;
 }) {
+  if (mode === "matchup") {
+    return (
+      <div className={styles.matchupRead}>
+        <div className={styles.readAnswer}>
+          <h2>The read</h2>
+          <p className={styles.readQuestion}>{starterRead.question}</p>
+          <p>{starterRead.answer}</p>
+          {starterRead.citations.length > 0 ? (
+            <CitationList citations={starterRead.citations} className={styles.starterCitations} />
+          ) : null}
+        </div>
+        <ChatComposer
+          input={input}
+          inputRef={inputRef}
+          isLoading={isLoading}
+          mode={mode}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+        />
+      </div>
+    );
+  }
+
+  const copy = modeCopy[mode];
+
   return (
-    <div className={className} data-testid={testId}>
-      {prompts.map((prompt) => (
-        <button
-          aria-label={prompt}
-          className="min-h-12 min-w-0 rounded-md border border-[var(--team-border)] bg-[var(--team-surface-soft)] p-3 text-left text-sm font-medium leading-5 text-[var(--team-ink-subtle)] transition-[background-color,border-color,transform] duration-150 ease-out hover:-translate-y-0.5 hover:border-[var(--team-accent)] hover:bg-[var(--team-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 lg:min-h-14"
-          disabled={disabled}
-          key={prompt}
-          onClick={() => onSelect(prompt)}
-          title={prompt}
-          type="button"
-        >
-          <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
-            {prompt}
-          </span>
-        </button>
-      ))}
+    <div className={styles.emptyChat}>
+      <div className={styles.emptyChatHeading}>
+        <h2>{copy.heading}</h2>
+        <p>{mode === "brief" ? tagline : copy.body}</p>
+      </div>
+      <ChatComposer
+        input={input}
+        inputRef={inputRef}
+        isLoading={isLoading}
+        mode={mode}
+        onInputChange={onInputChange}
+        onSubmit={onSubmit}
+      />
+      {mode === "brief" ? (
+        <div className={styles.promptRail} data-testid="suggested-prompts">
+          <p className={styles.promptLabel}>Quick questions</p>
+          <div className={styles.promptList}>
+            {suggestedPrompts.map((prompt, index) => (
+              <button
+                aria-label={prompt}
+                disabled={isLoading}
+                key={prompt}
+                onClick={() => onPrompt(prompt)}
+                type="button"
+              >
+                <span className={styles.promptIndex}>{String(index + 1).padStart(2, "0")}</span>
+                <span className={styles.promptText}>{prompt}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
 
 function ChatComposer({
-  className,
-  hasMessages,
   input,
+  inputRef,
   isLoading,
+  mode,
   onInputChange,
   onSubmit,
+  threaded = false,
 }: {
-  className?: string;
-  hasMessages: boolean;
   input: string;
+  inputRef: RefObject<HTMLInputElement | null>;
   isLoading: boolean;
+  mode: ChatMode;
   onInputChange: (value: string) => void;
   onSubmit: (message: string) => void;
+  threaded?: boolean;
 }) {
+  const placeholders: Record<ChatMode, string> = {
+    brief: "What should I watch?",
+    matchup: "Ask about this matchup",
+    schedule: "Ask about the schedule",
+  };
+
   return (
     <form
-      className={`${className ?? ""} ${hasMessages ? "mt-auto" : ""} flex flex-col gap-3 border-t border-[var(--team-border)] pt-4 sm:flex-row`}
+      className={`${styles.composer} ${threaded ? styles.threadComposer : ""}`}
       data-testid="chat-composer"
       onSubmit={(event) => {
         event.preventDefault();
-        void onSubmit(input);
+        onSubmit(input);
       }}
     >
-      <label className="sr-only" htmlFor="chat-input">
-        Ask Saturday Signal
-      </label>
+      {threaded ? (
+        <span aria-hidden="true" className={styles.composerContext}>
+          Follow up
+        </span>
+      ) : null}
       <input
-        className="min-h-12 flex-1 rounded-md border border-[var(--team-border-strong)] bg-[var(--team-contrast)] px-4 text-sm text-[var(--team-ink)] outline-none transition-[background-color,border-color,box-shadow] duration-150 ease-out placeholder:text-[var(--team-muted)] hover:bg-[var(--team-surface)] focus:border-[var(--team-accent)] focus:ring-2 focus:ring-[var(--team-accent-soft)]"
+        aria-label="Ask Section One"
+        autoComplete="off"
         id="chat-input"
         onChange={(event) => onInputChange(event.target.value)}
-        placeholder="Ask a football question..."
+        placeholder={placeholders[mode]}
+        ref={inputRef}
         type="text"
         value={input}
       />
       <button
-        className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[var(--team-accent)] px-5 text-sm font-semibold text-[var(--team-contrast)] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-0.5 hover:bg-[var(--team-accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
-        disabled={isLoading}
+        disabled={isLoading || input.trim().length === 0}
         type="submit"
       >
         {isLoading ? (
-          <Loader2 aria-hidden="true" className="animate-spin" size={17} />
+          <Loader2 aria-hidden="true" className={styles.spinner} />
         ) : (
-          <Activity aria-hidden="true" size={17} />
+          <ArrowRight aria-hidden="true" />
         )}
-        Ask Saturday Signal
+        <span>Ask</span>
       </button>
     </form>
   );
 }
 
 function AssistantMessage({ message }: { message: ChatMessage }) {
+  const displayContent = stripCitationTags(message.content, message.citations);
+
   return (
-    <section className="rounded-md border border-[var(--team-border-strong)] bg-[var(--team-surface-soft)] p-4">
-      {message.confidence || message.freshness ? (
-        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-normal text-[var(--team-accent-strong)]">
-          {message.confidence ? <span>Confidence: {message.confidence}</span> : null}
-          {message.confidence && message.freshness ? <span aria-hidden="true">/</span> : null}
-          {message.freshness ? <span className="normal-case">{message.freshness}</span> : null}
+    <section
+      aria-label="Section One answer"
+      className={styles.assistantMessage}
+      data-has-evidence={message.citations.length > 0 ? "true" : undefined}
+    >
+      <div className={styles.answerBody}>
+        <div className={styles.answerHeading}>
+          <h3>The read</h3>
+          {message.streaming && displayContent ? <span>Live</span> : null}
         </div>
-      ) : null}
-      {message.content || !message.error ? (
-        <p className="whitespace-pre-wrap text-sm leading-6 text-[var(--team-ink-subtle)]">
-          {message.content}
-          {message.streaming ? (
-            <span aria-hidden="true" className="ml-1 inline-block h-4 w-2 animate-pulse rounded-sm bg-[var(--team-accent)] align-text-bottom" />
-          ) : null}
-        </p>
-      ) : null}
-      {message.error ? (
-        <p className="mt-2 text-sm font-medium leading-6 text-[var(--team-accent-strong)]">
-          {message.error}
-        </p>
-      ) : null}
+        {displayContent ? (
+          <p className={styles.answerText}>
+            {displayContent}
+            {message.streaming ? (
+              <span
+                aria-label="Answer is still arriving"
+                className={styles.streamingMark}
+                role="status"
+              />
+            ) : null}
+          </p>
+        ) : null}
+        {message.streaming && !displayContent ? (
+          <p className={styles.answerLoading} role="status">
+            <span aria-hidden="true" className={styles.streamingMark} />
+            Checking sources
+          </p>
+        ) : null}
+        {message.error ? (
+          <p className={styles.chatError} role="alert">
+            {message.error}
+          </p>
+        ) : null}
+      </div>
       {message.citations.length > 0 ? (
-        <div className="mt-3 grid gap-2">
-          {message.citations.map((citation) => (
-            <CitationRow citation={citation} key={citation.id} />
-          ))}
-        </div>
+        <aside aria-label="Sources" className={styles.evidenceRail}>
+          <div className={styles.evidenceHeading}>
+            <h3>Sources</h3>
+            <span className="tnum">{message.citations.length}</span>
+          </div>
+          <CitationList citations={message.citations} className={styles.citationList} />
+        </aside>
+      ) : null}
+      {message.freshness || message.notice ? (
+        <footer className={styles.answerFooter}>
+          {message.freshness ? (
+            <div className={styles.answerMeta}>
+              <p>{message.freshness}</p>
+            </div>
+          ) : null}
+          {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}
+        </footer>
       ) : null}
     </section>
   );
 }
 
-function CitationRow({ citation }: { citation: ChatCitation }) {
-  const rowClass =
-    "flex min-w-0 items-start justify-between gap-3 rounded-md border border-[var(--team-border)] bg-[var(--team-surface)] px-3 py-2 text-sm font-medium text-[var(--team-ink-subtle)] sm:items-center";
+function CitationList({
+  citations,
+  className,
+}: {
+  citations: ChatCitation[];
+  className: string;
+}) {
+  return (
+    <ol className={className}>
+      {citations.map((citation) => (
+        <li key={citation.id}>
+          <CitationRow citation={citation} />
+        </li>
+      ))}
+    </ol>
+  );
+}
 
-  const meta = (
-    <span className="inline-flex shrink-0 items-center gap-2 text-xs uppercase text-[var(--team-muted)]">
-      {citation.provider}
-      {citation.sourceUrl ? <ExternalLink aria-hidden="true" size={14} /> : null}
-    </span>
+function CitationRow({ citation }: { citation: ChatCitation }) {
+  const content = (
+    <>
+      <span className={styles.citationTitle}>{citation.title}</span>
+      <span className={styles.citationMeta}>
+        {providerLabel(citation.provider)}
+        {citation.sourceUrl ? <ExternalLink aria-hidden="true" /> : null}
+      </span>
+    </>
   );
 
   if (!citation.sourceUrl) {
-    return (
-      <div className={rowClass}>
-        <span className="min-w-0">{citation.title}</span>
-        {meta}
-      </div>
-    );
+    return <div className={styles.citationRow}>{content}</div>;
   }
 
   return (
     <a
-      className={`${rowClass} transition-[border-color] duration-150 ease-out hover:border-[var(--team-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--team-accent)]`}
+      className={styles.citationRow}
       href={citation.sourceUrl}
       rel="noreferrer"
       target="_blank"
     >
-      <span className="min-w-0">{citation.title}</span>
-      {meta}
+      {content}
     </a>
   );
+}
+
+function groupExchanges(messages: ChatMessage[]): ChatExchange[] {
+  const exchanges: ChatExchange[] = [];
+
+  for (const message of messages) {
+    if (message.role === "user") {
+      exchanges.push({ question: message });
+      continue;
+    }
+
+    const current = exchanges.at(-1);
+    if (current && !current.answer) {
+      current.answer = message;
+    }
+  }
+
+  return exchanges;
+}
+
+function countUniqueCitations(messages: ChatMessage[]): number {
+  return new Set(
+    messages.flatMap((message) =>
+      message.citations.map((citation) => `${citation.provider}:${citation.id}`),
+    ),
+  ).size;
+}
+
+function stripCitationTags(content: string, citations: ChatCitation[]): string {
+  const withoutTags = citations.reduce(
+    (answer, citation) => answer.split(`[${citation.title}]`).join(""),
+    content,
+  );
+
+  return withoutTags.replaceAll(/[ \t]+\n/g, "\n").replaceAll(/ {2,}/g, " ").trim();
+}
+
+function providerLabel(provider: string): string {
+  const labels: Record<string, string> = {
+    fixture: "Section One",
+    official: "Primary source",
+    cfbd: "Season data",
+    policy: "Section One",
+  };
+
+  return labels[provider] ?? "Source";
 }
