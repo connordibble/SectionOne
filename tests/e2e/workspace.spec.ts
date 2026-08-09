@@ -4,7 +4,7 @@ test("loads the finished Section One workspace", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
   await expect(
-    page.getByRole("heading", { name: "Section One", exact: true }),
+    page.getByRole("heading", { name: "Texas vs Texas State", exact: true, level: 1 }),
   ).toBeVisible();
   await expect(page.getByText(/Texas · Week 1 · 2026 · SEC/)).toBeVisible();
   await expect(page.getByRole("tab", { name: "Brief" })).toHaveAttribute(
@@ -15,7 +15,7 @@ test("loads the finished Section One workspace", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Tune your signal" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Next three" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Ask", exact: true })).toBeVisible();
-  await expect(page.getByText(/Schedule checked July 1, 2026/)).toBeVisible();
+  await expect(page.getByText(/Schedule updated July 1, 2026/)).toBeVisible();
 });
 
 test("loads the canonical Texas route with a real kickoff figure", async ({ page }) => {
@@ -24,7 +24,7 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
   const lead = page.getByTestId("kickoff-lead");
   await expect(lead).toBeVisible();
   await expect(lead).toContainText(/^(\d+\s*days?\s*out|Today|TBD)/);
-  await expect(lead.getByRole("heading", { level: 2 })).toContainText("Texas");
+  await expect(lead.getByRole("heading", { level: 1 })).toContainText("Texas");
 });
 
 test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
@@ -44,6 +44,28 @@ test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "2026 schedule" })).toBeVisible();
 
   await expect(page.getByRole("tab", { name: "Sources" })).toHaveCount(0);
+});
+
+test("view changes keep browser history and return focus to the active tab", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  await page.getByRole("tab", { name: "Matchup" }).click();
+  await page.getByRole("tab", { name: "Schedule" }).click();
+  await page.goBack();
+
+  await expect(page).toHaveURL(/#matchup$/);
+  await expect(page.getByRole("tab", { name: "Matchup" })).toBeFocused();
+  await expect(page.getByTestId("signal-board")).toBeVisible();
+});
+
+test("full schedule sends focus to the new coverage tab", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  await page.getByRole("button", { name: "Full schedule" }).click();
+
+  await expect(page).toHaveURL(/#schedule$/);
+  await expect(page.getByRole("tab", { name: "Schedule" })).toBeFocused();
+  await expect(page.getByRole("heading", { name: "2026 schedule", level: 1 })).toBeVisible();
 });
 
 test("the Signal Board turns a selected cue into a focused question", async ({ page }) => {

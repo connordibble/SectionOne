@@ -74,7 +74,12 @@ export async function GET(request: Request) {
     service: "section-one",
     databaseConfigured,
     llm: {
-      ...llm,
+      // Which provider and model are live is operational detail, not public
+      // information. Naming it advertises a target and commits us to keeping
+      // a disclosure current every time the model changes. `mode` stays public
+      // because an uptime check needs to know the service is answering, not
+      // what is answering.
+      ...(authorized ? llm : {}),
       mode,
       // Only for an authorized caller. Null here means "not shown", which is
       // not the same as zero — and when authorized, null still means
@@ -92,7 +97,7 @@ export async function GET(request: Request) {
           }
         : {}),
     },
-    embeddings: describeEmbeddingProvider(),
+    ...(authorized ? { embeddings: describeEmbeddingProvider() } : {}),
     enabledTeams: enabledTeamSlugs,
     sources,
   });

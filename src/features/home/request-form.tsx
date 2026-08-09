@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import styles from "./home.module.css";
 
@@ -16,6 +16,13 @@ export function RequestForm() {
   const [teamName, setTeamName] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const sentMessageRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (state.status === "sent") {
+      sentMessageRef.current?.focus({ preventScroll: true });
+    }
+  }, [state.status]);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,7 +65,7 @@ export function RequestForm() {
   // end up submitting twice.
   if (state.status === "sent") {
     return (
-      <p className={styles.requestSent} role="status">
+      <p className={styles.requestSent} ref={sentMessageRef} role="status" tabIndex={-1}>
         <Check aria-hidden="true" />
         Got it. We keep a running count of which teams fans ask for, and the next editions come
         off that list.

@@ -7,14 +7,14 @@ type HealthBody = {
   databaseConfigured: boolean;
   enabledTeams: string[];
   llm: {
-    provider: string;
-    model: string;
+    provider?: string;
+    model?: string;
     source: string;
     mode: string;
     monthToDateUsd?: string | null;
     attribution?: string;
   };
-  embeddings: { provider: string; model: string; source: string };
+  embeddings?: { provider: string; model: string; source: string };
   sources: Record<string, Array<{ label: string; state: string }>>;
 };
 
@@ -40,8 +40,10 @@ describe("GET /api/health", () => {
 
     expect(body.ok).toBe(true);
     expect(body.enabledTeams).toEqual(["texas-football", "utah-state-football"]);
-    expect(["mock", "anthropic", "openai"]).toContain(body.llm.provider);
-    expect(["mock", "openai"]).toContain(body.embeddings.provider);
+    // Public callers get liveness, not the model roster.
+    expect(body.llm).not.toHaveProperty("provider");
+    expect(body).not.toHaveProperty("embeddings");
+    expect(body.llm.mode).toBeDefined();
     expect(body.sources["texas-football"]).toContainEqual(
       expect.objectContaining({ id: "schedule", label: "Schedule", state: "Ready" }),
     );
@@ -123,5 +125,16 @@ describe("health spend disclosure", () => {
     vi.stubEnv("HEALTH_TOKEN", "");
 
     expect(await health("anything")).not.toHaveProperty("llm.attribution");
+  });
+});
+
+// The model roster is operational detail. An operator can still see it.
+describe("provider disclosure", () => {
+  it("names the provider and model only for an authorized caller", async () => {
+    vi.stubEnv("HEALTH_TOKEN", "s3cret");
+    const body = await health("s3cret");
+
+    expect(["mock", "anthropic", "openai"]).toContain(body.llm.provider);
+    expect(body.embeddings?.provider).toBeDefined();
   });
 });

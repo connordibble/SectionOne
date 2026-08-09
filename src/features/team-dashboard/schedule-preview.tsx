@@ -18,7 +18,7 @@ export function SchedulePreview({
   if (!schedule) {
     return (
       <section className={styles.scheduleEmpty} data-testid="schedule-strip">
-        <h2>Schedule</h2>
+        {variant === "full" ? <h1>Schedule</h1> : <h2>Schedule</h2>}
         <p>No dates have been posted for this team yet.</p>
       </section>
     );
@@ -38,7 +38,7 @@ export function SchedulePreview({
     >
       <div className={styles.scheduleHeading}>
         <div>
-          <h2>{variant === "compact" ? "Next three" : `${schedule.seasonYear} schedule`}</h2>
+          {variant === "compact" ? <h2>Next three</h2> : <h1>{schedule.seasonYear} schedule</h1>}
           {variant === "full" ? (
             <p>{schedule.games.length} games. Dates and TV can change.</p>
           ) : null}
@@ -80,10 +80,10 @@ function ScheduleRow({
         {shortDate(game.dateLabel)}
       </time>
       <div className={styles.scheduleOpponent}>
-        <p>
+        <p aria-label={`${siteWord(game.site)} ${game.opponent}${isNext ? ", next game" : ""}`}>
           <span>{siteWord(game.site)} </span>
           <strong>{game.opponent}</strong>
-          {isNext ? <span className={styles.nextGameLabel}>Next</span> : null}
+          {isNext ? <span className={styles.nextGameLabel}> · Next</span> : null}
         </p>
         {variant === "full" ? <span>{game.venue}</span> : null}
       </div>

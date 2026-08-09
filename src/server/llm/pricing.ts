@@ -23,7 +23,26 @@ const modelRates: Record<string, ModelRate> = {
   "claude-sonnet-5": { inputMicroPerMtok: usd(3), outputMicroPerMtok: usd(15) },
   "claude-opus-5": { inputMicroPerMtok: usd(5), outputMicroPerMtok: usd(25) },
   "claude-opus-4-8": { inputMicroPerMtok: usd(5), outputMicroPerMtok: usd(25) },
+  // Short-context band, after the 30 July 2026 cut. Long context bills at
+  // $0.40/$1.80; our prompts carry four retrieved excerpts and ask for one
+  // paragraph, so they sit well inside the short band. If the excerpt count
+  // ever grows, this table needs a second entry rather than a quiet underbill.
+  "gpt-5.6-luna": { inputMicroPerMtok: usd(0.2), outputMicroPerMtok: usd(1.2) },
+  "gpt-5.6-terra": { inputMicroPerMtok: usd(1.25), outputMicroPerMtok: usd(10) },
+  "gpt-4o": { inputMicroPerMtok: usd(2.5), outputMicroPerMtok: usd(10) },
 };
+
+// Providers answer with a pinned id (`gpt-5.6-luna-2026-07-30`) while requests
+// go out with the alias. Anthropic taught this the expensive way: an
+// alias-only table threw on every live call. Stripping a trailing ISO date
+// keeps one entry authoritative for a model family.
+//
+// Deliberately only a date suffix. A looser prefix match would let a genuinely
+// different model inherit a neighbour's price, which is the silent mispricing
+// this module exists to prevent.
+function resolveRate(model: string): ModelRate | undefined {
+  return modelRates[model] ?? modelRates[model.replace(/-\d{4}-\d{2}-\d{2}$/, "")];
+}
 
 export class UnknownModelPricingError extends Error {
   constructor(readonly model: string) {
@@ -41,7 +60,7 @@ export class UnknownModelPricingError extends Error {
 // Callers record usage on a best-effort path, so this throw degrades to "tokens
 // recorded, cost null" rather than failing the user's answer.
 export function estimateCostMicroUsd(usage: LlmUsage): number {
-  const rate = modelRates[usage.model];
+  const rate = resolveRate(usage.model);
 
   if (!rate) {
     throw new UnknownModelPricingError(usage.model);
@@ -54,7 +73,7 @@ export function estimateCostMicroUsd(usage: LlmUsage): number {
 }
 
 export function isModelPriced(model: string): boolean {
-  return model in modelRates;
+  return resolveRate(model) !== undefined;
 }
 
 // numeric(10,6) wants a decimal string; going through Number here would put

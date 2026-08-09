@@ -2,8 +2,9 @@ import { getTeamConfig } from "@/config/team";
 import { answerQuestion, streamAnswerEvents } from "@/server/chat/answer";
 import { isUuid, persistChatExchange } from "@/server/chat/persistence";
 import { maxMessageLength, type ChatHistoryMessage } from "@/server/chat/prompt";
-import type { ChatStreamEvent } from "@/server/chat/types";
+import { toPublicAnswer, type ChatStreamEvent } from "@/server/chat/types";
 import { withRouteErrors } from "@/server/observability/route";
+import { checkRateLimit, rateLimitResponse } from "@/server/http/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -14,7 +15,18 @@ type ChatRequest = {
   sessionId?: unknown;
 };
 
+// The endpoint that spends money, so it gets the tightest limit. Twenty
+// questions a minute is far above what reading a page produces and far below
+// what a script does.
+const chatRateLimit = { name: "chat", windowMs: 60_000, max: 20 };
+
 export const POST = withRouteErrors("api/chat", async (request: Request) => {
+  const limit = checkRateLimit(request, chatRateLimit);
+
+  if (!limit.allowed) {
+    return rateLimitResponse(limit);
+  }
+
   const body = (await request.json().catch(() => ({}))) as ChatRequest;
 
   if (!body.message?.trim()) {
@@ -55,7 +67,7 @@ export const POST = withRouteErrors("api/chat", async (request: Request) => {
   const answer = await answerQuestion(message, body.teamSlug, { history });
   const persisted = await persistChatExchange({ question: message, answer, sessionId });
 
-  return Response.json({ ...answer, sessionId: persisted?.sessionId });
+  return Response.json({ ...toPublicAnswer(answer), sessionId: persisted?.sessionId });
 });
 
 function streamResponse(
@@ -78,7 +90,7 @@ function streamResponse(
             });
             controller.enqueue(
               encoder.encode(
-                `event: done\ndata: ${JSON.stringify({ ...event.answer, sessionId: persisted?.sessionId })}\n\n`,
+                `event: done\ndata: ${JSON.stringify({ ...toPublicAnswer(event.answer), sessionId: persisted?.sessionId })}\n\n`,
               ),
             );
           } else {
@@ -112,7 +124,7 @@ function encodeSseEvent(event: ChatStreamEvent): string {
     case "delta":
       return `event: delta\ndata: ${JSON.stringify({ text: event.text })}\n\n`;
     case "done":
-      return `event: done\ndata: ${JSON.stringify(event.answer)}\n\n`;
+      return `event: done\ndata: ${JSON.stringify(toPublicAnswer(event.answer))}\n\n`;
   }
 }
 

@@ -74,7 +74,7 @@ export function Home() {
       editionHref={featuredEdition}
       themeStyle={createThemeStyle(houseTheme) as CSSProperties}
     >
-      <div className={styles.page} id="main">
+      <div className={styles.page} id="main" tabIndex={-1}>
         <section className={styles.hero}>
           <h1 className={styles.heroHeadline}>
             {/* The explicit space is for the accessible name: JSX drops
@@ -243,7 +243,7 @@ function EditionCard({ team }: { team: TeamConfig }) {
 
       {schedule ? (
         <span className={styles.editionChecked}>
-          Schedule checked {formatCaptureDate(schedule.capturedAt)}
+          Schedule updated {formatCaptureDate(schedule.capturedAt)}
         </span>
       ) : null}
 

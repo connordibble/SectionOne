@@ -37,7 +37,7 @@ export function SignalBoard({ onAsk, signals, thesis }: SignalBoardProps) {
     <section className={styles.signalSection} data-testid="signal-board">
       <div className={styles.signalHeading}>
         <div>
-          <h2>Signal board</h2>
+          <h1>Signal board</h1>
           <p>Four keys to watch in the opener.</p>
         </div>
         <p className={styles.boardInstruction}>Choose a key.</p>

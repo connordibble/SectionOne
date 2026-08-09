@@ -14,6 +14,22 @@
   font-family: var(--font-body);
 }
 
+.skipLink {
+  position: absolute;
+  inset-inline-start: var(--page-gutter);
+  inset-block-start: calc(var(--space-sm) * -4);
+  z-index: var(--z-sticky);
+  padding: var(--space-2xs) var(--space-sm);
+  background: var(--team-accent);
+  color: var(--team-on-accent);
+  font-weight: 700;
+  transition: inset-block-start var(--dur-micro) var(--ease-out);
+}
+
+.skipLink:focus-visible {
+  inset-block-start: var(--space-sm);
+}
+
 .masthead {
   position: sticky;
   z-index: var(--z-sticky);
@@ -355,7 +371,7 @@
   min-width: 0;
 }
 
-.matchupLead h2 {
+.matchupLead h1 {
   margin: 0;
   overflow-wrap: anywhere;
   color: var(--team-ink);
@@ -423,9 +439,12 @@
 
 .sectionHeadingRow h2,
 .readSection h2,
+.signalHeading h1,
 .signalHeading h2,
 .sourcesHeading h2,
+.scheduleHeading h1,
 .scheduleHeading h2,
+.scheduleEmpty h1,
 .scheduleEmpty h2,
 .emptyChatHeading h2,
 .readAnswer h2,
@@ -2194,8 +2213,17 @@
 }
 
 .newsList h3 a {
+  display: inline-flex;
+  gap: var(--space-2xs);
+  align-items: baseline;
   color: inherit;
   text-decoration: none;
+}
+
+.newsList h3 a svg {
+  flex: 0 0 auto;
+  width: 0.85rem;
+  height: 0.85rem;
 }
 
 .newsList h3 a:hover {

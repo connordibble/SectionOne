@@ -40,7 +40,7 @@ describe("Section One home", () => {
     // Pulled from the same config and schedule the edition page renders, so
     // the card cannot drift out of sync with the product it advertises.
     expect(within(edition).getByText(/days out|Today|Kickoff TBD/)).toBeInTheDocument();
-    expect(within(edition).getByText(/Schedule checked/)).toBeInTheDocument();
+    expect(within(edition).getByText(/Schedule updated/)).toBeInTheDocument();
   });
 
   // Claiming a network would be the first thing a fan caught us on, so the

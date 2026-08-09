@@ -23,7 +23,7 @@ export default function GlobalError({
       >
         <h1>Section One is having a problem</h1>
         <p>The site failed to load. This is on our end. Try again in a moment.</p>
-        <p style={{ color: "#666", fontSize: "0.875rem" }}>
+        <p style={{ opacity: 0.7, fontSize: "0.875rem" }}>
           Reference: {error.digest ?? "unavailable"}
         </p>
         <button onClick={reset} type="button">

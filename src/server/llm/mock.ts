@@ -141,7 +141,7 @@ function finish(body: string, grounding: GroundingContext): string {
   }
 
   const captured = grounding.scheduleCapturedAt
-    ? ` Schedule checked ${grounding.scheduleCapturedAt}.`
+    ? ` Schedule updated ${grounding.scheduleCapturedAt}.`
     : "";
 
   return `${body} No matching source was found.${captured}`.trim();

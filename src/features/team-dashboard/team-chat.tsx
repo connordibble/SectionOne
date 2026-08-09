@@ -73,6 +73,7 @@ export function TeamChat({
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [composerFocusRequest, setComposerFocusRequest] = useState(0);
   const nextId = useRef(0);
   const sessionId = useRef<string | undefined>(undefined);
   const threadRef = useRef<HTMLDivElement>(null);
@@ -98,6 +99,23 @@ export function TeamChat({
     inputRef.current?.focus({ preventScroll: true });
   }, [draftRequest]);
 
+  // The empty composer is replaced by a threaded composer after the first
+  // question, and the threaded composer is replaced by the empty composer on
+  // reset. Request focus after that new DOM node exists rather than before it
+  // mounts, which otherwise leaves keyboard users at the document body.
+  useEffect(() => {
+    if (composerFocusRequest === 0) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      inputRef.current?.focus({ preventScroll: true });
+      setComposerFocusRequest(0);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [composerFocusRequest, hasMessages]);
+
   function updateMessage(id: number, patch: (message: ChatMessage) => ChatMessage) {
     setMessages((current) =>
       current.map((message) => (message.id === id ? patch(message) : message)),
@@ -112,7 +130,7 @@ export function TeamChat({
     setMessages([]);
     sessionId.current = undefined;
     setInput("");
-    inputRef.current?.focus({ preventScroll: true });
+    setComposerFocusRequest((current) => current + 1);
   }
 
   async function submit(message: string) {
@@ -132,6 +150,7 @@ export function TeamChat({
 
     setIsLoading(true);
     setInput("");
+    setComposerFocusRequest((current) => current + 1);
     setMessages((current) => [
       ...current,
       { id: userId, role: "user", content: trimmed, citations: [], streaming: false },
@@ -511,7 +530,12 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
       <span className={styles.citationTitle}>{citation.title}</span>
       <span className={styles.citationMeta}>
         {providerLabel(citation.provider)}
-        {citation.sourceUrl ? <ExternalLink aria-hidden="true" /> : null}
+        {citation.sourceUrl ? (
+          <>
+            <ExternalLink aria-hidden="true" />
+            <span className={styles.visuallyHidden}>Opens in a new tab</span>
+          </>
+        ) : null}
       </span>
     </>
   );
@@ -524,7 +548,7 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
     <a
       className={styles.citationRow}
       href={citation.sourceUrl}
-      rel="noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       {content}

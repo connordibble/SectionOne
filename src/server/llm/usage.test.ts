@@ -78,7 +78,7 @@ describe("recordLlmUsage", () => {
       {
         teamSlug: "texas-football",
         provider: "openai",
-        usage: { ...usage, model: "gpt-4o" },
+        usage: { ...usage, model: "not-a-real-model-v0" },
         accepted: true,
       },
       db,

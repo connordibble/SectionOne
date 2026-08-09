@@ -7,7 +7,7 @@ import {
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
-import { Moon, Sun } from "lucide-react";
+import { ExternalLink, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import type { TeamConfig } from "@/config/team";
 import type {
@@ -77,15 +77,20 @@ export function TeamWorkspace({
   const draftId = useRef(0);
 
   useEffect(() => {
-    const syncHash = () => {
+    const syncHash = (focusTab = false) => {
       const hashView = window.location.hash.slice(1);
+      const nextView = isWorkspaceView(hashView) ? hashView : "brief";
 
-      if (isWorkspaceView(hashView)) {
-        setActiveView(hashView);
-      } else {
-        setActiveView("brief");
+      setActiveView(nextView);
+
+      if (focusTab) {
+        window.requestAnimationFrame(() => {
+          document.getElementById(`tab-${nextView}`)?.focus({ preventScroll: true });
+        });
       }
     };
+
+    const syncHistory = () => syncHash(true);
 
     const frame = window.requestAnimationFrame(() => {
       const savedTheme = window.localStorage.getItem("section-one-theme");
@@ -95,20 +100,30 @@ export function TeamWorkspace({
       }
       syncHash();
     });
-    window.addEventListener("hashchange", syncHash);
+    window.addEventListener("hashchange", syncHistory);
+    window.addEventListener("popstate", syncHistory);
 
     return () => {
       window.cancelAnimationFrame(frame);
-      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("hashchange", syncHistory);
+      window.removeEventListener("popstate", syncHistory);
     };
   }, []);
 
-  function selectView(view: WorkspaceView) {
+  function selectView(view: WorkspaceView, options: { focusTab?: boolean } = {}) {
     setActiveView(view);
 
     const url = new URL(window.location.href);
     url.hash = view === "brief" ? "" : view;
-    window.history.replaceState(window.history.state, "", url);
+    if (window.location.hash !== url.hash) {
+      window.history.pushState(window.history.state, "", url);
+    }
+
+    if (options.focusTab) {
+      window.requestAnimationFrame(() => {
+        document.getElementById(`tab-${view}`)?.focus({ preventScroll: true });
+      });
+    }
   }
 
   function handleTabKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -155,18 +170,31 @@ export function TeamWorkspace({
       data-view={activeView}
       style={themeStyle}
     >
+      <a
+        className={styles.skipLink}
+        href="#workspace-panel"
+        onClick={(event) => {
+          event.preventDefault();
+          const target = document.getElementById("workspace-panel");
+          target?.focus({ preventScroll: true });
+          target?.scrollIntoView({ block: "start" });
+        }}
+      >
+        Skip to content
+      </a>
+
       <header className={styles.masthead}>
         <div className={styles.mastheadInner}>
           <p className={styles.issueLine}>
             {team.referenceLabel} · {team.conference}
           </p>
           <div className={styles.brandBlock}>
-            <h1 aria-label="Section One" className={styles.wordmark}>
+            <p className={styles.wordmark}>
               <Link aria-label="Section One home" href="/">
                 <span>Section </span>
                 <span className={styles.wordmarkAccent}>One</span>
               </Link>
-            </h1>
+            </p>
             <p className={styles.brandTagline}>All signal. No noise.</p>
           </div>
 
@@ -240,7 +268,7 @@ export function TeamWorkspace({
           className={`${styles.primaryView} ${styles.viewEntrance}`}
           id="workspace-panel"
           role="tabpanel"
-          tabIndex={0}
+          tabIndex={-1}
         >
           {activeView === "brief" ? (
             <BriefView
@@ -289,7 +317,7 @@ export function TeamWorkspace({
           <section className={styles.secondaryView}>
             <SchedulePreview
               nextGameId={nextGame?.id}
-              onOpenSchedule={() => selectView("schedule")}
+              onOpenSchedule={() => selectView("schedule", { focusTab: true })}
               schedule={schedule}
               variant="compact"
             />
@@ -301,7 +329,7 @@ export function TeamWorkspace({
         <div className={styles.footerInner}>
           <p>
             <strong>Section One</strong>
-            {scheduleCapturedLabel ? ` · Schedule checked ${scheduleCapturedLabel}` : ""}
+            {scheduleCapturedLabel ? ` · Schedule updated ${scheduleCapturedLabel}` : ""}
           </p>
           <p>{team.sourcePolicy.disclaimer}</p>
         </div>
@@ -399,7 +427,9 @@ function WeeklyNewsSection({ weekly }: { weekly: WeeklyEdition }) {
             <div>
               <h3>
                 <a href={item.url} rel="noopener noreferrer" target="_blank">
-                  {item.headline}
+                  <span>{item.headline}</span>
+                  <ExternalLink aria-hidden="true" />
+                  <span className={styles.visuallyHidden}>Opens in a new tab</span>
                 </a>
               </h3>
               <p>{item.tldr}</p>
@@ -438,9 +468,9 @@ function BriefView({
       <section className={styles.briefLead} data-testid="kickoff-lead">
         <CountdownFigure countdown={countdown} />
         <div className={styles.matchupLead}>
-          <h2>
+          <h1>
             {game ? `${teamName} ${siteWord(game.site)} ${game.opponent}` : `${teamName} kickoff`}
-          </h2>
+          </h1>
           {game ? (
             <p className={`${styles.gameMeta} tnum`}>
               {game.dateLabel} · {game.kickoff} · {game.tv ?? "TV to be announced"}

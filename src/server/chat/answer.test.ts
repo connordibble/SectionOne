@@ -54,6 +54,19 @@ describe("answerQuestion", () => {
     expect(result.answer).toContain("will not repeat injury");
   });
 
+  it("does not mistake ordinary football language for a betting claim", async () => {
+    for (const question of [
+      "How can Texas be better on offense?",
+      "What should Texas lock in before kickoff?",
+      "How does Texas lock down early downs?",
+    ]) {
+      const result = await answerQuestion(question);
+
+      expect(result.mode, question).not.toBe("guardrail");
+      expect(result.answer, question).not.toContain("That is not confirmed");
+    }
+  });
+
   it("falls back to the deterministic composer when the live provider fails", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-broken");
