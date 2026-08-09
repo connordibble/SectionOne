@@ -14,6 +14,7 @@ import {
   prioritizeGroundingHits,
   type ChatHistoryMessage,
 } from "./prompt";
+import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
 import { selectAnswerStrategy } from "./routing";
@@ -123,9 +124,15 @@ async function produceAnswer(
   if (attempt.accepted) {
     const answer = finalizeAnswer(prepared, provider.name, attempt.model, attempt.text);
 
-    // Stored, not awaited on the read path's behalf: a slow write must not
-    // delay the answer a fan is already waiting on.
-    void storeCachedAnswer(prepared.team.slug, prepared.question, toPublicAnswer(answer));
+    // Deferred rather than awaited: a slow write must not delay the answer a
+    // fan is already waiting on. Scheduled through `after` rather than left
+    // unawaited, because a bare `void` promise is discarded the moment the
+    // serverless instance freezes — which is why this cache stored nothing in
+    // production while working fine locally.
+    runAfterResponse(
+      () => storeCachedAnswer(prepared.team.slug, prepared.question, toPublicAnswer(answer)),
+      "chat/cache:write",
+    );
 
     return answer;
   }

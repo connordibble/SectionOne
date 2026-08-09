@@ -93,3 +93,28 @@ describe("citation validity", () => {
     expect(result.passed).toBe(true);
   });
 });
+
+// This reached production. The system prompt told the model to "say what the
+// corpus is missing", so fans were told about the corpus — and the gate let it
+// through because the word was not banned. The prompt is fixed; this is the
+// backstop that keeps it fixed.
+describe("machinery vocabulary", () => {
+  it("rejects an answer that names the plumbing to a fan", () => {
+    const result = evaluateVoiceSample(
+      "The corpus does not establish that the offensive line is better yet, so watch early downs. [Run game]",
+      { validCitationTitles: ["Run game"] },
+    );
+
+    expect(result.passed).toBe(false);
+    expect(result.flags.join(" ")).toMatch(/corpus/i);
+  });
+
+  it("accepts the same point made in football terms", () => {
+    const result = evaluateVoiceSample(
+      "Nobody has seen this line in a live game yet, so early downs in the opener are the first real read. [Run game]",
+      { validCitationTitles: ["Run game"] },
+    );
+
+    expect(result.passed).toBe(true);
+  });
+});

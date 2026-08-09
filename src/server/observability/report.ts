@@ -1,4 +1,4 @@
-import { after } from "next/server";
+import { runAfterResponse } from "@/server/http/after-response";
 import { sendAlert } from "./alert";
 
 // Two levels, and the distinction is the whole point of this module.
@@ -50,7 +50,7 @@ export function reportError(error: unknown, context: ReportContext): void {
   // Scheduled rather than awaited: a fan waiting on an error page should not
   // also wait on an email. `after` still runs when the handler threw, which is
   // exactly the case that matters here.
-  schedule(async () => {
+  runAfterResponse(async () => {
     await sendAlert({
       subject: `[Section One] ${context.scope}: ${normalized.name}`,
       body: [
@@ -64,7 +64,7 @@ export function reportError(error: unknown, context: ReportContext): void {
         normalized.stack ?? "(none)",
       ].join("\n"),
     });
-  });
+  }, "observability/alert");
 }
 
 // Logged and counted, never alerted. The caller has already handled it.
@@ -126,22 +126,6 @@ function shouldAlert(fingerprint: string): boolean {
   alertsInWindow += 1;
 
   return true;
-}
-
-// `after` only exists inside a request or render. Called from a script it
-// throws, so fall back to running the work directly rather than losing it.
-function schedule(work: () => Promise<void>): void {
-  const guarded = () => {
-    void work().catch((error: unknown) => {
-      console.error(`[observability] alert dispatch failed: ${String(error)}`);
-    });
-  };
-
-  try {
-    after(guarded);
-  } catch {
-    guarded();
-  }
 }
 
 function normalizeError(error: unknown): { name: string; message: string; stack?: string } {
