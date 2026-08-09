@@ -3,6 +3,7 @@ import { answerQuestion, streamAnswerEvents } from "@/server/chat/answer";
 import { isUuid, persistChatExchange } from "@/server/chat/persistence";
 import { maxMessageLength, type ChatHistoryMessage } from "@/server/chat/prompt";
 import type { ChatStreamEvent } from "@/server/chat/types";
+import { withRouteErrors } from "@/server/observability/route";
 
 export const runtime = "nodejs";
 
@@ -13,7 +14,7 @@ type ChatRequest = {
   sessionId?: unknown;
 };
 
-export async function POST(request: Request) {
+export const POST = withRouteErrors("api/chat", async (request: Request) => {
   const body = (await request.json().catch(() => ({}))) as ChatRequest;
 
   if (!body.message?.trim()) {
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
   const persisted = await persistChatExchange({ question: message, answer, sessionId });
 
   return Response.json({ ...answer, sessionId: persisted?.sessionId });
-}
+});
 
 function streamResponse(
   message: string,

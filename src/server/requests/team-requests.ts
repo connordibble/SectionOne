@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getSharedDb, type Db } from "@/server/db/client";
 import { teamRequests } from "@/server/db/schema";
+import { reportDegradation } from "@/server/observability/report";
 
 export const maxTeamNameLength = 80;
 export const maxNoteLength = 400;
@@ -88,9 +89,10 @@ export async function recordTeamRequest(
 
     return { stored: true };
   } catch (error) {
-    console.warn(
-      `[team-request] storage failed: ${error instanceof Error ? error.message : error}`,
-    );
+    reportDegradation(`storage failed: ${error instanceof Error ? error.message : String(error)}`, {
+      scope: "requests/team-requests",
+      fingerprint: "requests/team-requests:write",
+    });
 
     return { stored: false };
   }

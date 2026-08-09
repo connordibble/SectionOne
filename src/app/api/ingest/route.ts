@@ -1,9 +1,11 @@
 import { getTeamConfig } from "@/config/team";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
 
+import { withRouteErrors } from "@/server/observability/route";
+
 export const runtime = "nodejs";
 
-export async function POST(request: Request) {
+export const POST = withRouteErrors("api/ingest", async (request: Request) => {
   const body = (await request.json().catch(() => ({}))) as { teamSlug?: string };
 
   if (body.teamSlug && !getTeamConfig(body.teamSlug)) {
@@ -26,4 +28,4 @@ export async function POST(request: Request) {
       fetchedAt: document.fetchedAt,
     })),
   });
-}
+});

@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Hallmark design-tool state (local; not project source)
 .hallmark/
+
+# design audit screenshots — regenerated on demand, not source
+/.audit-visuals

@@ -1,3 +1,4 @@
+import { withRouteErrors } from "@/server/observability/route";
 import { recordTeamRequest, teamRequestSchema } from "@/server/requests/team-requests";
 
 export const runtime = "nodejs";
@@ -18,7 +19,7 @@ const windowMs = 60_000;
 const maxPerWindow = 20;
 const recentSubmissions = new Map<string, number[]>();
 
-export async function POST(request: Request) {
+export const POST = withRouteErrors("api/team-requests", async (request: Request) => {
   const body = (await request.json().catch(() => null)) as unknown;
 
   if (body === null || typeof body !== "object") {
@@ -54,7 +55,7 @@ export async function POST(request: Request) {
   // distinguish durable from log-only without changing what the fan is told,
   // because from their side the outcome is identical.
   return Response.json({ ok: true, stored: result.stored }, { status: 202 });
-}
+});
 
 // Null when the caller cannot be told apart from anyone else. Bucketing every
 // such request under a shared "unknown" key would turn a per-person speed bump

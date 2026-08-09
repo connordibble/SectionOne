@@ -1,6 +1,7 @@
 import { getSharedDb, type Db } from "@/server/db/client";
 import { answerCitations, chatMessages, chatSessions } from "@/server/db/schema";
 import type { ChatAnswer } from "./types";
+import { reportDegradation } from "@/server/observability/report";
 
 export type ChatExchange = {
   question: string;
@@ -48,7 +49,10 @@ export async function persistChatExchange(
 
     return { sessionId };
   } catch (error) {
-    console.warn(`[chat] persistence skipped: ${error instanceof Error ? error.message : error}`);
+    reportDegradation(`persistence skipped: ${error instanceof Error ? error.message : String(error)}`, {
+      scope: "chat/persistence",
+      fingerprint: "chat/persistence:exchange",
+    });
     return null;
   }
 }
@@ -79,9 +83,10 @@ async function persistCitations(db: Db, sessionId: string, answer: ChatAnswer): 
   } catch (error) {
     // Citation rows reference seeded source documents; an unseeded database
     // should still keep the message history.
-    console.warn(
-      `[chat] citation persistence skipped: ${error instanceof Error ? error.message : error}`,
-    );
+    reportDegradation(`citation persistence skipped: ${error instanceof Error ? error.message : String(error)}`, {
+      scope: "chat/persistence",
+      fingerprint: "chat/persistence:citations",
+    });
   }
 }
 
