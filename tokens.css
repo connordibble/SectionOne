@@ -1,11 +1,11 @@
-/* Hallmark · genre: editorial game program · tone: focused game-day analysis
- * palette: burnt-orange anchor (OKLCH hue 47) on midnight steel
- * macrostructure: Stat-Led game-program canvas
- * variation: unified ruled Brief + three-view issue masthead
- * theme: studied-DNA (source: user-supplied image) · enrichment: none · nav: N6 · footer: Ft4
- * pre-emit critique: P5 H5 E5 S5 R5 V5 · contrast: pass (40–41) · slop: pass (42–45)
- * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49)
- * mobile: pass (34, 49, 50–57) · icons: pass (30)
+/* Hallmark · genre: editorial sports briefing · tone: authoritative, technical, game-day
+ * palette: portable team accent on house paper and team-derived structural dark
+ * macrostructure: Split Studio (The Desk) · signature view: Map / Diagram (Field Geometry)
+ * issue framing: Long Document (Saturday Edition) · hero: H2 · section head: S2
+ * nav: N6 · table: F3 · form: C2 · footer: Ft2 · enrichment: Tier-B SVG field graphics
+ * pre-emit critique: P5 H5 E5 S5 R5 V4 · contrast: pass (40–41)
+ * slop: pass (1–58) · honest: pass (46) · chrome: pass (47)
+ * tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57)
  *
  * Global primitives live here. Team colour values are generated from the
  * three anchors in typed config, then supplied as --team-light-* and
@@ -25,10 +25,21 @@
   --color-accent-ink: oklch(98.5% 0.006 47);
   --color-focus: oklch(34% 0.11 47);
   --color-danger: oklch(48% 0.16 25);
+  --color-brand-paper: oklch(96.5% 0.014 72);
+  --color-brand-paper-raised: oklch(98.5% 0.008 72);
+  --color-brand-ink: oklch(18% 0.035 248);
+  --color-brand-ink-soft: oklch(34% 0.03 248);
+
+  /* The issue bar above the masthead. It carries the publication line —
+     Saturday edition, independent — so it is the one strip that stays Section
+     One's own colour on every edition. Everything else in the header follows
+     the team. It still tracks the theme; a house colour is not a fixed one. */
+  --house-bar: var(--color-brand-ink);
+  --house-on-bar: var(--color-brand-paper);
 
   --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
-  --font-outlier: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-outlier: var(--font-body);
 
   --display-weight: 760;
   --tracking-display: 0.025em;
@@ -52,7 +63,7 @@
   --text-xl: 1.5625rem;
   --text-2xl: 1.9531rem;
   --text-3xl: 2.4414rem;
-  --text-display: clamp(3.25rem, 5.5vw + 1rem, 6.5rem);
+  --text-display: clamp(3.5rem, 5.5vw + 1rem, 7.25rem);
   /* The home hero sets two fixed lines, so its floor is set by the longest of
      them fitting at 320px rather than by the display scale. */
   --text-hero: clamp(2.35rem, 6.5vw, 6.5rem);
@@ -68,13 +79,17 @@
   --rule-hair: 1px;
   --rule-fine: 2px;
   --radius-tight: 0;
-  --radius-input: 2px;
-  --radius-card: 2px;
+  /* Squared, not sharp. 2px was effectively a right angle and read as
+     unfinished at card sizes; this is enough to soften a corner without
+     turning the geometry rounded. */
+  --radius-input: 0.375rem;
+  --radius-card: 0.5rem;
   --radius-round: 999px;
 
   --control-height: 3.5rem;
   --page-gutter: clamp(1rem, 4vw, 4rem);
-  --page-width: 88rem;
+  --page-width: 96rem;
+  --page-width-reading: 80rem;
   --measure: 62ch;
 
   --z-base: 1;
@@ -99,8 +114,14 @@
   --team-steel: var(--team-light-steel);
   --team-steel-raised: var(--team-light-steel-raised);
   --team-on-steel: var(--team-light-on-steel);
+  --team-stage: var(--team-light-stage);
+  --team-stage-raised: var(--team-light-stage-raised);
+  --team-on-stage: var(--team-light-on-stage);
   --team-focus: var(--team-light-focus);
   --team-header-accent: var(--team-light-header-accent, var(--team-light-accent-soft));
+  --team-graphic-faint: var(--team-light-graphic-faint);
+  --team-graphic: var(--team-light-graphic);
+  --team-graphic-strong: var(--team-light-graphic-strong);
   --team-tab-opacity: var(--team-light-tab-opacity, 0.58);
   --team-chrome-opacity: var(--team-light-chrome-opacity, 0.82);
   color-scheme: light;
@@ -123,10 +144,19 @@
   --team-steel: var(--team-dark-steel);
   --team-steel-raised: var(--team-dark-steel-raised);
   --team-on-steel: var(--team-dark-on-steel);
+  --team-stage: var(--team-dark-stage);
+  --team-stage-raised: var(--team-dark-stage-raised);
+  --team-on-stage: var(--team-dark-on-stage);
   --team-focus: var(--team-dark-focus);
   --team-header-accent: var(--team-dark-header-accent, var(--team-dark-accent-strong));
+  --team-graphic-faint: var(--team-dark-graphic-faint);
+  --team-graphic: var(--team-dark-graphic);
+  --team-graphic-strong: var(--team-dark-graphic-strong);
   --team-tab-opacity: var(--team-dark-tab-opacity, 0.58);
   --team-chrome-opacity: var(--team-dark-chrome-opacity, 0.82);
+
+  --house-bar: oklch(10% 0.02 248);
+  --house-on-bar: oklch(88% 0.01 248);
   color-scheme: dark;
 }
 

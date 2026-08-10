@@ -7,10 +7,18 @@ test("loads the finished Section One workspace", async ({ page }) => {
     page.getByRole("heading", { name: "Texas vs Texas State", exact: true, level: 1 }),
   ).toBeVisible();
   await expect(page.getByText(/Texas · Week 1 · 2026 · SEC/)).toBeVisible();
+  await expect(page.getByText("Saturday edition")).toHaveCount(1);
+  // The wordmark is typeset, not placed. The raster it replaced carried a
+  // baked cream ground, which is what stopped the masthead following the theme.
+  const wordmark = page.getByRole("link", { name: "Section One home" }).first();
+  await expect(wordmark).toBeVisible();
+  await expect(wordmark).toHaveText(/SectionOne/i);
+  await expect(wordmark.locator("img")).toHaveCount(0);
   await expect(page.getByRole("tab", { name: "Brief" })).toHaveAttribute(
     "aria-selected",
     "true",
   );
+  await expect(page.getByRole("img", { name: /Kickoff clock:/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "What matters Saturday" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Tune your signal" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Next three" })).toBeVisible();
@@ -23,7 +31,10 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
 
   const lead = page.getByTestId("kickoff-lead");
   await expect(lead).toBeVisible();
-  await expect(lead).toContainText(/^(\d+\s*days?\s*out|Today|TBD)/);
+  await expect(page.getByRole("img", { name: /Kickoff clock:/ })).toHaveAttribute(
+    "aria-label",
+    /^Kickoff clock: (\d+\s*days?\s*out|Today|Kickoff to be announced)$/,
+  );
   await expect(lead.getByRole("heading", { level: 1 })).toContainText("Texas");
 });
 
@@ -33,6 +44,7 @@ test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
   const matchupTab = page.getByRole("tab", { name: "Matchup" });
   await expect(matchupTab).toHaveAttribute("aria-selected", "true");
   await expect(page.getByTestId("signal-board")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Matchup map", level: 1 })).toBeVisible();
 
   await matchupTab.focus();
   await matchupTab.press("ArrowRight");

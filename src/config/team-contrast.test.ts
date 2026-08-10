@@ -21,6 +21,7 @@ const bodyTextPairs: Array<[PaletteRole, PaletteRole]> = [
   ["accentStrong", "page"],
   ["accentStrong", "surface"],
   ["accentStrong", "surfaceStrong"],
+  ["accentStrong", "surfaceSoft"],
   ["onAccent", "accent"],
   ["onSteel", "steel"],
   ["onSteel", "steelRaised"],
@@ -38,6 +39,52 @@ describe("derived team palette contrast", () => {
             `${foreground} on ${background}`,
           ).toBeGreaterThanOrEqual(4.5);
         }
+      });
+
+      // Field Geometry is the product's signature, and it is drawn rather than
+      // written, so it is held to the 3:1 non-text bar rather than 4.5:1. The
+      // route carries meaning and must separate from both the surface it sits
+      // on and the grid behind it — that separation is what stops the whole
+      // drawing collapsing into one grey texture, which is what it did when
+      // every element shared the text colour at a single opacity.
+      // Countdowns, ranks, and section numerals are set in `accent` rather than
+      // the darkened `accentStrong`, so the team's real colour survives at the
+      // one size where it is unmissable. They are large text, so the bar is
+      // 3:1 — but it is still a bar, and a new team's hue has to clear it.
+      it(`${team.slug} ${mode} keeps display figures readable in the team colour`, () => {
+        for (const background of ["page", "surface", "surfaceSoft"] as const) {
+          expect(
+            contrast(palette.accent, palette[background]),
+            `accent figure on ${background}`,
+          ).toBeGreaterThanOrEqual(3);
+        }
+      });
+
+      it(`${team.slug} ${mode} keeps field geometry legible on the stage`, () => {
+        const surfaces: Array<[string, string]> = [
+          ["stage", palette.stage],
+          ["stageRaised", palette.stageRaised],
+        ];
+
+        for (const [name, surface] of surfaces) {
+          expect(
+            contrast(palette.graphicStrong, surface),
+            `route (graphicStrong) on ${name}`,
+          ).toBeGreaterThanOrEqual(3);
+          expect(
+            contrast(palette.graphic, surface),
+            `hash marks (graphic) on ${name}`,
+          ).toBeGreaterThanOrEqual(1.3);
+          expect(
+            contrast(palette.graphicFaint, surface),
+            `grid (graphicFaint) on ${name}`,
+          ).toBeGreaterThanOrEqual(1.05);
+        }
+
+        expect(
+          contrast(palette.graphicStrong, palette.graphicFaint),
+          "route against the grid behind it",
+        ).toBeGreaterThanOrEqual(3);
       });
 
       it(`${team.slug} ${mode} keeps focus and masthead accents visible`, () => {

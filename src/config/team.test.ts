@@ -21,6 +21,20 @@ function lightnessOf(color: string): number {
   return Number(match[1]);
 }
 
+function parseOklch(color: string): { lightness: number; chroma: number; hue: number } {
+  const match = /^oklch\(([\d.]+)%\s+([\d.]+)\s+([\d.]+)\)$/.exec(color);
+
+  if (!match) {
+    throw new Error(`Not an oklch colour: ${color}`);
+  }
+
+  return {
+    lightness: Number(match[1]),
+    chroma: Number(match[2]),
+    hue: Number(match[3]),
+  };
+}
+
 describe("team config", () => {
   it("exposes Texas football as the default team", () => {
     expect(defaultTeamSlug).toBe("texas-football");
@@ -52,27 +66,70 @@ describe("team config", () => {
     expect(defaultTeamConfig.theme.chroma).toBeGreaterThan(houseTheme.chroma);
   });
 
-  // Dark structural frames stay dark enough for white chrome. A team that opts
-  // into a bright branded masthead declares that lightness explicitly and gets
-  // the same contrast coverage through the palette tests.
-  it("keeps every structural masthead readable", () => {
+  // The chrome is always a restrained dark, in both themes and for every team.
+  // It frames the issue; it is never the team's signature colour. A team that
+  // declares a bright structural lightness is describing its *stage*, not its
+  // masthead — putting a school's brightest colour behind the navigation is
+  // what made the Texas edition read as one flat orange rectangle.
+  it("keeps chrome restrained and separate from the stage", () => {
     for (const slug of enabledTeamSlugs) {
       const team = getTeamConfig(slug)!;
 
       for (const mode of ["light", "dark"] as const) {
         const palette = deriveTeamPalette(team.theme, mode);
-        const brightStructural = mode === "light" && (team.theme.structuralLightness ?? 23) > 40;
-        const steelLightness = lightnessOf(palette.steel);
-        const raisedLightness = lightnessOf(palette.steelRaised);
 
-        if (brightStructural) {
-          expect(steelLightness, `${slug} ${mode} steel`).toBeGreaterThan(40);
-          expect(raisedLightness, `${slug} ${mode} steel-raised`).toBeGreaterThan(35);
-        } else {
-          expect(steelLightness, `${slug} ${mode} steel`).toBeLessThanOrEqual(30);
-          expect(raisedLightness, `${slug} ${mode} steel-raised`).toBeLessThanOrEqual(32);
-        }
+        expect(lightnessOf(palette.steel), `${slug} ${mode} steel`).toBeLessThanOrEqual(30);
+        expect(
+          lightnessOf(palette.steelRaised),
+          `${slug} ${mode} steel-raised`,
+        ).toBeLessThanOrEqual(32);
         expect(lightnessOf(palette.onSteel), `${slug} ${mode} on-steel`).toBeGreaterThanOrEqual(90);
+
+        // A header painted the same value as the surface directly beneath it
+        // reads as a rendering bug rather than as structure.
+        expect(
+          Math.abs(lightnessOf(palette.stage) - lightnessOf(palette.steel)),
+          `${slug} ${mode} stage vs steel separation`,
+        ).toBeGreaterThanOrEqual(4);
+      }
+    }
+  });
+
+  // Dark mode still belongs to the team. Washing an edition to neutral grey
+  // after dark is the failure this guards: the stage keeps real chroma, and it
+  // stays in the team's own hue rather than drifting to a house colour.
+  it("keeps the team's colour on the stage in dark mode", () => {
+    for (const slug of enabledTeamSlugs) {
+      const team = getTeamConfig(slug)!;
+      const dark = deriveTeamPalette(team.theme, "dark");
+      const stage = parseOklch(dark.stage);
+
+      expect(stage.chroma, `${slug} dark stage chroma`).toBeGreaterThanOrEqual(0.04);
+      expect(
+        Math.abs(stage.hue - team.theme.structuralHue),
+        `${slug} dark stage hue drift`,
+      ).toBeLessThanOrEqual(1);
+    }
+  });
+
+  // Warm hues turn brown below roughly L35 — that is what a dark orange is.
+  // The chrome therefore holds only as much chroma as its hue can carry, and
+  // the team's colour is delivered by the stage and the accent instead.
+  it("does not let a warm chrome turn muddy", () => {
+    for (const slug of enabledTeamSlugs) {
+      const team = getTeamConfig(slug)!;
+      const warm =
+        Math.cos(((team.theme.structuralHue - 60) * Math.PI) / 180) > 0.35;
+
+      if (!warm) {
+        continue;
+      }
+
+      for (const mode of ["light", "dark"] as const) {
+        expect(
+          parseOklch(deriveTeamPalette(team.theme, mode).steel).chroma,
+          `${slug} ${mode} warm chrome chroma`,
+        ).toBeLessThanOrEqual(0.025);
       }
     }
   });

@@ -17,6 +17,8 @@ import {
   getTeamSchedule,
   type KickoffCountdown,
 } from "@/server/schedule/schedule";
+import { SectionMark } from "@/features/brand/section-mark";
+import { HomeField } from "./home-field";
 import { HomeShell } from "./home-shell";
 import { RequestForm } from "./request-form";
 import styles from "./home.module.css";
@@ -76,27 +78,31 @@ export function Home() {
     >
       <div className={styles.page} id="main" tabIndex={-1}>
         <section className={styles.hero}>
-          <h1 className={styles.heroHeadline}>
-            {/* The explicit space is for the accessible name: JSX drops
-                whitespace between elements, so without it a screen reader
-                announces "Your team.Your section." The block spans collapse
-                it visually. */}
-            <span>Your team.</span>{" "}
-            <span>Your section.</span>
-          </h1>
-          <p className={styles.heroBody}>
-            A short, sourced read on your team every game week. What to watch, why it matters, and
-            where the answer came from.
-          </p>
-          <div className={styles.heroActions}>
-            <a className={styles.primaryAction} href="#request">
-              Request your team
-              <ArrowRight aria-hidden="true" />
-            </a>
-            <Link className={styles.secondaryAction} href={featuredEdition}>
-              See a live edition
-            </Link>
+          <div className={styles.heroCopy}>
+            <h1 className={styles.heroHeadline}>
+              {/* The explicit space is for the accessible name: JSX drops
+                  whitespace between elements, so without it a screen reader
+                  announces "Your team.Your section." The block spans collapse
+                  it visually. */}
+              <span>Your team.</span>{" "}
+              <span>Your section.</span>
+            </h1>
+            <p className={styles.heroBody}>
+              A short, sourced read on your team every game week. What to watch, why it matters, and
+              where the answer came from.
+            </p>
+            <div className={styles.heroActions}>
+              <a className={styles.primaryAction} href="#request">
+                Request your team
+                <ArrowRight aria-hidden="true" />
+              </a>
+              <Link className={styles.secondaryAction} href={featuredEdition}>
+                See a live edition
+              </Link>
+            </div>
           </div>
+
+          <HomeField />
         </section>
 
         <section aria-labelledby="what-you-get-heading" className={styles.band} id="what-you-get">
@@ -183,6 +189,7 @@ export function Home() {
 
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
+          <SectionMark className={styles.footerMark} />
           <p>
             <strong>Section One</strong> · Independent coverage. Not affiliated with any school,
             conference, or athletics department.

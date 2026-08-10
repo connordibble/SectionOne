@@ -38,9 +38,16 @@ export function SchedulePreview({
     >
       <div className={styles.scheduleHeading}>
         <div>
+          <p className={styles.scheduleEyebrow}>
+            {variant === "compact" ? "03 / Road ahead" : "03 / Season file"}
+          </p>
           {variant === "compact" ? <h2>Next three</h2> : <h1>{schedule.seasonYear} schedule</h1>}
           {variant === "full" ? (
-            <p>{schedule.games.length} games. Dates and TV can change.</p>
+            <p className={styles.scheduleSummary}>
+              <span className="tnum">{schedule.games.length} games</span>
+              <span aria-hidden="true">/</span>
+              <span>Dates and TV can change.</span>
+            </p>
           ) : null}
         </div>
         {variant === "compact" && onOpenSchedule ? (
@@ -52,9 +59,10 @@ export function SchedulePreview({
       </div>
 
       <ol className={styles.scheduleList}>
-        {games.map((game) => (
+        {games.map((game, index) => (
           <ScheduleRow
             game={game}
+            index={variant === "compact" ? nextIndex + index : index}
             isNext={game.id === nextGameId}
             key={game.id}
             variant={variant}
@@ -67,15 +75,20 @@ export function SchedulePreview({
 
 function ScheduleRow({
   game,
+  index,
   isNext,
   variant,
 }: {
   game: ScheduleGame;
+  index: number;
   isNext: boolean;
   variant: "compact" | "full";
 }) {
   return (
     <li className={styles.scheduleRow} data-next={isNext || undefined}>
+      <span aria-hidden="true" className={`${styles.scheduleNumber} tnum`}>
+        {String(index + 1).padStart(2, "0")}
+      </span>
       <time className={`${styles.scheduleDate} tnum`} dateTime={game.startsAt ?? undefined}>
         {shortDate(game.dateLabel)}
       </time>
