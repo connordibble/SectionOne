@@ -25,7 +25,8 @@ production shape combines three ideas with clear ownership:
   carry meaning in the Matchup view.
 - **Saturday Edition** supplies the weekly issue line, folios, and sense of publication cadence.
 
-- A neutral Section One paper masthead, a team-derived game surface, and a restrained team accent.
+- A restrained team-derived chrome, one team-coloured stage per view, and a team accent that points
+  rather than floods. Chrome and stage are separate roles — see § Chrome and stage are different jobs.
 - Condensed display type for the masthead, section heads, matchup, and large figures.
 - Plain body type for every sentence a fan must read.
 - Mono type only for dates, times, scores, counts, and aligned labels.
@@ -55,20 +56,27 @@ never decorative.
 
 At wide widths, Brief reads as one composed issue rather than a stack of cards.
 
-1. A narrow issue rail names the team, week, conference, and independent status.
-2. A neutral paper masthead holds the real Section One wordmark, navigation, team switcher, and theme
-   control. The house brand does not change color with the edition.
-3. The split hero is one game object. Editorial claim and matchup sit on the left; field geometry and
-   the real kickoff clock sit on the right.
-4. “What matters Saturday” uses three numbered rows. “The read” sits beside it as the quieter desk
-   note at wide widths and follows it on small screens.
+1. A narrow issue bar names the team, week, conference, and independent status. It carries the same
+   chrome as the masthead beneath it, so the header reads as one dark band.
+2. The masthead holds the typeset Section One wordmark, navigation, team switcher, and theme control.
+   It wears the edition's chrome, not paper, and it follows the theme.
+3. The hero is a true half and half. The editorial claim owns the left half and the kickoff field
+   object owns the right; both bleed to their own window edge and meet at the centre line. Each half
+   is inset by the same amount on all four sides so the content sits *in* its half.
+4. “What matters Saturday” uses three numbered rows. “The read” sits beside it as a raised card at
+   wide widths, sized to its content, and follows the rows on small screens.
 5. “In the field” and “This week” form the issue body: a compact standing rail beside sourced weekly
    reporting on desktop, one reading sequence on mobile.
 6. “Tune your signal” is a full-width Ask the Desk band. It has no chat-window framing before the
    first question.
-7. A “Quick questions” rail labels two short starter questions below the input.
-8. “Next three” is one horizontal schedule index on wide screens and three decisive rows on mobile.
-9. The colophon uses the alternate Section One frame and stays small and factual.
+7. “Quick questions” stacks: the label sits above a set of content-sized prompt chips. They are
+   buttons and are drawn as such.
+8. “Next three” is three cards — side by side on wide screens, stacked on mobile — with the next
+   game marked by an accent border.
+9. The colophon carries the drawn Section One mark and stays small and factual.
+
+Bands alternate ground as they descend: page, soft surface, page, soft surface. That rhythm is the
+section separation; see § Lines are drawn by interaction, not by default.
 
 Two rules govern the weekly sections:
 
@@ -93,8 +101,8 @@ There are two, and they must not blur into each other.
 | **Home** | `/` | Say what Section One is, show a live edition as proof, and take a team request. |
 | **Edition** | `/teams/[slug]` | The game-week product for one team. |
 
-The home page shares the tokens, masthead language, rule discipline, and voice — and deliberately
-not the shape. An edition is a split studio built around a live game object; the home page is a ruled
+The home page shares the tokens, chrome, band rhythm, rule discipline, and voice — and deliberately
+not the shape. An edition is a split studio built around a live game object; the home page is an
 argument that ends in one action. If the two ever read as the same page, the product and its pitch
 have blurred.
 
@@ -112,16 +120,26 @@ Home page rules:
   hairline rule and the countdown figure. Everything outside the card border stays house. A fan
   should be able to see that editions are coloured for their team without the page changing colour
   when a new one ships.
+- **The home page borrows the signature, not the stage.** It carries one piece of Field Geometry —
+  a ruled field and a route that resolves into the Section One mark — drawn on paper in the page's
+  own border and accent roles. It does not get a bold colour field; that is what would make it look
+  like an edition. The graphic appears only from 60rem up, because below that the hero is a reading
+  sequence and the drawing would sit between the promise and the two actions.
 
 ## Masthead
 
-The masthead is the strongest house-brand surface.
+The masthead is the product's frame: the edition's chrome, carrying the house name.
 
-- The issue rail is dark house ink and carries team, week, conference, and independent status.
-- Wide: wordmark, three-view navigation, and controls share one paper line.
+- The issue bar and the masthead share one chrome colour and read as a single dark band. The bar
+  carries team, week, conference, and independent status.
+- Wide: wordmark, three-view navigation, and controls share one line.
 - Medium and small: wordmark and controls lead; navigation moves to its own line.
 - The brand line is always “All signal. No noise.”
-- The team supports the Section One name. It never replaces it or recolors the masthead.
+- **The edition colours the masthead; it never renames it.** The chrome takes the team's structural
+  hue at a restrained chroma and the accent letter follows the edition, but the name, the layout,
+  and the tagline are the same on every edition. An earlier rule pinned this surface to a fixed
+  paper colour to keep editions from recolouring it, which also kept it cream in dark mode —
+  edition-invariant is not the same as fixed.
 - No official team logo belongs in the masthead.
 
 ### Brand assets
@@ -135,11 +153,18 @@ Brand marks are drawn in the interface, not placed as pictures.
 - Give every mark clear space. One mark per surface is enough, and on the stage it stays small and
   cornered — the figure is what that panel is for.
 
-The rasters in `public/brand/` have **no alpha channel**; their cream ground is part of the image.
-That is why nothing renders them any more. Placing one forces a cream tile onto whatever is beneath
-it, which is what pinned the masthead to paper and broke dark mode for a full release. Do not
-reintroduce them, and do not solve the tile by drawing a badge around it. If a new mark is needed,
-add a path, not a PNG.
+Nothing in `src/` renders a file from `public/brand/`, and that is deliberate.
+
+The six rasters at the top of `public/brand/` have **no alpha channel** — their cream ground is part
+of the image — so placing one forces a cream tile onto whatever is beneath it. That is what pinned
+the masthead to paper and broke dark mode for a full release. Do not reintroduce them, and do not
+solve the tile by drawing a badge around it.
+
+The alternates under `public/brand/alternates/` *do* carry alpha, so transparency was never the
+blocker; using the wrong file was. But an alpha PNG still fixes its ink at export time, and this
+product needs the mark in each edition's chrome, stage, and graphic ink across two themes. A path
+filled with `currentColor` serves all of that from one component. If a new mark is needed, add a
+path, not a PNG — including a transparent one.
 
 ## View compositions
 
@@ -156,16 +181,25 @@ The field is explanatory structure, not a decorative green rectangle.
 
 ### Schedule
 
-Schedule is a season file, not twelve repeated cards. Use one tabular spec sheet with a game number,
-date, opponent, venue, kickoff, and network. The next game gets one structural accent line and a text
-label. Dates and broadcast windows remain legible when the row collapses on mobile.
+The full Schedule view is a season file, not twelve repeated cards: one tabular spec sheet with a
+game number, date, opponent, venue, kickoff, and network. Dates and broadcast windows stay legible
+when the row collapses on mobile.
+
+“Next three” on Brief is the exception, and it is a deliberate one. Three games are three objects,
+and once the section rules came out they read as one wide band of fragments with the dates stranded
+mid-column. Those three are carded; the twelve are not. Cards are for a short set that spacing alone
+leaves adrift, never for a long list.
+
+The next game is marked by an accent border on the card and a text label. It never relies on colour
+alone.
 
 ## Team portability
 
 A new team is a typed configuration change, not a page redesign. `TeamConfig` owns:
 
 - team identity, aliases, conference, and route;
-- `hue`, `chroma`, `structuralHue`, and `structuralChroma` theme anchors;
+- the `hue`, `chroma`, `structuralHue`, `structuralChroma`, and optional `structuralLightness`
+  theme anchors — the structural three describe the **stage**, not the masthead;
 - fan-facing copy and starter questions;
 - the weekly lead, matchup read, and four keys;
 - source rules and protected-mark guidance.
@@ -201,7 +235,7 @@ semantic roles:
 | `--team-page` | Paper ground. |
 | `--team-surface`, `--team-surface-soft`, `--team-surface-strong` | Layered surfaces. |
 | `--team-ink`, `--team-ink-subtle`, `--team-muted` | Text hierarchy. |
-| `--team-border`, `--team-border-strong` | Rules and dividers. |
+| `--team-border`, `--team-border-strong` | Card edges and control borders. Rarely a divider — see § Lines. |
 | `--team-accent`, `--team-accent-strong`, `--team-accent-soft` | Team-derived emphasis and action. |
 | `--team-on-accent` | Text on accent. |
 | `--team-steel`, `--team-steel-raised`, `--team-on-steel` | **Chrome.** Masthead, issue bar, colophon. Always a restrained dark. |
@@ -371,21 +405,58 @@ When adding a section, count the rules you are about to draw and ask what each o
 
 ## Responsive and accessibility
 
-The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wide desktop.
+The supported floor is 320 CSS pixels. `tests/e2e/responsive.spec.ts` sweeps 320 through 2560 and
+asserts the contracts below that can be measured; verify the rest by eye at 320, 375, 414, 768,
+1440, and a wide desktop.
 
-- Start with one reading column. Add columns only when the content has room.
+- Start with one reading column. **Add a column only when the second one can hold its contents at
+  full size**, not when the viewport merely has room. The Brief hero splits at 86rem; below that it
+  is a stacked reading sequence. It used to split at 64rem, where the panel's own margin and padding
+  consumed most of its track and the countdown clipped out of the box.
 - The page never scrolls horizontally.
 - Interactive labels remain on one line; their parent reflows first.
 - Display headings wrap safely within long words.
 - Tabs may scroll horizontally.
 - Desktop field geometry in Matchup becomes a compact 2×2 key picker followed by the selected read
   on mobile.
-- The split hero becomes editorial claim first and kickoff field second. The first viewport should
+- Stacked, the hero is editorial claim first and kickoff field second. The first viewport should
   reveal both rather than hiding the clock several screens down.
+- A carded surface draws all four of its own edges at every width. This is asserted, because three
+  separate rules each zeroed one side at some breakpoint and none of it was visible in review.
 - The schedule keeps date, opponent, and kickoff visible at 320px; venue may wrap beneath opponent.
 - Logical DOM order stays useful when columns collapse.
 - Meet WCAG 2.2 AA. Keep focus visible in every theme.
 - Test keyboard use, dark and light themes, reduced motion, and 200% zoom.
+
+## How this system has failed before
+
+Four bugs shipped or nearly shipped during the production redesign. None threw an error and none
+were caught by review; each was found by looking at a rendered page. They are recorded because the
+fix is cheap and the detection is not.
+
+**A property the new rules relied on but never declared.** `team-workspace.module.css` is two
+stylesheets stacked — the original rules, then a redesign block appended rather than replacing them.
+Anything the redesign block does not declare falls through to a pre-redesign rule, *including rules
+inside earlier media queries*, which then govern widths the redesign never meant to style. This
+produced the hero splitting from 40rem instead of 86rem, and the game object being vertically
+centred instead of filling its half. When a block takes over a component, declare its layout
+properties explicitly even where the value looks like the default. The reconciliation pass is
+tracked in [docs/future-work.md](./docs/future-work.md).
+
+**A rule that was right for the old shape and wrong for the new one.** Converting a ruled section
+into a card leaves behind declarations that used to make sense — `border-block-start: 0` on what was
+a top-ruled section, `border-inline-end: 0` on what was a column divider, `padding-right: 0` on what
+was a full-bleed row. Each one silently removed a card's edge or its padding. Changing a component's
+shape means re-reading every declaration attached to it, not just adding the new ones.
+
+**A colour that was correct in one theme and inverted in the other.** `--team-surface` sits above
+the soft band in light mode and below it in dark, so a card raised in one theme sank in the other.
+Any surface chosen for its relationship to another surface has to be checked in both themes.
+
+**A value used for two jobs.** One structural role painted the masthead, the hero, and the Matchup
+board, so no single value could be right for all three. Three separate attempts to fix the Texas
+edition each traded one problem for another. When a token has to be a compromise, that is the signal
+to split the role, not to keep retuning the value.
 
 ## Product and legal guardrails
 

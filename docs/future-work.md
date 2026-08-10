@@ -86,19 +86,26 @@ Carry forward:
 - strong type, squared geometry, direct language, and source proximity;
 - typed team portability and independence from institutional marks.
 
-Push further:
+Delivered, and now governed by [DESIGN.md](../DESIGN.md) rather than by this brief — listed so the
+brief is not re-read as an open backlog:
 
-- make countdowns, rankings, schedules, field position, routes, and matchup relationships the main
-  graphic objects instead of reducing them to small labels;
-- give the Section One mark a clear, recurring role without turning every section into branded
-  wallpaper;
-- use one memorable composition per view, with secondary information quieter around it;
-- let desktop carry comparison and spatial context while mobile becomes a decisive reading sequence;
-- use motion only to explain a state change: a route resolves, a ranking moves, a view changes, or a
-  question opens its sources;
-- keep photography exceptional and editorially useful; do not fill rectangles with interchangeable
-  sports imagery;
-- reserve team color for identity, selection, and emphasis so it gains force when it appears.
+- countdowns, rankings, schedules, routes, and matchup relationships are the main graphic objects;
+- the Section One mark has a recurring role and is drawn rather than placed, so it recolours;
+- one memorable composition per view, with secondary information quieter around it;
+- desktop carries comparison and spatial context; mobile is a decisive reading sequence;
+- team colour is split into chrome and stage, so it has identity without flooding.
+
+Still open:
+
+- **Photography.** None has shipped. The standard stands: exceptional and editorially useful, never
+  interchangeable rectangles. There is no photo pipeline, rights process, or art direction yet, and
+  adding one is a real project rather than a visual tweak.
+- **Motion beyond a state change.** What ships today is a view settle, selection changes, a loading
+  mark, and the row marker. A richer reveal — the kind that makes a section feel authored rather
+  than laid out — has been discussed and deliberately not built. Pick one or two places it earns
+  its keep rather than scattering scroll animation.
+- **Whether any of this helps.** The redesign has not been in front of readers. See the evidence
+  gates above; a better-looking page is not evidence.
 
 Avoid generic bento dashboards, glowing AI objects, ornamental stat cards, fake broadcast chrome,
 ambient motion, and density copied unchanged from desktop to mobile.
@@ -111,12 +118,17 @@ The redesign decision is settled. The directions are not blended in equal measur
    utility, and the cleanest path from the working product to a professional sports briefing.
 2. **Field Geometry owns the signature interaction.** It defines Matchup and supplies the field and
    route language used selectively in the kickoff object.
-3. **Saturday Edition owns cadence.** It contributes the issue rail, folios, weekly reading sequence,
+3. **Saturday Edition owns cadence.** It contributes the issue bar, folios, weekly reading sequence,
    and the sense that each briefing is a current publication.
 
 The current implementation proves the structure with real Texas and Utah State editions, not one
 desktop beauty shot. Keep testing comprehension, scan time, source trust, question discovery,
 mobile reachability, and team portability as the content changes.
+
+One correction the build produced, recorded because it was expensive to find: **Field Geometry is
+for Matchup and the kickoff object only.** Extending it to schedules and rankings was proposed and
+rejected — those are tables, and ruling them is what makes a signature tiring. The language earns
+its force by being rare.
 
 ## Reconcile the two stylesheet layers before shipping
 

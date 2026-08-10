@@ -19,6 +19,28 @@ and the suite cannot test anything but what it just built. The tell for the old
 failure mode, worth remembering: failures scattered across unrelated areas
 rather than clustered around what changed.
 
+### One stylesheet is layered over another, and the lower one still wins
+
+`src/features/team-dashboard/team-workspace.module.css` is two stylesheets in one file: the
+original rules, then a redesign block appended at the end rather than replacing them. Any property
+the redesign block does not explicitly declare falls through to a pre-redesign rule — **including
+rules inside earlier media queries**, which then govern widths the redesign never intended to style.
+
+It has produced three visible layout bugs so far, none of which errored:
+
+- the Brief hero split into two columns from 40rem instead of 86rem, because the redesign block
+  never declared `grid-template-columns`, and the kickoff panel clipped its own countdown at the
+  widths in between;
+- the game object was vertically centred instead of filling its half, because the block never
+  declared `align-items`;
+- carded surfaces lost a single edge where an old `border-*: 0` was still in scope.
+
+The tell: a layout that is correct at most widths and wrong at a few, with nothing in the console.
+Declare layout properties explicitly when a block takes over a component, even where the value looks
+like the default. `tests/e2e/responsive.spec.ts` now asserts the hero's breakpoint contract and card
+edges across the width range. Folding the layers together is tracked in
+[future-work.md](./future-work.md).
+
 ### Fixture counts are asserted by number
 
 `route.test.ts` and `workspace.spec.ts` both assert an exact
