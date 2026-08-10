@@ -5,8 +5,8 @@ grows. Do not create a second visual language inside one feature.
 
 ## North star
 
-Section One should feel like the best page in a Saturday game program: quick to scan, specific
-about football, and worth opening before kickoff.
+Section One should feel like a Saturday game program rebuilt by a first-rate product team: quick to
+scan, specific about football, spatial when the game calls for it, and worth opening before kickoff.
 
 The rule is **all signal, no noise**. Every element must help a fan answer one of three questions:
 
@@ -16,15 +16,27 @@ The rule is **all signal, no noise**. Every element must help a fan answer one o
 
 ## Visual signature
 
-The genre is an **editorial game program**, not a dashboard and not a newspaper costume.
+The genre is an **editorial sports briefing**, not a dashboard and not a newspaper costume. Its
+production shape combines three ideas with clear ownership:
 
-- Warm paper ground, dark navy structure, and a restrained team accent.
+- **The Desk** is the shell: a split editorial studio with one dominant game object and a restrained
+  reading grid.
+- **Field Geometry** is the signature interaction: routes, field lines, and matchup relationships
+  carry meaning in the Matchup view.
+- **Saturday Edition** supplies the weekly issue line, folios, and sense of publication cadence.
+
+- A neutral Section One paper masthead, a team-derived game surface, and a restrained team accent.
 - Condensed display type for the masthead, section heads, matchup, and large figures.
 - Plain body type for every sentence a fan must read.
 - Mono type only for dates, times, scores, counts, and aligned labels.
-- Strong horizontal rules and squared geometry. Boxes are for real controls or repeated choices.
+- Squared geometry — squared, not sharp. Corners take `--radius-card` or `--radius-input`; the
+  previous 2px was effectively a right angle and read as unfinished at card sizes.
+- Separation carried by **space and surface rather than by drawn lines**. Boxes are for real
+  controls, repeated choices, or a group that spacing alone leaves adrift.
 - Dense, aligned rows at wide widths; calm single-column reading on small screens.
-- Accent stays near five percent of the canvas. It points; it does not flood.
+- Team color may own one deliberate game surface. Everywhere else it points; it does not flood.
+- Field lines, schedule rows, rankings, and clocks are the graphic material. Photography is optional,
+  exceptional, and never filler.
 
 ## Product shape
 
@@ -41,18 +53,22 @@ never decorative.
 
 ## Brief canvas
 
-At wide widths, Brief should read as one composed page rather than a stack of cards.
+At wide widths, Brief reads as one composed issue rather than a stack of cards.
 
-1. A dark masthead holds the issue line, brand, navigation, team switcher, and theme control.
-2. The hero pairs a large countdown with matchup, kickoff, venue, and one short orange takeaway.
-3. “What matters Saturday” uses three numbered rows. Title and plain-English cue share a line.
-4. “The read” is two or three short sentences, followed by a source line.
-5. “Tune your signal” is one full-width input with no chat-window framing in the empty state.
-6. A “Quick questions” rail labels two short starter questions below the input.
-7. “In the field” gives the team's own poll standing and the ranked weeks on its own schedule.
-8. “This week” is up to five items: headline, one takeaway sentence, and the outlet behind it.
-9. “Next three” is one horizontal schedule strip on wide screens and three clear rows on mobile.
-10. The colophon stays small and factual.
+1. A narrow issue rail names the team, week, conference, and independent status.
+2. A neutral paper masthead holds the real Section One wordmark, navigation, team switcher, and theme
+   control. The house brand does not change color with the edition.
+3. The split hero is one game object. Editorial claim and matchup sit on the left; field geometry and
+   the real kickoff clock sit on the right.
+4. “What matters Saturday” uses three numbered rows. “The read” sits beside it as the quieter desk
+   note at wide widths and follows it on small screens.
+5. “In the field” and “This week” form the issue body: a compact standing rail beside sourced weekly
+   reporting on desktop, one reading sequence on mobile.
+6. “Tune your signal” is a full-width Ask the Desk band. It has no chat-window framing before the
+   first question.
+7. A “Quick questions” rail labels two short starter questions below the input.
+8. “Next three” is one horizontal schedule index on wide screens and three decisive rows on mobile.
+9. The colophon uses the alternate Section One frame and stays small and factual.
 
 Two rules govern the weekly sections:
 
@@ -78,9 +94,9 @@ There are two, and they must not blur into each other.
 | **Edition** | `/teams/[slug]` | The game-week product for one team. |
 
 The home page shares the tokens, masthead language, rule discipline, and voice — and deliberately
-not the shape. An edition is a Stat-Led dashboard built around a live countdown; the home page is a
-ruled argument that ends in one action. If the two ever read as the same page, the product and its
-pitch have blurred.
+not the shape. An edition is a split studio built around a live game object; the home page is a ruled
+argument that ends in one action. If the two ever read as the same page, the product and its pitch
+have blurred.
 
 Home page rules:
 
@@ -99,14 +115,50 @@ Home page rules:
 
 ## Masthead
 
-The masthead is the strongest brand surface.
+The masthead is the strongest house-brand surface.
 
-- Wide: issue line, brand, three-view navigation, and controls share one line.
-- Medium: brand and controls lead; navigation moves to its own line.
-- Small: brand, controls, and a horizontally scrollable tab row.
+- The issue rail is dark house ink and carries team, week, conference, and independent status.
+- Wide: wordmark, three-view navigation, and controls share one paper line.
+- Medium and small: wordmark and controls lead; navigation moves to its own line.
 - The brand line is always “All signal. No noise.”
-- The team supports the Section One name. It never replaces it.
+- The team supports the Section One name. It never replaces it or recolors the masthead.
 - No official team logo belongs in the masthead.
+
+### Brand assets
+
+Brand marks are drawn in the interface, not placed as pictures.
+
+- The wordmark is typeset in the display face by `features/brand/wordmark.tsx`. The name stays
+  constant; only the accent letter follows the edition.
+- The mark is the traced path in `features/brand/section-mark.tsx`. It fills with `currentColor`,
+  so it can take the chrome's ink in the colophon or the field's ink on the stage, in either theme.
+- Give every mark clear space. One mark per surface is enough, and on the stage it stays small and
+  cornered — the figure is what that panel is for.
+
+The rasters in `public/brand/` have **no alpha channel**; their cream ground is part of the image.
+That is why nothing renders them any more. Placing one forces a cream tile onto whatever is beneath
+it, which is what pinned the masthead to paper and broke dark mode for a full release. Do not
+reintroduce them, and do not solve the tile by drawing a badge around it. If a new mark is needed,
+add a path, not a PNG.
+
+## View compositions
+
+### Matchup
+
+Matchup is the Field Geometry view. Four keys sit around one selected read on a ruled game surface.
+The field is explanatory structure, not a decorative green rectangle.
+
+- At wide widths, the selected read occupies the middle channel and the four keys establish spatial
+  comparison around it.
+- On mobile, the same keys become a 2×2 picker followed immediately by the selected read.
+- A key exposes state, number, title, cue, and selection without relying on color alone.
+- “Ask about this” moves the selected prompt into the persistent question composer.
+
+### Schedule
+
+Schedule is a season file, not twelve repeated cards. Use one tabular spec sheet with a game number,
+date, opponent, venue, kickoff, and network. The next game gets one structural accent line and a text
+label. Dates and broadcast windows remain legible when the row collapses on mobile.
 
 ## Team portability
 
@@ -128,10 +180,12 @@ Two rules the second edition established, both of which cost a fix to honour:
   appears in shared code, it comes from `TeamConfig`.
 - **Two editions must not read as one site with two names.** Every edition's accent hue is distinct
   from every other's.
-- **The structural dark belongs to the school when the school has one.** A team whose primary is
-  already dark — navy, maroon, forest — puts that colour in the masthead. Only a team whose primary
-  is too bright to be structure, as burnt orange is, gets a counterweight instead. Getting this
-  backwards is what gave Utah State a brown masthead in its first draft.
+- **The structural anchors describe the stage, not the masthead.** Whatever the school's primary
+  is — navy, maroon, forest, burnt orange — it goes on the stage at the lightness it actually has.
+  The masthead derives a restrained dark from the same hue. An earlier version of this rule sent
+  the school's colour to the masthead and looked for a "counterweight" for bright primaries; that
+  is what put a rival's navy on a Texas page. There is no counterweight. There is a team colour and
+  a frame around it.
 
 Schedules are not typed by hand. `pnpm schedule:build <slug> <IANA zone>` rebuilds a team's fixture
 from CollegeFootballData, so kickoff times, venues, and broadcast assignments come back from the
@@ -150,16 +204,69 @@ semantic roles:
 | `--team-border`, `--team-border-strong` | Rules and dividers. |
 | `--team-accent`, `--team-accent-strong`, `--team-accent-soft` | Team-derived emphasis and action. |
 | `--team-on-accent` | Text on accent. |
-| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | Masthead and dark structural areas. Derived from `structuralHue`/`structuralChroma`, which is the school's own dark where it has one. |
+| `--team-steel`, `--team-steel-raised`, `--team-on-steel` | **Chrome.** Masthead, issue bar, colophon. Always a restrained dark. |
+| `--team-stage`, `--team-stage-raised`, `--team-on-stage` | **Stage.** The hero game object and the Matchup board — the surfaces that wear the team's real colour. |
+| `--team-graphic-faint`, `--team-graphic`, `--team-graphic-strong` | Field Geometry's drawing ink: grid, secondary structure, and the route. |
 | `--team-focus` | Keyboard focus. |
 
 Light is the default. Dark is an explicit override, and that choice persists.
+
+#### Display figures are set in the team colour
+
+`--team-accent-strong` is a darkened accent that exists for one reason: accent text at body size
+has to clear 4.5:1. It is a contrast compromise, not the team's colour, and at large sizes it reads
+as a muddy brown-red instead of burnt orange.
+
+So: **any large figure or display numeral uses `--team-accent`.** Countdowns, poll ranks, section
+numbers, and key indices all take the real colour. Large text only needs 3:1 and the palette test
+holds every edition to it. Reserve `--team-accent-strong` for accent text set at body size, where
+the compromise is actually buying something.
+
+#### Chrome and stage are different jobs
+
+This is the rule the first three attempts at Texas each broke in a different way.
+
+- **The stage is the team's colour.** One surface per view wears it: the hero game object on
+  Brief, the board on Matchup. `structuralHue`, `structuralChroma`, and `structuralLightness`
+  describe *this*, not the masthead. A school whose primary is bright says so with
+  `structuralLightness`, and burnt orange is then actually burnt orange.
+- **The chrome is never the team's colour.** The masthead, issue bar, and colophon are a
+  restrained dark that carries the team's hue as a trace. They frame the issue; they are not it.
+- **Chrome and stage must not be the same value.** A header painted the same colour as the
+  surface directly beneath it reads as a rendering bug, not as structure. The palette test
+  enforces a minimum separation.
+- **The issue bar matches the masthead.** One dark header, not a strip of some other colour
+  sitting on top of a strip of team colour.
+- **The stage bleeds to the window edge.** The reading grid is capped at `--page-width`, but a
+  coloured surface that stops at that cap leaves a paper margin down both sides and reads as a
+  rendering fault. The panel spans `100vw` and pads its own content back onto the page grid, so the
+  type stays in its column while the colour runs edge to edge.
+
+#### Dark mode still belongs to the team
+
+Going dark must not wash an edition to neutral grey. The stage keeps its hue and real chroma in
+both themes, so a fan opening their team at night still sees their team.
+
+The constraint that makes this hard is worth stating plainly, because it is a fact about colour
+rather than a preference: **a warm hue cannot hold saturation at low lightness.** Orange, red, and
+yellow become brown, maroon, and olive below roughly L35 — a dark burnt orange *is* chocolate.
+Cool hues do not have this problem; navy at the same lightness still reads as navy.
+
+So:
+
+- Chrome takes only as much chroma as its hue can carry — capped hard for warm hues, looser for
+  cool ones. A warm edition reads warm because the whole page is warm, not because the header is mud.
+- The team's colour is delivered by the stage, the accent, and the field graphics, which all sit at
+  lightnesses where the hue survives.
+- Never fix a "too grey" dark mode by pushing chroma into a dark surface. Move the colour to a
+  lighter element instead.
 
 ## Type and spacing
 
 - **Big Shoulders:** wordmark, navigation, section heads, matchup, large figures, compact labels.
 - **Geist:** body copy, controls, questions, and answers.
-- **Geist Mono:** dates, times, counts, state indices, and tabular figures.
+- **Geist with tabular figures:** dates, times, counts, state indices, and aligned labels. A third
+  typeface is not needed for the data register.
 - Display text may use uppercase and tracked letters. Body copy does not.
 - Display line-height never drops below `1`.
 - The named 4-point spacing scale in `tokens.css` is the only spacing scale.
@@ -223,10 +330,44 @@ Every control needs default, hover, active or selected, focus-visible, and disab
 - Ready and planned source states use a mark plus a label.
 - Touch targets are at least 44px where the layout allows.
 - Hover never hides information from touch or keyboard users.
+- **Only interactive things get hover states.** A hover response is a promise that something will
+  happen if the fan clicks. Putting one on a row of text — a matters row, a ranking line, a
+  schedule row that is an `li` and not a link — is visual flair that lies about what is clickable.
+  Before adding one, check that the element actually contains a link or a control. Deviating from
+  this needs a specific UX reason, stated where the rule is written.
 
-Motion stays quiet: a short view settle, an active tab rule, a selected-key change, and a compact
-loading mark. No entrance cascade, parallax, decorative count-up, or ambient loop.
-`prefers-reduced-motion` removes repeated and spatial movement.
+Motion stays within four primitives: a short view settle, one navigation-or-selection state change,
+a compact loading mark, and **the row marker** below. No entrance cascade, parallax, decorative
+count-up, route drawing, or ambient loop. `prefers-reduced-motion` removes repeated and spatial
+movement — the marker still appears, it just stops growing.
+
+### Lines are drawn by interaction, not by default
+
+Section One is a dense product, and the reflex when a page is dense is to rule it. That reflex is
+what made the first production pass read as a ledger: 45 drawn border edges across 283 elements on
+one Brief, a rule under every list row and around every section.
+
+The correction, and the standard to hold new work to:
+
+- **Separate with space first, surface second, a line last.** A change of ground — paper to stage,
+  page to soft surface — is a stronger boundary than a hairline and adds no ink. Reach for a rule
+  only when neither space nor surface can do the job.
+- **A permanent line must earn itself.** The ones that survive: the masthead's lower edge, the issue
+  bar's, and the accent bar marking the desk read. Everything else went to spacing.
+- **Control borders are not dividers.** The team switcher, theme toggle, and question composer keep
+  their borders — that is the affordance telling a fan the thing is operable. Do not count or cut
+  those.
+- **The row line became an interaction, on rows that are interactive.** News items carry a
+  `--row-mark` accent bar that grows from the leading edge on `:hover` or `:focus-within`, because
+  each one links out to its outlet. Rows that are only text get spacing and nothing else — see the
+  hover rule above.
+- **Where spacing alone leaves a section adrift, group it with a surface.** “Next three” is three
+  cards: the ground does the work a border would have, the alignment inside reads as deliberate
+  because there is an edge to align to, and three cards cost less ink than the rules they replaced.
+  A card is a grouping device, not a control — it does not get a hover state.
+
+When adding a section, count the rules you are about to draw and ask what each one separates that a
+`--space-2xl` gap would not.
 
 ## Responsive and accessibility
 
@@ -239,6 +380,9 @@ The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wi
 - Tabs may scroll horizontally.
 - Desktop field geometry in Matchup becomes a compact 2×2 key picker followed by the selected read
   on mobile.
+- The split hero becomes editorial claim first and kickoff field second. The first viewport should
+  reveal both rather than hiding the clock several screens down.
+- The schedule keeps date, opponent, and kickoff visible at 320px; venue may wrap beneath opponent.
 - Logical DOM order stays useful when columns collapse.
 - Meet WCAG 2.2 AA. Keep focus visible in every theme.
 - Test keyboard use, dark and light themes, reduced motion, and 200% zoom.
@@ -269,10 +413,10 @@ The supported floor is 320 CSS pixels. Verify 320, 375, 414, 768, 1440, and a wi
 :root {
   --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
   --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-outlier: var(--font-geist-mono), ui-monospace, monospace;
-  --radius-card: 2px;
-  --radius-input: 2px;
-  --page-width: 88rem;
+  --font-outlier: var(--font-body);
+  --radius-input: 0.375rem;
+  --radius-card: 0.5rem;
+  --page-width: 96rem;
   --measure: 62ch;
 }
 ```
@@ -313,11 +457,11 @@ Export each generated team and mode with this shape. Generated values are author
   "font": {
     "display": { "$type": "fontFamily", "$value": "Big Shoulders, Arial Narrow, sans-serif" },
     "body": { "$type": "fontFamily", "$value": "Geist, ui-sans-serif, sans-serif" },
-    "outlier": { "$type": "fontFamily", "$value": "Geist Mono, ui-monospace, monospace" }
+    "outlier": { "$type": "fontFamily", "$value": "Geist, ui-sans-serif, sans-serif" }
   },
   "radius": {
-    "card": { "$type": "dimension", "$value": "2px" },
-    "input": { "$type": "dimension", "$value": "2px" }
+    "card": { "$type": "dimension", "$value": "0.5rem" },
+    "input": { "$type": "dimension", "$value": "0.375rem" }
   }
 }
 ```

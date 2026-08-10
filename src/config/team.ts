@@ -104,8 +104,16 @@ export const teamConfigs = {
     referenceLabel: "Texas · Week 1 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
-    // Burnt orange is the edition's lead colour. The structural color tracks the
-    // university's published burnt orange rather than a brown-black derivative.
+    // The structural colour is Texas burnt orange itself, not a stand-in.
+    //
+    // oklch(57.8% 0.1545 49.2) is the measured conversion of the school's
+    // published burnt orange, which is why it matches the accent anchors above:
+    // one colour doing two jobs. Two earlier attempts were both wrong for the
+    // same reason — they answered "what goes next to orange" instead of "what
+    // is this team's colour." A navy counterweight put a rival's colour on the
+    // page, and taking the orange down to a structural lightness only made it
+    // chocolate. A bright primary is allowed to be the structure; that is what
+    // `structuralLightness` is for.
     theme: {
       hue: 49.2,
       chroma: 0.155,
@@ -360,6 +368,20 @@ export type TeamPalette = {
   accentStrong: string;
   accentSoft: string;
   headerAccent: string;
+  // Field Geometry's own ink. The signature view draws on the structural dark,
+  // where neither the accent (too dark to read on it) nor the text colour (grey,
+  // and identical for every team) can carry a route. These three are the drawing
+  // palette: grid, secondary structure, and the line that means something.
+  graphicFaint: string;
+  graphic: string;
+  graphicStrong: string;
+  // The one surface that wears the team's actual colour: the hero game object
+  // and the Matchup board. Separate from `steel` because the masthead and the
+  // stage must not be the same value — a header painted the same colour as the
+  // surface directly under it reads as a mistake rather than as structure.
+  stage: string;
+  stageRaised: string;
+  onStage: string;
   muted: string;
   border: string;
   borderStrong: string;
@@ -391,6 +413,52 @@ export function deriveTeamPalette(
   // cool) rather than grey, but at a chroma low enough to stay neutral.
   const tint = Math.min(chroma * 0.09, 0.014);
 
+  // Chrome chroma, and the reason dark mode is not brown.
+  //
+  // A dark surface cannot carry a warm hue at real saturation. Orange, red, and
+  // yellow all become brown, maroon, or olive below roughly L35 — that is what
+  // dark orange *is*, not a mistake in the conversion. Cool hues do not have
+  // this problem: navy at the same lightness still reads as navy.
+  //
+  // So the chrome takes the team's hue but only as much chroma as that hue can
+  // hold while staying recognisable, and the team's real colour is carried by
+  // the stage, the accent, and the field graphics instead. A warm team reads as
+  // warm because everything on the page is warm, not because the header is mud.
+  const warmth = Math.cos(((structuralHue - 60) * Math.PI) / 180);
+  const chromeChroma = Math.min(structuralChroma, warmth > 0.35 ? 0.022 : 0.062);
+
+  // Where the stage lands in this mode, and the drawing palette that follows
+  // from it. Field Geometry is drawn *on* the stage, so its ladder has to be
+  // derived from the stage rather than fixed: a burnt-orange stage at L58 and
+  // an Aggie-navy one at L21 cannot share one set of line colours.
+  //
+  // On a light stage the grid is chalk — lighter than the surface — and the
+  // route is a dark line over it. On a dark stage both run the other way. The
+  // grid deliberately sits nearer the surface than the route does, because the
+  // route is the element carrying meaning and has to win.
+  const stageLightness =
+    mode === "dark"
+      ? brightStructural
+        ? structuralLightness - 12
+        : structuralLightness - 2
+      : structuralLightness;
+  const stageRaisedLightness =
+    mode === "dark"
+      ? brightStructural
+        ? structuralLightness - 19
+        : structuralLightness + 4
+      : brightStructural
+        ? structuralLightness - 7
+        : structuralLightness + 6;
+  // Only a light stage in light mode gets a dark route. After dark the route
+  // always runs brighter than the surface: a dark line on a mid-tone stage on
+  // a dark page has nowhere to go, and chalk-bright reads better anyway.
+  const inkedRoute = mode === "light" && stageLightness >= 45;
+  const clamp = (value: number) => Math.min(94, Math.max(8, value));
+  const graphicFaintLightness = clamp(stageLightness + (inkedRoute ? 13 : 11));
+  const graphicLightness = clamp(stageLightness + (inkedRoute ? 24 : 23));
+  const graphicStrongLightness = clamp(stageLightness + (inkedRoute ? -46 : 47));
+
   if (mode === "dark") {
     return {
       page: oklch(13.5, tint * 0.65, hue),
@@ -403,14 +471,22 @@ export function deriveTeamPalette(
       accentStrong: oklch(80, chroma * 0.68, hue),
       accentSoft: oklch(34, chroma * 0.52, hue),
       headerAccent: oklch(80, chroma * 0.68, hue),
+      graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
+      graphic: oklch(graphicLightness, chroma * 0.34, hue),
+      graphicStrong: oklch(graphicStrongLightness, chroma * 0.85, hue),
+      // Dark mode keeps the team's colour on the stage rather than washing the
+      // whole page to grey. A bright primary is pulled down just enough to sit
+      // under light type; a primary that is already dark is lifted off the
+      // page so it still reads as a surface.
+      stage: oklch(stageLightness, structuralChroma * 0.9, structuralHue),
+      stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.82, structuralHue),
+      onStage: oklch(97, 0.008, structuralHue),
       muted: oklch(70, tint * 0.55, hue),
       border: oklch(29, tint * 0.8, hue),
       borderStrong: oklch(43, tint * 0.9, hue),
       onAccent: oklch(15, tint * 0.8, hue),
-      // Dark mode pulls chroma back: the same saturation that reads as navy at
-      // L23 reads as a colour cast at L9.5.
-      steel: oklch(9.5, structuralChroma * 0.7, structuralHue),
-      steelRaised: oklch(15.5, structuralChroma * 0.85, structuralHue),
+      steel: oklch(10.5, chromeChroma * 0.7, structuralHue),
+      steelRaised: oklch(16.5, chromeChroma * 0.85, structuralHue),
       onSteel: oklch(94, 0.012, structuralHue),
       focus: oklch(84, chroma * 0.58, hue),
     };
@@ -427,13 +503,21 @@ export function deriveTeamPalette(
     accentStrong: oklch(38, chroma * 0.96, hue),
     accentSoft: oklch(82, chroma * 0.54, hue),
     headerAccent: brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue),
+    graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
+    graphic: oklch(graphicLightness, chroma * 0.34, hue),
+    graphicStrong: oklch(graphicStrongLightness, chroma * 0.85, hue),
     muted: oklch(43, tint * 1.5, hue),
     border: oklch(86, tint * 1.5, hue),
     borderStrong: oklch(72, tint * 2.5, hue),
     onAccent: oklch(98.5, tint * 0.4, hue),
-    steel: oklch(brightStructural ? structuralLightness : 23, structuralChroma, structuralHue),
-    steelRaised: oklch(brightStructural ? structuralLightness - 6 : 29, structuralChroma, structuralHue),
-    onSteel: brightStructural ? oklch(100, 0, structuralHue) : oklch(96, 0.012, structuralHue),
+    // Chrome is always a restrained dark, never the team's signature colour.
+    // It is the frame around the issue; the stage below it is the issue.
+    steel: oklch(19, chromeChroma, structuralHue),
+    steelRaised: oklch(26, chromeChroma * 1.1, structuralHue),
+    onSteel: oklch(96, 0.012, structuralHue),
+    stage: oklch(stageLightness, structuralChroma, structuralHue),
+    stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.94, structuralHue),
+    onStage: brightStructural ? oklch(100, 0, structuralHue) : oklch(97, 0.01, structuralHue),
     focus: oklch(34, chroma * 0.88, hue),
   };
 }
@@ -472,10 +556,16 @@ const paletteRoles: Array<[string, keyof TeamPalette]> = [
   ["accent-strong", "accentStrong"],
   ["accent-soft", "accentSoft"],
   ["header-accent", "headerAccent"],
+  ["graphic-faint", "graphicFaint"],
+  ["graphic", "graphic"],
+  ["graphic-strong", "graphicStrong"],
   ["on-accent", "onAccent"],
   ["steel", "steel"],
   ["steel-raised", "steelRaised"],
   ["on-steel", "onSteel"],
+  ["stage", "stage"],
+  ["stage-raised", "stageRaised"],
+  ["on-stage", "onStage"],
   ["focus", "focus"],
 ];
 

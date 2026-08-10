@@ -3,6 +3,7 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
+import { Wordmark } from "@/features/brand/wordmark";
 import styles from "./home.module.css";
 
 type ThemeMode = "light" | "dark";
@@ -54,16 +55,7 @@ export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps)
       <header className={styles.masthead}>
         <div className={styles.mastheadInner}>
           <div className={styles.brandBlock}>
-            {/* A paragraph, not a heading: on the home page the h1 is the
-                promise in the hero. The wordmark is site identity, and two
-                competing h1s would flatten the document outline. */}
-            <p className={styles.wordmark}>
-              <Link aria-label="Section One home" href="/">
-                <span>Section </span>
-                <span className={styles.wordmarkAccent}>One</span>
-              </Link>
-            </p>
-            <p className={styles.brandTagline}>All signal. No noise.</p>
+            <Wordmark />
           </div>
 
           <nav aria-label="Home sections" className={styles.nav}>

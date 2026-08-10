@@ -8,7 +8,8 @@ import {
   type KeyboardEvent,
 } from "react";
 import { ExternalLink, Moon, Sun } from "lucide-react";
-import Link from "next/link";
+import { SectionMark } from "@/features/brand/section-mark";
+import { Wordmark } from "@/features/brand/wordmark";
 import type { TeamConfig } from "@/config/team";
 import type {
   KickoffCountdown,
@@ -184,18 +185,22 @@ export function TeamWorkspace({
       </a>
 
       <header className={styles.masthead}>
-        <div className={styles.mastheadInner}>
-          <p className={styles.issueLine}>
-            {team.referenceLabel} · {team.conference}
-          </p>
-          <div className={styles.brandBlock}>
-            <p className={styles.wordmark}>
-              <Link aria-label="Section One home" href="/">
-                <span>Section </span>
-                <span className={styles.wordmarkAccent}>One</span>
-              </Link>
+        <div className={styles.editionBar}>
+          <div className={styles.editionBarInner}>
+            <p className={styles.issueLine}>
+              {team.referenceLabel} · {team.conference}
             </p>
-            <p className={styles.brandTagline}>All signal. No noise.</p>
+            <p className={styles.editionNote}>
+              <span>Saturday edition</span>
+              <span aria-hidden="true">/</span>
+              <span>Independent</span>
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.mastheadInner}>
+          <div className={styles.brandSlot}>
+            <Wordmark />
           </div>
 
           <nav
@@ -274,6 +279,7 @@ export function TeamWorkspace({
             <BriefView
               countdown={countdown}
               game={nextGame}
+              issueLabel={team.referenceLabel}
               lead={team.editorial.lead}
               leadSourceTitle={leadSourceTitle}
               ranking={ranking}
@@ -327,11 +333,14 @@ export function TeamWorkspace({
 
       <footer className={styles.footer} data-testid="source-colophon">
         <div className={styles.footerInner}>
-          <p>
-            <strong>Section One</strong>
-            {scheduleCapturedLabel ? ` · Schedule updated ${scheduleCapturedLabel}` : ""}
-          </p>
-          <p>{team.sourcePolicy.disclaimer}</p>
+          <SectionMark className={styles.footerMark} />
+          <div className={styles.footerCopy}>
+            <p>
+              <strong>Section One</strong>
+              {scheduleCapturedLabel ? ` · Schedule updated ${scheduleCapturedLabel}` : ""}
+            </p>
+            <p>{team.sourcePolicy.disclaimer}</p>
+          </div>
         </div>
       </footer>
     </main>
@@ -447,6 +456,7 @@ function WeeklyNewsSection({ weekly }: { weekly: WeeklyEdition }) {
 function BriefView({
   countdown,
   game,
+  issueLabel,
   lead,
   leadSourceTitle,
   ranking,
@@ -456,6 +466,7 @@ function BriefView({
 }: {
   countdown: KickoffCountdown;
   game?: ScheduleGame;
+  issueLabel: string;
   lead: TeamConfig["editorial"]["lead"];
   leadSourceTitle: string;
   ranking?: TeamRankingSummary;
@@ -466,8 +477,11 @@ function BriefView({
   return (
     <div className={styles.briefView}>
       <section className={styles.briefLead} data-testid="kickoff-lead">
-        <CountdownFigure countdown={countdown} />
         <div className={styles.matchupLead}>
+          <p className={styles.heroKicker}>
+            <span>The Saturday read</span>
+            <span>{issueLabel}</span>
+          </p>
           <h1>
             {game ? `${teamName} ${siteWord(game.site)} ${game.opponent}` : `${teamName} kickoff`}
           </h1>
@@ -479,13 +493,19 @@ function BriefView({
             <p className={styles.gameMeta}>The next kickoff has not been posted.</p>
           )}
           {game ? <p className={styles.venue}>{game.venue}</p> : null}
-          <p className={styles.leadTakeaway}>{lead.headline}</p>
+          <p className={styles.leadTakeaway}>
+            <span>The line</span>
+            <strong>{lead.headline}</strong>
+          </p>
         </div>
+
+        <GameFieldObject countdown={countdown} game={game} teamName={teamName} />
       </section>
 
       <div className={styles.briefColumns}>
         <section className={styles.mattersSection}>
           <div className={styles.sectionHeadingRow}>
+            <p className={styles.sectionFolio}>01 / The plan</p>
             <h2>What matters Saturday</h2>
           </div>
           <ol className={styles.mattersList}>
@@ -504,14 +524,87 @@ function BriefView({
         </section>
 
         <section className={styles.readSection}>
+          <p className={styles.sectionFolio}>02 / Desk read</p>
           <h2>The read</h2>
           <p className={styles.readBody}>{lead.body}</p>
           <p className={styles.readSource}>{leadSourceTitle}</p>
         </section>
       </div>
 
-      {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
-      {weekly ? <WeeklyNewsSection weekly={weekly} /> : null}
+      <div className={styles.briefLower}>
+        {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+        {weekly ? <WeeklyNewsSection weekly={weekly} /> : null}
+      </div>
+    </div>
+  );
+}
+
+function GameFieldObject({
+  countdown,
+  game,
+  teamName,
+}: {
+  countdown: KickoffCountdown;
+  game?: ScheduleGame;
+  teamName: string;
+}) {
+  const label = countdownLabel(countdown);
+
+  return (
+    <div
+      aria-label={`Kickoff clock: ${label}`}
+      className={styles.gameFieldObject}
+      data-testid="game-field-object"
+      role="img"
+    >
+      {/* Two layers, because they want opposite things from the same box.
+          The grid is ruling and should reach every edge, so it stretches; the
+          lines are straight either way. The route carries meaning and must
+          stay whole, so it scales to fit. Drawing both in one sliced SVG is
+          what cropped the arrowhead off the end of the route. */}
+      <div aria-hidden="true" className={styles.fieldDrawing}>
+        <svg className={styles.fieldGridLayer} preserveAspectRatio="none" viewBox="0 0 640 420">
+          <g className={styles.fieldYardLines}>
+            <path d="M80 0V420" />
+            <path d="M176 0V420" />
+            <path d="M272 0V420" />
+            <path d="M368 0V420" />
+            <path d="M464 0V420" />
+            <path d="M560 0V420" />
+            <path d="M0 88H640" />
+            <path d="M0 210H640" />
+            <path d="M0 332H640" />
+          </g>
+        </svg>
+        <svg
+          className={styles.fieldRouteLayer}
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 640 420"
+        >
+          <g className={styles.fieldHashMarks}>
+            <path d="M128 174V194M128 226V246M224 174V194M224 226V246" />
+            <path d="M320 174V194M320 226V246M416 174V194M416 226V246" />
+            <path d="M512 174V194M512 226V246" />
+          </g>
+          <path className={styles.fieldRoute} d="M120 302C212 302 236 264 288 206S404 108 512 108" />
+          <path className={styles.fieldRouteEcho} d="M120 302L96 286M120 302L96 318" />
+          <circle className={styles.fieldRoutePoint} cx="512" cy="108" r="8" />
+        </svg>
+      </div>
+
+      {/* Drawn in the field's own ink, so it reads as a mark on the surface
+          rather than a badge stuck to it. Small and cornered: the figure is
+          what this panel is for. */}
+      <SectionMark className={styles.fieldMark} />
+
+      <p className={styles.fieldObjectLabel}>Kickoff clock</p>
+      <div className={styles.fieldCountdown}>
+        <CountdownFigure countdown={countdown} />
+      </div>
+      <div className={styles.fieldObjectFooter}>
+        <span>{game ? `${teamName} ${siteWord(game.site)} ${game.opponent}` : teamName}</span>
+        <span className="tnum">{game?.kickoff ?? "Kickoff TBD"}</span>
+      </div>
     </div>
   );
 }
@@ -531,6 +624,18 @@ function CountdownFigure({ countdown }: { countdown: KickoffCountdown }) {
       <span>{countdown.days === 1 ? "day out" : "days out"}</span>
     </p>
   );
+}
+
+function countdownLabel(countdown: KickoffCountdown): string {
+  if (countdown.state === "today") {
+    return "Today";
+  }
+
+  if (countdown.state === "unscheduled") {
+    return "Kickoff to be announced";
+  }
+
+  return `${countdown.days} ${countdown.days === 1 ? "day" : "days"} out`;
 }
 
 function GameStrip({

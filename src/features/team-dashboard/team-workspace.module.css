@@ -1,9 +1,8 @@
-/* Hallmark · genre: editorial game program · tone: focused game-day analysis
- * palette: burnt-orange anchor (OKLCH hue 47) on midnight steel
- * macrostructure: Stat-Led game-program canvas · variation: unified ruled Brief + three-view issue masthead
- * theme: studied-DNA (source: user-supplied image) · nav: N6 · footer: Ft4
- * chat: full-width reading log with responsive source rail
- * pre-emit critique: P5 H5 E5 S5 R5 V5 · contrast: pass (40–41) · slop: pass (42–45)
+/* Hallmark · genre: editorial sports briefing · tone: authoritative, technical, game-day
+ * palette: team accent on house paper and team-derived structural dark
+ * macrostructure: Split Studio · signature view: Map / Diagram · variation: issue-led game object
+ * theme: derived team system · hero: H2 · nav: N6 · footer: Ft2 · enrichment: Tier-B field SVG
+ * pre-emit critique: P5 H5 E5 S5 R5 V4 · contrast: pass (40–41) · slop: pass (1–58)
  * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49)
  * mobile: pass (34, 49, 50–57) · icons: pass (30)
  */
@@ -484,13 +483,11 @@
   gap: var(--space-xs);
   align-items: center;
   padding-block: var(--space-xs);
-  border-block-start: var(--rule-hair) solid var(--team-border-strong);
 }
 
 .matterNumber {
   align-self: stretch;
   padding-inline-end: var(--space-xs);
-  border-inline-end: var(--rule-hair) solid var(--team-ink);
   color: var(--team-accent-strong);
   font-family: var(--font-display);
   font-size: var(--text-3xl);
@@ -1380,7 +1377,6 @@
   gap: var(--space-2xs) var(--space-sm);
   min-width: 0;
   padding: var(--space-xs) 0 var(--space-xs) var(--space-xs);
-  border-block-start: var(--rule-hair) solid var(--team-border);
   border-inline-start: var(--rule-fine) solid transparent;
 }
 
@@ -1609,10 +1605,14 @@
     color: var(--team-accent-strong);
   }
 
-  .promptList button:hover:not(:disabled),
   .citationRow:hover,
   .resetChat:hover:not(:disabled) {
     color: var(--team-accent-strong);
+  }
+
+  .promptList button:hover:not(:disabled) {
+    border-color: var(--team-accent);
+    background: var(--team-surface-strong);
   }
 
   .signalNode:hover:not([aria-pressed="true"]) {
@@ -1645,7 +1645,7 @@
   }
 
   .promptList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: none;
   }
 
   .tabs {
@@ -1700,7 +1700,6 @@
   .tbdFigure {
     min-width: 11.5rem;
     padding-inline-end: var(--space-md);
-    border-inline-end: var(--rule-hair) solid var(--team-ink);
   }
 
   .mattersList li {
@@ -1812,7 +1811,6 @@
   .readSection {
     padding-inline-start: var(--space-lg);
     border-block-start: 0;
-    border-inline-start: var(--rule-hair) solid var(--team-ink);
   }
 
   .chat[data-mode="brief"] .emptyChat {
@@ -1995,7 +1993,6 @@
   .scheduleCompact .scheduleList {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-block: var(--rule-hair) solid var(--team-border-strong);
   }
 
   .scheduleCompact .scheduleRow {
@@ -2004,10 +2001,6 @@
     padding-inline: var(--space-sm);
     border-block-start: 0;
     border-inline-start: 0;
-  }
-
-  .scheduleCompact .scheduleRow:not(:last-child) {
-    border-inline-end: var(--rule-hair) solid var(--team-border-strong);
   }
 
   .scheduleCompact .scheduleDate,
@@ -2055,6 +2048,10 @@
     opacity: 0.72;
   }
 
+  .newsList li::before {
+    transition: none;
+  }
+
   .tab,
   .themeToggle,
   .composer button,
@@ -2084,7 +2081,6 @@
 .rankingSection,
 .newsSection {
   padding-block: var(--space-lg);
-  border-block-end: var(--rule-fine) solid var(--team-ink);
 }
 
 .sectionAside {
@@ -2133,7 +2129,6 @@
   gap: var(--space-xs);
   align-items: baseline;
   padding-block: var(--space-2xs);
-  border-block-start: var(--rule-hair) solid var(--team-border-strong);
 }
 
 .rankingRank {
@@ -2185,11 +2180,11 @@
 }
 
 .newsList li {
+  position: relative;
   display: grid;
   grid-template-columns: 3.5rem minmax(0, 1fr);
   gap: var(--space-xs);
   padding-block: var(--space-sm);
-  border-block-start: var(--rule-hair) solid var(--team-border-strong);
 }
 
 .newsNumber {
@@ -2265,4 +2260,1574 @@
   .newsList li {
     grid-template-columns: 2.5rem minmax(0, 1fr);
   }
+}
+
+/* ── 2026 production redesign: The Desk × Field Geometry ────────────────
+ * This block is intentionally last while the redesign is proven against the
+ * existing behavior suite. It replaces the visual composition without
+ * changing the data, navigation, question-thread, or team-config boundaries.
+ */
+
+.shell {
+  background: var(--team-page);
+}
+
+.editionBar {
+  border-block-end: var(--rule-hair) solid var(--team-steel-raised);
+  background: var(--team-steel);
+  color: var(--team-on-steel);
+}
+
+.editionBarInner {
+  display: flex;
+  min-height: 1.75rem;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, var(--page-width));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.issueLine,
+.editionNote {
+  margin: 0;
+  overflow: hidden;
+  color: inherit;
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 650;
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.editionNote {
+  display: none;
+  flex: 0 0 auto;
+  gap: var(--space-2xs);
+  align-items: center;
+  color: var(--team-on-steel);
+  opacity: var(--team-chrome-opacity, 0.82);
+}
+
+/* The masthead wears the edition's structural colour. It reaches for the team
+   roles rather than fixed brand constants, which is what makes it follow the
+   theme — pinning it to a paper constant is what left it cream in dark mode. */
+.masthead {
+  border-block-end: var(--rule-hair) solid var(--team-steel-raised);
+  background: var(--team-steel);
+  color: var(--team-on-steel);
+}
+
+.mastheadInner {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2xs) var(--space-xs);
+  padding: var(--space-xs) var(--page-gutter) 0;
+}
+
+.brandSlot {
+  grid-row: 1;
+  grid-column: 1;
+  min-width: 0;
+}
+
+.headerControls {
+  display: flex;
+  grid-row: 1;
+  grid-column: 2;
+  gap: var(--space-2xs);
+  align-items: center;
+  justify-self: end;
+}
+
+.teamSwitcher,
+.themeToggle {
+  border-color: var(--team-steel-raised);
+  background: var(--team-steel-raised);
+  color: var(--team-on-steel);
+}
+
+.teamSwitcher {
+  grid-row: auto;
+  grid-column: auto;
+  width: 7.25rem;
+  max-width: 38vw;
+  text-transform: none;
+}
+
+.themeToggle {
+  grid-row: auto;
+  grid-column: auto;
+}
+
+.tabs {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  gap: var(--space-sm);
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+  border-block-start: var(--rule-hair) solid var(--team-steel-raised);
+}
+
+.tab {
+  min-width: 2.75rem;
+  min-height: 3rem;
+  padding-inline: 0;
+  color: var(--team-on-steel);
+  font-size: var(--text-sm);
+  opacity: var(--team-tab-opacity, 0.58);
+}
+
+.tab::after {
+  inset-inline: 0;
+  background: var(--team-header-accent);
+}
+
+.tab[aria-selected="true"] {
+  opacity: 1;
+}
+
+.wordmark a:focus-visible,
+.tab:focus-visible,
+.teamSwitcher:focus-visible,
+.themeToggle:focus-visible {
+  outline-color: var(--team-focus);
+}
+
+.gameStrip {
+  border-block-end-color: var(--team-border-strong);
+  background: var(--team-surface);
+}
+
+.gameStripInner {
+  padding-block: var(--space-sm);
+}
+
+.stripCountdown {
+  padding-inline-start: var(--space-xs);
+  border-inline-start: var(--rule-fine) solid var(--team-accent);
+}
+
+.workspace[data-view="brief"] .primaryView {
+  margin-inline: calc(var(--page-gutter) * -1);
+}
+
+/* The stage runs the full width of the window.
+ *
+ * The workspace is capped at --page-width, so past that cap the team colour
+ * stopped short and left a cream margin down both sides — which reads as a
+ * rendering fault rather than as a margin. The panel bleeds to the viewport
+ * edges while its own inline padding puts the content back on the page grid,
+ * so the type stays in the same column it always was. */
+.briefLead {
+  position: relative;
+  display: grid;
+  gap: 0;
+  /* --bleed is the slack between the window and the reading grid; it is 0
+     until the viewport passes --page-width. Each panel adds it to its own
+     outer edge, so the panels still meet the window while their content stays
+     on the grid. Padding the container instead would inset the panels and
+     leave the stage showing past them. */
+  --bleed: max(0px, calc((100vw - var(--page-width)) / 2));
+  --stage-gutter: var(--page-gutter);
+  --panel-pad: calc(var(--bleed) + var(--stage-gutter));
+
+  /* Stacked is the default and has to be stated. A pre-redesign rule still
+     splits this grid from 40rem up, and because the redesign block never
+     declared the property, that legacy value governed everything below the
+     split breakpoint — which is how the hero ended up two-column at widths
+     where the panel could not hold its own contents. */
+  grid-template-columns: minmax(0, 1fr);
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: 0;
+  overflow: clip;
+  border-block-end: 0;
+  background: var(--team-stage);
+  color: var(--team-on-stage);
+}
+
+.matchupLead {
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  min-width: 0;
+  min-height: 25rem;
+  padding-block: var(--space-xl);
+  padding-inline: var(--panel-pad);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.matchupLead::before {
+  position: absolute;
+  top: var(--space-xl);
+  bottom: var(--space-xl);
+  left: var(--panel-pad);
+  width: var(--rule-fine);
+  background: var(--team-header-accent);
+  content: "";
+}
+
+.heroKicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  margin: 0 0 var(--space-md) var(--space-sm);
+  color: var(--team-header-accent);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.heroKicker span:last-child {
+  color: var(--team-on-stage);
+  opacity: 0.68;
+}
+
+.matchupLead h1 {
+  margin-inline-start: var(--space-sm);
+  max-width: 11ch;
+  color: var(--team-on-stage);
+  font-size: clamp(3.25rem, 16vw, 5.75rem);
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.gameMeta,
+.venue {
+  margin-inline-start: var(--space-sm);
+  color: var(--team-on-stage);
+  opacity: 0.76;
+}
+
+.gameMeta {
+  margin-block-start: var(--space-md);
+}
+
+.leadTakeaway {
+  display: grid;
+  gap: var(--space-2xs);
+  max-width: 34rem;
+  margin: auto 0 0 var(--space-sm);
+  padding-block-start: var(--space-md);
+  border-block-start: 0;
+  color: var(--team-on-stage);
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.leadTakeaway span {
+  color: var(--team-header-accent);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.leadTakeaway strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.gameFieldObject {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 24rem;
+  padding-block: var(--space-lg);
+  padding-inline: var(--panel-pad);
+  overflow: hidden;
+  border-block-start: 0;
+  background: var(--team-stage-raised);
+  color: var(--team-on-stage);
+}
+
+/* The mark is geometry now, so it takes the field's ink and needs no tile.
+   It sits behind the figure at midfield, quiet enough to be structure. */
+.fieldMark {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--panel-pad);
+  z-index: var(--z-base);
+  width: 1.5rem;
+  height: auto;
+  color: var(--team-graphic);
+  pointer-events: none;
+}
+
+.footerMark {
+  width: 1.6rem;
+  height: auto;
+  color: var(--team-on-steel);
+  opacity: var(--team-chrome-opacity, 0.82);
+}
+
+/* Field Geometry draws with its own ink.
+ *
+ * This layer used to be the text colour at 30% opacity, which made every
+ * edition's field the same grey and left the route — the one line that carries
+ * meaning — indistinguishable from the grid behind it. Each element now takes
+ * the graphic role that matches its job, so the drawing is team-coloured by
+ * construction and the route is the brightest thing on the surface.
+ */
+.fieldDrawing {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+/* The ruling reaches every edge; the route keeps a margin off them. Letting
+   both run to the bezel put the arrowhead hard against the panel edge. */
+.fieldGridLayer,
+.fieldRouteLayer {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
+
+.fieldGridLayer {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fieldRouteLayer {
+  inset: var(--space-md) var(--space-lg);
+}
+
+.fieldYardLines,
+.fieldHashMarks,
+.fieldRoute,
+.fieldRouteEcho,
+.fieldRoutePoint {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.fieldYardLines {
+  stroke: var(--team-graphic-faint);
+  stroke-width: 1;
+}
+
+.fieldHashMarks {
+  stroke: var(--team-graphic);
+  stroke-width: 2;
+}
+
+.fieldRoute,
+.fieldRouteEcho,
+.fieldRoutePoint {
+  stroke: var(--team-graphic-strong);
+  stroke-width: 4;
+}
+
+.fieldRoute {
+  stroke-dasharray: 10 8;
+}
+
+.fieldRoutePoint {
+  fill: var(--team-graphic-strong);
+}
+
+.fieldObjectLabel {
+  position: relative;
+  z-index: var(--z-raised);
+  align-self: start;
+  margin: 0;
+  color: var(--team-header-accent);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.fieldCountdown {
+  position: relative;
+  z-index: var(--z-raised);
+  align-self: center;
+  justify-self: center;
+}
+
+.fieldCountdown .countdownFigure,
+.fieldCountdown .todayFigure,
+.fieldCountdown .tbdFigure {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  color: var(--team-on-stage);
+  text-align: center;
+  text-shadow: none;
+}
+
+.fieldCountdown .countdownFigure > span:first-child,
+.fieldCountdown .todayFigure,
+.fieldCountdown .tbdFigure {
+  font-size: clamp(6.25rem, 28vw, 10rem);
+  line-height: 0.72;
+}
+
+.fieldCountdown .countdownFigure > span:last-child {
+  color: var(--team-on-stage);
+  font-size: var(--text-lg);
+}
+
+.fieldObjectFooter {
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  gap: var(--space-sm);
+  align-self: end;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block-start: var(--space-sm);
+  border-block-start: 0;
+  color: var(--team-on-stage);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+}
+
+.fieldObjectFooter span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fieldObjectFooter span:last-child {
+  flex: 0 0 auto;
+}
+
+/* ── Section grounds ───────────────────────────────────────────────────
+ *
+ * With the rules gone, the ground carries the separation. Bands alternate in a
+ * two-step rhythm — page, then a soft surface — so each section arrives on a
+ * different footing without anything being drawn between them. Two tones only:
+ * a third reads as decoration and the page starts to stripe.
+ *
+ * Each band bleeds to the window and pads its content back onto the reading
+ * grid, the same trick the stage uses. A ground that stops at --page-width
+ * leaves a margin down both sides and undoes the softness it was meant to add.
+ */
+.briefColumns,
+.briefLower,
+.workspace[data-view="brief"] .chatDock,
+.workspace[data-view="brief"] .secondaryView {
+  --band-gutter: var(--page-gutter);
+
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(
+    max(0px, calc((100vw - var(--page-width)) / 2)) + var(--band-gutter)
+  );
+}
+
+.briefColumns,
+.workspace[data-view="brief"] .chatDock {
+  background: var(--team-page);
+}
+
+.briefLower,
+.workspace[data-view="brief"] .secondaryView {
+  background: var(--team-surface-soft);
+}
+
+/* Section boundaries are hairlines. The 2px rule is reserved for the one band
+   that should read as emphatic — the question band — so that it still means
+   something when it appears. */
+.briefColumns {
+  /* Stacked, the desk read is the last thing in this band and its lower edge
+     would otherwise sit flush against the next band's ground. Wide widths
+     replace this with the full block padding. */
+  padding-block-end: var(--space-sm);
+  border-block-end: 0;
+}
+
+.mattersSection,
+.readSection {
+  padding-block: var(--space-xl);
+}
+
+.sectionHeadingRow {
+  display: grid;
+  gap: var(--space-2xs);
+  align-items: start;
+  justify-content: stretch;
+}
+
+.sectionFolio,
+.signalKicker,
+.scheduleEyebrow {
+  margin: 0;
+  color: var(--team-accent-strong);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.sectionHeadingRow h2,
+.readSection h2 {
+  font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+  line-height: 1;
+}
+
+.mattersList {
+  margin-block-start: var(--space-lg);
+}
+
+.mattersList li {
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-block: var(--space-sm);
+}
+
+.matterNumber {
+  padding-inline-end: var(--space-sm);
+  border-inline-end-color: var(--team-border-strong);
+  font-size: var(--text-2xl);
+}
+
+.mattersList h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mattersList p {
+  margin-block-start: var(--space-2xs);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* The desk read is a raised note, not a callout with a bar down its side.
+ *
+ * It used to take --team-surface-soft, which is the same tone as the band
+ * directly beneath it, so the card had nothing to end against and appeared to
+ * run straight into the next section. It sits on the lighter surface now, one
+ * step above its own band and a step away from the next one. The accent left
+ * border went with it: the folio above already carries the accent, and a bar
+ * down the edge was doing the same job twice. */
+.readSection {
+  position: relative;
+  padding: var(--space-lg);
+  border: var(--rule-hair) solid var(--team-border);
+  border-radius: var(--radius-card);
+  background: var(--team-surface);
+}
+
+.readSection h2 {
+  margin-block-start: var(--space-2xs);
+}
+
+.readBody {
+  font-size: var(--text-lg);
+  line-height: 1.55;
+}
+
+.readSource {
+  display: inline-flex;
+  margin-block-start: var(--space-lg);
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+.briefLower {
+  display: grid;
+  min-width: 0;
+}
+
+.rankingSection,
+.newsSection {
+  min-width: 0;
+  padding-block: var(--space-xl);
+}
+
+.rankingSection .sectionHeadingRow,
+.newsSection .sectionHeadingRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+/* A two-word section head does not wrap. If the row is tight the poll label
+   drops to its own line instead — the heading is the anchor. */
+.rankingSection .sectionHeadingRow h2,
+.newsSection .sectionHeadingRow h2 {
+  overflow-wrap: normal;
+  text-wrap: nowrap;
+}
+
+.rankingStanding {
+  display: grid;
+  gap: var(--space-2xs);
+  margin-block-start: var(--space-lg);
+}
+
+/* Display figures carry the team's actual colour.
+ *
+ * `--team-accent-strong` is the darkened variant that exists so accent text
+ * can clear 4.5:1 at body size. On a figure this large that trade is not
+ * needed and it is not free: it reads as a muddy brown-red rather than as
+ * burnt orange. Large text only needs 3:1, so the figure gets the real colour.
+ * See DESIGN.md § Colour roles. */
+.rankingFigure,
+.matterNumber,
+.newsNumber,
+.rankingRank {
+  color: var(--team-accent);
+}
+
+.rankingFigure {
+  font-size: clamp(var(--text-3xl), 12vw, 5.25rem);
+  line-height: 1;
+}
+
+.rankingList {
+  margin-block-start: var(--space-lg);
+}
+
+.rankingList li {
+  min-height: 3.5rem;
+  padding-block: var(--space-xs);
+}
+
+.newsSummary {
+  margin-block-start: var(--space-lg);
+}
+
+.newsList {
+  margin-block-start: var(--space-md);
+}
+
+.newsList li {
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-block: var(--space-md);
+}
+
+.newsNumber {
+  font-size: var(--text-xl);
+}
+
+.newsList h3 {
+  font-size: var(--text-xl);
+  line-height: 1;
+}
+
+/* ── Rows: structure on demand, where there is something to engage ─────
+ *
+ * Every list row used to draw a permanent top rule, which is most of what made
+ * the page read as a ledger rather than a page. Rows are separated by spacing
+ * now, and the line became an interaction: an accent marker grows from the
+ * leading edge on hover or keyboard focus.
+ *
+ * It belongs only to rows that actually do something. A news item carries a
+ * link out to the outlet, so responding to a pointer is a promise it can keep.
+ * The matters, ranking, and schedule rows are text — giving those a hover state
+ * is visual flair that tells a fan something is clickable when it is not.
+ */
+.newsList li {
+  --row-mark: 0;
+}
+
+.newsList li::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--space-2xs) * -1);
+  width: var(--rule-fine);
+  background: var(--team-accent);
+  content: "";
+  transform: scaleY(var(--row-mark));
+  transform-origin: center;
+  transition: transform var(--dur-short) var(--ease-out);
+}
+
+.newsList li:focus-within {
+  --row-mark: 1;
+}
+
+.newsList h3 a,
+.newsNumber {
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+.workspace[data-view="brief"] .chatDock {
+  padding-block: var(--space-2xl);
+  border-block: 0;
+}
+
+.chat[data-mode="brief"] .emptyChatHeading::before {
+  display: block;
+  margin-block-end: var(--space-2xs);
+  color: var(--team-accent-strong);
+  content: "04 / ASK THE DESK";
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+}
+
+.emptyChatHeading h2,
+.threadHeading h2 {
+  font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+}
+
+.composer {
+  border-color: var(--team-ink);
+  background: var(--team-surface);
+}
+
+.composer input {
+  min-height: 4rem;
+}
+
+.composer button {
+  min-width: 4rem;
+  min-height: 4rem;
+  border-inline-start-color: var(--team-ink);
+  background: var(--team-accent);
+  color: var(--team-on-accent);
+}
+
+/* ── Quick questions ───────────────────────────────────────────────────
+ *
+ * These were a horizontal rail: the label and two prompts stretched across the
+ * full band, so the questions sat marooned at either end with nothing tying
+ * them together and no sign they could be pressed. They stack now — label above
+ * the set — and each prompt is drawn as the control it actually is.
+ *
+ * These do get a hover state: they are buttons, and pressing one puts the
+ * question in the composer.
+ */
+.promptRail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: start;
+  margin-block-start: var(--space-lg);
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+.promptList {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: none;
+  gap: var(--space-2xs);
+}
+
+.promptList button {
+  display: inline-flex;
+  grid-template-columns: none;
+  gap: var(--space-2xs);
+  align-items: center;
+  min-height: 2.75rem;
+  padding: var(--space-2xs) var(--space-sm);
+  border: var(--rule-hair) solid var(--team-border-strong);
+  border-radius: var(--radius-input);
+  background: var(--team-surface);
+  transition: border-color var(--dur-micro) var(--ease-out),
+    background-color var(--dur-micro) var(--ease-out);
+}
+
+.promptList button .promptText {
+  white-space: normal;
+}
+
+.workspace[data-view="brief"] .secondaryView {
+  padding-block: var(--space-xl);
+}
+
+.scheduleEyebrow {
+  margin-block-end: var(--space-2xs);
+}
+
+.scheduleHeading {
+  align-items: end;
+}
+
+.scheduleHeading h1,
+.scheduleHeading h2 {
+  line-height: 1;
+}
+
+.scheduleSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  align-items: center;
+}
+
+.scheduleList {
+  border-block-end: 0;
+}
+
+.scheduleRow,
+.scheduleFull .scheduleRow {
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: var(--space-2xs) var(--space-xs);
+  min-height: 5.25rem;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-inline-start: 0;
+}
+
+.scheduleRow[data-next="true"] {
+  box-shadow: inset var(--rule-fine) 0 0 var(--team-accent);
+}
+
+.scheduleNumber {
+  grid-row: 1 / 3;
+  align-self: stretch;
+  padding-block-start: var(--space-3xs);
+  padding-inline-start: var(--space-xs);
+  color: var(--team-muted);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+}
+
+.scheduleRow[data-next="true"] .scheduleNumber {
+  color: var(--team-accent-strong);
+}
+
+.scheduleDate,
+.scheduleFull .scheduleDate {
+  grid-column: 2;
+  color: var(--team-muted);
+}
+
+.scheduleOpponent {
+  grid-column: 2;
+}
+
+.scheduleOpponent p {
+  font-family: var(--font-body);
+}
+
+.scheduleOpponent strong {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.scheduleKickoff,
+.scheduleFull .scheduleKickoff {
+  display: grid;
+  grid-row: 1 / 3;
+  grid-column: 3;
+  min-width: 5.5rem;
+  align-self: center;
+  text-align: end;
+}
+
+/* Stacked, the cards sit directly on top of one another with nothing between
+   them, so three objects read as one block. */
+.scheduleCompact .scheduleList {
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.scheduleCompact .scheduleRow {
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  /* Padding at every width, not only where the desktop rule lands. The card
+     treatment is unconditioned, so inheriting the list row's `padding-right: 0`
+     put the kickoff time hard against the card's own border on mobile. */
+  padding: var(--space-sm);
+  border: var(--rule-hair) solid var(--team-border);
+  border-radius: var(--radius-card);
+  background: var(--team-surface);
+}
+
+/* The accent border already marks it. An inset bar cuts across the rounded
+   corner and reads as a rendering artefact. */
+.scheduleCompact .scheduleRow[data-next="true"] {
+  box-shadow: none;
+}
+
+[data-theme="dark"] .scheduleCompact .scheduleRow {
+  background: var(--team-surface-strong);
+}
+
+/* [data-next] is state, not interaction. The card does not respond to a
+   pointer because there is nothing behind it to open. */
+.scheduleCompact .scheduleRow[data-next="true"] {
+  border-color: var(--team-accent);
+}
+
+.scheduleCompact .scheduleDate {
+  grid-column: 2;
+}
+
+.scheduleCompact .scheduleKickoff {
+  grid-row: 1 / 3;
+  grid-column: 3;
+}
+
+.scheduleFull,
+.signalSection {
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+.signalHeading {
+  align-items: end;
+  padding-block-end: var(--space-md);
+  border-block-end: var(--rule-hair) solid var(--team-border-strong);
+}
+
+.signalKicker {
+  margin-block-end: var(--space-2xs) !important;
+}
+
+.signalHeading h1 {
+  font-size: clamp(var(--text-3xl), 9vw, 4.75rem);
+  line-height: 1;
+}
+
+.signalField {
+  position: relative;
+  isolation: isolate;
+  gap: var(--space-md);
+  margin-block-start: var(--space-md);
+  padding: var(--space-sm);
+  overflow: hidden;
+  border: 0;
+  background: var(--team-stage);
+}
+
+.fieldBlueprint {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.blueprintLines,
+.blueprintHashes,
+.blueprintRoutes {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.blueprintLines {
+  stroke: var(--team-graphic-faint);
+  stroke-width: 1;
+}
+
+.blueprintHashes {
+  stroke: var(--team-graphic);
+  stroke-width: 2;
+}
+
+.blueprintRoutes {
+  stroke: var(--team-graphic-strong);
+  stroke-dasharray: 10 8;
+  stroke-width: 3;
+}
+
+.signalChoices {
+  gap: var(--space-2xs);
+}
+
+.signalNode {
+  isolation: isolate;
+  min-height: 7rem;
+  padding: var(--space-xs);
+  overflow: hidden;
+  border-color: var(--team-stage-raised);
+  background: var(--team-stage-raised);
+  color: var(--team-on-stage);
+}
+
+.signalNode[aria-pressed="true"] {
+  border-color: var(--team-on-stage);
+  background: var(--team-on-stage);
+  color: var(--team-stage);
+}
+
+.nodeMarker {
+  position: absolute;
+  right: var(--space-2xs);
+  bottom: calc(var(--space-xs) * -1);
+  z-index: -1;
+  color: currentColor;
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.08;
+}
+
+.nodeTopline {
+  align-items: start;
+}
+
+.nodeState,
+.nodeIndex {
+  color: currentColor;
+  opacity: 0.92;
+}
+
+.nodeState > span {
+  border-color: currentColor;
+}
+
+.nodeState[data-state="ready"] > span {
+  background: currentColor;
+}
+
+.signalNode strong {
+  margin-block-start: auto;
+  color: currentColor;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.signalCenter {
+  padding: var(--space-lg);
+  border: var(--rule-hair) solid var(--team-border-strong);
+  background: var(--team-surface);
+  color: var(--team-ink);
+}
+
+/* The selected read is the lit card on the field, and in light mode the surface
+   role gives it that on its own. In dark mode --team-surface lands within a few
+   points of the structural dark behind it, so the focal point flattens out and
+   the field reads as one continuous panel. Lift it deliberately. */
+[data-theme="dark"] .signalCenter {
+  border-color: var(--team-graphic);
+  background: var(--team-surface-strong);
+}
+
+.signalCenterTopline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.signalDetailLabel,
+.boardThesis {
+  color: var(--team-accent-strong);
+}
+
+.boardThesis {
+  font-size: var(--text-sm);
+}
+
+.signalCenter h3 {
+  /* `anywhere` from the shell heading rule was splitting words mid-syllable
+     in this narrow middle column — CLEAN OPERATI/ON. Break only a word that
+     genuinely cannot fit, and size the display type to the column rather than
+     the viewport so long keys have room to set on their own lines. */
+  overflow-wrap: break-word;
+  color: var(--team-ink);
+  font-size: clamp(var(--text-lg), 2.5vw, 2.5rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.signalCenter > p:not(.boardThesis) {
+  max-width: 48ch;
+  color: var(--team-ink-subtle);
+  opacity: 1;
+}
+
+.askSignal {
+  border-block-end-color: var(--team-accent-strong);
+  color: var(--team-accent-strong);
+}
+
+.boardSource {
+  border-block-start-color: var(--team-border-strong);
+  color: var(--team-muted);
+  opacity: 1;
+}
+
+.workspace[data-view="matchup"] .chatDock,
+.workspace[data-view="schedule"] .chatDock {
+  padding-block: var(--space-xl);
+}
+
+.footer {
+  margin-block-start: 0;
+  border-block-start: 0;
+  background: var(--team-steel);
+  color: var(--team-on-steel);
+}
+
+.footerInner {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: center;
+  padding-block: var(--space-md);
+}
+
+.footerCopy {
+  display: grid;
+  gap: var(--space-2xs);
+  min-width: 0;
+}
+
+.footer p {
+  color: var(--team-on-steel);
+  opacity: var(--team-chrome-opacity, 0.82);
+}
+
+.footer strong {
+  color: var(--team-on-steel);
+  opacity: 1;
+}
+
+.tab:disabled,
+.teamSwitcher:disabled,
+.themeToggle:disabled,
+.signalNode:disabled,
+.askSignal:disabled,
+.scheduleLink:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.teamSwitcher:active {
+  border-color: var(--team-accent-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .themeToggle:hover,
+  .teamSwitcher:hover {
+    border-color: var(--team-header-accent);
+  }
+
+  .newsList li:hover {
+    --row-mark: 1;
+  }
+
+  .composer button:hover:not(:disabled) {
+    background: var(--team-accent-strong);
+    color: var(--team-on-accent);
+  }
+
+  .signalNode:hover:not([aria-pressed="true"]) {
+    border-color: var(--team-on-stage);
+  }
+}
+
+@media (min-width: 40rem) {
+  .editionNote {
+    display: flex;
+  }
+
+  .mastheadInner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .brandTagline {
+    display: block;
+    margin-block-start: var(--space-2xs);
+  }
+
+  .themeToggle {
+    width: auto;
+    padding-inline: var(--space-xs);
+  }
+
+  .themeToggle span {
+    display: inline;
+  }
+
+  .teamSwitcher {
+    width: 9.5rem;
+  }
+
+  .briefLead {
+    --stage-gutter: clamp(var(--space-lg), 5vw, var(--space-2xl));
+  }
+
+
+  .briefColumns,
+  .briefLower,
+  .workspace[data-view="brief"] .chatDock,
+  .workspace[data-view="brief"] .secondaryView {
+    --band-gutter: clamp(var(--space-lg), 5vw, var(--space-2xl));
+  }
+
+  .mattersList li > div {
+    grid-template-columns: minmax(10rem, 0.7fr) minmax(0, 1fr);
+  }
+
+  .scheduleRow,
+  .scheduleFull .scheduleRow {
+    grid-template-columns: 3rem 8rem minmax(0, 1fr) auto;
+    gap: var(--space-sm);
+  }
+
+  .scheduleNumber {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .scheduleDate,
+  .scheduleFull .scheduleDate {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .scheduleOpponent {
+    grid-row: 1;
+    grid-column: 3;
+  }
+
+  .scheduleKickoff,
+  .scheduleFull .scheduleKickoff {
+    grid-row: 1;
+    grid-column: 4;
+    min-width: 10rem;
+  }
+
+  .scheduleCompact .scheduleRow {
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  }
+
+  .scheduleCompact .scheduleNumber {
+    grid-row: 1 / 3;
+    grid-column: 1;
+  }
+
+  .scheduleCompact .scheduleDate,
+  .scheduleCompact .scheduleOpponent {
+    grid-column: 2;
+  }
+
+  .scheduleCompact .scheduleKickoff {
+    grid-row: 1 / 3;
+    grid-column: 3;
+    min-width: 5.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .mastheadInner {
+    grid-template-columns: minmax(13rem, 0.8fr) minmax(18rem, 1.3fr) auto;
+    gap: clamp(var(--space-md), 3vw, var(--space-xl));
+    padding-block: var(--space-xs);
+  }
+
+  .brandBlock,
+  .tabs,
+  .headerControls {
+    grid-row: 1;
+    grid-column: auto;
+  }
+
+  .tabs {
+    justify-content: center;
+    margin-inline: 0;
+    padding-inline: 0;
+    border-block-start: 0;
+  }
+
+  .wordmarkImage {
+    width: 10.5rem;
+  }
+
+  .brandTagline {
+    font-size: var(--text-2xs);
+  }
+
+
+  .gameFieldObject {
+    border-block-start: 0;
+    border-inline-start: 0;
+  }
+
+  .fieldCountdown .countdownFigure > span:first-child,
+  .fieldCountdown .todayFigure,
+  .fieldCountdown .tbdFigure {
+    font-size: clamp(7rem, 10vw, 12.5rem);
+  }
+
+  .briefColumns {
+    grid-template-columns: minmax(0, 1.34fr) minmax(20rem, 0.66fr);
+    padding-block: var(--space-2xl) var(--space-3xl);
+    column-gap: var(--space-2xl);
+  }
+
+  .mattersSection,
+  .readSection {
+    padding-block: var(--space-lg);
+  }
+
+  .mattersSection {
+    padding-inline-end: var(--space-xl);
+  }
+
+  .readSection {
+    /* Sized to its content. Stretching it to the column's full height left a
+       tall empty tail under the source line and stopped it reading as a card.
+       No `border-block-start: 0` here: that was carried over from when this was
+       a ruled section rather than a card, and it knocked the top off the box. */
+    align-self: start;
+  }
+
+  .briefLower {
+    grid-template-columns: minmax(18rem, 0.68fr) minmax(0, 1.32fr);
+    gap: var(--space-2xl);
+  }
+
+  .rankingSection {
+    padding-inline-end: var(--space-2xl);
+  }
+
+  .workspace[data-view="brief"] .chatDock {
+    padding-block: var(--space-2xl);
+  }
+
+  .chat[data-mode="brief"] .emptyChat {
+    grid-template-areas:
+      "heading composer"
+      "prompts prompts";
+    grid-template-columns: minmax(18rem, 0.55fr) minmax(30rem, 1.45fr);
+    gap: var(--space-md) var(--space-xl);
+    align-items: end;
+  }
+
+  .chat[data-mode="brief"] .emptyChatHeading {
+    display: block;
+  }
+
+  .chat[data-mode="brief"] .emptyChatHeading p {
+    margin-block-start: var(--space-xs);
+    white-space: normal;
+  }
+
+  .chat[data-mode="brief"] .promptRail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .workspace[data-view="matchup"],
+  .workspace[data-view="schedule"] {
+    grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 0.62fr);
+    column-gap: var(--space-xl);
+  }
+
+  .workspace[data-view="matchup"] .primaryView,
+  .workspace[data-view="schedule"] .primaryView {
+    padding-inline-end: var(--space-xl);
+  }
+
+  .workspace[data-view="matchup"] .chatDock,
+  .workspace[data-view="schedule"] .chatDock {
+    padding-inline-start: var(--space-xl);
+  }
+
+  .signalField {
+    grid-template-areas:
+      "one center two"
+      "three center four";
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr) minmax(0, 1fr);
+    grid-template-rows: minmax(14rem, 1fr) minmax(14rem, 1fr);
+    gap: var(--space-xl);
+    min-height: 43rem;
+    padding: var(--space-xl);
+    border-block: 0;
+  }
+
+  .signalField::before,
+  .signalField::after,
+  .fieldMarks {
+    display: none;
+  }
+
+  .signalChoices {
+    display: contents;
+  }
+
+  .signalNode {
+    align-self: center;
+    min-height: 11rem;
+    padding: var(--space-md);
+  }
+
+  .signalNode[data-position="1"] {
+    grid-area: one;
+  }
+
+  .signalNode[data-position="2"] {
+    grid-area: two;
+  }
+
+  .signalNode[data-position="3"] {
+    grid-area: three;
+  }
+
+  .signalNode[data-position="4"] {
+    grid-area: four;
+  }
+
+  .nodeSummary {
+    display: block;
+    color: currentColor;
+    opacity: 0.88;
+  }
+
+  .signalCenter {
+    grid-area: center;
+    align-self: center;
+    min-height: 27rem;
+  }
+
+  /* Three games are three objects, so each gets its own ground.
+   *
+   * Removing the rules left them as one wide band of fragments with the date
+   * stranded at the far side of an empty column. A card is the tasteful way
+   * back: the surface groups what a border used to, the alignment inside it
+   * now reads as deliberate because there is an edge for it to align to, and
+   * three cards still cost less ink than the rules did. */
+  .scheduleCompact .scheduleList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .scheduleCompact .scheduleRow {
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 8.5rem;
+    align-content: start;
+    padding: var(--space-md);
+  }
+
+  .scheduleCompact .scheduleNumber {
+    grid-row: 1;
+    grid-column: 1;
+    padding-inline-start: 0;
+  }
+
+  .scheduleCompact .scheduleDate {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: end;
+  }
+
+  .scheduleCompact .scheduleOpponent {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .scheduleCompact .scheduleKickoff {
+    display: flex;
+    grid-row: 3;
+    grid-column: 1 / -1;
+    gap: var(--space-xs);
+    min-width: 0;
+    margin-block-start: auto;
+    text-align: start;
+  }
+
+  .footerCopy {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: baseline;
+  }
+
+  .footerCopy p:last-child {
+    justify-self: end;
+    text-align: end;
+  }
+}
+
+/* The split hero waits for real room.
+ *
+ * It used to arrive at 64rem, where the right track's 25rem minimum was almost
+ * entirely consumed by the panel's own margin and padding — the countdown and
+ * the footer line clipped straight out of the panel. Two columns are only
+ * worth having once the second one can hold the figure at full size. Below
+ * this the hero is a stacked reading sequence: claim first, clock second. */
+@media (min-width: 86rem) {
+  /* A true half and half: the editorial claim and the game object each own a
+     side, meeting at the centre line and running out to their own window edge.
+     Neither half is a panel sitting inside the stage — they are the stage. */
+  .briefLead {
+    grid-template-columns: minmax(0, 1fr) minmax(30rem, 1fr);
+    /* Stated because a pre-redesign rule sets `center` from 40rem up, which
+       left the game object floating inside its track with stage colour showing
+       above and below it instead of filling the half. */
+    align-items: stretch;
+    min-height: 39rem;
+  }
+
+  .matchupLead,
+  .gameFieldObject {
+    min-height: 39rem;
+  }
+
+  /* Each half is inset by the same amount on all four sides, so the content
+     sits in its own half rather than being pushed off one edge of it. Dropping
+     --bleed here is deliberate: adding the window-to-grid slack to the outer
+     edges put the editorial column 244px off the window against 45px off the
+     centre line, which is what made the composition read right-heavy. */
+  .matchupLead,
+  .gameFieldObject {
+    --panel-pad: var(--stage-gutter);
+
+    padding-block: var(--space-2xl);
+  }
+
+  /* A 9ch measure belongs to the split, where the headline owns one column.
+     Stacked, it left the right half of a full-width hero empty. */
+  .matchupLead {
+    padding-block: var(--space-2xl);
+  }
+
+  .matchupLead h1 {
+    max-width: 9ch;
+    font-size: clamp(5.25rem, 8vw, 8.25rem);
+  }
+}
+
+@media (min-width: 90rem) {
+  .briefColumns,
+  .briefLower,
+  .workspace[data-view="brief"] .chatDock,
+  .workspace[data-view="brief"] .secondaryView {
+    --band-gutter: var(--space-3xl);
+  }
+
+  .briefLead {
+    --stage-gutter: var(--space-2xl);
+  }
+
 }
