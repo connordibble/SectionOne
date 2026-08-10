@@ -6,7 +6,14 @@ import {
   maxItemsPerOutlet,
   minDistinctOutlets,
 } from "./story-selection";
-import { getWeeklyEdition, getWeeklyNewsDocuments, maxNewsItems } from "./weekly";
+import {
+  admitWeeklyEdition,
+  getWeeklyEdition,
+  getWeeklyNewsDocuments,
+  maxNewsItems,
+  type NewsItem,
+  type WeeklyEdition,
+} from "./weekly";
 
 describe("weekly edition", () => {
   it("publishes a package for every live edition", () => {
@@ -117,5 +124,63 @@ describe("weekly edition", () => {
   it("returns nothing for a team with no package rather than guessing", () => {
     expect(getWeeklyEdition("nope-football")).toBeUndefined();
     expect(getWeeklyNewsDocuments("nope-football")).toEqual([]);
+  });
+});
+
+// The link is the basis on which a fan is asked to believe our summary, and it
+// is rendered into an href. Weekly packages are committed fixtures today; the
+// moment they come from a feed, `url` is the field an outsider influences.
+describe("weekly ingest admits only linkable items", () => {
+  function itemWith(url: string, id = "item"): NewsItem {
+    return {
+      id,
+      headline: "Headline",
+      tldr: "One sentence.",
+      outlet: "Outlet",
+      tier: "local",
+      url,
+      publishedAt: "2026-08-04T12:00:00.000Z",
+      grade: { impact: 3, echo: 3, freshness: 3 },
+    };
+  }
+
+  function editionWith(items: NewsItem[]): WeeklyEdition {
+    return {
+      teamSlug: "texas-football",
+      weekOf: "2026-08-09",
+      publishedAt: "2026-08-09T12:00:00.000Z",
+      summary: "Summary.",
+      items,
+    };
+  }
+
+  it("drops an item whose link would execute script instead of opening a source", () => {
+    const admitted = admitWeeklyEdition(
+      editionWith([
+        itemWith("https://example.com/story", "keep"),
+        itemWith("javascript:alert(document.cookie)", "script"),
+        itemWith("data:text/html,<script>alert(1)</script>", "data"),
+      ]),
+    );
+
+    expect(admitted.items.map((item) => item.id)).toEqual(["keep"]);
+  });
+
+  it("keeps ordinary reporting links untouched", () => {
+    const items = [
+      itemWith("https://www.deseret.com/sports/story/", "a"),
+      itemWith("http://example.com/b?ref=1#top", "b"),
+    ];
+
+    expect(admitWeeklyEdition(editionWith(items)).items).toHaveLength(2);
+  });
+
+  // The published fixtures have to pass the same gate they will be held to.
+  it("publishes every shipped item with an http(s) link", () => {
+    for (const slug of enabledTeamSlugs) {
+      for (const item of getWeeklyEdition(slug)?.items ?? []) {
+        expect(item.url, `${slug} ${item.id}`).toMatch(/^https?:\/\//);
+      }
+    }
   });
 });

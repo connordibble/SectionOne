@@ -17,11 +17,13 @@ import type {
   TeamSchedule,
 } from "@/server/schedule/schedule";
 import type { TeamRankingSummary } from "@/server/sources/rankings";
-import { formatNewsDate, type WeeklyEdition } from "@/server/sources/weekly";
+import { formatNewsDate } from "@/lib/news-date";
+import type { WeeklyEdition } from "@/server/sources/weekly";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
 import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
 import styles from "./team-workspace.module.css";
+import { safeExternalHref } from "@/lib/safe-url";
 
 export type WorkspaceView = "brief" | "matchup" | "schedule";
 type ThemeMode = "light" | "dark";
@@ -428,18 +430,28 @@ function WeeklyNewsSection({ weekly }: { weekly: WeeklyEdition }) {
       <p className={styles.newsSummary}>{weekly.summary}</p>
 
       <ol className={styles.newsList}>
-        {weekly.items.map((item, index) => (
+        {weekly.items.map((item, index) => {
+          // Items are filtered at ingest, so this should always be a link.
+          // Kept as a guard because this is the sink: React renders
+          // `javascript:` in an href with nothing but a console warning.
+          const href = safeExternalHref(item.url);
+
+          return (
           <li key={item.id}>
             <span className={`${styles.newsNumber} tnum`}>
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>
               <h3>
-                <a href={item.url} rel="noopener noreferrer" target="_blank">
+                {href ? (
+                  <a href={href} rel="noopener noreferrer" target="_blank">
+                    <span>{item.headline}</span>
+                    <ExternalLink aria-hidden="true" />
+                    <span className={styles.visuallyHidden}>Opens in a new tab</span>
+                  </a>
+                ) : (
                   <span>{item.headline}</span>
-                  <ExternalLink aria-hidden="true" />
-                  <span className={styles.visuallyHidden}>Opens in a new tab</span>
-                </a>
+                )}
               </h3>
               <p>{item.tldr}</p>
               <p className={styles.newsMeta}>
@@ -447,7 +459,8 @@ function WeeklyNewsSection({ weekly }: { weekly: WeeklyEdition }) {
               </p>
             </div>
           </li>
-        ))}
+          );
+        })}
       </ol>
     </section>
   );

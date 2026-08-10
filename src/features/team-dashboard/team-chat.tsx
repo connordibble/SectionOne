@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type RefObject } from "react";
 import { ArrowRight, ExternalLink, Loader2, RotateCcw } from "lucide-react";
 import { readSseStream } from "@/lib/sse";
 import styles from "./team-workspace.module.css";
+import { safeExternalHref } from "@/lib/safe-url";
 
 type ChatMode = "brief" | "matchup" | "schedule";
 
@@ -540,17 +541,17 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
     </>
   );
 
-  if (!citation.sourceUrl) {
+  // A citation whose URL is not an http(s) link is shown as text rather than
+  // as a dead or dangerous link. Weekly items are already filtered at ingest;
+  // this covers every other document producer feeding `sourceUrl`.
+  const href = safeExternalHref(citation.sourceUrl);
+
+  if (!href) {
     return <div className={styles.citationRow}>{content}</div>;
   }
 
   return (
-    <a
-      className={styles.citationRow}
-      href={citation.sourceUrl}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <a className={styles.citationRow} href={href} rel="noopener noreferrer" target="_blank">
       {content}
     </a>
   );

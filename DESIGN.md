@@ -84,7 +84,10 @@ Two rules govern the weekly sections:
   nothing for them. The standing line is one line; the list underneath is the ranked opponents on
   that team's own schedule, hardest first. A poll that has not been released says so.
 - **We write the takeaway; we do not write the reporting.** Every news item carries its outlet and a
-  link out. The summary is ours and must be checkable against the thing it links to. An item without
+  link out. That link must be an absolute `http(s)` URL, checked by `safeExternalHref` where the
+  package is admitted: it is rendered into an `href`, and React puts a `javascript:` URL in an href
+  with nothing but a console warning. An item without a usable link is dropped rather than shown
+  link-less, because the link is the whole basis on which a fan is asked to believe the summary. The summary is ours and must be checkable against the thing it links to. An item without
   a source is not publishable, and the fixture tests enforce that rather than trusting the author.
 - **No outlet owns the list.** Items are graded on impact, echo, and freshness, decayed by age, and
   filled under a cap of two per outlet with at least three distinct outlets and local reporting never
