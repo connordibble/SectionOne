@@ -1,5 +1,8 @@
 import texasWeekly from "../../../data/fixtures/texas-football/weekly-2026-08-09.json";
 import utahStateWeekly from "../../../data/fixtures/utah-state-football/weekly-2026-08-09.json";
+import { formatNewsDate } from "@/lib/news-date";
+import { isSafeExternalHref } from "@/lib/safe-url";
+import { reportDegradation } from "@/server/observability/report";
 import { createSourceDocumentId } from "./ids";
 import { describeSourceMix, selectTopStories, type SourceMix } from "./story-selection";
 import type { SourceDocument } from "./types";
@@ -59,8 +62,42 @@ export type WeeklyEdition = {
 // stops being a briefing and becomes the feed this product exists to replace.
 export const maxNewsItems = 5;
 
+// The boundary where a weekly package becomes part of the product.
+//
+// Today these are committed fixtures, so an item failing this check is an
+// authoring mistake. The check is here for what happens next: when packages
+// come from a live feed, `url` is the one field in this shape that an outsider
+// influences, and it is rendered straight into an `href` on the Brief and
+// carried into chat citations. React does not stop `javascript:` in an href.
+//
+// An item without a usable link is dropped rather than rendered link-less: the
+// link is the entire basis on which a fan is asked to believe our summary, so a
+// story we cannot point at is not publishable. See DESIGN.md § We write the
+// takeaway; we do not write the reporting.
+export function admitWeeklyEdition(edition: WeeklyEdition): WeeklyEdition {
+  const items = edition.items.filter((item) => isSafeExternalHref(item.url));
+
+  if (items.length !== edition.items.length) {
+    reportDegradation("weekly item dropped: source link is not an http(s) URL", {
+      scope: "sources/weekly",
+      fingerprint: "sources/weekly:unsafe-url",
+      detail: {
+        teamSlug: edition.teamSlug,
+        weekOf: edition.weekOf,
+        dropped: edition.items.length - items.length,
+      },
+    });
+  }
+
+  return { ...edition, items };
+}
+
 const editions: Record<string, WeeklyEdition> = Object.fromEntries(
-  [texasWeekly, utahStateWeekly].map((edition) => [edition.teamSlug, edition as WeeklyEdition]),
+  [texasWeekly, utahStateWeekly].map((edition) => {
+    const admitted = admitWeeklyEdition(edition as WeeklyEdition);
+
+    return [admitted.teamSlug, admitted];
+  }),
 );
 
 // Returns the currently published package with its running top five already
@@ -115,10 +152,6 @@ export function getWeeklyNewsDocuments(teamSlug: string): SourceDocument[] {
   }));
 }
 
-export function formatNewsDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
+// Re-exported so server callers keep one import for the weekly package. The
+// implementation lives in `lib` because the Brief renders it from the client.
+export { formatNewsDate };

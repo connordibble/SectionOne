@@ -41,6 +41,24 @@ like the default. `tests/e2e/responsive.spec.ts` now asserts the hero's breakpoi
 edges across the width range. Folding the layers together is tracked in
 [future-work.md](./future-work.md).
 
+### A client component was importing a server module for a date formatter
+
+`team-workspace.tsx` is `"use client"` and imported `formatNewsDate` from
+`server/sources/weekly.ts`. That pulled the whole module into the browser
+bundle — fixture JSON and the story grader — and stayed invisible because
+nothing in that chain touched a server-only API.
+
+Adding `reportDegradation` to `weekly.ts` turned it into a hard build failure:
+the reporter reaches `next/server`, which cannot be bundled for the client.
+Turbopack prints the full import trace, which is the fastest way to read this
+class of problem.
+
+The formatter now lives in `src/lib/news-date.ts` and `weekly.ts` re-exports it
+so server callers are unchanged. The rule worth keeping: a client component
+importing anything under `src/server/` is a latent bundling bug even when it
+builds — check what the module drags behind it, and prefer `import type` for
+shapes, which is erased.
+
 ### Fixture counts are asserted by number
 
 `route.test.ts` and `workspace.spec.ts` both assert an exact
