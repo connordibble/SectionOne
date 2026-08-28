@@ -14,7 +14,7 @@ const games: CfbdScheduleGame[] = [
     id: 401,
     season: 2026,
     week: 2,
-    startDate: "2026-09-12T23:15:00.000Z",
+    startDate: "2026-09-12T19:30:00.000Z",
     homeTeam: "Washington",
     awayTeam: "Utah State",
     venue: "Husky Stadium",
@@ -107,7 +107,7 @@ describe("buildTeamSchedule", () => {
 
     expect(schedule.games[0].kickoff).toBe("5 p.m. MT");
     expect(schedule.games[0].dateLabel).toBe("Saturday, September 5");
-    expect(schedule.games[1].kickoff).toBe("5:15 p.m. MT");
+    expect(schedule.games[1].kickoff).toBe("1:30 p.m. MT");
   });
 
   // CFBD ships a placeholder timestamp alongside startTimeTBD. Rendering it as

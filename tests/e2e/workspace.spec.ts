@@ -591,8 +591,15 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
   await expect(page.getByText("How does Ohio State look?")).toBeVisible();
-  await expect(
-    page.getByText(/Ohio State is the first big test up front/),
-  ).toBeVisible();
+
+  // Asserted on sourcing rather than on wording. This question escalates now,
+  // so its text comes from whichever answer path is live: a model where a key
+  // is configured, the composer where none is. What has to hold either way is
+  // that the follow-up is answered from the Ohio State material and that the
+  // first exchange is still on screen. Pinning the old template's prose here
+  // was really testing which branch ran.
+  const thread = page.locator("[aria-live='polite']").last();
+  await expect(thread.getByText(/Ohio State/).first()).toBeVisible();
+  await expect(page.getByText("Ohio State: the first big test")).toBeVisible();
   await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });

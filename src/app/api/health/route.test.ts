@@ -80,7 +80,13 @@ describe("GET /api/health", () => {
     expect(body.llm.attribution).toContain("Anthropic workspace");
   });
 
-  it("reports live-metered when a provider and a database are both configured", async () => {
+  // `mode` is a claim about configuration; `attribution` is a claim about the
+  // ledger. This database is deliberately unreachable, so the two must not
+  // agree: the mode stays live-metered because that is what the deployment was
+  // set up to do, and attribution has to admit the read failed. It reported
+  // "recorded" before, which is the server asserting it has spend history it
+  // had just failed to fetch.
+  it("admits when the ledger is configured but unreadable", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-test");
     vi.stubEnv("DATABASE_URL", "postgres://user:pass@127.0.0.1:5432/unreachable");
@@ -90,7 +96,8 @@ describe("GET /api/health", () => {
 
     expect(body.llm.mode).toBe("live-metered");
     expect(body.databaseConfigured).toBe(true);
-    expect(body.llm.attribution).toBe("recorded");
+    expect(body.llm.monthToDateUsd).toBeNull();
+    expect(body.llm.attribution).toContain("could not be read");
   }, 20_000);
 });
 

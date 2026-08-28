@@ -4,7 +4,7 @@
   "teamDisplayName": "Utah State football",
   "seasonYear": 2026,
   "sourceUrl": "https://utahstateaggies.com/sports/football/schedule/2026",
-  "capturedAt": "2026-08-08T16:00:00.000Z",
+  "capturedAt": "2026-08-28T13:12:58.000Z",
   "games": [
     {
       "id": "2026-utah-state-idaho-state",
@@ -21,8 +21,8 @@
       "opponent": "Washington",
       "site": "away",
       "dateLabel": "Saturday, September 12",
-      "startsAt": "2026-09-12T17:15:00-06:00",
-      "kickoff": "5:15 p.m. MT",
+      "startsAt": "2026-09-12T13:30:00-06:00",
+      "kickoff": "1:30 p.m. MT",
       "venue": "Husky Stadium, Seattle, Wash.",
       "tv": "Big Ten Network"
     },
@@ -101,8 +101,8 @@
       "opponent": "San Diego State",
       "site": "away",
       "dateLabel": "Saturday, November 14",
-      "startsAt": "2026-11-14T18:30:00-07:00",
-      "kickoff": "6:30 p.m. MT",
+      "startsAt": "2026-11-14T19:30:00-07:00",
+      "kickoff": "7:30 p.m. MT",
       "venue": "Snapdragon Stadium, San Diego, Calif.",
       "tv": "USA Network"
     },

@@ -20,7 +20,6 @@ const answer: ChatAnswer = {
       sourceType: "schedule",
     },
   ],
-  confidence: "high",
   freshness: "Sources: fixture.",
   mode: "grounded",
   provider: "mock",
@@ -64,7 +63,7 @@ describe("persistChatExchange", () => {
     expect(inserted).toHaveLength(3);
     expect(inserted[1]).toMatchObject([
       { role: "user", content: "next game?" },
-      { role: "assistant", provider: "mock", confidence: "high" },
+      { role: "assistant", provider: "mock" },
     ]);
     expect(inserted[2]).toMatchObject([
       { sourceDocumentId: "texas-football-2026-schedule" },

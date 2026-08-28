@@ -44,8 +44,17 @@ export function resolveSimilarityThreshold(env: CacheEnv = process.env): number 
   return parsed;
 }
 
+// Off unless asked for. At this traffic an escalated answer is cheap, and a
+// fresh generation per question is the behaviour that is easiest to reason
+// about while the product is being corrected in public. The subsystem is kept
+// rather than deleted because the calibration in it is the expensive part;
+// set CHAT_CACHE=on to bring it back.
+//
+// Note for whoever turns it on: the repeated-answer bug this default followed
+// was not caused by the cache. It was routing reciting an unrelated curated
+// note, and it reproduced with the cache off and no database at all.
 export function cacheEnabled(env: CacheEnv = process.env): boolean {
-  return env.CHAT_CACHE !== "off";
+  return env.CHAT_CACHE === "on";
 }
 
 // Identifies the exact source material an answer was built from.

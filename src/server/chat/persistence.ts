@@ -40,7 +40,6 @@ export async function persistChatExchange(
         content: exchange.answer.answer,
         provider: exchange.answer.provider,
         model: exchange.answer.model,
-        confidence: exchange.answer.confidence,
         mode: exchange.answer.mode,
       },
     ]);

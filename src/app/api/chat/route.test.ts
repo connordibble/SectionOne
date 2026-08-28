@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { POST } from "./route";
+import { resolveChatRateLimit } from "@/server/http/rate-limit";
 
 function chatRequest(body: unknown) {
   return new Request("http://localhost/api/chat", {
@@ -90,5 +91,22 @@ describe("POST /api/chat", () => {
     expect(body).toContain("event: citations");
     expect(body).toContain("event: delta");
     expect(body).toContain("event: done");
+  });
+});
+
+// The end-to-end suite raises this so a dozen browsers sharing 127.0.0.1 do not
+// spend one visitor's allowance, which means the shipped number is asserted
+// here or nowhere.
+describe("chat rate limit", () => {
+  it("ships at ten a minute", () => {
+    expect(resolveChatRateLimit({})).toEqual({ name: "chat", windowMs: 60_000, max: 10 });
+  });
+
+  it("takes an override and ignores a nonsensical one", () => {
+    expect(resolveChatRateLimit({ CHAT_RATE_LIMIT_PER_MINUTE: "500" }).max).toBe(500);
+
+    for (const value of ["0", "-5", "abc", "2.5", ""]) {
+      expect(resolveChatRateLimit({ CHAT_RATE_LIMIT_PER_MINUTE: value }).max, value).toBe(10);
+    }
   });
 });

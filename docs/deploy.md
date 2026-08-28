@@ -26,8 +26,9 @@ becomes a terms violation and the project must move to Pro at
 **$20/developer/month**.
 
 So: launch on Hobby, and treat "we turned on revenue" as the trigger to upgrade
-in the same change. Budget alongside the Anthropic ceiling — $15/month for the
-model plus $20/month for hosting once monetized.
+in the same change. Budget for both the model provider's account-level ceiling
+and paid hosting once monetized; neither external account setting is enforced
+by this repository.
 
 ## First deploy
 
@@ -91,24 +92,42 @@ model plus $20/month for hosting once monetized.
 
 ## Rate limiting
 
-The in-process limiter in `/api/team-requests` is a speed bump, not a control:
-serverless instances do not share memory, so a determined caller gets a fresh
-allowance per warm instance. Do the real limiting at the Cloudflare edge, where
-it is free and rejects traffic before it reaches an instance.
+The in-process limiters are speed bumps, not controls: serverless instances do
+not share memory, so a determined caller gets a fresh allowance per warm
+instance. Do the real limiting at the Cloudflare edge so rejected traffic never
+reaches an instance.
 
 Cloudflare → Security → WAF → Rate limiting rules:
 
-| Rule | Match | Limit | Action |
-| --- | --- | --- | --- |
-| chat | `http.request.uri.path eq "/api/chat"` | 20 / 1 min per IP | Block, 60s |
-| requests | `http.request.uri.path eq "/api/team-requests"` | 10 / 1 min per IP | Managed challenge |
-| ingest | `http.request.uri.path eq "/api/ingest"` | 5 / 1 min per IP | Block, 60s |
+Cloudflare's [rate-limiting availability](https://developers.cloudflare.com/waf/rate-limiting-rules/)
+varies by plan. Free permits one rule with a fixed 10-second counting period;
+Pro permits two rules and a one-minute period; Business permits five rules and
+the full table below. Configure the strongest set the active plan supports:
 
-`/api/chat` is the one that spends money, so it gets the tightest real limit.
-There are now three layers, and each covers what the others cannot: the OpenAI
+| Priority | Rule | Match | Limit | Action | Minimum plan |
+| --- | --- | --- | --- | --- | --- |
+| 1 | chat | `http.request.uri.path eq "/api/chat"` | 2 / 10 sec per IP | Block, 10s | Free |
+| 2 | requests | `http.request.uri.path eq "/api/team-requests"` | 10 / 1 min per IP | Block, 60s | Pro |
+| 3 | ingest | `http.request.uri.path eq "/api/ingest"` | 5 / 1 min per IP | Block, 60s | Business |
+
+The Free chat rule tolerates ordinary reading while limiting sustained bursts.
+On Pro, use its longer period to tune chat toward the origin's ten-per-minute
+allowance, then add team requests. `/api/ingest` sits lower because it returns a
+whole corpus and a normal visit never calls it. Watch shared addresses such as
+campus wifi and carrier NAT, where one budget covers everyone behind it.
+
+There are three layers, and each covers what the others cannot: the OpenAI
 project limit stops a catastrophic bill, `LLM_MONTHLY_BUDGET_USD` trips first
 and degrades to composer answers instead of provider errors, and this edge rule
 stops one enthusiastic visitor exhausting either.
+
+**This table is the intent, not the state.** As of 2026-08-28 no rate-limiting
+rule is configured: twenty-one browser requests to `/api/chat` were limited by
+the origin, with `x-vercel-id` on the 429. An edge rule blocks before the origin,
+so that header is the check; it should be absent once the rule exists.
+Tracked in [mvp1-checklist.md](./mvp1-checklist.md) § Edge Criteria, which also
+records why the Browser Integrity Check already in front of the site is not a
+substitute for these.
 
 ## Web analytics
 

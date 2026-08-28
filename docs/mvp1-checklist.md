@@ -28,6 +28,41 @@ The document count is asserted by exact number in `src/app/api/ingest/route.test
 `tests/e2e/workspace.spec.ts`. Adding a source is meant to break them — update the number, do not
 loosen the assertion.
 
+## Edge Criteria
+
+Nothing above can check these. `pnpm check` sees the repository; these live in the Cloudflare
+dashboard, and the endpoint they protect is the one that spends money.
+
+- [ ] **The plan-appropriate rules from [deploy.md](./deploy.md) § Rate limiting are configured.**
+      Cloudflare → Security → WAF → Rate limiting rules. The chat rule is the launch minimum. Free
+      permits one 10-second rule, Pro permits two rules with a one-minute period, and Business can
+      express the full three-rule target. The origin limiter in `src/server/http/rate-limit.ts` is
+      deliberately not the control: it is per-instance, so on serverless the allowance grows with
+      the number of warm instances.
+
+**Status: not configured as of 2026-08-28.** Twenty-one requests to `/api/chat` from a browser
+returned twenty 200s and then a 429 with `retry-after: 44` — the origin limit of the day, working.
+But every response, the 429 included, carried an `x-vercel-id` header, so all twenty-one reached the
+origin. An edge rule blocks before that. Presence of `x-vercel-id` on the 429 is the tell; that is
+the check to repeat after configuring the rules, and the header should disappear.
+
+The origin limit has since dropped to ten a minute, so a repeat run should turn over at the
+eleventh request rather than the twenty-first.
+
+Two notes for whoever does it:
+
+- **Browser Integrity Check is already on, and it is not a rate limit.** The same twenty-one requests
+  sent from a script were rejected at the edge with Cloudflare error 1010 on the browser signature,
+  never reaching the origin. It stops a naive scraper for free, and it stops nothing that is
+  browser-shaped: the run above got through by being a real browser, with no spoofing.
+- **1010 can also block legitimate non-browser callers.** The scripted probe was rejected, while a
+  plain request to `/api/health` returned 200 the same day. Test the actual uptime monitor's request
+  signature. Allowlist it only if Cloudflare rejects it.
+
+The probe costs nothing. `What are the betting odds for the opener?` hits the betting guardrail in
+`prepareAnswer`, which returns before any provider call whatever provider is configured, so the run
+is twenty-one requests and zero tokens.
+
 ## Product Criteria
 
 - The root route loads the home page; `/teams/texas-football` and `/teams/utah-state-football` load

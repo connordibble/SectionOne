@@ -17,7 +17,7 @@ import {
 import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
-import { selectAnswerStrategy } from "./routing";
+import { promotedNoteFor, selectAnswerStrategy } from "./routing";
 import { toPublicAnswer, type ChatAnswer, type ChatCitation, type ChatStreamEvent } from "./types";
 
 // Keep the policy gate precise. Bare substring matches turned normal football
@@ -257,7 +257,6 @@ async function prepareAnswer(
         teamSlug: team.slug,
         answer: `That is not confirmed. Section One can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
         citations: anchor.slice(0, 1),
-        confidence: "low",
         freshness,
         mode: "guardrail",
         provider: "policy",
@@ -277,7 +276,6 @@ async function prepareAnswer(
         teamSlug: team.slug,
         answer: `There is not enough here for a clean answer. Try the next game, the schedule, or what to watch on early downs for ${team.shortName}.`,
         citations: anchor.slice(0, 1),
-        confidence: "low",
         freshness,
         mode: "no-context",
         provider: "policy",
@@ -288,7 +286,12 @@ async function prepareAnswer(
 
   const selected = selectAnswerStrategy(team, question, hits);
   const capability = selected.strategy === "composer" ? selected.capability : undefined;
-  const answerHits = prioritizeGroundingHits(question, hits, capability);
+  const answerHits = prioritizeGroundingHits(
+    question,
+    hits,
+    capability,
+    promotedNoteFor(team, question),
+  );
   // Ranking and news answers are composed from specific documents rather than
   // from whatever retrieval returned, so the sources shown to the fan — and
   // the titles the acceptance gate will accept — have to be those same
@@ -326,7 +329,6 @@ function finalizeAnswer(
     teamSlug: prepared.team.slug,
     answer: text,
     citations: prepared.citations,
-    confidence: notice ? "low" : prepared.citations.length >= 2 ? "high" : "medium",
     freshness: prepared.freshness,
     notice,
     mode: "grounded",

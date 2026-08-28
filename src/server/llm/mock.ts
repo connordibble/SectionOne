@@ -114,6 +114,15 @@ function composeTeamNoteBrief(grounding: GroundingContext): string {
   );
 }
 
+// The path taken when no template applies: an escalated question the live
+// provider could not answer, or a capability whose facts did not resolve.
+//
+// It quotes the best retrieved passage. That is the right behaviour here even
+// though quoting is what made routing answer unrelated questions identically:
+// the fault there was routing claiming a note fit the question, not the quote
+// itself. In a deployment with no provider key the composer is the whole
+// product, and answering "look at early downs" to every question would be a
+// worse product than a relevant passage.
 function composeGeneral(grounding: GroundingContext): string {
   const excerpt = grounding.excerpts[0];
 

@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, expect, it } from "vitest";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
+import type { SourceDocument } from "@/server/sources/types";
 import { fuseByRrf, retrieveHybrid } from "./hybrid";
 import type { RetrievalHit } from "./retrieve";
 import type { SourceChunk } from "./chunk";
@@ -9,6 +10,20 @@ function hit(id: string): RetrievalHit {
   return {
     score: 1,
     chunk: { id, sourceDocumentId: id, chunkIndex: 0, content: id, tokenEstimate: 1 } as SourceChunk,
+  };
+}
+
+function vectorHit(document: SourceDocument, score = 0.9): RetrievalHit {
+  return {
+    score,
+    chunk: {
+      id: `${document.id}-chunk-0`,
+      sourceDocumentId: document.id,
+      chunkIndex: 0,
+      content: document.body,
+      tokenEstimate: 8,
+      document,
+    },
   };
 }
 
@@ -57,5 +72,42 @@ describe("retrieveHybrid", () => {
     });
 
     expect(hits).toEqual([]);
+  });
+
+  it("excludes vector results that are no longer in the published corpus", async () => {
+    const published: SourceDocument = {
+      id: "weekly-current",
+      teamSlug: "texas-football",
+      provider: "press",
+      sourceType: "news",
+      sourceUrl: "https://example.com/current",
+      title: "The current weekly report",
+      body: "The published briefing carries this report.",
+      metadata: {},
+      publishedAt: "2026-08-27T12:00:00.000Z",
+      fetchedAt: "2026-08-27T12:00:00.000Z",
+    };
+    const withdrawn: SourceDocument = {
+      ...published,
+      id: "weekly-withdrawn",
+      sourceUrl: "https://example.com/withdrawn",
+      title: "A superseded weekly report",
+      body: "This report remains in the vector database but is no longer published.",
+      publishedAt: "2026-08-09T12:00:00.000Z",
+      fetchedAt: "2026-08-09T12:00:00.000Z",
+    };
+
+    const hits = await retrieveHybrid(
+      "Which weekly report should I trust?",
+      [published],
+      "texas-football",
+      4,
+      {
+        vectorSearch: async () => [vectorHit(withdrawn, 0.99), vectorHit(published, 0.8)],
+      },
+    );
+
+    expect(hits.map((entry) => entry.chunk.document.id)).toContain(published.id);
+    expect(hits.map((entry) => entry.chunk.document.id)).not.toContain(withdrawn.id);
   });
 });

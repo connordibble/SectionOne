@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { defaultTeamConfig, teamConfigs, enabledTeamSlugs } from "@/config/team";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
 import { retrieveSourceChunks } from "@/server/rag/retrieve";
-import { selectAnswerStrategy } from "./routing";
+import { promotedNoteFor, selectAnswerStrategy } from "./routing";
 
 async function route(question: string, teamSlug = defaultTeamConfig.slug) {
   const team = teamConfigs[teamSlug as keyof typeof teamConfigs];
@@ -58,6 +58,10 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
+  // Stays on the composer because it does not depend on retrieval: the weekly
+  // package is pinned. Escalating it was tried and reverted — retrieval hands
+  // "what is the latest news?" the schedule, so the model answered with an
+  // October kickoff time instead of the week.
   it("answers this-week questions from the weekly package", async () => {
     expect(await route("What is the latest news?", "utah-state-football")).toEqual({
       strategy: "composer",
@@ -76,16 +80,56 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
-  it("serves a relevant curated note even when a schedule fact ranks first", async () => {
-    expect(await route("How does Ohio State look?")).toEqual({
-      strategy: "composer",
-      capability: "team-note-brief",
-    });
+  // A curated note is quoted only where config paired it with a prompt. This
+  // question is on the subject of a real note and still escalates, because
+  // nobody promoted it: inferring the pairing from wording is exactly what
+  // returned one identical answer to unrelated questions.
+  it("escalates a free-text question even when a note is on its subject", async () => {
+    expect(await route("How does Ohio State look?")).toEqual({ strategy: "escalate" });
+  });
 
-    expect(await route("Where is the roster context still thin?")).toEqual({
-      strategy: "composer",
-      capability: "team-note-brief",
-    });
+  // The bug this guards: retrieval returns a ranking, never a verdict, so it
+  // hands back its least-bad candidate for a question the corpus cannot answer.
+  // Routing used to accept that candidate whenever it happened to be a note,
+  // and the composer recites a note's first two sentences verbatim — so three
+  // unrelated questions came back word for word identical, cited, and marked
+  // high confidence.
+  //
+  // No Texas note is about the secondary, special teams, or playmakers, and
+  // none of these questions shares a word with any note. They belong on the
+  // escalation path, where a model can answer from context or say the sources
+  // do not cover it.
+  it("escalates rather than reciting a note the question is not about", async () => {
+    for (const question of [
+      "How is the secondary?",
+      "Tell me about special teams",
+      "Who are the key playmakers?",
+      // Retrieval scores this a 2, the same incidental band as the three
+      // above: the only document mentioning the roster is a news item.
+      "Where is the roster context still thin?",
+    ]) {
+      expect(await route(question), question).toEqual({ strategy: "escalate" });
+    }
+  });
+
+  // Two unrelated questions must not produce one answer. This is the property
+  // the fix is really about, asserted end to end rather than by capability.
+  it("does not route unrelated questions to the same curated note", async () => {
+    const asked = ["How is the secondary?", "Tell me about special teams"];
+    const routed = await Promise.all(asked.map((question) => route(question)));
+
+    expect(routed.every((choice) => choice.strategy === "escalate")).toBe(true);
+  });
+
+  // A promoted cue names its note in config, and config outranks wording: Utah
+  // State's clean-start prompt points at a note whose title shares no word with
+  // the question it is promoted under.
+  it("keeps a promoted prompt on its own note when the wording does not match", async () => {
+    const team = teamConfigs["texas-football"];
+    const signal = team.editorial.signals.find((entry) => entry.id === "clean-operation");
+
+    expect(promotedNoteFor(team, signal!.prompt)).toBe(signal!.noteId);
+    expect(promotedNoteFor(team, "something a fan typed instead")).toBeUndefined();
   });
 
   // One note cannot answer a question that weighs two things against each

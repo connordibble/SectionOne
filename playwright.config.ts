@@ -54,6 +54,10 @@ export default defineConfig({
       // degraded path and must never touch production data.
       DATABASE_URL: "",
       RESEND_API_KEY: "",
+      // Every browser in this suite is 127.0.0.1, so its chat tests share one
+      // visitor's per-IP allowance and trip a limit no reader would reach. The
+      // shipped value is asserted in the route's unit test instead.
+      CHAT_RATE_LIMIT_PER_MINUTE: "500",
     },
   },
 });

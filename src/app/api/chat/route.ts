@@ -4,7 +4,7 @@ import { isUuid, persistChatExchange } from "@/server/chat/persistence";
 import { maxMessageLength, type ChatHistoryMessage } from "@/server/chat/prompt";
 import { toPublicAnswer, type ChatStreamEvent } from "@/server/chat/types";
 import { withRouteErrors } from "@/server/observability/route";
-import { checkRateLimit, rateLimitResponse } from "@/server/http/rate-limit";
+import { checkRateLimit, rateLimitResponse, resolveChatRateLimit } from "@/server/http/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -15,13 +15,8 @@ type ChatRequest = {
   sessionId?: unknown;
 };
 
-// The endpoint that spends money, so it gets the tightest limit. Twenty
-// questions a minute is far above what reading a page produces and far below
-// what a script does.
-const chatRateLimit = { name: "chat", windowMs: 60_000, max: 20 };
-
 export const POST = withRouteErrors("api/chat", async (request: Request) => {
-  const limit = checkRateLimit(request, chatRateLimit);
+  const limit = checkRateLimit(request, resolveChatRateLimit());
 
   if (!limit.allowed) {
     return rateLimitResponse(limit);

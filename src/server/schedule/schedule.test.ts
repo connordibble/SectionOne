@@ -36,6 +36,23 @@ describe("team schedule", () => {
     expect(formatSite("away")).toBe("at");
     expect(formatCaptureDate("2026-07-01T13:55:00.000Z")).toBe("July 1, 2026");
   });
+
+  it("keeps Utah State's official Washington and San Diego State kickoff times", () => {
+    const schedule = getTeamSchedule("utah-state-football");
+    const washington = schedule?.games.find((game) => game.opponent === "Washington");
+    const sanDiegoState = schedule?.games.find((game) => game.opponent === "San Diego State");
+
+    expect(washington).toMatchObject({
+      startsAt: "2026-09-12T13:30:00-06:00",
+      kickoff: "1:30 p.m. MT",
+      tv: "Big Ten Network",
+    });
+    expect(sanDiegoState).toMatchObject({
+      startsAt: "2026-11-14T19:30:00-07:00",
+      kickoff: "7:30 p.m. MT",
+      tv: "USA Network",
+    });
+  });
 });
 
 describe("getKickoffCountdown", () => {

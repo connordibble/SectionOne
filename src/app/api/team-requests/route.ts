@@ -1,5 +1,9 @@
 import { withRouteErrors } from "@/server/observability/route";
-import { checkRateLimit, rateLimitResponse } from "@/server/http/rate-limit";
+import {
+  checkRateLimit,
+  rateLimitResponse,
+  teamRequestRateLimit,
+} from "@/server/http/rate-limit";
 import { recordTeamRequest, teamRequestSchema } from "@/server/requests/team-requests";
 
 export const runtime = "nodejs";
@@ -8,10 +12,8 @@ export const runtime = "nodejs";
 // sitting, and every request a limit wrongly rejects is demand data thrown
 // away. See src/server/http/rate-limit.ts for why this is defence in depth
 // rather than the control.
-const requestRateLimit = { name: "team-requests", windowMs: 60_000, max: 20 };
-
 export const POST = withRouteErrors("api/team-requests", async (request: Request) => {
-  const limit = checkRateLimit(request, requestRateLimit);
+  const limit = checkRateLimit(request, teamRequestRateLimit);
 
   if (!limit.allowed) {
     return rateLimitResponse(limit);

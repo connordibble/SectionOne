@@ -38,7 +38,6 @@ type ChatMessage = {
   role: "user" | "assistant";
   content: string;
   citations: ChatCitation[];
-  confidence?: string;
   freshness?: string;
   notice?: string;
   streaming: boolean;
@@ -224,7 +223,6 @@ export function TeamChat({
           const answer = JSON.parse(event.data) as {
             answer: string;
             citations: ChatCitation[];
-            confidence: string;
             freshness: string;
             notice?: string;
             sessionId?: string;
@@ -236,7 +234,6 @@ export function TeamChat({
             ...entry,
             content: answer.answer,
             citations: answer.citations,
-            confidence: answer.confidence,
             freshness: answer.freshness,
             notice: answer.notice,
             streaming: false,
