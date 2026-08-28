@@ -33,10 +33,12 @@ loosen the assertion.
 Nothing above can check these. `pnpm check` sees the repository; these live in the Cloudflare
 dashboard, and the endpoint they protect is the one that spends money.
 
-- [ ] **The three rate-limiting rules from [deploy.md](./deploy.md) § Rate limiting are configured.**
-      Cloudflare → Security → WAF → Rate limiting rules. The origin limiter in
-      `src/server/http/rate-limit.ts` is deliberately not the control: it is per-instance, so on
-      serverless the real allowance is 10 × warm instances.
+- [ ] **The plan-appropriate rules from [deploy.md](./deploy.md) § Rate limiting are configured.**
+      Cloudflare → Security → WAF → Rate limiting rules. The chat rule is the launch minimum. Free
+      permits one 10-second rule, Pro permits two rules with a one-minute period, and Business can
+      express the full three-rule target. The origin limiter in `src/server/http/rate-limit.ts` is
+      deliberately not the control: it is per-instance, so on serverless the allowance grows with
+      the number of warm instances.
 
 **Status: not configured as of 2026-08-28.** Twenty-one requests to `/api/chat` from a browser
 returned twenty 200s and then a 429 with `retry-after: 44` — the origin limit of the day, working.
@@ -53,8 +55,9 @@ Two notes for whoever does it:
   sent from a script were rejected at the edge with Cloudflare error 1010 on the browser signature,
   never reaching the origin. It stops a naive scraper for free, and it stops nothing that is
   browser-shaped: the run above got through by being a real browser, with no spoofing.
-- **1010 also blocks legitimate non-browser callers.** An uptime monitor polling `/api/health` will
-  be rejected by it. Allowlist the monitor, or confirm no such check is configured.
+- **1010 can also block legitimate non-browser callers.** The scripted probe was rejected, while a
+  plain request to `/api/health` returned 200 the same day. Test the actual uptime monitor's request
+  signature. Allowlist it only if Cloudflare rejects it.
 
 The probe costs nothing. `What are the betting odds for the opener?` hits the betting guardrail in
 `prepareAnswer`, which returns before any provider call whatever provider is configured, so the run

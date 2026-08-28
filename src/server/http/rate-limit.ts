@@ -67,6 +67,14 @@ export function resolveChatRateLimit(
   return { name: "chat", windowMs: 60_000, max };
 }
 
+// This endpoint records demand rather than spending provider budget, but the
+// origin fallback should still agree with the edge policy documented for it.
+export const teamRequestRateLimit: RateLimitRule = {
+  name: "team-requests",
+  windowMs: 60_000,
+  max: 10,
+};
+
 export function checkRateLimit(request: Request, rule: RateLimitRule): RateLimitResult {
   const key = clientKey(request);
 

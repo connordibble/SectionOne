@@ -83,12 +83,13 @@ present and continues without it in CI. That flag needs Node 22.9, so the
 
 - **Schedules are build outputs.** `pnpm schedule:build <slug> <IANA zone>`
   regenerates a team's fixture from CollegeFootballData. Anything typed by hand
-  is wrong by October. The Utah State fixture was seeded by hand from published
-  sources and has not yet been through the script, because it needs a
-  `CFBD_API_KEY`.
-- **One Utah State kickoff is a judgement call.** Two sources disagreed on the
-  September 12 time at Washington. The corroborated value is in the fixture; it
-  is the row to re-check first.
+  is likely to drift during the season. The builder needs a local
+  `CFBD_API_KEY`; the deployed app does not. The Utah State fixture was seeded
+  by hand and has not yet been through that builder.
+- **Two Utah State kickoffs were corrected from official sources on 2026-08-28.**
+  September 12 at Washington is 1:30 p.m. MT on Big Ten Network. November 14 at
+  San Diego State is 7:30 p.m. MT on USA Network. Fixture assertions now lock
+  both values until the next generated schedule refresh.
 - **Poll data is ranks only.** The published first-place vote counts for the
   2026 preseason Coaches Poll were internally inconsistent across sources, so
   only the ordering — which is corroborated — was taken.
@@ -99,5 +100,5 @@ present and continues without it in CI. That flag needs Node 22.9, so the
   are covered by dependency-injected tests only.
 - CollegeFootballData's terms for commercial use have not been checked. That is
   a blocker before the product takes money, not before it launches.
-- The `$15` provider ceiling is set on the Anthropic workspace, not in this
-  repo, and nothing here can verify it exists.
+- The model provider's account-level ceiling is external to this repository;
+  nothing here can verify its amount or that it exists.

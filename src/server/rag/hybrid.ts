@@ -8,7 +8,11 @@ import { retrieveVectorHits, type VectorSearchDeps } from "./vector";
 // vector (0..1 cosine) rankings without normalizing their incompatible scales.
 const rrfK = 60;
 
-export type HybridRetrievalDeps = VectorSearchDeps;
+export type HybridRetrievalDeps = VectorSearchDeps & {
+  // Injectable so the published-corpus boundary can be tested without a live
+  // pgvector database. Production always uses retrieveVectorHits.
+  vectorSearch?: typeof retrieveVectorHits;
+};
 
 // Retrieval used by the chat orchestrator. Always runs lexical scoring (works
 // offline with zero setup); when a seeded database is reachable it also runs
@@ -23,7 +27,8 @@ export async function retrieveHybrid(
   deps: HybridRetrievalDeps = {},
 ): Promise<RetrievalHit[]> {
   const lexical = retrieveSourceChunks(query, documents, limit * 2);
-  const vector = await retrieveVectorHits(query, teamSlug, limit * 2, deps);
+  const vectorSearch = deps.vectorSearch ?? retrieveVectorHits;
+  const vector = await vectorSearch(query, teamSlug, limit * 2, deps);
 
   // Vector search reads the seeded database; `documents` is what the product
   // actually publishes right now. Those two drift apart the moment a weekly
