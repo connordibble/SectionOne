@@ -6,8 +6,9 @@ import {
   useState,
   type CSSProperties,
   type KeyboardEvent,
+  type PointerEvent,
 } from "react";
-import { ExternalLink, Moon, Sun } from "lucide-react";
+import { ChevronDown, ExternalLink, Moon, Sun } from "lucide-react";
 import { SectionMark } from "@/features/brand/section-mark";
 import { Wordmark } from "@/features/brand/wordmark";
 import type { TeamConfig } from "@/config/team";
@@ -53,6 +54,39 @@ const views: Array<{ id: WorkspaceView; label: string }> = [
   { id: "matchup", label: "Matchup" },
   { id: "schedule", label: "Schedule" },
 ];
+
+function isTouchLikePointer(event: PointerEvent<HTMLSelectElement>): boolean {
+  if (event.pointerType === "touch" || event.pointerType === "pen") {
+    return true;
+  }
+
+  if (event.pointerType === "mouse") {
+    return false;
+  }
+
+  return window.matchMedia("(hover: none), (pointer: coarse)").matches;
+}
+
+// Tapping an already-open styled picker does not close it, because the picker
+// is in the top layer and the tap lands on the trigger rather than outside it.
+// Native pickers and desktop mouse clicks already close on their own, so this
+// only fills the touch gap and leaves every other path untouched.
+function closeOpenSelectOnTriggerTap(event: PointerEvent<HTMLSelectElement>) {
+  const select = event.currentTarget;
+
+  if (event.target !== select || !isTouchLikePointer(event)) {
+    return;
+  }
+
+  try {
+    if (select.matches(":open")) {
+      event.preventDefault();
+      select.blur();
+    }
+  } catch {
+    // Browsers without :open support keep their native picker behaviour.
+  }
+}
 
 const themeOrder: ThemeMode[] = ["light", "dark"];
 const themeLabels: Record<ThemeMode, string> = {
@@ -233,23 +267,27 @@ export function TeamWorkspace({
             <label className={styles.visuallyHidden} htmlFor="team-switcher">
               Team
             </label>
-            <select
-              aria-label="Team"
-              className={styles.teamSwitcher}
-              id="team-switcher"
-              onChange={(event) => {
-                if (event.currentTarget.value !== team.slug) {
-                  window.location.assign(`/teams/${event.currentTarget.value}`);
-                }
-              }}
-              value={team.slug}
-            >
-              {teamOptions.map((option) => (
-                <option key={option.slug} value={option.slug}>
-                  {option.shortName}
-                </option>
-              ))}
-            </select>
+            <span className={styles.selectField}>
+              <select
+                aria-label="Team"
+                className={styles.teamSwitcher}
+                id="team-switcher"
+                onChange={(event) => {
+                  if (event.currentTarget.value !== team.slug) {
+                    window.location.assign(`/teams/${event.currentTarget.value}`);
+                  }
+                }}
+                onPointerDown={closeOpenSelectOnTriggerTap}
+                value={team.slug}
+              >
+                {teamOptions.map((option) => (
+                  <option key={option.slug} value={option.slug}>
+                    {option.shortName}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown aria-hidden="true" className={styles.selectChevron} />
+            </span>
             <button
               aria-label={`Color theme: ${themeLabels[themeMode]}. Change theme.`}
               className={styles.themeToggle}
@@ -571,10 +609,18 @@ function GameFieldObject({
       role="img"
     >
       {/* Two layers, because they want opposite things from the same box.
-          The grid is ruling and should reach every edge, so it stretches; the
-          lines are straight either way. The route carries meaning and must
-          stay whole, so it scales to fit. Drawing both in one sliced SVG is
-          what cropped the arrowhead off the end of the route. */}
+          The grid is ruling and should reach every edge; the lines are
+          straight either way. The route carries meaning and must stay whole —
+          drawing both in one sliced SVG is what cropped the arrowhead off the
+          end of it.
+
+          Both stretch. The route used to say `meet`, which gave the element an
+          intrinsic 640:420 ratio: with `inset` setting all four sides it then
+          sized itself 798px tall inside a 384px panel and the panel showed a
+          cropped middle band of the arc, cutting straight through the
+          countdown. `none` drops that ratio, so the inset box governs at every
+          width and the route keeps its own margins from the path coordinates
+          rather than from luck. Stretching cannot crop the arrowhead. */}
       <div aria-hidden="true" className={styles.fieldDrawing}>
         <svg className={styles.fieldGridLayer} preserveAspectRatio="none" viewBox="0 0 640 420">
           <g className={styles.fieldYardLines}>
@@ -591,7 +637,7 @@ function GameFieldObject({
         </svg>
         <svg
           className={styles.fieldRouteLayer}
-          preserveAspectRatio="xMidYMid meet"
+          preserveAspectRatio="none"
           viewBox="0 0 640 420"
         >
           <g className={styles.fieldHashMarks}>
@@ -600,9 +646,15 @@ function GameFieldObject({
             <path d="M512 174V194M512 226V246" />
           </g>
           <path className={styles.fieldRoute} d="M120 302C212 302 236 264 288 206S404 108 512 108" />
-          <path className={styles.fieldRouteEcho} d="M120 302L96 286M120 302L96 318" />
-          <circle className={styles.fieldRoutePoint} cx="512" cy="108" r="8" />
         </svg>
+        {/* The route's two ends live outside the stretched layer, because a
+            stretched circle is an ellipse and a stretched arrowhead is a
+            smear. They are placed at the same coordinates the path uses —
+            the tail at (120,302) and the head at (512,108) of the 640×420
+            viewBox — so they stay on the line at every panel size while
+            keeping their own shape. */}
+        <span aria-hidden="true" className={styles.fieldRouteTail} />
+        <span aria-hidden="true" className={styles.fieldRouteHead} />
       </div>
 
       {/* Drawn in the field's own ink, so it reads as a mark on the surface

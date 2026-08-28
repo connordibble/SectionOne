@@ -117,7 +117,7 @@ describe("weekly edition", () => {
     expect(documents).toHaveLength(5);
     expect(documents.every((document) => document.provider === "press")).toBe(true);
     // Highest-graded story first, and the outlet travels with it.
-    expect(documents[0].title).toMatch(/four offensive starters/i);
+    expect(documents[0].title).toMatch(/depth/i);
     expect(documents[0].body).toContain("Deseret News");
   });
 

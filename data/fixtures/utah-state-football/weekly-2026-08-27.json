@@ -1,0 +1,58 @@
+{
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-08-27",
+  "publishedAt": "2026-08-27T21:00:00.000Z",
+  "summary": "Camp is closing. The defense is the side that returns, the offense is the side that turned over, and one starter's availability is now a court question.",
+  "items": [
+    {
+      "id": "depth-new-league",
+      "headline": "Mendenhall's case for this roster is depth",
+      "tldr": "Year two, a new conference, and a coach saying the Aggies are deeper at every position. Depth is the right answer to a schedule with Washington and Utah in back-to-back weeks, and the first month is where the claim gets tested.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/08/27/everything-to-know-about-2026-utah-state-aggies-football/",
+      "publishedAt": "2026-08-27T19:30:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 5 }
+    },
+    {
+      "id": "taylor-eligibility",
+      "headline": "Bryson Taylor came back, then the order that allowed it was frozen",
+      "tldr": "Taylor rejoined camp under a Colorado injunction after starting at safety here and at corner for Mendenhall at New Mexico. The Tenth Circuit stayed that injunction on August 21, so whether a two-position starter is available is now a legal question rather than a football one.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://www.cachevalleydaily.com/sports/bryson-taylor-utah-state-caught-amid-ncaas-legal-battle-over-fifth-year-eligibility/article_8a41acec-c451-4bd8-9517-bbc759b78df3.html",
+      "publishedAt": "2026-08-21T12:00:00.000Z",
+      "grade": { "impact": 5, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "defense-returns",
+      "headline": "Five defensive starters return, and so does the coordinator",
+      "tldr": "Bronson Olevao Jr., Carson Tujague, Tyree Morris, Chris Joe and Brevin Hamblin are all back under Nick Howell for a second year. A unit that gave up 28.7 points a game early last season and tightened late is the one part of this roster that gets to build instead of start over.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/08/17/utah-state-aggies-defense-excited-for-upcoming-season/",
+      "publishedAt": "2026-08-17T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 2, "freshness": 2 }
+    },
+    {
+      "id": "pac12-eight",
+      "headline": "The Pac-12 comes back with eight teams and a flex game",
+      "tldr": "Seven conference games round-robin, then a flex matchup set a weekend ahead of it, with Utah State hosting one so every team lands four home league games. The league carries no automatic playoff bid now, which is what makes the non-conference month worth banking.",
+      "outlet": "Associated Press",
+      "tier": "national",
+      "url": "https://www.cachevalleydaily.com/sports/pac-12-returns-to-the-football-field-with-8-teams-following-years-of-uncertainty/article_90f8355c-a44a-53a2-bd72-fab2139d12d6.html",
+      "publishedAt": "2026-08-20T12:00:00.000Z",
+      "grade": { "impact": 3, "echo": 5, "freshness": 3 }
+    },
+    {
+      "id": "hamblin-bednarik",
+      "headline": "Brevin Hamblin lands on the Bednarik watch list",
+      "tldr": "A preseason list changes nothing by itself. The number under it does: 114 tackles last season, second on the team, from a safety who started 12 games. That is who opponents have to account for on early downs.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/8/21/football-utah-states-brevin-hamblin-named-to-chuck-bednarik-award-preseason-watch-list.aspx",
+      "publishedAt": "2026-08-21T12:00:00.000Z",
+      "grade": { "impact": 1, "echo": 2, "freshness": 2 }
+    }
+  ]
+}

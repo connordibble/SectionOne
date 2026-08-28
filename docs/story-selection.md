@@ -124,7 +124,14 @@ requirements, not preferences.
   directly, and it should be: counting distinct outlets on a theme is a
   gathering-time computation, not a judgement call. Until it is, it is the
   softest number in the rubric.
-- **Dates for outlets that do not publish one** are inferred from context. Two
-  items in the 2026-08-09 packages are dated this way.
+- **Dates for outlets that do not publish one** are inferred from context. One
+  item in the 2026-08-27 packages is dated this way: the Horns247 item says
+  "Monday" and is pinned to August 24 by the scrimmage it refers back to.
+  Several others carry a published date but no published time, and are stored
+  at noon UTC; only the ordering within a single day is affected.
+- **A wire story carried by a local site is national.** The Pac-12 item in the
+  2026-08-27 Utah State package links to Cache Valley Daily but is credited to
+  the Associated Press, because the tier is about who did the reporting, not
+  who republished it. Nothing in the code enforces this.
 - **Nothing enforces that a takeaway matches its link.** That is the check that
   matters most and the one still done by a person.

@@ -363,6 +363,13 @@ Every control needs default, hover, active or selected, focus-visible, and disab
 
 - Tabs keep roving focus and arrow-key navigation.
 - Matchup keys expose their selected state in text and shape, not color alone.
+- **The team switcher is painted, not rebuilt.** It stays a native `<select>`; the styling replaces
+  the UA arrow everywhere and, where `appearance: base-select` is supported, the open list too.
+  Browsers without it keep their native picker. Do not replace this with a custom listbox to gain
+  control of the open state — the native element is carrying keyboard behaviour, the mobile picker,
+  and the accessibility tree, and a hand-built one would owe all three back. The open list belongs
+  to the masthead: steel ground, chrome text, and the edition you are on marked in the header
+  accent. Because a styled picker replaces the OS list, its rows carry their own 44px touch targets.
 - “Ask about this” moves the selected question into the input and focuses it.
 - Ready and planned source states use a mark plus a label.
 - Touch targets are at least 44px where the layout allows.

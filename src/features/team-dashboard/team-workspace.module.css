@@ -317,8 +317,16 @@
   padding-block: var(--space-md);
 }
 
+/* The composer sizes to this, not to the viewport. The chat dock is a sidebar
+   column on desktop and a stacked band on mobile, so its width has almost
+   nothing to do with the window's: at 1440px the dock is about 365px wide, and
+   a viewport media query was widening the composer into three columns there
+   and squeezing the input to ~136px. See docs/working-notes.md § layered
+   stylesheet trap for the same failure shape. */
 .chat {
   min-width: 0;
+  container-name: chat;
+  container-type: inline-size;
 }
 
 .emptyChat,
@@ -1269,16 +1277,134 @@
   color: var(--team-on-steel);
 }
 
-.teamSwitcher {
-  padding-inline: var(--space-xs) var(--space-sm);
+/* The switcher keeps a real <select>: the native control carries keyboard
+   behaviour, the mobile picker, and the accessibility tree for free. Only the
+   painting is ours. Browsers with customizable-select support also get the
+   open list styled to match the masthead; the rest keep their native picker,
+   which is why the closed control is styled separately from the open one. */
+.selectField {
+  position: relative;
+  display: inline-flex;
   justify-self: end;
-  text-overflow: ellipsis;
-  cursor: pointer;
-  grid-row: auto;
-  grid-column: auto;
   width: 7.25rem;
   max-width: 38vw;
+}
+
+.teamSwitcher {
+  appearance: none;
+  width: 100%;
+  padding-inline: var(--space-xs) var(--space-lg);
+  text-overflow: ellipsis;
+  cursor: pointer;
   text-transform: none;
+  transition: border-color var(--dur-micro) var(--ease-out);
+}
+
+.selectChevron {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--space-xs);
+  width: 0.875rem;
+  height: 0.875rem;
+  translate: 0 -50%;
+  color: var(--team-on-steel);
+  opacity: var(--team-chrome-opacity);
+  pointer-events: none;
+  transition: rotate var(--dur-short) var(--ease-out);
+}
+
+.selectField:has(.teamSwitcher:open) .selectChevron {
+  rotate: 180deg;
+}
+
+/* The open list, where support exists. It belongs to the masthead, not to the
+   page: steel ground, chrome text, and the team's header accent marking the
+   edition you are already on. */
+@supports (appearance: base-select) {
+  .teamSwitcher,
+  .teamSwitcher::picker(select) {
+    appearance: base-select;
+  }
+
+  /* Chromium's base-select button defaults drift between versions, so the
+     selected label is positioned here rather than inherited. */
+  .teamSwitcher {
+    display: flex;
+    align-items: center;
+  }
+
+  .teamSwitcher::picker-icon {
+    display: none;
+  }
+
+  .teamSwitcher::picker(select) {
+    margin-block: var(--space-3xs);
+    padding: var(--space-3xs);
+    border: var(--rule-hair) solid var(--team-header-accent);
+    border-radius: var(--radius-input);
+    background: var(--team-steel);
+    box-shadow: 0 0.75rem 2rem oklch(0% 0 0 / 0.35);
+    /* Open downward by convention and flip only when it will not fit. The UA
+       default opens toward whichever side has more room, which makes the
+       masthead control feel like it moves. */
+    position-area: block-end span-inline-start;
+    position-try-order: normal;
+    position-try-fallbacks: flip-block;
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity var(--dur-micro) var(--ease-out),
+      translate var(--dur-micro) var(--ease-out),
+      overlay var(--dur-micro) var(--ease-out) allow-discrete,
+      display var(--dur-micro) var(--ease-out) allow-discrete;
+  }
+
+  @starting-style {
+    .teamSwitcher:open::picker(select) {
+      opacity: 0;
+      translate: 0 -0.25rem;
+    }
+  }
+
+  .teamSwitcher option {
+    display: flex;
+    align-items: center;
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-input);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--team-on-steel);
+    opacity: var(--team-chrome-opacity);
+    cursor: pointer;
+  }
+
+  /* A styled picker replaces the OS list, so the rows have to carry their own
+     touch targets — the native sheet's sizing is no longer doing it for us. */
+  @media (pointer: coarse) {
+    .teamSwitcher option {
+      min-height: 2.75rem;
+    }
+  }
+
+  .teamSwitcher option:hover,
+  .teamSwitcher option:focus-visible {
+    background: var(--team-steel-raised);
+    opacity: 1;
+    outline: none;
+  }
+
+  /* The edition you are on, marked in text colour rather than by the UA tick
+     alone — the checkmark is removed because it reserves inline space that
+     shifts every label. */
+  .teamSwitcher option:checked {
+    color: var(--team-header-accent);
+    opacity: 1;
+  }
+
+  .teamSwitcher option::checkmark {
+    display: none;
+  }
 }
 
 .themeToggle {
@@ -1529,6 +1655,8 @@
   position: relative;
   isolation: isolate;
   display: grid;
+  container-name: fieldobject;
+  container-type: inline-size;
   min-height: 24rem;
   padding-block: var(--space-lg);
   padding-inline: var(--panel-pad);
@@ -1572,32 +1700,62 @@
   inset: 0;
 }
 
-/* The ruling reaches every edge; the route keeps a margin off them. Letting
-   both run to the bezel put the arrowhead hard against the panel edge. */
+/* Both layers fill the panel and are sized by it.
+ *
+ * `inset` with `width/height: auto` looks like it pins all four edges, but an
+ * SVG carries an intrinsic ratio from its viewBox, and for an absolutely
+ * positioned replaced element that ratio wins: the route sized itself 798px
+ * tall inside a 384px panel, so the panel cropped a middle band of the arc
+ * straight across the countdown. Stating the size explicitly is the fix — the
+ * same lesson as docs/working-notes.md § layered stylesheet trap, that a
+ * layout property left implicit is a layout property some browser will decide
+ * for you.
+ *
+ * The route's margin off the bezel comes from the path coordinates, which sit
+ * well inside the 640×420 viewBox, rather than from an inset here. */
 .fieldGridLayer,
 .fieldRouteLayer {
   position: absolute;
-  width: auto;
-  height: auto;
-}
-
-.fieldGridLayer {
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.fieldRouteLayer {
-  inset: var(--space-md) var(--space-lg);
-}
-
 .fieldYardLines,
 .fieldHashMarks,
-.fieldRoute,
-.fieldRouteEcho,
-.fieldRoutePoint {
+.fieldRoute {
   fill: none;
   vector-effect: non-scaling-stroke;
+}
+
+/* Route terminals, positioned at the path's own endpoints as percentages of
+   the 640×420 viewBox: 120/640 and 302/420 for the tail, 512/640 and 108/420
+   for the head. They sit outside the SVG so the stretch that keeps the curve
+   spanning the panel cannot deform them. */
+.fieldRouteTail,
+.fieldRouteHead {
+  position: absolute;
+  pointer-events: none;
+  translate: -50% -50%;
+}
+
+.fieldRouteHead {
+  left: 80%;
+  top: 25.714%;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: var(--radius-round);
+  background: var(--team-graphic-strong);
+}
+
+.fieldRouteTail {
+  left: 18.75%;
+  top: 71.905%;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-block-start: 4px solid var(--team-graphic-strong);
+  border-inline-end: 4px solid var(--team-graphic-strong);
+  rotate: 45deg;
 }
 
 .fieldYardLines {
@@ -1610,19 +1768,10 @@
   stroke-width: 2;
 }
 
-.fieldRoute,
-.fieldRouteEcho,
-.fieldRoutePoint {
+.fieldRoute {
   stroke: var(--team-graphic-strong);
   stroke-width: 4;
-}
-
-.fieldRoute {
   stroke-dasharray: 10 8;
-}
-
-.fieldRoutePoint {
-  fill: var(--team-graphic-strong);
 }
 
 .fieldObjectLabel {
@@ -1656,10 +1805,13 @@
   text-shadow: none;
 }
 
+/* Sized to the panel, not the window. `28vw` tied the figure to the viewport
+   while the panel it sits in has its own width, so the two drifted apart and
+   the number outgrew its ground at the widths in between. */
 .fieldCountdown .countdownFigure > span:first-child,
 .fieldCountdown .todayFigure,
 .fieldCountdown .tbdFigure {
-  font-size: clamp(6.25rem, 28vw, 10rem);
+  font-size: clamp(4.5rem, 22cqw, 10rem);
   line-height: 0.72;
 }
 
@@ -2038,6 +2190,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   min-width: 0;
   overflow: clip;
+  /* "Ask about this" scrolls the composer into view with `nearest`, which
+     otherwise parks it flush against the viewport edge. */
+  scroll-margin-block: var(--space-lg);
   border: var(--rule-hair) solid var(--team-border-strong);
   border-radius: var(--radius-input);
   border-color: var(--team-ink);
@@ -2073,6 +2228,46 @@
   border-inline-start-color: var(--team-ink);
   background: var(--team-accent);
   color: var(--team-on-accent);
+}
+
+/* ── Composer, sized to its own container ──────────────────────────────
+ *
+ * The question field is the point of this control, so it is the last thing
+ * allowed to give up room. Ornament is dropped in order as the dock narrows:
+ * the "Follow up" caption first, then the button's word, leaving the arrow and
+ * its accessible name. The field itself never goes below a usable measure.
+ */
+.composer input {
+  min-width: 8rem;
+}
+
+/* Narrow dock: the button is the arrow alone. "Ask" is still announced, since
+   the label moves to the accessible name rather than disappearing. */
+@container chat (max-width: 22rem) {
+  .composer button {
+    padding-inline: 0;
+  }
+
+  .composer button span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Wide enough for the caption that says which composer this is. */
+@container chat (min-width: 30rem) {
+  .threadComposer {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .composerContext {
+    display: flex;
+  }
 }
 
 /* ── Quick questions ───────────────────────────────────────────────────
@@ -2643,14 +2838,6 @@
     grid-column: 1 / -1;
   }
 
-  .threadComposer {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-
-  .composerContext {
-    display: flex;
-  }
-
   .answerMeta {
     grid-template-columns: auto minmax(0, 1fr);
     gap: var(--space-xs);
@@ -2732,7 +2919,7 @@
     display: inline;
   }
 
-  .teamSwitcher {
+  .selectField {
     flex: 0 1 auto;
     width: 9.5rem;
   }
@@ -2942,16 +3129,12 @@
     border-inline-start: 0;
   }
 
-  .fieldCountdown .countdownFigure > span:first-child {
-    font-size: clamp(7rem, 10vw, 12.5rem);
-  }
-
-  .fieldCountdown .todayFigure {
-    font-size: clamp(7rem, 10vw, 12.5rem);
-  }
-
+  /* Panel-relative, matching the base rule. See the note there: the figure
+     belongs to the field object's width, not the window's. */
+  .fieldCountdown .countdownFigure > span:first-child,
+  .fieldCountdown .todayFigure,
   .fieldCountdown .tbdFigure {
-    font-size: clamp(7rem, 10vw, 12.5rem);
+    font-size: clamp(7rem, 10cqw, 12.5rem);
   }
 
   .briefColumns {
@@ -3038,21 +3221,86 @@
     padding-inline-start: var(--space-xl);
   }
 
+  /* The dock is a column here, so its leading edge is the boundary and the
+     bottom rule from the stacked layout has nothing left to separate. It was
+     still being drawn: `--team-ink` is near-white in dark mode, which put a
+     bright 2px line under the sidebar with page on both sides of it. Declared
+     away rather than left to fall through — see docs/working-notes.md § the
+     layered stylesheet trap. */
   .workspace[data-view="schedule"] .chatDock {
     border-inline-start: var(--rule-hair) solid var(--team-border-strong);
+    border-block-end: 0;
     padding-inline-start: var(--space-xl);
   }
 
-  .signalField {
-    grid-template-areas:
-      "one center two"
-      "three center four";
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr) minmax(0, 1fr);
-    grid-template-rows: minmax(14rem, 1fr) minmax(14rem, 1fr);
-    gap: var(--space-xl);
-    min-height: 43rem;
-    padding: var(--space-xl);
-    border-block: 0;
+  .nodeSummary {
+    display: block;
+    color: currentColor;
+    opacity: 0.88;
+  }
+
+  /* ── Field geometry, only where it fits ────────────────────────────────
+   *
+   * The four keys around a centre read is a wide-screen layout, and it used
+   * to switch on at 64rem whether or not there was room. The centre column
+   * held a hard 18rem floor while the key columns were `minmax(0, 1fr)` —
+   * free to collapse — so the keys were squeezed to 23px at 1024px and 139px
+   * at 1280px, and `overflow: hidden` on the card swallowed the evidence.
+   *
+   * Two changes: the keys now have a floor of their own, so they can never be
+   * the column that gives, and the whole geometry waits for 80rem, which is
+   * where two 12rem keys, the centre, and the gutters actually fit beside the
+   * chat dock. Below that the stacked 2×2 picker — the layout mobile already
+   * uses — carries it. The gutter scales rather than sitting at a flat 3rem,
+   * which is what made the mid widths so tight.
+   */
+  @media (min-width: 80rem) {
+    .signalField {
+      grid-template-areas:
+        "one center two"
+        "three center four";
+      grid-template-columns:
+        minmax(12rem, 1fr)
+        minmax(16rem, 0.9fr)
+        minmax(12rem, 1fr);
+      grid-template-rows: minmax(14rem, 1fr) minmax(14rem, 1fr);
+      gap: clamp(var(--space-md), 2.2vw, var(--space-xl));
+      min-height: 43rem;
+      padding: clamp(var(--space-md), 2.2vw, var(--space-xl));
+      border-block: 0;
+    }
+
+    .signalChoices {
+      display: contents;
+    }
+
+    .signalNode {
+      align-self: center;
+      min-height: 11rem;
+      padding: var(--space-md);
+    }
+
+    .signalNode[data-position="1"] {
+      grid-area: one;
+    }
+
+    .signalNode[data-position="2"] {
+      grid-area: two;
+    }
+
+    .signalNode[data-position="3"] {
+      grid-area: three;
+    }
+
+    .signalNode[data-position="4"] {
+      grid-area: four;
+    }
+
+    .signalCenter {
+      grid-area: center;
+      align-self: center;
+      min-height: 27rem;
+    }
   }
 
   .signalField::before {
@@ -3089,43 +3337,6 @@
     display: none;
   }
 
-  .signalChoices {
-    display: contents;
-  }
-
-  .signalNode {
-    align-self: center;
-    min-height: 11rem;
-    padding: var(--space-md);
-  }
-
-  .signalNode[data-position="1"] {
-    grid-area: one;
-  }
-
-  .signalNode[data-position="2"] {
-    grid-area: two;
-  }
-
-  .signalNode[data-position="3"] {
-    grid-area: three;
-  }
-
-  .signalNode[data-position="4"] {
-    grid-area: four;
-  }
-
-  .nodeSummary {
-    display: block;
-    color: currentColor;
-    opacity: 0.88;
-  }
-
-  .signalCenter {
-    grid-area: center;
-    align-self: center;
-    min-height: 27rem;
-  }
 
   /* Three games are three objects, so each gets its own ground.
    *

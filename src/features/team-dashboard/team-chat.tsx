@@ -97,7 +97,40 @@ export function TeamChat({
     }
 
     setInput(draftRequest.value);
-    inputRef.current?.focus({ preventScroll: true });
+
+    const input = inputRef.current;
+
+    if (!input) {
+      return;
+    }
+
+    // "Ask about this" is a jump, not a focus change. The composer sits in a
+    // dock that is a sidebar on wide layouts and a band below the board on
+    // narrow ones, so the button is usually pressed while the composer is off
+    // screen — focus alone would leave the caret somewhere the fan cannot see.
+    //
+    // Focus is taken without the browser's own scroll so the whole control is
+    // moved to, not just the caret. Whether to move is decided here rather
+    // than with `block: "nearest"`, so an already-visible composer is left
+    // exactly where it is and an off-screen one arrives centred instead of
+    // wedged against the bottom edge, where a phone keyboard would cover it.
+    //
+    // The scroll is deliberately instant. `behavior: "smooth"` is not
+    // dependable — under automation it can no-op entirely, which would turn
+    // this into a focus change the fan never sees.
+    input.focus({ preventScroll: true });
+
+    const composer = input.closest("form");
+
+    if (!composer) {
+      return;
+    }
+
+    const box = composer.getBoundingClientRect();
+
+    if (box.top < 0 || box.bottom > window.innerHeight) {
+      composer.scrollIntoView({ block: "center" });
+    }
   }, [draftRequest]);
 
   // The empty composer is replaced by a threaded composer after the first
