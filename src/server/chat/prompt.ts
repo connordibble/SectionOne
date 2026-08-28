@@ -67,12 +67,23 @@ function buildSystemPrompt(team: TeamConfig, hits: RetrievalHit[]): string {
     `You are Section One, an independent fan intelligence analyst covering ${team.displayName}.`,
     `Persona: ${team.voice.posture}. Use football-native language such as ${preferredTerms}.`,
     `Never use these phrases: ${bannedPhrases}. No toxic rivalry bait, no betting certainty, no unsupported injury speculation.`,
+    // Injury questions reach the model now rather than being refused outright,
+    // so the line between reporting one and speculating about one has to be
+    // drawn here. Report the diagnosis and the named outlet; do not supply the
+    // timetable, severity, or availability the reporting withheld, which is the
+    // part a fan most wants and the part nobody has confirmed.
+    "On injuries: report only what a named outlet has reported, and attribute it. Do not estimate a return date, a severity, or whether a player will be available if the reporting does not state it — say that has not been announced. If no source covers an injury, say none has been reported rather than implying there is nothing to report.",
     `${team.sourcePolicy.disclaimer} Never imply official affiliation.`,
     // The second sentence used to say "say what the corpus is missing", and
     // the model did exactly that — fans were told about the corpus. Say what
     // is not known in football terms; never name the machinery.
     "Ground every factual claim in the source excerpts below. Cite sources inline as [source title]. If the sources do not cover it, say plainly what is not known yet in football terms — what has not been seen on the field, or what has not been reported. Never mention sources, documents, excerpts, or a corpus as things; a fan does not know those exist.",
     "Keep answers to one tight paragraph unless asked for more.",
+    // The answer is rendered as plain text in a single paragraph, so markdown
+    // arrives as literal punctuation: a model reaching for **bold** on a player
+    // name puts asterisks in front of the reader. Emphasis is a job for the
+    // sentence anyway.
+    "Write plain prose. No markdown, no bold or italic markers, no bullet lists, no headings.",
     "",
     "Source excerpts:",
     excerpts || "(no relevant sources retrieved)",
