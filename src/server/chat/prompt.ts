@@ -154,19 +154,29 @@ export function prioritizeGroundingHits(
   question: string,
   hits: RetrievalHit[],
   capability?: ComposerCapability,
+  promotedNoteId?: string,
 ): RetrievalHit[] {
   if (capability !== "team-note-brief") {
     return hits;
   }
 
   return [...hits].sort(
-    (left, right) => rankTeamNote(right, question) - rankTeamNote(left, question),
+    (left, right) =>
+      rankTeamNote(right, question, promotedNoteId) -
+      rankTeamNote(left, question, promotedNoteId),
   );
 }
 
-function rankTeamNote(hit: RetrievalHit, question: string): number {
+function rankTeamNote(hit: RetrievalHit, question: string, promotedNoteId?: string): number {
   if (hit.chunk.document.sourceType !== "team-note") {
     return 0;
+  }
+
+  // A promoted prompt names its note in config, and that beats both text
+  // signals: the note it points at is the one the cue was written for, whether
+  // or not the two share any wording.
+  if (promotedNoteId && hit.chunk.document.metadata?.noteId === promotedNoteId) {
+    return 3;
   }
 
   return titleMatchesQuestion(hit.chunk.document.title, question) ? 2 : 1;

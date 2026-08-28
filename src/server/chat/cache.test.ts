@@ -65,8 +65,12 @@ describe("similarity threshold", () => {
 });
 
 describe("cache switch", () => {
-  it("is on by default and can be turned off outright", () => {
-    expect(cacheEnabled({})).toBe(true);
+  // Off unless asked for. At current traffic a fresh generation per question is
+  // cheap and easier to reason about than a reuse rule, so serving a second
+  // reader someone else's answer has to be a decision somebody made on purpose.
+  it("is off by default and has to be switched on explicitly", () => {
+    expect(cacheEnabled({})).toBe(false);
     expect(cacheEnabled({ CHAT_CACHE: "off" })).toBe(false);
+    expect(cacheEnabled({ CHAT_CACHE: "on" })).toBe(true);
   });
 });

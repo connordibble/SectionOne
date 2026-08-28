@@ -58,12 +58,6 @@ export function selectAnswerStrategy(
   hits: RetrievalHit[],
 ): AnswerStrategy {
   const wantsAnalysis = analysisPattern.test(question);
-  const matchingTeamNote = hits.find(
-    (hit) =>
-      hit.chunk.document.sourceType === "team-note" &&
-      titleMatchesQuestion(hit.chunk.document.title, question),
-  );
-
   const wantsBriefing = briefingPattern.test(question) || asksWhoTheTeamPlays(team, question);
 
   if (!wantsAnalysis && wantsBriefing && getNextGame(team.slug)) {
@@ -92,14 +86,74 @@ export function selectAnswerStrategy(
   // Curated team notes are the product's differentiated content. Schedule facts
   // can outrank a note on an opponent-name match, so use the best retrieved note
   // instead of turning an analysis question into a date-and-time recital.
-  if (
-    (hits[0]?.chunk.document.sourceType === "team-note" || matchingTeamNote) &&
-    !comparisonPattern.test(question)
-  ) {
+  //
+  // The note has to be about what was asked. Retrieval returns a ranking, not a
+  // verdict: it will hand back its least-bad candidate for a question the
+  // corpus cannot answer at all. Routing on "the top hit happens to be a note"
+  // therefore made the best-ranked note a catch-all, and because the composer
+  // recites that note's first two sentences verbatim, unrelated questions came
+  // back word-for-word identical. "Tell me about special teams", "How is the
+  // secondary?" and "Who are the key playmakers?" were all answered with the
+  // early-downs note, cited and marked high confidence, for three questions
+  // whose only retrieval signal was a single incidental word.
+  const promotedNoteId = promotedNoteFor(team, question);
+  const answerableNote = hits.find(
+    (hit) =>
+      hit.chunk.document.sourceType === "team-note" &&
+      (hit.chunk.document.metadata?.noteId === promotedNoteId ||
+        noteAnswersQuestion(hit.chunk.document.title, question)),
+  );
+
+  if (answerableNote && !comparisonPattern.test(question)) {
     return { strategy: "composer", capability: "team-note-brief" };
   }
 
   return { strategy: "escalate" };
+}
+
+// A promoted prompt already names the note it wants, so config decides rather
+// than a lexical guess. Utah State's "clean start" cue points at a note titled
+// "Quarterback play: protect the ball, protect the field", which shares no word
+// with the question it is promoted under, and the word check alone dropped the
+// product's own front-page prompt to the escalation path.
+//
+// Matched on the exact normalized prompt: the Signal Board sends that text
+// verbatim, and anything looser would start claiming questions the fan wrote.
+export function promotedNoteFor(team: TeamConfig, question: string): string | undefined {
+  const asked = normalizeWords(question).join(" ");
+
+  return team.editorial.signals.find(
+    (signal) => normalizeWords(signal.prompt).join(" ") === asked,
+  )?.noteId;
+}
+
+// Whether a curated note is on the subject of the question.
+//
+// Deliberately judged from the question and the note's own title rather than
+// from the retrieval score. Scores are not comparable across modes: lexical
+// scoring returns integers in the teens for a real match, while the hybrid path
+// fuses by reciprocal rank and returns ~0.016 for the same hit, so any absolute
+// floor would be right in one deployment and wrong in the other.
+//
+// Two signals, either sufficient. An adjacent title pair appearing in the
+// question is the strong one. A shared distinctive title word is the weaker
+// one, and it is needed: "Pressure with four" has no usable adjacent pair once
+// stopwords are removed, so the promoted prompt that asks about it would stop
+// working on the strict check alone.
+export function noteAnswersQuestion(title: string, question: string): boolean {
+  if (titleMatchesQuestion(title, question)) {
+    return true;
+  }
+
+  const asked = new Set(distinctiveWords(question));
+
+  return distinctiveWords(title).some((word) => asked.has(word));
+}
+
+function distinctiveWords(value: string): string[] {
+  return normalizeWords(value).filter(
+    (word) => word.length > 2 && !titleStopwords.has(word),
+  );
 }
 
 // "Who does Utah State play next?" — the team's own name sits in the middle of
