@@ -296,6 +296,8 @@ export function TeamChat({
                       ? "Checking sources"
                       : "No sources"}
                 </span>
+                <span aria-hidden="true">·</span>
+                <span>{generatedAnswerNote}</span>
               </p>
             </div>
             <button
@@ -552,6 +554,17 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
 //
 // Trailing periods are trimmed because each field is written as a standalone
 // sentence on the server, where it may also be read on its own.
+// Said once for the thread, not once per answer. Per answer it was honest and
+// it was also four lines in the matchup dock, which is the block we had just
+// taken out from between the answer and the composer; a reader does not need
+// telling on every reply.
+//
+// Deliberately not "as an AI", which every team config bans outright, and not
+// an apology. The admission worth making is that a machine wrote this from the
+// sources shown and a reader can go check them, which is the product's own
+// claim rather than a legal notice bolted onto it.
+const generatedAnswerNote = "Written by Section One from the sources shown";
+
 function summarizeFreshness(freshness: ChatFreshness): string {
   return [freshness.search, freshness.coverage, freshness.schedule, freshness.context]
     .filter((part): part is string => Boolean(part))
