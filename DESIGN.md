@@ -437,14 +437,14 @@ Four bugs shipped or nearly shipped during the production redesign. None threw a
 were caught by review; each was found by looking at a rendered page. They are recorded because the
 fix is cheap and the detection is not.
 
-**A property the new rules relied on but never declared.** `team-workspace.module.css` is two
-stylesheets stacked — the original rules, then a redesign block appended rather than replacing them.
-Anything the redesign block does not declare falls through to a pre-redesign rule, *including rules
-inside earlier media queries*, which then govern widths the redesign never meant to style. This
-produced the hero splitting from 40rem instead of 86rem, and the game object being vertically
-centred instead of filling its half. When a block takes over a component, declare its layout
-properties explicitly even where the value looks like the default. The reconciliation pass is
-tracked in [docs/future-work.md](./docs/future-work.md).
+**A property the new rules relied on but never declared.** `team-workspace.module.css` used to be
+two stylesheets stacked — the original rules, then a redesign block appended rather than replacing
+them. Anything the redesign block did not declare fell through to a pre-redesign rule, *including
+rules inside earlier media queries*. This produced the hero splitting from 40rem instead of 86rem,
+and the game object being vertically centred instead of filling its half. The launch reconciliation
+gave every selector one owner and moved responsive and state overrides after the base rules. When a
+component changes shape, declare its layout properties explicitly even where the value looks like
+the default; the responsive tests now hold that contract at its boundaries.
 
 **A rule that was right for the old shape and wrong for the new one.** Converting a ruled section
 into a card leaves behind declarations that used to make sense — `border-block-start: 0` on what was

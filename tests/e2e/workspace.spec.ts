@@ -38,6 +38,39 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
   await expect(lead.getByRole("heading", { level: 1 })).toContainText("Texas");
 });
 
+test("every edition renders its own canonical and social preview metadata", async ({ page }) => {
+  for (const edition of [
+    { slug: "texas-football", team: "Texas", opponent: "Texas State" },
+    { slug: "utah-state-football", team: "Utah State", opponent: "Idaho State" },
+  ]) {
+    const path = `/teams/${edition.slug}`;
+
+    await page.goto(path);
+
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      new RegExp(`${path}$`),
+    );
+    await expect(page).toHaveTitle(new RegExp(`${edition.team} (?:vs|at) ${edition.opponent}`));
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+      "content",
+      new RegExp(`${path}$`),
+    );
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      new RegExp(`/social/${edition.slug}\\.png$`),
+    );
+  }
+});
+
+test("mounts one production analytics client for the edition", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  const analytics = page.locator('script[src="/_vercel/insights/script.js"]');
+  await expect(analytics).toHaveCount(1);
+  await expect(analytics).toHaveAttribute("data-sdkn", /@vercel\/analytics\/next/);
+});
+
 test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
   await page.goto("/teams/texas-football#matchup");
 

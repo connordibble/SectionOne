@@ -1,31 +1,50 @@
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { chromium } from "@playwright/test";
-import { deriveTeamPalettes, houseTheme } from "../src/config/team";
+import { chromium, type Page } from "@playwright/test";
+import {
+  deriveTeamPalettes,
+  enabledTeamSlugs,
+  getTeamConfig,
+  houseTheme,
+  type TeamPalette,
+} from "../src/config/team";
+import { formatSite, getNextGame } from "../src/server/schedule/schedule";
 
-// Renders the social card at exactly the size the platforms crop to.
-//
-// Generated rather than drawn, and generated from `houseTheme` rather than
-// from hand-picked hex values, so the card cannot drift away from the palette
-// the site actually ships. Re-run it after any change to the house anchors:
-//
-//   pnpm og:build
-//
-// The output is committed because a social crawler should not wait on a render,
-// and because Next needs a real file to read the dimensions from.
+// Social cards are committed build artifacts so crawlers never wait on a
+// runtime image render. Re-run `pnpm og:build` whenever weekly editorial copy,
+// the next game, or the palette changes.
 const width = 1200;
 const height = 630;
 
-const palette = deriveTeamPalettes(houseTheme).light;
+type Card = {
+  palette: TeamPalette;
+  kicker: string;
+  headline: string;
+  subhead: string;
+  detail: string;
+  home?: boolean;
+};
 
-const html = `<!doctype html>
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function cardHtml(card: Card): string {
+  const { palette } = card;
+  const headlineSize = card.home ? 112 : card.headline.length <= 22 ? 80 : 68;
+
+  return `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Geist:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Geist:wght@400;500;650&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -33,14 +52,46 @@ const html = `<!doctype html>
       body {
         width: ${width}px;
         height: ${height}px;
+        overflow: hidden;
         background: ${palette.steel};
         color: ${palette.onSteel};
         font-family: "Geist", sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 68px 72px 60px;
       }
+      .card {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: 100%;
+        height: 100%;
+        padding: 54px 64px 48px;
+      }
+      .stage {
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: ${card.home ? "34%" : "42%"};
+        background: ${card.home ? palette.steelRaised : palette.stage};
+      }
+      .field {
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: ${card.home ? "34%" : "42%"};
+        opacity: 0.28;
+      }
+      .yard, .cross {
+        position: absolute;
+        background: ${palette.graphic};
+      }
+      .yard { inset-block: 0; width: 2px; }
+      .yard:nth-child(1) { left: 18%; }
+      .yard:nth-child(2) { left: 40%; }
+      .yard:nth-child(3) { left: 62%; }
+      .yard:nth-child(4) { left: 84%; }
+      .cross { inset-inline: 0; height: 2px; }
+      .cross:nth-child(5) { top: 24%; }
+      .cross:nth-child(6) { top: 50%; }
+      .cross:nth-child(7) { top: 76%; }
+      .header, .main, .footer { position: relative; z-index: 1; }
+      .header { display: flex; justify-content: space-between; align-items: flex-start; }
       .wordmark {
         font-family: "Big Shoulders Display", sans-serif;
         font-weight: 800;
@@ -49,88 +100,141 @@ const html = `<!doctype html>
         letter-spacing: 0.02em;
         text-transform: uppercase;
       }
-      /* The accent sits on one word, as it does in the masthead. Roughly three
-         percent of the canvas — it points, it does not flood. */
       .wordmark span { color: ${palette.accentSoft}; }
       .tagline {
-        margin-top: 10px;
+        margin-top: 9px;
         font-family: "Big Shoulders Display", sans-serif;
         font-weight: 700;
-        font-size: 19px;
+        font-size: 18px;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         opacity: 0.72;
       }
-      .rule {
-        height: 2px;
-        background: ${palette.accentSoft};
-        margin: 34px 0 0;
+      .issue {
+        max-width: 420px;
+        color: ${card.home ? palette.onSteel : palette.onStage};
+        font-size: 17px;
+        font-weight: 650;
+        letter-spacing: 0.14em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+      .main { align-self: center; max-width: ${card.home ? "820px" : "600px"}; }
+      .kicker {
+        margin-bottom: 18px;
+        color: ${palette.accentSoft};
+        font-size: 17px;
+        font-weight: 650;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
       }
       .headline {
         font-family: "Big Shoulders Display", sans-serif;
+        font-size: ${headlineSize}px;
         font-weight: 800;
-        font-size: 116px;
-        line-height: 0.96;
+        line-height: 1;
         letter-spacing: 0.005em;
         text-transform: uppercase;
       }
-      .footer {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 48px;
-      }
-      .blurb {
-        max-width: 620px;
-        font-size: 25px;
-        line-height: 1.45;
+      .subhead {
+        max-width: 720px;
+        margin-top: 22px;
+        color: ${palette.onSteel};
+        font-size: 24px;
+        line-height: 1.35;
         opacity: 0.82;
       }
-      .domain {
-        font-family: ui-monospace, "SF Mono", monospace;
-        font-size: 18px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        opacity: 0.6;
-        white-space: nowrap;
+      .footer {
+        display: flex;
+        gap: 48px;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-top: 2px solid ${palette.accentSoft};
+        padding-top: 18px;
       }
+      .detail { font-size: 18px; letter-spacing: 0.03em; opacity: 0.78; }
+      .domain { font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.64; }
     </style>
   </head>
   <body>
-    <div>
-      <div class="wordmark">Section <span>One</span></div>
-      <div class="tagline">All signal. No noise.</div>
-      <div class="rule"></div>
-    </div>
-
-    <div class="headline">Your team.<br />Your section.</div>
-
-    <div class="footer">
-      <div class="blurb">
-        A short, sourced read on your team every game week. What to watch, why it matters, and
-        where the answer came from.
+    <div class="card">
+      <div class="stage"></div>
+      <div class="field" aria-hidden="true">
+        <span class="yard"></span><span class="yard"></span><span class="yard"></span><span class="yard"></span>
+        <span class="cross"></span><span class="cross"></span><span class="cross"></span>
       </div>
-      <div class="domain">College football</div>
+      <header class="header">
+        <div>
+          <div class="wordmark">Section <span>One</span></div>
+          <div class="tagline">All signal. No noise.</div>
+        </div>
+        <div class="issue">Saturday edition<br />Independent</div>
+      </header>
+      <main class="main">
+        <div class="kicker">${escapeHtml(card.kicker)}</div>
+        <div class="headline">${escapeHtml(card.headline)}</div>
+        <div class="subhead">${escapeHtml(card.subhead)}</div>
+      </main>
+      <footer class="footer">
+        <div class="detail">${escapeHtml(card.detail)}</div>
+        <div class="domain">sectiononesports.com</div>
+      </footer>
     </div>
   </body>
 </html>`;
+}
+
+async function capture(page: Page, card: Card, file: string) {
+  await page.setContent(cardHtml(card), { waitUntil: "networkidle" });
+  await page.evaluate(() => document.fonts.ready);
+  await writeFile(file, await page.screenshot({ type: "png" }));
+  console.log(`Wrote ${width}x${height} to ${path.relative(process.cwd(), file)}`);
+}
 
 async function main() {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
+  const socialDir = path.join(process.cwd(), "public", "social");
 
-  await page.setContent(html, { waitUntil: "networkidle" });
-  // Screenshotting before the webfonts land would silently ship a fallback
-  // face, which is the one thing a brand card cannot get wrong.
-  await page.evaluate(() => document.fonts.ready);
+  await mkdir(socialDir, { recursive: true });
 
-  const buffer = await page.screenshot({ type: "png" });
+  await capture(
+    page,
+    {
+      palette: deriveTeamPalettes(houseTheme).light,
+      kicker: "College football · Independent",
+      headline: "Your team. Your section.",
+      subhead: "A short, sourced read on your team every game week.",
+      detail: "What to watch · Why it matters · Where the answer came from",
+      home: true,
+    },
+    path.join(process.cwd(), "src", "app", "opengraph-image.png"),
+  );
+
+  for (const slug of enabledTeamSlugs) {
+    const team = getTeamConfig(slug)!;
+    const nextGame = getNextGame(slug);
+    const matchup = nextGame
+      ? `${team.shortName} ${formatSite(nextGame.site)} ${nextGame.opponent}`
+      : team.displayName;
+    const detail = nextGame
+      ? [nextGame.dateLabel, nextGame.kickoff, nextGame.tv].filter(Boolean).join(" · ")
+      : team.referenceLabel;
+
+    await capture(
+      page,
+      {
+        palette: deriveTeamPalettes(team.theme).light,
+        kicker: team.referenceLabel,
+        headline: matchup,
+        subhead: team.editorial.lead.headline,
+        detail,
+      },
+      path.join(socialDir, `${slug}.png`),
+    );
+  }
+
   await browser.close();
-
-  const file = path.join(process.cwd(), "src", "app", "opengraph-image.png");
-  await writeFile(file, buffer);
-
-  console.log(`Wrote ${width}x${height} to ${path.relative(process.cwd(), file)}`);
 }
 
 main().catch((error) => {

@@ -13,6 +13,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Before product, UX, growth, or edition-expansion work, read `docs/future-work.md`. It records the
   current product thesis, evidence gates, and brand-redesign brief; hypotheses there are not shipped
   facts.
+- For distribution, SEO, content-engine, or revenue work, also read `docs/growth-and-monetization.md`.
+  It records the operator constraint that ranks above growth — reject any mechanism whose recurring
+  work scales with readers and cannot be automated — and the ordered plan that follows from it.
 - Verify each slice with `pnpm check`, `pnpm build`, and a browser or Playwright smoke test before
   committing. For anything visual, check more than one viewport width and both themes: the layout
   bugs this project has actually shipped were correct at most widths and wrong at a few, and threw

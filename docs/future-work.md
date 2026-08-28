@@ -63,6 +63,11 @@ before charging money or supporting the product with meaningful advertising. A b
 IP review should cover summaries, ingestion, trademarks, and reporter material before commercial
 scale. Independence and source links remain product requirements, not footer formalities.
 
+`docs/growth-and-monetization.md` carries the distribution, SEO, engine, and revenue plan downstream
+of this file, including the operator constraint that ranks above growth: reject any revenue or growth
+mechanism whose recurring work scales with readers and cannot be automated. That rule is what rules
+out subscriptions and direct sponsorship, and it is why advertising is the intended path.
+
 ## Keep the public artifact and production business separable
 
 The released MIT code cannot be made private retroactively. A public reference implementation is
@@ -130,29 +135,22 @@ for Matchup and the kickoff object only.** Extending it to schedules and ranking
 rejected — those are tables, and ruling them is what makes a signature tiring. The language earns
 its force by being rare.
 
-## Reconcile the two stylesheet layers before shipping
+## The stylesheet layers were reconciled for launch
 
-`team-workspace.module.css` is two stylesheets stacked: the original rules, then a redesign block
-appended at the end rather than replacing them. Any property the redesign block does not explicitly
-declare still falls through to a pre-redesign rule — including rules inside earlier media queries,
-which then govern widths the redesign never intended to style.
+The production redesign was originally appended below the old stylesheet. That allowed undeclared
+properties and legacy media queries to keep controlling the new composition. The launch pass folded
+those layers together so every selector has one owner in each context, base rules precede the
+responsive and state queries, and the legacy 60rem desktop rule now shares the 64rem boundary used
+by the design contract. The Brief stays stacked until its deliberate 86rem split.
 
-This has already produced one shipped-quality bug. The Brief hero split into two columns from 40rem
-up, because the redesign block never declared `grid-template-columns` and a legacy `min-width: 40rem`
-rule did. Nothing errored; the kickoff panel simply clipped its own countdown at a range of widths.
-It was found by eye, not by any test.
+The audit left no duplicate selector/context groups or duplicate declarations. The responsive suite
+now checks the Brief split, the Schedule row and strip alignment, the shared section colours, card
+edges, and horizontal overflow at the boundary widths. A 56-screen comparison covered both
+editions, both themes, and 320–1440px: 52 captures were pixel-identical to the pre-reconciliation
+render; the four 960px captures changed only at the normalized desktop boundary.
 
-Before launch, reconcile the layers deliberately:
-
-- fold the redesign block into the base rules so each selector is declared once;
-- for every property the redesign relies on, confirm it is declared rather than inherited from a
-  legacy rule — layout properties inside media queries are the dangerous ones;
-- delete rules the redesign has fully superseded, rather than leaving them shadowed;
-- extend `tests/e2e/responsive.spec.ts`, which encodes the hero's breakpoint contract, to whatever
-  other layouts the audit shows are governed by fall-through.
-
-Do not treat "it looks right at my window size" as evidence. The failure mode of this bug class is
-that it is correct at most widths and broken at a few.
+Keep the lesson even though the gate is closed: "it looks right at my window size" is not evidence.
+This bug class is correct at most widths, broken at a few, and silent in the console.
 
 ## Near-term sequence
 

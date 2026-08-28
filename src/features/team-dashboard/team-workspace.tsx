@@ -669,7 +669,7 @@ function GameStrip({
 
   return (
     <section aria-label="Next game" className={styles.gameStrip}>
-      <div className={styles.gameStripInner}>
+      <div className={styles.gameStripInner} data-testid="game-strip-inner">
         <p className={`${styles.stripCountdown} tnum`}>{countdownLabel}</p>
         <p className={styles.stripMatchup}>
           {teamName} {siteWord(game.site)} {game.opponent}
