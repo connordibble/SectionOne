@@ -2,12 +2,12 @@
   "teamSlug": "texas-football",
   "weekOf": "2026-08-27",
   "publishedAt": "2026-08-27T21:00:00.000Z",
-  "summary": "Camp is closing. The quarterback is settled, the left tackle is not, and the defense has been the better side of the ball all month.",
+  "summary": "Camp is closing. The quarterback is settled, the left tackle is not, and the defense left the second scrimmage with four takeaways.",
   "items": [
     {
       "id": "manning-camp",
       "headline": "Sarkisian is not worried about Arch Manning",
-      "tldr": "The offense turned it over four times in 120 scrimmage plays and Sarkisian still called it a great camp for Manning, pointing at his timing with Ryan Wingo, Cam Coleman and Emmett Mosley. The quarterback is not the open question here; the eleven around him is.",
+      "tldr": "The offense turned it over four times in 120 scrimmage plays and Sarkisian still called it a great camp for Manning, pointing at his timing with Ryan Wingo, Cam Coleman and Emmett Mosley. The quarterback is not the open question here; the ten around him are.",
       "outlet": "Horns247",
       "tier": "local",
       "url": "https://247sports.com/college/texas/article/steve-sarkisian-unconcerned-about-texas-football-qb-arch-manning-hes-had-a-great-camp-man--289163885/",
@@ -37,7 +37,7 @@
     {
       "id": "goosby-knee",
       "headline": "Goosby's knee is a bone bruise, with no return date announced",
-      "tldr": "ESPN reported the left tackle's injury as a bone bruise rather than ligament damage. Texas has not put a date on his return, and Andre Cojoe took the first-team left tackle reps in the second scrimmage. Anything past that is unsettled.",
+      "tldr": "ESPN reported the left tackle's injury as a bone bruise, and no timetable had been set. That keeps left tackle as Texas' clearest open question before Texas State.",
       "outlet": "Sports Illustrated",
       "tier": "national",
       "url": "https://www.si.com/college/texas/football/texas-longhorns-avoid-disaster-after-trevor-goosby-injury-update",
@@ -47,11 +47,11 @@
     {
       "id": "edge-depth",
       "headline": "The edge rotation runs deeper than Colin Simmons",
-      "tldr": "Lance Jackson, Colton Vasek and five-star freshman Richard Wesley are all in the mix behind Simmons. Pressure that arrives without a blitz is what lets Muschamp keep his corners tight, and depth up front is how that holds into a fourth quarter.",
+      "tldr": "Lance Jackson, Colton Vasek and five-star freshman Richard Wesley are all in the mix behind Simmons. If that depth holds, Texas can keep rotating without asking Simmons to carry every pass-rush snap into the fourth quarter.",
       "outlet": "Hookem Headlines",
       "tier": "local",
       "url": "https://hookemheadlines.com/texas-longhorns-have-stacked-unfair-amount-of-talent-at-edge-and-it-isnt-just-colin-simmons",
-      "publishedAt": "2026-08-20T12:00:00.000Z",
+      "publishedAt": "2026-08-24T12:00:00.000Z",
       "grade": { "impact": 3, "echo": 2, "freshness": 3 }
     }
   ]

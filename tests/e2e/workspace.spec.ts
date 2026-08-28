@@ -291,12 +291,29 @@ test("the team switcher is a styled native select, not a custom widget", async (
       appearance: style.appearance,
       borderWidth: style.borderTopWidth,
       chevrons: node.parentElement?.querySelectorAll("svg").length ?? 0,
+      whiteSpace: style.whiteSpace,
     };
   });
 
   expect(paint.appearance).not.toBe("auto");
   expect(paint.borderWidth).not.toBe("0px");
   expect(paint.chevrons).toBe(1);
+  expect(paint.whiteSpace).toBe("nowrap");
+});
+
+test("the 320px masthead keeps the wordmark clear of the team switcher", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/teams/utah-state-football");
+
+  const wordmark = await page
+    .getByRole("link", { name: "Section One home" })
+    .first()
+    .boundingBox();
+  const switcher = await page.getByLabel("Team").boundingBox();
+
+  expect(wordmark).not.toBeNull();
+  expect(switcher).not.toBeNull();
+  expect(wordmark!.x + wordmark!.width).toBeLessThanOrEqual(switcher!.x);
 });
 
 test("the team switcher moves between editions", async ({ page }) => {

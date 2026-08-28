@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/config/site";
 import { enabledTeamSlugs } from "@/config/team";
 import { getWeeklyEdition } from "@/server/sources/weekly";
-import { siteUrl } from "./layout";
 
 export const dynamic = "force-static";
 

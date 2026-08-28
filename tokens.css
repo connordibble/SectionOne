@@ -86,6 +86,11 @@
   --radius-card: 0.5rem;
   --radius-round: 999px;
 
+  /* The only floating surface in the product is the customizable native
+     select picker. Keep its elevation here so components do not invent
+     one-off colour or shadow values. */
+  --shadow-picker: 0 0.75rem 2rem oklch(0% 0 0 / 0.35);
+
   --control-height: 3.5rem;
   --page-gutter: clamp(1rem, 4vw, 4rem);
   --page-width: 96rem;

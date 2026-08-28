@@ -158,7 +158,7 @@ export const teamConfigs = {
       lead: {
         headline: "Start clean. Win up front.",
         body:
-          "Watch the pace, tackling, and who earns real snaps. The interior O line is still the biggest question.",
+          "Watch the pace, tackling, and who earns real snaps. The interior offensive line is still the biggest question.",
         noteId: "opponent-texas-state",
       },
       matchup: {
