@@ -58,6 +58,10 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
+  // Stays on the composer because it does not depend on retrieval: the weekly
+  // package is pinned. Escalating it was tried and reverted — retrieval hands
+  // "what is the latest news?" the schedule, so the model answered with an
+  // October kickoff time instead of the week.
   it("answers this-week questions from the weekly package", async () => {
     expect(await route("What is the latest news?", "utah-state-football")).toEqual({
       strategy: "composer",
@@ -76,11 +80,12 @@ describe("selectAnswerStrategy", () => {
     });
   });
 
-  it("serves a relevant curated note even when a schedule fact ranks first", async () => {
-    expect(await route("How does Ohio State look?")).toEqual({
-      strategy: "composer",
-      capability: "team-note-brief",
-    });
+  // A curated note is quoted only where config paired it with a prompt. This
+  // question is on the subject of a real note and still escalates, because
+  // nobody promoted it: inferring the pairing from wording is exactly what
+  // returned one identical answer to unrelated questions.
+  it("escalates a free-text question even when a note is on its subject", async () => {
+    expect(await route("How does Ohio State look?")).toEqual({ strategy: "escalate" });
   });
 
   // The bug this guards: retrieval returns a ranking, never a verdict, so it

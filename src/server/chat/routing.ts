@@ -27,7 +27,7 @@ const sourceReadinessPattern =
 // capabilities even when a briefing or schedule keyword is also present,
 // because a template cannot answer them and shouldn't pretend to.
 const analysisPattern =
-  /\b(?:fix|improve|watch(?:ing)?|worry|worried|concern(?:ed|s)?|weak(?:ness|nesses)?|thin|struggle|attack|exploit|matter|why|how(?:'s| is| are)?|better|worse|should)\b/i;
+  /\b(?:fix(?:es|ing)?|improve|watch(?:ing)?|worr(?:y|ies|ied)|concern(?:ed|s)?|weak(?:ness|nesses)?|thin|struggl(?:e|es|ing)|attack|exploit|matters?|why|how(?:'s| is| are)?|better|worse|should)\b/i;
 
 // A team-note brief surfaces exactly one curated note. A question that asks to
 // weigh two things against each other cannot be answered by one note, however
@@ -79,35 +79,54 @@ export function selectAnswerStrategy(
     return { strategy: "composer", capability: "ranking-brief" };
   }
 
+  // Kept deterministic with the other fact capabilities, and for the same
+  // reason: it does not depend on retrieval. `getCapabilityDocuments` pins the
+  // week's package, so the answer is built from this week's five stories
+  // whatever the ranking says.
+  //
+  // Retiring this was tried and reverted the same night. Escalating it sounds
+  // better — a model can summarise five items, and the template only quotes the
+  // first — but retrieval hands "what is the latest news?" the schedule, so the
+  // model answered with an October kickoff time. Wrong subject beats a narrow
+  // answer. Making this escalate well needs retrieval to surface the weekly
+  // package for news wording first.
   if (newsPattern.test(question) && getWeeklyEdition(team.slug)) {
     return { strategy: "composer", capability: "news-brief" };
   }
 
-  // Curated team notes are the product's differentiated content. Schedule facts
-  // can outrank a note on an opponent-name match, so use the best retrieved note
-  // instead of turning an analysis question into a date-and-time recital.
+  // A curated note is quoted only where the product itself promoted it. The
+  // template answers by quoting a note's first two sentences, which is right
+  // when the note was written for the question and wrong otherwise, and routing
+  // could not tell the difference: inferring the pairing from wording is what
+  // made unrelated questions return one identical answer. A promoted prompt
+  // needs no inferring, so the quote stays exact, instant, and free on the path
+  // a reader is most likely to click. Everything a fan types escalates.
   //
-  // The note has to be about what was asked. Retrieval returns a ranking, not a
-  // verdict: it will hand back its least-bad candidate for a question the
-  // corpus cannot answer at all. Routing on "the top hit happens to be a note"
-  // therefore made the best-ranked note a catch-all, and because the composer
-  // recites that note's first two sentences verbatim, unrelated questions came
-  // back word-for-word identical. "Tell me about special teams", "How is the
-  // secondary?" and "Who are the key playmakers?" were all answered with the
-  // early-downs note, cited and marked high confidence, for three questions
-  // whose only retrieval signal was a single incidental word.
+  // Two kinds, because config carries them differently. A Signal Board cue
+  // names its note outright. A suggested prompt does not, so it falls back to a
+  // note whose title is on the same subject — safe only because the question
+  // had to match a shipped prompt exactly to get here, the check free text
+  // cannot pass.
   const promotedNoteId = promotedNoteFor(team, question);
-  const answerableNote = hits.find(
-    (hit) =>
-      hit.chunk.document.sourceType === "team-note" &&
-      (hit.chunk.document.metadata?.noteId === promotedNoteId ||
-        noteAnswersQuestion(hit.chunk.document.title, question)),
-  );
+  const promotedNote = promotedNoteId
+    ? hits.find((hit) => hit.chunk.document.metadata?.noteId === promotedNoteId)
+    : isSuggestedPrompt(team, question)
+      ? hits.find(
+          (hit) =>
+            hit.chunk.document.sourceType === "team-note" &&
+            noteAnswersQuestion(hit.chunk.document.title, question),
+        )
+      : undefined;
 
-  if (answerableNote && !comparisonPattern.test(question)) {
+  if (promotedNote && !comparisonPattern.test(question)) {
     return { strategy: "composer", capability: "team-note-brief" };
   }
 
+  // What stays deterministic above is the facts: kickoff, schedule, poll
+  // position, source readiness. Those are lookups where the composer is exact
+  // and free and a model can be confidently wrong, which is the one failure
+  // this product cannot afford. Judgement goes to the model, with the retrieved
+  // documents and the acceptance gate behind it.
   return { strategy: "escalate" };
 }
 
@@ -127,20 +146,22 @@ export function promotedNoteFor(team: TeamConfig, question: string): string | un
   )?.noteId;
 }
 
-// Whether a curated note is on the subject of the question.
+function isSuggestedPrompt(team: TeamConfig, question: string): boolean {
+  const asked = normalizeWords(question).join(" ");
+
+  return team.suggestedPrompts.some(
+    (prompt) => normalizeWords(prompt).join(" ") === asked,
+  );
+}
+
+// Whether a curated note is on the subject of the question. Used only for a
+// prompt the product itself put in front of the reader, never for free text.
 //
-// Deliberately judged from the question and the note's own title rather than
-// from the retrieval score. Scores are not comparable across modes: lexical
-// scoring returns integers in the teens for a real match, while the hybrid path
-// fuses by reciprocal rank and returns ~0.016 for the same hit, so any absolute
-// floor would be right in one deployment and wrong in the other.
-//
-// Two signals, either sufficient. An adjacent title pair appearing in the
-// question is the strong one. A shared distinctive title word is the weaker
-// one, and it is needed: "Pressure with four" has no usable adjacent pair once
-// stopwords are removed, so the promoted prompt that asks about it would stop
-// working on the strict check alone.
-export function noteAnswersQuestion(title: string, question: string): boolean {
+// Judged from the note's own title rather than the retrieval score, because
+// scores are not comparable across modes: lexical scoring returns integers in
+// the teens for a real match, while the hybrid path fuses by reciprocal rank
+// and returns ~0.016 for the same hit.
+function noteAnswersQuestion(title: string, question: string): boolean {
   if (titleMatchesQuestion(title, question)) {
     return true;
   }

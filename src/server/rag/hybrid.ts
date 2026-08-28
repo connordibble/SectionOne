@@ -25,11 +25,25 @@ export async function retrieveHybrid(
   const lexical = retrieveSourceChunks(query, documents, limit * 2);
   const vector = await retrieveVectorHits(query, teamSlug, limit * 2, deps);
 
-  if (vector.length === 0) {
+  // Vector search reads the seeded database; `documents` is what the product
+  // actually publishes right now. Those two drift apart the moment a weekly
+  // package is replaced, because seeding upserts by document id and never
+  // deletes what a new package dropped. Without this filter the drift reaches
+  // the reader: after the August 27 refresh, chat was still citing "The line
+  // took shape on day one" from the superseded August 9 package, a story no
+  // longer in the briefing at all.
+  //
+  // Retrieval is an index over the corpus, not a second corpus. Anything the
+  // current package does not contain cannot be a source for an answer about
+  // it, however close its embedding sits.
+  const published = new Set(documents.map((document) => document.id));
+  const groundedVector = vector.filter((hit) => published.has(hit.chunk.document.id));
+
+  if (groundedVector.length === 0) {
     return lexical.slice(0, limit);
   }
 
-  return fuseByRrf([lexical, vector], limit);
+  return fuseByRrf([lexical, groundedVector], limit);
 }
 
 // Exported for unit testing; combine multiple ranked hit lists into one.
