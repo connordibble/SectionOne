@@ -110,6 +110,14 @@ project limit stops a catastrophic bill, `LLM_MONTHLY_BUDGET_USD` trips first
 and degrades to composer answers instead of provider errors, and this edge rule
 stops one enthusiastic visitor exhausting either.
 
+**This table is the intent, not the state.** As of 2026-08-28 the rules are not
+configured: twenty-one browser requests to `/api/chat` were limited correctly,
+by the origin, with `x-vercel-id` on the 429. An edge rule blocks before the
+origin, so that header is the check — it should be absent once the rules exist.
+Tracked in [mvp1-checklist.md](./mvp1-checklist.md) § Edge Criteria, which also
+records why the Browser Integrity Check already in front of the site is not a
+substitute for these.
+
 ## Web analytics
 
 `src/app/layout.tsx` mounts Vercel Web Analytics for every route. Before the
