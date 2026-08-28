@@ -4,7 +4,7 @@ import { isUuid, persistChatExchange } from "@/server/chat/persistence";
 import { maxMessageLength, type ChatHistoryMessage } from "@/server/chat/prompt";
 import { toPublicAnswer, type ChatStreamEvent } from "@/server/chat/types";
 import { withRouteErrors } from "@/server/observability/route";
-import { checkRateLimit, rateLimitResponse } from "@/server/http/rate-limit";
+import { checkRateLimit, rateLimitResponse, resolveChatRateLimit } from "@/server/http/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -15,22 +15,8 @@ type ChatRequest = {
   sessionId?: unknown;
 };
 
-// The endpoint that spends money, so it gets the tightest limit.
-//
-// Ten a minute is a question every six seconds, sustained. Nobody reading a
-// briefing does that, and the composer blocks submission while an answer is
-// streaming, so one session cannot reach it without deliberately trying. It
-// was twenty; the argument for the smaller number is simply that the gap
-// between real use and the ceiling was never doing any work.
-//
-// The one case to watch is a shared address — campus wifi or carrier NAT,
-// which is a plausible way to reach a college football audience — where the
-// per-IP budget is split across everyone behind it. A limit hit logs
-// `http/rate-limit:chat`, so that shows up as a pattern rather than a mystery.
-const chatRateLimit = { name: "chat", windowMs: 60_000, max: 10 };
-
 export const POST = withRouteErrors("api/chat", async (request: Request) => {
-  const limit = checkRateLimit(request, chatRateLimit);
+  const limit = checkRateLimit(request, resolveChatRateLimit());
 
   if (!limit.allowed) {
     return rateLimitResponse(limit);
