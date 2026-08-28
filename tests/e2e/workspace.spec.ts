@@ -453,6 +453,28 @@ test("chat API returns named sources", async ({ request }) => {
   expect(body.citations.length).toBeGreaterThanOrEqual(2);
 });
 
+test("chat does not cite unrelated coverage for an unreported named subject", async ({ request }) => {
+  const response = await request.post("/api/chat", {
+    data: {
+      teamSlug: "texas-football",
+      message: "What happened to TyAnthony Smith?",
+    },
+  });
+
+  expect(response.ok()).toBe(true);
+  const body = (await response.json()) as {
+    answer: string;
+    citations: unknown[];
+    freshness: { coverage: string; schedule: string };
+    mode: string;
+  };
+  expect(body.answer).toContain("not a verified report on TyAnthony Smith");
+  expect(body.citations).toEqual([]);
+  expect(body.mode).toBe("no-context");
+  expect(body.freshness.coverage).toBe("Coverage updated August 27, 2026.");
+  expect(body.freshness.schedule).toBe("Schedule updated July 1, 2026.");
+});
+
 test("chat API streams citations, answer text, and completion metadata", async ({ request }) => {
   const response = await request.post("/api/chat", {
     headers: { Accept: "text/event-stream" },

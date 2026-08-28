@@ -19,6 +19,31 @@ The strongest audience wedge is a passionate program with fragmented local cover
 national attention. Large programs remain useful portability tests, but the sharper promise is a
 dependable briefing for fans who otherwise have to assemble the week themselves.
 
+## Chat searches first; the edition still defines the product
+
+The committed weekly package cannot be the only way chat learns about a dismissal, injury update,
+or depth-chart change. Manual additions scale with teams and news volume, which violates the
+operator constraint. When OpenAI is configured, chat now sends every normal question through one
+OpenAI Responses web search. The committed edition is supplied as trusted supporting context; it is
+not treated as a freshness ceiling. Deterministic policy answers still bypass the model, and the
+local composer remains the fallback when search is unavailable, over budget, or rejected.
+
+The shipped boundary is deliberately narrow:
+
+- Each team's approved outlet domains live in typed config and are passed to the search tool. Chat
+  does not expose unrestricted browsing.
+- One search call is allowed per question and returned URLs are included as citations. The existing
+  URL admission, citation, voice, budget, and rate-limit gates still apply.
+- Prefer a recent official or local report. If the allowed sources do not establish the answer,
+  keep the no-context response instead of widening the search automatically. Current roster and
+  depth-chart questions fail closed rather than falling back to an older, tangential local note.
+- Search token usage and acceptance are recorded in the existing LLM ledger. Latency, source-domain,
+  unsupported-rate, and acceptance-failure dashboards remain follow-up instrumentation; search is
+  justified only if it closes real coverage gaps without making chat slower or less trustworthy.
+
+The server buffers each searched answer until URL admission and answer acceptance finish, so an
+unsafe draft never streams to the browser. A source-rights review remains required before revenue.
+
 ## The next proof is a repeatable Saturday habit
 
 Repository depth and first-visit polish do not establish product demand. The next operating test is

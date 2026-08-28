@@ -8,6 +8,13 @@ export type ChatCitation = {
 
 export type ChatAnswerMode = "grounded" | "guardrail" | "no-context";
 
+export type ChatFreshness = {
+  coverage: string;
+  schedule: string;
+  context?: string;
+  search?: string;
+};
+
 // Removed: `confidence`. It was derived from how many citations an answer
 // carried, which measures the corpus rather than the answer, so a reply saying
 // "there is no clear read on this yet" reported "high" for having two sources
@@ -21,7 +28,7 @@ export type ChatAnswer = {
   // Provenance of the corpus only — which providers backed the answer and when
   // they were captured. Operational messages do not belong here; they go in
   // `notice`, so freshness stays a statement about sources.
-  freshness: string;
+  freshness: ChatFreshness;
   // Operational context about how the answer was produced: a provider failure,
   // or an answer that fell back to the deterministic composer. Absent on the
   // normal path.

@@ -65,6 +65,207 @@ describe("answerQuestion", () => {
     }
   });
 
+  it("does not answer a named-subject question from unrelated evidence", async () => {
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(result.answer).toContain("not a verified report on TyAnthony Smith");
+    expect(result.citations).toEqual([]);
+  });
+
+  it("uses one approved-domain web search after local evidence misses a named subject", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
+      const request = JSON.parse(String(init?.body));
+
+      expect(request.max_tool_calls).toBe(1);
+      expect(request.tools[0].filters.allowed_domains).toContain("texaslonghorns.com");
+
+      return new Response(
+        JSON.stringify({
+          id: "resp_test",
+          object: "response",
+          created_at: 1,
+          status: "completed",
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text:
+            "TyAnthony Smith was dismissed from the football program in a personnel decision. 【1†source】",
+          output: [
+            {
+              id: "msg_test",
+              type: "message",
+              role: "assistant",
+              status: "completed",
+              content: [
+                {
+                  type: "output_text",
+                  text: "TyAnthony Smith was dismissed from the football program in a personnel decision. 【1†source】",
+                  annotations: [
+                    {
+                      type: "url_citation",
+                      title: "Texas announces roster change",
+                      url: "https://texaslonghorns.com/news/roster-change",
+                      start_index: 82,
+                      end_index: 92,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          usage: {
+            input_tokens: 30,
+            output_tokens: 20,
+            total_tokens: 50,
+            input_tokens_details: { cached_tokens: 0 },
+            output_tokens_details: { reasoning_tokens: 0 },
+          },
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result.mode).toBe("grounded");
+    expect(result.provider).toBe("openai-web-search");
+    expect(result.answer).toContain("[Texas announces roster change]");
+    expect(result.citations).toHaveLength(1);
+    expect(result.freshness.search).toContain("Live reporting checked");
+  });
+
+  it("keeps the no-context refusal when searched citations are outside the approved domains", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify({
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text: "A copied recap says he left the football program.",
+          output: [
+            {
+              type: "message",
+              content: [
+                {
+                  type: "output_text",
+                  text: "A copied recap says he left the football program.",
+                  annotations: [
+                    {
+                      type: "url_citation",
+                      title: "Copied recap",
+                      url: "https://example.com/recap",
+                      start_index: 0,
+                      end_index: 6,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(result.citations).toEqual([]);
+  });
+
+  it("keeps a named-subject question on the answer path when the evidence names it", async () => {
+    const result = await answerQuestion("What happened with Texas State?");
+
+    expect(result.mode).toBe("grounded");
+    expect(result.citations.length).toBeGreaterThan(0);
+  });
+
+  it("uses the bounded search path and fails closed when it is unavailable", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const requestedUrls: string[] = [];
+    const fetchMock = vi.fn(async (input: string | URL | Request) => {
+      requestedUrls.push(String(input));
+      return new Response(JSON.stringify({ error: { message: "normal provider unavailable" } }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened with Texas State?");
+
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(requestedUrls.some((url) => url.endsWith("/v1/responses"))).toBe(true);
+  });
+
+  it.each(["Who is the starting center?", "Is Connor Robertson the center?"])(
+    "answers current depth-chart questions from live reporting with only used citations: %s",
+    async (question) => {
+      vi.stubEnv("LLM_PROVIDER", "openai");
+      vi.stubEnv("OPENAI_API_KEY", "sk-test");
+      const fetchMock = vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            model: "gpt-5.6-luna-2026-07-30",
+            output_text:
+              "Connor Robertson is expected to start at center for Texas, giving the offensive line continuity after he closed 2025 as the starter. 【1†source】",
+            output: [
+              {
+                type: "message",
+                content: [
+                  {
+                    type: "output_text",
+                    text: "Connor Robertson is expected to start at center for Texas, giving the offensive line continuity after he closed 2025 as the starter. 【1†source】",
+                    annotations: [
+                      {
+                        type: "url_citation",
+                        title: "Robertson returns at center",
+                        url: "https://www.si.com/college/texas/football/robertson-center",
+                        start_index: 130,
+                        end_index: 140,
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      );
+      vi.stubGlobal("fetch", fetchMock);
+
+      const result = await answerQuestion(question);
+
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(result.provider).toBe("openai-web-search");
+      expect(result.answer).toContain("Connor Robertson is expected to start at center");
+      expect(result.citations).toEqual([
+        expect.objectContaining({ title: "Robertson returns at center" }),
+      ]);
+      expect(result.freshness.search).toContain("Live reporting checked");
+    },
+  );
+
+  it("reports editorial and schedule freshness separately", async () => {
+    const result = await answerQuestion("Give me the next-game briefing.");
+
+    expect(result.freshness).toEqual({
+      coverage: "Coverage updated August 27, 2026.",
+      schedule: "Schedule updated July 1, 2026.",
+      context: "No 2026 stats yet.",
+    });
+  });
+
   it("falls back to the deterministic composer when the live provider fails", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-broken");
@@ -83,7 +284,7 @@ describe("answerQuestion", () => {
     expect(result.provider).toBe("mock");
     expect(result.notice).toContain("live answer service was unavailable");
     // Operational messages stay out of freshness, which describes the corpus.
-    expect(result.freshness).not.toContain("anthropic");
+    expect(Object.values(result.freshness).join(" ")).not.toContain("anthropic");
   }, 30_000);
 
   it("falls back to the deterministic composer when the live provider returns an empty answer", async () => {

@@ -94,10 +94,30 @@ present and continues without it in CI. That flag needs Node 22.9, so the
   2026 preseason Coaches Poll were internally inconsistent across sources, so
   only the ordering — which is corroborated — was taken.
 
+## Chat accuracy checks
+
+- **The August 28 GPT-first evaluation exposed two separate failure classes.** The first unchanged
+  ten-question run across Texas and Utah State accepted 2 of 10 answers: the local composer crossed
+  subjects when its evidence was stale, while several correct searched drafts failed a football-
+  vocabulary check that was designed for editorial prose. Searching first, reserving that vocabulary
+  check for editorial answers, and rendering only cited sources raised the unchanged rerun to 8 of
+  10. Targeted follow-ups then fixed the Utah State Pac-12 Impact List and Ty’Anthony Smith dismissal
+  misses. Keep those cases in the regression suite; do not turn their answers into fixtures.
+- **Exact-name search is insufficient for roster changes.** Ty’Anthony Smith's dismissal was buried
+  in broader post-camp depth-chart coverage and competed with an older availability report plus an
+  undated official roster. A single hosted search action may cover both name variants and a broader
+  current-team depth-chart query. Newer dated reporting supersedes an undated roster page for status
+  questions.
+- **Live-reporting citations are not source-document rows.** Persist their title and URL with a null
+  `source_document_id`; using the synthetic `web:` citation ID as a foreign key drops the citation
+  write.
+
 ## Unverified
 
-- No live Postgres has been exercised. `llm_usage` and `team_requests` inserts
-  are covered by dependency-injected tests only.
+- The local Postgres seed predates the Utah State edition, so Utah State chat-session inserts fail
+  its team foreign key until `pnpm db:seed` is rerun. Texas chat sessions and the LLM ledger have now
+  been exercised against the live local database. Production still needs its own migrate-and-seed
+  check before launch.
 - CollegeFootballData's terms for commercial use have not been checked. That is
   a blocker before the product takes money, not before it launches.
 - The model provider's account-level ceiling is external to this repository;

@@ -20,6 +20,10 @@ export type VoiceEvaluationOptions = {
   // inline [tag] must match one of them. Omit to skip tag validation (useful
   // when evaluating a fragment with no retrieval behind it).
   validCitationTitles?: readonly string[];
+  // A sourced factual lookup may be only a name, position, or time. Keep the
+  // stronger vocabulary check for editorial prose while allowing that narrow
+  // answer class to opt out.
+  requireFootballLanguage?: boolean;
 };
 
 // Platform-wide floor. Teams extend these; they never shrink them.
@@ -51,6 +55,9 @@ const baselineFootballTerms = [
   "field position",
   "front seven",
   "offensive line",
+  "starting center",
+  "depth chart",
+  "starter",
   "pressure",
   "personnel",
   "success rate",
@@ -90,7 +97,7 @@ export function evaluateVoiceSample(
     }
   }
 
-  if (matchedFootballTerms.length === 0) {
+  if (options.requireFootballLanguage !== false && matchedFootballTerms.length === 0) {
     flags.push("missing football-specific language");
   }
 

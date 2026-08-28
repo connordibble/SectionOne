@@ -20,7 +20,10 @@ const answer: ChatAnswer = {
       sourceType: "schedule",
     },
   ],
-  freshness: "Sources: fixture.",
+  freshness: {
+    coverage: "Coverage updated August 27, 2026.",
+    schedule: "Schedule updated July 1, 2026.",
+  },
   mode: "grounded",
   provider: "mock",
   model: "deterministic-composer",
@@ -82,6 +85,32 @@ describe("persistChatExchange", () => {
     expect(result).toEqual({ sessionId: providedId });
     // no session insert, just messages + citations
     expect(inserted).toHaveLength(2);
+  });
+
+  it("stores live-reporting citations without a source-document foreign key", async () => {
+    const inserted: unknown[][] = [];
+    const liveAnswer: ChatAnswer = {
+      ...answer,
+      citations: [
+        {
+          id: "web:https://example.com/current-report",
+          title: "Current roster report",
+          sourceUrl: "https://example.com/current-report",
+          provider: "example.com",
+          sourceType: "live-reporting",
+        },
+      ],
+    };
+
+    await persistChatExchange({ question: "what changed?", answer: liveAnswer }, fakeDb(inserted));
+
+    expect(inserted[2]).toMatchObject([
+      {
+        sourceDocumentId: null,
+        quote: "Current roster report",
+        sourceUrl: "https://example.com/current-report",
+      },
+    ]);
   });
 
   it("swallows database failures", async () => {
