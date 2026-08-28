@@ -74,7 +74,9 @@ async function persistCitations(db: Db, sessionId: string, answer: ChatAnswer): 
     await db.insert(answerCitations).values(
       answer.citations.map((citation) => ({
         chatSessionId: sessionId,
-        sourceDocumentId: citation.id,
+        // Hosted-search citations are not source_documents rows. Preserve
+        // their title and URL without inventing a foreign-key target.
+        sourceDocumentId: citation.sourceType === "live-reporting" ? null : citation.id,
         quote: citation.title,
         sourceUrl: citation.sourceUrl,
       })),

@@ -1,12 +1,12 @@
 // @vitest-environment node
 import { describe, expect, it, vi } from "vitest";
 import { getTeamConfig } from "@/config/team";
-import { isAllowedDomain, searchNamedSubject } from "./web-search";
+import { isAllowedDomain, searchWithGrounding } from "./web-search";
 
 function responseWithCitations() {
   return {
     output_text:
-      "TyAnthony Smith was dismissed from the football program in a personnel decision. 【1†source】",
+      "TyAnthony Smith was dismissed from the football program in a personnel decision. [texaslonghorns.com] ((https://texaslonghorns.com/news/roster-change?utm_source=openai)) 【1†source】",
     model: "gpt-5.6-luna-2026-07-30",
     usage: { input_tokens: 30, output_tokens: 20 },
     output: [
@@ -20,7 +20,7 @@ function responseWithCitations() {
               {
                 type: "url_citation",
                 title: "Texas announces roster change",
-                url: "https://texaslonghorns.com/news/roster-change",
+                url: "https://texaslonghorns.com/news/roster-change?utm_source=openai",
                 start_index: 82,
                 end_index: 92,
               },
@@ -39,16 +39,21 @@ function responseWithCitations() {
   };
 }
 
-describe("searchNamedSubject", () => {
+describe("searchWithGrounding", () => {
   it("makes one domain-restricted search and admits only approved citation URLs", async () => {
     const team = getTeamConfig("texas-football");
     expect(team).toBeDefined();
-    const create = vi.fn(async () => responseWithCitations());
+    const create = vi.fn(async (params: unknown) => {
+      expect(params).toBeDefined();
+      return responseWithCitations();
+    });
 
-    const result = await searchNamedSubject(
+    const result = await searchWithGrounding(
       team!,
-      "What happened to TyAnthony Smith?",
-      "TyAnthony Smith",
+      {
+        system: "Use the supplied Texas edition.",
+        messages: [{ role: "user", content: "What happened to TyAnthony Smith?" }],
+      },
       {
         env: { OPENAI_MODEL: "gpt-5.6-luna" },
         client: { responses: { create } } as never,
@@ -58,6 +63,7 @@ describe("searchNamedSubject", () => {
     expect(create).toHaveBeenCalledTimes(1);
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
+        input: expect.stringContaining("current 2026 Texas football roster status"),
         max_tool_calls: 1,
         tool_choice: "required",
         tools: [
@@ -68,6 +74,10 @@ describe("searchNamedSubject", () => {
         ],
       }),
     );
+    expect((create.mock.calls[0][0] as { input: string }).input).toContain("Ty'Anthony Smith");
+    expect((create.mock.calls[0][0] as { input: string }).input).toContain(
+      "Texas football final 2026 depth chart roster changes",
+    );
     expect(result.citations).toEqual([
       expect.objectContaining({
         title: "Texas announces roster change",
@@ -76,6 +86,8 @@ describe("searchNamedSubject", () => {
     ]);
     expect(result.text).toContain("[Texas announces roster change]");
     expect(result.text).not.toContain("example.com");
+    expect(result.text).not.toContain("texaslonghorns.com]");
+    expect(result.text).not.toContain("https://");
     expect(result.text).not.toContain("【");
   });
 

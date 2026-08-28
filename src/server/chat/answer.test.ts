@@ -187,7 +187,7 @@ describe("answerQuestion", () => {
     expect(result.citations.length).toBeGreaterThan(0);
   });
 
-  it("does not search when local evidence already names the subject", async () => {
+  it("uses the bounded search path and fails closed when it is unavailable", async () => {
     vi.stubEnv("LLM_PROVIDER", "openai");
     vi.stubEnv("OPENAI_API_KEY", "sk-test");
     const requestedUrls: string[] = [];
@@ -202,10 +202,59 @@ describe("answerQuestion", () => {
 
     const result = await answerQuestion("What happened with Texas State?");
 
-    expect(result.mode).toBe("grounded");
-    expect(result.provider).toBe("mock");
-    expect(requestedUrls.some((url) => url.endsWith("/v1/responses"))).toBe(false);
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(requestedUrls.some((url) => url.endsWith("/v1/responses"))).toBe(true);
   });
+
+  it.each(["Who is the starting center?", "Is Connor Robertson the center?"])(
+    "answers current depth-chart questions from live reporting with only used citations: %s",
+    async (question) => {
+      vi.stubEnv("LLM_PROVIDER", "openai");
+      vi.stubEnv("OPENAI_API_KEY", "sk-test");
+      const fetchMock = vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            model: "gpt-5.6-luna-2026-07-30",
+            output_text:
+              "Connor Robertson is expected to start at center for Texas, giving the offensive line continuity after he closed 2025 as the starter. 【1†source】",
+            output: [
+              {
+                type: "message",
+                content: [
+                  {
+                    type: "output_text",
+                    text: "Connor Robertson is expected to start at center for Texas, giving the offensive line continuity after he closed 2025 as the starter. 【1†source】",
+                    annotations: [
+                      {
+                        type: "url_citation",
+                        title: "Robertson returns at center",
+                        url: "https://www.si.com/college/texas/football/robertson-center",
+                        start_index: 130,
+                        end_index: 140,
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      );
+      vi.stubGlobal("fetch", fetchMock);
+
+      const result = await answerQuestion(question);
+
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(result.provider).toBe("openai-web-search");
+      expect(result.answer).toContain("Connor Robertson is expected to start at center");
+      expect(result.citations).toEqual([
+        expect.objectContaining({ title: "Robertson returns at center" }),
+      ]);
+      expect(result.freshness.search).toContain("Live reporting checked");
+    },
+  );
 
   it("reports editorial and schedule freshness separately", async () => {
     const result = await answerQuestion("Give me the next-game briefing.");
