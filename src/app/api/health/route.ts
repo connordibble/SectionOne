@@ -88,9 +88,17 @@ export async function GET(request: Request) {
         ? {
             monthToDateUsd:
               spendMicroUsd === null ? null : microUsdToDecimalString(spendMicroUsd),
+            // `live-metered` is derived from configuration, which is a claim
+            // about intent rather than about the ledger. A reachable
+            // DATABASE_URL is not the same as a readable `llm_usage`, and the
+            // two come apart exactly when it matters: the read already
+            // happened above, so saying "recorded" after it returned null
+            // would report attribution the server just failed to obtain.
             attribution:
               mode === "live-metered"
-                ? "recorded"
+                ? spendMicroUsd === null
+                  ? "unavailable: DATABASE_URL is set but the spend ledger could not be read; the ceiling on the provider workspace still applies"
+                  : "recorded"
                 : mode === "live-unmetered"
                   ? "unavailable: no DATABASE_URL; spend ceiling is enforced on the Anthropic workspace"
                   : "not applicable: no live provider configured",

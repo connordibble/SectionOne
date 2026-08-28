@@ -8,11 +8,16 @@ export type ChatCitation = {
 
 export type ChatAnswerMode = "grounded" | "guardrail" | "no-context";
 
+// Removed: `confidence`. It was derived from how many citations an answer
+// carried, which measures the corpus rather than the answer, so a reply saying
+// "there is no clear read on this yet" reported "high" for having two sources
+// under it. Nothing rendered it — a test asserts the reader never sees the word
+// — so it was a wrong number with no reader, exported publicly where a consumer
+// could have trusted it. Freshness and `mode` carry the honest signals.
 export type ChatAnswer = {
   teamSlug: string;
   answer: string;
   citations: ChatCitation[];
-  confidence: "high" | "medium" | "low";
   // Provenance of the corpus only — which providers backed the answer and when
   // they were captured. Operational messages do not belong here; they go in
   // `notice`, so freshness stays a statement about sources.
@@ -45,7 +50,6 @@ export function toPublicAnswer(answer: ChatAnswer): PublicChatAnswer {
     teamSlug: answer.teamSlug,
     answer: answer.answer,
     citations: answer.citations,
-    confidence: answer.confidence,
     freshness: answer.freshness,
     notice: answer.notice,
     mode: answer.mode,

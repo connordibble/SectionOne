@@ -752,24 +752,6 @@
   margin: 0;
 }
 
-.confidenceMark {
-  display: inline-flex;
-  gap: var(--space-2xs);
-  align-items: center;
-  white-space: nowrap;
-}
-
-.confidenceMark > span {
-  width: var(--space-2xs);
-  height: var(--space-2xs);
-  border-radius: var(--radius-round);
-  background: var(--team-accent);
-}
-
-.confidenceMark strong {
-  color: var(--team-ink-subtle);
-}
-
 .answerNotice {
   color: var(--team-muted);
   font-size: var(--text-xs);

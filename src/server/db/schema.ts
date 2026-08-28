@@ -133,6 +133,9 @@ export const chatMessages = pgTable(
     content: text("content").notNull(),
     provider: text("provider"),
     model: text("model"),
+    // Kept as a column, no longer written. The value it held was derived from
+    // citation count rather than from certainty, so the history is not worth
+    // reading; dropping it is a migration that can wait for one that matters.
     confidence: text("confidence"),
     mode: text("mode"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

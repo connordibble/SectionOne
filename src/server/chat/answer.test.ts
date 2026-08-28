@@ -39,7 +39,6 @@ describe("answerQuestion", () => {
     expect(result.answer).toContain("Texas State");
     expect(result.answer).toContain("early downs");
     expect(result.citations.length).toBeGreaterThanOrEqual(2);
-    expect(result.confidence).toBe("high");
     expect(result.mode).toBe("grounded");
     expect(result.provider).toBe("mock");
     expect(evaluateVoiceSample(result.answer).passed).toBe(true);
@@ -48,7 +47,6 @@ describe("answerQuestion", () => {
   it("caveats rumor and injury questions without calling any provider", async () => {
     const result = await answerQuestion("I heard a message board injury rumor. Is it true?");
 
-    expect(result.confidence).toBe("low");
     expect(result.mode).toBe("guardrail");
     expect(result.answer).toContain("That is not confirmed");
     expect(result.answer).toContain("will not repeat injury");
@@ -83,7 +81,6 @@ describe("answerQuestion", () => {
     const result = await answerQuestion(escalatingQuestion);
 
     expect(result.provider).toBe("mock");
-    expect(result.confidence).toBe("low");
     expect(result.notice).toContain("live answer service was unavailable");
     // Operational messages stay out of freshness, which describes the corpus.
     expect(result.freshness).not.toContain("anthropic");
@@ -105,7 +102,6 @@ describe("answerQuestion", () => {
     const result = await answerQuestion(escalatingQuestion);
 
     expect(result.provider).toBe("mock");
-    expect(result.confidence).toBe("low");
     expect(result.notice).toContain("verified local read");
   }, 30_000);
 
@@ -187,7 +183,6 @@ describe("streamAnswerEvents", () => {
       throw new Error("expected a done event");
     }
     expect(done.answer.provider).toBe("mock");
-    expect(done.answer.confidence).toBe("low");
     expect(done.answer.notice).toContain("verified local read");
     expect(events.filter((event) => event.type === "delta")).not.toHaveLength(0);
   }, 30_000);

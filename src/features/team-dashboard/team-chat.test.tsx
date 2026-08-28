@@ -45,7 +45,6 @@ const answerEvents = [
           provider: "fixture",
         },
       ],
-      confidence: "high",
       freshness: "Schedule updated July 1, 2026.",
     },
   },
