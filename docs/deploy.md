@@ -100,12 +100,17 @@ Cloudflare → Security → WAF → Rate limiting rules:
 
 | Rule | Match | Limit | Action |
 | --- | --- | --- | --- |
-| chat | `http.request.uri.path eq "/api/chat"` | 20 / 1 min per IP | Block, 60s |
+| chat | `http.request.uri.path eq "/api/chat"` | 10 / 1 min per IP | Block, 60s |
 | requests | `http.request.uri.path eq "/api/team-requests"` | 10 / 1 min per IP | Managed challenge |
 | ingest | `http.request.uri.path eq "/api/ingest"` | 5 / 1 min per IP | Block, 60s |
 
-`/api/chat` is the one that spends money, so it gets the tightest real limit.
-There are now three layers, and each covers what the others cannot: the OpenAI
+Ten a minute on `/api/chat` is a question every six seconds, sustained, which
+no one reading a briefing produces. `/api/ingest` sits lower still because it
+returns a whole corpus and nothing about a normal visit calls it. The number to
+watch is a shared address — campus wifi, carrier NAT — where one budget covers
+everyone behind it.
+
+There are three layers, and each covers what the others cannot: the OpenAI
 project limit stops a catastrophic bill, `LLM_MONTHLY_BUDGET_USD` trips first
 and degrades to composer answers instead of provider errors, and this edge rule
 stops one enthusiastic visitor exhausting either.

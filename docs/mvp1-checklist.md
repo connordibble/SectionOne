@@ -36,13 +36,16 @@ dashboard, and the endpoint they protect is the one that spends money.
 - [ ] **The three rate-limiting rules from [deploy.md](./deploy.md) § Rate limiting are configured.**
       Cloudflare → Security → WAF → Rate limiting rules. The origin limiter in
       `src/server/http/rate-limit.ts` is deliberately not the control: it is per-instance, so on
-      serverless the real allowance is 20 × warm instances.
+      serverless the real allowance is 10 × warm instances.
 
 **Status: not configured as of 2026-08-28.** Twenty-one requests to `/api/chat` from a browser
-returned twenty 200s and then a 429 with `retry-after: 44` — the configured origin limit, working.
+returned twenty 200s and then a 429 with `retry-after: 44` — the origin limit of the day, working.
 But every response, the 429 included, carried an `x-vercel-id` header, so all twenty-one reached the
 origin. An edge rule blocks before that. Presence of `x-vercel-id` on the 429 is the tell; that is
 the check to repeat after configuring the rules, and the header should disappear.
+
+The origin limit has since dropped to ten a minute, so a repeat run should turn over at the
+eleventh request rather than the twenty-first.
 
 Two notes for whoever does it:
 
