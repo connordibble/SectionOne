@@ -98,3 +98,64 @@ test("carded surfaces keep all four edges at every width", async ({ page }) => {
 
   expect(problems, problems.join("\n")).toEqual([]);
 });
+
+// The stylesheet reconciliation moves shared foundations ahead of all state
+// and breakpoint rules. These contracts catch source-order regressions where
+// a grouped base selector silently starts winning over its individual media
+// rule (or the reverse) after those rules are folded together.
+test("edition composition keeps one owner at responsive breakpoints", async ({ page }) => {
+  const problems: string[] = [];
+
+  for (const width of [768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/teams/texas-football#schedule");
+    await expect(page.locator("main[data-view]")).toHaveAttribute("data-view", "schedule");
+
+    const scheduleReport = await page.evaluate(() => {
+      const strip = document.querySelector('[data-testid="game-strip-inner"]') as HTMLElement;
+      const rows = [...document.querySelectorAll("[class*=scheduleFull] [class*=scheduleRow]")];
+
+      return {
+        stripColumns: getComputedStyle(strip).gridTemplateColumns.trim().split(/\s+/).length,
+        rowAlignments: rows.map((row) => getComputedStyle(row).alignItems),
+      };
+    });
+
+    if (scheduleReport.stripColumns !== 3) {
+      problems.push(`${width}px: game strip has ${scheduleReport.stripColumns} columns, expected 3`);
+    }
+    scheduleReport.rowAlignments.forEach((alignment, index) => {
+      if (alignment !== "center") {
+        problems.push(`${width}px: schedule row ${index} aligns ${alignment}, expected center`);
+      }
+    });
+
+    await page.goto("/teams/texas-football");
+    await expect(page.locator("main[data-view]")).toHaveAttribute("data-view", "brief");
+    const briefReport = await page.evaluate(() => {
+      const lead = document.querySelector("[data-testid=kickoff-lead]") as HTMLElement;
+      const matterNumber = document.querySelector("[class*=matterNumber]") as HTMLElement;
+      const rankingFigure = document.querySelector("[class*=rankingFigure]") as HTMLElement;
+      const newsNumber = document.querySelector("[class*=newsNumber]") as HTMLElement;
+
+      return {
+        leadAlignment: getComputedStyle(lead).alignItems,
+        accentColors: [matterNumber, rankingFigure, newsNumber].map(
+          (element) => getComputedStyle(element).color,
+        ),
+      };
+    });
+
+    const expectedLeadAlignment = width >= SPLIT_AT ? "stretch" : "normal";
+    if (briefReport.leadAlignment !== expectedLeadAlignment) {
+      problems.push(
+        `${width}px: Brief stage aligns ${briefReport.leadAlignment}, expected ${expectedLeadAlignment}`,
+      );
+    }
+    if (new Set(briefReport.accentColors).size !== 1) {
+      problems.push(`${width}px: Brief display figures do not share the edition accent`);
+    }
+  }
+
+  expect(problems, problems.join("\n")).toEqual([]);
+});

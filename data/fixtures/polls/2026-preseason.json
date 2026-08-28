@@ -2,8 +2,41 @@
   "season": 2026,
   "week": 0,
   "weekLabel": "Preseason",
-  "capturedAt": "2026-08-09T16:00:00.000Z",
+  "capturedAt": "2026-08-27T21:00:00.000Z",
   "polls": [
+    {
+      "id": "ap",
+      "name": "AP Top 25",
+      "releasedAt": "2026-08-17T16:00:00.000Z",
+      "sourceUrl": "https://apnews.com/article/ap-top-25-preseason-poll-bd5dd1c058fab6047510f09e18b035f1",
+      "ranks": [
+        { "rank": 1, "team": "Ohio State" },
+        { "rank": 2, "team": "Oregon" },
+        { "rank": 3, "team": "Georgia" },
+        { "rank": 4, "team": "Notre Dame" },
+        { "rank": 5, "team": "Texas" },
+        { "rank": 6, "team": "Indiana" },
+        { "rank": 7, "team": "Miami" },
+        { "rank": 8, "team": "Texas A&M" },
+        { "rank": 9, "team": "Ole Miss" },
+        { "rank": 10, "team": "Oklahoma" },
+        { "rank": 11, "team": "LSU" },
+        { "rank": 12, "team": "Texas Tech" },
+        { "rank": 13, "team": "Alabama" },
+        { "rank": 14, "team": "BYU" },
+        { "rank": 14, "team": "USC" },
+        { "rank": 16, "team": "Michigan" },
+        { "rank": 17, "team": "Washington" },
+        { "rank": 18, "team": "Penn State" },
+        { "rank": 19, "team": "SMU" },
+        { "rank": 20, "team": "Tennessee" },
+        { "rank": 21, "team": "Utah" },
+        { "rank": 22, "team": "Iowa" },
+        { "rank": 23, "team": "Houston" },
+        { "rank": 24, "team": "Louisville" },
+        { "rank": 25, "team": "Missouri" }
+      ]
+    },
     {
       "id": "coaches",
       "name": "Coaches Poll",
@@ -38,12 +71,5 @@
       ]
     }
   ],
-  "pending": [
-    {
-      "id": "ap",
-      "name": "AP Top 25",
-      "expectedAt": "2026-08-17T16:00:00.000Z",
-      "expectedLabel": "August 17"
-    }
-  ]
+  "pending": []
 }

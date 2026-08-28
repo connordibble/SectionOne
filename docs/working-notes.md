@@ -19,6 +19,49 @@ and the suite cannot test anything but what it just built. The tell for the old
 failure mode, worth remembering: failures scattered across unrelated areas
 rather than clustered around what changed.
 
+### The layered stylesheet trap is fixed, but its failure mode is worth keeping
+
+`src/features/team-dashboard/team-workspace.module.css` used to contain the original rules followed
+by an appended redesign block. Any property the redesign block did not explicitly declare fell
+through to a pre-redesign rule — **including rules inside earlier media queries**, which then
+governed widths the redesign never intended to style.
+
+It has produced three visible layout bugs so far, none of which errored:
+
+- the Brief hero split into two columns from 40rem instead of 86rem, because the redesign block
+  never declared `grid-template-columns`, and the kickoff panel clipped its own countdown at the
+  widths in between;
+- the game object was vertically centred instead of filling its half, because the block never
+  declared `align-items`;
+- carded surfaces lost a single edge where an old `border-*: 0` was still in scope.
+
+The launch pass folded the layers together. Each selector now has one owner per context, base rules
+come before media and state queries, and reduced-motion rules come last so their overrides win. The
+responsive suite guards the hero, schedule, shared section styling, card edges, and overflow at the
+relevant breakpoints.
+
+The tell remains useful: a layout that is correct at most widths and wrong at a few, with nothing in
+the console. Declare layout properties explicitly when a component changes shape, even where the
+value looks like the default.
+
+### A client component was importing a server module for a date formatter
+
+`team-workspace.tsx` is `"use client"` and imported `formatNewsDate` from
+`server/sources/weekly.ts`. That pulled the whole module into the browser
+bundle — fixture JSON and the story grader — and stayed invisible because
+nothing in that chain touched a server-only API.
+
+Adding `reportDegradation` to `weekly.ts` turned it into a hard build failure:
+the reporter reaches `next/server`, which cannot be bundled for the client.
+Turbopack prints the full import trace, which is the fastest way to read this
+class of problem.
+
+The formatter now lives in `src/lib/news-date.ts` and `weekly.ts` re-exports it
+so server callers are unchanged. The rule worth keeping: a client component
+importing anything under `src/server/` is a latent bundling bug even when it
+builds — check what the module drags behind it, and prefer `import type` for
+shapes, which is erased.
+
 ### Fixture counts are asserted by number
 
 `route.test.ts` and `workspace.spec.ts` both assert an exact

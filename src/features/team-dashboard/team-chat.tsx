@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type RefObject } from "react";
 import { ArrowRight, ExternalLink, Loader2, RotateCcw } from "lucide-react";
 import { readSseStream } from "@/lib/sse";
 import styles from "./team-workspace.module.css";
+import { safeExternalHref } from "@/lib/safe-url";
 
 type ChatMode = "brief" | "matchup" | "schedule";
 
@@ -96,7 +97,40 @@ export function TeamChat({
     }
 
     setInput(draftRequest.value);
-    inputRef.current?.focus({ preventScroll: true });
+
+    const input = inputRef.current;
+
+    if (!input) {
+      return;
+    }
+
+    // "Ask about this" is a jump, not a focus change. The composer sits in a
+    // dock that is a sidebar on wide layouts and a band below the board on
+    // narrow ones, so the button is usually pressed while the composer is off
+    // screen — focus alone would leave the caret somewhere the fan cannot see.
+    //
+    // Focus is taken without the browser's own scroll so the whole control is
+    // moved to, not just the caret. Whether to move is decided here rather
+    // than with `block: "nearest"`, so an already-visible composer is left
+    // exactly where it is and an off-screen one arrives centred instead of
+    // wedged against the bottom edge, where a phone keyboard would cover it.
+    //
+    // The scroll is deliberately instant. `behavior: "smooth"` is not
+    // dependable — under automation it can no-op entirely, which would turn
+    // this into a focus change the fan never sees.
+    input.focus({ preventScroll: true });
+
+    const composer = input.closest("form");
+
+    if (!composer) {
+      return;
+    }
+
+    const box = composer.getBoundingClientRect();
+
+    if (box.top < 0 || box.bottom > window.innerHeight) {
+      composer.scrollIntoView({ block: "center" });
+    }
   }, [draftRequest]);
 
   // The empty composer is replaced by a threaded composer after the first
@@ -540,17 +574,17 @@ function CitationRow({ citation }: { citation: ChatCitation }) {
     </>
   );
 
-  if (!citation.sourceUrl) {
+  // A citation whose URL is not an http(s) link is shown as text rather than
+  // as a dead or dangerous link. Weekly items are already filtered at ingest;
+  // this covers every other document producer feeding `sourceUrl`.
+  const href = safeExternalHref(citation.sourceUrl);
+
+  if (!href) {
     return <div className={styles.citationRow}>{content}</div>;
   }
 
   return (
-    <a
-      className={styles.citationRow}
-      href={citation.sourceUrl}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <a className={styles.citationRow} href={href} rel="noopener noreferrer" target="_blank">
       {content}
     </a>
   );

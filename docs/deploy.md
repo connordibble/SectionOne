@@ -110,6 +110,26 @@ project limit stops a catastrophic bill, `LLM_MONTHLY_BUDGET_USD` trips first
 and degrades to composer answers instead of provider errors, and this edge rule
 stops one enthusiastic visitor exhausting either.
 
+## Web analytics
+
+`src/app/layout.tsx` mounts Vercel Web Analytics for every route. Before the
+first deployment containing that component, open Vercel → Project → Analytics
+and enable Web Analytics. The client then loads `/_vercel/insights/script.js`
+and sends page views through `/_vercel/insights/view`.
+
+Cloudflare may proxy those paths, but it must not cache, rewrite, challenge, or
+block `/_vercel/insights/*`. After deployment, verify the script request and one
+view request in the browser network panel, then confirm the visit appears in
+the Vercel dashboard. The useful launch baseline is pageviews, paths, referrers,
+and daily unique visitors; team paths provide the edition breakdown without a
+custom event.
+
+This is not a retention instrument. Vercel rotates its anonymous visitor
+identifier daily, so it cannot distinguish a reader returning next week from a
+new reader. Keep cross-day returning-reader and session/cohort measurement open
+in `docs/growth-and-monetization.md` rather than treating a daily unique count as
+evidence of habit.
+
 ## Verifying a deploy
 
 ```bash
@@ -118,11 +138,16 @@ curl -s  https://www.sectiononesports.com/api/health | jq '.ok, .llm.mode'
 curl -s -H "x-health-token: $HEALTH_TOKEN" \
      https://www.sectiononesports.com/api/health | jq '.llm.monthToDateUsd'
 curl -s  https://www.sectiononesports.com/robots.txt
+curl -sI https://www.sectiononesports.com/_vercel/insights/script.js
 ```
 
 Expect `llm.mode` to be `live-metered` with a key and a database,
 `live-unmetered` with a key and none, and `composer-only` with neither. The
 unauthenticated call must not contain `monthToDateUsd` at all.
+
+In a browser, also confirm each enabled edition has its own title,
+self-referencing canonical, matching `og:url`, 1200×630 social image, and one
+successful analytics view request.
 
 ## CI
 

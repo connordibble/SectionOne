@@ -430,16 +430,14 @@
   --edition-accent-strong: var(--edition-dark-accent-strong, var(--team-accent-strong));
 }
 
-/* A hairline of the edition's own colour, bled to the card edges. The page
-   stays house-coloured; this is a sample, not a takeover. */
-.editionCard::before {
-  content: "";
-  display: block;
-  height: var(--rule-fine);
-  margin: calc(var(--space-md) * -1) calc(var(--space-md) * -1) 0;
-  background: var(--edition-accent);
-}
-
+/* The edition's colour is carried by the countdown figure and the hover
+   border, not by a rule across the top. A bled hairline sits square against a
+   rounded corner and reads as a rendering artefact — the same reason the
+   compact schedule row dropped its inset bar — and it was the one thing
+   keeping this card from matching every other card in the app: hairline
+   border, card radius, surface ground, nothing else. The page still stays
+   house-coloured, and a fan can still see the edition is coloured for its
+   team. */
 .editionCard:hover {
   border-color: var(--edition-accent);
 }

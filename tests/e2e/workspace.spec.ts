@@ -38,6 +38,39 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
   await expect(lead.getByRole("heading", { level: 1 })).toContainText("Texas");
 });
 
+test("every edition renders its own canonical and social preview metadata", async ({ page }) => {
+  for (const edition of [
+    { slug: "texas-football", team: "Texas", opponent: "Texas State" },
+    { slug: "utah-state-football", team: "Utah State", opponent: "Idaho State" },
+  ]) {
+    const path = `/teams/${edition.slug}`;
+
+    await page.goto(path);
+
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      new RegExp(`${path}$`),
+    );
+    await expect(page).toHaveTitle(new RegExp(`${edition.team} (?:vs|at) ${edition.opponent}`));
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+      "content",
+      new RegExp(`${path}$`),
+    );
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      new RegExp(`/social/${edition.slug}\\.png$`),
+    );
+  }
+});
+
+test("mounts one production analytics client for the edition", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  const analytics = page.locator('script[src="/_vercel/insights/script.js"]');
+  await expect(analytics).toHaveCount(1);
+  await expect(analytics).toHaveAttribute("data-sdkn", /@vercel\/analytics\/next/);
+});
+
 test("coverage tabs are shareable and keyboard navigable", async ({ page }) => {
   await page.goto("/teams/texas-football#matchup");
 
@@ -142,6 +175,61 @@ test("reduced motion removes spatial interaction movement", async ({ page }) => 
   await expect(page.getByTestId("signal-board")).toBeVisible();
 });
 
+// The failure these guard against is the one docs/working-notes.md describes:
+// a layout that is correct at most widths and wrong at a few, with nothing in
+// the console. Each was found by measuring, not by looking.
+for (const width of [1024, 1280, 1440, 1920]) {
+  test(`the matchup keys stay readable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/teams/texas-football");
+    await page.getByRole("tab", { name: "Matchup" }).click();
+
+    // The key columns used to be `minmax(0, 1fr)` against a centre column with
+    // a hard floor, so they were the ones that gave: 23px at 1024px.
+    const widths = await page
+      .locator("[data-position]")
+      .evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().width));
+
+    expect(widths).toHaveLength(4);
+    for (const keyWidth of widths) {
+      expect(keyWidth, `key width at ${width}px`).toBeGreaterThan(160);
+    }
+  });
+
+  test(`the kickoff graphic fits its panel at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/teams/texas-football");
+
+    // The route SVG carried an intrinsic viewBox ratio that beat its own
+    // inset box, so it drew itself 798px tall inside a 384px panel and the
+    // panel showed a cropped band of the arc across the countdown.
+    const fit = await page.getByTestId("game-field-object").evaluate((panel) => {
+      const layer = panel.querySelector('[class*="fieldRouteLayer"]')!;
+
+      return {
+        panel: Math.round(panel.getBoundingClientRect().height),
+        route: Math.round(layer.getBoundingClientRect().height),
+      };
+    });
+
+    expect(fit.route, `route height at ${width}px`).toBeLessThanOrEqual(fit.panel);
+  });
+}
+
+// A bright rule under a sidebar separates nothing. `--team-ink` is near-white
+// in dark mode, so the stacked layout's bottom border read as a stray line.
+test("the schedule dock draws no bottom rule once it is a sidebar", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/teams/texas-football");
+  await page.getByRole("tab", { name: "Schedule" }).click();
+
+  const dock = page.getByTestId("team-chat-panel");
+  const box = await dock.boundingBox();
+  expect(box!.width).toBeLessThan(720);
+
+  await expect(dock).toHaveCSS("border-bottom-width", "0px");
+});
+
 for (const width of [1440, 768, 414, 375, 320]) {
   test(`all three views avoid horizontal overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
@@ -183,6 +271,51 @@ test("the Utah State edition renders its own schedule, notes, and accent", async
   expect(await accentOf()).not.toBe(aggieAccent);
 });
 
+// The switcher is painted, not rebuilt: the styling replaces the native arrow
+// and — where the browser supports it — the open list, but the control stays a
+// real <select> so keyboard, screen readers, and the mobile picker keep
+// working without a custom listbox to maintain.
+test("the team switcher is a styled native select, not a custom widget", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+
+  const switcher = page.getByLabel("Team");
+  await expect(switcher).toHaveJSProperty("tagName", "SELECT");
+  await expect(switcher.locator("option")).toHaveCount(2);
+
+  // The UA arrow is suppressed so ours is the only one drawn, and the border
+  // stays — DESIGN.md keeps control borders as the operable affordance.
+  const paint = await switcher.evaluate((node) => {
+    const style = getComputedStyle(node);
+
+    return {
+      appearance: style.appearance,
+      borderWidth: style.borderTopWidth,
+      chevrons: node.parentElement?.querySelectorAll("svg").length ?? 0,
+      whiteSpace: style.whiteSpace,
+    };
+  });
+
+  expect(paint.appearance).not.toBe("auto");
+  expect(paint.borderWidth).not.toBe("0px");
+  expect(paint.chevrons).toBe(1);
+  expect(paint.whiteSpace).toBe("nowrap");
+});
+
+test("the 320px masthead keeps the wordmark clear of the team switcher", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/teams/utah-state-football");
+
+  const wordmark = await page
+    .getByRole("link", { name: "Section One home" })
+    .first()
+    .boundingBox();
+  const switcher = await page.getByLabel("Team").boundingBox();
+
+  expect(wordmark).not.toBeNull();
+  expect(switcher).not.toBeNull();
+  expect(wordmark!.x + wordmark!.width).toBeLessThanOrEqual(switcher!.x);
+});
+
 test("the team switcher moves between editions", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
@@ -219,15 +352,19 @@ test("the field section reads an unranked team's schedule, not a national list",
   await expect(field.getByText(/2 of 12 opponents ranked/)).toBeVisible();
   await expect(field.getByText("at Washington")).toBeVisible();
   await expect(field.getByText("at Utah")).toBeVisible();
-  // A poll that has not been released is not a poll with nobody in it.
-  await expect(field.getByText(/AP Top 25 is out August 17/)).toBeVisible();
+  // The section says which poll it is quoting, because "unranked" is only a
+  // fact about one ballot.
+  await expect(field.getByText(/AP Top 25/)).toBeVisible();
+  // A poll that has not been released is not a poll with nobody in it — but
+  // once it is out, the section has to stop advertising it as pending.
+  await expect(field.getByText(/is out August/)).toHaveCount(0);
 });
 
 test("the field section leads with a ranked team's own number", async ({ page }) => {
   await page.goto("/teams/texas-football");
   const field = page.locator('[aria-labelledby="ranking-heading"]');
 
-  await expect(field.getByText(/No\.\s*4/).first()).toBeVisible();
+  await expect(field.getByText(/No\.\s*5/).first()).toBeVisible();
   await expect(field.getByText(/7 of 12 opponents ranked/)).toBeVisible();
   await expect(field.locator("li")).toHaveCount(5);
   await expect(field.getByText(/2 more ranked opponents/)).toBeVisible();
@@ -239,9 +376,9 @@ test("this week carries a headline, a takeaway, and the outlet behind it", async
 
   // Ranked by the rubric, not by the order the package was written: the
   // highest-impact story leads and the official announcements sink.
-  await expect(news.locator("li").first()).toContainText(/four offensive starters/i);
-  await expect(news.getByText(/Almost the whole offense turned over/)).toBeVisible();
-  await expect(news.getByText(/Deseret News/)).toBeVisible();
+  await expect(news.locator("li").first()).toContainText(/depth/i);
+  await expect(news.getByText(/deeper at every position/)).toBeVisible();
+  await expect(news.getByText(/Deseret News/).first()).toBeVisible();
 
   // No outlet owns the list. The first Texas package was three of five from
   // one national masthead, which is one desk's read of the week presented as
@@ -274,7 +411,7 @@ test("chat answers a poll question from the poll, not the schedule", async ({ re
   expect(body.answer).toContain("not ranked");
   // Retrieval ranks the twelve schedule rows above one poll entry, so this
   // used to come back as a schedule recital under a poll question.
-  expect(body.citations.map((citation) => citation.title)).toContain("Coaches Poll: Preseason");
+  expect(body.citations.map((citation) => citation.title)).toContain("AP Top 25: Preseason");
 });
 
 test("health and ingest APIs respond", async ({ request }) => {
@@ -393,6 +530,55 @@ test("the answer uses a reading column and a responsive source rail", async ({ p
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
   );
   expect(overflow).toBeLessThanOrEqual(1);
+});
+
+// "Ask about this" hands the fan a composer they can see. Focus alone used to
+// leave the caret in a dock far below the board, so the button appeared to do
+// nothing on the layout where the board and the composer are stacked.
+test("Ask about this brings an off-screen composer to the fan", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/teams/texas-football#matchup");
+  await page.evaluate(() => window.scrollTo(0, 0));
+
+  const composer = page.getByTestId("chat-composer");
+  await expect(composer).not.toBeInViewport();
+
+  await page.getByRole("button", { name: /Ask about this/ }).click();
+
+  await expect(composer).toBeInViewport({ ratio: 1 });
+  await expect(page.getByLabel("Ask Section One")).toBeFocused();
+  await expect(page.getByLabel("Ask Section One")).not.toHaveValue("");
+});
+
+// The other half of the rule: a composer already on screen must not be yanked
+// under the fan, which is what an unconditional scroll would do on the layout
+// where the dock is a visible sidebar.
+test("Ask about this does not move a composer that is already visible", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/teams/texas-football#matchup");
+
+  const composer = page.getByTestId("chat-composer");
+  await expect(composer).toBeInViewport({ ratio: 1 });
+
+  const before = await page.evaluate(() => window.scrollY);
+  await page.getByRole("button", { name: /Ask about this/ }).click();
+
+  await expect(page.getByLabel("Ask Section One")).toBeFocused();
+  expect(await page.evaluate(() => window.scrollY)).toBe(before);
+});
+
+// The composer sizes to its dock, not to the window. At 1440px the Matchup
+// dock is ~316px wide, and a viewport media query used to open the threaded
+// composer into three columns there and squeeze the field to ~136px.
+test("the composer keeps a usable field in a narrow dock", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/teams/texas-football#matchup");
+
+  const field = await page.getByLabel("Ask Section One").boundingBox();
+  expect(field!.width).toBeGreaterThan(200);
+
+  // The caption is ornament and gives up its room first; the field does not.
+  await expect(page.getByText("Follow up")).toBeHidden();
 });
 
 test("chat supports a sourced follow-up", async ({ page }) => {

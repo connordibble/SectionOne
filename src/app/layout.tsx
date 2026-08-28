@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { siteUrl } from "@/config/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,18 +17,6 @@ const bigShoulders = Big_Shoulders({
 
 const title = "Section One · College football";
 const description = "Your team. Your section. What to watch before kickoff, with sources.";
-
-// Absolute URLs for Open Graph and canonical links are built from this. Vercel
-// sets VERCEL_PROJECT_PRODUCTION_URL on every deployment, so previews resolve
-// to themselves instead of claiming to be production.
-export const siteUrl = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      // www is the canonical host: the apex 308s here, so a canonical tag
-      // pointing at the apex would name a URL that immediately redirects.
-      : "https://www.sectiononesports.com"),
-);
 
 // The name alone shares a search namespace with Section I Athletics, a New York
 // high-school association with 78 member schools. Naming the sport in the title
@@ -66,7 +56,10 @@ export default function RootLayout({
       lang="en"
       className={`${bigShoulders.variable} ${geistSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

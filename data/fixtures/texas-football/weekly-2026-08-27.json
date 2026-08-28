@@ -1,0 +1,58 @@
+{
+  "teamSlug": "texas-football",
+  "weekOf": "2026-08-27",
+  "publishedAt": "2026-08-27T21:00:00.000Z",
+  "summary": "Camp is closing. The quarterback is settled, the left tackle is not, and the defense left the second scrimmage with four takeaways.",
+  "items": [
+    {
+      "id": "manning-camp",
+      "headline": "Sarkisian is not worried about Arch Manning",
+      "tldr": "The offense turned it over four times in 120 scrimmage plays and Sarkisian still called it a great camp for Manning, pointing at his timing with Ryan Wingo, Cam Coleman and Emmett Mosley. The quarterback is not the open question here; the ten around him are.",
+      "outlet": "Horns247",
+      "tier": "local",
+      "url": "https://247sports.com/college/texas/article/steve-sarkisian-unconcerned-about-texas-football-qb-arch-manning-hes-had-a-great-camp-man--289163885/",
+      "publishedAt": "2026-08-24T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 4, "freshness": 5 }
+    },
+    {
+      "id": "hutson-eligible",
+      "headline": "The ruling that sidelined others does not reach Cole Hutson",
+      "tldr": "A federal appeals court froze the order letting 2022-class athletes return for a fifth year, but Hutson's came from his own settlement with the NCAA, so it holds. Texas keeps a lineman with 23 career starts at guard and center in the month its front is thinnest.",
+      "outlet": "KXAN",
+      "tier": "local",
+      "url": "https://www.kxan.com/sports-general/cole-hutson-remains-eligible-after-court-blocks-broader-fifth-year-ruling/",
+      "publishedAt": "2026-08-21T23:02:00.000Z",
+      "grade": { "impact": 5, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "second-scrimmage",
+      "headline": "The defense won the second scrimmage",
+      "tldr": "Four takeaways, one of them a Kosi Okpala pick-six, against an offense Sarkisian called too sloppy. Mosley caught two touchdowns anyway. If that split is real and not just August, early downs against Texas State will show it first.",
+      "outlet": "Sports Illustrated",
+      "tier": "national",
+      "url": "https://www.si.com/college/texas/football/the-good-and-not-so-good-from-texas-longhorns-second-scrimmage-fall-camp",
+      "publishedAt": "2026-08-22T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 4 }
+    },
+    {
+      "id": "goosby-knee",
+      "headline": "Goosby's knee is a bone bruise, with no return date announced",
+      "tldr": "ESPN reported the left tackle's injury as a bone bruise, and no timetable had been set. That keeps left tackle as Texas' clearest open question before Texas State.",
+      "outlet": "Sports Illustrated",
+      "tier": "national",
+      "url": "https://www.si.com/college/texas/football/texas-longhorns-avoid-disaster-after-trevor-goosby-injury-update",
+      "publishedAt": "2026-08-18T12:00:00.000Z",
+      "grade": { "impact": 5, "echo": 5, "freshness": 3 }
+    },
+    {
+      "id": "edge-depth",
+      "headline": "The edge rotation runs deeper than Colin Simmons",
+      "tldr": "Lance Jackson, Colton Vasek and five-star freshman Richard Wesley are all in the mix behind Simmons. If that depth holds, Texas can keep rotating without asking Simmons to carry every pass-rush snap into the fourth quarter.",
+      "outlet": "Hookem Headlines",
+      "tier": "local",
+      "url": "https://hookemheadlines.com/texas-longhorns-have-stacked-unfair-amount-of-talent-at-edge-and-it-isnt-just-colin-simmons",
+      "publishedAt": "2026-08-24T12:00:00.000Z",
+      "grade": { "impact": 3, "echo": 2, "freshness": 3 }
+    }
+  ]
+}

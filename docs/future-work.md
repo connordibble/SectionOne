@@ -63,6 +63,11 @@ before charging money or supporting the product with meaningful advertising. A b
 IP review should cover summaries, ingestion, trademarks, and reporter material before commercial
 scale. Independence and source links remain product requirements, not footer formalities.
 
+`docs/growth-and-monetization.md` carries the distribution, SEO, engine, and revenue plan downstream
+of this file, including the operator constraint that ranks above growth: reject any revenue or growth
+mechanism whose recurring work scales with readers and cannot be automated. That rule is what rules
+out subscriptions and direct sponsorship, and it is why advertising is the intended path.
+
 ## Keep the public artifact and production business separable
 
 The released MIT code cannot be made private retroactively. A public reference implementation is
@@ -86,19 +91,26 @@ Carry forward:
 - strong type, squared geometry, direct language, and source proximity;
 - typed team portability and independence from institutional marks.
 
-Push further:
+Delivered, and now governed by [DESIGN.md](../DESIGN.md) rather than by this brief — listed so the
+brief is not re-read as an open backlog:
 
-- make countdowns, rankings, schedules, field position, routes, and matchup relationships the main
-  graphic objects instead of reducing them to small labels;
-- give the Section One mark a clear, recurring role without turning every section into branded
-  wallpaper;
-- use one memorable composition per view, with secondary information quieter around it;
-- let desktop carry comparison and spatial context while mobile becomes a decisive reading sequence;
-- use motion only to explain a state change: a route resolves, a ranking moves, a view changes, or a
-  question opens its sources;
-- keep photography exceptional and editorially useful; do not fill rectangles with interchangeable
-  sports imagery;
-- reserve team color for identity, selection, and emphasis so it gains force when it appears.
+- countdowns, rankings, schedules, routes, and matchup relationships are the main graphic objects;
+- the Section One mark has a recurring role and is drawn rather than placed, so it recolours;
+- one memorable composition per view, with secondary information quieter around it;
+- desktop carries comparison and spatial context; mobile is a decisive reading sequence;
+- team colour is split into chrome and stage, so it has identity without flooding.
+
+Still open:
+
+- **Photography.** None has shipped. The standard stands: exceptional and editorially useful, never
+  interchangeable rectangles. There is no photo pipeline, rights process, or art direction yet, and
+  adding one is a real project rather than a visual tweak.
+- **Motion beyond a state change.** What ships today is a view settle, selection changes, a loading
+  mark, and the row marker. A richer reveal — the kind that makes a section feel authored rather
+  than laid out — has been discussed and deliberately not built. Pick one or two places it earns
+  its keep rather than scattering scroll animation.
+- **Whether any of this helps.** The redesign has not been in front of readers. See the evidence
+  gates above; a better-looking page is not evidence.
 
 Avoid generic bento dashboards, glowing AI objects, ornamental stat cards, fake broadcast chrome,
 ambient motion, and density copied unchanged from desktop to mobile.
@@ -111,36 +123,34 @@ The redesign decision is settled. The directions are not blended in equal measur
    utility, and the cleanest path from the working product to a professional sports briefing.
 2. **Field Geometry owns the signature interaction.** It defines Matchup and supplies the field and
    route language used selectively in the kickoff object.
-3. **Saturday Edition owns cadence.** It contributes the issue rail, folios, weekly reading sequence,
+3. **Saturday Edition owns cadence.** It contributes the issue bar, folios, weekly reading sequence,
    and the sense that each briefing is a current publication.
 
 The current implementation proves the structure with real Texas and Utah State editions, not one
 desktop beauty shot. Keep testing comprehension, scan time, source trust, question discovery,
 mobile reachability, and team portability as the content changes.
 
-## Reconcile the two stylesheet layers before shipping
+One correction the build produced, recorded because it was expensive to find: **Field Geometry is
+for Matchup and the kickoff object only.** Extending it to schedules and rankings was proposed and
+rejected — those are tables, and ruling them is what makes a signature tiring. The language earns
+its force by being rare.
 
-`team-workspace.module.css` is two stylesheets stacked: the original rules, then a redesign block
-appended at the end rather than replacing them. Any property the redesign block does not explicitly
-declare still falls through to a pre-redesign rule — including rules inside earlier media queries,
-which then govern widths the redesign never intended to style.
+## The stylesheet layers were reconciled for launch
 
-This has already produced one shipped-quality bug. The Brief hero split into two columns from 40rem
-up, because the redesign block never declared `grid-template-columns` and a legacy `min-width: 40rem`
-rule did. Nothing errored; the kickoff panel simply clipped its own countdown at a range of widths.
-It was found by eye, not by any test.
+The production redesign was originally appended below the old stylesheet. That allowed undeclared
+properties and legacy media queries to keep controlling the new composition. The launch pass folded
+those layers together so every selector has one owner in each context, base rules precede the
+responsive and state queries, and the legacy 60rem desktop rule now shares the 64rem boundary used
+by the design contract. The Brief stays stacked until its deliberate 86rem split.
 
-Before launch, reconcile the layers deliberately:
+The audit left no duplicate selector/context groups or duplicate declarations. The responsive suite
+now checks the Brief split, the Schedule row and strip alignment, the shared section colours, card
+edges, and horizontal overflow at the boundary widths. A 56-screen comparison covered both
+editions, both themes, and 320–1440px: 52 captures were pixel-identical to the pre-reconciliation
+render; the four 960px captures changed only at the normalized desktop boundary.
 
-- fold the redesign block into the base rules so each selector is declared once;
-- for every property the redesign relies on, confirm it is declared rather than inherited from a
-  legacy rule — layout properties inside media queries are the dangerous ones;
-- delete rules the redesign has fully superseded, rather than leaving them shadowed;
-- extend `tests/e2e/responsive.spec.ts`, which encodes the hero's breakpoint contract, to whatever
-  other layouts the audit shows are governed by fall-through.
-
-Do not treat "it looks right at my window size" as evidence. The failure mode of this bug class is
-that it is correct at most widths and broken at a few.
+Keep the lesson even though the gate is closed: "it looks right at my window size" is not evidence.
+This bug class is correct at most widths, broken at a few, and silent in the console.
 
 ## Near-term sequence
 

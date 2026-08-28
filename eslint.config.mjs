@@ -11,6 +11,9 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // Local agent worktrees can contain their own generated .next output.
+    // They are not part of this checkout's source or release surface.
+    ".claude/**",
     "next-env.d.ts",
   ]),
 ]);

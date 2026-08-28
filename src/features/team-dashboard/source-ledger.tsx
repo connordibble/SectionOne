@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import type { SourceState } from "@/config/team";
 import styles from "./team-workspace.module.css";
+import { safeExternalHref } from "@/lib/safe-url";
 
 type SourceLedgerProps = {
   capturedLabel?: string;
@@ -31,7 +32,8 @@ export function SourceLedger({
 
       <ol className={styles.sourceList}>
         {sources.map((source) => {
-          const href = source.id === "schedule" ? scheduleUrl : undefined;
+          const href =
+            source.id === "schedule" ? safeExternalHref(scheduleUrl) : undefined;
 
           return (
             <li key={source.id}>

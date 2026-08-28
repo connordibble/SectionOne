@@ -8,7 +8,7 @@ const utahState = teamConfigs["utah-state-football"];
 
 describe("getTeamRankingSummary", () => {
   it("reports a ranked team's own position", () => {
-    expect(getTeamRankingSummary(texas)?.teamRank).toBe(4);
+    expect(getTeamRankingSummary(texas)?.teamRank).toBe(5);
   });
 
   // Most of the country is unranked, and the section has to say so plainly
@@ -43,11 +43,11 @@ describe("getTeamRankingSummary", () => {
     );
   });
 
-  // A poll that has not been released is not a poll with no one in it.
+  // A poll that has not been released is not a poll with no one in it. Both
+  // preseason polls are out now, so the list is empty rather than absent — the
+  // shape still has to carry a promise the product can make again in-season.
   it("carries polls that have not been released yet", () => {
-    expect(getTeamRankingSummary(utahState)?.pending).toEqual([
-      expect.objectContaining({ name: "AP Top 25", expectedLabel: "August 17" }),
-    ]);
+    expect(getTeamRankingSummary(utahState)?.pending).toEqual([]);
   });
 });
 
@@ -56,7 +56,7 @@ describe("getRankingDocuments", () => {
     const [document] = getRankingDocuments(utahState);
 
     expect(document.body).toContain("Utah State is not ranked");
-    expect(document.body).toContain("No. 19 Washington");
+    expect(document.body).toContain("No. 17 Washington");
     expect(document.provider).toBe("press");
     expect(document.sourceType).toBe("ranking");
   });
