@@ -67,12 +67,19 @@ function buildSystemPrompt(team: TeamConfig, hits: RetrievalHit[]): string {
     `You are Section One, an independent fan intelligence analyst covering ${team.displayName}.`,
     `Persona: ${team.voice.posture}. Use football-native language such as ${preferredTerms}.`,
     `Never use these phrases: ${bannedPhrases}. No toxic rivalry bait, no betting certainty, no unsupported injury speculation.`,
-    // Injury questions reach the model now rather than being refused outright,
-    // so the line between reporting one and speculating about one has to be
-    // drawn here. Report the diagnosis and the named outlet; do not supply the
-    // timetable, severity, or availability the reporting withheld, which is the
-    // part a fan most wants and the part nobody has confirmed.
-    "On injuries: report only what a named outlet has reported, and attribute it. Do not estimate a return date, a severity, or whether a player will be available if the reporting does not state it — say that has not been announced. If no source covers an injury, say none has been reported rather than implying there is nothing to report.",
+    // Injuries and unconfirmed reporting reach the model now rather than being
+    // refused on sight, so the line has to be drawn here instead. voice.md asks
+    // for "what is known, what is inferred, and what still needs a source",
+    // which is three tiers; the gate that refused rumour wording collapsed the
+    // middle one, and the middle one is where a beat reporter lives for the few
+    // days before anything is announced.
+    //
+    // The distinction that matters is attribution, not certainty. Naming who
+    // reported something and saying it is not official is the opposite of
+    // laundering it. Inventing the timetable or the severity that the reporting
+    // withheld is the laundering, and that is the part a fan most wants.
+    "Sort every claim into one of three: confirmed, reported but not official, or not reported. State which. Confirmed means an official announcement — say it plainly. Reported but not official means a named outlet has it and nobody has announced it — say nothing is official, name who is reporting it, and keep the claim as narrow as the report. Not reported means no source here has it — say so, and do not repeat the claim back as though it carried weight.",
+    "Never supply a detail the reporting withheld. If a return date, a severity, or an availability has not been reported, say it has not been announced rather than estimating it.",
     `${team.sourcePolicy.disclaimer} Never imply official affiliation.`,
     // The second sentence used to say "say what the corpus is missing", and
     // the model did exactly that — fans were told about the corpus. Say what

@@ -33,19 +33,9 @@ import {
 // Keep the policy gate precise. Bare substring matches turned normal football
 // language such as "better" and "lock in" into betting refusals.
 //
-// This matches how a claim arrived, not what it is about. The policy everywhere
-// it is written down — story-selection.md, voice.md, and the system prompt — is
-// "no injury *speculation*", and the word this gate needs is the second one.
-// Matching `injur` refused the subject instead, so "Any concerning injuries
-// ahead of the season?" came back as a refusal while the Brief on the same page
-// published Goosby's bone bruise, sourced to ESPN. The product cannot report a
-// thing and then decline to discuss it.
-//
-// Injury questions now take the normal path, where the citation gate makes an
-// unsupported claim fail and `findUncoveredSubject` catches a player the
-// evidence never names. What still refuses is hearsay offered as evidence: a
-// rumour, a message board, something someone heard.
-const rumorPattern = /\b(?:rumou?r|message board|heard|leak(?:ed|s)?)\b/i;
+// Betting is the only subject refused on sight. Injuries and rumours used to be
+// matched here too, and both were the same mistake: gating the subject rather
+// than the sourcing. See the note at the guardrail below.
 const bettingPattern =
   /\b(?:bet(?:ting)?|wager(?:ing)?|odds?|moneyline|spread|parlay)\b|\b(?:guaranteed|sure)\s+lock\b|\block(?:ed)?\s+(?:pick|play|of the week)\b/i;
 
@@ -359,15 +349,25 @@ async function prepareAnswer(
     ingest.documents.filter((document) => document.provider === "official"),
   );
 
-  // Policy guardrails short-circuit before any provider call, so a rumour or
-  // betting probe never costs anything.
-  if (rumorPattern.test(question) || bettingPattern.test(question)) {
+  // Betting is the one category refused outright, and it short-circuits before
+  // any provider call so a betting probe never costs anything.
+  //
+  // Rumour wording no longer refuses. voice.md asks for "what is known, what is
+  // inferred, and what still needs a source" — three tiers — and contrasts
+  // labelling uncertainty plainly with laundering a rumour. Attributed but
+  // unofficial is the middle tier, and refusing on vocabulary collapsed it into
+  // the bottom one: a beat reporter is often right days before anything is
+  // announced, and "I heard Goosby is hurt" was refused while the same fact sat
+  // cited on the Brief. Sourcing decides now, not phrasing. With reporting
+  // behind it the answer names the outlet and says nothing is official; with
+  // nothing behind it the model says so and does not repeat the claim back.
+  if (bettingPattern.test(question)) {
     const anchor = officialCitations.length > 0 ? officialCitations : retrievedCitations;
     return {
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `That is not confirmed. Section One can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
+        answer: `Section One does not cover betting. It can check the published schedule and linked team pages for ${team.displayName}, and it will not put a number on a game.`,
         citations: anchor.slice(0, 1),
         freshness,
         mode: "guardrail",

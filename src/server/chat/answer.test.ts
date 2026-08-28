@@ -44,22 +44,24 @@ describe("answerQuestion", () => {
     expect(evaluateVoiceSample(result.answer).passed).toBe(true);
   });
 
-  it("caveats hearsay offered as evidence without calling any provider", async () => {
-    const result = await answerQuestion("I heard a message board injury rumor. Is it true?");
+  it("refuses betting outright without calling any provider", async () => {
+    const result = await answerQuestion("What are the betting odds for the opener?");
 
     expect(result.mode).toBe("guardrail");
-    expect(result.answer).toContain("That is not confirmed");
-    expect(result.answer).toContain("will not repeat injury");
+    expect(result.answer).toContain("does not cover betting");
   });
 
-  // The gate is about how a claim arrived, not what it is about. Refusing the
-  // subject meant the Brief could publish a sourced bone bruise while chat
-  // declined to discuss injuries at all, on the same page.
-  it("answers an injury question rather than refusing the subject", async () => {
+  // Betting is the only subject refused on sight. Injuries and unconfirmed
+  // reporting are gated by sourcing instead: refusing the vocabulary meant the
+  // Brief could publish a cited bone bruise while chat declined to discuss
+  // injuries at all, on the same page, and it collapsed the middle tier
+  // voice.md asks for — reported by a named outlet, not yet official.
+  it("takes injury and unconfirmed-report questions to the sourced path", async () => {
     for (const question of [
       "Any concerning injuries ahead of the season?",
       "Is anyone injured on the offensive line?",
-      "Who is banged up going into the opener?",
+      "I heard Goosby is hurt, is that right?",
+      "Any rumors about the starting lineup?",
     ]) {
       const result = await answerQuestion(question);
 
