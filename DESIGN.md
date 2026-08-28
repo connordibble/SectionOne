@@ -119,10 +119,15 @@ Home page rules:
 - Anchor targets clear the sticky masthead.
 - House colour comes from `houseTheme`, not from a team. Editions may ship in any hue; the home page
   does not follow them.
-- One exception, bounded to the edition card: the card may carry its own edition's accent on a
-  hairline rule and the countdown figure. Everything outside the card border stays house. A fan
+- One exception, bounded to the edition card: the card may carry its own edition's accent on the
+  countdown figure and its hover border. Everything outside the card border stays house. A fan
   should be able to see that editions are coloured for their team without the page changing colour
   when a new one ships.
+- **The edition card is a card like every other card**: hairline border, card radius, surface
+  ground, and nothing else. It used to wear a bled accent hairline along its top edge, which sat
+  square against the rounded corner and read as a rendering artefact — the same fault that removed
+  the compact schedule row's inset bar. The accent moved to the figure, which carries the colour
+  without adding a shape no other card has.
 - **The home page borrows the signature, not the stage.** It carries one piece of Field Geometry —
   a ruled field and a route that resolves into the Section One mark — drawn on paper in the page's
   own border and accent roles. It does not get a bold colour field; that is what would make it look
