@@ -12,6 +12,7 @@ export type ChatFreshness = {
   coverage: string;
   schedule: string;
   context?: string;
+  search?: string;
 };
 
 // Removed: `confidence`. It was derived from how many citations an answer

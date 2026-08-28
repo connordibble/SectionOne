@@ -5,6 +5,7 @@ import { chunkText, createMockLlmProvider } from "@/server/llm/mock";
 import { resolveLlmProvider } from "@/server/llm/registry";
 import type { ComposerCapability, LlmEnv, LlmProvider, LlmRequest } from "@/server/llm/types";
 import { recordLlmUsage } from "@/server/llm/usage";
+import { reportDegradation } from "@/server/observability/report";
 import { retrieveHybrid } from "@/server/rag/hybrid";
 import type { RetrievalHit } from "@/server/rag/retrieve";
 import { formatCaptureDate, getTeamSchedule } from "@/server/schedule/schedule";
@@ -20,6 +21,7 @@ import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
 import { promotedNoteFor, selectAnswerStrategy } from "./routing";
+import { searchNamedSubject } from "./web-search";
 import {
   toPublicAnswer,
   type ChatAnswer,
@@ -61,6 +63,10 @@ export async function answerQuestion(
     return prepared.answer;
   }
 
+  if (prepared.kind === "search") {
+    return produceSearchAnswer(prepared, options.env);
+  }
+
   return produceAnswer(prepared, options.env);
 }
 
@@ -75,6 +81,17 @@ export async function* streamAnswerEvents(
     yield { type: "citations", citations: prepared.answer.citations };
     yield { type: "delta", text: prepared.answer.answer };
     yield { type: "done", answer: prepared.answer };
+    return;
+  }
+  if (prepared.kind === "search") {
+    const answer = await produceSearchAnswer(prepared, options.env);
+    yield { type: "citations", citations: answer.citations };
+
+    for (const chunk of chunkText(answer.answer)) {
+      yield { type: "delta", text: chunk };
+    }
+
+    yield { type: "done", answer };
     return;
   }
 
@@ -225,9 +242,13 @@ async function generateAccepted(
 // protects the product's core claim — before it, a model could emit
 // "[Definitely Real Source]" and pass.
 function evaluateAnswer(prepared: PreparedGeneration, text: string) {
+  return evaluateGroundedText(prepared.team, prepared.citations, text);
+}
+
+function evaluateGroundedText(team: TeamConfig, citations: ChatCitation[], text: string) {
   return evaluateVoiceSample(text, {
-    contract: prepared.team.voice,
-    validCitationTitles: prepared.citations.map((citation) => citation.title),
+    contract: team.voice,
+    validCitationTitles: citations.map((citation) => citation.title),
   });
 }
 
@@ -244,7 +265,18 @@ type PreparedGeneration = {
   freshness: ChatFreshness;
 };
 
-type PreparedAnswer = { kind: "static"; answer: ChatAnswer } | PreparedGeneration;
+type PreparedSearch = {
+  kind: "search";
+  team: TeamConfig;
+  question: string;
+  subject: string;
+  fallback: ChatAnswer;
+};
+
+type PreparedAnswer =
+  | { kind: "static"; answer: ChatAnswer }
+  | PreparedSearch
+  | PreparedGeneration;
 
 async function prepareAnswer(
   question: string,
@@ -265,8 +297,8 @@ async function prepareAnswer(
     ingest.documents.filter((document) => document.provider === "official"),
   );
 
-  // Both guardrails short-circuit before any provider call, so a rumour probe
-  // or an unanswerable question never costs anything.
+  // Policy guardrails short-circuit before any provider call, so a rumour or
+  // betting probe never costs anything.
   if (rumorPattern.test(question) || bettingPattern.test(question)) {
     const anchor = officialCitations.length > 0 ? officialCitations : retrievedCitations;
     return {
@@ -286,17 +318,22 @@ async function prepareAnswer(
   const uncoveredSubject = findUncoveredSubject(question, hits);
 
   if (uncoveredSubject) {
+    const fallback: ChatAnswer = {
+      teamSlug: team.slug,
+      answer: `There is not a verified report on ${uncoveredSubject} in this edition yet. I cannot give you a sourced answer until the coverage here includes one.`,
+      citations: [],
+      freshness,
+      mode: "no-context",
+      provider: "policy",
+      model: "evidence-gate",
+    };
+
     return {
-      kind: "static",
-      answer: {
-        teamSlug: team.slug,
-        answer: `There is not a verified report on ${uncoveredSubject} in this edition yet. I cannot give you a sourced answer until the coverage here includes one.`,
-        citations: [],
-        freshness,
-        mode: "no-context",
-        provider: "policy",
-        model: "evidence-gate",
-      },
+      kind: "search",
+      team,
+      question,
+      subject: uncoveredSubject,
+      fallback,
     };
   }
 
@@ -351,6 +388,79 @@ async function prepareAnswer(
     citations,
     freshness,
   };
+}
+
+async function produceSearchAnswer(
+  prepared: PreparedSearch,
+  env: LlmEnv = process.env,
+): Promise<ChatAnswer> {
+  const resolved = resolveLlmProvider(env);
+
+  // Search is an OpenAI-only capability. A mock or Anthropic deployment keeps
+  // the evidence-gate refusal and does not make a second provider choice.
+  if (resolved.provider.name !== "openai") {
+    return prepared.fallback;
+  }
+
+  const budget = await checkBudget(env);
+
+  if (!budget.withinBudget) {
+    return { ...prepared.fallback, notice: budget.notice };
+  }
+
+  try {
+    const result = await searchNamedSubject(
+      prepared.team,
+      prepared.question,
+      prepared.subject,
+      { env },
+    );
+    const unsupported =
+      result.citations.length === 0 ||
+      result.text.toLowerCase().includes("no approved source establishes the answer") ||
+      !normalizeEvidenceText(result.text).includes(normalizeEvidenceText(prepared.subject));
+    const evaluation = unsupported
+      ? { passed: false }
+      : evaluateGroundedText(prepared.team, result.citations, result.text);
+
+    if (result.usage) {
+      await recordLlmUsage({
+        teamSlug: prepared.team.slug,
+        provider: "openai-web-search",
+        usage: result.usage,
+        accepted: evaluation.passed,
+      });
+    }
+
+    if (!evaluation.passed) {
+      return prepared.fallback;
+    }
+
+    return {
+      teamSlug: prepared.team.slug,
+      answer: result.text,
+      citations: result.citations,
+      freshness: {
+        ...prepared.fallback.freshness,
+        search: `Live reporting checked ${formatCaptureDate(new Date().toISOString())}.`,
+      },
+      mode: "grounded",
+      provider: "openai-web-search",
+      model: result.model,
+    };
+  } catch (error) {
+    reportDegradation(
+      `live reporting search failed: ${error instanceof Error ? error.message : String(error)}`,
+      {
+        scope: "chat/web-search",
+        fingerprint: "chat/web-search:request",
+      },
+    );
+    return {
+      ...prepared.fallback,
+      notice: "Live reporting was unavailable. This answer remains limited to the published edition.",
+    };
+  }
 }
 
 function finalizeAnswer(

@@ -43,7 +43,7 @@ by this repository.
 
    | Variable | Scope | Notes |
    | --- | --- | --- |
-   | `OPENAI_API_KEY` | Production | Also enables real embeddings, which the semantic cache tier needs. |
+   | `OPENAI_API_KEY` | Production | Enables real embeddings and the one-call, approved-domain live-reporting fallback for named subjects missing from the edition. |
    | `LLM_PROVIDER` | Production | `openai`. Auto-detection prefers Anthropic whenever its key is present, so without this the credits sit unused. |
    | `DATABASE_URL` | Production | Neon **pooled** string. Omit to run without a ledger, cache, or stored team requests. |
    | `LLM_MONTHLY_BUDGET_USD` | Production | Soft ceiling. Trips before the provider limit and degrades to composer answers. `off` to disable. |
@@ -55,6 +55,12 @@ by this repository.
 
    Do **not** set `LLM_PROVIDER` in Preview. Previews should stay on the
    composer so a pull request cannot spend money.
+
+   Live reporting search runs only when `LLM_PROVIDER=openai`, after local
+   evidence fails to name the subject. The Responses call is limited to one
+   hosted-tool invocation and the edition's `sourcePolicy.webSearchDomains`.
+   A missing, unsafe, off-domain, or rejected citation returns the normal
+   no-context answer; it never widens to the open web.
 
 3. **Point the domain.** Vercel → Domains → add `sectiononesports.com` and
    `www.sectiononesports.com`. Vercel issues the certificate.

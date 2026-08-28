@@ -48,6 +48,9 @@ const teamConfigSchema = z.object({
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
     trustedSourceLabels: z.array(z.string().min(1)),
+    // Live search is a last-mile gap closer, not open browsing. Domains live
+    // with the edition so adding a team requires an explicit editorial choice.
+    webSearchDomains: z.array(z.string().min(1)).min(1),
     protectedMarksGuidance: z.array(z.string().min(1)),
   }),
   voice: z.object({
@@ -128,6 +131,16 @@ export const teamConfigs = {
         "CollegeFootballData",
         "Official schedule links",
         "Verified game notes",
+      ],
+      webSearchDomains: [
+        "texaslonghorns.com",
+        "kxan.com",
+        "247sports.com",
+        "si.com",
+        "on3.com",
+        "burntorangenation.com",
+        "hookemheadlines.com",
+        "statesman.com",
       ],
       protectedMarksGuidance: [
         "Do not use official logos or mascot imagery.",
@@ -252,6 +265,12 @@ export const teamConfigs = {
         "CollegeFootballData",
         "Official schedule links",
         "Verified game notes",
+      ],
+      webSearchDomains: [
+        "utahstateaggies.com",
+        "deseret.com",
+        "cachevalleydaily.com",
+        "sltrib.com",
       ],
       protectedMarksGuidance: [
         "Do not use official logos or mascot imagery.",

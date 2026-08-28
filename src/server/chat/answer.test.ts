@@ -74,11 +74,137 @@ describe("answerQuestion", () => {
     expect(result.citations).toEqual([]);
   });
 
+  it("uses one approved-domain web search after local evidence misses a named subject", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
+      const request = JSON.parse(String(init?.body));
+
+      expect(request.max_tool_calls).toBe(1);
+      expect(request.tools[0].filters.allowed_domains).toContain("texaslonghorns.com");
+
+      return new Response(
+        JSON.stringify({
+          id: "resp_test",
+          object: "response",
+          created_at: 1,
+          status: "completed",
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text:
+            "TyAnthony Smith was dismissed from the football program in a personnel decision. 【1†source】",
+          output: [
+            {
+              id: "msg_test",
+              type: "message",
+              role: "assistant",
+              status: "completed",
+              content: [
+                {
+                  type: "output_text",
+                  text: "TyAnthony Smith was dismissed from the football program in a personnel decision. 【1†source】",
+                  annotations: [
+                    {
+                      type: "url_citation",
+                      title: "Texas announces roster change",
+                      url: "https://texaslonghorns.com/news/roster-change",
+                      start_index: 82,
+                      end_index: 92,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          usage: {
+            input_tokens: 30,
+            output_tokens: 20,
+            total_tokens: 50,
+            input_tokens_details: { cached_tokens: 0 },
+            output_tokens_details: { reasoning_tokens: 0 },
+          },
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result.mode).toBe("grounded");
+    expect(result.provider).toBe("openai-web-search");
+    expect(result.answer).toContain("[Texas announces roster change]");
+    expect(result.citations).toHaveLength(1);
+    expect(result.freshness.search).toContain("Live reporting checked");
+  });
+
+  it("keeps the no-context refusal when searched citations are outside the approved domains", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify({
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text: "A copied recap says he left the football program.",
+          output: [
+            {
+              type: "message",
+              content: [
+                {
+                  type: "output_text",
+                  text: "A copied recap says he left the football program.",
+                  annotations: [
+                    {
+                      type: "url_citation",
+                      title: "Copied recap",
+                      url: "https://example.com/recap",
+                      start_index: 0,
+                      end_index: 6,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(result.citations).toEqual([]);
+  });
+
   it("keeps a named-subject question on the answer path when the evidence names it", async () => {
     const result = await answerQuestion("What happened with Texas State?");
 
     expect(result.mode).toBe("grounded");
     expect(result.citations.length).toBeGreaterThan(0);
+  });
+
+  it("does not search when local evidence already names the subject", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const requestedUrls: string[] = [];
+    const fetchMock = vi.fn(async (input: string | URL | Request) => {
+      requestedUrls.push(String(input));
+      return new Response(JSON.stringify({ error: { message: "normal provider unavailable" } }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("What happened with Texas State?");
+
+    expect(result.mode).toBe("grounded");
+    expect(result.provider).toBe("mock");
+    expect(requestedUrls.some((url) => url.endsWith("/v1/responses"))).toBe(false);
   });
 
   it("reports editorial and schedule freshness separately", async () => {

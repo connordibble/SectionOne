@@ -19,27 +19,29 @@ The strongest audience wedge is a passionate program with fragmented local cover
 national attention. Large programs remain useful portability tests, but the sharper promise is a
 dependable briefing for fans who otherwise have to assemble the week themselves.
 
-## Live search should close a named gap, not replace the briefing
+## Live search closes a named gap; it does not replace the briefing
 
 The committed weekly package cannot be the only way chat learns about a dismissal, injury update,
 or depth-chart change. Manual additions scale with teams and news volume, which violates the
-operator constraint. The next retrieval phase should use OpenAI Responses web search only when the
-published evidence gate cannot find the person or subject a reader named.
+operator constraint. The chat fallback now uses OpenAI Responses web search only when the published
+evidence gate cannot find the person or subject a reader named.
 
-Keep that search bounded:
+The shipped boundary is deliberately narrow:
 
-- Put each team's approved outlet domains in typed config. Pass those domains to the search tool;
-  do not expose unrestricted browsing.
-- Allow one search call per unanswered question and include the returned source URLs. The existing
+- Each team's approved outlet domains live in typed config and are passed to the search tool. Chat
+  does not expose unrestricted browsing.
+- One search call is allowed per unanswered named-subject question and returned URLs are included as
+  citations. The existing
   URL admission, citation, voice, budget, and rate-limit gates still apply.
 - Prefer a recent official or local report. If the allowed sources do not establish the answer,
   keep the no-context response instead of widening the search automatically.
-- Record search latency, cost, source domains, unsupported rate, and acceptance failures. Search is
+- Search token usage and acceptance are recorded in the existing LLM ledger. Latency, source-domain,
+  unsupported-rate, and acceptance-failure dashboards remain follow-up instrumentation; search is
   justified only if it closes real coverage gaps without making chat slower or less trustworthy.
 
-This is not shipped. The current provider uses Chat Completions without a web-search tool. Moving
-the escalation path to Responses also requires streaming and citation parsing work, prompt-injection
-tests for retrieved pages, and a source-rights review before revenue.
+Normal escalation still uses Chat Completions. Only the named-gap fallback uses Responses, and the
+server buffers it until URL admission and answer acceptance finish, so an unsafe draft never streams
+to the browser. A source-rights review remains required before revenue.
 
 ## The next proof is a repeatable Saturday habit
 

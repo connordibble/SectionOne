@@ -37,6 +37,7 @@ type ChatFreshness = {
   coverage: string;
   schedule: string;
   context?: string;
+  search?: string;
 };
 
 type ChatMessage = {
@@ -536,6 +537,7 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
               <p>{message.freshness.coverage}</p>
               <p>{message.freshness.schedule}</p>
               {message.freshness.context ? <p>{message.freshness.context}</p> : null}
+              {message.freshness.search ? <p>{message.freshness.search}</p> : null}
             </div>
           ) : null}
           {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}
