@@ -33,12 +33,18 @@ export type ChatCitation = {
   provider: string;
 };
 
+type ChatFreshness = {
+  coverage: string;
+  schedule: string;
+  context?: string;
+};
+
 type ChatMessage = {
   id: number;
   role: "user" | "assistant";
   content: string;
   citations: ChatCitation[];
-  freshness?: string;
+  freshness?: ChatFreshness;
   notice?: string;
   streaming: boolean;
   error?: string;
@@ -223,7 +229,7 @@ export function TeamChat({
           const answer = JSON.parse(event.data) as {
             answer: string;
             citations: ChatCitation[];
-            freshness: string;
+            freshness: ChatFreshness;
             notice?: string;
             sessionId?: string;
           };
@@ -527,7 +533,9 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
         <footer className={styles.answerFooter}>
           {message.freshness ? (
             <div className={styles.answerMeta}>
-              <p>{message.freshness}</p>
+              <p>{message.freshness.coverage}</p>
+              <p>{message.freshness.schedule}</p>
+              {message.freshness.context ? <p>{message.freshness.context}</p> : null}
             </div>
           ) : null}
           {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}

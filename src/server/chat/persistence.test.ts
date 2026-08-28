@@ -20,7 +20,10 @@ const answer: ChatAnswer = {
       sourceType: "schedule",
     },
   ],
-  freshness: "Sources: fixture.",
+  freshness: {
+    coverage: "Coverage updated August 27, 2026.",
+    schedule: "Schedule updated July 1, 2026.",
+  },
   mode: "grounded",
   provider: "mock",
   model: "deterministic-composer",

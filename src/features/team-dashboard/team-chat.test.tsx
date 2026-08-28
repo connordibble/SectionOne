@@ -45,7 +45,10 @@ const answerEvents = [
           provider: "fixture",
         },
       ],
-      freshness: "Schedule updated July 1, 2026.",
+      freshness: {
+        coverage: "Coverage updated August 27, 2026.",
+        schedule: "Schedule updated July 1, 2026.",
+      },
     },
   },
 ];
@@ -92,6 +95,8 @@ describe("TeamChat", () => {
     expect(screen.getByText("1 source")).toBeInTheDocument();
     expect(screen.queryByText(/\[Texas football 2026 schedule\]/)).not.toBeInTheDocument();
     expect(screen.queryByText(/confidence/i)).not.toBeInTheDocument();
+    expect(screen.getByText("Coverage updated August 27, 2026.")).toBeInTheDocument();
+    expect(screen.getByText("Schedule updated July 1, 2026.")).toBeInTheDocument();
 
     const requestBody = JSON.parse(
       (fetchMock.mock.calls[0] as unknown as [string, { body: string }])[1].body,

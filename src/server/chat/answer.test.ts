@@ -65,6 +65,32 @@ describe("answerQuestion", () => {
     }
   });
 
+  it("does not answer a named-subject question from unrelated evidence", async () => {
+    const result = await answerQuestion("What happened to TyAnthony Smith?");
+
+    expect(result.mode).toBe("no-context");
+    expect(result.provider).toBe("policy");
+    expect(result.answer).toContain("not a verified report on TyAnthony Smith");
+    expect(result.citations).toEqual([]);
+  });
+
+  it("keeps a named-subject question on the answer path when the evidence names it", async () => {
+    const result = await answerQuestion("What happened with Texas State?");
+
+    expect(result.mode).toBe("grounded");
+    expect(result.citations.length).toBeGreaterThan(0);
+  });
+
+  it("reports editorial and schedule freshness separately", async () => {
+    const result = await answerQuestion("Give me the next-game briefing.");
+
+    expect(result.freshness).toEqual({
+      coverage: "Coverage updated August 27, 2026.",
+      schedule: "Schedule updated July 1, 2026.",
+      context: "No 2026 stats yet.",
+    });
+  });
+
   it("falls back to the deterministic composer when the live provider fails", async () => {
     vi.stubEnv("LLM_PROVIDER", "anthropic");
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-broken");
@@ -83,7 +109,7 @@ describe("answerQuestion", () => {
     expect(result.provider).toBe("mock");
     expect(result.notice).toContain("live answer service was unavailable");
     // Operational messages stay out of freshness, which describes the corpus.
-    expect(result.freshness).not.toContain("anthropic");
+    expect(Object.values(result.freshness).join(" ")).not.toContain("anthropic");
   }, 30_000);
 
   it("falls back to the deterministic composer when the live provider returns an empty answer", async () => {

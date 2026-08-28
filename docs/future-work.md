@@ -19,6 +19,28 @@ The strongest audience wedge is a passionate program with fragmented local cover
 national attention. Large programs remain useful portability tests, but the sharper promise is a
 dependable briefing for fans who otherwise have to assemble the week themselves.
 
+## Live search should close a named gap, not replace the briefing
+
+The committed weekly package cannot be the only way chat learns about a dismissal, injury update,
+or depth-chart change. Manual additions scale with teams and news volume, which violates the
+operator constraint. The next retrieval phase should use OpenAI Responses web search only when the
+published evidence gate cannot find the person or subject a reader named.
+
+Keep that search bounded:
+
+- Put each team's approved outlet domains in typed config. Pass those domains to the search tool;
+  do not expose unrestricted browsing.
+- Allow one search call per unanswered question and include the returned source URLs. The existing
+  URL admission, citation, voice, budget, and rate-limit gates still apply.
+- Prefer a recent official or local report. If the allowed sources do not establish the answer,
+  keep the no-context response instead of widening the search automatically.
+- Record search latency, cost, source domains, unsupported rate, and acceptance failures. Search is
+  justified only if it closes real coverage gaps without making chat slower or less trustworthy.
+
+This is not shipped. The current provider uses Chat Completions without a web-search tool. Moving
+the escalation path to Responses also requires streaming and citation parsing work, prompt-injection
+tests for retrieved pages, and a source-rights review before revenue.
+
 ## The next proof is a repeatable Saturday habit
 
 Repository depth and first-visit polish do not establish product demand. The next operating test is

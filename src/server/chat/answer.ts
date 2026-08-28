@@ -6,7 +6,9 @@ import { resolveLlmProvider } from "@/server/llm/registry";
 import type { ComposerCapability, LlmEnv, LlmProvider, LlmRequest } from "@/server/llm/types";
 import { recordLlmUsage } from "@/server/llm/usage";
 import { retrieveHybrid } from "@/server/rag/hybrid";
+import type { RetrievalHit } from "@/server/rag/retrieve";
 import { formatCaptureDate, getTeamSchedule } from "@/server/schedule/schedule";
+import { getWeeklyEdition } from "@/server/sources/weekly";
 import {
   buildChatRequest,
   buildRetryDirective,
@@ -18,7 +20,13 @@ import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
 import { promotedNoteFor, selectAnswerStrategy } from "./routing";
-import { toPublicAnswer, type ChatAnswer, type ChatCitation, type ChatStreamEvent } from "./types";
+import {
+  toPublicAnswer,
+  type ChatAnswer,
+  type ChatCitation,
+  type ChatFreshness,
+  type ChatStreamEvent,
+} from "./types";
 
 // Keep the policy gate precise. Bare substring matches turned normal football
 // language such as "better" and "lock in" into betting refusals.
@@ -26,6 +34,16 @@ const rumorPattern =
   /\b(?:rumou?r|message board|heard|leak(?:ed|s)?|injur(?:y|ies|ed|ing)?|out for season)\b/i;
 const bettingPattern =
   /\b(?:bet(?:ting)?|wager(?:ing)?|odds?|moneyline|spread|parlay)\b|\b(?:guaranteed|sure)\s+lock\b|\block(?:ed)?\s+(?:pick|play|of the week)\b/i;
+
+// These forms name one person or subject and ask for a factual status. If the
+// retrieved evidence never names that subject, a model has no basis for an
+// answer. The narrow grammar is deliberate: broad analysis questions such as
+// "what happened on early downs?" still belong on the normal retrieval path.
+const namedSubjectPatterns = [
+  /^\s*what happened (?:to|with)\s+(.+?)[?.!]*\s*$/i,
+  /^\s*(?:what(?:'s| is) the )?status (?:of|on|with)\s+(.+?)[?.!]*\s*$/i,
+  /^\s*where is\s+(.+?)[?.!]*\s*$/i,
+];
 
 export type AnswerOptions = {
   history?: ChatHistoryMessage[];
@@ -223,7 +241,7 @@ type PreparedGeneration = {
   question: string;
   request: LlmRequest;
   citations: ChatCitation[];
-  freshness: string;
+  freshness: ChatFreshness;
 };
 
 type PreparedAnswer = { kind: "static"; answer: ChatAnswer } | PreparedGeneration;
@@ -261,6 +279,23 @@ async function prepareAnswer(
         mode: "guardrail",
         provider: "policy",
         model: "guardrail",
+      },
+    };
+  }
+
+  const uncoveredSubject = findUncoveredSubject(question, hits);
+
+  if (uncoveredSubject) {
+    return {
+      kind: "static",
+      answer: {
+        teamSlug: team.slug,
+        answer: `There is not a verified report on ${uncoveredSubject} in this edition yet. I cannot give you a sourced answer until the coverage here includes one.`,
+        citations: [],
+        freshness,
+        mode: "no-context",
+        provider: "policy",
+        model: "evidence-gate",
       },
     };
   }
@@ -362,12 +397,50 @@ function createCitations(
   return [...seen.values()].slice(0, limit);
 }
 
-function createFreshness(teamSlug: string, warnings: string[]) {
+function createFreshness(teamSlug: string, warnings: string[]): ChatFreshness {
   const schedule = getTeamSchedule(teamSlug);
-  const checked = schedule
-    ? `Schedule updated ${formatCaptureDate(schedule.capturedAt)}.`
-    : "Schedule date unavailable.";
-  const coverageNote = warnings.length > 0 ? " No 2026 stats yet." : "";
+  const edition = getWeeklyEdition(teamSlug);
 
-  return `${checked}${coverageNote}`;
+  return {
+    coverage: edition
+      ? `Coverage updated ${formatCaptureDate(edition.publishedAt)}.`
+      : "Coverage date unavailable.",
+    schedule: schedule
+      ? `Schedule updated ${formatCaptureDate(schedule.capturedAt)}.`
+      : "Schedule date unavailable.",
+    ...(warnings.length > 0 ? { context: "No 2026 stats yet." } : {}),
+  };
+}
+
+function findUncoveredSubject(question: string, hits: RetrievalHit[]): string | undefined {
+  const subject = namedSubjectPatterns
+    .map((pattern) => question.match(pattern)?.[1]?.trim())
+    .find((candidate): candidate is string => Boolean(candidate));
+
+  if (!subject || subject.length > 80) {
+    return undefined;
+  }
+
+  const normalizedSubject = normalizeEvidenceText(subject).replace(/^the\s+/, "");
+
+  if (!normalizedSubject || normalizedSubject.split(" ").length > 6) {
+    return undefined;
+  }
+
+  const covered = hits.some((hit) =>
+    normalizeEvidenceText(`${hit.chunk.document.title} ${hit.chunk.content}`).includes(
+      normalizedSubject,
+    ),
+  );
+
+  return covered ? undefined : subject.replace(/[?.!]+$/, "");
+}
+
+function normalizeEvidenceText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
