@@ -43,7 +43,7 @@ by this repository.
 
    | Variable | Scope | Notes |
    | --- | --- | --- |
-   | `OPENAI_API_KEY` | Production | Enables real embeddings and the one-call, approved-domain live-reporting pass for chat. |
+   | `OPENAI_API_KEY` | Production | Enables real embeddings plus agent research and citation verification for chat. |
    | `LLM_PROVIDER` | Production | `openai`. Auto-detection prefers Anthropic whenever its key is present, so without this the credits sit unused. |
    | `DATABASE_URL` | Production | Neon **pooled** string. Omit to run without a ledger, cache, or stored team requests. |
    | `LLM_MONTHLY_BUDGET_USD` | Production | Soft ceiling. Trips before the provider limit and degrades to composer answers. `off` to disable. |
@@ -56,13 +56,14 @@ by this repository.
    Do **not** set `LLM_PROVIDER` in Preview. Previews should stay on the
    composer so a pull request cannot spend money.
 
-   Live reporting search runs for every normal question when
-   `LLM_PROVIDER=openai`. The Responses call is limited to one hosted-tool
-   invocation and the edition's `sourcePolicy.webSearchDomains`. The local
-   edition travels with the request as supporting evidence. A missing, unsafe,
-   off-domain, or rejected citation falls back to a deterministic local answer
-   where one exists, or to an honest no-context answer for current roster and
-   open-ended questions. It never widens to the open web.
+   Agent research runs for every normal question when `LLM_PROVIDER=openai`.
+   The first Responses turn may make up to four web searches, and a supported
+   draft receives a second fact-and-citation verification turn. The local
+   edition travels with the request as supporting evidence. Team-configured
+   domains are preferred sources, not an allowlist. A missing, unsafe, or
+   rejected citation falls back to a deterministic local answer where one
+   exists, or to a reader-facing no-context answer for current roster and
+   open-ended questions.
 
 3. **Point the domain.** Vercel → Domains → add `sectiononesports.com` and
    `www.sectiononesports.com`. Vercel issues the certificate.

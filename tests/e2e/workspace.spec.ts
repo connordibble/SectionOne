@@ -468,7 +468,7 @@ test("chat does not cite unrelated coverage for an unreported named subject", as
     freshness: { coverage: string; schedule: string };
     mode: string;
   };
-  expect(body.answer).toContain("not a verified report on TyAnthony Smith");
+  expect(body.answer).toContain("could not verify a reliable current report about TyAnthony Smith");
   expect(body.citations).toEqual([]);
   expect(body.mode).toBe("no-context");
   expect(body.freshness.coverage).toBe("Coverage updated August 27, 2026.");

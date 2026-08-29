@@ -103,11 +103,21 @@ present and continues without it in CI. That flag needs Node 22.9, so the
   check for editorial answers, and rendering only cited sources raised the unchanged rerun to 8 of
   10. Targeted follow-ups then fixed the Utah State Pac-12 Impact List and Ty’Anthony Smith dismissal
   misses. Keep those cases in the regression suite; do not turn their answers into fixtures.
+- **The allowlist and single-search cap cost more accuracy than they protected.** A broader agent
+  research pass still admits only safe cited URLs, but team-configured domains now guide rather than
+  restrict it. The agent may make four searches, retries once when its first pass is unsupported,
+  and verifies every supported draft against current web evidence before the answer is shown.
+- **The final agent-plus-verifier run scored 10 of 10 on the researched launch set.** It correctly
+  separated confirmed roles from projections and used directly supporting citations for Texas QB2,
+  Texas center, Ty’Anthony Smith, Texas left guard, projected carries leader, Utah State quarterback,
+  Utah State center, Brevin Hamblin's Bednarik résumé, the Pac-12 Impact List, and the Idaho State
+  opener. This is a regression set and a launch signal, not a representative accuracy benchmark.
 - **Exact-name search is insufficient for roster changes.** Ty’Anthony Smith's dismissal was buried
   in broader post-camp depth-chart coverage and competed with an older availability report plus an
   undated official roster. A single hosted search action may cover both name variants and a broader
   current-team depth-chart query. Newer dated reporting supersedes an undated roster page for status
-  questions.
+  questions. Role questions need exact-role, official-status, and final-depth-chart queries rather
+  than a generic team search.
 - **Live-reporting citations are not source-document rows.** Persist their title and URL with a null
   `source_document_id`; using the synthetic `web:` citation ID as a foreign key drops the citation
   write.
