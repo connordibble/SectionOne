@@ -563,9 +563,15 @@ test("Ask about this brings an off-screen composer to the fan", async ({ page })
   await page.evaluate(() => window.scrollTo(0, 0));
 
   const composer = page.getByTestId("chat-composer");
+  const cue = page.getByRole("button", { name: /Ask about this/ });
+
+  // Same reason as the test below: settle the page where the click will happen
+  // before asserting the precondition, so the harness's pre-click scroll cannot
+  // be mistaken for the product's.
+  await cue.scrollIntoViewIfNeeded();
   await expect(composer).not.toBeInViewport();
 
-  await page.getByRole("button", { name: /Ask about this/ }).click();
+  await cue.click();
 
   await expect(composer).toBeInViewport({ ratio: 1 });
   await expect(page.getByLabel("Ask Section One")).toBeFocused();
@@ -580,10 +586,19 @@ test("Ask about this does not move a composer that is already visible", async ({
   await page.goto("/teams/texas-football#matchup");
 
   const composer = page.getByTestId("chat-composer");
+  const cue = page.getByRole("button", { name: /Ask about this/ });
+
+  // Playwright scrolls a target into view before clicking it, so the baseline
+  // has to be taken from where the click will actually happen. Reading it at
+  // load instead made the harness's own scroll look like the app's: on a runner
+  // the cue sits below the fold at this size, Playwright moved the page 346px
+  // to reach it, and the test blamed that on the product. It passed locally
+  // only because the cue happened to be above the fold there.
+  await cue.scrollIntoViewIfNeeded();
   await expect(composer).toBeInViewport({ ratio: 1 });
 
   const before = await page.evaluate(() => window.scrollY);
-  await page.getByRole("button", { name: /Ask about this/ }).click();
+  await cue.click();
 
   await expect(page.getByLabel("Ask Section One")).toBeFocused();
   expect(await page.evaluate(() => window.scrollY)).toBe(before);
