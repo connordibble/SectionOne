@@ -23,26 +23,32 @@ dependable briefing for fans who otherwise have to assemble the week themselves.
 
 The committed weekly package cannot be the only way chat learns about a dismissal, injury update,
 or depth-chart change. Manual additions scale with teams and news volume, which violates the
-operator constraint. When OpenAI is configured, chat now sends every normal question through one
-OpenAI Responses web search. The committed edition is supplied as trusted supporting context; it is
-not treated as a freshness ceiling. Deterministic policy answers still bypass the model, and the
-local composer remains the fallback when search is unavailable, over budget, or rejected.
+operator constraint. When OpenAI is configured, a Responses research agent now handles every normal
+question. The committed edition is trusted supporting context, not a freshness ceiling or the limit
+of what the answer may know. Deterministic policy answers still bypass the model, and the local
+composer remains the fallback when research is unavailable, over budget, or rejected.
 
 The shipped boundary is deliberately narrow:
 
-- Each team's approved outlet domains live in typed config and are passed to the search tool. Chat
-  does not expose unrestricted browsing.
-- One search call is allowed per question and returned URLs are included as citations. The existing
-  URL admission, citation, voice, budget, and rate-limit gates still apply.
-- Prefer a recent official or local report. If the allowed sources do not establish the answer,
-  keep the no-context response instead of widening the search automatically. Current roster and
-  depth-chart questions fail closed rather than falling back to an older, tangential local note.
+- Each team's preferred outlets live in typed config and guide source discovery, but they are not
+  an allowlist. The agent may cite a stronger current source elsewhere on the web.
+- One research response may make up to four hosted searches. A supported draft then gets a second
+  agent pass that checks the fact, recency, confirmed-versus-projected wording, and direct support
+  from the displayed citations. An unsupported first pass gets one fresh research attempt.
+- Returned URLs still pass the safe-link, citation, voice, budget, and rate-limit gates. The answer
+  may use broader reporting; it may not invent a source or render a non-HTTP(S) URL.
+- Prefer a recent official or direct report. If research still does not establish the answer, keep
+  the no-context response. Current roster and depth-chart questions fail closed rather than falling
+  back to an older, tangential local note.
 - Search token usage and acceptance are recorded in the existing LLM ledger. Latency, source-domain,
   unsupported-rate, and acceptance-failure dashboards remain follow-up instrumentation; search is
   justified only if it closes real coverage gaps without making chat slower or less trustworthy.
 
-The server buffers each searched answer until URL admission and answer acceptance finish, so an
-unsafe draft never streams to the browser. A source-rights review remains required before revenue.
+The server buffers each researched answer until verification, URL admission, and answer acceptance
+finish, so an unsafe draft never streams to the browser. This adds latency deliberately: the final
+August 28 ten-question Texas and Utah State check scored 10 of 10 after the verifier was enabled,
+compared with 2 of 10 for the first local-first pass. That is a small launch check, not a general
+accuracy benchmark. A source-rights review remains required before revenue.
 
 ## The next proof is a repeatable Saturday habit
 

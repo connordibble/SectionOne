@@ -738,18 +738,18 @@
   margin-inline-start: var(--space-sm);
 }
 
+/* One quiet line, not a block. This was four stacked sentences behind a rule,
+   repeated under every answer, and the reader met all of it on the way to the
+   box they type into. The facts stay — they are a commitment, see the note in
+   team-chat.tsx — but they read as a byline now. No rule above it either: a
+   change of weight already separates it from the answer, and DESIGN.md spends
+   lines on not reaching for a hairline when spacing will do. */
 .answerMeta {
-  display: grid;
-  gap: var(--space-2xs);
-  padding-block-start: var(--space-xs);
-  border-block-start: var(--rule-hair) solid var(--team-border);
-  color: var(--team-muted);
-  font-size: var(--text-xs);
-  line-height: 1.5;
-}
-
-.answerMeta p {
   margin: 0;
+  color: var(--team-muted);
+  font-size: var(--text-2xs);
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 
 .answerNotice {
@@ -2829,12 +2829,6 @@
 
   .issueLine {
     grid-column: 1 / -1;
-  }
-
-  .answerMeta {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: var(--space-xs);
-    align-items: start;
   }
 
   .gameStripInner {

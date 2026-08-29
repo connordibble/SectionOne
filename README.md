@@ -66,7 +66,7 @@ and persists the team, 2026 schedule, and source documents.
 Generation sits behind one `LlmProvider` interface in `src/server/llm`.
 
 - `mock` is the deterministic local composer. It needs no key and provides the verified local read
-  if a live provider is unavailable or fails the sourcing gate.
+  if live research is unavailable or its answer fails verification.
 - `anthropic` uses `ANTHROPIC_API_KEY`; `ANTHROPIC_MODEL` overrides the configured default.
 - `openai` uses `OPENAI_API_KEY`; `OPENAI_MODEL` overrides the configured default.
 

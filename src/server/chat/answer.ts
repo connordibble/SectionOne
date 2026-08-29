@@ -21,7 +21,7 @@ import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
 import { promotedNoteFor, selectAnswerStrategy } from "./routing";
-import { searchWithGrounding } from "./web-search";
+import { searchWithGrounding, type WebSearchResult } from "./web-search";
 import {
   toPublicAnswer,
   type ChatAnswer,
@@ -32,8 +32,10 @@ import {
 
 // Keep the policy gate precise. Bare substring matches turned normal football
 // language such as "better" and "lock in" into betting refusals.
-const rumorPattern =
-  /\b(?:rumou?r|message board|heard|leak(?:ed|s)?|injur(?:y|ies|ed|ing)?|out for season)\b/i;
+//
+// Betting is the only subject refused on sight. Injuries and rumours used to be
+// matched here too, and both were the same mistake: gating the subject rather
+// than the sourcing. See the note at the guardrail below.
 const bettingPattern =
   /\b(?:bet(?:ting)?|wager(?:ing)?|odds?|moneyline|spread|parlay)\b|\b(?:guaranteed|sure)\s+lock\b|\block(?:ed)?\s+(?:pick|play|of the week)\b/i;
 
@@ -117,8 +119,8 @@ async function produceAnswer(
   const resolved = resolveLlmProvider(runtimeEnv);
   const provider = resolved.provider;
 
-  // Quality-first launch posture: OpenAI receives every normal question with
-  // the curated edition as context and one approved-domain search. The local
+  // Quality-first launch posture: OpenAI researches and verifies every normal
+  // question with the curated edition as supporting context. The local
   // composer is the fallback, not the primary chat experience.
   if (provider.name === "openai") {
     const budget = await checkBudget(runtimeEnv);
@@ -215,8 +217,8 @@ function searchedQuestionFallback(
   return {
     teamSlug: prepared.team.slug,
     answer: currentRosterQuestionPattern.test(prepared.question)
-      ? "There is not a verified current depth-chart answer in the approved reporting yet. I cannot identify a starter from older or indirect coverage."
-      : "There is not a verified answer in the approved reporting yet. I cannot substitute older or unrelated coverage.",
+      ? "I could not verify a current depth-chart answer from reliable reporting. The role may still be unsettled; try again shortly or ask about the latest depth chart."
+      : "I could not verify a reliable current answer. Try again shortly or narrow the question to a player, role, game, or report.",
     citations: [],
     freshness: prepared.freshness,
     notice,
@@ -275,8 +277,7 @@ async function generateAccepted(
 
   return {
     accepted: false,
-    notice:
-      "The live draft did not clear the sourcing gate. Section One used its verified local read instead.",
+    notice: "That answer could not be verified, so it was not shown.",
   };
 }
 
@@ -348,15 +349,25 @@ async function prepareAnswer(
     ingest.documents.filter((document) => document.provider === "official"),
   );
 
-  // Policy guardrails short-circuit before any provider call, so a rumour or
-  // betting probe never costs anything.
-  if (rumorPattern.test(question) || bettingPattern.test(question)) {
+  // Betting is the one category refused outright, and it short-circuits before
+  // any provider call so a betting probe never costs anything.
+  //
+  // Rumour wording no longer refuses. voice.md asks for "what is known, what is
+  // inferred, and what still needs a source" — three tiers — and contrasts
+  // labelling uncertainty plainly with laundering a rumour. Attributed but
+  // unofficial is the middle tier, and refusing on vocabulary collapsed it into
+  // the bottom one: a beat reporter is often right days before anything is
+  // announced, and "I heard Goosby is hurt" was refused while the same fact sat
+  // cited on the Brief. Sourcing decides now, not phrasing. With reporting
+  // behind it the answer names the outlet and says nothing is official; with
+  // nothing behind it the model says so and does not repeat the claim back.
+  if (bettingPattern.test(question)) {
     const anchor = officialCitations.length > 0 ? officialCitations : retrievedCitations;
     return {
       kind: "static",
       answer: {
         teamSlug: team.slug,
-        answer: `That is not confirmed. Section One can check the published schedule and linked team pages for ${team.displayName}, but it will not repeat injury, betting, or message-board claims without a named source.`,
+        answer: `Section One does not cover betting. It can check the published schedule and linked team pages for ${team.displayName}, and it will not put a number on a game.`,
         citations: anchor.slice(0, 1),
         freshness,
         mode: "guardrail",
@@ -371,7 +382,7 @@ async function prepareAnswer(
   if (uncoveredSubject) {
     const fallback: ChatAnswer = {
       teamSlug: team.slug,
-      answer: `There is not a verified report on ${uncoveredSubject} in this edition yet. I cannot give you a sourced answer until the coverage here includes one.`,
+      answer: `I could not verify a reliable current report about ${uncoveredSubject}. Try again shortly or include the player's team, position, or the report you saw.`,
       citations: [],
       freshness,
       mode: "no-context",
@@ -404,7 +415,7 @@ async function prepareAnswer(
       requiredAnswerTerms: [],
       fallback: {
         teamSlug: team.slug,
-        answer: `There is not enough here for a clean answer. Try the next game, the schedule, or what to watch on early downs for ${team.shortName}.`,
+        answer: `I could not verify a reliable current answer. Try again shortly or narrow the question to a player, role, game, or report about ${team.shortName}.`,
         citations: anchor.slice(0, 1),
         freshness,
         mode: "no-context",
@@ -502,67 +513,143 @@ async function generateSearchedAnswer(
   env: LlmEnv,
   requiredAnswerTerms: string[] = [],
 ): Promise<{ answer?: ChatAnswer; notice?: string }> {
-  try {
-    const result = await searchWithGrounding(prepared.team, prepared.request, { env });
-    const candidateCitations = dedupeCitations([...prepared.citations, ...result.citations]);
-    const usedCitations = limitDisplayedCitations(
-      selectReferencedCitations(candidateCitations, result.text),
-    );
-    const normalizedAnswer = normalizeEvidenceText(result.text);
-    const unsupported =
-      usedCitations.length === 0 ||
-      result.text.trimStart().toLowerCase().startsWith("no approved source establishes") ||
-      requiredAnswerTerms.some((term) => !answerIncludesTerm(normalizedAnswer, term));
-    const evaluation = unsupported
-      ? { passed: false, flags: ["unsupported searched answer"] }
-      : evaluateGroundedText(prepared.team, candidateCitations, result.text, false);
+  let lastFailure = "research did not produce a supported answer";
+
+  // One clean retry is worth the latency at launch. Search is non-deterministic,
+  // and the misses found in the live evaluation were usually resolved by a
+  // different exact query rather than by changing the answer policy.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    let result;
+
+    try {
+      result = await searchWithGrounding(prepared.team, prepared.request, {
+        env,
+        retryDirective:
+          attempt === 0
+            ? undefined
+            : "This is a second research pass because the first did not yield a citable answer. Change the query strategy: search the exact role, player, award, or game wording; check the newest dated report and the official team site; then answer from the strongest direct evidence rather than repeating the abstention.",
+      });
+    } catch (error) {
+      lastFailure = error instanceof Error ? error.message : String(error);
+      continue;
+    }
+
+    const assessment = assessSearchedAnswer(prepared, result, requiredAnswerTerms);
 
     if (result.usage) {
       await recordLlmUsage({
         teamSlug: prepared.team.slug,
         provider: "openai-web-search",
         usage: result.usage,
-        accepted: evaluation.passed,
+        accepted: assessment.passed,
       });
     }
 
-    if (!evaluation.passed) {
-      reportDegradation(
-        `live reporting answer rejected: ${evaluation.flags.join("; ")}; used citations: ${usedCitations.length}`,
-        {
-          scope: "chat/web-search",
-          fingerprint: "chat/web-search:acceptance",
-        },
-      );
+    if (assessment.passed) {
+      let finalResult = result;
+      let finalAssessment = assessment;
+
+      try {
+        const verified = await searchWithGrounding(prepared.team, prepared.request, {
+          env,
+          previousResponseId: result.responseId,
+          verificationDraft: {
+            text: result.text,
+            citations: assessment.usedCitations,
+          },
+        });
+        const verifiedAssessment = assessSearchedAnswer(
+          prepared,
+          verified,
+          requiredAnswerTerms,
+        );
+
+        if (verified.usage) {
+          await recordLlmUsage({
+            teamSlug: prepared.team.slug,
+            provider: "openai-web-search-verifier",
+            usage: verified.usage,
+            accepted: verifiedAssessment.passed,
+          });
+        }
+
+        if (verifiedAssessment.passed) {
+          finalResult = verified;
+          finalAssessment = verifiedAssessment;
+        } else {
+          reportDegradation(
+            `live reporting verifier rejected its revision: ${verifiedAssessment.flags.join("; ")}`,
+            {
+              scope: "chat/web-search",
+              fingerprint: "chat/web-search:verification",
+            },
+          );
+        }
+      } catch (error) {
+        reportDegradation(
+          `live reporting verification unavailable: ${error instanceof Error ? error.message : String(error)}`,
+          {
+            scope: "chat/web-search",
+            fingerprint: "chat/web-search:verification",
+          },
+        );
+      }
+
       return {
-        notice:
-          "The live draft did not clear the sourcing gate. Section One used its verified local read instead.",
+        answer: {
+          teamSlug: prepared.team.slug,
+          answer: keepDisplayedCitationTags(finalResult.text, finalAssessment.usedCitations),
+          citations: finalAssessment.usedCitations,
+          freshness: {
+            ...(prepared.freshness ?? prepared.fallback!.freshness),
+            search: `Live reporting checked ${formatCaptureDate(new Date().toISOString())}.`,
+          },
+          mode: "grounded",
+          provider: "openai-web-search",
+          model: finalResult.model,
+        },
       };
     }
 
-    return {
-      answer: {
-        teamSlug: prepared.team.slug,
-        answer: keepDisplayedCitationTags(result.text, usedCitations),
-        citations: usedCitations,
-        freshness: {
-          ...(prepared.freshness ?? prepared.fallback!.freshness),
-          search: `Live reporting checked ${formatCaptureDate(new Date().toISOString())}.`,
-        },
-        mode: "grounded",
-        provider: "openai-web-search",
-        model: result.model,
-      },
-    };
-  } catch (error) {
-    reportDegradation(
-      `live reporting search failed: ${error instanceof Error ? error.message : String(error)}`,
-      { scope: "chat/web-search", fingerprint: "chat/web-search:request" },
-    );
-    return {
-      notice: "Live reporting was unavailable. Section One used its verified local read instead.",
-    };
+    lastFailure = `${assessment.flags.join("; ")}; used citations: ${assessment.usedCitations.length}`;
   }
+
+  reportDegradation(`live reporting answer rejected after retry: ${lastFailure}`, {
+    scope: "chat/web-search",
+    fingerprint: "chat/web-search:acceptance",
+  });
+  return {};
+}
+
+type SearchAssessment = {
+  passed: boolean;
+  flags: string[];
+  usedCitations: ChatCitation[];
+};
+
+function assessSearchedAnswer(
+  prepared: SearchablePrepared,
+  result: WebSearchResult,
+  requiredAnswerTerms: string[],
+): SearchAssessment {
+  const candidateCitations = dedupeCitations([...prepared.citations, ...result.citations]);
+  const usedCitations = limitDisplayedCitations(
+    selectReferencedCitations(candidateCitations, result.text),
+  );
+  const normalizedAnswer = normalizeEvidenceText(result.text);
+  const supportFlags = [
+    ...(usedCitations.length === 0 ? ["no cited source"] : []),
+    ...(isUnsupportedResearchAnswer(result.text) ? ["agent abstained"] : []),
+    ...(requiredAnswerTerms.some((term) => !answerIncludesTerm(normalizedAnswer, term))
+      ? ["named subject missing from answer"]
+      : []),
+  ];
+  const evaluation =
+    supportFlags.length > 0
+      ? { passed: false, flags: supportFlags }
+      : evaluateGroundedText(prepared.team, candidateCitations, result.text, false);
+
+  return { ...evaluation, usedCitations };
 }
 
 function finalizeAnswer(
@@ -625,10 +712,19 @@ function limitDisplayedCitations(citations: ChatCitation[]): ChatCitation[] {
 }
 
 function answerIncludesTerm(normalizedAnswer: string, term: string): boolean {
-  const normalizedTerm = normalizeEvidenceText(term);
+  const compact = (value: string) =>
+    normalizeEvidenceText(value).replaceAll(/[^\p{L}\p{N}]/gu, "");
+  const normalizedTerm = compact(term);
   return (
-    normalizedAnswer.includes(normalizedTerm) ||
-    normalizedAnswer.replaceAll(" ", "").includes(normalizedTerm.replaceAll(" ", ""))
+    compact(normalizedAnswer).includes(normalizedTerm)
+  );
+}
+
+function isUnsupportedResearchAnswer(text: string): boolean {
+  const normalized = text.trimStart().toLowerCase();
+  return (
+    normalized.startsWith("no approved source establishes") ||
+    normalized.startsWith("current reporting does not establish")
   );
 }
 

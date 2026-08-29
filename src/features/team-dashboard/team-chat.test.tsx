@@ -92,11 +92,20 @@ describe("TeamChat", () => {
     expect(screen.getByRole("heading", { name: "Your signal" })).toBeInTheDocument();
     expect(screen.getByRole("complementary", { name: "Sources" })).toBeInTheDocument();
     expect(screen.getByText("1 question")).toBeInTheDocument();
+    // Once for the thread, not once per answer: per answer this ran to four
+    // lines in the matchup dock, which is the block that was taken out from
+    // between the answer and the composer.
+    expect(screen.getAllByText(/Written by Section One from the sources shown/)).toHaveLength(1);
     expect(screen.getByText("1 source")).toBeInTheDocument();
     expect(screen.queryByText(/\[Texas football 2026 schedule\]/)).not.toBeInTheDocument();
     expect(screen.queryByText(/confidence/i)).not.toBeInTheDocument();
-    expect(screen.getByText("Coverage updated August 27, 2026.")).toBeInTheDocument();
-    expect(screen.getByText("Schedule updated July 1, 2026.")).toBeInTheDocument();
+    // Both facts survive, on one line rather than stacked. Asserted on the
+    // single node so a future change back to a block of paragraphs fails here:
+    // the stack is what pushed the composer down the page.
+    const meta = screen.getByText(/Coverage updated August 27, 2026/);
+    expect(meta).toHaveTextContent(
+      "Coverage updated August 27, 2026 · Schedule updated July 1, 2026",
+    );
 
     const requestBody = JSON.parse(
       (fetchMock.mock.calls[0] as unknown as [string, { body: string }])[1].body,

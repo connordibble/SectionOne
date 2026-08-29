@@ -48,9 +48,10 @@ const teamConfigSchema = z.object({
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
     trustedSourceLabels: z.array(z.string().min(1)),
-    // Live search is a last-mile gap closer, not open browsing. Domains live
-    // with the edition so adding a team requires an explicit editorial choice.
-    webSearchDomains: z.array(z.string().min(1)).min(1),
+    // These outlets guide the research agent toward useful local coverage.
+    // They are preferences, not an allowlist: a stronger current source may
+    // sit elsewhere and can still be cited.
+    preferredWebSearchDomains: z.array(z.string().min(1)).min(1),
     protectedMarksGuidance: z.array(z.string().min(1)),
   }),
   voice: z.object({
@@ -132,7 +133,7 @@ export const teamConfigs = {
         "Official schedule links",
         "Verified game notes",
       ],
-      webSearchDomains: [
+      preferredWebSearchDomains: [
         "texaslonghorns.com",
         "kxan.com",
         "247sports.com",
@@ -266,7 +267,7 @@ export const teamConfigs = {
         "Official schedule links",
         "Verified game notes",
       ],
-      webSearchDomains: [
+      preferredWebSearchDomains: [
         "utahstateaggies.com",
         "deseret.com",
         "cachevalleydaily.com",

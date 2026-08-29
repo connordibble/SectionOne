@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, expect, it, vi } from "vitest";
 import { getTeamConfig } from "@/config/team";
-import { isAllowedDomain, searchWithGrounding } from "./web-search";
+import { searchWithGrounding } from "./web-search";
 
 function responseWithCitations() {
   return {
@@ -26,8 +26,15 @@ function responseWithCitations() {
               },
               {
                 type: "url_citation",
-                title: "Unapproved recap",
-                url: "https://example.com/copied-report",
+                title: "National roster report",
+                url: "https://www.espn.com/college-football/story/_/id/123/texas-roster-report",
+                start_index: 82,
+                end_index: 92,
+              },
+              {
+                type: "url_citation",
+                title: "Unsafe result",
+                url: "javascript:alert(1)",
                 start_index: 82,
                 end_index: 92,
               },
@@ -40,7 +47,7 @@ function responseWithCitations() {
 }
 
 describe("searchWithGrounding", () => {
-  it("makes one domain-restricted search and admits only approved citation URLs", async () => {
+  it("gives the agent multiple open-web searches and admits every safe citation it used", async () => {
     const team = getTeamConfig("texas-football");
     expect(team).toBeDefined();
     const create = vi.fn(async (params: unknown) => {
@@ -64,36 +71,78 @@ describe("searchWithGrounding", () => {
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
         input: expect.stringContaining("current 2026 Texas football roster status"),
-        max_tool_calls: 1,
+        max_tool_calls: 4,
+        reasoning: { effort: "medium" },
         tool_choice: "required",
         tools: [
           expect.objectContaining({
             type: "web_search",
-            filters: { allowed_domains: team!.sourcePolicy.webSearchDomains },
+            search_context_size: "high",
           }),
         ],
       }),
+    );
+    expect((create.mock.calls[0][0] as { tools: unknown[] }).tools[0]).not.toHaveProperty(
+      "filters",
     );
     expect((create.mock.calls[0][0] as { input: string }).input).toContain("Ty'Anthony Smith");
     expect((create.mock.calls[0][0] as { input: string }).input).toContain(
       "Texas football final 2026 depth chart roster changes",
     );
-    expect(result.citations).toEqual([
-      expect.objectContaining({
-        title: "Texas announces roster change",
-        sourceUrl: "https://texaslonghorns.com/news/roster-change",
-      }),
-    ]);
+    expect(result.citations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          title: "Texas announces roster change",
+          sourceUrl: "https://texaslonghorns.com/news/roster-change",
+        }),
+        expect.objectContaining({
+          title: "National roster report",
+          sourceUrl:
+            "https://www.espn.com/college-football/story/_/id/123/texas-roster-report",
+        }),
+      ]),
+    );
     expect(result.text).toContain("[Texas announces roster change]");
-    expect(result.text).not.toContain("example.com");
+    expect(result.text).toContain("[National roster report]");
+    expect(result.text).not.toContain("Unsafe result");
     expect(result.text).not.toContain("texaslonghorns.com]");
     expect(result.text).not.toContain("https://");
     expect(result.text).not.toContain("【");
   });
 
-  it("matches exact domains and subdomains without suffix confusion", () => {
-    expect(isAllowedDomain("https://www.kxan.com/sports/story", ["kxan.com"])).toBe(true);
-    expect(isAllowedDomain("https://kxan.com.evil.example/story", ["kxan.com"])).toBe(false);
-    expect(isAllowedDomain("javascript:alert(1)", ["kxan.com"])).toBe(false);
+  it("adds a conflict-resolution research plan to current role questions", async () => {
+    const team = getTeamConfig("texas-football");
+    const create = vi.fn(async (params: unknown) => {
+      expect(params).toBeDefined();
+      return responseWithCitations();
+    });
+
+    await searchWithGrounding(
+      team!,
+      {
+        system: "Use the supplied Texas edition.",
+        messages: [{ role: "user", content: "Who is the backup QB?" }],
+        grounding: {
+          teamName: "Texas",
+          teamDisplayName: "Texas football",
+          seasonYear: 2026,
+          upcomingGames: [],
+          sourceReadiness: [],
+          excerpts: [],
+          citationTitles: [],
+        },
+      },
+      {
+        env: { OPENAI_MODEL: "gpt-5.6-luna" },
+        client: { responses: { create } } as never,
+      },
+    );
+
+    const input = (create.mock.calls[0][0] as { input: string }).input;
+    expect(input).toContain("current role, workload, or depth-chart question");
+    expect(input).toContain(
+      'Depth-chart query: "Texas football final 2026 depth chart after fall camp"',
+    );
+    expect(input).toContain("prefer the newer role-specific report");
   });
 });

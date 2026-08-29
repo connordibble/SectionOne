@@ -296,6 +296,8 @@ export function TeamChat({
                       ? "Checking sources"
                       : "No sources"}
                 </span>
+                <span aria-hidden="true">·</span>
+                <span>{generatedAnswerNote}</span>
               </p>
             </div>
             <button
@@ -533,18 +535,41 @@ function AssistantMessage({ message }: { message: ChatMessage }) {
       {message.freshness || message.notice ? (
         <footer className={styles.answerFooter}>
           {message.freshness ? (
-            <div className={styles.answerMeta}>
-              <p>{message.freshness.coverage}</p>
-              <p>{message.freshness.schedule}</p>
-              {message.freshness.context ? <p>{message.freshness.context}</p> : null}
-              {message.freshness.search ? <p>{message.freshness.search}</p> : null}
-            </div>
+            <p className={styles.answerMeta}>{summarizeFreshness(message.freshness)}</p>
           ) : null}
           {message.notice ? <p className={styles.answerNotice}>{message.notice}</p> : null}
         </footer>
       ) : null}
     </section>
   );
+}
+
+// Four sentences of provenance, stacked, sat between the answer and the box a
+// reader types into — the same four on every answer, pushing the composer down
+// the page. They are still here because they are a commitment rather than
+// decoration: LEGAL_NOTES.md requires freshness language alongside schedule and
+// game context, and docs/voice.md asks for it "as part of the product voice,
+// not as legal garnish". A stack of machine-written lines was the garnish
+// reading. One quiet line carries the same facts and reads like a byline.
+//
+// Trailing periods are trimmed because each field is written as a standalone
+// sentence on the server, where it may also be read on its own.
+// Said once for the thread, not once per answer. Per answer it was honest and
+// it was also four lines in the matchup dock, which is the block we had just
+// taken out from between the answer and the composer; a reader does not need
+// telling on every reply.
+//
+// Deliberately not "as an AI", which every team config bans outright, and not
+// an apology. The admission worth making is that a machine wrote this from the
+// sources shown and a reader can go check them, which is the product's own
+// claim rather than a legal notice bolted onto it.
+const generatedAnswerNote = "Written by Section One from the sources shown";
+
+function summarizeFreshness(freshness: ChatFreshness): string {
+  return [freshness.search, freshness.coverage, freshness.schedule, freshness.context]
+    .filter((part): part is string => Boolean(part))
+    .map((part) => part.trim().replace(/\.$/, ""))
+    .join(" · ");
 }
 
 function CitationList({

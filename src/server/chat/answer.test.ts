@@ -44,12 +44,29 @@ describe("answerQuestion", () => {
     expect(evaluateVoiceSample(result.answer).passed).toBe(true);
   });
 
-  it("caveats rumor and injury questions without calling any provider", async () => {
-    const result = await answerQuestion("I heard a message board injury rumor. Is it true?");
+  it("refuses betting outright without calling any provider", async () => {
+    const result = await answerQuestion("What are the betting odds for the opener?");
 
     expect(result.mode).toBe("guardrail");
-    expect(result.answer).toContain("That is not confirmed");
-    expect(result.answer).toContain("will not repeat injury");
+    expect(result.answer).toContain("does not cover betting");
+  });
+
+  // Betting is the only subject refused on sight. Injuries and unconfirmed
+  // reporting are gated by sourcing instead: refusing the vocabulary meant the
+  // Brief could publish a cited bone bruise while chat declined to discuss
+  // injuries at all, on the same page, and it collapsed the middle tier
+  // voice.md asks for — reported by a named outlet, not yet official.
+  it("takes injury and unconfirmed-report questions to the sourced path", async () => {
+    for (const question of [
+      "Any concerning injuries ahead of the season?",
+      "Is anyone injured on the offensive line?",
+      "I heard Goosby is hurt, is that right?",
+      "Any rumors about the starting lineup?",
+    ]) {
+      const result = await answerQuestion(question);
+
+      expect(result.mode, question).not.toBe("guardrail");
+    }
   });
 
   it("does not mistake ordinary football language for a betting claim", async () => {
@@ -70,18 +87,19 @@ describe("answerQuestion", () => {
 
     expect(result.mode).toBe("no-context");
     expect(result.provider).toBe("policy");
-    expect(result.answer).toContain("not a verified report on TyAnthony Smith");
+    expect(result.answer).toContain("could not verify a reliable current report about TyAnthony Smith");
     expect(result.citations).toEqual([]);
   });
 
-  it("uses one approved-domain web search after local evidence misses a named subject", async () => {
+  it("researches and verifies a named subject after local evidence misses", async () => {
     vi.stubEnv("LLM_PROVIDER", "openai");
     vi.stubEnv("OPENAI_API_KEY", "sk-test");
     const fetchMock = vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
       const request = JSON.parse(String(init?.body));
 
-      expect(request.max_tool_calls).toBe(1);
-      expect(request.tools[0].filters.allowed_domains).toContain("texaslonghorns.com");
+      expect(request.max_tool_calls).toBe(4);
+      expect(request.tools[0].search_context_size).toBe("high");
+      expect(request.tools[0].filters).toBeUndefined();
 
       return new Response(
         JSON.stringify({
@@ -130,7 +148,10 @@ describe("answerQuestion", () => {
 
     const result = await answerQuestion("What happened to TyAnthony Smith?");
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1]?.body)).previous_response_id).toBe(
+      "resp_test",
+    );
     expect(result.mode).toBe("grounded");
     expect(result.provider).toBe("openai-web-search");
     expect(result.answer).toContain("[Texas announces roster change]");
@@ -138,26 +159,26 @@ describe("answerQuestion", () => {
     expect(result.freshness.search).toContain("Live reporting checked");
   });
 
-  it("keeps the no-context refusal when searched citations are outside the approved domains", async () => {
+  it("accepts a safe source outside the edition's preferred outlets", async () => {
     vi.stubEnv("LLM_PROVIDER", "openai");
     vi.stubEnv("OPENAI_API_KEY", "sk-test");
     const fetchMock = vi.fn(async () =>
       new Response(
         JSON.stringify({
           model: "gpt-5.6-luna-2026-07-30",
-          output_text: "A copied recap says he left the football program.",
+          output_text: "TyAnthony Smith left the football program in a personnel move.",
           output: [
             {
               type: "message",
               content: [
                 {
                   type: "output_text",
-                  text: "A copied recap says he left the football program.",
+                  text: "TyAnthony Smith left the football program in a personnel move.",
                   annotations: [
                     {
                       type: "url_citation",
-                      title: "Copied recap",
-                      url: "https://example.com/recap",
+                      title: "National roster report",
+                      url: "https://www.espn.com/college-football/story/_/id/123/texas-report",
                       start_index: 0,
                       end_index: 6,
                     },
@@ -174,10 +195,77 @@ describe("answerQuestion", () => {
 
     const result = await answerQuestion("What happened to TyAnthony Smith?");
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(result.mode).toBe("no-context");
-    expect(result.provider).toBe("policy");
-    expect(result.citations).toEqual([]);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(result.mode).toBe("grounded");
+    expect(result.provider).toBe("openai-web-search");
+    expect(result.citations).toEqual([
+      expect.objectContaining({
+        title: "National roster report",
+        provider: "www.espn.com",
+      }),
+    ]);
+  });
+
+  it("retries agent research once when the first pass has no citable answer", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      expect(input).toBeDefined();
+      expect(init?.body).toBeDefined();
+      const secondAttempt = fetchMock.mock.calls.length >= 2;
+      const text = secondAttempt
+        ? "McCae Hillstead is Utah State's confirmed starting quarterback."
+        : "Current reporting does not establish the answer.";
+
+      return new Response(
+        JSON.stringify({
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text: text,
+          output: [
+            {
+              type: "message",
+              content: [
+                {
+                  type: "output_text",
+                  text,
+                  annotations: secondAttempt
+                    ? [
+                        {
+                          type: "url_citation",
+                          title: "Utah State names its starting quarterback",
+                          url: "https://www.deseret.com/sports/2026/04/20/utah-state-names-its-starting-quarterback/",
+                          start_index: 0,
+                          end_index: text.length,
+                        },
+                      ]
+                    : [],
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion(
+      "Who is the starting quarterback for Utah State?",
+      "utah-state-football",
+    );
+
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1]?.body)).instructions).toContain(
+      "second research pass",
+    );
+    expect(JSON.parse(String(fetchMock.mock.calls[2][1]?.body)).instructions).toContain(
+      "final fact and citation verifier",
+    );
+    expect(result.provider).toBe("openai-web-search");
+    expect(result.answer).toContain("McCae Hillstead");
+    expect(result.citations).toEqual([
+      expect.objectContaining({ title: "Utah State names its starting quarterback" }),
+    ]);
   });
 
   it("keeps a named-subject question on the answer path when the evidence names it", async () => {
@@ -246,7 +334,7 @@ describe("answerQuestion", () => {
 
       const result = await answerQuestion(question);
 
-      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(fetchMock).toHaveBeenCalledTimes(2);
       expect(result.provider).toBe("openai-web-search");
       expect(result.answer).toContain("Connor Robertson is expected to start at center");
       expect(result.citations).toEqual([
@@ -255,6 +343,62 @@ describe("answerQuestion", () => {
       expect(result.freshness.search).toContain("Live reporting checked");
     },
   );
+
+  it("uses the verifier's corrected depth-chart answer and citation", async () => {
+    vi.stubEnv("LLM_PROVIDER", "openai");
+    vi.stubEnv("OPENAI_API_KEY", "sk-test");
+    const fetchMock = vi.fn(async () => {
+      const verifying = fetchMock.mock.calls.length === 2;
+      const text = verifying
+        ? "KJ Lacey is the projected backup quarterback behind Arch Manning."
+        : "MJ Morris is the backup quarterback behind Arch Manning.";
+      const title = verifying
+        ? "Texas final depth chart after fall camp"
+        : "Texas quarterback room after the transfer portal";
+      const url = verifying
+        ? "https://www.si.com/college/texas/football/final-depth-chart"
+        : "https://www.on3.com/teams/texas-longhorns/news/qb-room";
+
+      return new Response(
+        JSON.stringify({
+          id: verifying ? "resp_verified" : "resp_draft",
+          model: "gpt-5.6-luna-2026-07-30",
+          output_text: text,
+          output: [
+            {
+              type: "message",
+              content: [
+                {
+                  type: "output_text",
+                  text,
+                  annotations: [
+                    {
+                      type: "url_citation",
+                      title,
+                      url,
+                      start_index: 0,
+                      end_index: text.length,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await answerQuestion("Who is the backup QB?");
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(result.answer).toContain("KJ Lacey");
+    expect(result.answer).not.toContain("MJ Morris");
+    expect(result.citations).toEqual([
+      expect.objectContaining({ title: "Texas final depth chart after fall camp" }),
+    ]);
+  });
 
   it("reports editorial and schedule freshness separately", async () => {
     const result = await answerQuestion("Give me the next-game briefing.");
@@ -303,7 +447,7 @@ describe("answerQuestion", () => {
     const result = await answerQuestion(escalatingQuestion);
 
     expect(result.provider).toBe("mock");
-    expect(result.notice).toContain("verified local read");
+    expect(result.notice).toContain("could not be verified");
   }, 30_000);
 
   it("never lets a fabricated citation reach the caller", async () => {
@@ -328,7 +472,7 @@ describe("answerQuestion", () => {
     // the citation check can catch it. Without that check this ships.
     expect(result.answer).not.toContain("Definitely Real Source");
     expect(result.provider).toBe("mock");
-    expect(result.notice).toContain("sourcing gate");
+    expect(result.notice).toContain("could not be verified");
     // One retry with the failure named, then the composer — two billed calls.
     expect(fetchMock).toHaveBeenCalledTimes(2);
   }, 30_000);
@@ -384,7 +528,7 @@ describe("streamAnswerEvents", () => {
       throw new Error("expected a done event");
     }
     expect(done.answer.provider).toBe("mock");
-    expect(done.answer.notice).toContain("verified local read");
+    expect(done.answer.notice).toContain("could not be verified");
     expect(events.filter((event) => event.type === "delta")).not.toHaveLength(0);
   }, 30_000);
 
