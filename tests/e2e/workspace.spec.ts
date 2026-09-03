@@ -374,11 +374,12 @@ test("this week carries a headline, a takeaway, and the outlet behind it", async
   await page.goto("/teams/utah-state-football");
   const news = page.locator('[aria-labelledby="news-heading"]');
 
-  // Ranked by the rubric, not by the order the package was written: the
-  // highest-impact story leads and the official announcements sink.
-  await expect(news.locator("li").first()).toContainText(/depth/i);
-  await expect(news.getByText(/deeper at every position/)).toBeVisible();
-  await expect(news.getByText(/Deseret News/).first()).toBeVisible();
+  // Ranked by the rubric, not by the order the package was written: a
+  // starter's availability leads, and the low-impact items sink whatever
+  // outlet they came from.
+  await expect(news.locator("li").first()).toContainText(/Bryson Taylor/i);
+  await expect(news.getByText(/day by day is the coach's own phrase/i)).toBeVisible();
+  await expect(news.getByText(/KSL Sports/).first()).toBeVisible();
 
   // No outlet owns the list. The first Texas package was three of five from
   // one national masthead, which is one desk's read of the week presented as
@@ -471,7 +472,7 @@ test("chat does not cite unrelated coverage for an unreported named subject", as
   expect(body.answer).toContain("could not verify a reliable current report about TyAnthony Smith");
   expect(body.citations).toEqual([]);
   expect(body.mode).toBe("no-context");
-  expect(body.freshness.coverage).toBe("Coverage updated August 27, 2026.");
+  expect(body.freshness.coverage).toBe("Coverage updated September 3, 2026.");
   expect(body.freshness.schedule).toBe("Schedule updated July 1, 2026.");
 });
 

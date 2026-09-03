@@ -1,5 +1,5 @@
-import texasWeekly from "../../../data/fixtures/texas-football/weekly-2026-08-27.json";
-import utahStateWeekly from "../../../data/fixtures/utah-state-football/weekly-2026-08-27.json";
+import texasWeekly from "../../../data/fixtures/texas-football/weekly-2026-09-03.json";
+import utahStateWeekly from "../../../data/fixtures/utah-state-football/weekly-2026-09-03.json";
 import { formatNewsDate } from "@/lib/news-date";
 import { isSafeExternalHref } from "@/lib/safe-url";
 import { reportDegradation } from "@/server/observability/report";

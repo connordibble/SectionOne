@@ -1,0 +1,58 @@
+{
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-03",
+  "publishedAt": "2026-09-03T18:00:00.000Z",
+  "summary": "Game week. The left tackle is cleared, all four safeties play because it is forecast to hit 96 at kickoff, and the opener is against a tempo offense whose quarterback ran for 17 touchdowns.",
+  "items": [
+    {
+      "id": "goosby-cleared",
+      "headline": "Goosby is good to go, and left tackle stops being the question",
+      "tldr": "The bone bruise that opened this question is behind him: Goosby practiced Monday and had his workload raised every day after. What the staff is watching now is conditioning rather than the knee, which is why Andre Cojoe gets real snaps at a 2:30 kickoff in the heat.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104178/trevor-goosby-injury-texas-texas-state",
+      "publishedAt": "2026-09-03T16:54:00.000Z",
+      "grade": { "impact": 5, "echo": 5, "freshness": 5 }
+    },
+    {
+      "id": "texas-state-tempo",
+      "headline": "Texas State is the hardest offense on the September schedule to simulate",
+      "tldr": "Wide receiver splits, snap-to-snap tempo, and a quarterback in Brad Jackson who ran for 744 yards and 17 rushing touchdowns last season, the second-most among quarterbacks in the country. Sarkisian's answer is to line up as if every play is fast and settle down only when it is not. Watch the box count on early downs.",
+      "outlet": "Sports Illustrated",
+      "tier": "national",
+      "url": "https://www.si.com/college/texas/football/how-texas-longhorns-are-preparing-for-unique-texas-state-offense",
+      "publishedAt": "2026-09-01T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "safety-rotation",
+      "headline": "Four safeties separated, and the heat means all four play",
+      "tldr": "Jelani McDonald, Derek Williams, Kobe Black and Jonah Williams are the four Sarkisian says he trusts, and he was explicit that the two-deep has to be ready Saturday, not just the starters. McDonald led the team with 80 tackles and three interceptions last year and inherits the communication role on the back end.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104104/texas-longhorns-safeties-jelani-mcdonald",
+      "publishedAt": "2026-09-01T18:44:00.000Z",
+      "grade": { "impact": 4, "echo": 2, "freshness": 4 }
+    },
+    {
+      "id": "receiver-rapport",
+      "headline": "Texas has to replace 57 percent of its catches",
+      "tldr": "Ryan Wingo is back off 54 catches and 834 yards, and Emmett Mosley V returns, but 57.4 percent of last season's receptions left. Cam Coleman has practice reps and an offseason in New Orleans with his quarterback rather than game reps, and Sarkisian's word for what the others have and he does not is banked.",
+      "outlet": "Austin American-Statesman",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/cam-wants-great-arch-manning-205014739.html",
+      "publishedAt": "2026-08-31T20:50:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 3 }
+    },
+    {
+      "id": "mock-week",
+      "headline": "Forty-eight newcomers rehearsed a game week before playing one",
+      "tldr": "Texas ran a full mock week, hotel night included, because 48 scholarship additions have never been through a Texas game day. Sarkisian says he does not question the effort; what he is coaching against in Week 1 is the situational stuff, offsides and twelve on the field and ten on punt return.",
+      "outlet": "Inside Texas",
+      "tier": "local",
+      "url": "https://www.on3.com/teams/texas-longhorns/news/everything-texas-head-coach-steve-sarkisian-said-in-week-1-press-conference/",
+      "publishedAt": "2026-08-31T12:00:00.000Z",
+      "grade": { "impact": 3, "echo": 3, "freshness": 3 }
+    }
+  ]
+}

@@ -404,7 +404,7 @@ describe("answerQuestion", () => {
     const result = await answerQuestion("Give me the next-game briefing.");
 
     expect(result.freshness).toEqual({
-      coverage: "Coverage updated August 27, 2026.",
+      coverage: "Coverage updated September 3, 2026.",
       schedule: "Schedule updated July 1, 2026.",
       context: "No 2026 stats yet.",
     });

@@ -1,0 +1,58 @@
+{
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-09-03",
+  "publishedAt": "2026-09-03T18:00:00.000Z",
+  "summary": "Game week, and Mendenhall's ask is an offense that can take over a game rather than just score in one. McCae Hillstead makes his first Week 1 start, the receiver room is the thin spot, and Idaho State arrives having already played.",
+  "items": [
+    {
+      "id": "taylor-availability",
+      "headline": "Bryson Taylor can practice but not play, and the case has a September 11 date",
+      "tldr": "Mendenhall says Taylor is not ruled out for Saturday, since a restraining order could still move it, but the framework that decides his season lands on September 11, a week after the opener. Day by day is the coach's own phrase. Everyone else came out of camp healthy with nobody expected to be held out.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state-football/week-1/576688",
+      "publishedAt": "2026-09-01T22:23:00.000Z",
+      "grade": { "impact": 5, "echo": 4, "freshness": 5 }
+    },
+    {
+      "id": "idaho-state-opened",
+      "headline": "Idaho State arrives 1-0 with four third-quarter touchdowns on tape",
+      "tldr": "The Bengals opened August 29 by turning a 10-0 half into a 38-10 win over VMI, with Jordan Cooke throwing for 325 yards and four scores on 18 of 29. A team that has played against a team that has not is the standard Week 1 edge, and Mendenhall said this week he is not treating it as a mismatch.",
+      "outlet": "Idaho State Athletics",
+      "tier": "official",
+      "url": "https://isubengals.com/news/2026/8/29/football-bengals-cruise-past-vmi-in-season-opener-38-10.aspx",
+      "publishedAt": "2026-08-29T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 4, "freshness": 4 }
+    },
+    {
+      "id": "stadium-renamed",
+      "headline": "Maverik Stadium becomes Jim Laub Family Stadium, but not until 2027",
+      "tldr": "The change takes effect January 1, so nothing about Saturday's signage moves. Athletic director Cam Walker called Laub the largest donor in Utah State athletics history and said the name carries no end date and no single gift attached to it, which is a different arrangement than the corporate deal it replaces.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://www.cachevalleydaily.com/sports/usu-to-rename-maverik-stadium-for-jim-laub-family-beginning-in-2027/article_ba5e3bc5-6a19-45ac-9b07-5298bb1c0263.html",
+      "publishedAt": "2026-08-31T12:00:00.000Z",
+      "grade": { "impact": 2, "echo": 4, "freshness": 3 }
+    },
+    {
+      "id": "top-25-aggies",
+      "headline": "The local ballot puts Olevao first and Hillstead third",
+      "tldr": "Bronson Olevao Jr. tops the countdown on 90 tackles and 7.5 for loss in his fifth year at one school, with Javen Jacobs second off 808 scrimmage yards and 43 catches out of the backfield. It is a projection rather than a result, but it is the clearest published read on who should decide Saturday.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://www.cachevalleydaily.com/sports/top-25-aggies-of-2026-no-5-1/article_397ccc65-e52f-4e15-97ed-6a17c0bf6fb4.html",
+      "publishedAt": "2026-09-02T12:00:00.000Z",
+      "grade": { "impact": 2, "echo": 1, "freshness": 4 }
+    },
+    {
+      "id": "receivers-thin",
+      "headline": "The receiver room is the thin spot, by the head coach's own account",
+      "tldr": "Brady Boyd left for the NFL and Braden Pegan for Utah, taking most of the proven production with them. Mendenhall's framing is that the team is deeper everywhere and thinner here, and the answer is five transfers, five true freshmen, and Anthony Garcia moving to receiver full time in a new coordinator's offense.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state/previewing-wide-receivers/576476",
+      "publishedAt": "2026-08-26T17:39:00.000Z",
+      "grade": { "impact": 4, "echo": 2, "freshness": 3 }
+    }
+  ]
+}
