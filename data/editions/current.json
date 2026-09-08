@@ -4,6 +4,10 @@
     "teamSlug": "texas-football",
     "weekOf": "2026-09-08",
     "publishedAt": "2026-09-08T13:45:00.000Z",
+    "issue": {
+      "season": 2026,
+      "week": 2
+    },
     "summary": "Texas opened with a 59-7 win, but left guard is still a rotation and Derrek Cooper will miss Ohio State. The Buckeyes visit Saturday at 6:30 p.m. CT on ABC; watch the protection inside and whether the defense can keep creating takeaways.",
     "items": [
       {
@@ -77,10 +81,6 @@
         }
       }
     ],
-    "issue": {
-      "season": 2026,
-      "week": 2
-    },
     "editorial": {
       "lead": {
         "headline": "Protect the pocket. Win up front.",
@@ -211,6 +211,10 @@
     "teamSlug": "utah-state-football",
     "weekOf": "2026-09-08",
     "publishedAt": "2026-09-08T13:45:00.000Z",
+    "issue": {
+      "season": 2026,
+      "week": 2
+    },
     "summary": "Utah State heads to Washington after a 29-17 loss to Idaho State. Hillstead's forearm and Brosterhous's planned role make quarterback usage worth watching, but four interceptions and repeated penalties leave the whole offense with work to do before Saturday's 1:30 p.m. MT kickoff.",
     "items": [
       {
@@ -284,10 +288,6 @@
         }
       }
     ],
-    "issue": {
-      "season": 2026,
-      "week": 2
-    },
     "editorial": {
       "lead": {
         "headline": "Protect the ball. Make them drive.",
@@ -422,63 +422,7 @@
       "season": 2026,
       "week": 2
     },
-    "summary": "Ohio State takes its offensive-line questions and McCuin’s emergence to Texas. Watch whether the rush can finish against Arch Manning. Kickoff is Saturday at 7:30 p.m. ET on ABC.",
-    "nextGameNote": "At Texas on September 12: 7:30 p.m. ET on ABC. Traveling fans can use the new DKR map to locate gates, water stations and first aid.",
-    "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
-    "editorial": {
-      "lead": {
-        "headline": "Protect Sayin. Finish the rush.",
-        "body": "Watch the starting offensive line and whether the rush can finish against Texas.",
-        "noteId": "protection"
-      },
-      "matchup": {
-        "thesis": "Win the pocket",
-        "question": "What should Ohio State clean up before Texas?",
-        "answer": "Day is evaluating the offensive line. On defense, watch whether the rush can finish without opening escape lanes.",
-        "citationNoteIds": [
-          "protection",
-          "containment"
-        ]
-      },
-      "signals": [
-        {
-          "id": "protection",
-          "title": "Protection",
-          "summary": "Watch the starting line",
-          "detail": "Day is still evaluating the starting line. Watch the opening group and its protection.",
-          "prompt": "What should I watch up front?",
-          "state": "watch",
-          "noteId": "protection"
-        },
-        {
-          "id": "containment",
-          "title": "Containment",
-          "summary": "Finish without losing the edge",
-          "detail": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the rush keeps its lanes.",
-          "prompt": "How can Ohio State contain Arch Manning?",
-          "state": "watch",
-          "noteId": "containment"
-        },
-        {
-          "id": "second-receiver",
-          "title": "Receiver balance",
-          "summary": "McCuin earns attention",
-          "detail": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative.",
-          "prompt": "Why does Devin McCuin matter against Texas?",
-          "state": "watch",
-          "noteId": "second-receiver"
-        },
-        {
-          "id": "austin-arrival",
-          "title": "Austin arrival",
-          "summary": "Find your gate before arriving",
-          "detail": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon.",
-          "prompt": "Where can I find the stadium map?",
-          "state": "watch",
-          "noteId": "austin-arrival"
-        }
-      ]
-    },
+    "summary": "Ohio State takes its offensive-line questions and McCuin’s emergence to Texas. Watch whether the pass rush can finish against Arch Manning. Kickoff is Saturday at 7:30 p.m. ET on ABC.",
     "items": [
       {
         "id": "line-evaluation",
@@ -511,7 +455,7 @@
       {
         "id": "rush-containment",
         "headline": "The pass rush needs to finish against a mobile quarterback",
-        "tldr": "The Dispatch found that Ohio State struggled to bring down Ball State’s quarterback when pressured. Against Arch Manning, watch the rush lanes as closely as the pressure: an escape can erase a good start to the play.",
+        "tldr": "The Dispatch found that Ohio State struggled to bring down Ball State’s quarterback when pressured. Against Arch Manning, watch the pass rush lanes as closely as the pressure: an escape can erase a good start to the play.",
         "outlet": "The Columbus Dispatch",
         "tier": "local",
         "url": "https://sports.yahoo.com/articles/did-ohio-state-football-grade-222929012.html",
@@ -551,50 +495,106 @@
         }
       }
     ],
+    "editorial": {
+      "lead": {
+        "headline": "Protect Sayin. Finish the pass rush.",
+        "body": "Watch the starting offensive line and whether the pass rush can finish against Texas.",
+        "noteId": "protection"
+      },
+      "matchup": {
+        "thesis": "Win the pocket",
+        "question": "What should Ohio State clean up before Texas?",
+        "answer": "Day is evaluating the offensive line. On defense, watch whether the pass rush can finish without opening escape lanes.",
+        "citationNoteIds": [
+          "protection",
+          "containment"
+        ]
+      },
+      "signals": [
+        {
+          "id": "protection",
+          "title": "Protection",
+          "summary": "Watch the starting line",
+          "detail": "Day is still evaluating the starting line. Watch the opening group and its protection.",
+          "state": "watch",
+          "prompt": "What should I watch up front?",
+          "noteId": "protection"
+        },
+        {
+          "id": "containment",
+          "title": "Containment",
+          "summary": "Finish without losing the edge",
+          "detail": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the pass rush keeps its lanes.",
+          "state": "watch",
+          "prompt": "How can Ohio State contain Arch Manning?",
+          "noteId": "containment"
+        },
+        {
+          "id": "second-receiver",
+          "title": "Receiver balance",
+          "summary": "McCuin earns attention",
+          "detail": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative.",
+          "state": "watch",
+          "prompt": "Why does Devin McCuin matter against Texas?",
+          "noteId": "second-receiver"
+        },
+        {
+          "id": "austin-arrival",
+          "title": "Austin arrival",
+          "summary": "Find your gate before arriving",
+          "detail": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon.",
+          "state": "watch",
+          "prompt": "Where can I find the stadium map?",
+          "noteId": "austin-arrival"
+        }
+      ]
+    },
+    "nextGameNote": "At Texas on September 12: 7:30 p.m. ET on ABC. Traveling fans can use the new DKR map to locate gates, water stations and first aid.",
+    "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "protection",
         "title": "Protection",
-        "body": "Day is still evaluating the starting line. Watch the opening group and its protection.",
         "topics": [
           "protection",
           "Protection",
           "matchup"
         ],
-        "publishedAt": "2026-09-08"
+        "publishedAt": "2026-09-08",
+        "body": "Day is still evaluating the starting line. Watch the opening group and its protection."
       },
       {
         "id": "containment",
         "title": "Containment",
-        "body": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the rush keeps its lanes.",
         "topics": [
           "containment",
           "Containment",
           "matchup"
         ],
-        "publishedAt": "2026-09-05T22:29:29Z"
+        "publishedAt": "2026-09-05T22:29:29Z",
+        "body": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the pass rush keeps its lanes."
       },
       {
         "id": "second-receiver",
         "title": "Receiver balance",
-        "body": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative.",
         "topics": [
           "second-receiver",
           "Receiver balance",
           "matchup"
         ],
-        "publishedAt": "2026-09-07"
+        "publishedAt": "2026-09-07",
+        "body": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative."
       },
       {
         "id": "austin-arrival",
         "title": "Austin arrival",
-        "body": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon.",
         "topics": [
           "austin-arrival",
           "Austin arrival",
           "matchup"
         ],
-        "publishedAt": "2026-09-04"
+        "publishedAt": "2026-09-04",
+        "body": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon."
       }
     ]
   },
@@ -608,62 +608,6 @@
       "week": 2
     },
     "summary": "LSU hosts Louisiana Tech after beating Clemson 51-10. Watch Leavitt’s protection and Elzy’s opportunities. SEC leaders will discuss LSU’s membership Thursday; that meeting is not an expulsion decision.",
-    "nextGameNote": "Louisiana Tech visits Tiger Stadium on September 12 at 6:30 p.m. CT on SEC Network+. Check the official schedule’s broadcast link before kickoff.",
-    "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
-    "editorial": {
-      "lead": {
-        "headline": "Give Leavitt a cleaner pocket.",
-        "body": "Leavitt’s running rescued plays against Clemson, but Kiffin still wants better guard play. Watch whether the line creates cleaner possessions against Louisiana Tech.",
-        "noteId": "guard-play"
-      },
-      "matchup": {
-        "thesis": "Protect the rhythm",
-        "question": "What should LSU improve against Louisiana Tech?",
-        "answer": "Watch the guards: cleaner protection would reduce reliance on Leavitt’s escapes. On defense, prevent early deep completions to Louisiana Tech’s receivers.",
-        "citationNoteIds": [
-          "guard-play",
-          "early-coverage"
-        ]
-      },
-      "signals": [
-        {
-          "id": "guard-play",
-          "title": "Guard play",
-          "summary": "No sacks is not the whole story",
-          "detail": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape.",
-          "prompt": "What should I watch up front?",
-          "state": "watch",
-          "noteId": "guard-play"
-        },
-        {
-          "id": "early-coverage",
-          "title": "Early coverage",
-          "summary": "Make Tech earn its drives",
-          "detail": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication.",
-          "prompt": "What does Louisiana Tech bring on offense?",
-          "state": "watch",
-          "noteId": "early-coverage"
-        },
-        {
-          "id": "receiver-rotation",
-          "title": "Receiver rotation",
-          "summary": "Elzy should get more chances",
-          "detail": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed.",
-          "prompt": "What is Malik Elzy’s role?",
-          "state": "watch",
-          "noteId": "receiver-rotation"
-        },
-        {
-          "id": "eligibility-watch",
-          "title": "Roster watch",
-          "summary": "Wait for confirmed availability",
-          "detail": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead.",
-          "prompt": "What is confirmed in the LSU eligibility dispute?",
-          "state": "watch",
-          "noteId": "eligibility-watch"
-        }
-      ]
-    },
     "items": [
       {
         "id": "sec-membership-dispute",
@@ -736,50 +680,106 @@
         }
       }
     ],
+    "editorial": {
+      "lead": {
+        "headline": "Give Leavitt a cleaner pocket.",
+        "body": "Leavitt’s running rescued plays against Clemson, but Kiffin still wants better guard play. Watch whether the line creates cleaner possessions against Louisiana Tech.",
+        "noteId": "guard-play"
+      },
+      "matchup": {
+        "thesis": "Protect the rhythm",
+        "question": "What should LSU improve against Louisiana Tech?",
+        "answer": "Watch the guards: cleaner protection would reduce reliance on Leavitt’s escapes. On defense, prevent early deep completions to Louisiana Tech’s receivers.",
+        "citationNoteIds": [
+          "guard-play",
+          "early-coverage"
+        ]
+      },
+      "signals": [
+        {
+          "id": "guard-play",
+          "title": "Guard play",
+          "summary": "No sacks is not the whole story",
+          "detail": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape.",
+          "state": "watch",
+          "prompt": "What should I watch up front?",
+          "noteId": "guard-play"
+        },
+        {
+          "id": "early-coverage",
+          "title": "Early coverage",
+          "summary": "Make Tech earn its drives",
+          "detail": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication.",
+          "state": "watch",
+          "prompt": "What does Louisiana Tech bring on offense?",
+          "noteId": "early-coverage"
+        },
+        {
+          "id": "receiver-rotation",
+          "title": "Receiver rotation",
+          "summary": "Elzy should get more chances",
+          "detail": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed.",
+          "state": "watch",
+          "prompt": "What is Malik Elzy’s role?",
+          "noteId": "receiver-rotation"
+        },
+        {
+          "id": "eligibility-watch",
+          "title": "Roster watch",
+          "summary": "Wait for confirmed availability",
+          "detail": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead.",
+          "state": "watch",
+          "prompt": "What is confirmed in the LSU eligibility dispute?",
+          "noteId": "eligibility-watch"
+        }
+      ]
+    },
+    "nextGameNote": "Louisiana Tech visits Tiger Stadium on September 12 at 6:30 p.m. CT on SEC Network+. Check the official schedule’s broadcast link before kickoff.",
+    "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "guard-play",
         "title": "Guard play",
-        "body": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape.",
         "topics": [
           "guard-play",
           "Guard play",
           "matchup"
         ],
-        "publishedAt": "2026-09-08"
+        "publishedAt": "2026-09-08",
+        "body": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape."
       },
       {
         "id": "early-coverage",
         "title": "Early coverage",
-        "body": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication.",
         "topics": [
           "early-coverage",
           "Early coverage",
           "matchup"
         ],
-        "publishedAt": "2026-09-05"
+        "publishedAt": "2026-09-05",
+        "body": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication."
       },
       {
         "id": "receiver-rotation",
         "title": "Receiver rotation",
-        "body": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed.",
         "topics": [
           "receiver-rotation",
           "Receiver rotation",
           "matchup"
         ],
-        "publishedAt": "2026-09-08T11:18:19Z"
+        "publishedAt": "2026-09-08T11:18:19Z",
+        "body": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed."
       },
       {
         "id": "eligibility-watch",
         "title": "Roster watch",
-        "body": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead.",
         "topics": [
           "eligibility-watch",
           "Roster watch",
           "matchup"
         ],
-        "publishedAt": "2026-09-08"
+        "publishedAt": "2026-09-08",
+        "body": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead."
       }
     ]
   }
