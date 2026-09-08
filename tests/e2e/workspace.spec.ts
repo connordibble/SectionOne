@@ -434,7 +434,7 @@ test("health and ingest APIs respond", async ({ request }) => {
     enabledTeams: string[];
   };
   expect(healthBody.ok).toBe(true);
-  expect(healthBody.enabledTeams).toEqual(["texas-football", "utah-state-football"]);
+  expect(healthBody.enabledTeams).toEqual(enabledTeamSlugs);
 
   const ingest = await request.post("/api/ingest", {
     data: { teamSlug: "texas-football" },

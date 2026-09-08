@@ -1,0 +1,130 @@
+{
+  "teamSlug": "lsu-football",
+  "teamName": "LSU",
+  "teamDisplayName": "LSU football",
+  "seasonYear": 2026,
+  "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
+  "capturedAt": "2026-09-08T21:22:29.585Z",
+  "games": [
+    {
+      "id": "lsu-football-2026-1",
+      "opponent": "Clemson",
+      "site": "home",
+      "dateLabel": "Sep 5",
+      "startsAt": "2026-09-06T01:40:00.000Z",
+      "kickoff": "8:40 p.m. CT",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": "ABC"
+    },
+    {
+      "id": "lsu-football-2026-2",
+      "opponent": "Louisiana Tech",
+      "site": "home",
+      "dateLabel": "Sep 12",
+      "startsAt": "2026-09-12T23:30:00.000Z",
+      "kickoff": "6:30 p.m. CT",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": "SEC Network+"
+    },
+    {
+      "id": "lsu-football-2026-3",
+      "opponent": "Ole Miss",
+      "site": "away",
+      "dateLabel": "Sep 19",
+      "startsAt": "2026-09-19T23:30:00.000Z",
+      "kickoff": "6:30 p.m. CT",
+      "venue": "Oxford, Miss. (Vaught-Hemingway Stadium)",
+      "tv": "ABC"
+    },
+    {
+      "id": "lsu-football-2026-4",
+      "opponent": "Texas A&M",
+      "site": "home",
+      "dateLabel": "Sep 26",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-5",
+      "opponent": "McNeese",
+      "site": "home",
+      "dateLabel": "Oct 3",
+      "startsAt": "2026-10-03T23:45:00.000Z",
+      "kickoff": "6:45 p.m. CT",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-6",
+      "opponent": "Kentucky",
+      "site": "away",
+      "dateLabel": "Oct 10",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Lexington, Ky. (Kroger Field at Commonwealth Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-7",
+      "opponent": "Mississippi State",
+      "site": "home",
+      "dateLabel": "Oct 17",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-8",
+      "opponent": "Auburn",
+      "site": "away",
+      "dateLabel": "Oct 24",
+      "startsAt": "2026-10-24T16:00:00.000Z",
+      "kickoff": "11:00 a.m. CT",
+      "venue": "Auburn, Ala. (Jordan-Hare Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-9",
+      "opponent": "Alabama",
+      "site": "home",
+      "dateLabel": "Nov 7",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-10",
+      "opponent": "Texas",
+      "site": "home",
+      "dateLabel": "Nov 14",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Baton Rouge, La. (Tiger Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-11",
+      "opponent": "Tennessee",
+      "site": "away",
+      "dateLabel": "Nov 21",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Knoxville, Tenn. (Neyland Stadium)",
+      "tv": null
+    },
+    {
+      "id": "lsu-football-2026-12",
+      "opponent": "Arkansas",
+      "site": "away",
+      "dateLabel": "Nov 28",
+      "startsAt": null,
+      "kickoff": "TBD",
+      "venue": "Fayetteville, Ark. (Reynolds Razorback Stadium at Broyles Field)",
+      "tv": null
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 import texasSchedule from "../../../data/fixtures/texas-football/schedule.json";
 import utahStateSchedule from "../../../data/fixtures/utah-state-football/schedule.json";
+import ohioStateSchedule from "../../../data/fixtures/ohio-state-football/schedule.json";
+import lsuSchedule from "../../../data/fixtures/lsu-football/schedule.json";
 
 export type ScheduleSite = "home" | "away" | "neutral";
 
@@ -28,7 +30,7 @@ export type TeamSchedule = {
 // import, never an edit to a hand-maintained key list that can disagree with
 // the data it points at.
 const schedules: Record<string, TeamSchedule> = Object.fromEntries(
-  [texasSchedule, utahStateSchedule].map((schedule) => [
+  [texasSchedule, utahStateSchedule, ohioStateSchedule, lsuSchedule].map((schedule) => [
     schedule.teamSlug,
     schedule as unknown as TeamSchedule,
   ]),

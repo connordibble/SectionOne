@@ -51,7 +51,7 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
     const option = getTeamConfig(slug);
 
     return option
-      ? [{ slug: option.slug, shortName: option.shortName }]
+      ? [{ slug: option.slug, shortName: option.shortName, conference: option.conference }]
       : [];
   });
 

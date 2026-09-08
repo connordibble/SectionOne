@@ -25,6 +25,8 @@ const bodyTextPairs: Array<[PaletteRole, PaletteRole]> = [
   ["onAccent", "accent"],
   ["onSteel", "steel"],
   ["onSteel", "steelRaised"],
+  ["onStage", "stage"],
+  ["onStage", "stageRaised"],
 ];
 
 describe("derived team palette contrast", () => {

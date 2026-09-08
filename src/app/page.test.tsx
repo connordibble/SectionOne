@@ -49,7 +49,7 @@ describe("Section One home", () => {
   it("states the honest number of live editions", async () => {
     const { container } = render(await HomePage());
 
-    expect(screen.getByText(/2 editions live/i)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(`${enabledTeamSlugs.length} editions live`, "i"))).toBeInTheDocument();
     expect(container.querySelectorAll('#editions a[href^="/teams/"]')).toHaveLength(
       enabledTeamSlugs.length,
     );

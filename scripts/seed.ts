@@ -1,5 +1,6 @@
 import { collectSourceDocuments } from "../src/server/ingest/pipeline";
-import { defaultTeamConfig } from "../src/config/team";
+import { defaultTeamSlug, getTeamConfig } from "../src/config/team";
+import { getTeamSchedule } from "../src/server/schedule/schedule";
 import { createDbClient } from "../src/server/db/client";
 import {
   games,
@@ -10,42 +11,45 @@ import {
 } from "../src/server/db/schema";
 import { chunkSourceDocuments } from "../src/server/rag/chunk";
 import { resolveEmbeddingProvider } from "../src/server/embeddings/registry";
-import scheduleFixture from "../data/fixtures/texas-football/schedule.json";
 
 async function main() {
+  const teamSlug = process.argv[2] ?? defaultTeamSlug;
+  const team = getTeamConfig(teamSlug);
+  const scheduleFixture = getTeamSchedule(teamSlug);
+  if (!team || !scheduleFixture) throw new Error("Expected a configured team with a schedule");
   const { db, client } = createDbClient();
-  const result = await collectSourceDocuments("texas-football");
+  const result = await collectSourceDocuments(teamSlug);
 
   await db
     .insert(teams)
     .values({
-      slug: defaultTeamConfig.slug,
-      displayName: defaultTeamConfig.displayName,
-      sport: defaultTeamConfig.sport,
-      conference: defaultTeamConfig.conference,
-      aliases: defaultTeamConfig.aliases,
+      slug: team.slug,
+      displayName: team.displayName,
+      sport: team.sport,
+      conference: team.conference,
+      aliases: team.aliases,
     })
     .onConflictDoUpdate({
       target: teams.slug,
       set: {
-        displayName: defaultTeamConfig.displayName,
-        sport: defaultTeamConfig.sport,
-        conference: defaultTeamConfig.conference,
-        aliases: defaultTeamConfig.aliases,
+        displayName: team.displayName,
+        sport: team.sport,
+        conference: team.conference,
+        aliases: team.aliases,
       },
     });
 
   await db
     .insert(seasons)
     .values({
-      teamSlug: defaultTeamConfig.slug,
+      teamSlug: team.slug,
       year: scheduleFixture.seasonYear,
-      label: `${scheduleFixture.seasonYear} Texas football`,
+      label: `${scheduleFixture.seasonYear} ${team.displayName}`,
     })
     .onConflictDoUpdate({
       target: [seasons.teamSlug, seasons.year],
       set: {
-        label: `${scheduleFixture.seasonYear} Texas football`,
+        label: `${scheduleFixture.seasonYear} ${team.displayName}`,
       },
     });
 
@@ -54,7 +58,7 @@ async function main() {
       .insert(games)
       .values({
         id: game.id,
-        teamSlug: defaultTeamConfig.slug,
+        teamSlug: team.slug,
         seasonYear: scheduleFixture.seasonYear,
         opponent: game.opponent,
         site: game.site,

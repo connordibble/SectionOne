@@ -3,8 +3,8 @@
 Section One is an independent college-football intelligence desk: what matters before kickoff,
 what to watch during the game, and the evidence behind the read.
 
-Two editions are live — Texas and Utah State — deliberately one blue blood and one program outside
-the national conversation, because the second is the case the product is actually for.
+Four editions are available: Texas, Utah State, Ohio State, and LSU. The team selector groups them
+by conference. Each uses the same edition contract, workspace, and publication checks.
 
 Each edition connects three views: Brief, Matchup, and Schedule. One grounded chat thread follows
 the reader between them. Brief also carries the team's poll standing read against its own schedule,
@@ -19,7 +19,7 @@ pnpm dev
 ```
 
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The root route is the home page; editions live
-at `/teams/[slug]` — `/teams/texas-football` and `/teams/utah-state-football`.
+at `/teams/[slug]`, including `/teams/ohio-state-football` and `/teams/lsu-football`.
 
 Weekly content is imported as one versioned package. See [edition publishing](docs/edition-publishing.md) for the contract, commands, and private producer boundary.
 
@@ -47,6 +47,7 @@ docker compose up -d
 pnpm db:migrate
 pnpm ingest
 pnpm db:seed
+pnpm db:seed ohio-state-football
 ```
 
 `pnpm ingest` works offline from committed source snapshots. `pnpm db:seed` requires `DATABASE_URL`

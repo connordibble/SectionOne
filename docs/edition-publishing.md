@@ -59,3 +59,18 @@ This release makes no paid model calls and starts no recurring job. Automated so
 publisher-specific extraction, model benchmarking, scheduled refreshes and unattended alert routing
 remain follow-up work. It preserves the last good edition on failed validation; it does not add a
 reader-facing stale indicator. API/model cost savings have not yet been measured.
+
+## New-team data and colors
+
+An initial edition needs typed identity, a complete package, a schedule capture, and a representative
+behavior fixture. Add the schedule to the shared schedule adapter, then generate social cards with
+`pnpm og:build`. The native team selector derives conference groups from enabled configuration.
+
+`pnpm db:seed <team-slug>` registers the team, season, games, source documents, and embeddings in
+the configured database. Omitting the slug still seeds Texas. Read back the records after seeding;
+a successful page render does not establish that chat persistence has its foreign-key rows.
+
+Ohio State and LSU retain their official primary on the stage in both modes. Their secondary colors
+supply masthead highlights and field routes. The shared palette lifts a secondary route's lightness
+when needed; contrast tests cover text, routes, and grid separation. Browser tests compare the new
+teams' primary color tokens with the published school RGB values.

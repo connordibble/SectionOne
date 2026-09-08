@@ -1,3 +1,4 @@
+import { enabledTeamSlugs } from "@/config/team";
 // @vitest-environment node
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { GET } from "./route";
@@ -39,7 +40,7 @@ describe("GET /api/health", () => {
     const body = await health();
 
     expect(body.ok).toBe(true);
-    expect(body.enabledTeams).toEqual(["texas-football", "utah-state-football"]);
+    expect(body.enabledTeams).toEqual(enabledTeamSlugs);
     // Public callers get liveness, not the model roster.
     expect(body.llm).not.toHaveProperty("provider");
     expect(body).not.toHaveProperty("embeddings");

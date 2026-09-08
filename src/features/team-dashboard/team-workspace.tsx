@@ -32,6 +32,7 @@ type ThemeMode = "light" | "dark";
 type TeamOption = {
   slug: string;
   shortName: string;
+  conference: string;
 };
 
 type TeamWorkspaceProps = {
@@ -280,10 +281,17 @@ export function TeamWorkspace({
                 onPointerDown={closeOpenSelectOnTriggerTap}
                 value={team.slug}
               >
-                {teamOptions.map((option) => (
-                  <option key={option.slug} value={option.slug}>
-                    {option.shortName}
-                  </option>
+                {[...new Set(teamOptions.map((option) => option.conference))].sort().map((conference) => (
+                  <optgroup key={conference} label={conference}>
+                    {teamOptions
+                      .filter((option) => option.conference === conference)
+                      .sort((a, b) => a.shortName.localeCompare(b.shortName, "en"))
+                      .map((option) => (
+                        <option key={option.slug} value={option.slug}>
+                          {option.shortName}
+                        </option>
+                      ))}
+                  </optgroup>
                 ))}
               </select>
               <ChevronDown aria-hidden="true" className={styles.selectChevron} />

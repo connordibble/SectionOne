@@ -55,6 +55,14 @@ const teamConfigSchema = z.object({
     // Optional lightness for a bright branded structural colour. Omit it for the
     // standard dark frame used by the house theme and most editions.
     structuralLightness: z.number().min(0).max(100).optional(),
+    // Keep an AA-safe primary unchanged after dark instead of dimming it.
+    preserveStageInDark: z.boolean().optional(),
+    // Optional school secondary for masthead highlights and field routes.
+    secondary: z.object({
+      hue: z.number().min(0).max(360),
+      chroma: z.number().min(0).max(0.2),
+      lightness: z.number().min(0).max(100),
+    }).optional(),
   }),
   sourcePolicy: z.object({
     disclaimer: z.string().min(1),
@@ -255,6 +263,73 @@ export const teamConfigs = {
       "Who does Utah State play next?",
     ],
   }),
+  "ohio-state-football": teamConfigSchema.parse({
+    slug: "ohio-state-football",
+    timeZone: "America/New_York",
+    officialScheduleUrl: "https://ohiostatebuckeyes.com/sports/football/schedule/2026",
+    sport: "football",
+    league: "college-football",
+    conference: "Big Ten",
+    displayName: "Ohio State football",
+    shortName: "Ohio State",
+    tagline: "Get the short answer before kickoff.",
+    aliases: ["Ohio State", "Ohio St", "OSU", "Buckeyes"],
+    // Official scarlet #BA0C2F: https://bux.osu.edu/color/primary-colors/
+    // Scarlet and masthead gray remain exact in both modes. Field routes lift
+    // gray to L80 for 3:1 contrast against scarlet; the grid runs darker.
+    theme: { hue: 20.61, chroma: 0.1969, structuralHue: 20.61, structuralChroma: 0.1969, structuralLightness: 50.24, preserveStageInDark: true, secondary: { hue: 233.82, chroma: 0.0142, lightness: 75.43 } },
+    sourcePolicy: {
+      disclaimer: "Independent coverage. Not affiliated with Ohio State Athletics.",
+      trustedSourceLabels: ["CollegeFootballData", "Official schedule links", "Verified game notes"],
+      preferredWebSearchDomains: ["ohiostatebuckeyes.com", "elevenwarriors.com", "dispatch.com", "nbc4i.com", "cleveland.com"],
+      protectedMarksGuidance: [
+        "Do not use official logos or mascot imagery.",
+        "Do not imply official access, sponsorship, or endorsement.",
+      ],
+    },
+    voice: {
+      posture: "smart fan analyst",
+      preferredTerms: ["early downs", "line of scrimmage", "pressure", "field position", "explosiveness"],
+      bannedPhrases: ["as an AI", "it is important to note", "official partner", "guaranteed lock"],
+    },
+    ...editionPresentation("ohio-state-football", "Ohio State"),
+    cfbd: { team: "Ohio State", season: 2026 },
+    suggestedPrompts: ["What should I watch up front?", "Who does Ohio State play next?"],
+  }),
+  "lsu-football": teamConfigSchema.parse({
+    slug: "lsu-football",
+    timeZone: "America/Chicago",
+    officialScheduleUrl: "https://lsusports.net/sports/fb/schedule/season/2026",
+    sport: "football",
+    league: "college-football",
+    conference: "SEC",
+    displayName: "LSU football",
+    shortName: "LSU",
+    tagline: "Get the short answer before kickoff.",
+    aliases: ["LSU", "Louisiana State", "Louisiana State University", "Tigers"],
+    // Official purple #461D7C and gold #FDD023, converted to OKLCH.
+    // https://www.lsu.edu/communications/files/brand-guide.pdf
+    // Purple stays exact in both modes. Gold carries routes and masthead highlights;
+    // body accents retain purple in light mode because gold cannot carry text on paper.
+    theme: { hue: 297.70, chroma: 0.1496, structuralHue: 297.70, structuralChroma: 0.1496, structuralLightness: 34.92, preserveStageInDark: true, secondary: { hue: 92.24, chroma: 0.172, lightness: 87.17 } },
+    sourcePolicy: {
+      disclaimer: "Independent coverage. Not affiliated with LSU Athletics.",
+      trustedSourceLabels: ["CollegeFootballData", "Official schedule links", "Verified game notes"],
+      preferredWebSearchDomains: ["lsusports.net", "theadvocate.com", "wbrz.com", "shreveportbossierjournal.com", "lsutigerswire.usatoday.com", "latechsports.com"],
+      protectedMarksGuidance: [
+        "Do not use official logos or mascot imagery.",
+        "Do not imply official access, sponsorship, or endorsement.",
+      ],
+    },
+    voice: {
+      posture: "smart fan analyst",
+      preferredTerms: ["early downs", "line of scrimmage", "pressure", "field position", "explosiveness"],
+      bannedPhrases: ["as an AI", "it is important to note", "official partner", "guaranteed lock"],
+    },
+    ...editionPresentation("lsu-football", "LSU"),
+    cfbd: { team: "LSU", season: 2026 },
+    suggestedPrompts: ["What should I watch up front?", "Who does LSU play next?"],
+  }),
 } satisfies Record<string, TeamConfig>;
 
 // The palette roles every component consumes. Names are stable and match the
@@ -340,7 +415,7 @@ export function deriveTeamPalette(
   // grid deliberately sits nearer the surface than the route does, because the
   // route is the element carrying meaning and has to win.
   const stageLightness =
-    mode === "dark"
+    mode === "dark" && !theme.preserveStageInDark
       ? brightStructural
         ? structuralLightness - 12
         : structuralLightness - 2
@@ -358,9 +433,17 @@ export function deriveTeamPalette(
   // a dark page has nowhere to go, and chalk-bright reads better anyway.
   const inkedRoute = mode === "light" && stageLightness >= 45;
   const clamp = (value: number) => Math.min(94, Math.max(8, value));
-  const graphicFaintLightness = clamp(stageLightness + (inkedRoute ? 13 : 11));
+  const graphicFaintLightness = clamp(stageLightness + (theme.preserveStageInDark && brightStructural ? -13 : inkedRoute ? 13 : 11));
   const graphicLightness = clamp(stageLightness + (inkedRoute ? 24 : 23));
   const graphicStrongLightness = clamp(stageLightness + (inkedRoute ? -46 : 47));
+  const secondary = theme.secondary
+    ? oklch(theme.secondary.lightness, theme.secondary.chroma, theme.secondary.hue)
+    : undefined;
+
+  // A neutral secondary needs extra lightness to remain a legible route.
+  const secondaryRoute = theme.secondary
+    ? oklch(Math.max(80, theme.secondary.lightness), theme.secondary.chroma, theme.secondary.hue)
+    : undefined;
 
   if (mode === "dark") {
     return {
@@ -373,15 +456,15 @@ export function deriveTeamPalette(
       accent: oklch(70, chroma * 0.82, hue),
       accentStrong: oklch(80, chroma * 0.68, hue),
       accentSoft: oklch(34, chroma * 0.52, hue),
-      headerAccent: oklch(80, chroma * 0.68, hue),
+      headerAccent: secondary ?? oklch(80, chroma * 0.68, hue),
       graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
       graphic: oklch(graphicLightness, chroma * 0.34, hue),
-      graphicStrong: oklch(graphicStrongLightness, chroma * 0.85, hue),
+      graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
       // Dark mode keeps the team's colour on the stage rather than washing the
       // whole page to grey. A bright primary is pulled down just enough to sit
       // under light type; a primary that is already dark is lifted off the
       // page so it still reads as a surface.
-      stage: oklch(stageLightness, structuralChroma * 0.9, structuralHue),
+      stage: oklch(stageLightness, structuralChroma * (theme.preserveStageInDark ? 1 : 0.9), structuralHue),
       stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.82, structuralHue),
       onStage: oklch(97, 0.008, structuralHue),
       muted: oklch(70, tint * 0.55, hue),
@@ -405,10 +488,10 @@ export function deriveTeamPalette(
     accent: oklch(49, chroma, hue),
     accentStrong: oklch(38, chroma * 0.96, hue),
     accentSoft: oklch(82, chroma * 0.54, hue),
-    headerAccent: brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue),
+    headerAccent: secondary ?? (brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue)),
     graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
     graphic: oklch(graphicLightness, chroma * 0.34, hue),
-    graphicStrong: oklch(graphicStrongLightness, chroma * 0.85, hue),
+    graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
     muted: oklch(43, tint * 1.5, hue),
     border: oklch(86, tint * 1.5, hue),
     borderStrong: oklch(72, tint * 2.5, hue),

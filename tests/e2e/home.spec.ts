@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { enabledTeamSlugs } from "../../src/config/team";
 
 test("leads with the fan promise and two ways in", async ({ page }) => {
   await page.goto("/");
@@ -51,8 +52,8 @@ test("the edition card carries real schedule data and opens the edition", async 
 test("states the honest number of live editions", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByText(/2 editions live/i)).toBeVisible();
-  await expect(page.locator('#editions a[href^="/teams/"]')).toHaveCount(2);
+  await expect(page.getByText(new RegExp(`${enabledTeamSlugs.length} editions live`, "i"))).toBeVisible();
+  await expect(page.locator('#editions a[href^="/teams/"]')).toHaveCount(enabledTeamSlugs.length);
 });
 
 test("requesting a team confirms and replaces the form", async ({ page }) => {

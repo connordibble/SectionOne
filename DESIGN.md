@@ -208,6 +208,8 @@ A new team is a typed configuration change, not a page redesign. `TeamConfig` ow
 - team identity, aliases, conference, and route;
 - the `hue`, `chroma`, `structuralHue`, `structuralChroma`, and optional `structuralLightness`
   theme anchors — the structural three describe the **stage**, not the masthead;
+- optional `preserveStageInDark` for a primary that already supports accessible text, and
+  `secondary` anchors for school-colored masthead highlights and field routes;
 - fan-facing copy and starter questions;
 - the weekly lead, matchup read, and four keys;
 - source rules and protected-mark guidance.
