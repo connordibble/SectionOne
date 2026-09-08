@@ -118,7 +118,18 @@ requirements, not preferences.
 - No injury speculation, no betting, no claims of inside information — this
   applies to the summary even when the source does it.
 
-## Known gaps
+## Publication workflow
+
+Use the private `weekly-team-update` skill and [edition publishing](edition-publishing.md). The
+producer requires a reviewed evidence packet, enforces reporting-origin diversity, and holds the
+last good edition when verification fails. The reader's legacy `relaxed` selector is not permission
+to bypass the producer's gate. Exact quotes and numeric presence are checked mechanically; a
+reviewer must still check entailment, newer status updates and distinct story angles.
+
+New packages preserve date-only source dates. The September 8 migration removes the invented noon
+UTC times from the four official items in the current registry; historical fixtures remain intact.
+
+## Historical limitations and remaining gaps
 
 - **Echo is graded by hand.** It is the one factor that could be measured
   directly, and it should be: counting distinct outlets on a theme is a

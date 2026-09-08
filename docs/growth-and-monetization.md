@@ -341,6 +341,14 @@ that was not reported. Prose that is merely mediocre costs far less than a fact 
 It also makes verification tractable: every factual assertion in generated output can be checked
 against the deterministic layer that produced it, automatically, before publication.
 
+### Implemented publishing foundation (September 2026)
+
+[Edition publishing](edition-publishing.md) documents the complete public package, revision-checked
+import, historical archive, fixed behavior fixtures and publication/browser checks. The separate
+private producer provides HTTP and article caching, bounded evidence packets, review invalidation
+and usage recording. It does not yet automate source discovery, extraction, model calls or semantic
+review; the pipeline below remains the target for those stages.
+
 ### Pipeline shape
 
 The seam already exists at `src/server/ingest/`, and the app already consumes a typed

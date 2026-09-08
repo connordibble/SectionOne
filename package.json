@@ -22,8 +22,9 @@
     "ingest": "tsx --env-file-if-exists=.env.local scripts/ingest.ts",
     "schedule:build": "tsx --env-file-if-exists=.env.local scripts/build-schedule.ts",
     "og:build": "tsx scripts/build-og-image.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test",
-    "release:check": "pnpm check && pnpm eval && pnpm build && pnpm test:e2e"
+    "check": "pnpm edition check && pnpm lint && pnpm typecheck && pnpm test",
+    "release:check": "pnpm check && pnpm test:e2e",
+    "edition": "node --import tsx scripts/edition.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

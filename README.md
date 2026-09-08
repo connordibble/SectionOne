@@ -8,9 +8,8 @@ the national conversation, because the second is the case the product is actuall
 
 Each edition connects three views: Brief, Matchup, and Schedule. One grounded chat thread follows
 the reader between them. Brief also carries the team's poll standing read against its own schedule,
-and a graded weekly briefing of up to five stories. Team identity, editorial cues, source policy,
-and light/dark palettes live in typed configuration, so another team is a data change rather than a
-UI fork.
+and a graded weekly briefing of up to five stories. Team identity, source policy and light/dark palettes live in typed configuration. Weekly editorial
+content lives in a versioned edition package, so another team can reuse the same UI.
 
 ## Local development
 
@@ -21,6 +20,8 @@ pnpm dev
 
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The root route is the home page; editions live
 at `/teams/[slug]` — `/teams/texas-football` and `/teams/utah-state-football`.
+
+Weekly content is imported as one versioned package. See [edition publishing](docs/edition-publishing.md) for the contract, commands, and private producer boundary.
 
 ## Quality gates
 
@@ -36,7 +37,7 @@ pnpm release:check
 Schedules are build outputs, not hand-maintained files. With `CFBD_API_KEY` set:
 
 ```bash
-pnpm schedule:build utah-state-football America/Denver
+pnpm schedule:build utah-state-football
 ```
 
 ## Local data services

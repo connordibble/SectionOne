@@ -17,16 +17,8 @@ import {
 // come back from the API rather than from memory.
 const apiBase = "https://api.collegefootballdata.com";
 
-// Where the team's own schedule lives, so the fixture keeps a link a fan can
-// check rather than pointing at the API it was assembled from.
-const officialScheduleUrls: Record<string, string> = {
-  "texas-football": "https://texaslonghorns.com/sports/football/schedule/2026",
-  "utah-state-football": "https://utahstateaggies.com/sports/football/schedule/2026",
-};
-
 async function main() {
   const teamSlug = process.argv[2];
-  const timeZone = process.argv[3] ?? "America/Chicago";
 
   if (!teamSlug) {
     throw new Error("Usage: pnpm schedule:build <team-slug> [IANA time zone]");
@@ -72,8 +64,8 @@ async function main() {
     team,
     games,
     media,
-    timeZone,
-    sourceUrl: officialScheduleUrls[teamSlug] ?? `${apiBase}/games?${query}`,
+    timeZone: process.argv[3] ?? team.timeZone,
+    sourceUrl: team.officialScheduleUrl,
     capturedAt: new Date().toISOString(),
   });
 

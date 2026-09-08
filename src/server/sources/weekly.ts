@@ -1,5 +1,6 @@
-import texasWeekly from "../../../data/fixtures/texas-football/weekly-2026-09-08.json";
-import utahStateWeekly from "../../../data/fixtures/utah-state-football/weekly-2026-09-08.json";
+import type { NewsItem } from "@/lib/editions/contract";
+export type { NewsItem } from "@/lib/editions/contract";
+import { getPublishedEdition } from "@/lib/editions/current";
 import { formatNewsDate } from "@/lib/news-date";
 import { isSafeExternalHref } from "@/lib/safe-url";
 import { reportDegradation } from "@/server/observability/report";
@@ -14,34 +15,12 @@ import type { SourceDocument } from "./types";
 // specific. "national" is real coverage that happens to be about everyone.
 // "official" is the athletic department, which is accurate about facts and is
 // nobody's independent judgement.
-export type OutletTier = "local" | "national" | "official";
+export type OutletTier = NewsItem["tier"];
 
 // The rubric a story is graded against before it competes for a slot. Each
 // runs 0-5; docs/story-selection.md holds the anchors so two people grading
 // the same week land in the same place.
-export type NewsGrade = {
-  // What it changes about what to expect on Saturday.
-  impact: number;
-  // How many independent outlets and timelines are on the same theme.
-  echo: number;
-  // How much run it is getting now, as distinct from when it broke.
-  freshness: number;
-};
-
-// One item a fan can read in about ten seconds: what happened, and the one
-// sentence that says why it matters for Saturday. The link is not decoration —
-// it is the whole basis on which a fan is being asked to believe the summary,
-// so an item without an outlet and a URL is not publishable.
-export type NewsItem = {
-  id: string;
-  headline: string;
-  tldr: string;
-  outlet: string;
-  tier: OutletTier;
-  url: string;
-  publishedAt: string;
-  grade: NewsGrade;
-};
+export type NewsGrade = NewsItem["grade"];
 
 // The unit of editorial freshness. Team identity, voice, and page structure
 // live in TeamConfig and change rarely; this changes every week, is versioned
@@ -92,24 +71,11 @@ export function admitWeeklyEdition(edition: WeeklyEdition): WeeklyEdition {
   return { ...edition, items };
 }
 
-const editions: Record<string, WeeklyEdition> = Object.fromEntries(
-  [texasWeekly, utahStateWeekly].map((edition) => {
-    const admitted = admitWeeklyEdition(edition as WeeklyEdition);
-
-    return [admitted.teamSlug, admitted];
-  }),
-);
-
-// Returns the currently published package with its running top five already
-// chosen. Ordering is not the order someone typed the file in: items are
-// graded, decayed by age, and filled under a per-outlet cap, so the list
-// re-ranks itself as the week moves without anyone re-sorting it by hand.
-//
-// When several weeks exist this becomes "the newest package at or before
-// `now`" — the shape is already versioned by `weekOf` so that change does not
-// reach callers.
+// Ranking is frozen at publication time. The private producer selects and
+// verifies the package; this adapter preserves the existing reader contract.
 export function getWeeklyEdition(teamSlug: string): WeeklyEdition | undefined {
-  const edition = editions[teamSlug];
+  const published = getPublishedEdition(teamSlug);
+  const edition = published ? admitWeeklyEdition(published) : undefined;
 
   if (!edition) {
     return undefined;
@@ -121,7 +87,14 @@ export function getWeeklyEdition(teamSlug: string): WeeklyEdition | undefined {
   const asOf = new Date(edition.publishedAt);
   const selection = selectTopStories(edition.items, { limit: maxNewsItems, asOf });
 
-  return { ...edition, items: selection.stories, sourceMix: describeSourceMix(selection.stories) };
+  return {
+    teamSlug: edition.teamSlug,
+    weekOf: edition.weekOf,
+    publishedAt: edition.publishedAt,
+    summary: edition.summary,
+    items: selection.stories,
+    sourceMix: describeSourceMix(selection.stories),
+  };
 }
 
 // Each item becomes its own retrievable document so chat can answer "what

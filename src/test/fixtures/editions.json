@@ -1,0 +1,416 @@
+{
+  "texas-football": {
+    "schemaVersion": 1,
+    "teamSlug": "texas-football",
+    "weekOf": "2026-09-08",
+    "publishedAt": "2026-09-08T13:45:00.000Z",
+    "summary": "Texas opened with a 59-7 win, but left guard is still a rotation and Derrek Cooper will miss Ohio State. The Buckeyes visit Saturday at 6:30 p.m. CT on ABC; watch the protection inside and whether the defense can keep creating takeaways.",
+    "items": [
+      {
+        "id": "cooper-out",
+        "headline": "Cooper will miss Ohio State; the third-back snaps open up",
+        "tldr": "Sarkisian says Derrek Cooper remains in a walking boot, with no return date announced. Hollywood Smothers and Raleek Brown still lead the backfield; watch who spells them after Michael Terry III and James Simon each got three carries in the opener.",
+        "outlet": "Austin American-Statesman",
+        "tier": "local",
+        "url": "https://sports.yahoo.com/articles/texas-rb-derrek-cooper-ohio-190138752.html",
+        "publishedAt": "2026-09-07T19:01:00.000Z",
+        "grade": {
+          "impact": 5,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "left-guard-rotation",
+        "headline": "Sikorski and Seymore will keep sharing left guard",
+        "tldr": "Dylan Sikorski started and played 33 snaps against Texas State; Laurence Seymore played 36, and Sarkisian expects the rotation to continue. With Cole Hutson still ineligible, watch whether that pairing can protect the pocket and open running lanes against Ohio State.",
+        "outlet": "Burnt Orange Nation",
+        "tier": "local",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/104349/left-guard-rotation-dyan-sikorski-laurence-seymore",
+        "publishedAt": "2026-09-07T20:16:00.000Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "biles-takeaways",
+        "headline": "Biles forced a fumble and intercepted a screen in his Texas debut",
+        "tldr": "Rasheem Biles punched the ball loose for Graceson Littleton's 59-yard touchdown return, then read a tunnel screen for an interception. Against Ohio State, watch his recognition underneath as well as his pass rush: both takeaways came from plays beyond blitzing the quarterback.",
+        "outlet": "Burnt Orange Nation",
+        "tier": "local",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/104279/rasheem-biles-turnovers-texas-longhorns",
+        "publishedAt": "2026-09-06T11:47:00.000Z",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "passing-game-opener",
+        "headline": "Manning opens with four touchdown passes and eight different receivers",
+        "tldr": "Arch Manning threw for 305 yards in the 59-7 win, with Ryan Wingo catching seven passes for 121 yards and Cam Coleman scoring twice. That gives the passing game something to build on against Ohio State, which visits September 12 at 6:30 p.m. CT on ABC.",
+        "outlet": "Texas Athletics",
+        "tier": "official",
+        "url": "https://texaslonghorns.com/news/2026/9/5/no-5-4-football-dominates-texas-state-in-season-opener-59-7",
+        "publishedAt": "2026-09-05",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 3
+        }
+      },
+      {
+        "id": "dkr-interactive-map",
+        "headline": "DKR's new map puts gates, water stations and first aid on your phone",
+        "tldr": "The interactive stadium map is available in the Texas Longhorns app and on the web, with seats, concessions, restrooms and fan activities marked. Open it before arriving Saturday to find what you need; step-by-step wayfinding is still listed as coming soon.",
+        "outlet": "Texas Athletics",
+        "tier": "official",
+        "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+        "publishedAt": "2026-09-04",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 3
+        }
+      }
+    ],
+    "issue": {
+      "season": 2026,
+      "week": 2
+    },
+    "editorial": {
+      "lead": {
+        "headline": "Protect the pocket. Win up front.",
+        "body": "Ohio State is next after a 59-7 opener. Watch the left-guard rotation, protection inside, and whether the defense can keep taking the ball away.",
+        "noteId": "opponent-ohio-state"
+      },
+      "matchup": {
+        "thesis": "Win up front",
+        "question": "How does Texas take control early?",
+        "answer": "Watch first and second down. If Texas stays ahead of the sticks and wins up front, the whole offense opens up.",
+        "citationNoteIds": [
+          "early-down-identity",
+          "opponent-ohio-state"
+        ]
+      },
+      "signals": [
+        {
+          "id": "early-downs",
+          "title": "Early downs",
+          "summary": "Stay ahead of the sticks",
+          "detail": "First and second down matter more than raw yards. Too many third-and-longs mean trouble.",
+          "state": "watch",
+          "prompt": "What should I watch on early downs?",
+          "noteId": "early-down-identity"
+        },
+        {
+          "id": "clean-operation",
+          "title": "Clean operation",
+          "summary": "Clean snaps. No free yards.",
+          "detail": "Get the call in, snap it on time, and protect the ball. Do not let mistakes flip the field.",
+          "state": "watch",
+          "prompt": "What does a clean start look like for Texas?",
+          "noteId": "quarterback-operation"
+        },
+        {
+          "id": "pressure-four",
+          "title": "Pressure with four",
+          "summary": "Get home without blitzing",
+          "detail": "Interior pressure lets Texas hurry the quarterback without giving up help in coverage.",
+          "state": "ready",
+          "prompt": "Why does pressure with four matter?",
+          "noteId": "defensive-front-pressure"
+        },
+        {
+          "id": "interior-rotation",
+          "title": "Interior line",
+          "summary": "Find the best five",
+          "detail": "Guard is still unsettled. Short yardage and interior pressure should reveal who the staff trusts.",
+          "state": "thin",
+          "prompt": "What should I watch on the interior line?",
+          "noteId": "interior-ol-rotation"
+        }
+      ]
+    },
+    "nextGameNote": "Watch early downs, the left-guard rotation, and who wins up front against Ohio State.",
+    "notesDisclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
+    "notes": [
+      {
+        "id": "early-down-identity",
+        "title": "Early downs: stay on schedule",
+        "topics": [
+          "early downs",
+          "offense",
+          "run game"
+        ],
+        "publishedAt": "2026-06-28T15:00:00.000Z",
+        "body": "Early downs are the cleanest tell for this offense. When runs and quick throws keep Texas ahead of the sticks, the whole playbook opens up. Too many third-and-longs mean trouble."
+      },
+      {
+        "id": "interior-ol-rotation",
+        "title": "Interior line: find the best five",
+        "topics": [
+          "roster",
+          "offensive line",
+          "line of scrimmage"
+        ],
+        "publishedAt": "2026-09-08T13:45:00.000Z",
+        "body": "Left guard remains a rotation between Dylan Sikorski and Laurence Seymore after the opener, as Sarkisian confirmed Monday. Watch short yardage and protection against interior pressure to see who earns more snaps against Ohio State."
+      },
+      {
+        "id": "quarterback-operation",
+        "title": "Clean start: checks, snaps, ball security",
+        "topics": [
+          "quarterback",
+          "operation",
+          "turnovers"
+        ],
+        "publishedAt": "2026-09-08T13:45:00.000Z",
+        "body": "The quarterback's first job is simple: get the call right, snap it on time, and protect the ball. Field position matters more than one highlight throw on Saturday."
+      },
+      {
+        "id": "defensive-front-pressure",
+        "title": "Pressure with four",
+        "topics": [
+          "defense",
+          "pressure",
+          "front seven"
+        ],
+        "publishedAt": "2026-06-30T14:20:00.000Z",
+        "body": "If the front can pressure with four, Texas can keep more help in coverage. Watch early downs and how often the defense needs a fifth rusher to move the quarterback."
+      },
+      {
+        "id": "opponent-ohio-state",
+        "title": "Ohio State: the first big test",
+        "topics": [
+          "opponent",
+          "Ohio State",
+          "line of scrimmage"
+        ],
+        "publishedAt": "2026-06-30T19:10:00.000Z",
+        "body": "Ohio State is the first big test up front. Texas has to stay on schedule and protect without helping on every snap."
+      },
+      {
+        "id": "opponent-texas-state",
+        "title": "Texas State: opener watch list",
+        "topics": [
+          "opponent",
+          "Texas State",
+          "openers"
+        ],
+        "publishedAt": "2026-06-26T13:40:00.000Z",
+        "body": "Texas State will test tackling in space and the defense's response to tempo. Watch early downs, who gets real snaps, and whether Texas wins up front."
+      }
+    ]
+  },
+  "utah-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "utah-state-football",
+    "weekOf": "2026-09-08",
+    "publishedAt": "2026-09-08T13:45:00.000Z",
+    "summary": "Utah State heads to Washington after a 29-17 loss to Idaho State. Hillstead's forearm and Brosterhous's planned role make quarterback usage worth watching, but four interceptions and repeated penalties leave the whole offense with work to do before Saturday's 1:30 p.m. MT kickoff.",
+    "items": [
+      {
+        "id": "quarterback-roles",
+        "headline": "Hillstead's forearm affected his throws; Brosterhous has a weekly role",
+        "tldr": "Mendenhall said Monday that McCae Hillstead's forearm trouble worsened during the opener and affected his velocity and accuracy. He also said Grady Brosterhous will play in every game under a plan that predates the loss, so a change at quarterback Saturday would not by itself signal a new starter.",
+        "outlet": "KSL Sports",
+        "tier": "local",
+        "url": "https://sports.ksl.com/ncaa/utah-state-football/week-2-vs-washington/576849",
+        "publishedAt": "2026-09-07T22:17:00.000Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "penalties-travel",
+        "headline": "Eleven penalties leave the offense work to do before its first road game",
+        "tldr": "Utah State drew 11 flags for 83 yards despite practicing with crowd noise and late-game situations during camp. Mendenhall says that preparation needs more work; watch whether the offense can get lined up and snap cleanly in Seattle before judging its ability to sustain drives.",
+        "outlet": "KSL Sports",
+        "tier": "local",
+        "url": "https://sports.ksl.com/ncaa/utah-state-football/week-1-takeaways/576814",
+        "publishedAt": "2026-09-07T16:38:00.000Z",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "turnovers-cost-opener",
+        "headline": "Four interceptions wipe out Utah State's yardage advantage",
+        "tldr": "The Aggies outgained Idaho State 407-241 but lost 29-17, with the Bengals scoring 10 points after turnovers. Ball security is the first test at Washington: moving the ball means little if the next possession gives the opponent a short field.",
+        "outlet": "Deseret News",
+        "tier": "local",
+        "url": "https://www.deseret.com/sports/2026/09/05/utah-state-football-loses-to-idaho-state/",
+        "publishedAt": "2026-09-06T04:37:00.000Z",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "washington-watch-guide",
+        "headline": "Washington kicks off at 1:30 p.m. Mountain on Big Ten Network",
+        "tldr": "Saturday's road game is at Husky Stadium in Seattle, where the local kickoff time is 12:30 p.m. Pacific. Utah State's game guide puts the broadcast, radio stream, live stats and game notes in one place, so check your Big Ten Network access before kickoff.",
+        "outlet": "Utah State Athletics",
+        "tier": "official",
+        "url": "https://utahstateaggies.com/news/2026/9/7/utah-state-football-travels-to-husky-stadium-to-play-no-17-washingto.aspx",
+        "publishedAt": "2026-09-07",
+        "grade": {
+          "impact": 3,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "wood-receiving-lead",
+        "headline": "Eli Wood leads Utah State's receivers with six catches",
+        "tldr": "Wood caught six passes for 90 yards and a touchdown, while Demick Starling added three catches and the other receiving score. Those are two names to follow as Utah State tries to make its passing game more consistent.",
+        "outlet": "Utah State Athletics",
+        "tier": "official",
+        "url": "https://utahstateaggies.com/news/2026/9/5/utah-state-football-drops-season-opener-to-idaho-state-29-17.aspx",
+        "publishedAt": "2026-09-05",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 3
+        }
+      }
+    ],
+    "issue": {
+      "season": 2026,
+      "week": 2
+    },
+    "editorial": {
+      "lead": {
+        "headline": "Protect the ball. Make them drive.",
+        "body": "Four interceptions helped turn the opener into a 29-17 loss. Washington is next: watch the quarterback rotation, clean snaps, and tackling in space.",
+        "noteId": "opponent-washington"
+      },
+      "matchup": {
+        "thesis": "Win the margins",
+        "question": "How does Utah State stay in the game at Washington?",
+        "answer": "Protect the ball and keep Demond Williams Jr. contained. When he extends a play, the secondary has to stay with its receivers.",
+        "citationNoteIds": [
+          "opponent-washington",
+          "explosive-plays-allowed"
+        ]
+      },
+      "signals": [
+        {
+          "id": "run-game",
+          "title": "Run game",
+          "summary": "Stay ahead of the chains",
+          "detail": "First and second down decide whether this offense gets to use the rest of its playbook. Third-and-long is where the drive ends.",
+          "state": "watch",
+          "prompt": "What matters in the run game?",
+          "noteId": "run-game-identity"
+        },
+        {
+          "id": "ball-security",
+          "title": "Ball security",
+          "summary": "Make them drive the field",
+          "detail": "Get the call in, take the checkdown, and hand nothing over for free. Field position is worth more here than one big throw.",
+          "state": "watch",
+          "prompt": "What does a clean start look like for Utah State?",
+          "noteId": "quarterback-operation"
+        },
+        {
+          "id": "explosive-plays",
+          "title": "Explosive plays",
+          "summary": "Nothing behind coverage",
+          "detail": "Long, slow drives against this defense are survivable. Chunk plays over the top are what turn a close game into a bad one.",
+          "state": "ready",
+          "prompt": "Why do explosive plays decide these games?",
+          "noteId": "explosive-plays-allowed"
+        },
+        {
+          "id": "special-teams",
+          "title": "Special teams",
+          "summary": "Cheapest yards on the field",
+          "detail": "Net punting and kick coverage are where a roster without a talent edge buys itself a quarter of football.",
+          "state": "thin",
+          "prompt": "What should I watch on special teams?",
+          "noteId": "special-teams-margin"
+        }
+      ]
+    },
+    "nextGameNote": "Watch ball security, clean snaps, and whether the defense can contain Demond Williams Jr. in Seattle.",
+    "notesDisclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
+    "notes": [
+      {
+        "id": "run-game-identity",
+        "title": "Run game: stay ahead of the chains",
+        "topics": [
+          "run game",
+          "offense",
+          "early downs"
+        ],
+        "publishedAt": "2026-07-29T15:00:00.000Z",
+        "body": "The run game sets up everything else for this offense. When Utah State stays ahead of the chains on early downs, tempo and play-action both become real options instead of hopes. Third-and-long is where a drive in Logan goes to die."
+      },
+      {
+        "id": "quarterback-operation",
+        "title": "Quarterback play: protect the ball, protect the field",
+        "topics": [
+          "quarterback",
+          "operation",
+          "turnovers"
+        ],
+        "publishedAt": "2026-07-30T17:10:00.000Z",
+        "body": "The quarterback's first job here is field position, not highlights. Get the call in on time, take the checkdown, and make the other team drive the length of the field. One free turnover swings a game Utah State would otherwise play even."
+      },
+      {
+        "id": "explosive-plays-allowed",
+        "title": "Explosive plays: the number that decides these games",
+        "topics": [
+          "defense",
+          "explosiveness",
+          "coverage"
+        ],
+        "publishedAt": "2026-07-31T16:40:00.000Z",
+        "body": "Explosive plays are the cleanest tell for this defense. Utah State can live with long, slow drives against it; what it cannot live with is giving up chunk plays behind coverage. Watch how often a safety ends up as the last line."
+      },
+      {
+        "id": "special-teams-margin",
+        "title": "Special teams: the cheapest points on the field",
+        "topics": [
+          "special teams",
+          "field position",
+          "kicking"
+        ],
+        "publishedAt": "2026-08-01T14:25:00.000Z",
+        "body": "Special teams is the cheapest place on the field to win yards. A net punt edge and clean kick coverage are worth more to Utah State than any single play call. Field position is how a team without a talent edge is still in a game in the fourth quarter."
+      },
+      {
+        "id": "pac-12-step-up",
+        "title": "Pac-12 move: a harder Saturday most weeks",
+        "topics": [
+          "schedule",
+          "Pac-12",
+          "conference"
+        ],
+        "publishedAt": "2026-08-02T13:15:00.000Z",
+        "body": "The Pac-12 move means a harder Saturday most weeks than the old slate held. The line of scrimmage is where that shows up first, and it shows up late in games before it shows up early. Depth up front matters more in November than it does in September."
+      },
+      {
+        "id": "opponent-washington",
+        "title": "Washington: contain the quarterback",
+        "topics": [
+          "opponent",
+          "Washington",
+          "coverage"
+        ],
+        "publishedAt": "2026-09-08T13:45:00.000Z",
+        "body": "Washington visits are a test of ball security and discipline. Mendenhall identified Demond Williams Jr. as a quarterback who needs multiple defenders to contain him; Brevin Hamblin emphasized staying on top of routes when Williams extends plays. Watch rush lanes and whether the secondary stays with its receivers in Seattle."
+      }
+    ]
+  }
+}

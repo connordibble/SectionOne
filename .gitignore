@@ -49,3 +49,8 @@ next-env.d.ts
 
 # design audit screenshots — regenerated on demand, not source
 /.audit-visuals
+
+# Private publishing engine and local research never enter the public app.
+/.private/
+/data/editions/.publish.lock
+/data/editions/.current-*.tmp

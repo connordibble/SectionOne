@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { editorialSchema } from "@/lib/editions/contract";
+import { getPublishedEdition } from "@/lib/editions/current";
 import { getTeamSchedule } from "@/server/schedule/schedule";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
 
@@ -19,6 +21,15 @@ const teamConfigSchema = z.object({
   shortName: z.string().min(1),
   referenceLabel: z.string().min(1),
   tagline: z.string().min(1),
+  timeZone: z.string().refine((zone) => {
+    try {
+      new Intl.DateTimeFormat("en-US", { timeZone: zone });
+      return true;
+    } catch {
+      return false;
+    }
+  }, "Invalid IANA timezone"),
+  officialScheduleUrl: z.url(),
   aliases: z.array(z.string().min(1)),
   // Three anchors, not a hand-tuned palette. See DESIGN.md § Team portability.
   // OKLCH keeps the shared lightness ladder predictable as team identity moves
@@ -59,32 +70,7 @@ const teamConfigSchema = z.object({
     preferredTerms: z.array(z.string().min(1)),
     bannedPhrases: z.array(z.string().min(1)),
   }),
-  editorial: z.object({
-    lead: z.object({
-      headline: z.string().min(1),
-      body: z.string().min(1),
-      noteId: z.string().min(1),
-    }),
-    matchup: z.object({
-      thesis: z.string().min(1),
-      question: z.string().min(1),
-      answer: z.string().min(1),
-      citationNoteIds: z.array(z.string().min(1)).min(1),
-    }),
-    signals: z
-      .array(
-        z.object({
-          id: z.string().min(1),
-          title: z.string().min(1),
-          summary: z.string().min(1),
-          detail: z.string().min(1),
-          state: z.enum(["watch", "ready", "thin"]),
-          prompt: z.string().min(1),
-          noteId: z.string().min(1),
-        }),
-      )
-      .length(4),
-  }),
+  editorial: editorialSchema,
   nextGameNote: z.string().min(1),
   cfbd: z
     .object({
@@ -97,15 +83,26 @@ const teamConfigSchema = z.object({
 
 export type TeamConfig = z.infer<typeof teamConfigSchema>;
 
+function editionPresentation(slug: string, shortName: string) {
+  const edition = getPublishedEdition(slug);
+  if (!edition) throw new Error(`Missing published edition for ${slug}`);
+  return {
+    referenceLabel: `${shortName} · Week ${edition.issue.week} · ${edition.issue.season}`,
+    editorial: edition.editorial,
+    nextGameNote: edition.nextGameNote,
+  };
+}
+
 export const teamConfigs = {
   "texas-football": teamConfigSchema.parse({
     slug: "texas-football",
+    timeZone: "America/Chicago",
+    officialScheduleUrl: "https://texaslonghorns.com/sports/football/schedule/2026",
     sport: "football",
     league: "college-football",
     conference: "SEC",
     displayName: "Texas football",
     shortName: "Texas",
-    referenceLabel: "Texas · Week 2 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
     // The structural colour is Texas burnt orange itself, not a stand-in.
@@ -168,65 +165,7 @@ export const teamConfigs = {
         "guaranteed lock",
       ],
     },
-    editorial: {
-      lead: {
-        headline: "Protect the pocket. Win up front.",
-        body:
-          "Ohio State is next after a 59-7 opener. Watch the left-guard rotation, protection inside, and whether the defense can keep taking the ball away.",
-        noteId: "opponent-ohio-state",
-      },
-      matchup: {
-        thesis: "Win up front",
-        question: "How does Texas take control early?",
-        answer:
-          "Watch first and second down. If Texas stays ahead of the sticks and wins up front, the whole offense opens up.",
-        citationNoteIds: ["early-down-identity", "opponent-ohio-state"],
-      },
-      signals: [
-        {
-          id: "early-downs",
-          title: "Early downs",
-          summary: "Stay ahead of the sticks",
-          detail:
-            "First and second down matter more than raw yards. Too many third-and-longs mean trouble.",
-          state: "watch",
-          prompt: "What should I watch on early downs?",
-          noteId: "early-down-identity",
-        },
-        {
-          id: "clean-operation",
-          title: "Clean operation",
-          summary: "Clean snaps. No free yards.",
-          detail:
-            "Get the call in, snap it on time, and protect the ball. Do not let mistakes flip the field.",
-          state: "watch",
-          prompt: "What does a clean start look like for Texas?",
-          noteId: "quarterback-operation",
-        },
-        {
-          id: "pressure-four",
-          title: "Pressure with four",
-          summary: "Get home without blitzing",
-          detail:
-            "Interior pressure lets Texas hurry the quarterback without giving up help in coverage.",
-          state: "ready",
-          prompt: "Why does pressure with four matter?",
-          noteId: "defensive-front-pressure",
-        },
-        {
-          id: "interior-rotation",
-          title: "Interior line",
-          summary: "Find the best five",
-          detail:
-            "Guard is still unsettled. Short yardage and interior pressure should reveal who the staff trusts.",
-          state: "thin",
-          prompt: "What should I watch on the interior line?",
-          noteId: "interior-ol-rotation",
-        },
-      ],
-    },
-    nextGameNote:
-      "Watch early downs, the left-guard rotation, and who wins up front against Ohio State.",
+    ...editionPresentation("texas-football", "Texas"),
     cfbd: {
       team: "Texas",
       season: 2026,
@@ -238,12 +177,13 @@ export const teamConfigs = {
   }),
   "utah-state-football": teamConfigSchema.parse({
     slug: "utah-state-football",
+    timeZone: "America/Denver",
+    officialScheduleUrl: "https://utahstateaggies.com/sports/football/schedule/2026",
     sport: "football",
     league: "college-football",
     conference: "Pac-12",
     displayName: "Utah State football",
     shortName: "Utah State",
-    referenceLabel: "Utah State · Week 2 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Utah State", "Aggies", "USU"],
     // Aggie blue on white. The school's primary is already a dark navy, so it
@@ -305,64 +245,7 @@ export const teamConfigs = {
         "punching above",
       ],
     },
-    editorial: {
-      lead: {
-        headline: "Protect the ball. Make them drive.",
-        body: "Four interceptions helped turn the opener into a 29-17 loss. Washington is next: watch the quarterback rotation, clean snaps, and tackling in space.",
-        noteId: "opponent-washington",
-      },
-      matchup: {
-        thesis: "Win the margins",
-        question: "How does Utah State stay in the game at Washington?",
-        answer:
-          "Protect the ball and keep Demond Williams Jr. contained. When he extends a play, the secondary has to stay with its receivers.",
-        citationNoteIds: ["opponent-washington", "explosive-plays-allowed"],
-      },
-      signals: [
-        {
-          id: "run-game",
-          title: "Run game",
-          summary: "Stay ahead of the chains",
-          detail:
-            "First and second down decide whether this offense gets to use the rest of its playbook. Third-and-long is where the drive ends.",
-          state: "watch",
-          prompt: "What matters in the run game?",
-          noteId: "run-game-identity",
-        },
-        {
-          id: "ball-security",
-          title: "Ball security",
-          summary: "Make them drive the field",
-          detail:
-            "Get the call in, take the checkdown, and hand nothing over for free. Field position is worth more here than one big throw.",
-          state: "watch",
-          prompt: "What does a clean start look like for Utah State?",
-          noteId: "quarterback-operation",
-        },
-        {
-          id: "explosive-plays",
-          title: "Explosive plays",
-          summary: "Nothing behind coverage",
-          detail:
-            "Long, slow drives against this defense are survivable. Chunk plays over the top are what turn a close game into a bad one.",
-          state: "ready",
-          prompt: "Why do explosive plays decide these games?",
-          noteId: "explosive-plays-allowed",
-        },
-        {
-          id: "special-teams",
-          title: "Special teams",
-          summary: "Cheapest yards on the field",
-          detail:
-            "Net punting and kick coverage are where a roster without a talent edge buys itself a quarter of football.",
-          state: "thin",
-          prompt: "What should I watch on special teams?",
-          noteId: "special-teams-margin",
-        },
-      ],
-    },
-    nextGameNote:
-      "Watch ball security, clean snaps, and whether the defense can contain Demond Williams Jr. in Seattle.",
+    ...editionPresentation("utah-state-football", "Utah State"),
     cfbd: {
       team: "Utah State",
       season: 2026,

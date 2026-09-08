@@ -1,12 +1,25 @@
 import { expect, test } from "@playwright/test";
+import { getTeamConfig, enabledTeamSlugs } from "../../src/config/team";
+import { getNextGame, getTeamSchedule, formatCaptureDate, formatSite } from "../../src/server/schedule/schedule";
+import { getWeeklyEdition } from "../../src/server/sources/weekly";
+import { getPublishedEdition } from "../../src/lib/editions/current";
+
+const texas = getTeamConfig("texas-football")!;
+const utahState = getTeamConfig("utah-state-football")!;
+const texasNext = getNextGame(texas.slug)!;
+const utahNext = getNextGame(utahState.slug)!;
+const texasNextAnswer = `Texas plays next ${formatSite(texasNext.site)} ${texasNext.opponent}`;
+const texasSignal = texas.editorial.signals[2];
+const texasLeadNote = getPublishedEdition(texas.slug)!.notes.find((note) => note.id === texas.editorial.lead.noteId)!;
+
 
 test("loads the finished Section One workspace", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
   await expect(
-    page.getByRole("heading", { name: "Texas vs Ohio State", exact: true, level: 1 }),
+    page.getByRole("heading", { name: `Texas ${formatSite(texasNext.site)} ${texasNext.opponent}`, exact: true, level: 1 }),
   ).toBeVisible();
-  await expect(page.getByText(/Texas · Week 2 · 2026 · SEC/)).toBeVisible();
+  await expect(page.getByText(`${texas.referenceLabel} · ${texas.conference}`, { exact: false })).toBeVisible();
   await expect(page.getByText("Saturday edition")).toHaveCount(1);
   // The wordmark is typeset, not placed. The raster it replaced carried a
   // baked cream ground, which is what stopped the masthead following the theme.
@@ -23,7 +36,7 @@ test("loads the finished Section One workspace", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Tune your signal" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Next three" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Ask", exact: true })).toBeVisible();
-  await expect(page.getByText(/Schedule updated July 1, 2026/)).toBeVisible();
+  await expect(page.getByText(`Schedule updated ${formatCaptureDate(getTeamSchedule(texas.slug)!.capturedAt)}`, { exact: false })).toBeVisible();
 });
 
 test("loads the canonical Texas route with a real kickoff figure", async ({ page }) => {
@@ -40,8 +53,8 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
 
 test("every edition renders its own canonical and social preview metadata", async ({ page }) => {
   for (const edition of [
-    { slug: "texas-football", team: "Texas", opponent: "Ohio State" },
-    { slug: "utah-state-football", team: "Utah State", opponent: "Washington" },
+    { slug: "texas-football", team: "Texas", opponent: texasNext.opponent },
+    { slug: "utah-state-football", team: "Utah State", opponent: utahNext.opponent },
   ]) {
     const path = `/teams/${edition.slug}`;
 
@@ -116,7 +129,7 @@ test("full schedule sends focus to the new coverage tab", async ({ page }) => {
 test("the Signal Board turns a selected cue into a focused question", async ({ page }) => {
   await page.goto("/teams/texas-football#matchup");
 
-  const pressureCue = page.getByRole("button", { name: /Pressure with four/ });
+  const pressureCue = page.getByRole("button", { name: texasSignal.title, exact: false });
   await pressureCue.click();
   await expect(pressureCue).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByText(/Interior pressure lets Texas hurry the quarterback/)).toBeVisible();
@@ -124,7 +137,7 @@ test("the Signal Board turns a selected cue into a focused question", async ({ p
   await page.getByRole("button", { name: "Ask about this" }).click();
   const composer = page.getByLabel("Ask Section One");
   await expect(composer).toBeFocused();
-  await expect(composer).toHaveValue("Why does pressure with four matter?");
+  await expect(composer).toHaveValue(texasSignal.prompt);
 });
 
 test("mobile Signal Board keeps the key picker and selected read together", async ({ page }) => {
@@ -143,9 +156,9 @@ test("mobile Signal Board keeps the key picker and selected read together", asyn
   expect(readBox).not.toBeNull();
   expect(readBox?.y).toBeGreaterThan(choicesBox?.y ?? 0);
 
-  await choices.getByRole("button", { name: /Pressure with four/ }).click();
-  await expect(read).toContainText("Key 03 · Ready");
-  await expect(read.getByRole("heading", { name: "Pressure with four" })).toBeVisible();
+  await choices.getByRole("button", { name: texasSignal.title, exact: false }).click();
+  await expect(read).toContainText(`Key 03 · ${texasSignal.state[0].toUpperCase()}${texasSignal.state.slice(1)}`);
+  await expect(read.getByRole("heading", { name: texasSignal.title })).toBeVisible();
 });
 
 test("light is the default and explicit theme choices cycle and persist", async ({ page }) => {
@@ -259,10 +272,10 @@ test("the Utah State edition renders its own schedule, notes, and accent", async
     );
 
   await page.goto("/teams/utah-state-football");
-  await expect(page.getByText(/Utah State · Week 2 · 2026 · Pac-12/)).toBeVisible();
+  await expect(page.getByText(`${utahState.referenceLabel} · ${utahState.conference}`, { exact: false })).toBeVisible();
   await expect(page.getByTestId("kickoff-lead")).toBeVisible();
   await expect(page.getByRole("heading", { name: "What matters Saturday" })).toBeVisible();
-  await expect(page.getByText(/Washington/).first()).toBeVisible();
+  await expect(page.getByText(utahNext.opponent, { exact: false }).first()).toBeVisible();
 
   const aggieAccent = await accentOf();
   expect(aggieAccent).toMatch(/^oklch\(/);
@@ -280,7 +293,7 @@ test("the team switcher is a styled native select, not a custom widget", async (
 
   const switcher = page.getByLabel("Team");
   await expect(switcher).toHaveJSProperty("tagName", "SELECT");
-  await expect(switcher.locator("option")).toHaveCount(2);
+  await expect(switcher.locator("option")).toHaveCount(enabledTeamSlugs.length);
 
   // The UA arrow is suppressed so ours is the only one drawn, and the border
   // stays — DESIGN.md keeps control borders as the operable affordance.
@@ -322,7 +335,7 @@ test("the team switcher moves between editions", async ({ page }) => {
   await page.getByLabel("Team").selectOption("utah-state-football");
 
   await expect(page).toHaveURL(/\/teams\/utah-state-football$/);
-  await expect(page.getByText(/Utah State · Week 2 · 2026 · Pac-12/)).toBeVisible();
+  await expect(page.getByText(`${utahState.referenceLabel} · ${utahState.conference}`, { exact: false })).toBeVisible();
 });
 
 // The promoted prompt for a two-word team name used to escalate to a paid
@@ -335,9 +348,9 @@ test("the Utah State next-game prompt is answered from Utah State sources", asyn
 
   // Scoped to the answer: the venue also appears in the hero, so an unscoped
   // match would pass without the chat having answered anything.
-  const answer = page.getByText(/Utah State plays next at Washington/);
+  const answer = page.getByText(`Utah State plays next ${formatSite(utahNext.site)} ${utahNext.opponent}`, { exact: false });
   await expect(answer).toBeVisible();
-  await expect(answer).toContainText("Husky Stadium, Seattle, Wash.");
+  await expect(answer).toContainText(utahNext.venue);
 });
 
 // For most of the country the useful poll question is not "who is No. 1" but
@@ -374,12 +387,10 @@ test("this week carries a headline, a takeaway, and the outlet behind it", async
   await page.goto("/teams/utah-state-football");
   const news = page.locator('[aria-labelledby="news-heading"]');
 
-  // Ranked by the rubric, not by the order the package was written: a
-  // starter's availability leads, and the low-impact items sink whatever
-  // outlet they came from.
-  await expect(news.locator("li").first()).toContainText(/Hillstead/i);
-  await expect(news.getByText(/a plan that predates the loss/i)).toBeVisible();
-  await expect(news.getByText(/KSL Sports/).first()).toBeVisible();
+  const firstStory = getWeeklyEdition(utahState.slug)!.items[0];
+  await expect(news.locator("li").first()).toContainText(firstStory.headline);
+  await expect(news.getByText(firstStory.tldr, { exact: true })).toBeVisible();
+  await expect(news.getByText(firstStory.outlet, { exact: false }).first()).toBeVisible();
 
   // No outlet owns the list. The first Texas package was three of five from
   // one national masthead, which is one desk's read of the week presented as
@@ -450,7 +461,7 @@ test("chat API returns named sources", async ({ request }) => {
     answer: string;
     citations: Array<{ title: string }>;
   };
-  expect(body.answer).toContain("Ohio State");
+  expect(body.answer).toContain(texasNext.opponent);
   expect(body.citations.length).toBeGreaterThanOrEqual(2);
 });
 
@@ -472,8 +483,8 @@ test("chat does not cite unrelated coverage for an unreported named subject", as
   expect(body.answer).toContain("could not verify a reliable current report about TyAnthony Smith");
   expect(body.citations).toEqual([]);
   expect(body.mode).toBe("no-context");
-  expect(body.freshness.coverage).toBe("Coverage updated September 8, 2026.");
-  expect(body.freshness.schedule).toBe("Schedule updated July 1, 2026.");
+  expect(body.freshness.coverage).toBe(`Coverage updated ${formatCaptureDate(getPublishedEdition(texas.slug)!.publishedAt)}.`);
+  expect(body.freshness.schedule).toBe(`Schedule updated ${formatCaptureDate(getTeamSchedule(texas.slug)!.capturedAt)}.`);
 });
 
 test("chat API streams citations, answer text, and completion metadata", async ({ request }) => {
@@ -497,11 +508,11 @@ test("chat streams a cited answer and keeps it across views", async ({ page }) =
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
-  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
+  await expect(page.getByText(texasNextAnswer)).toBeVisible();
   await expect(page.getByRole("link", { name: /Texas football 2026 schedule/i })).toBeVisible();
 
   await page.getByRole("tab", { name: "Matchup" }).click();
-  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
+  await expect(page.getByText(texasNextAnswer)).toBeVisible();
   await expect(page.getByRole("heading", { name: "Your signal" })).toBeVisible();
   await expect(page.getByRole("complementary", { name: "Sources" })).toBeVisible();
 
@@ -515,7 +526,7 @@ test("the answer uses a reading column and a responsive source rail", async ({ p
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
-  const answer = page.getByText("Texas plays next vs Ohio State");
+  const answer = page.getByText(texasNextAnswer);
   const sources = page.getByRole("complementary", { name: "Sources" });
   const threadHeading = page
     .getByRole("heading", { name: "Your signal" })
@@ -623,12 +634,12 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   await page.goto("/teams/texas-football");
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
-  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
+  await expect(page.getByText(texasNextAnswer)).toBeVisible();
 
-  await page.getByLabel("Ask Section One").fill("How does Ohio State look?");
+  await page.getByLabel("Ask Section One").fill(`How does ${texasLeadNote.topics.find((topic) => topic !== "opponent") ?? texasNext.opponent} look?`);
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
-  await expect(page.getByText("How does Ohio State look?")).toBeVisible();
+  await expect(page.getByText(`How does ${texasLeadNote.topics.find((topic) => topic !== "opponent") ?? texasNext.opponent} look?`)).toBeVisible();
 
   // Asserted on sourcing rather than on wording. This question escalates now,
   // so its text comes from whichever answer path is live: a model where a key
@@ -637,9 +648,9 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   // first exchange is still on screen. Pinning the old template's prose here
   // was really testing which branch ran.
   const thread = page.locator("[aria-live='polite']").last();
-  await expect(thread.getByText(/Ohio State/).first()).toBeVisible();
+  await expect(thread.getByText(texasNext.opponent, { exact: false }).first()).toBeVisible();
   await expect(
-    page.getByTestId("team-chat-panel").getByText("Ohio State: the first big test"),
+    page.getByTestId("team-chat-panel").getByText(texasLeadNote.title),
   ).toBeVisible();
   await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });
