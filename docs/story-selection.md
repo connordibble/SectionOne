@@ -124,16 +124,17 @@ requirements, not preferences.
   directly, and it should be: counting distinct outlets on a theme is a
   gathering-time computation, not a judgement call. Until it is, it is the
   softest number in the rubric.
-- **Dates for outlets that do not publish one** are inferred from context. Every
-  item in the 2026-09-03 packages carries a published date, but five of the ten
-  carry no published time and are stored at noon UTC; only the ordering within a
-  single day is affected. Earlier packages also inferred the date itself — the
+- **Publication times can be approximate.** Every item in the 2026-09-08 packages
+  carries a published date. The four athletics-department items use noon UTC on
+  that date because the page gives either no time or no explicit time zone;
+  the other six use the outlet's timestamp, converted to UTC. Earlier packages
+  also inferred the date itself — the
   Horns247 item in 2026-08-27 said "Monday" and was pinned to August 24 by the
   scrimmage it referred back to.
-- **Outlet is who reported it, not whose page it sits on.** The receiver item in
-  the 2026-09-03 Texas package links to Yahoo Sports but is credited to the
-  Austin American-Statesman, whose beat writer wrote it and whose photographers
-  shot it. The rule runs the other way too: the Pac-12 item in the 2026-08-27
+- **Outlet is who reported it, not whose page it sits on.** The Cooper item in
+  the 2026-09-08 Texas package links to Yahoo Sports but is credited to the
+  Austin American-Statesman, whose reporter Thomas Jones wrote it. The rule
+  runs the other way too: the Pac-12 item in the 2026-08-27
   Utah State package linked to Cache Valley Daily and was credited to the
   Associated Press. Nothing in the code enforces this.
 - **Nothing enforces that a takeaway matches its link.** That is the check that

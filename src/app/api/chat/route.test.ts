@@ -63,7 +63,7 @@ describe("POST /api/chat", () => {
       citations: unknown[];
       provider: string;
     };
-    expect(body.answer).toContain("Texas State");
+    expect(body.answer).toContain("Ohio State");
     expect(body.citations.length).toBeGreaterThanOrEqual(2);
     // Which model wrote the answer is not published. It is an implementation
     // detail, and naming it commits us to a disclosure we would have to keep

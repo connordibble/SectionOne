@@ -4,9 +4,9 @@ test("loads the finished Section One workspace", async ({ page }) => {
   await page.goto("/teams/texas-football");
 
   await expect(
-    page.getByRole("heading", { name: "Texas vs Texas State", exact: true, level: 1 }),
+    page.getByRole("heading", { name: "Texas vs Ohio State", exact: true, level: 1 }),
   ).toBeVisible();
-  await expect(page.getByText(/Texas · Week 1 · 2026 · SEC/)).toBeVisible();
+  await expect(page.getByText(/Texas · Week 2 · 2026 · SEC/)).toBeVisible();
   await expect(page.getByText("Saturday edition")).toHaveCount(1);
   // The wordmark is typeset, not placed. The raster it replaced carried a
   // baked cream ground, which is what stopped the masthead following the theme.
@@ -40,8 +40,8 @@ test("loads the canonical Texas route with a real kickoff figure", async ({ page
 
 test("every edition renders its own canonical and social preview metadata", async ({ page }) => {
   for (const edition of [
-    { slug: "texas-football", team: "Texas", opponent: "Texas State" },
-    { slug: "utah-state-football", team: "Utah State", opponent: "Idaho State" },
+    { slug: "texas-football", team: "Texas", opponent: "Ohio State" },
+    { slug: "utah-state-football", team: "Utah State", opponent: "Washington" },
   ]) {
     const path = `/teams/${edition.slug}`;
 
@@ -259,10 +259,10 @@ test("the Utah State edition renders its own schedule, notes, and accent", async
     );
 
   await page.goto("/teams/utah-state-football");
-  await expect(page.getByText(/Utah State · Week 1 · 2026 · Pac-12/)).toBeVisible();
+  await expect(page.getByText(/Utah State · Week 2 · 2026 · Pac-12/)).toBeVisible();
   await expect(page.getByTestId("kickoff-lead")).toBeVisible();
   await expect(page.getByRole("heading", { name: "What matters Saturday" })).toBeVisible();
-  await expect(page.getByText(/Idaho State/).first()).toBeVisible();
+  await expect(page.getByText(/Washington/).first()).toBeVisible();
 
   const aggieAccent = await accentOf();
   expect(aggieAccent).toMatch(/^oklch\(/);
@@ -322,7 +322,7 @@ test("the team switcher moves between editions", async ({ page }) => {
   await page.getByLabel("Team").selectOption("utah-state-football");
 
   await expect(page).toHaveURL(/\/teams\/utah-state-football$/);
-  await expect(page.getByText(/Utah State · Week 1 · 2026 · Pac-12/)).toBeVisible();
+  await expect(page.getByText(/Utah State · Week 2 · 2026 · Pac-12/)).toBeVisible();
 });
 
 // The promoted prompt for a two-word team name used to escalate to a paid
@@ -335,9 +335,9 @@ test("the Utah State next-game prompt is answered from Utah State sources", asyn
 
   // Scoped to the answer: the venue also appears in the hero, so an unscoped
   // match would pass without the chat having answered anything.
-  const answer = page.getByText(/Utah State opens the 2026 schedule vs Idaho State/);
+  const answer = page.getByText(/Utah State plays next at Washington/);
   await expect(answer).toBeVisible();
-  await expect(answer).toContainText("Maverik Stadium, Logan, Utah");
+  await expect(answer).toContainText("Husky Stadium, Seattle, Wash.");
 });
 
 // For most of the country the useful poll question is not "who is No. 1" but
@@ -377,8 +377,8 @@ test("this week carries a headline, a takeaway, and the outlet behind it", async
   // Ranked by the rubric, not by the order the package was written: a
   // starter's availability leads, and the low-impact items sink whatever
   // outlet they came from.
-  await expect(news.locator("li").first()).toContainText(/Bryson Taylor/i);
-  await expect(news.getByText(/day by day is the coach's own phrase/i)).toBeVisible();
+  await expect(news.locator("li").first()).toContainText(/Hillstead/i);
+  await expect(news.getByText(/a plan that predates the loss/i)).toBeVisible();
   await expect(news.getByText(/KSL Sports/).first()).toBeVisible();
 
   // No outlet owns the list. The first Texas package was three of five from
@@ -450,7 +450,7 @@ test("chat API returns named sources", async ({ request }) => {
     answer: string;
     citations: Array<{ title: string }>;
   };
-  expect(body.answer).toContain("Texas State");
+  expect(body.answer).toContain("Ohio State");
   expect(body.citations.length).toBeGreaterThanOrEqual(2);
 });
 
@@ -472,7 +472,7 @@ test("chat does not cite unrelated coverage for an unreported named subject", as
   expect(body.answer).toContain("could not verify a reliable current report about TyAnthony Smith");
   expect(body.citations).toEqual([]);
   expect(body.mode).toBe("no-context");
-  expect(body.freshness.coverage).toBe("Coverage updated September 3, 2026.");
+  expect(body.freshness.coverage).toBe("Coverage updated September 8, 2026.");
   expect(body.freshness.schedule).toBe("Schedule updated July 1, 2026.");
 });
 
@@ -497,11 +497,11 @@ test("chat streams a cited answer and keeps it across views", async ({ page }) =
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
+  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
   await expect(page.getByRole("link", { name: /Texas football 2026 schedule/i })).toBeVisible();
 
   await page.getByRole("tab", { name: "Matchup" }).click();
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
+  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Your signal" })).toBeVisible();
   await expect(page.getByRole("complementary", { name: "Sources" })).toBeVisible();
 
@@ -515,7 +515,7 @@ test("the answer uses a reading column and a responsive source rail", async ({ p
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
 
-  const answer = page.getByText("Texas opens the 2026 schedule vs Texas State");
+  const answer = page.getByText("Texas plays next vs Ohio State");
   const sources = page.getByRole("complementary", { name: "Sources" });
   const threadHeading = page
     .getByRole("heading", { name: "Your signal" })
@@ -623,7 +623,7 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   await page.goto("/teams/texas-football");
   await page.getByLabel("Ask Section One").fill("Give me the next-game briefing.");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
-  await expect(page.getByText("Texas opens the 2026 schedule vs Texas State")).toBeVisible();
+  await expect(page.getByText("Texas plays next vs Ohio State")).toBeVisible();
 
   await page.getByLabel("Ask Section One").fill("How does Ohio State look?");
   await page.getByRole("button", { name: "Ask", exact: true }).click();
@@ -638,6 +638,8 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   // was really testing which branch ran.
   const thread = page.locator("[aria-live='polite']").last();
   await expect(thread.getByText(/Ohio State/).first()).toBeVisible();
-  await expect(page.getByText("Ohio State: the first big test")).toBeVisible();
+  await expect(
+    page.getByTestId("team-chat-panel").getByText("Ohio State: the first big test"),
+  ).toBeVisible();
   await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });

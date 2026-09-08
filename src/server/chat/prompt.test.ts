@@ -40,7 +40,7 @@ describe("buildChatRequest", () => {
     );
 
     expect(request.grounding?.capability).toBe("next-game-brief");
-    expect(request.grounding?.nextGame?.opponent).toBe("Texas State");
+    expect(request.grounding?.nextGame?.opponent).toBe("Ohio State");
     expect(request.grounding?.upcomingGames.length).toBeGreaterThan(0);
     expect(request.grounding?.sourceReadiness.length).toBeGreaterThan(0);
     expect(request.grounding?.scheduleCapturedAt).toBeTruthy();

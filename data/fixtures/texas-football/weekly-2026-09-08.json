@@ -1,0 +1,58 @@
+{
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-08T13:45:00.000Z",
+  "summary": "Texas opened with a 59-7 win, but left guard is still a rotation and Derrek Cooper will miss Ohio State. The Buckeyes visit Saturday at 6:30 p.m. CT on ABC; watch the protection inside and whether the defense can keep creating takeaways.",
+  "items": [
+    {
+      "id": "cooper-out",
+      "headline": "Cooper will miss Ohio State; the third-back snaps open up",
+      "tldr": "Sarkisian says Derrek Cooper remains in a walking boot, with no return date announced. Hollywood Smothers and Raleek Brown still lead the backfield; watch who spells them after Michael Terry III and James Simon each got three carries in the opener.",
+      "outlet": "Austin American-Statesman",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/texas-rb-derrek-cooper-ohio-190138752.html",
+      "publishedAt": "2026-09-07T19:01:00.000Z",
+      "grade": { "impact": 5, "echo": 3, "freshness": 5 }
+    },
+    {
+      "id": "left-guard-rotation",
+      "headline": "Sikorski and Seymore will keep sharing left guard",
+      "tldr": "Dylan Sikorski started and played 33 snaps against Texas State; Laurence Seymore played 36, and Sarkisian expects the rotation to continue. With Cole Hutson still ineligible, watch whether that pairing can protect the pocket and open running lanes against Ohio State.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104349/left-guard-rotation-dyan-sikorski-laurence-seymore",
+      "publishedAt": "2026-09-07T20:16:00.000Z",
+      "grade": { "impact": 5, "echo": 1, "freshness": 5 }
+    },
+    {
+      "id": "biles-takeaways",
+      "headline": "Biles forced a fumble and intercepted a screen in his Texas debut",
+      "tldr": "Rasheem Biles punched the ball loose for Graceson Littleton's 59-yard touchdown return, then read a tunnel screen for an interception. Against Ohio State, watch his recognition underneath as well as his pass rush: both takeaways came from plays beyond blitzing the quarterback.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104279/rasheem-biles-turnovers-texas-longhorns",
+      "publishedAt": "2026-09-06T11:47:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 4 }
+    },
+    {
+      "id": "passing-game-opener",
+      "headline": "Manning opens with four touchdown passes and eight different receivers",
+      "tldr": "Arch Manning threw for 305 yards in the 59-7 win, with Ryan Wingo catching seven passes for 121 yards and Cam Coleman scoring twice. That gives the passing game something to build on against Ohio State, which visits September 12 at 6:30 p.m. CT on ABC.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/5/no-5-4-football-dominates-texas-state-in-season-opener-59-7",
+      "publishedAt": "2026-09-05T12:00:00.000Z",
+      "grade": { "impact": 4, "echo": 3, "freshness": 3 }
+    },
+    {
+      "id": "dkr-interactive-map",
+      "headline": "DKR's new map puts gates, water stations and first aid on your phone",
+      "tldr": "The interactive stadium map is available in the Texas Longhorns app and on the web, with seats, concessions, restrooms and fan activities marked. Open it before arriving Saturday to find what you need; step-by-step wayfinding is still listed as coming soon.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04T12:00:00.000Z",
+      "grade": { "impact": 3, "echo": 1, "freshness": 3 }
+    }
+  ]
+}

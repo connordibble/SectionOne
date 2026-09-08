@@ -70,7 +70,7 @@ describe("mock LLM provider", () => {
     const provider = createMockLlmProvider();
     const result = await provider.generate(nextGameRequest);
 
-    expect(result.text).toContain("Texas opens the 2026 schedule vs Texas State");
+    expect(result.text).toContain("Texas plays next vs Texas State");
     expect(result.text).toContain("[Texas football 2026 schedule]");
     expectAccepted(result.text, baseGrounding);
   });

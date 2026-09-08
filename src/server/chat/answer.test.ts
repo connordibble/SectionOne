@@ -36,7 +36,7 @@ describe("answerQuestion", () => {
   it("answers next-game questions with citations and football language", async () => {
     const result = await answerQuestion("Give me the next-game briefing.");
 
-    expect(result.answer).toContain("Texas State");
+    expect(result.answer).toContain("Ohio State");
     expect(result.answer).toContain("early downs");
     expect(result.citations.length).toBeGreaterThanOrEqual(2);
     expect(result.mode).toBe("grounded");
@@ -404,7 +404,7 @@ describe("answerQuestion", () => {
     const result = await answerQuestion("Give me the next-game briefing.");
 
     expect(result.freshness).toEqual({
-      coverage: "Coverage updated September 3, 2026.",
+      coverage: "Coverage updated September 8, 2026.",
       schedule: "Schedule updated July 1, 2026.",
       context: "No 2026 stats yet.",
     });

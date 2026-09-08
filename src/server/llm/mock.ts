@@ -68,10 +68,9 @@ function composeNextGameBrief(grounding: GroundingContext): string {
   }
 
   const tv = game.tv ? ` on ${game.tv}` : "";
-  const season = grounding.seasonYear ? `${grounding.seasonYear} ` : "";
 
   return finish(
-    `${grounding.teamName} opens the ${season}schedule ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff is ${game.kickoff}${tv} at ${game.venue}. Watch early downs, line play, and ball security.`,
+    `${grounding.teamName} plays next ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff is ${game.kickoff}${tv} at ${game.venue}. Watch early downs, line play, and ball security.`,
     grounding,
   );
 }

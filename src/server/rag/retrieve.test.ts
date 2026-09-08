@@ -24,10 +24,10 @@ describe("retrieveSourceChunks", () => {
     expect(titles[0]).toBe("Texas football 2026 schedule");
   });
 
-  it("surfaces the roster note for roster questions", async () => {
+  it("surfaces the current availability story for roster questions", async () => {
     const titles = await topTitles("Where is the roster context still thin?");
 
-    expect(titles[0]).toBe("Interior line: find the best five");
+    expect(titles[0]).toBe("Cooper will miss Ohio State; the third-back snaps open up");
   });
 
   it("surfaces the early-downs note for early-down questions", async () => {

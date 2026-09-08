@@ -105,7 +105,7 @@ export const teamConfigs = {
     conference: "SEC",
     displayName: "Texas football",
     shortName: "Texas",
-    referenceLabel: "Texas · Week 1 · 2026",
+    referenceLabel: "Texas · Week 2 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Texas", "Longhorns", "UT Austin"],
     // The structural colour is Texas burnt orange itself, not a stand-in.
@@ -170,17 +170,17 @@ export const teamConfigs = {
     },
     editorial: {
       lead: {
-        headline: "Start clean. Win up front.",
+        headline: "Protect the pocket. Win up front.",
         body:
-          "Watch the pace, tackling, and who earns real snaps. The interior offensive line is still the biggest question.",
-        noteId: "opponent-texas-state",
+          "Ohio State is next after a 59-7 opener. Watch the left-guard rotation, protection inside, and whether the defense can keep taking the ball away.",
+        noteId: "opponent-ohio-state",
       },
       matchup: {
         thesis: "Win up front",
         question: "How does Texas take control early?",
         answer:
           "Watch first and second down. If Texas stays ahead of the sticks and wins up front, the whole offense opens up.",
-        citationNoteIds: ["early-down-identity", "opponent-texas-state"],
+        citationNoteIds: ["early-down-identity", "opponent-ohio-state"],
       },
       signals: [
         {
@@ -226,7 +226,7 @@ export const teamConfigs = {
       ],
     },
     nextGameNote:
-      "Watch early downs, clean snaps, and who wins up front before the schedule gets harder.",
+      "Watch early downs, the left-guard rotation, and who wins up front against Ohio State.",
     cfbd: {
       team: "Texas",
       season: 2026,
@@ -243,7 +243,7 @@ export const teamConfigs = {
     conference: "Pac-12",
     displayName: "Utah State football",
     shortName: "Utah State",
-    referenceLabel: "Utah State · Week 1 · 2026",
+    referenceLabel: "Utah State · Week 2 · 2026",
     tagline: "Get the short answer before kickoff.",
     aliases: ["Utah State", "Aggies", "USU"],
     // Aggie blue on white. The school's primary is already a dark navy, so it
@@ -307,16 +307,16 @@ export const teamConfigs = {
     },
     editorial: {
       lead: {
-        headline: "Bank the opener. The road comes fast.",
-        body: "Idaho State first, then Seattle and Salt Lake City in back-to-back weeks. Watch tackling in space and who wins early downs.",
-        noteId: "opponent-idaho-state",
+        headline: "Protect the ball. Make them drive.",
+        body: "Four interceptions helped turn the opener into a 29-17 loss. Washington is next: watch the quarterback rotation, clean snaps, and tackling in space.",
+        noteId: "opponent-washington",
       },
       matchup: {
         thesis: "Win the margins",
-        question: "How does Utah State stay in games in the Pac-12?",
+        question: "How does Utah State stay in the game at Washington?",
         answer:
-          "Field position and explosive plays. Win special teams, give up nothing behind coverage, and the roster gap stops deciding it by itself.",
-        citationNoteIds: ["special-teams-margin", "explosive-plays-allowed"],
+          "Protect the ball and keep Demond Williams Jr. contained. When he extends a play, the secondary has to stay with its receivers.",
+        citationNoteIds: ["opponent-washington", "explosive-plays-allowed"],
       },
       signals: [
         {
@@ -362,7 +362,7 @@ export const teamConfigs = {
       ],
     },
     nextGameNote:
-      "Watch tackling in space, early downs, and who earns real snaps up front before the trip to Seattle.",
+      "Watch ball security, clean snaps, and whether the defense can contain Demond Williams Jr. in Seattle.",
     cfbd: {
       team: "Utah State",
       season: 2026,
