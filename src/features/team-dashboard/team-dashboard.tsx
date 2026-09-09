@@ -17,12 +17,15 @@ import { getTeamNoteDocuments } from "@/server/sources/notes";
 import { getTeamRankingSummary } from "@/server/sources/rankings";
 import { getWeeklyEdition } from "@/server/sources/weekly";
 import { TeamWorkspace } from "./team-workspace";
+import { editionNeedsReview } from "@/lib/editions/freshness";
 
 type TeamDashboardProps = {
   team: TeamConfig;
 };
 
 export async function TeamDashboard({ team }: TeamDashboardProps) {
+  const now = new Date();
+  const weekly = getWeeklyEdition(team.slug);
   const nextGame = getNextGame(team.slug);
   const schedule = getTeamSchedule(team.slug);
   const poll = schedule ? await getLatestPollWeek(schedule.seasonYear) : undefined;
@@ -61,7 +64,7 @@ export async function TeamDashboard({ team }: TeamDashboardProps) {
 
   return (
     <TeamWorkspace
-      countdown={getKickoffCountdown(nextGame, new Date(), team.timeZone)}
+      countdown={getKickoffCountdown(nextGame, now, team.timeZone)}
       leadSourceTitle={
         notesById.get(team.editorial.lead.noteId)?.title ?? "Section One note"
       }
@@ -74,7 +77,8 @@ export async function TeamDashboard({ team }: TeamDashboardProps) {
       team={team}
       teamOptions={teamOptions}
       themeStyle={createTeamThemeStyle(team)}
-      weekly={getWeeklyEdition(team.slug)}
+      weekly={weekly}
+      briefingNeedsReview={weekly ? editionNeedsReview(weekly.publishedAt, now.getTime()) : false}
     />
   );
 }

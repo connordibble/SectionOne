@@ -85,6 +85,7 @@
   --radius-input: 0.375rem;
   --radius-card: 0.5rem;
   --radius-round: 999px;
+  --touch-target: 2.75rem;
 
   /* The only floating surface in the product is the customizable native
      select picker. Keep its elevation here so components do not invent

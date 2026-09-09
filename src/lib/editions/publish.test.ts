@@ -55,6 +55,17 @@ describe("edition publication", () => {
     await expect(publishEdition(root, { baseRevision, edition: { ...edition, summary: "Stale correction." } })).rejects.toThrow("Stale draft");
     expect((await readEditionRegistry(root))[edition.teamSlug].summary).toBe("First correction.");
   });
+  it("changes only the corrected value when the existing registry uses a different key order", async () => {
+    const root = await workspace();
+    const reversed = (value: unknown): unknown => Array.isArray(value) ? value.map(reversed)
+      : value && typeof value === "object" ? Object.fromEntries(Object.entries(value).reverse().map(([key, item]) => [key, reversed(item)])) : value;
+    const before = `${JSON.stringify(reversed(fixtures), null, 2)}\n`;
+    const file = path.join(root, "data/editions/current.json");
+    await writeFile(file, before);
+    const summary = "A narrowly reviewed correction.";
+    await publishEdition(root, { baseRevision: editionRevision(original), edition: { ...original, summary } });
+    expect(await readFile(file, "utf8")).toBe(before.replace(JSON.stringify(original.summary), JSON.stringify(summary)));
+  });
   it("rejects future packages, missing note references and duplicate stories before mutation", async () => {
     const root = await workspace();
     const before = await readFile(path.join(root, "data/editions/current.json"), "utf8");

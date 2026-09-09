@@ -1,5 +1,15 @@
 # Weekly publication uses one package
 
+`pnpm teams status` exposes validated maintenance metadata for all enabled teams
+without source text or credentials. The private engine uses it to plan source
+reviews and bounded fact refreshes. It does not authorize automatic publication.
+
+Readers see a review notice when an edition is at least 48 hours old, including
+while a page remains open. It links to official game details and preserves the
+last briefing. Publication age does not establish when sources were checked;
+poll and schedule provenance remain separate. Correction imports preserve key
+order so unrelated teams do not appear changed in the diff.
+
 `data/editions/current.json` is the app's published registry. Each versioned package contains the
 stories, summary, issue week, lead, matchup, four signals, next-game note and supporting desk notes.
 Team configuration supplies permanent identity, voice, timezone and official schedule URL. Weekly

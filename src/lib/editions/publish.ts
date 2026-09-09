@@ -3,6 +3,7 @@ import { mkdir, open, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import { editionPackageSchema, parseEditionRegistry, type EditionPackage } from "./contract";
+import { preserveKeyOrder } from "./serialization";
 
 export const editionDraftSchema = z.object({
   baseRevision: z.string().regex(/^[a-f0-9]{64}$/),
@@ -28,7 +29,8 @@ export async function publishEdition(root: string, input: unknown, now = new Dat
   const lock = await open(lockPath, "wx");
   const temporary = path.join(directory, `.current-${randomUUID()}.tmp`);
   try {
-    const registry = await readEditionRegistry(root);
+    const raw: unknown = JSON.parse(await readFile(path.join(directory, "current.json"), "utf8"));
+    const registry = parseEditionRegistry(raw);
     const previous = registry[edition.teamSlug];
     if (!previous) throw new Error("Onboard the team before publishing an update");
     const revision = editionRevision(edition);
@@ -43,7 +45,7 @@ export async function publishEdition(root: string, input: unknown, now = new Dat
     // Content-addressed archive names make repeated imports idempotent.
     await writeFile(archiveFile, `${JSON.stringify(previous, null, 2)}\n`);
     registry[edition.teamSlug] = edition;
-    await writeFile(temporary, `${JSON.stringify(registry, null, 2)}\n`, { flag: "wx" });
+    await writeFile(temporary, `${JSON.stringify(preserveKeyOrder(registry, raw), null, 2)}\n`, { flag: "wx" });
     await rename(temporary, path.join(directory, "current.json"));
     return { status: "published", revision };
   } finally {
