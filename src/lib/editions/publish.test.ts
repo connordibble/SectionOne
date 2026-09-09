@@ -7,6 +7,7 @@ import fixtures from "@/test/fixtures/editions.json";
 import { editionPackageSchema, parseEditionRegistry } from "./contract";
 import { editionRevision, publishEdition, readEditionRegistry } from "./publish";
 import { describeSourceMix } from "@/server/sources/story-selection";
+import { teamManifests } from "@/lib/teams/current";
 
 const roots: string[] = [];
 const original = editionPackageSchema.parse(fixtures["texas-football"]);
@@ -22,7 +23,7 @@ afterEach(async () => { await Promise.all(roots.splice(0).map((root) => rm(root,
 describe("edition publication", () => {
   it("validates the real published registry independently of frozen behavior fixtures", async () => {
     const registry = await readEditionRegistry(process.cwd());
-    expect(Object.keys(registry)).toEqual(Object.keys(fixtures));
+    expect(Object.keys(registry).sort()).toEqual(Object.keys(teamManifests).sort());
     for (const edition of Object.values(registry)) {
       expect(edition.items).toHaveLength(5);
       const mix = describeSourceMix(edition.items);

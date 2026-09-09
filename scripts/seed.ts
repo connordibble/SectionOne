@@ -11,6 +11,7 @@ import {
 } from "../src/server/db/schema";
 import { chunkSourceDocuments } from "../src/server/rag/chunk";
 import { resolveEmbeddingProvider } from "../src/server/embeddings/registry";
+import { reportError } from "../src/server/observability/report";
 
 async function main() {
   const teamSlug = process.argv[2] ?? defaultTeamSlug;
@@ -18,7 +19,6 @@ async function main() {
   const scheduleFixture = getTeamSchedule(teamSlug);
   if (!team || !scheduleFixture) throw new Error("Expected a configured team with a schedule");
   const { db, client } = createDbClient();
-  const result = await collectSourceDocuments(teamSlug);
 
   await db
     .insert(teams)
@@ -69,6 +69,11 @@ async function main() {
         metadata: {
           dateLabel: game.dateLabel,
           kickoff: game.kickoff,
+          date: game.date,
+          status: game.status,
+          timeZone: scheduleFixture.timeZone,
+          capturedAt: scheduleFixture.capturedAt,
+          provenance: scheduleFixture.provenance,
         },
       })
       .onConflictDoUpdate({
@@ -83,10 +88,22 @@ async function main() {
           metadata: {
             dateLabel: game.dateLabel,
             kickoff: game.kickoff,
+            date: game.date,
+            status: game.status,
+            timeZone: scheduleFixture.timeZone,
+            capturedAt: scheduleFixture.capturedAt,
+            provenance: scheduleFixture.provenance,
           },
         },
       });
   }
+
+  if (process.argv.includes("--facts-only")) {
+    await client.end();
+    console.log(JSON.stringify({ teamSlug, persisted: { games: scheduleFixture.games.length }, embeddings: "not-requested" }));
+    return;
+  }
+  const result = await collectSourceDocuments(teamSlug);
 
   for (const document of result.documents) {
     await db
@@ -169,6 +186,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error);
+  reportError(error, { scope: "teams/seed" });
   process.exit(1);
 });

@@ -1,5 +1,6 @@
 import { getSharedDb, type Db } from "@/server/db/client";
-import { answerCitations, chatMessages, chatSessions } from "@/server/db/schema";
+import { answerCitations, chatMessages, chatSessions, sourceDocuments } from "@/server/db/schema";
+import { inArray } from "drizzle-orm";
 import type { ChatAnswer } from "./types";
 import { reportDegradation } from "@/server/observability/report";
 
@@ -71,12 +72,16 @@ async function persistCitations(db: Db, sessionId: string, answer: ChatAnswer): 
   }
 
   try {
+    const candidates = [...new Set(answer.citations.filter((citation) => citation.sourceType !== "live-reporting").map((citation) => citation.id))];
+    const existing = candidates.length
+      ? await db.select({ id: sourceDocuments.id }).from(sourceDocuments).where(inArray(sourceDocuments.id, candidates)) : [];
+    const sourceIds = new Set(existing.map((row) => row.id));
     await db.insert(answerCitations).values(
       answer.citations.map((citation) => ({
         chatSessionId: sessionId,
-        // Hosted-search citations are not source_documents rows. Preserve
-        // their title and URL without inventing a foreign-key target.
-        sourceDocumentId: citation.sourceType === "live-reporting" ? null : citation.id,
+        // Live facts and new editions may precede the optional retrieval index.
+        // Preserve their title and URL even when no seeded document exists.
+        sourceDocumentId: sourceIds.has(citation.id) ? citation.id : null,
         quote: citation.title,
         sourceUrl: citation.sourceUrl,
       })),

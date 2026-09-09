@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium, type Page } from "@playwright/test";
 import {
@@ -8,7 +8,8 @@ import {
   houseTheme,
   type TeamPalette,
 } from "../src/config/team";
-import { formatSite, getNextGame } from "../src/server/schedule/schedule";
+import { formatSite, getNextGame, getUpcomingGames } from "../src/server/schedule/schedule";
+import { onboardingPackageSchema, teamConfigSchema } from "../src/lib/teams/contract";
 
 // Social cards are committed build artifacts so crawlers never wait on a
 // runtime image render. Re-run `pnpm og:build` whenever weekly editorial copy,
@@ -192,13 +193,15 @@ async function capture(page: Page, card: Card, file: string) {
 }
 
 async function main() {
+  const candidate = process.argv[2]
+    ? onboardingPackageSchema.parse(JSON.parse(await readFile(process.argv[2], "utf8"))) : undefined;
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
   const socialDir = path.join(process.cwd(), "public", "social");
 
   await mkdir(socialDir, { recursive: true });
 
-  await capture(
+  if (!candidate) await capture(
     page,
     {
       palette: deriveTeamPalettes(houseTheme).light,
@@ -211,9 +214,13 @@ async function main() {
     path.join(process.cwd(), "src", "app", "opengraph-image.png"),
   );
 
-  for (const slug of enabledTeamSlugs) {
-    const team = getTeamConfig(slug)!;
-    const nextGame = getNextGame(slug);
+  const entries = candidate ? [{
+    team: teamConfigSchema.parse({ ...candidate.manifest.identity, editorial: candidate.edition.editorial,
+      referenceLabel: `${candidate.manifest.identity.shortName} · Week ${candidate.edition.issue.week} · ${candidate.edition.issue.season}`,
+      nextGameNote: candidate.edition.nextGameNote }),
+    nextGame: getUpcomingGames(candidate.manifest.schedule)[0],
+  }] : enabledTeamSlugs.map((slug) => ({ team: getTeamConfig(slug)!, nextGame: getNextGame(slug) }));
+  for (const { team, nextGame } of entries) {
     const matchup = nextGame
       ? `${team.shortName} ${formatSite(nextGame.site)} ${nextGame.opponent}`
       : team.displayName;
@@ -230,7 +237,7 @@ async function main() {
         subhead: team.editorial.lead.headline,
         detail,
       },
-      path.join(socialDir, `${slug}.png`),
+      path.join(socialDir, `${team.slug}.png`),
     );
   }
 

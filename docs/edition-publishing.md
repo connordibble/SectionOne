@@ -41,7 +41,7 @@ Unit tests use the dated corpus in `src/test/fixtures/editions.json` and a fixed
 clock. Do not refresh that corpus as part of publishing: it preserves retrieval, routing and
 citation regression cases. Publication tests read the real registry from disk, and browser tests
 compare every rendered story and link against the accepted package on both viewport projects and
-both themes. New teams need representative regression fixtures as part of onboarding.
+both themes. Established behavior fixtures remain frozen; additional teams use current data for generic checks. Add an independent regression fixture when a new failure needs one.
 
 `pnpm release:check` runs `pnpm check`, then Playwright. Playwright runs `pnpm build` and starts an
 isolated production server with mock LLMs and no database credentials. CI uses that same build path;
@@ -62,12 +62,13 @@ reader-facing stale indicator. API/model cost savings have not yet been measured
 
 ## New-team data and colors
 
-An initial edition needs typed identity, a complete package, a schedule capture, and a representative
-behavior fixture. Add the schedule to the shared schedule adapter, then generate social cards with
-`pnpm og:build`. The native team selector derives conference groups from enabled configuration.
+Team identity and schedule data live in `data/teams/current.json`, validated by the shared manifest schema. Adding a program requires data, not another source import or component. The native team selector derives conference groups from this registry.
 
-`pnpm db:seed <team-slug>` registers the team, season, games, source documents, and embeddings in
-the configured database. Omitting the slug still seeds Texas. Read back the records after seeding;
+Use `pnpm teams export <slug> <output.json>` for a shape reference and `pnpm teams schema` for the portable onboarding contract. An onboarding package contains `{schemaVersion: 1, manifest: {identity, schedule}, edition}`. `pnpm teams validate <package.json>` checks its runtime relationships. Generate the candidate social card with `pnpm og:build <package.json>`, then run `pnpm teams preflight <package.json>` for asset, contrast and freshness findings. The private producer verifies source readiness and the initial edition before invoking the public import.
+
+`pnpm teams onboard <package.json>` is the trusted consumer import. It stages the initial edition before activating the manifest, resumes an identical interrupted import, and refuses to overwrite an existing edition or team. Subsequent weekly editions keep using revision-checked publication. `pnpm teams check` checks registry consistency and assets for every program and is part of `pnpm check`. Stale schedule observations are reported separately from invalid data. These structural checks do not prove editorial accuracy.
+
+`pnpm db:seed <team-slug> --facts-only` registers the team, season and games without model calls. Omitting `--facts-only` also indexes source documents and generates embeddings using the configured provider. Omitting the slug still seeds Texas. Run `pnpm teams check --database` to read back team, season and game records after seeding;
 a successful page render does not establish that chat persistence has its foreign-key rows.
 
 Ohio State and LSU retain their official primary on the stage in both modes. Their secondary colors

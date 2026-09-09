@@ -1,0 +1,257 @@
+import type { TeamConfig } from "./contract";
+
+// The palette roles every component consumes. Names are stable and match the
+// `--team-*` custom properties emitted onto the dashboard root, so a change to
+// how colour is *derived* never becomes a change to how it is *consumed*.
+export type TeamPalette = {
+  page: string;
+  surface: string;
+  surfaceSoft: string;
+  surfaceStrong: string;
+  ink: string;
+  inkSubtle: string;
+  accent: string;
+  accentStrong: string;
+  accentSoft: string;
+  headerAccent: string;
+  // Field Geometry's own ink. The signature view draws on the structural dark,
+  // where neither the accent (too dark to read on it) nor the text colour (grey,
+  // and identical for every team) can carry a route. These three are the drawing
+  // palette: grid, secondary structure, and the line that means something.
+  graphicFaint: string;
+  graphic: string;
+  graphicStrong: string;
+  // The one surface that wears the team's actual colour: the hero game object
+  // and the Matchup board. Separate from `steel` because the masthead and the
+  // stage must not be the same value — a header painted the same colour as the
+  // surface directly under it reads as a mistake rather than as structure.
+  stage: string;
+  stageRaised: string;
+  onStage: string;
+  muted: string;
+  border: string;
+  borderStrong: string;
+  onAccent: string;
+  steel: string;
+  steelRaised: string;
+  onSteel: string;
+  focus: string;
+};
+
+export type TeamPaletteSet = {
+  light: TeamPalette;
+  dark: TeamPalette;
+};
+
+// Shared lightness and chroma relationships for both modes. OKLCH makes the
+// palette predictable as hue rotates, but perceptual uniformity is not a
+// substitute for WCAG measurement; enabled team palettes are audited against
+// the rendered foreground/background pairs before release.
+export function deriveTeamPalette(
+  theme: TeamConfig["theme"],
+  mode: "light" | "dark" = "light",
+): TeamPalette {
+  const { hue, chroma, structuralHue, structuralChroma } = theme;
+  const structuralLightness = theme.structuralLightness ?? 23;
+  const brightStructural = structuralLightness > 40;
+
+  // Surfaces and text carry a trace of the team hue so the page reads warm (or
+  // cool) rather than grey, but at a chroma low enough to stay neutral.
+  const tint = Math.min(chroma * 0.09, 0.014);
+
+  // Chrome chroma, and the reason dark mode is not brown.
+  //
+  // A dark surface cannot carry a warm hue at real saturation. Orange, red, and
+  // yellow all become brown, maroon, or olive below roughly L35 — that is what
+  // dark orange *is*, not a mistake in the conversion. Cool hues do not have
+  // this problem: navy at the same lightness still reads as navy.
+  //
+  // So the chrome takes the team's hue but only as much chroma as that hue can
+  // hold while staying recognisable, and the team's real colour is carried by
+  // the stage, the accent, and the field graphics instead. A warm team reads as
+  // warm because everything on the page is warm, not because the header is mud.
+  const warmth = Math.cos(((structuralHue - 60) * Math.PI) / 180);
+  const chromeChroma = Math.min(structuralChroma, warmth > 0.35 ? 0.022 : 0.062);
+
+  // Where the stage lands in this mode, and the drawing palette that follows
+  // from it. Field Geometry is drawn *on* the stage, so its ladder has to be
+  // derived from the stage rather than fixed: a burnt-orange stage at L58 and
+  // an Aggie-navy one at L21 cannot share one set of line colours.
+  //
+  // On a light stage the grid is chalk — lighter than the surface — and the
+  // route is a dark line over it. On a dark stage both run the other way. The
+  // grid deliberately sits nearer the surface than the route does, because the
+  // route is the element carrying meaning and has to win.
+  const stageLightness =
+    mode === "dark" && !theme.preserveStageInDark
+      ? brightStructural
+        ? structuralLightness - 12
+        : structuralLightness - 2
+      : structuralLightness;
+  const stageRaisedLightness =
+    mode === "dark"
+      ? brightStructural
+        ? structuralLightness - 19
+        : structuralLightness + 4
+      : brightStructural
+        ? structuralLightness - 7
+        : structuralLightness + 6;
+  // Only a light stage in light mode gets a dark route. After dark the route
+  // always runs brighter than the surface: a dark line on a mid-tone stage on
+  // a dark page has nowhere to go, and chalk-bright reads better anyway.
+  const inkedRoute = mode === "light" && stageLightness >= 45;
+  const clamp = (value: number) => Math.min(94, Math.max(8, value));
+  const graphicFaintLightness = clamp(stageLightness + (theme.preserveStageInDark && brightStructural ? -13 : inkedRoute ? 13 : 11));
+  const graphicLightness = clamp(stageLightness + (inkedRoute ? 24 : 23));
+  const graphicStrongLightness = clamp(stageLightness + (inkedRoute ? -46 : 47));
+  const secondary = theme.secondary
+    ? oklch(theme.secondary.lightness, theme.secondary.chroma, theme.secondary.hue)
+    : undefined;
+
+  // A neutral secondary needs extra lightness to remain a legible route.
+  const secondaryRoute = theme.secondary
+    ? oklch(Math.max(80, theme.secondary.lightness), theme.secondary.chroma, theme.secondary.hue)
+    : undefined;
+
+  if (mode === "dark") {
+    return {
+      page: oklch(13.5, tint * 0.65, hue),
+      surface: oklch(16.5, tint * 0.75, hue),
+      surfaceSoft: oklch(20.5, tint * 0.9, hue),
+      surfaceStrong: oklch(26, tint * 1.1, hue),
+      ink: oklch(94, tint * 0.35, hue),
+      inkSubtle: oklch(82, tint * 0.45, hue),
+      accent: oklch(70, chroma * 0.82, hue),
+      accentStrong: oklch(80, chroma * 0.68, hue),
+      accentSoft: oklch(34, chroma * 0.52, hue),
+      headerAccent: secondary ?? oklch(80, chroma * 0.68, hue),
+      graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
+      graphic: oklch(graphicLightness, chroma * 0.34, hue),
+      graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
+      // Dark mode keeps the team's colour on the stage rather than washing the
+      // whole page to grey. A bright primary is pulled down just enough to sit
+      // under light type; a primary that is already dark is lifted off the
+      // page so it still reads as a surface.
+      stage: oklch(stageLightness, structuralChroma * (theme.preserveStageInDark ? 1 : 0.9), structuralHue),
+      stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.82, structuralHue),
+      onStage: oklch(97, 0.008, structuralHue),
+      muted: oklch(70, tint * 0.55, hue),
+      border: oklch(29, tint * 0.8, hue),
+      borderStrong: oklch(43, tint * 0.9, hue),
+      onAccent: oklch(15, tint * 0.8, hue),
+      steel: oklch(10.5, chromeChroma * 0.7, structuralHue),
+      steelRaised: oklch(16.5, chromeChroma * 0.85, structuralHue),
+      onSteel: oklch(94, 0.012, structuralHue),
+      focus: oklch(84, chroma * 0.58, hue),
+    };
+  }
+
+  return {
+    page: oklch(96.5, tint, hue),
+    surface: oklch(98.5, tint * 0.6, hue),
+    surfaceSoft: oklch(93.5, tint * 1.6, hue),
+    surfaceStrong: oklch(88, tint * 2.4, hue),
+    ink: oklch(20, tint * 1.1, hue),
+    inkSubtle: oklch(32, tint * 1.2, hue),
+    accent: oklch(49, chroma, hue),
+    accentStrong: oklch(38, chroma * 0.96, hue),
+    accentSoft: oklch(82, chroma * 0.54, hue),
+    headerAccent: secondary ?? (brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue)),
+    graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
+    graphic: oklch(graphicLightness, chroma * 0.34, hue),
+    graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
+    muted: oklch(43, tint * 1.5, hue),
+    border: oklch(86, tint * 1.5, hue),
+    borderStrong: oklch(72, tint * 2.5, hue),
+    onAccent: oklch(98.5, tint * 0.4, hue),
+    // Chrome is always a restrained dark, never the team's signature colour.
+    // It is the frame around the issue; the stage below it is the issue.
+    steel: oklch(19, chromeChroma, structuralHue),
+    steelRaised: oklch(26, chromeChroma * 1.1, structuralHue),
+    onSteel: oklch(96, 0.012, structuralHue),
+    stage: oklch(stageLightness, structuralChroma, structuralHue),
+    stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.94, structuralHue),
+    onStage: brightStructural ? oklch(100, 0, structuralHue) : oklch(97, 0.01, structuralHue),
+    focus: oklch(34, chroma * 0.88, hue),
+  };
+}
+
+export function deriveTeamPalettes(theme: TeamConfig["theme"]): TeamPaletteSet {
+  return {
+    light: deriveTeamPalette(theme, "light"),
+    dark: deriveTeamPalette(theme, "dark"),
+  };
+}
+
+// Section One's own identity, used by surfaces that belong to the product
+// rather than to any one edition. It matches the global accent in tokens.css.
+//
+// Texas currently shares this hue because Texas is burnt orange; that is a
+// coincidence, not a coupling. When an edition ships in green or blue, the
+// house surfaces stay orange.
+export const houseTheme: TeamConfig["theme"] = {
+  hue: 47,
+  chroma: 0.13,
+  structuralHue: 236,
+  structuralChroma: 0.035,
+};
+
+const paletteRoles: Array<[string, keyof TeamPalette]> = [
+  ["page", "page"],
+  ["surface", "surface"],
+  ["surface-soft", "surfaceSoft"],
+  ["surface-strong", "surfaceStrong"],
+  ["ink", "ink"],
+  ["ink-subtle", "inkSubtle"],
+  ["muted", "muted"],
+  ["border", "border"],
+  ["border-strong", "borderStrong"],
+  ["accent", "accent"],
+  ["accent-strong", "accentStrong"],
+  ["accent-soft", "accentSoft"],
+  ["header-accent", "headerAccent"],
+  ["graphic-faint", "graphicFaint"],
+  ["graphic", "graphic"],
+  ["graphic-strong", "graphicStrong"],
+  ["on-accent", "onAccent"],
+  ["steel", "steel"],
+  ["steel-raised", "steelRaised"],
+  ["on-steel", "onSteel"],
+  ["stage", "stage"],
+  ["stage-raised", "stageRaised"],
+  ["on-stage", "onStage"],
+  ["focus", "focus"],
+];
+
+// Emits both modes as --team-light-* / --team-dark-* custom properties. The
+// `.team-theme` class in tokens.css bridges whichever mode is active onto the
+// live --team-* roles that components actually consume.
+export function createThemeStyle(theme: TeamConfig["theme"]): Record<string, string> {
+  const palettes = deriveTeamPalettes(theme);
+  const customProperties: Record<string, string> = {};
+  const brightStructural = (theme.structuralLightness ?? 23) > 40;
+
+  for (const mode of ["light", "dark"] as const) {
+    for (const [cssRole, paletteRole] of paletteRoles) {
+      customProperties[`--team-${mode}-${cssRole}`] = palettes[mode][paletteRole];
+    }
+
+    customProperties[`--team-${mode}-tab-opacity`] =
+      mode === "light" && brightStructural ? "1" : "0.58";
+    customProperties[`--team-${mode}-chrome-opacity`] =
+      mode === "light" && brightStructural ? "1" : "0.82";
+  }
+
+  return customProperties;
+}
+
+function oklch(lightness: number, chroma: number, hue: number): string {
+  return `oklch(${round(lightness)}% ${round(chroma, 4)} ${round(hue)})`;
+}
+
+function round(value: number, precision = 2): number {
+  const factor = 10 ** precision;
+
+  return Math.round(value * factor) / factor;
+}
+

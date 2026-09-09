@@ -29,8 +29,9 @@ const answer: ChatAnswer = {
   model: "deterministic-composer",
 };
 
-function fakeDb(inserted: unknown[][]) {
+function fakeDb(inserted: unknown[][], existingIds = ["texas-football-2026-schedule"]) {
   return {
+    select() { return { from() { return { where: async () => existingIds.map((id) => ({ id })) }; } }; },
     insert() {
       return {
         values(values: unknown) {
@@ -111,6 +112,13 @@ describe("persistChatExchange", () => {
         sourceUrl: "https://example.com/current-report",
       },
     ]);
+  });
+
+  it("preserves citations for a refreshed poll before its document has been seeded", async () => {
+    const inserted: unknown[][] = [];
+    const pollAnswer = { ...answer, citations: [{ id: "new-ap-poll", title: "AP Top 25: current week", sourceUrl: "https://example.com/poll", provider: "press", sourceType: "ranking" }] };
+    await persistChatExchange({ question: "ranked?", answer: pollAnswer }, fakeDb(inserted, []));
+    expect(inserted[2]).toMatchObject([{ sourceDocumentId: null, quote: "AP Top 25: current week", sourceUrl: "https://example.com/poll" }]);
   });
 
   it("swallows database failures", async () => {

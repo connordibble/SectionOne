@@ -1,6 +1,6 @@
 import type { TeamConfig } from "@/config/team";
-import type { ScheduleGame, ScheduleSite, TeamSchedule } from "@/server/schedule/schedule";
-import { calendarDate } from "@/server/schedule/schedule";
+import type { ScheduleGame, ScheduleSite, TeamSchedule } from "@/lib/facts/schedule";
+import { calendarDate } from "@/lib/facts/schedule";
 import { z } from "zod";
 
 export const cfbdGamesSchema = z.array(z.object({

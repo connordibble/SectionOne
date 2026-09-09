@@ -50,12 +50,10 @@ describe("team config", () => {
     expect(utahState?.aliases).toContain("Aggies");
   });
 
-  // If two editions ever share an accent hue the product looks like one site
-  // with two names, which is the failure mode the config seam exists to stop.
-  it("gives every edition its own accent hue", () => {
-    const hues = enabledTeamSlugs.map((slug) => getTeamConfig(slug)!.theme.hue);
-
-    expect(new Set(hues).size).toBe(hues.length);
+  // These established anchors differ. Other programs may legitimately share a
+  // hue; onboarding must not invent a new school colour to satisfy uniqueness.
+  it("preserves the distinct Texas and Utah State accent anchors", () => {
+    expect(getTeamConfig("texas-football")!.theme.hue).not.toBe(getTeamConfig("utah-state-football")!.theme.hue);
   });
 
   it("keeps the Texas edition visually distinct from the house theme", () => {

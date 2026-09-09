@@ -54,3 +54,6 @@ next-env.d.ts
 /.private/
 /data/editions/.publish.lock
 /data/editions/.current-*.tmp
+/data/editions/.onboard-*.tmp
+/data/teams/.publish.lock
+/data/teams/.*.tmp

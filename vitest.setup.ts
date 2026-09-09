@@ -4,11 +4,14 @@ import { afterEach, beforeEach, vi } from "vitest";
 // Behavior tests use a frozen editorial corpus. Publication checks read the
 // actual registry from disk separately; refreshing stories cannot rewrite the
 // expected answers of routing, retrieval and citation regression tests.
-vi.mock("@/lib/editions/current", async () => {
+vi.mock("@/lib/editions/current", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@/lib/editions/current")>();
   const { default: fixtures } = await import("./src/test/fixtures/editions.json");
   const { parseEditionRegistry } = await import("./src/lib/editions/contract");
   const editions = parseEditionRegistry(fixtures);
-  return { getPublishedEdition: (slug: string) => editions[slug] };
+  // Keep established behavior cases frozen. Additional teams still participate
+  // in generic contract tests without needing a source-code edit to this mock.
+  return { getPublishedEdition: (slug: string) => editions[slug] ?? original.getPublishedEdition(slug) };
 });
 
 vi.mock("@/server/facts/poll-snapshot", async (importOriginal) => {
