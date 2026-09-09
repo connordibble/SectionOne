@@ -75,7 +75,7 @@ export function selectAnswerStrategy(
   // Same rule as every other capability: the pattern has to match and the
   // facts have to exist. A poll question with no published poll escalates
   // rather than being answered from whatever else retrieval turned up.
-  if (rankingPattern.test(question) && getTeamRankingSummary(team)) {
+  if (!wantsAnalysis && isRankingFactQuestion(team, question) && getTeamRankingSummary(team)) {
     return { strategy: "composer", capability: "ranking-brief" };
   }
 
@@ -128,6 +128,19 @@ export function selectAnswerStrategy(
   // this product cannot afford. Judgement goes to the model, with the retrieved
   // documents and the acceptance gate behind it.
   return { strategy: "escalate" };
+}
+
+export function isRankingFactQuestion(team: TeamConfig, question: string): boolean {
+  if (!rankingPattern.test(question) || /\b(?:coaches|cfp|playoff|last year|last season|previous|202[0-5])\b/i.test(question)) return false;
+  const clean = question.toLowerCase().replace(/[?.!]/g, "").trim();
+  const escape = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const names = [team.shortName, team.displayName, ...team.aliases].map((name) => escape(name.toLowerCase())).join("|");
+  const subject = `(?:we|${names})`;
+  return new RegExp(`^(?:is|are) ${subject} (?:ranked|in (?:the )?(?:ap )?top 25)(?: (?:in (?:the )?ap(?: poll| top 25)?|this week|right now))*$`).test(clean)
+    || new RegExp(`^where (?:do we|does (?:${names})) rank(?: (?:in (?:the )?ap(?: poll| top 25)?|this week))?$`).test(clean)
+    || new RegExp(`^where (?:is (?:${names})|are we) in the (?:ap )?poll$`).test(clean)
+    || /^(?:what is|what's) our (?:ap )?rank(?:ing)?(?: this week)?$/.test(clean)
+    || /^(?:which|what) (?:of )?our opponents are ranked(?: this week)?$/.test(clean);
 }
 
 // A promoted prompt already names the note it wants, so config decides rather

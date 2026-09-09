@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { defaultTeamConfig, teamConfigs, enabledTeamSlugs } from "@/config/team";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
 import { retrieveSourceChunks } from "@/server/rag/retrieve";
-import { promotedNoteFor, selectAnswerStrategy } from "./routing";
+import { promotedNoteFor, selectAnswerStrategy, isRankingFactQuestion } from "./routing";
 
 async function route(question: string, teamSlug = defaultTeamConfig.slug) {
   const team = teamConfigs[teamSlug as keyof typeof teamConfigs];
@@ -160,4 +160,13 @@ describe("selectAnswerStrategy", () => {
       });
     }
   });
+});
+
+it("keeps factual ranking shortcuts scoped to the right team, poll and intent", () => {
+  const team = teamConfigs["texas-football"];
+  expect(isRankingFactQuestion(team, "Is Texas ranked?")).toBe(true);
+  expect(isRankingFactQuestion(team, "Are we ranked in the AP poll?")).toBe(true);
+  for (const question of ["Is Ohio State ranked?", "What is our coaches ranking?", "Why is Texas ranked fourth?", "Is Texas ranked in 2025?"]) {
+    expect(isRankingFactQuestion(team, question)).toBe(false);
+  }
 });

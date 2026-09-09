@@ -38,7 +38,7 @@ function createScheduleSummaryDocument(
     sourceType: "schedule",
     sourceUrl: schedule.sourceUrl,
     title: `${schedule.teamDisplayName} ${schedule.seasonYear} schedule`,
-    body: `${schedule.teamDisplayName} has ${schedule.games.length} regular-season games on the published ${schedule.seasonYear} schedule. The opener is ${formatSite(opener.site)} ${opener.opponent} on ${opener.dateLabel} at ${opener.venue}. Source freshness: checked against the official schedule on ${captured}.`,
+    body: `${schedule.teamDisplayName} has ${schedule.games.length} regular-season games on the published ${schedule.seasonYear} schedule. The opener is ${formatSite(opener.site)} ${opener.opponent} on ${opener.dateLabel} at ${opener.venue}. ${scheduleProvenanceLabel(schedule, captured)}`,
     metadata: {
       seasonYear: schedule.seasonYear,
       gameCount: schedule.games.length,
@@ -62,7 +62,7 @@ function createGameDocument(
     sourceType: "game",
     sourceUrl: schedule.sourceUrl,
     title: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent}`,
-    body: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff: ${game.kickoff}. Venue: ${game.venue}.${tv} Source freshness: schedule checked ${captured}.`,
+    body: `${schedule.teamName} ${formatSite(game.site)} ${game.opponent} on ${game.dateLabel}. Kickoff: ${game.kickoff}. Venue: ${game.venue}.${tv} ${scheduleProvenanceLabel(schedule, captured)}`,
     metadata: {
       seasonYear: schedule.seasonYear,
       gameId: game.id,
@@ -76,4 +76,15 @@ function createGameDocument(
     publishedAt: game.startsAt ?? undefined,
     fetchedAt,
   };
+}
+
+export function scheduleProvenanceLabel(schedule: TeamSchedule, captured = formatCaptureDate(schedule.capturedAt)): string {
+  const provenance = schedule.provenance;
+  if (provenance?.officialVerifiedAt) {
+    return `Source freshness: checked against the official schedule on ${formatCaptureDate(provenance.officialVerifiedAt)}.`;
+  }
+  if (provenance?.provider === "cfbd") {
+    return `Source freshness: CollegeFootballData retrieved ${formatCaptureDate(provenance.retrievedAt)}. The official schedule link is provided for confirmation.`;
+  }
+  return `Source freshness: schedule captured ${captured}.`;
 }

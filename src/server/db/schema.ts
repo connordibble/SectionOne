@@ -222,7 +222,15 @@ export const chatAnswerCache = pgTable(
   ],
 );
 
+export const pollSnapshots = pgTable("poll_snapshots", {
+  season: integer("season").primaryKey(),
+  week: integer("week").notNull(),
+  capturedAt: timestamp("captured_at", { withTimezone: true }).notNull(),
+  snapshot: jsonb("snapshot").notNull(),
+});
+
 export const schema = {
+  pollSnapshots,
   teams,
   seasons,
   games,

@@ -11,6 +11,14 @@ vi.mock("@/lib/editions/current", async () => {
   return { getPublishedEdition: (slug: string) => editions[slug] };
 });
 
+vi.mock("@/server/facts/poll-snapshot", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@/server/facts/poll-snapshot")>();
+  const { default: fixture } = await import("./data/fixtures/polls/2026-preseason.json");
+  return { ...original, getBundledPoll: (season: number) => season === fixture.season ? fixture : undefined,
+    getPollSnapshot: (season: number) => season === fixture.season ? fixture : undefined };
+});
+process.env.SPORTS_FACTS = "fixture";
+
 beforeEach(() => {
   // Mock Date only: network retries and UI timers must continue to run.
   vi.useFakeTimers({ toFake: ["Date"] });

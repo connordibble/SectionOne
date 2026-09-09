@@ -11,6 +11,8 @@ export type ScheduleGame = {
   site: ScheduleSite;
   dateLabel: string;
   startsAt: string | null;
+  date: string | null;
+  status: "scheduled" | "in-progress" | "final" | "postponed" | "cancelled";
   kickoff: string;
   venue: string;
   tv: string | null;
@@ -23,6 +25,13 @@ export type TeamSchedule = {
   seasonYear: number;
   sourceUrl: string;
   capturedAt: string;
+  timeZone: string;
+  provenance?: {
+    provider: "official" | "cfbd";
+    sourceUrl: string;
+    retrievedAt: string;
+    officialVerifiedAt?: string;
+  };
   games: ScheduleGame[];
 };
 
@@ -40,21 +49,27 @@ export function getTeamSchedule(teamSlug: string): TeamSchedule | undefined {
   return schedules[teamSlug];
 }
 
-// Returns the first game that has not yet happened. A game counts as upcoming
-// when its kickoff is in the future or its start time is still unscheduled
-// (null), which keeps later-season TBD games ahead of already-played ones.
+// Keep today's game available all day unless a provider confirms it is final.
+// A missing kickoff is not a missing date, and cannot keep an old game upcoming.
 export function getNextGame(teamSlug: string, now = new Date()): ScheduleGame | undefined {
   const schedule = getTeamSchedule(teamSlug);
+  return schedule ? getUpcomingGames(schedule, now)[0] : undefined;
+}
 
-  if (!schedule || schedule.games.length === 0) {
-    return undefined;
-  }
+export function getUpcomingGames(schedule: TeamSchedule, now = new Date()): ScheduleGame[] {
+  const today = calendarDate(now, schedule.timeZone);
+  return schedule.games.filter((game) =>
+    (game.status === "scheduled" || game.status === "in-progress") &&
+    game.date !== null && game.date >= today,
+  ).sort((a, b) => a.date!.localeCompare(b.date!));
+}
 
-  const upcoming = schedule.games.find(
-    (game) => !game.startsAt || new Date(game.startsAt) >= now,
-  );
-
-  return upcoming ?? schedule.games[0];
+export function calendarDate(value: Date, timeZone: string): string {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+  }).formatToParts(value);
+  const part = (type: Intl.DateTimeFormatPartTypes) => parts.find((p) => p.type === type)!.value;
+  return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
 export function formatSite(site: ScheduleSite): string {
@@ -77,6 +92,7 @@ export type KickoffCountdown =
 export function getKickoffCountdown(
   game: Pick<ScheduleGame, "startsAt"> | undefined,
   now = new Date(),
+  timeZone = "UTC",
 ): KickoffCountdown {
   if (!game?.startsAt) {
     return { state: "unscheduled" };
@@ -88,9 +104,10 @@ export function getKickoffCountdown(
     return { state: "unscheduled" };
   }
 
-  const days = Math.ceil((startOfDay(kickoff) - startOfDay(now)) / dayInMs);
+  const days = Math.round((Date.parse(calendarDate(kickoff, timeZone)) - Date.parse(calendarDate(now, timeZone))) / dayInMs);
 
-  if (days <= 0) {
+  if (days < 0) return { state: "unscheduled" };
+  if (days === 0) {
     return { state: "today" };
   }
 
@@ -98,10 +115,6 @@ export function getKickoffCountdown(
 }
 
 const dayInMs = 24 * 60 * 60 * 1000;
-
-function startOfDay(value: Date): number {
-  return Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate());
-}
 
 export function formatCaptureDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {

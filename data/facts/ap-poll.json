@@ -1,0 +1,124 @@
+{
+  "season": 2026,
+  "week": 2,
+  "weekLabel": "Week 2",
+  "capturedAt": "2026-09-09T03:22:54.139Z",
+  "polls": [
+    {
+      "id": "ap",
+      "name": "AP Top 25",
+      "releasedAt": "2026-09-08",
+      "sourceUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
+      "ranks": [
+        {
+          "rank": 1,
+          "team": "Ohio State"
+        },
+        {
+          "rank": 2,
+          "team": "Georgia"
+        },
+        {
+          "rank": 3,
+          "team": "Notre Dame"
+        },
+        {
+          "rank": 4,
+          "team": "Texas"
+        },
+        {
+          "rank": 5,
+          "team": "Indiana"
+        },
+        {
+          "rank": 6,
+          "team": "Oregon"
+        },
+        {
+          "rank": 7,
+          "team": "Miami"
+        },
+        {
+          "rank": 8,
+          "team": "LSU"
+        },
+        {
+          "rank": 9,
+          "team": "Ole Miss"
+        },
+        {
+          "rank": 10,
+          "team": "Texas A&M"
+        },
+        {
+          "rank": 11,
+          "team": "Oklahoma"
+        },
+        {
+          "rank": 12,
+          "team": "Alabama"
+        },
+        {
+          "rank": 13,
+          "team": "Texas Tech"
+        },
+        {
+          "rank": 14,
+          "team": "USC"
+        },
+        {
+          "rank": 15,
+          "team": "BYU"
+        },
+        {
+          "rank": 16,
+          "team": "Penn State"
+        },
+        {
+          "rank": 17,
+          "team": "SMU"
+        },
+        {
+          "rank": 18,
+          "team": "Tennessee"
+        },
+        {
+          "rank": 19,
+          "team": "Washington"
+        },
+        {
+          "rank": 20,
+          "team": "Utah"
+        },
+        {
+          "rank": 21,
+          "team": "Iowa"
+        },
+        {
+          "rank": 22,
+          "team": "Houston"
+        },
+        {
+          "rank": 23,
+          "team": "Missouri"
+        },
+        {
+          "rank": 24,
+          "team": "Louisville"
+        },
+        {
+          "rank": 25,
+          "team": "Virginia"
+        }
+      ]
+    }
+  ],
+  "pending": [],
+  "provenance": {
+    "provider": "espn",
+    "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings",
+    "retrievedAt": "2026-09-09T03:22:54.139Z",
+    "verifiedUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
+    "throughDate": "2026-09-07"
+  }
+}

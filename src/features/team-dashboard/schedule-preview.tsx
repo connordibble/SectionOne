@@ -24,12 +24,11 @@ export function SchedulePreview({
     );
   }
 
-  const nextIndex = Math.max(
-    0,
-    schedule.games.findIndex((game) => game.id === nextGameId),
-  );
+  const nextIndex = schedule.games.findIndex((game) => game.id === nextGameId);
   const games =
-    variant === "compact" ? schedule.games.slice(nextIndex, nextIndex + 3) : schedule.games;
+    variant === "compact"
+      ? nextIndex < 0 ? [] : schedule.games.slice(nextIndex).filter((game) => game.status === "scheduled" || game.status === "in-progress").slice(0, 3)
+      : schedule.games;
 
   return (
     <section
@@ -58,6 +57,7 @@ export function SchedulePreview({
         ) : null}
       </div>
 
+      {games.length === 0 ? <p>No upcoming game date is confirmed. Open the full schedule for the season’s games.</p> : null}
       <ol className={styles.scheduleList}>
         {games.map((game, index) => (
           <ScheduleRow
@@ -89,7 +89,7 @@ function ScheduleRow({
       <span aria-hidden="true" className={`${styles.scheduleNumber} tnum`}>
         {String(index + 1).padStart(2, "0")}
       </span>
-      <time className={`${styles.scheduleDate} tnum`} dateTime={game.startsAt ?? undefined}>
+      <time className={`${styles.scheduleDate} tnum`} dateTime={game.startsAt ?? game.date ?? undefined}>
         {shortDate(game.dateLabel)}
       </time>
       <div className={styles.scheduleOpponent}>
@@ -101,7 +101,7 @@ function ScheduleRow({
         {variant === "full" ? <span>{game.venue}</span> : null}
       </div>
       <p className={`${styles.scheduleKickoff} tnum`}>
-        <span>{game.kickoff}</span>
+        <span>{game.status === "cancelled" ? "Cancelled" : game.status === "postponed" ? "Postponed" : game.kickoff}</span>
         <span>{game.tv ?? "TV TBD"}</span>
       </p>
     </li>

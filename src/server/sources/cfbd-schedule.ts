@@ -1,5 +1,18 @@
 import type { TeamConfig } from "@/config/team";
 import type { ScheduleGame, ScheduleSite, TeamSchedule } from "@/server/schedule/schedule";
+import { calendarDate } from "@/server/schedule/schedule";
+import { z } from "zod";
+
+export const cfbdGamesSchema = z.array(z.object({
+  id: z.number().int().positive(), season: z.number().int().min(2000).max(2200),
+  week: z.number().int().nonnegative(), startDate: z.iso.datetime({ offset: true }).nullish(),
+  startTimeTBD: z.boolean().nullish(), homeTeam: z.string().trim().min(1),
+  awayTeam: z.string().trim().min(1), neutralSite: z.boolean().nullish(),
+  venue: z.string().nullish(), completed: z.boolean().nullish(),
+}));
+export const cfbdMediaSchema = z.array(z.object({
+  id: z.number().int().positive(), mediaType: z.string().nullish(), outlet: z.string().nullish(),
+}));
 
 // The subset of CollegeFootballData's /games response this build depends on.
 // Typed narrowly on purpose: a field we do not read is a field that cannot
@@ -14,6 +27,7 @@ export type CfbdScheduleGame = {
   awayTeam: string;
   neutralSite?: boolean | null;
   venue?: string | null;
+  completed?: boolean | null;
 };
 
 // From /games/media. One game can have several rows (TV plus radio plus web),
@@ -55,6 +69,12 @@ export function buildTeamSchedule(input: BuildScheduleInput): TeamSchedule {
     seasonYear: seasonOf(teamGames, team),
     sourceUrl,
     capturedAt,
+    timeZone,
+    provenance: {
+      provider: "cfbd",
+      sourceUrl: `https://api.collegefootballdata.com/games?${new URLSearchParams({ year: String(seasonOf(teamGames, team)), team: cfbdTeamName(team), seasonType: "regular" })}`,
+      retrievedAt: capturedAt,
+    },
     games: teamGames.map((game) => toScheduleGame(game, team, timeZone, outlets)),
   };
 }
@@ -77,7 +97,9 @@ function toScheduleGame(
     id: buildGameId(game, team, opponent),
     opponent,
     site: siteOf(game, cfbdTeamName(team)),
-    dateLabel: usable ? formatDateLabel(usable, timeZone) : "Date to be announced",
+    dateLabel: usable ? formatDateLabel(usable, game.startTimeTBD ? "UTC" : timeZone) : "Date to be announced",
+    date: usable ? (game.startTimeTBD ? game.startDate!.slice(0, 10) : calendarDate(usable, timeZone)) : null,
+    status: game.completed ? "final" : "scheduled",
     startsAt: confirmed && usable ? usable.toISOString() : null,
     // Reads as a sentence downstream: the composer renders "Kickoff is
     // {kickoff}", so the placeholder has to be a noun phrase, not a label.

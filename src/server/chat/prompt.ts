@@ -1,5 +1,5 @@
 import { getSourceReadiness, type TeamConfig } from "@/config/team";
-import { formatCaptureDate, getNextGame, getTeamSchedule } from "@/server/schedule/schedule";
+import { formatCaptureDate, getNextGame, getTeamSchedule, getUpcomingGames } from "@/server/schedule/schedule";
 import type { RetrievalHit } from "@/server/rag/retrieve";
 import { getRankingDocuments } from "@/server/sources/rankings";
 import type { SourceDocument } from "@/server/sources/types";
@@ -124,7 +124,7 @@ function buildGroundingContext(
     seasonYear: schedule?.seasonYear,
     capability,
     nextGame: nextGame ? toScheduleFact(nextGame) : undefined,
-    upcomingGames: (schedule?.games ?? []).slice(0, schedulePreviewLength).map(toScheduleFact),
+    upcomingGames: (schedule ? getUpcomingGames(schedule) : []).slice(0, schedulePreviewLength).map(toScheduleFact),
     sourceReadiness: getSourceReadiness(team),
     scheduleCapturedAt: schedule ? formatCaptureDate(schedule.capturedAt) : undefined,
     excerpts,

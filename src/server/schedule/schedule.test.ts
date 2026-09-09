@@ -5,6 +5,7 @@ import {
   getKickoffCountdown,
   getNextGame,
   getTeamSchedule,
+  getUpcomingGames,
 } from "./schedule";
 
 describe("team schedule", () => {
@@ -25,9 +26,30 @@ describe("team schedule", () => {
   });
 
   it("advances the next game past kickoffs that already happened", () => {
-    const next = getNextGame("texas-football", new Date("2026-09-13T00:00:00Z"));
+    const next = getNextGame("texas-football", new Date("2026-09-13T06:00:00Z"));
 
     expect(next?.opponent).toBe("UTSA");
+  });
+
+  it("keeps a game available on game day and never revives past TBD games after the season", () => {
+    expect(getNextGame("texas-football", new Date("2026-09-12T23:45:00Z"))?.opponent).toBe("Ohio State");
+    for (const slug of ["texas-football", "utah-state-football", "ohio-state-football", "lsu-football"]) {
+      expect(getNextGame(slug, new Date("2027-02-01T00:00:00Z"))).toBeUndefined();
+    }
+  });
+
+  it("uses calendar dates for TBD kickoffs and excludes final, postponed and cancelled games", () => {
+    const schedule = structuredClone(getTeamSchedule("ohio-state-football")!);
+    const base = schedule.games[0];
+    schedule.games = [
+      { ...base, id: "past", date: "2026-09-07", startsAt: null },
+      { ...base, id: "postponed", date: "2026-09-09", status: "postponed" },
+      { ...base, id: "cancelled", date: "2026-09-09", status: "cancelled" },
+      { ...base, id: "final", date: "2026-09-09", status: "final" },
+      { ...base, id: "unknown", date: null, startsAt: null },
+      { ...base, id: "future", date: "2026-09-12", startsAt: null },
+    ];
+    expect(getUpcomingGames(schedule, new Date("2026-09-08T12:00:00Z")).map((game) => game.id)).toEqual(["future"]);
   });
 
   it("formats site and capture date consistently", () => {
@@ -77,10 +99,15 @@ describe("getKickoffCountdown", () => {
     expect(result).toEqual({ state: "today" });
   });
 
-  it("reports game day rather than a negative count after kickoff", () => {
+  it("does not label an old game as today", () => {
     const result = getKickoffCountdown(game, new Date("2026-09-20T06:00:00Z"));
 
-    expect(result).toEqual({ state: "today" });
+    expect(result).toEqual({ state: "unscheduled" });
+  });
+
+  it("counts calendar days in the fan's timezone across UTC midnight and daylight saving", () => {
+    expect(getKickoffCountdown({ startsAt: "2026-09-06T01:00:00Z" }, new Date("2026-09-05T23:00:00Z"), "America/Chicago")).toEqual({ state: "today" });
+    expect(getKickoffCountdown({ startsAt: "2026-11-02T01:00:00Z" }, new Date("2026-11-01T04:00:00Z"), "America/Chicago")).toEqual({ state: "scheduled", days: 1 });
   });
 
   // The lead figure must never be invented — a game with no kickoff time has

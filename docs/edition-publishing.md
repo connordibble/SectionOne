@@ -74,3 +74,34 @@ Ohio State and LSU retain their official primary on the stage in both modes. The
 supply masthead highlights and field routes. The shared palette lifts a secondary route's lightness
 when needed; contrast tests cover text, routes, and grid separation. Browser tests compare the new
 teams' primary color tokens with the published school RGB values.
+
+## Facts refresh independently of the briefing
+
+AP rankings use ESPN's structured AP feed cross-checked against NCAA's AP table.
+The adapter requires agreement on every ranked school, rank and point total, plus
+compatible dates and a complete ranking. It does not use an LLM. A failed or
+regressing refresh retains the last verified snapshot.
+
+Pages and chat share a poll snapshot for each request. Refreshes are coalesced per
+process for 15 minutes, with a two-minute retry interval after failure. The
+`poll_snapshots` table preserves the latest accepted poll across cold starts;
+`data/facts/ap-poll.json` is the bundled fallback. Run `pnpm db:migrate` to create
+the table and `pnpm poll:refresh <season>` to refresh the bundled snapshot. A visit
+after the cache interval triggers a check; this is not a push subscription or a
+promise of an update at the exact release minute. No Codex automation is needed.
+
+Rank lookup questions use those facts directly; explanations of ranking changes
+still follow the research path. The page shows the poll's publication date and
+last verification date and links to the published table. `SPORTS_FACTS=fixture`
+disables live requests for tests and offline previews. Production should leave it
+unset. Provider disagreement or a broken feed must never be fixed by relaxing
+validation to admit partial results.
+
+Schedules keep calendar dates even when kickoff times are TBD. Today's game stays
+available through the team's local day unless a provider confirms it is final.
+Past, final, postponed and cancelled games are not upcoming; the season opener is
+never recycled as the next game. Countdown dates use the team's timezone.
+Schedule provenance distinguishes the provider's retrieval from a separate
+check of the official page. A CFBD refresh cannot claim an official-page check.
+
+The poll file refresh and runtime refresh both reject older snapshots. File publication uses a lock and atomic replacement; failed validation preserves the existing file. Schedule acquisition requires successful, schema-valid game and media responses before replacement, rejects missing existing games and preserves the last snapshot after provider failure. API data is attributed to its provider, separately from the official schedule link fans can open.

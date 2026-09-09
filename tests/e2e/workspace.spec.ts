@@ -1,3 +1,4 @@
+import { getTeamRankingSummary } from "../../src/server/sources/rankings";
 import { expect, test } from "@playwright/test";
 import { getTeamConfig, enabledTeamSlugs } from "../../src/config/team";
 import { getNextGame, getTeamSchedule, formatCaptureDate, formatSite } from "../../src/server/schedule/schedule";
@@ -377,7 +378,7 @@ test("the field section leads with a ranked team's own number", async ({ page })
   await page.goto("/teams/texas-football");
   const field = page.locator('[aria-labelledby="ranking-heading"]');
 
-  await expect(field.getByText(/No\.\s*5/).first()).toBeVisible();
+  await expect(field.getByText(new RegExp(`No\\.\\s*${getTeamRankingSummary(getTeamConfig("texas-football")!)!.teamRank}`)).first()).toBeVisible();
   await expect(field.getByText(/7 of 12 opponents ranked/)).toBeVisible();
   await expect(field.locator("li")).toHaveCount(5);
   await expect(field.getByText(/2 more ranked opponents/)).toBeVisible();
@@ -423,7 +424,7 @@ test("chat answers a poll question from the poll, not the schedule", async ({ re
   expect(body.answer).toContain("not ranked");
   // Retrieval ranks the twelve schedule rows above one poll entry, so this
   // used to come back as a schedule recital under a poll question.
-  expect(body.citations.map((citation) => citation.title)).toContain("AP Top 25: Preseason");
+  expect(body.citations.map((citation) => citation.title)).toContain(`AP Top 25: ${getTeamRankingSummary(getTeamConfig("utah-state-football")!)!.weekLabel}`);
 });
 
 test("health and ingest APIs respond", async ({ request }) => {

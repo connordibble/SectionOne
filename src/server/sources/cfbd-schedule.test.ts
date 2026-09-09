@@ -2,6 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { teamConfigs } from "@/config/team";
 import { buildTeamSchedule, formatKickoff, type CfbdScheduleGame } from "./cfbd-schedule";
+import { scheduleProvenanceLabel } from "./fixtures";
 
 const team = teamConfigs["utah-state-football"];
 const timeZone = "America/Denver";
@@ -118,6 +119,16 @@ describe("buildTeamSchedule", () => {
 
     expect(flexGame.startsAt).toBeNull();
     expect(flexGame.kickoff).toBe("still to be announced");
+    expect(flexGame.date).toBe("2026-11-28");
+  });
+
+  it("records the actual data provider without claiming an official-page check", () => {
+    const schedule = build();
+    expect(schedule.provenance?.provider).toBe("cfbd");
+    expect(schedule.provenance?.sourceUrl).toContain("api.collegefootballdata.com/games?");
+    expect(schedule.provenance?.officialVerifiedAt).toBeUndefined();
+    expect(scheduleProvenanceLabel(schedule)).toContain("CollegeFootballData retrieved");
+    expect(scheduleProvenanceLabel(schedule)).not.toContain("checked against the official schedule");
   });
 
   it("attaches TV outlets and ignores radio and web entries", () => {

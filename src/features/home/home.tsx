@@ -213,7 +213,7 @@ export function Home() {
 function EditionCard({ team }: { team: TeamConfig }) {
   const nextGame = getNextGame(team.slug);
   const schedule = getTeamSchedule(team.slug);
-  const countdown = getKickoffCountdown(nextGame);
+  const countdown = getKickoffCountdown(nextGame, new Date(), team.timeZone);
   const palettes = deriveTeamPalettes(team.theme);
 
   // The card carries a hairline of its own edition's colour. The page itself

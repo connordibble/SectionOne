@@ -3,9 +3,9 @@ import { and, eq, sql } from "drizzle-orm";
 import { getSharedDb } from "@/server/db/client";
 import { chatAnswerCache } from "@/server/db/schema";
 import { resolveEmbeddingProvider } from "@/server/embeddings/registry";
-import { getTeamSchedule } from "@/server/schedule/schedule";
+import { calendarDate, getTeamSchedule } from "@/server/schedule/schedule";
 import { getPollWeek } from "@/server/sources/rankings";
-import { getWeeklyEdition } from "@/server/sources/weekly";
+import { getPublishedEdition } from "@/lib/editions/current";
 import { runAfterResponse } from "@/server/http/after-response";
 import { reportDegradation } from "@/server/observability/report";
 import type { PublicChatAnswer } from "./types";
@@ -65,16 +65,17 @@ export function cacheEnabled(env: CacheEnv = process.env): boolean {
 // gets a fresh answer rather than a confident stale one.
 export function corpusVersion(teamSlug: string): string {
   const schedule = getTeamSchedule(teamSlug);
-  const weekly = getWeeklyEdition(teamSlug);
+  const weekly = getPublishedEdition(teamSlug);
   const poll = schedule ? getPollWeek(schedule.seasonYear) : undefined;
 
   return createHash("sha256")
     .update(
       [
         teamSlug,
-        schedule?.capturedAt ?? "no-schedule",
-        weekly?.publishedAt ?? "no-weekly",
-        poll?.capturedAt ?? "no-poll",
+        calendarDate(new Date(), schedule?.timeZone ?? "UTC"),
+        JSON.stringify(schedule ?? null),
+        JSON.stringify(weekly ?? null),
+        JSON.stringify(poll ? { season: poll.season, week: poll.week, polls: poll.polls } : null),
       ].join("|"),
     )
     .digest("hex")

@@ -1,3 +1,5 @@
+import { getLatestPollWeek } from "@/server/facts/live-poll";
+import { withPollSnapshot } from "@/server/facts/poll-snapshot";
 import type { CSSProperties } from "react";
 import {
   createThemeStyle,
@@ -20,9 +22,11 @@ type TeamDashboardProps = {
   team: TeamConfig;
 };
 
-export function TeamDashboard({ team }: TeamDashboardProps) {
+export async function TeamDashboard({ team }: TeamDashboardProps) {
   const nextGame = getNextGame(team.slug);
   const schedule = getTeamSchedule(team.slug);
+  const poll = schedule ? await getLatestPollWeek(schedule.seasonYear) : undefined;
+  const ranking = withPollSnapshot(poll, () => getTeamRankingSummary(team));
   const noteDocuments = getTeamNoteDocuments(team.slug);
   const notesById = new Map(
     noteDocuments.map((document) => [String(document.metadata.noteId), document]),
@@ -57,12 +61,12 @@ export function TeamDashboard({ team }: TeamDashboardProps) {
 
   return (
     <TeamWorkspace
-      countdown={getKickoffCountdown(nextGame)}
+      countdown={getKickoffCountdown(nextGame, new Date(), team.timeZone)}
       leadSourceTitle={
         notesById.get(team.editorial.lead.noteId)?.title ?? "Section One note"
       }
       nextGame={nextGame}
-      ranking={getTeamRankingSummary(team)}
+      ranking={ranking}
       schedule={schedule}
       scheduleCapturedLabel={schedule ? formatCaptureDate(schedule.capturedAt) : undefined}
       signals={signals}

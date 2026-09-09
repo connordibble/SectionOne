@@ -46,6 +46,7 @@ export default defineConfig({
       // The suite asserts composed answers word for word. A live key in the
       // environment would route some of them to a provider and bill for it.
       LLM_PROVIDER: "mock",
+      SPORTS_FACTS: "fixture",
       // Next loads .env.local for the production server. Leaving the real
       // database in scope made 100 parallel browser checks queue behind one
       // postgres.js connection, so unrelated forms and streamed answers could

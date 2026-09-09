@@ -453,6 +453,10 @@ function RankingSection({
       ) : null}
 
       <p className={styles.rankingNote}>
+        <a href={safeExternalHref(ranking.poll.sourceUrl)} target="_blank" rel="noreferrer">
+          Poll published {formatNewsDate(ranking.poll.releasedAt)}
+        </a>{". "}
+        Checked {formatNewsDate(ranking.checkedAt)}.{" "}
         {remaining > 0 ? `${remaining} more ranked opponent${remaining === 1 ? "" : "s"}. ` : ""}
         {ranking.pending
           .map((poll) => `The ${poll.name} is out ${poll.expectedLabel}.`)

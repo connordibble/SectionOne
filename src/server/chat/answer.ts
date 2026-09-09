@@ -1,3 +1,5 @@
+import { getLatestPollWeek } from "@/server/facts/live-poll";
+import { withPollSnapshot } from "@/server/facts/poll-snapshot";
 import { defaultTeamConfig, getTeamConfig, type TeamConfig } from "@/config/team";
 import { evaluateVoiceSample, extractCitationTags } from "@/lib/content/voice";
 import { collectSourceDocuments } from "@/server/ingest/pipeline";
@@ -20,7 +22,7 @@ import {
 import { runAfterResponse } from "@/server/http/after-response";
 import { checkBudget } from "./budget";
 import { lookupCachedAnswer, storeCachedAnswer } from "./cache";
-import { promotedNoteFor, selectAnswerStrategy } from "./routing";
+import { isRankingFactQuestion, promotedNoteFor, selectAnswerStrategy } from "./routing";
 import { searchWithGrounding, type WebSearchResult } from "./web-search";
 import {
   toPublicAnswer,
@@ -62,17 +64,14 @@ export async function answerQuestion(
   teamSlug = defaultTeamConfig.slug,
   options: AnswerOptions = {},
 ): Promise<ChatAnswer> {
-  const prepared = await prepareAnswer(question, teamSlug, options);
-
-  if (prepared.kind === "static") {
-    return prepared.answer;
-  }
-
-  if (prepared.kind === "search") {
-    return produceSearchAnswer(prepared, options.env);
-  }
-
-  return produceAnswer(prepared, options.env);
+  const schedule = getTeamSchedule(teamSlug);
+  const poll = schedule ? await getLatestPollWeek(schedule.seasonYear) : undefined;
+  return withPollSnapshot(poll, async () => {
+    const prepared = await prepareAnswer(question, teamSlug, options);
+    if (prepared.kind === "static") return prepared.answer;
+    if (prepared.kind === "search") return produceSearchAnswer(prepared, options.env);
+    return produceAnswer(prepared, options.env);
+  });
 }
 
 export async function* streamAnswerEvents(
@@ -80,31 +79,10 @@ export async function* streamAnswerEvents(
   teamSlug = defaultTeamConfig.slug,
   options: AnswerOptions = {},
 ): AsyncGenerator<ChatStreamEvent, void, void> {
-  const prepared = await prepareAnswer(question, teamSlug, options);
-
-  if (prepared.kind === "static") {
-    yield { type: "citations", citations: prepared.answer.citations };
-    yield { type: "delta", text: prepared.answer.answer };
-    yield { type: "done", answer: prepared.answer };
-    return;
-  }
-  // Deliberately not streamed from the provider. The acceptance gate can reject
-  // an answer for off-tone language or a fabricated citation, and once a delta
-  // is on the wire that rejection is unenforceable — a retry cannot un-send
-  // text the browser already rendered. So: generate fully, validate, then chunk
-  // the accepted text. At ~300 output tokens the latency cost is small and the
-  // quality guarantee becomes real rather than advisory.
-  const answer =
-    prepared.kind === "search"
-      ? await produceSearchAnswer(prepared, options.env)
-      : await produceAnswer(prepared, options.env);
-
+  // Buffer through the same fact snapshot and acceptance gates as JSON replies.
+  const answer = await answerQuestion(question, teamSlug, options);
   yield { type: "citations", citations: answer.citations };
-
-  for (const chunk of chunkText(answer.answer)) {
-    yield { type: "delta", text: chunk };
-  }
-
+  for (const chunk of answer.mode === "guardrail" ? [answer.answer] : chunkText(answer.answer)) yield { type: "delta", text: chunk };
   yield { type: "done", answer };
 }
 
@@ -118,6 +96,13 @@ async function produceAnswer(
   const runtimeEnv = env ?? process.env;
   const resolved = resolveLlmProvider(runtimeEnv);
   const provider = resolved.provider;
+
+  // Rank facts already passed provider agreement checks. Editorial explanations
+  // still use the normal research path; a rank lookup needs no model judgment.
+  if (prepared.capability === "ranking-brief") {
+    const result = await composer.generate(prepared.request);
+    return finalizeAnswer(prepared, composer.name, result.model, result.text);
+  }
 
   // Quality-first launch posture: OpenAI researches and verifies every normal
   // question with the curated edition as supporting context. The local
@@ -339,6 +324,17 @@ async function prepareAnswer(
 
   if (!team) {
     throw new Error(`Unknown team slug: ${teamSlug}`);
+  }
+
+  if (isRankingFactQuestion(team, question)) {
+    const documents = getCapabilityDocuments(team, "ranking-brief");
+    if (documents.length) {
+      return {
+        kind: "generate", strategy: "composer", capability: "ranking-brief", team, question,
+        request: buildChatRequest(team, question, [], options.history ?? [], "ranking-brief"),
+        citations: createCitations(documents), freshness: createFreshness(team.slug, []),
+      };
+    }
   }
 
   const ingest = await collectSourceDocuments(team.slug);

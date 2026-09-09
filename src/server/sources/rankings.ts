@@ -1,34 +1,10 @@
 import type { TeamConfig } from "@/config/team";
 import { getTeamSchedule, type ScheduleSite } from "@/server/schedule/schedule";
-import preseason2026 from "../../../data/fixtures/polls/2026-preseason.json";
+import { getPollSnapshot } from "@/server/facts/poll-snapshot";
+import type { Poll, PollWeek, PendingPoll } from "@/lib/facts/poll";
+export type { Poll, PollWeek, PollEntry, PendingPoll } from "@/lib/facts/poll";
 import { createSourceDocumentId } from "./ids";
 import type { SourceDocument } from "./types";
-
-export type PollEntry = { rank: number; team: string };
-
-export type Poll = {
-  id: string;
-  name: string;
-  releasedAt: string;
-  sourceUrl: string;
-  ranks: PollEntry[];
-};
-
-export type PendingPoll = {
-  id: string;
-  name: string;
-  expectedAt: string;
-  expectedLabel: string;
-};
-
-export type PollWeek = {
-  season: number;
-  week: number;
-  weekLabel: string;
-  capturedAt: string;
-  polls: Poll[];
-  pending: PendingPoll[];
-};
 
 export type RankedOpponent = {
   opponent: string;
@@ -46,12 +22,11 @@ export type TeamRankingSummary = {
   rankedOpponents: RankedOpponent[];
   opponentCount: number;
   pending: PendingPoll[];
+  checkedAt: string;
 };
 
-const pollWeeks: PollWeek[] = [preseason2026 as PollWeek];
-
 export function getPollWeek(season: number): PollWeek | undefined {
-  return pollWeeks.find((week) => week.season === season);
+  return getPollSnapshot(season);
 }
 
 // The team's own view of the field, not a generic top 25.
@@ -91,6 +66,7 @@ export function getTeamRankingSummary(team: TeamConfig): TeamRankingSummary | un
     rankedOpponents: rankedOpponents.sort((left, right) => left.rank - right.rank),
     opponentCount: games.length,
     pending: week.pending,
+    checkedAt: week.capturedAt,
   };
 }
 
@@ -128,14 +104,14 @@ export function getRankingDocuments(team: TeamConfig): SourceDocument[] {
       sourceType: "ranking",
       sourceUrl: summary.poll.sourceUrl,
       title: `${summary.poll.name}: ${summary.weekLabel}`,
-      body: `${standing} ${opponents} ${pending}`.trim(),
+      body: `${standing} ${opponents} ${pending} Poll: ${summary.weekLabel}, published ${summary.poll.releasedAt.slice(0, 10)}.`.trim(),
       metadata: {
         pollId: summary.poll.id,
         teamRank: summary.teamRank,
         rankedOpponentCount: summary.rankedOpponents.length,
       },
       publishedAt: summary.poll.releasedAt,
-      fetchedAt: summary.poll.releasedAt,
+      fetchedAt: summary.checkedAt,
     },
   ];
 }
