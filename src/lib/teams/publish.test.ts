@@ -17,7 +17,10 @@ async function fixture() {
   const manifest = structuredClone(manifests["texas-football"]);
   manifest.identity.slug = "example-football"; manifest.schedule.teamSlug = "example-football";
   const edition = { ...structuredClone(editions["texas-football"]), teamSlug: "example-football" };
-  return { root, candidate: onboardingPackageSchema.parse({ schemaVersion: 1, manifest, edition }), now: new Date("2026-09-09T12:00:00Z") };
+  // Weekly refreshes must remain in the past, with the schedule old enough
+  // for the preflight warning this fixture exercises.
+  const now = new Date(Math.max(Date.parse(edition.publishedAt), Date.parse(manifest.schedule.capturedAt)) + 49 * 60 * 60 * 1000);
+  return { root, candidate: onboardingPackageSchema.parse({ schemaVersion: 1, manifest, edition }), now };
 }
 
 it("onboards from data, resumes an interrupted import, and never overwrites an existing edition", async () => {

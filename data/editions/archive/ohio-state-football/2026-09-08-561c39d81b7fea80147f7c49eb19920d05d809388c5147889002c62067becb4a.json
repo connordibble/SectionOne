@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "ohio-state-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-11T22:59:20.711Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Ohio State’s trip to Texas puts protection and quarterback containment under a sharper test. Watch the starting line, the edge rotation and who gets open if Texas sends extra attention toward the primary receiver.",
+  "items": [
+    {
+      "id": "russaw-return",
+      "headline": "Russaw cleared for Texas, according to On3",
+      "tldr": "His Ohio State debut is expected Saturday. Watch how the edge rotation changes and whether fresh legs help the pass rush finish without opening an escape lane.",
+      "outlet": "On3",
+      "tier": "national",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163794/qua-russaw-expected-to-make-ohio-state-debut-against-texas-after-full-week-of-practice",
+      "publishedAt": "2026-09-11",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "line-evaluation",
+      "headline": "Day keeps the starting offensive line under evaluation",
+      "tldr": "Watch the right side’s communication and the opening combination. Treat practice rotation as preparation; it does not by itself establish a change in starters.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163760/ryan-day-will-continue-to-evaluate-what-ohio-states-starting-offensive-line-will-look-like-against-texas",
+      "publishedAt": "2026-09-09",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mccuin-conversions",
+      "headline": "Every McCuin catch in the opener moved the chains or scored",
+      "tldr": "If Texas rolls help toward Smith, watch whether McCuin can keep the next option productive. A routine conversion may be more revealing than a contested deep ball.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163695/devin-mccuin-backs-up-preseason-hype-in-win-over-ball-state-establishes-presence-as-the-no-2-wide-receiver",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "quarterback-containment",
+      "headline": "Ball State’s quarterback escaped Ohio State’s pressure",
+      "tldr": "Against Manning, watch where the pass rush leaves space. Making him move is only useful if the defense can finish the play before he finds a running lane.",
+      "outlet": "The Columbus Dispatch",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/did-ohio-state-football-grade-222929012.html",
+      "publishedAt": "2026-09-05T22:29:29Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "austin-map",
+      "headline": "Traveling to Austin? DKR’s map locates gates and water",
+      "tldr": "Choose your entrance before arriving and save the map on your phone. The web version also marks first aid and restrooms.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 4
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect the pocket. Close the escape.",
+      "body": "Watch whether the offensive line can work as one and the pass rush can finish under control. Both jobs get harder when one player leaves a gap.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Control the pocket",
+      "question": "What should Ohio State prove at Texas?",
+      "answer": "Keep protection connected on offense. On defense, force the quarterback to move without leaving a clean lane out of the pocket.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Protection",
+        "summary": "Watch the right side",
+        "detail": "Watch the opening combination and how it handles defensive movement. Changing a blocker is only useful if the whole line stays connected.",
+        "state": "watch",
+        "prompt": "What should I watch on Ohio State’s offensive line?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Containment",
+        "summary": "Close the exit",
+        "detail": "Watch the outside defender when Manning steps up or rolls away. Pressure needs a second defender in position to finish.",
+        "state": "watch",
+        "prompt": "How can Ohio State contain Manning?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Receiver balance",
+        "summary": "Make coverage choose",
+        "detail": "If Texas tilts help toward Smith, watch the next target. Sustaining a drive may depend on the receiver working away from that attention.",
+        "state": "watch",
+        "prompt": "Why does McCuin matter against Texas?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Edge rotation",
+        "summary": "Watch the fresh legs",
+        "detail": "If Russaw enters the rotation, watch the role and snap distribution before judging his impact. Clearance does not guarantee a full workload.",
+        "state": "watch",
+        "prompt": "What should I watch if Russaw makes his debut?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "For the Texas trip, find your stadium entrance early. Once play starts, watch the right side of the offensive line and the defense’s escape lanes.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Protection",
+      "topics": [
+        "protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch the opening combination and how it handles defensive movement. Changing a blocker is only useful if the whole line stays connected."
+    },
+    {
+      "id": "watch-2",
+      "title": "Containment",
+      "topics": [
+        "containment",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch the outside defender when Manning steps up or rolls away. Pressure needs a second defender in position to finish."
+    },
+    {
+      "id": "watch-3",
+      "title": "Receiver balance",
+      "topics": [
+        "receiver balance",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "If Texas tilts help toward Smith, watch the next target. Sustaining a drive may depend on the receiver working away from that attention."
+    },
+    {
+      "id": "watch-4",
+      "title": "Edge rotation",
+      "topics": [
+        "edge rotation",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "If Russaw enters the rotation, watch the role and snap distribution before judging his impact. Clearance does not guarantee a full workload."
+    }
+  ]
+}

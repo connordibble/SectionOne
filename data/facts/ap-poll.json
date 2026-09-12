@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 2,
   "weekLabel": "Week 2",
-  "capturedAt": "2026-09-09T03:22:54.139Z",
+  "capturedAt": "2026-09-11T22:47:53.528Z",
   "polls": [
     {
       "id": "ap",
@@ -117,7 +117,7 @@
   "provenance": {
     "provider": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings",
-    "retrievedAt": "2026-09-09T03:22:54.139Z",
+    "retrievedAt": "2026-09-11T22:47:53.528Z",
     "verifiedUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
     "throughDate": "2026-09-07"
   }

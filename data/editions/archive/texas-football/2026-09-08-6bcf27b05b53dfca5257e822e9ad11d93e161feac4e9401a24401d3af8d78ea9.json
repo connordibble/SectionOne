@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-11T22:59:20.155Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Texas needs steadier gains on the ground to keep its passing options open against Ohio State. Watch the left side of the offensive line, the relief carries, and whether the defense can take the ball away without losing its assignments.",
+  "items": [
+    {
+      "id": "cooper-practice-update",
+      "headline": "Cooper suited up for practice, per On Texas Football",
+      "tldr": "Thursday’s episode notes are newer than Monday’s report that he would miss Ohio State. A practice appearance does not confirm game clearance; watch for the final availability update.",
+      "outlet": "On Texas Football",
+      "tier": "local",
+      "url": "https://podfollow.com/on-texas-football/episode/f390091485c9f9e730ff2186b94a3ba403d130c5/view",
+      "publishedAt": "2026-09-10T18:38:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "running-consistency",
+      "headline": "Texas gave up seven non-sack tackles for loss in the opener",
+      "tldr": "Watch whether the left-guard rotation can help turn early-down runs into manageable gains. The important improvement is fewer wasted plays, even when the explosive run is not there.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104443/texas-longhorns-running-game-ohio-state-buckeyes",
+      "publishedAt": "2026-09-10T18:20:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "biles-takeaways",
+      "headline": "Biles forced a fumble and intercepted a screen in his Texas debut",
+      "tldr": "Watch his recognition underneath as well as his pass rush. Staying with a receiver or reading a screen can be as valuable as chasing the quarterback.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104279/rasheem-biles-turnovers-texas-longhorns",
+      "publishedAt": "2026-09-06T11:47:00.000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "passing-options",
+      "headline": "Manning connected with eight receivers in the opener",
+      "tldr": "If Ohio State takes away the first read, watch whether Manning can find another option without holding the ball too long. Receiver balance matters most when the pocket gets crowded.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/5/no-5-4-football-dominates-texas-state-in-season-opener-59-7",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "dkr-map",
+      "headline": "DKR’s interactive map marks gates, water and first aid",
+      "tldr": "Open the map before leaving for the stadium and pick your entrance. The launch announcement describes step-by-step wayfinding as a future feature.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 4
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the ordinary run work.",
+      "body": "Watch the blocking on early downs. Consistent gains would let Texas use its receivers without asking the pocket to survive obvious passing situations.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Stay ahead of the sticks",
+      "question": "What would put Texas in control?",
+      "answer": "Turn early-down runs into useful gains, then make Ohio State defend the full passing game. On defense, keep eyes on the ball without abandoning coverage.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Run blocking",
+        "summary": "Fewer wasted downs",
+        "detail": "Watch whether the guards and tackles stay connected against movement. A modest gain keeps more options available than a tackle for loss.",
+        "state": "watch",
+        "prompt": "What should I watch in the Texas run game?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Passing options",
+        "summary": "Find the next read",
+        "detail": "If the first receiver is covered, watch how quickly Manning moves on. The throw underneath can keep the drive alive.",
+        "state": "watch",
+        "prompt": "How can Texas keep its passing game balanced?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Ball recognition",
+        "summary": "Read the screen",
+        "detail": "Watch whether the linebackers recognize screens while staying disciplined against the run. A pass rush only helps if the ball has nowhere easy to go.",
+        "state": "watch",
+        "prompt": "What should I watch from Texas’s linebackers?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Relief carries",
+        "summary": "Trust beyond the first backs",
+        "detail": "Watch the reserve back’s protection and ball security when he enters. Keeping the offense on schedule matters more than forcing a highlight run.",
+        "state": "watch",
+        "prompt": "Who should I watch behind Texas’s lead backs?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Ohio State, watch early-down blocking and how quickly the passing game finds its second option.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Run blocking",
+      "topics": [
+        "run blocking",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.073Z",
+      "body": "Watch whether the guards and tackles stay connected against movement. A modest gain keeps more options available than a tackle for loss."
+    },
+    {
+      "id": "watch-2",
+      "title": "Passing options",
+      "topics": [
+        "passing options",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.073Z",
+      "body": "If the first receiver is covered, watch how quickly Manning moves on. The throw underneath can keep the drive alive."
+    },
+    {
+      "id": "watch-3",
+      "title": "Ball recognition",
+      "topics": [
+        "ball recognition",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.073Z",
+      "body": "Watch whether the linebackers recognize screens while staying disciplined against the run. A pass rush only helps if the ball has nowhere easy to go."
+    },
+    {
+      "id": "watch-4",
+      "title": "Relief carries",
+      "topics": [
+        "relief carries",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.073Z",
+      "body": "Watch the reserve back’s protection and ball security when he enters. Keeping the offense on schedule matters more than forcing a highlight run."
+    }
+  ]
+}

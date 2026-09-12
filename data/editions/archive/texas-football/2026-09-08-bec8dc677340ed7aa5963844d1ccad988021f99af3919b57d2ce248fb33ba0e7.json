@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-08T13:45:00.000Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Texas opened with a 59-7 win, but left guard is still a rotation and Derrek Cooper will miss Ohio State. The Buckeyes visit Saturday at 6:30 p.m. CT on ABC; watch the protection inside and whether the defense can keep creating takeaways.",
+  "items": [
+    {
+      "id": "cooper-out",
+      "headline": "Cooper will miss Ohio State; the third-back snaps open up",
+      "tldr": "Sarkisian says Derrek Cooper remains in a walking boot, with no return date announced. Hollywood Smothers and Raleek Brown still lead the backfield; watch who spells them after Michael Terry III and James Simon each got three carries in the opener.",
+      "outlet": "Austin American-Statesman",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/texas-rb-derrek-cooper-ohio-190138752.html",
+      "publishedAt": "2026-09-07T19:01:00.000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "left-guard-rotation",
+      "headline": "Sikorski and Seymore will keep sharing left guard",
+      "tldr": "Dylan Sikorski started and played 33 snaps against Texas State; Laurence Seymore played 36, and Sarkisian expects the rotation to continue. With Cole Hutson still ineligible, watch whether that pairing can protect the pocket and open running lanes against Ohio State.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104349/left-guard-rotation-dyan-sikorski-laurence-seymore",
+      "publishedAt": "2026-09-07T20:16:00.000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "biles-takeaways",
+      "headline": "Biles forced a fumble and intercepted a screen in his Texas debut",
+      "tldr": "Rasheem Biles punched the ball loose for Graceson Littleton's 59-yard touchdown return, then read a tunnel screen for an interception. Against Ohio State, watch his recognition underneath as well as his pass rush: both takeaways came from plays beyond blitzing the quarterback.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104279/rasheem-biles-turnovers-texas-longhorns",
+      "publishedAt": "2026-09-06T11:47:00.000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "passing-game-opener",
+      "headline": "Manning opens with four touchdown passes and eight different receivers",
+      "tldr": "Arch Manning threw for 305 yards in the 59-7 win, with Ryan Wingo catching seven passes for 121 yards and Cam Coleman scoring twice. That gives the passing game something to build on against Ohio State, which visits September 12 at 6:30 p.m. CT on ABC.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/5/no-5-4-football-dominates-texas-state-in-season-opener-59-7",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "dkr-interactive-map",
+      "headline": "DKR's new map puts gates, water stations and first aid on your phone",
+      "tldr": "The interactive stadium map is available in the Texas Longhorns app and on the web, with seats, concessions, restrooms and fan activities marked. Open it before arriving Saturday to find what you need; step-by-step wayfinding is still listed as coming soon.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect the pocket. Win up front.",
+      "body": "Ohio State is next after a 59-7 opener. Watch the left-guard rotation, protection inside, and whether the defense can keep taking the ball away.",
+      "noteId": "opponent-ohio-state"
+    },
+    "matchup": {
+      "thesis": "Win up front",
+      "question": "How does Texas take control early?",
+      "answer": "Watch first and second down. If Texas stays ahead of the sticks and wins up front, the whole offense opens up.",
+      "citationNoteIds": [
+        "early-down-identity",
+        "opponent-ohio-state"
+      ]
+    },
+    "signals": [
+      {
+        "id": "early-downs",
+        "title": "Early downs",
+        "summary": "Stay ahead of the sticks",
+        "detail": "First and second down matter more than raw yards. Too many third-and-longs mean trouble.",
+        "state": "watch",
+        "prompt": "What should I watch on early downs?",
+        "noteId": "early-down-identity"
+      },
+      {
+        "id": "clean-operation",
+        "title": "Clean operation",
+        "summary": "Clean snaps. No free yards.",
+        "detail": "Get the call in, snap it on time, and protect the ball. Do not let mistakes flip the field.",
+        "state": "watch",
+        "prompt": "What does a clean start look like for Texas?",
+        "noteId": "quarterback-operation"
+      },
+      {
+        "id": "pressure-four",
+        "title": "Pressure with four",
+        "summary": "Get home without blitzing",
+        "detail": "Interior pressure lets Texas hurry the quarterback without giving up help in coverage.",
+        "state": "ready",
+        "prompt": "Why does pressure with four matter?",
+        "noteId": "defensive-front-pressure"
+      },
+      {
+        "id": "interior-rotation",
+        "title": "Interior line",
+        "summary": "Find the best five",
+        "detail": "Guard is still unsettled. Short yardage and interior pressure should reveal who the staff trusts.",
+        "state": "thin",
+        "prompt": "What should I watch on the interior line?",
+        "noteId": "interior-ol-rotation"
+      }
+    ]
+  },
+  "nextGameNote": "Watch early downs, the left-guard rotation, and who wins up front against Ohio State.",
+  "notesDisclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
+  "notes": [
+    {
+      "id": "early-down-identity",
+      "title": "Early downs: stay on schedule",
+      "topics": [
+        "early downs",
+        "offense",
+        "run game"
+      ],
+      "publishedAt": "2026-06-28T15:00:00.000Z",
+      "body": "Early downs are the cleanest tell for this offense. When runs and quick throws keep Texas ahead of the sticks, the whole playbook opens up. Too many third-and-longs mean trouble."
+    },
+    {
+      "id": "interior-ol-rotation",
+      "title": "Interior line: find the best five",
+      "topics": [
+        "roster",
+        "offensive line",
+        "line of scrimmage"
+      ],
+      "publishedAt": "2026-09-08T13:45:00.000Z",
+      "body": "Left guard remains a rotation between Dylan Sikorski and Laurence Seymore after the opener, as Sarkisian confirmed Monday. Watch short yardage and protection against interior pressure to see who earns more snaps against Ohio State."
+    },
+    {
+      "id": "quarterback-operation",
+      "title": "Clean start: checks, snaps, ball security",
+      "topics": [
+        "quarterback",
+        "operation",
+        "turnovers"
+      ],
+      "publishedAt": "2026-09-08T13:45:00.000Z",
+      "body": "The quarterback's first job is simple: get the call right, snap it on time, and protect the ball. Field position matters more than one highlight throw on Saturday."
+    },
+    {
+      "id": "defensive-front-pressure",
+      "title": "Pressure with four",
+      "topics": [
+        "defense",
+        "pressure",
+        "front seven"
+      ],
+      "publishedAt": "2026-06-30T14:20:00.000Z",
+      "body": "If the front can pressure with four, Texas can keep more help in coverage. Watch early downs and how often the defense needs a fifth rusher to move the quarterback."
+    },
+    {
+      "id": "opponent-ohio-state",
+      "title": "Ohio State: the first big test",
+      "topics": [
+        "opponent",
+        "Ohio State",
+        "line of scrimmage"
+      ],
+      "publishedAt": "2026-06-30T19:10:00.000Z",
+      "body": "Ohio State is the first big test up front. Texas has to stay on schedule and protect without helping on every snap."
+    },
+    {
+      "id": "opponent-texas-state",
+      "title": "Texas State: opener watch list",
+      "topics": [
+        "opponent",
+        "Texas State",
+        "openers"
+      ],
+      "publishedAt": "2026-06-26T13:40:00.000Z",
+      "body": "Texas State will test tackling in space and the defense's response to tempo. Watch early downs, who gets real snaps, and whether Texas wins up front."
+    }
+  ]
+}

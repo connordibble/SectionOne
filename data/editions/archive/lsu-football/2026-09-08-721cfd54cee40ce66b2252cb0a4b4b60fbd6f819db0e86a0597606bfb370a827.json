@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "lsu-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-08T21:32:26.176Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "LSU hosts Louisiana Tech after beating Clemson 51-10. Watch Leavitt’s protection and Elzy’s opportunities. SEC leaders will discuss LSU’s membership Thursday; that meeting is not an expulsion decision.",
+  "items": [
+    {
+      "id": "sec-membership-dispute",
+      "headline": "SEC leaders will discuss LSU’s membership Thursday",
+      "tldr": "AP reports the meeting follows the dispute over returning players with NFL experience. Harris and Wright were not on the Clemson roster; neither their availability for Saturday nor an expulsion decision is established by this report.",
+      "outlet": "Associated Press",
+      "tier": "national",
+      "url": "https://www.the-journal.com/articles/southeastern-conference-leaders-to-discuss-kicking-lsu-out-of-league-over-player-eligibility-dispute/",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "leavitt-protection",
+      "headline": "Leavitt’s legs delivered; Kiffin still wants better guard play",
+      "tldr": "Leavitt ran for 113 yards and two touchdowns against Clemson. Kiffin cautioned that the quarterback’s escapes helped produce the no-sack result, so watch the pocket rather than treating that stat as proof the line is settled.",
+      "outlet": "Shreveport-Bossier Journal",
+      "tier": "local",
+      "url": "https://shreveportbossierjournal.com/2026/09/08/leavitt-to-foes-twinkle-toes-full-speed-ahead/",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "elzy-opportunities",
+      "headline": "Kiffin expects more opportunities for Malik Elzy",
+      "tldr": "Elzy earned a start after a strong camp but played 15 offensive snaps with one target against Clemson. Kiffin’s comments point toward more chances; watch whether that turns into involvement against Louisiana Tech.",
+      "outlet": "LSU Wire",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/lsus-lane-kiffin-expects-more-111819953.html",
+      "publishedAt": "2026-09-08T11:18:19Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ross-defensive-impact",
+      "headline": "Jordan Ross turns his LSU debut into a defensive spark",
+      "tldr": "Ross returned an interception for a touchdown and added a sack against Clemson. Watch whether the defense can keep disrupting plays against Louisiana Tech, rather than relying on another takeaway score.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/09/7/three-football-players-earn-sec-honors-after-impressive-debut",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "louisiana-tech-preview",
+      "headline": "Next opponent: Louisiana Tech arrives after an 80-6 opener",
+      "tldr": "The Bulldogs scored touchdowns on their first 11 possessions against Northwestern State, including a 75-yard reception by Jalen Mickens on the opening play. For LSU, early coverage discipline is the watch point; kickoff is 6:30 p.m. CT Saturday on SEC Network+.",
+      "outlet": "Louisiana Tech Athletics",
+      "tier": "official",
+      "url": "https://latechsports.com/news/2026/9/5/football-bulldogs-dominate-in-historic-season-opener-over-northwestern-state",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give Leavitt a cleaner pocket.",
+      "body": "Leavitt’s running rescued plays against Clemson, but Kiffin still wants better guard play. Watch whether the line creates cleaner possessions against Louisiana Tech.",
+      "noteId": "guard-play"
+    },
+    "matchup": {
+      "thesis": "Protect the rhythm",
+      "question": "What should LSU improve against Louisiana Tech?",
+      "answer": "Watch the guards: cleaner protection would reduce reliance on Leavitt’s escapes. On defense, prevent early deep completions to Louisiana Tech’s receivers.",
+      "citationNoteIds": [
+        "guard-play",
+        "early-coverage"
+      ]
+    },
+    "signals": [
+      {
+        "id": "guard-play",
+        "title": "Guard play",
+        "summary": "No sacks is not the whole story",
+        "detail": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape.",
+        "state": "watch",
+        "prompt": "What should I watch up front?",
+        "noteId": "guard-play"
+      },
+      {
+        "id": "early-coverage",
+        "title": "Early coverage",
+        "summary": "Make Tech earn its drives",
+        "detail": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication.",
+        "state": "watch",
+        "prompt": "What does Louisiana Tech bring on offense?",
+        "noteId": "early-coverage"
+      },
+      {
+        "id": "receiver-rotation",
+        "title": "Receiver rotation",
+        "summary": "Elzy should get more chances",
+        "detail": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed.",
+        "state": "watch",
+        "prompt": "What is Malik Elzy’s role?",
+        "noteId": "receiver-rotation"
+      },
+      {
+        "id": "eligibility-watch",
+        "title": "Roster watch",
+        "summary": "Wait for confirmed availability",
+        "detail": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead.",
+        "state": "watch",
+        "prompt": "What is confirmed in the LSU eligibility dispute?",
+        "noteId": "eligibility-watch"
+      }
+    ]
+  },
+  "nextGameNote": "Louisiana Tech visits Tiger Stadium on September 12 at 6:30 p.m. CT on SEC Network+. Check the official schedule’s broadcast link before kickoff.",
+  "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "guard-play",
+      "title": "Guard play",
+      "topics": [
+        "guard-play",
+        "Guard play",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-08",
+      "body": "Kiffin says Leavitt got the line out of trouble and wants better play at guard. Watch whether the pocket holds up without the quarterback having to escape."
+    },
+    {
+      "id": "early-coverage",
+      "title": "Early coverage",
+      "topics": [
+        "early-coverage",
+        "Early coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-05",
+      "body": "Mickens scored on a 75-yard reception on Tech’s opening play. Watch LSU’s early coverage communication."
+    },
+    {
+      "id": "receiver-rotation",
+      "title": "Receiver rotation",
+      "topics": [
+        "receiver-rotation",
+        "Receiver rotation",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-08T11:18:19Z",
+      "body": "Malik Elzy started against Clemson but saw only one target. Kiffin expects more opportunities; watch his involvement without treating a bigger role as guaranteed."
+    },
+    {
+      "id": "eligibility-watch",
+      "title": "Roster watch",
+      "topics": [
+        "eligibility-watch",
+        "Roster watch",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-08",
+      "body": "AP reports that Zxavian Harris and Dae’Quan Wright practiced but were left off the Clemson roster. Their status for the next game is not established by that report; Thursday’s SEC meeting is still ahead."
+    }
+  ]
+}

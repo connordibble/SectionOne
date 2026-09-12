@@ -4,10 +4,10 @@
 without source text or credentials. The private engine uses it to plan source
 reviews and bounded fact refreshes. It does not authorize automatic publication.
 
-Readers see a review notice when an edition is at least 48 hours old, including
-while a page remains open. It links to official game details and preserves the
-last briefing. Publication age does not establish when sources were checked;
-poll and schedule provenance remain separate. Correction imports preserve key
+The reader-facing age banner is disabled for now. Maintenance still flags editions
+for review after 48 hours and preserves the last briefing when verification fails.
+Publication age does not establish when sources were checked; poll and schedule
+provenance remain separate. Correction imports preserve key
 order so unrelated teams do not appear changed in the diff.
 
 `data/editions/current.json` is the app's published registry. Each versioned package contains the

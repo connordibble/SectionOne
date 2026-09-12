@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-11T22:59:20.434Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Utah State needs clean possessions in Seattle. Watch the quarterback rotation, whether the offense protects the ball, and whether the secondary stays with its receivers when Washington’s quarterback extends a play.",
+  "items": [
+    {
+      "id": "hillstead-start-plan",
+      "headline": "Hillstead remains the expected starter for Washington",
+      "tldr": "Mendenhall said he anticipated Hillstead starting, and Monday’s depth chart kept him at QB1. Watch the opening series and how the staff uses Brosterhous’s planned weekly package.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://1069thefan.com/2026/09/08/breaking-down-mccae-hillsteads-struggles-and-future-with-utah-state-this-season-sports/",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "washington-mobility",
+      "headline": "Williams added 61 rushing yards in Washington’s opener",
+      "tldr": "Watch the pursuit angles as much as the initial pressure. If the quarterback extends a play, the secondary has to keep covering instead of chasing the scramble too soon.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state/at-washington-huskies/576874",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "protect-possessions",
+      "headline": "Four interceptions erased Utah State’s yardage advantage",
+      "tldr": "Watch the decisions at the end of drives. A punt or a throwaway can leave the defense with a much better field than a forced pass.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/09/05/utah-state-football-loses-to-idaho-state/",
+      "publishedAt": "2026-09-06T04:37:00.000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "seattle-watch-guide",
+      "headline": "Washington is a 1:30 p.m. Mountain start on Big Ten Network",
+      "tldr": "Check your channel access before kickoff. The official game guide gathers the broadcast, radio and live-stat links for the trip to Seattle.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/9/7/utah-state-football-travels-to-husky-stadium-to-play-no-17-washingto.aspx",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 3,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "wood-receiving",
+      "headline": "Wood led Utah State with six catches in the opener",
+      "tldr": "Watch whether the offense can give its receivers catchable throws on schedule. Reliable completions would take pressure off both the run game and the defense.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/9/5/utah-state-football-drops-season-opener-to-idaho-state-29-17.aspx",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the next possession.",
+      "body": "Protect the ball, get lined up cleanly and make Washington earn the field. A promising drive only helps if the finish does not hand the advantage back.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Value the possession",
+      "question": "What would make this a cleaner road performance?",
+      "answer": "Avoid the forced throw on offense. On defense, keep the quarterback contained and stay on top of routes when the play lasts longer than expected.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback usage",
+        "summary": "Read the opening series",
+        "detail": "Watch how the staff divides the snaps and changes the package. A substitution alone is not enough to establish a permanent change at starter.",
+        "state": "watch",
+        "prompt": "What should I watch in Utah State’s quarterback rotation?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Ball security",
+        "summary": "Do not force the finish",
+        "detail": "Watch the last decision of each possession. A throwaway can preserve field position when the coverage wins the play.",
+        "state": "watch",
+        "prompt": "How can Utah State protect its possessions?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Containment",
+        "summary": "Keep covering the scramble",
+        "detail": "Watch whether the secondary stays with its receivers when the quarterback moves. Pursuit cannot leave a free throw behind it.",
+        "state": "watch",
+        "prompt": "How should Utah State defend Washington’s quarterback?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Receiving rhythm",
+        "summary": "Make the easy throw",
+        "detail": "Watch whether the passing game finds a catchable ball before the pocket breaks down. Consistent completions can keep the offense out of long-yardage situations.",
+        "state": "watch",
+        "prompt": "What should I watch in Utah State’s passing game?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Washington, check Big Ten Network access before Saturday’s 1:30 p.m. MT start.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback usage",
+      "topics": [
+        "quarterback usage",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch how the staff divides the snaps and changes the package. A substitution alone is not enough to establish a permanent change at starter."
+    },
+    {
+      "id": "watch-2",
+      "title": "Ball security",
+      "topics": [
+        "ball security",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch the last decision of each possession. A throwaway can preserve field position when the coverage wins the play."
+    },
+    {
+      "id": "watch-3",
+      "title": "Containment",
+      "topics": [
+        "containment",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch whether the secondary stays with its receivers when the quarterback moves. Pursuit cannot leave a free throw behind it."
+    },
+    {
+      "id": "watch-4",
+      "title": "Receiving rhythm",
+      "topics": [
+        "receiving rhythm",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.074Z",
+      "body": "Watch whether the passing game finds a catchable ball before the pocket breaks down. Consistent completions can keep the offense out of long-yardage situations."
+    }
+  ]
+}

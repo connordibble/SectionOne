@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-08T13:45:00.000Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Utah State heads to Washington after a 29-17 loss to Idaho State. Hillstead's forearm and Brosterhous's planned role make quarterback usage worth watching, but four interceptions and repeated penalties leave the whole offense with work to do before Saturday's 1:30 p.m. MT kickoff.",
+  "items": [
+    {
+      "id": "quarterback-roles",
+      "headline": "Hillstead's forearm affected his throws; Brosterhous has a weekly role",
+      "tldr": "Mendenhall said Monday that McCae Hillstead's forearm trouble worsened during the opener and affected his velocity and accuracy. He also said Grady Brosterhous will play in every game under a plan that predates the loss, so a change at quarterback Saturday would not by itself signal a new starter.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state-football/week-2-vs-washington/576849",
+      "publishedAt": "2026-09-07T22:17:00.000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "penalties-travel",
+      "headline": "Eleven penalties leave the offense work to do before its first road game",
+      "tldr": "Utah State drew 11 flags for 83 yards despite practicing with crowd noise and late-game situations during camp. Mendenhall says that preparation needs more work; watch whether the offense can get lined up and snap cleanly in Seattle before judging its ability to sustain drives.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state-football/week-1-takeaways/576814",
+      "publishedAt": "2026-09-07T16:38:00.000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "turnovers-cost-opener",
+      "headline": "Four interceptions wipe out Utah State's yardage advantage",
+      "tldr": "The Aggies outgained Idaho State 407-241 but lost 29-17, with the Bengals scoring 10 points after turnovers. Ball security is the first test at Washington: moving the ball means little if the next possession gives the opponent a short field.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/09/05/utah-state-football-loses-to-idaho-state/",
+      "publishedAt": "2026-09-06T04:37:00.000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "washington-watch-guide",
+      "headline": "Washington kicks off at 1:30 p.m. Mountain on Big Ten Network",
+      "tldr": "Saturday's road game is at Husky Stadium in Seattle, where the local kickoff time is 12:30 p.m. Pacific. Utah State's game guide puts the broadcast, radio stream, live stats and game notes in one place, so check your Big Ten Network access before kickoff.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/9/7/utah-state-football-travels-to-husky-stadium-to-play-no-17-washingto.aspx",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 3,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "wood-receiving-lead",
+      "headline": "Eli Wood leads Utah State's receivers with six catches",
+      "tldr": "Wood caught six passes for 90 yards and a touchdown, while Demick Starling added three catches and the other receiving score. Those are two names to follow as Utah State tries to make its passing game more consistent.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/9/5/utah-state-football-drops-season-opener-to-idaho-state-29-17.aspx",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect the ball. Make them drive.",
+      "body": "Four interceptions helped turn the opener into a 29-17 loss. Washington is next: watch the quarterback rotation, clean snaps, and tackling in space.",
+      "noteId": "opponent-washington"
+    },
+    "matchup": {
+      "thesis": "Win the margins",
+      "question": "How does Utah State stay in the game at Washington?",
+      "answer": "Protect the ball and keep Demond Williams Jr. contained. When he extends a play, the secondary has to stay with its receivers.",
+      "citationNoteIds": [
+        "opponent-washington",
+        "explosive-plays-allowed"
+      ]
+    },
+    "signals": [
+      {
+        "id": "run-game",
+        "title": "Run game",
+        "summary": "Stay ahead of the chains",
+        "detail": "First and second down decide whether this offense gets to use the rest of its playbook. Third-and-long is where the drive ends.",
+        "state": "watch",
+        "prompt": "What matters in the run game?",
+        "noteId": "run-game-identity"
+      },
+      {
+        "id": "ball-security",
+        "title": "Ball security",
+        "summary": "Make them drive the field",
+        "detail": "Get the call in, take the checkdown, and hand nothing over for free. Field position is worth more here than one big throw.",
+        "state": "watch",
+        "prompt": "What does a clean start look like for Utah State?",
+        "noteId": "quarterback-operation"
+      },
+      {
+        "id": "explosive-plays",
+        "title": "Explosive plays",
+        "summary": "Nothing behind coverage",
+        "detail": "Long, slow drives against this defense are survivable. Chunk plays over the top are what turn a close game into a bad one.",
+        "state": "ready",
+        "prompt": "Why do explosive plays decide these games?",
+        "noteId": "explosive-plays-allowed"
+      },
+      {
+        "id": "special-teams",
+        "title": "Special teams",
+        "summary": "Cheapest yards on the field",
+        "detail": "Net punting and kick coverage are where a roster without a talent edge buys itself a quarter of football.",
+        "state": "thin",
+        "prompt": "What should I watch on special teams?",
+        "noteId": "special-teams-margin"
+      }
+    ]
+  },
+  "nextGameNote": "Watch ball security, clean snaps, and whether the defense can contain Demond Williams Jr. in Seattle.",
+  "notesDisclaimer": "Section One notes are independent. Each note is dated and should be read with linked team sources.",
+  "notes": [
+    {
+      "id": "run-game-identity",
+      "title": "Run game: stay ahead of the chains",
+      "topics": [
+        "run game",
+        "offense",
+        "early downs"
+      ],
+      "publishedAt": "2026-07-29T15:00:00.000Z",
+      "body": "The run game sets up everything else for this offense. When Utah State stays ahead of the chains on early downs, tempo and play-action both become real options instead of hopes. Third-and-long is where a drive in Logan goes to die."
+    },
+    {
+      "id": "quarterback-operation",
+      "title": "Quarterback play: protect the ball, protect the field",
+      "topics": [
+        "quarterback",
+        "operation",
+        "turnovers"
+      ],
+      "publishedAt": "2026-07-30T17:10:00.000Z",
+      "body": "The quarterback's first job here is field position, not highlights. Get the call in on time, take the checkdown, and make the other team drive the length of the field. One free turnover swings a game Utah State would otherwise play even."
+    },
+    {
+      "id": "explosive-plays-allowed",
+      "title": "Explosive plays: the number that decides these games",
+      "topics": [
+        "defense",
+        "explosiveness",
+        "coverage"
+      ],
+      "publishedAt": "2026-07-31T16:40:00.000Z",
+      "body": "Explosive plays are the cleanest tell for this defense. Utah State can live with long, slow drives against it; what it cannot live with is giving up chunk plays behind coverage. Watch how often a safety ends up as the last line."
+    },
+    {
+      "id": "special-teams-margin",
+      "title": "Special teams: the cheapest points on the field",
+      "topics": [
+        "special teams",
+        "field position",
+        "kicking"
+      ],
+      "publishedAt": "2026-08-01T14:25:00.000Z",
+      "body": "Special teams is the cheapest place on the field to win yards. A net punt edge and clean kick coverage are worth more to Utah State than any single play call. Field position is how a team without a talent edge is still in a game in the fourth quarter."
+    },
+    {
+      "id": "pac-12-step-up",
+      "title": "Pac-12 move: a harder Saturday most weeks",
+      "topics": [
+        "schedule",
+        "Pac-12",
+        "conference"
+      ],
+      "publishedAt": "2026-08-02T13:15:00.000Z",
+      "body": "The Pac-12 move means a harder Saturday most weeks than the old slate held. The line of scrimmage is where that shows up first, and it shows up late in games before it shows up early. Depth up front matters more in November than it does in September."
+    },
+    {
+      "id": "opponent-washington",
+      "title": "Washington: contain the quarterback",
+      "topics": [
+        "opponent",
+        "Washington",
+        "coverage"
+      ],
+      "publishedAt": "2026-09-08T13:45:00.000Z",
+      "body": "Washington visits are a test of ball security and discipline. Mendenhall identified Demond Williams Jr. as a quarterback who needs multiple defenders to contain him; Brevin Hamblin emphasized staying on top of routes when Williams extends plays. Watch rush lanes and whether the secondary stays with its receivers in Seattle."
+    }
+  ]
+}

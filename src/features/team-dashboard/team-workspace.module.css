@@ -23,32 +23,6 @@
   inset-block-start: var(--space-sm);
 }
 
-.freshnessNotice {
-  padding: var(--space-sm) var(--page-gutter);
-  background: var(--team-surface-soft);
-  color: var(--team-ink-subtle);
-  font-size: var(--text-sm);
-}
-
-.freshnessNotice p {
-  margin: 0;
-}
-
-.freshnessNotice a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  min-height: var(--touch-target);
-  color: var(--team-accent-strong);
-  text-decoration: underline;
-  text-underline-offset: var(--space-3xs);
-}
-
-.freshnessNotice svg {
-  width: 1em;
-  height: 1em;
-}
-
 .brandBlock {
   grid-row: 1;
   grid-column: 1;

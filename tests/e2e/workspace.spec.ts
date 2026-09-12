@@ -133,7 +133,7 @@ test("the Signal Board turns a selected cue into a focused question", async ({ p
   const pressureCue = page.getByRole("button", { name: texasSignal.title, exact: false });
   await pressureCue.click();
   await expect(pressureCue).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByText(/Interior pressure lets Texas hurry the quarterback/)).toBeVisible();
+  await expect(page.getByText(texasSignal.detail, { exact: true })).toBeVisible();
 
   await page.getByRole("button", { name: "Ask about this" }).click();
   const composer = page.getByLabel("Ask Section One");
@@ -182,7 +182,7 @@ test("reduced motion removes spatial interaction movement", async ({ page }) => 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/teams/texas-football#matchup");
 
-  const cue = page.getByRole("button", { name: /Early downs/ });
+  const cue = page.getByRole("button", { name: texas.editorial.signals[0].title, exact: false });
   await cue.hover();
 
   await expect(cue).toHaveCSS("transform", "none");
@@ -446,7 +446,10 @@ test("health and ingest APIs respond", async ({ request }) => {
     documentCount: number;
   };
   expect(ingestBody.teamSlug).toBe("texas-football");
-  expect(ingestBody.documentCount).toBe(26);
+  // Twelve schedule rows, two official links, one poll, and the edition's
+  // published notes and stories. Editorial refreshes can change the note count.
+  const edition = getPublishedEdition(texas.slug)!;
+  expect(ingestBody.documentCount).toBe(15 + edition.notes.length + edition.items.length);
 });
 
 test("chat API returns named sources", async ({ request }) => {

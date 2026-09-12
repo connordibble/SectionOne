@@ -17,7 +17,6 @@ import { getTeamNoteDocuments } from "@/server/sources/notes";
 import { getTeamRankingSummary } from "@/server/sources/rankings";
 import { getWeeklyEdition } from "@/server/sources/weekly";
 import { TeamWorkspace } from "./team-workspace";
-import { editionNeedsReview } from "@/lib/editions/freshness";
 
 type TeamDashboardProps = {
   team: TeamConfig;
@@ -78,7 +77,6 @@ export async function TeamDashboard({ team }: TeamDashboardProps) {
       teamOptions={teamOptions}
       themeStyle={createTeamThemeStyle(team)}
       weekly={weekly}
-      briefingNeedsReview={weekly ? editionNeedsReview(weekly.publishedAt, now.getTime()) : false}
     />
   );
 }

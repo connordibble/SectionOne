@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "lsu-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-11T22:59:20.988Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "LSU’s next step is cleaner protection and disciplined coverage against Louisiana Tech. Watch whether the guards hold the pocket without a quarterback escape, and whether the defense can force long drives instead of trading big plays.",
+  "items": [
+    {
+      "id": "sec-meeting-update",
+      "headline": "SEC meeting ends with discussions continuing",
+      "tldr": "WBRZ reports that expulsion was off Thursday’s agenda and LSU left Wright and Harris off its roster. The roster decision does not mean the wider conference dispute is resolved.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://content.wbrz.com/news/sec-issues-statement-on-thursday-meeting-on-recent-matters-involving-conference-expectations-",
+      "publishedAt": "2026-09-10",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "guard-protection",
+      "headline": "Kiffin wants better guard play despite a sack-free opener",
+      "tldr": "Watch whether Leavitt can complete the play from the pocket. An escape that saves a possession is useful, but it can hide a blocking problem.",
+      "outlet": "Shreveport-Bossier Journal",
+      "tier": "local",
+      "url": "https://shreveportbossierjournal.com/2026/09/08/leavitt-to-foes-twinkle-toes-full-speed-ahead/",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "elzy-opportunities",
+      "headline": "Kiffin expects more opportunities for Elzy",
+      "tldr": "Watch his involvement without treating a bigger role as guaranteed. The useful signal is whether the next target produces a routine completion and keeps the offense moving.",
+      "outlet": "LSU Wire",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/lsus-lane-kiffin-expects-more-111819953.html",
+      "publishedAt": "2026-09-08T11:18:19Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "ross-disruption",
+      "headline": "Ross scored on an interception and added a sack against Clemson",
+      "tldr": "Watch whether LSU can disrupt the next opponent without needing another defensive touchdown. Pressure and sound tackling are the more repeatable ways to end a drive.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/09/7/three-football-players-earn-sec-honors-after-impressive-debut",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "tech-gameday",
+      "headline": "Friday’s game guide sets LSU–Tech kickoff at 6:32 p.m. CT",
+      "tldr": "The guide lists SEC Network+ and a sold-out Tiger Stadium. Set up your stream early, and use the parking and traffic links before heading to campus.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/09/11/football-returns-to-death-valley-for-matchup-with-louisiana-tech",
+      "publishedAt": "2026-09-11",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give Leavitt a cleaner pocket.",
+      "body": "Watch the guards before judging the passing game. Clean protection would let LSU finish plays without asking its quarterback to rescue them.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Protect the rhythm",
+      "question": "What should LSU improve against Louisiana Tech?",
+      "answer": "Keep the pocket intact and make the routine completion. On defense, stay disciplined against the deep ball and force the opponent to build a drive.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Guard play",
+        "summary": "Make the pocket cleaner",
+        "detail": "Watch whether the guards hold their assignments when the quarterback stays in place. Escaping pressure should be an option, not the whole protection plan.",
+        "state": "watch",
+        "prompt": "What should I watch up front for LSU?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Coverage discipline",
+        "summary": "Make Tech build a drive",
+        "detail": "Watch the first deep route and how the safety responds. Keeping the ball in front can make the opponent earn another set of downs.",
+        "state": "watch",
+        "prompt": "What should LSU watch in Louisiana Tech’s passing game?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Receiver involvement",
+        "summary": "Watch the next target",
+        "detail": "Watch which receiver becomes the reliable option when the first read is covered. A larger role has to show up in useful plays, not just snaps.",
+        "state": "watch",
+        "prompt": "What should I watch from Malik Elzy?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Defensive disruption",
+        "summary": "Finish the ordinary play",
+        "detail": "Watch whether the defense turns pressure into a stop without losing its tackling shape. A takeaway touchdown is a bonus, not a requirement.",
+        "state": "watch",
+        "prompt": "What should LSU’s defense carry into this game?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "The Friday guide specifies a 6:32 p.m. CT kickoff against Louisiana Tech on SEC Network+. Have the stream ready before then.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Guard play",
+      "topics": [
+        "guard play",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.075Z",
+      "body": "Watch whether the guards hold their assignments when the quarterback stays in place. Escaping pressure should be an option, not the whole protection plan."
+    },
+    {
+      "id": "watch-2",
+      "title": "Coverage discipline",
+      "topics": [
+        "coverage discipline",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.075Z",
+      "body": "Watch the first deep route and how the safety responds. Keeping the ball in front can make the opponent earn another set of downs."
+    },
+    {
+      "id": "watch-3",
+      "title": "Receiver involvement",
+      "topics": [
+        "receiver involvement",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.075Z",
+      "body": "Watch which receiver becomes the reliable option when the first read is covered. A larger role has to show up in useful plays, not just snaps."
+    },
+    {
+      "id": "watch-4",
+      "title": "Defensive disruption",
+      "topics": [
+        "defensive disruption",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-11T22:56:47.075Z",
+      "body": "Watch whether the defense turns pressure into a stop without losing its tackling shape. A takeaway touchdown is a bonus, not a requirement."
+    }
+  ]
+}

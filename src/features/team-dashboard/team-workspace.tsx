@@ -25,7 +25,6 @@ import { SignalBoard, type WorkspaceSignal } from "./signal-board";
 import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
 import styles from "./team-workspace.module.css";
 import { safeExternalHref } from "@/lib/safe-url";
-import { editionNeedsReview } from "@/lib/editions/freshness";
 
 export type WorkspaceView = "brief" | "matchup" | "schedule";
 type ThemeMode = "light" | "dark";
@@ -49,7 +48,6 @@ type TeamWorkspaceProps = {
   teamOptions: TeamOption[];
   themeStyle: CSSProperties;
   weekly?: WeeklyEdition;
-  briefingNeedsReview?: boolean;
 };
 
 const views: Array<{ id: WorkspaceView; label: string }> = [
@@ -110,22 +108,11 @@ export function TeamWorkspace({
   teamOptions,
   themeStyle,
   weekly,
-  briefingNeedsReview = false,
 }: TeamWorkspaceProps) {
   const [activeView, setActiveView] = useState<WorkspaceView>("brief");
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
   const [draftRequest, setDraftRequest] = useState<DraftRequest>();
   const draftId = useRef(0);
-  const [needsReview, setNeedsReview] = useState(briefingNeedsReview);
-
-  useEffect(() => {
-    if (!weekly) return;
-    const refresh = () => setNeedsReview(editionNeedsReview(weekly.publishedAt, Date.now()));
-    refresh();
-    const timer = window.setInterval(refresh, 60_000);
-    return () => window.clearInterval(timer);
-  }, [weekly]);
-
   useEffect(() => {
     const syncHash = (focusTab = false) => {
       const hashView = window.location.hash.slice(1);
@@ -322,13 +309,6 @@ export function TeamWorkspace({
           </div>
         </div>
       </header>
-
-      {needsReview && weekly ? (
-        <aside className={styles.freshnessNotice} aria-label="Briefing freshness">
-          <p>This briefing was published {formatNewsDate(weekly.publishedAt)} and needs a fresh review. Availability and game details may have changed.</p>
-          <a href={safeExternalHref(team.officialScheduleUrl)} target="_blank" rel="noopener noreferrer">Check official game details <ExternalLink aria-hidden="true" /></a>
-        </aside>
-      ) : null}
 
       {activeView !== "brief" && nextGame ? (
         <GameStrip countdown={countdown} game={nextGame} teamName={team.shortName} />

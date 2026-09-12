@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "ohio-state-football",
+  "weekOf": "2026-09-08",
+  "publishedAt": "2026-09-08T21:32:26.176Z",
+  "issue": {
+    "season": 2026,
+    "week": 2
+  },
+  "summary": "Ohio State takes its offensive-line questions and McCuin’s emergence to Texas. Watch whether the pass rush can finish against Arch Manning. Kickoff is Saturday at 7:30 p.m. ET on ABC.",
+  "items": [
+    {
+      "id": "line-evaluation",
+      "headline": "Day keeps the offensive-line lineup under review",
+      "tldr": "Day says Ohio State will keep evaluating its starting group after the opener. Watch who takes the first snaps in Austin and whether the blocking holds up against a stronger test.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163725/presser-bullets-ryan-day-will-continue-to-evaluate-changing-offensive-line-julian-sayin-highlights-experience",
+      "publishedAt": "2026-09-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mccuin-emergence",
+      "headline": "McCuin gives Sayin another receiver to lean on",
+      "tldr": "His six catches produced 97 yards and a touchdown, with every catch moving the chains or scoring. If Texas shades coverage toward Jeremiah Smith, McCuin’s ability to win elsewhere becomes a key watch point.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163695/devin-mccuin-backs-up-preseason-hype-in-win-over-ball-state-establishes-presence-as-the-no-2-wide-receiver",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "rush-containment",
+      "headline": "The pass rush needs to finish against a mobile quarterback",
+      "tldr": "The Dispatch found that Ohio State struggled to bring down Ball State’s quarterback when pressured. Against Arch Manning, watch the pass rush lanes as closely as the pressure: an escape can erase a good start to the play.",
+      "outlet": "The Columbus Dispatch",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/did-ohio-state-football-grade-222929012.html",
+      "publishedAt": "2026-09-05T22:29:29Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "sayin-opener",
+      "headline": "Sayin opens with 320 passing yards; Texas is next",
+      "tldr": "Ohio State won 56-3, with Jeremiah Smith and Devin McCuin leading the receiving production. The passing game now takes that start on the road to Austin; watch whether the protection lets Sayin keep finding his receivers.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/9/5/football-no-1-buckeyes-start-season-with-resounding-56-3-win-over-ball-state",
+      "publishedAt": "2026-09-05",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "dkr-map",
+      "headline": "Traveling to Austin? DKR’s new map locates gates and water",
+      "tldr": "The interactive map marks seats, concessions, restrooms and first aid on the web and in the Texas Longhorns app. Open it before arriving; step-by-step navigation is still listed as coming soon.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect Sayin. Finish the pass rush.",
+      "body": "Watch the starting offensive line and whether the pass rush can finish against Texas.",
+      "noteId": "protection"
+    },
+    "matchup": {
+      "thesis": "Win the pocket",
+      "question": "What should Ohio State clean up before Texas?",
+      "answer": "Day is evaluating the offensive line. On defense, watch whether the pass rush can finish without opening escape lanes.",
+      "citationNoteIds": [
+        "protection",
+        "containment"
+      ]
+    },
+    "signals": [
+      {
+        "id": "protection",
+        "title": "Protection",
+        "summary": "Watch the starting line",
+        "detail": "Day is still evaluating the starting line. Watch the opening group and its protection.",
+        "state": "watch",
+        "prompt": "What should I watch up front?",
+        "noteId": "protection"
+      },
+      {
+        "id": "containment",
+        "title": "Containment",
+        "summary": "Finish without losing the edge",
+        "detail": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the pass rush keeps its lanes.",
+        "state": "watch",
+        "prompt": "How can Ohio State contain Arch Manning?",
+        "noteId": "containment"
+      },
+      {
+        "id": "second-receiver",
+        "title": "Receiver balance",
+        "summary": "McCuin earns attention",
+        "detail": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative.",
+        "state": "watch",
+        "prompt": "Why does Devin McCuin matter against Texas?",
+        "noteId": "second-receiver"
+      },
+      {
+        "id": "austin-arrival",
+        "title": "Austin arrival",
+        "summary": "Find your gate before arriving",
+        "detail": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon.",
+        "state": "watch",
+        "prompt": "Where can I find the stadium map?",
+        "noteId": "austin-arrival"
+      }
+    ]
+  },
+  "nextGameNote": "At Texas on September 12: 7:30 p.m. ET on ABC. Traveling fans can use the new DKR map to locate gates, water stations and first aid.",
+  "notesDisclaimer": "Independent matchup analysis based on the linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "protection",
+      "title": "Protection",
+      "topics": [
+        "protection",
+        "Protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-08",
+      "body": "Day is still evaluating the starting line. Watch the opening group and its protection."
+    },
+    {
+      "id": "containment",
+      "title": "Containment",
+      "topics": [
+        "containment",
+        "Containment",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-05T22:29:29Z",
+      "body": "Ball State escaped pressure, and Kenyatta Jackson Jr. says the defensive line must finish better. Against Arch Manning, watch whether the pass rush keeps its lanes."
+    },
+    {
+      "id": "second-receiver",
+      "title": "Receiver balance",
+      "topics": [
+        "second-receiver",
+        "Receiver balance",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-07",
+      "body": "McCuin caught six passes for 97 yards and a touchdown. If Texas tilts coverage toward Smith, watch whether McCuin keeps giving Sayin a productive alternative."
+    },
+    {
+      "id": "austin-arrival",
+      "title": "Austin arrival",
+      "topics": [
+        "austin-arrival",
+        "Austin arrival",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-04",
+      "body": "DKR has a new interactive map for seats, gates, water and first aid, available online and in the Texas Longhorns app. Step-by-step wayfinding is still coming soon."
+    }
+  ]
+}
