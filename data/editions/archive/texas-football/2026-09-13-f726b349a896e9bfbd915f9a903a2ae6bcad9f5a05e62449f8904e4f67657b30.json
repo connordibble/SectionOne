@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-13",
+  "publishedAt": "2026-09-13T12:43:28.576Z",
+  "issue": {
+    "season": 2026,
+    "week": 3
+  },
+  "summary": "Texas rallied past Ohio State 24-23. Against UTSA, the next step is making the offense work before a comeback becomes necessary: establish the running game, give Manning clear reads, and keep the defense closing drives.",
+  "items": [
+    {
+      "id": "sustained-running",
+      "headline": "Texas ran for 67 yards in the fourth quarter",
+      "tldr": "Watch whether the blocking and backfield can produce that control early against UTSA. Useful gains would keep the passing game out of rescue mode.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104542/texas-longhorns-24-ohio-state-buckeyes-23-takeaways",
+      "publishedAt": "2026-09-13T03:30:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "winston-outlet",
+      "headline": "Manning found Winston on fourth-and-nine to keep Texas alive",
+      "tldr": "The tight end can be an answer when the outside receivers are covered. Watch how quickly Manning reaches that option before pressure arrives.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104554/texas-longhorns-ohio-state-buckeyes-comeback-stat",
+      "publishedAt": "2026-09-13T04:30:00Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "second-half-defense",
+      "headline": "Texas shut Ohio State out in the fourth quarter",
+      "tldr": "Watch the coverage discipline after halftime carry into the opening series. Getting off the field would give the offense room to settle.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/12/no-4-3-football-earns-historic-24-23-comeback-win-over-no-1-1-ohio-state",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "utsa-fourth-downs",
+      "headline": "UTSA converted two fourth downs on its winning drive",
+      "tldr": "Prepare for an opponent willing to extend possessions. Watch McCown’s keeper as well as the short pass when Texas needs one more stop.",
+      "outlet": "UTSA Athletics",
+      "tier": "official",
+      "url": "https://goutsa.com/news/2026/09/13/strong-second-half-late-td-propel-roadrunners-past-bobcats-in-battle-for-i-35",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "dkr-navigation",
+      "headline": "DKR’s map locates gates, water stations and first aid",
+      "tldr": "Pick your entrance before leaving for the stadium. Save the map alongside your ticket so it is easy to find on arrival.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
+      "publishedAt": "2026-09-04",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Start with the running game.",
+      "body": "Carry the late-game blocking into the opening drives. Steady gains would make Manning’s reads simpler and keep Texas from needing another rescue.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Control the ordinary downs",
+      "question": "What should Texas carry into UTSA?",
+      "answer": "Build drives with the running backs, use the tight end when the outside throw is covered, and defend through fourth down.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Early-down runs",
+        "summary": "Make the first drive count",
+        "detail": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent.",
+        "state": "watch",
+        "prompt": "What should I watch in Texas’s running game?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Passing outlets",
+        "summary": "Find the tight end",
+        "detail": "If the wideouts are covered, watch whether Manning finds an underneath option before the pocket closes.",
+        "state": "watch",
+        "prompt": "How can Texas make passing downs easier?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive patience",
+        "summary": "Finish the possession",
+        "detail": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment.",
+        "state": "watch",
+        "prompt": "What makes UTSA hard to get off the field?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage",
+        "summary": "Carry the stops forward",
+        "detail": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet.",
+        "state": "watch",
+        "prompt": "What should I watch from Texas’s secondary?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against UTSA, watch early-down running, the tight-end outlet and fourth-down defense.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Early-down runs",
+      "topics": [
+        "early-down runs",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent."
+    },
+    {
+      "id": "watch-2",
+      "title": "Passing outlets",
+      "topics": [
+        "passing outlets",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "If the wideouts are covered, watch whether Manning finds an underneath option before the pocket closes."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive patience",
+      "topics": [
+        "defensive patience",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment."
+    },
+    {
+      "id": "watch-4",
+      "title": "Coverage",
+      "topics": [
+        "coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet."
+    }
+  ]
+}

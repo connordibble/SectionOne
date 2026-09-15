@@ -2,74 +2,74 @@
   "texas-football": {
     "schemaVersion": 1,
     "teamSlug": "texas-football",
-    "weekOf": "2026-09-08",
-    "publishedAt": "2026-09-12T12:26:31.257Z",
+    "weekOf": "2026-09-13",
+    "publishedAt": "2026-09-15T00:45:08.023Z",
     "issue": {
       "season": 2026,
-      "week": 2
+      "week": 3
     },
-    "summary": "Texas needs steadier gains on the ground to keep its passing options open against Ohio State. Watch the left side of the offensive line, the relief carries, and whether the defense can take the ball away without losing its assignments.",
+    "summary": "Texas rallied past Ohio State 24-23. Against UTSA, the next step is making the offense work before a comeback becomes necessary: establish the running game, give Manning clear reads, and keep the defense closing drives.",
     "items": [
       {
-        "id": "cooper-practice-update",
-        "headline": "Cooper suited up for practice, per On Texas Football",
-        "tldr": "Thursday’s episode notes are newer than Monday’s report that he would miss Ohio State. A practice appearance does not confirm game clearance; watch for the final availability update.",
-        "outlet": "On Texas Football",
-        "tier": "local",
-        "url": "https://podfollow.com/on-texas-football/episode/f390091485c9f9e730ff2186b94a3ba403d130c5/view",
-        "publishedAt": "2026-09-10T18:38:00Z",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "running-consistency",
-        "headline": "Texas gave up seven non-sack tackles for loss in the opener",
-        "tldr": "Watch whether the left-guard rotation can help turn early-down runs into manageable gains. The important improvement is fewer wasted plays, even when the explosive run is not there.",
+        "id": "sustained-running",
+        "headline": "Texas ran for 67 yards in the fourth quarter",
+        "tldr": "Watch whether the blocking and backfield can produce that control early against UTSA. Useful gains would keep the passing game out of rescue mode.",
         "outlet": "Burnt Orange Nation",
         "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/104443/texas-longhorns-running-game-ohio-state-buckeyes",
-        "publishedAt": "2026-09-10T18:20:00Z",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/104542/texas-longhorns-24-ohio-state-buckeyes-23-takeaways",
+        "publishedAt": "2026-09-13T03:30:00Z",
         "grade": {
           "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "biles-takeaways",
-        "headline": "Biles forced a fumble and intercepted a screen in his Texas debut",
-        "tldr": "Watch his recognition underneath as well as his pass rush. Staying with a receiver or reading a screen can be as valuable as chasing the quarterback.",
-        "outlet": "Burnt Orange Nation",
-        "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/104279/rasheem-biles-turnovers-texas-longhorns",
-        "publishedAt": "2026-09-06T11:47:00.000Z",
-        "grade": {
-          "impact": 4,
           "echo": 3,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
-        "id": "passing-options",
-        "headline": "Manning connected with eight receivers in the opener",
-        "tldr": "If Ohio State takes away the first read, watch whether Manning can find another option without holding the ball too long. Receiver balance matters most when the pocket gets crowded.",
+        "id": "monday-injuries",
+        "headline": "Sarkisian gave no return date for Townsend’s knee injury",
+        "tldr": "Keep Townsend’s status separate from the available tight-end options. Terry also missed Ohio State after a foot injury in warmups; watch for the next update on both.",
+        "outlet": "Burnt Orange Nation",
+        "tier": "local",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/104667/nick-townsend-knee-injury-texas-ohio-state",
+        "publishedAt": "2026-09-14T17:21:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "second-half-defense",
+        "headline": "Texas shut Ohio State out in the fourth quarter",
+        "tldr": "Watch the coverage discipline after halftime carry into the opening series. Getting off the field would give the offense room to settle.",
         "outlet": "Texas Athletics",
         "tier": "official",
-        "url": "https://texaslonghorns.com/news/2026/9/5/no-5-4-football-dominates-texas-state-in-season-opener-59-7",
-        "publishedAt": "2026-09-05",
+        "url": "https://texaslonghorns.com/news/2026/9/12/no-4-3-football-earns-historic-24-23-comeback-win-over-no-1-1-ohio-state",
+        "publishedAt": "2026-09-12",
         "grade": {
           "impact": 4,
           "echo": 3,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
-        "id": "dkr-map",
-        "headline": "DKR’s interactive map marks gates, water and first aid",
-        "tldr": "Open the map before leaving for the stadium and pick your entrance. The launch announcement describes step-by-step wayfinding as a future feature.",
+        "id": "utsa-fourth-downs",
+        "headline": "UTSA converted two fourth downs on its winning drive",
+        "tldr": "Prepare for an opponent willing to extend possessions. Watch McCown’s keeper as well as the short pass when Texas needs one more stop.",
+        "outlet": "UTSA Athletics",
+        "tier": "official",
+        "url": "https://goutsa.com/news/2026/09/13/strong-second-half-late-td-propel-roadrunners-past-bobcats-in-battle-for-i-35",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "dkr-navigation",
+        "headline": "DKR’s map locates gates, water stations and first aid",
+        "tldr": "Pick your entrance before leaving for the stadium. Save the map alongside your ticket so it is easy to find on arrival.",
         "outlet": "Texas Athletics",
         "tier": "official",
         "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
@@ -77,20 +77,201 @@
         "grade": {
           "impact": 3,
           "echo": 1,
-          "freshness": 4
+          "freshness": 3
         }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Make the ordinary run work.",
-        "body": "Watch the blocking on early downs. Consistent gains would let Texas use its receivers without asking the pocket to survive obvious passing situations.",
+        "headline": "Start with the running game.",
+        "body": "Carry the late-game blocking into the opening drives. Steady gains would make Manning’s reads simpler and keep Texas from needing another rescue.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Stay ahead of the sticks",
-        "question": "What would put Texas in control?",
-        "answer": "Turn early-down runs into useful gains, then make Ohio State defend the full passing game. On defense, keep eyes on the ball without abandoning coverage.",
+        "thesis": "Control the ordinary downs",
+        "question": "What should Texas carry into UTSA?",
+        "answer": "Build drives with the running backs, use the tight end when the outside throw is covered, and defend through fourth down.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Early-down runs",
+          "summary": "Make the first drive count",
+          "detail": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent.",
+          "state": "watch",
+          "prompt": "What should I watch in Texas’s running game?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Passing outlets",
+          "summary": "Find the tight end",
+          "detail": "If the wideouts are covered, watch whether Manning finds an underneath option before the pocket closes.",
+          "state": "watch",
+          "prompt": "How can Texas make passing downs easier?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Defensive patience",
+          "summary": "Finish the possession",
+          "detail": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment.",
+          "state": "watch",
+          "prompt": "What makes UTSA hard to get off the field?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Coverage",
+          "summary": "Carry the stops forward",
+          "detail": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet.",
+          "state": "watch",
+          "prompt": "What should I watch from Texas’s secondary?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Against UTSA, watch early-down running, the tight-end outlet and fourth-down defense.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Early-down runs",
+        "topics": [
+          "early-down runs",
+          "matchup"
+        ],
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent."
+      },
+      {
+        "id": "watch-2",
+        "title": "Passing outlets",
+        "topics": [
+          "passing outlets",
+          "matchup"
+        ],
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "If the wideouts are covered, watch whether Manning finds an underneath option before the pocket closes."
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive patience",
+        "topics": [
+          "defensive patience",
+          "matchup"
+        ],
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment."
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage",
+        "topics": [
+          "coverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet."
+      }
+    ]
+  },
+  "utah-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "utah-state-football",
+    "weekOf": "2026-09-13",
+    "publishedAt": "2026-09-15T00:45:08.023Z",
+    "issue": {
+      "season": 2026,
+      "week": 3
+    },
+    "summary": "Utah State fell 16-14 at Washington with Brosterhous making his first start. Utah is next. The defense kept the game close, but the offense needs designed runs that work and fewer possessions ending with the ball in opposing hands.",
+    "items": [
+      {
+        "id": "quarterback-change",
+        "headline": "Brosterhous started at Washington in place of Hillstead",
+        "tldr": "Watch this week’s quarterback announcement before assuming the same starter for Utah.",
+        "outlet": "KSL Sports",
+        "tier": "local",
+        "url": "https://sports.ksl.com/ncaa/utah-state-football/washington-wins-16-14/577101",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 5,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "designed-running",
+        "headline": "Seven of eight running-back carries failed to gain yards",
+        "tldr": "Watch whether the blocks create a path for the backs. The offense needs dependable designed runs alongside the quarterback’s scrambles.",
+        "outlet": "Cache Valley Daily",
+        "tier": "local",
+        "url": "https://1069thefan.com/2026/09/12/utah-state-comes-a-few-mistakes-shy-of-upset-at-19-washington-sports/",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "defensive-resistance",
+        "headline": "Utah State allowed one touchdown at Washington",
+        "tldr": "Repeat those stops against Utah.",
+        "outlet": "Associated Press",
+        "tier": "national",
+        "url": "https://www.cbssports.com/college-football/gametracker/recap/NCAAF_20260912_UTAHST@WASH/",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "utah-opponent",
+        "headline": "Utah beat Arkansas 43-10 before the rivalry game",
+        "tldr": "Watch the quarterback both in the pocket and on keepers. Losing track of the back or tight end can turn containment into an open passing lane.",
+        "outlet": "Utah Athletics",
+        "tier": "official",
+        "url": "https://utahutes.com/news/2026/9/13/football-no-20-utah-dominates-arkansas-improves-to-2-0",
+        "publishedAt": "2026-09-13",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "rice-eccles-entry",
+        "headline": "Rice-Eccles scans tickets before security screening",
+        "tldr": "Download your ticket into your phone’s wallet before arrival. Utah’s entry guide also points to no-bag lanes at the main gates.",
+        "outlet": "Utah Athletics",
+        "tier": "official",
+        "url": "https://utahutes.com/news/2026/9/7/general-game-week-fan-guide-presented-by-utah-360-ring-of-honor-vs-arkansas",
+        "publishedAt": "2026-09-07",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 3
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Give the backs somewhere to go.",
+        "body": "Watch the designed runs before judging the offense by a scramble or a deep completion. Useful gains would make the next passing down less predictable.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Build a repeatable drive",
+        "question": "What would give Utah State a chance at Utah?",
+        "answer": "Create space for the running backs, protect the ball, and make the opposing quarterback finish drives through tight coverage.",
         "citationNoteIds": [
           "watch-1",
           "watch-2"
@@ -100,42 +281,42 @@
         {
           "id": "watch-1",
           "title": "Run blocking",
-          "summary": "Fewer wasted downs",
-          "detail": "Watch whether the guards and tackles stay connected against movement. A modest gain keeps more options available than a tackle for loss.",
+          "summary": "Create a running lane",
+          "detail": "Watch whether the backs can get beyond the line of scrimmage without needing to escape a defender first.",
           "state": "watch",
-          "prompt": "What should I watch in the Texas run game?",
+          "prompt": "What should Utah State fix in the running game?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Passing options",
-          "summary": "Find the next read",
-          "detail": "If the first receiver is covered, watch how quickly Manning moves on. The throw underneath can keep the drive alive.",
+          "title": "Quarterback choice",
+          "summary": "Wait for the weekly decision",
+          "detail": "Watch the practice and availability updates. A completed start does not settle who takes the next opening snap.",
           "state": "watch",
-          "prompt": "How can Texas keep its passing game balanced?",
+          "prompt": "What should I watch in Utah State’s quarterback situation?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Ball recognition",
-          "summary": "Read the screen",
-          "detail": "Watch whether the linebackers recognize screens while staying disciplined against the run. A pass rush only helps if the ball has nowhere easy to go.",
+          "title": "Defensive assignments",
+          "summary": "Account for the keeper",
+          "detail": "Watch the edge stay patient while the secondary follows its receivers. The quarterback must remain someone’s responsibility.",
           "state": "watch",
-          "prompt": "What should I watch from Texas’s linebackers?",
+          "prompt": "What should Utah State watch against Utah’s offense?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Relief carries",
-          "summary": "Trust beyond the first backs",
-          "detail": "Watch the reserve back’s protection and ball security when he enters. Keeping the offense on schedule matters more than forcing a highlight run.",
+          "title": "Field position",
+          "summary": "Make the punt count",
+          "detail": "Watch placement as well as distance. Pinning an opponent deep gives the defense more room to defend.",
           "state": "watch",
-          "prompt": "Who should I watch behind Texas’s lead backs?",
+          "prompt": "Why does Utah State’s punting matter?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Against Ohio State, watch early-down blocking and how quickly the passing game finds its second option.",
+    "nextGameNote": "At Utah, watch designed runs, quarterback availability and disciplined defense against the keeper.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
@@ -145,314 +326,133 @@
           "run blocking",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.073Z",
-        "body": "Watch whether the guards and tackles stay connected against movement. A modest gain keeps more options available than a tackle for loss."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch whether the backs can get beyond the line of scrimmage without needing to escape a defender first."
       },
       {
         "id": "watch-2",
-        "title": "Passing options",
+        "title": "Quarterback choice",
         "topics": [
-          "passing options",
+          "quarterback choice",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.073Z",
-        "body": "If the first receiver is covered, watch how quickly Manning moves on. The throw underneath can keep the drive alive."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the practice and availability updates. A completed start does not settle who takes the next opening snap."
       },
       {
         "id": "watch-3",
-        "title": "Ball recognition",
+        "title": "Defensive assignments",
         "topics": [
-          "ball recognition",
+          "defensive assignments",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.073Z",
-        "body": "Watch whether the linebackers recognize screens while staying disciplined against the run. A pass rush only helps if the ball has nowhere easy to go."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the edge stay patient while the secondary follows its receivers. The quarterback must remain someone’s responsibility."
       },
       {
         "id": "watch-4",
-        "title": "Relief carries",
+        "title": "Field position",
         "topics": [
-          "relief carries",
+          "field position",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.073Z",
-        "body": "Watch the reserve back’s protection and ball security when he enters. Keeping the offense on schedule matters more than forcing a highlight run."
-      }
-    ]
-  },
-  "utah-state-football": {
-    "schemaVersion": 1,
-    "teamSlug": "utah-state-football",
-    "weekOf": "2026-09-08",
-    "publishedAt": "2026-09-12T12:26:32.776Z",
-    "issue": {
-      "season": 2026,
-      "week": 2
-    },
-    "summary": "Utah State needs clean possessions in Seattle. Watch the quarterback rotation, whether the offense protects the ball, and whether the secondary stays with its receivers when Washington’s quarterback extends a play.",
-    "items": [
-      {
-        "id": "hillstead-start-plan",
-        "headline": "Hillstead remains the expected starter for Washington",
-        "tldr": "Mendenhall said he anticipated Hillstead starting, and Monday’s depth chart kept him at QB1. Watch the opening series and how the staff uses Brosterhous’s planned weekly package.",
-        "outlet": "Cache Valley Daily",
-        "tier": "local",
-        "url": "https://1069thefan.com/2026/09/08/breaking-down-mccae-hillsteads-struggles-and-future-with-utah-state-this-season-sports/",
-        "publishedAt": "2026-09-08",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "offensive-line-changes",
-        "headline": "Maile remains out as Utah State reshuffles its offensive line",
-        "tldr": "KSL’s Friday preview projects Liston back at center and Hansen in line for his first start. Watch how the new combination handles Washington’s pressure; those changes still need to show up on the field.",
-        "outlet": "KSL Sports",
-        "tier": "local",
-        "url": "https://sports.ksl.com/ncaa/utah-state-football/washington-preview/576977",
-        "publishedAt": "2026-09-11",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "protect-possessions",
-        "headline": "Four interceptions erased Utah State’s yardage advantage",
-        "tldr": "Watch the decisions at the end of drives. A punt or a throwaway can leave the defense with a much better field than a forced pass.",
-        "outlet": "Deseret News",
-        "tier": "local",
-        "url": "https://www.deseret.com/sports/2026/09/05/utah-state-football-loses-to-idaho-state/",
-        "publishedAt": "2026-09-06T04:37:00.000Z",
-        "grade": {
-          "impact": 4,
-          "echo": 3,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "seattle-watch-guide",
-        "headline": "Washington is a 1:30 p.m. Mountain start on Big Ten Network",
-        "tldr": "Check your channel access before kickoff. The official game guide gathers the broadcast, radio and live-stat links for the trip to Seattle.",
-        "outlet": "Utah State Athletics",
-        "tier": "official",
-        "url": "https://utahstateaggies.com/news/2026/9/7/utah-state-football-travels-to-husky-stadium-to-play-no-17-washingto.aspx",
-        "publishedAt": "2026-09-07",
-        "grade": {
-          "impact": 3,
-          "echo": 3,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "wood-receiving",
-        "headline": "Wood led Utah State with six catches in the opener",
-        "tldr": "Watch whether the offense can give its receivers catchable throws on schedule. Reliable completions would take pressure off both the run game and the defense.",
-        "outlet": "Utah State Athletics",
-        "tier": "official",
-        "url": "https://utahstateaggies.com/news/2026/9/5/utah-state-football-drops-season-opener-to-idaho-state-29-17.aspx",
-        "publishedAt": "2026-09-05",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 3
-        }
-      }
-    ],
-    "editorial": {
-      "lead": {
-        "headline": "Keep the next possession.",
-        "body": "Protect the ball, get lined up cleanly and make Washington earn the field. A promising drive only helps if the finish does not hand the advantage back.",
-        "noteId": "watch-1"
-      },
-      "matchup": {
-        "thesis": "Value the possession",
-        "question": "What would make this a cleaner road performance?",
-        "answer": "Avoid the forced throw on offense. On defense, keep the quarterback contained and stay on top of routes when the play lasts longer than expected.",
-        "citationNoteIds": [
-          "watch-1",
-          "watch-2"
-        ]
-      },
-      "signals": [
-        {
-          "id": "watch-1",
-          "title": "Quarterback usage",
-          "summary": "Read the opening series",
-          "detail": "Watch how the staff divides the snaps and changes the package. A substitution alone is not enough to establish a permanent change at starter.",
-          "state": "watch",
-          "prompt": "What should I watch in Utah State’s quarterback rotation?",
-          "noteId": "watch-1"
-        },
-        {
-          "id": "watch-2",
-          "title": "Ball security",
-          "summary": "Do not force the finish",
-          "detail": "Watch the last decision of each possession. A throwaway can preserve field position when the coverage wins the play.",
-          "state": "watch",
-          "prompt": "How can Utah State protect its possessions?",
-          "noteId": "watch-2"
-        },
-        {
-          "id": "watch-3",
-          "title": "Containment",
-          "summary": "Keep covering the scramble",
-          "detail": "Watch whether the secondary stays with its receivers when the quarterback moves. Pursuit cannot leave a free throw behind it.",
-          "state": "watch",
-          "prompt": "How should Utah State defend Washington’s quarterback?",
-          "noteId": "watch-3"
-        },
-        {
-          "id": "watch-4",
-          "title": "Receiving rhythm",
-          "summary": "Make the easy throw",
-          "detail": "Watch whether the passing game finds a catchable ball before the pocket breaks down. Consistent completions can keep the offense out of long-yardage situations.",
-          "state": "watch",
-          "prompt": "What should I watch in Utah State’s passing game?",
-          "noteId": "watch-4"
-        }
-      ]
-    },
-    "nextGameNote": "At Washington, check Big Ten Network access before Saturday’s 1:30 p.m. MT start.",
-    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
-    "notes": [
-      {
-        "id": "watch-1",
-        "title": "Quarterback usage",
-        "topics": [
-          "quarterback usage",
-          "matchup"
-        ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch how the staff divides the snaps and changes the package. A substitution alone is not enough to establish a permanent change at starter."
-      },
-      {
-        "id": "watch-2",
-        "title": "Ball security",
-        "topics": [
-          "ball security",
-          "matchup"
-        ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch the last decision of each possession. A throwaway can preserve field position when the coverage wins the play."
-      },
-      {
-        "id": "watch-3",
-        "title": "Containment",
-        "topics": [
-          "containment",
-          "matchup"
-        ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch whether the secondary stays with its receivers when the quarterback moves. Pursuit cannot leave a free throw behind it."
-      },
-      {
-        "id": "watch-4",
-        "title": "Receiving rhythm",
-        "topics": [
-          "receiving rhythm",
-          "matchup"
-        ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch whether the passing game finds a catchable ball before the pocket breaks down. Consistent completions can keep the offense out of long-yardage situations."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch placement as well as distance. Pinning an opponent deep gives the defense more room to defend."
       }
     ]
   },
   "ohio-state-football": {
     "schemaVersion": 1,
     "teamSlug": "ohio-state-football",
-    "weekOf": "2026-09-08",
-    "publishedAt": "2026-09-12T12:26:32.019Z",
+    "weekOf": "2026-09-13",
+    "publishedAt": "2026-09-15T00:45:08.023Z",
     "issue": {
       "season": 2026,
-      "week": 2
+      "week": 3
     },
-    "summary": "Ohio State’s trip to Texas puts protection and quarterback containment under a sharper test. Watch the starting line, the edge rotation and who gets open if Texas sends extra attention toward the primary receiver.",
+    "summary": "Ohio State lost 24-23 at Texas after its fourth-quarter lead disappeared. Kent State is next. Watch whether the offense can keep moving beyond its first receiving option and whether the defensive front can finish a possession.",
     "items": [
       {
-        "id": "russaw-return",
-        "headline": "Russaw cleared for Texas, according to On3",
-        "tldr": "His Ohio State debut is expected Saturday. Watch how the edge rotation changes and whether fresh legs help the pass rush finish without opening an escape lane.",
-        "outlet": "On3",
-        "tier": "national",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163794/qua-russaw-expected-to-make-ohio-state-debut-against-texas-after-full-week-of-practice",
-        "publishedAt": "2026-09-11",
+        "id": "red-zone-execution",
+        "headline": "Day singled out negative plays in the red zone",
+        "tldr": "Watch the edge blocking and pocket protection near the goal line. Keeping the next play manageable is the first step toward finishing drives.",
+        "outlet": "Eleven Warriors",
+        "tier": "local",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163911/ryan-day-says-ohio-states-offense-didnt-do-what-we-needed-in-the-fourth-quarter-but-other-issues-arose-against",
+        "publishedAt": "2026-09-14",
         "grade": {
           "impact": 5,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "receiver-distribution",
+        "headline": "Smith drew 15 targets; the other wideouts caught two passes",
+        "tldr": "Watch the second read and the routes underneath. Keeping more receivers involved would make it harder to stall the offense by covering Smith.",
+        "outlet": "Eleven Warriors",
+        "tier": "local",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163855/proof-points-from-ohio-state-s-devastating-and-historical-loss-at-texas-presented-by-high-bank-distillery",
+        "publishedAt": "2026-09-13",
+        "grade": {
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "line-evaluation",
-        "headline": "Day keeps the starting offensive line under evaluation",
-        "tldr": "Watch the right side’s communication and the opening combination. Treat practice rotation as preparation; it does not by itself establish a change in starters.",
-        "outlet": "Eleven Warriors",
-        "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163760/ryan-day-will-continue-to-evaluate-what-ohio-states-starting-offensive-line-will-look-like-against-texas",
-        "publishedAt": "2026-09-09",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "mccuin-conversions",
-        "headline": "Every McCuin catch in the opener moved the chains or scored",
-        "tldr": "If Texas rolls help toward Smith, watch whether McCuin can keep the next option productive. A routine conversion may be more revealing than a contested deep ball.",
-        "outlet": "Eleven Warriors",
-        "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163695/devin-mccuin-backs-up-preseason-hype-in-win-over-ball-state-establishes-presence-as-the-no-2-wide-receiver",
-        "publishedAt": "2026-09-07",
-        "grade": {
-          "impact": 4,
-          "echo": 3,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "quarterback-containment",
-        "headline": "Ball State’s quarterback escaped Ohio State’s pressure",
-        "tldr": "Against Manning, watch where the pass rush leaves space. Making him move is only useful if the defense can finish the play before he finds a running lane.",
-        "outlet": "The Columbus Dispatch",
-        "tier": "local",
-        "url": "https://sports.yahoo.com/articles/did-ohio-state-football-grade-222929012.html",
-        "publishedAt": "2026-09-05T22:29:29Z",
-        "grade": {
-          "impact": 4,
-          "echo": 3,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "austin-map",
-        "headline": "Traveling to Austin? DKR’s map locates gates and water",
-        "tldr": "Choose your entrance before arriving and save the map on your phone. The web version also marks first aid and restrooms.",
-        "outlet": "Texas Athletics",
+        "id": "timmons-takeaway",
+        "headline": "Timmons forced and recovered a fumble on the opening snap",
+        "tldr": "Watch his tackling and ball awareness continue through a full possession. The early takeaway is useful evidence of what he can contribute.",
+        "outlet": "Ohio State Athletics",
         "tier": "official",
-        "url": "https://texaslonghorns.com/news/2026/9/4/texas-athletics-launches-new-interactive-mapping-experience-for-texas-football-gamedays",
-        "publishedAt": "2026-09-04",
+        "url": "https://ohiostatebuckeyes.com/news/2026/9/13/football-no-1-ohio-state-falls-on-the-road-at-no-4-texas",
+        "publishedAt": "2026-09-13",
         "grade": {
-          "impact": 3,
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "field-goal-finish",
+        "headline": "Hawkins made three field goals, then missed from 45 yards",
+        "tldr": "Watch the full kicking operation when a drive stalls. Points from those possessions can decide whether a late defensive stop is enough.",
+        "outlet": "Associated Press",
+        "tier": "national",
+        "url": "https://apnews.com/article/b77928703d2e378f57773efb464f23c8",
+        "publishedAt": "2026-09-13T03:18:52Z",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "deshields-dual-threat",
+        "headline": "Kent State’s DeShields ran for two touchdowns against Wofford",
+        "tldr": "The quarterback is another player the run defense must account for. Watch the edge and open-field tackling when he leaves the pocket.",
+        "outlet": "Kent State Athletics",
+        "tier": "official",
+        "url": "https://kentstatesports.com/news/2026/9/12/football-22-point-4th-quarter-lifts-flashes-to-victory-1-0-at-home",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Protect the pocket. Close the escape.",
-        "body": "Watch whether the offensive line can work as one and the pass rush can finish under control. Both jobs get harder when one player leaves a gap.",
+        "headline": "Keep the next drive alive.",
+        "body": "Watch for a clean answer when the first receiver is covered. Moving the chains would let the defense recover and make a lead easier to protect.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Control the pocket",
-        "question": "What should Ohio State prove at Texas?",
-        "answer": "Keep protection connected on offense. On defense, force the quarterback to move without leaving a clean lane out of the pocket.",
+        "thesis": "Finish the possession",
+        "question": "What would show progress against Kent State?",
+        "answer": "Convert manageable third downs, find receivers beyond the first read, and pressure the quarterback without opening a running lane.",
         "citationNoteIds": [
           "watch-1",
           "watch-2"
@@ -461,106 +461,106 @@
       "signals": [
         {
           "id": "watch-1",
-          "title": "Protection",
-          "summary": "Watch the right side",
-          "detail": "Watch the opening combination and how it handles defensive movement. Changing a blocker is only useful if the whole line stays connected.",
+          "title": "Passing balance",
+          "summary": "Get to the next read",
+          "detail": "Watch Sayin move on when Smith is covered. An available short throw can keep the drive alive.",
           "state": "watch",
-          "prompt": "What should I watch on Ohio State’s offensive line?",
+          "prompt": "How can Ohio State involve more receivers?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Containment",
-          "summary": "Close the exit",
-          "detail": "Watch the outside defender when Manning steps up or rolls away. Pressure needs a second defender in position to finish.",
+          "title": "Third downs",
+          "summary": "Sustain the drive",
+          "detail": "Watch the blocking and route timing after halftime. A stalled series sends the defense straight back out.",
           "state": "watch",
-          "prompt": "How can Ohio State contain Manning?",
+          "prompt": "What should Ohio State fix on third down?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Receiver balance",
-          "summary": "Make coverage choose",
-          "detail": "If Texas tilts help toward Smith, watch the next target. Sustaining a drive may depend on the receiver working away from that attention.",
+          "title": "Defensive front",
+          "summary": "Pressure with discipline",
+          "detail": "Watch the pocket close without leaving an escape lane. Pressure and containment need to work together.",
           "state": "watch",
-          "prompt": "Why does McCuin matter against Texas?",
+          "prompt": "What should I watch from Ohio State’s defensive line?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Edge rotation",
-          "summary": "Watch the fresh legs",
-          "detail": "If Russaw enters the rotation, watch the role and snap distribution before judging his impact. Clearance does not guarantee a full workload.",
+          "title": "Quarterback runs",
+          "summary": "Keep the edge",
+          "detail": "Watch the defender outside the tackle when DeShields keeps the ball. Make him turn back toward help.",
           "state": "watch",
-          "prompt": "What should I watch if Russaw makes his debut?",
+          "prompt": "What is the key to defending Kent State’s quarterback?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "For the Texas trip, find your stadium entrance early. Once play starts, watch the right side of the offensive line and the defense’s escape lanes.",
+    "nextGameNote": "Against Kent State, watch passing balance, third-down execution and containment of the quarterback.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Protection",
+        "title": "Passing balance",
         "topics": [
-          "protection",
+          "passing balance",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch the opening combination and how it handles defensive movement. Changing a blocker is only useful if the whole line stays connected."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch Sayin move on when Smith is covered. An available short throw can keep the drive alive."
       },
       {
         "id": "watch-2",
-        "title": "Containment",
+        "title": "Third downs",
         "topics": [
-          "containment",
+          "third downs",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "Watch the outside defender when Manning steps up or rolls away. Pressure needs a second defender in position to finish."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the blocking and route timing after halftime. A stalled series sends the defense straight back out."
       },
       {
         "id": "watch-3",
-        "title": "Receiver balance",
+        "title": "Defensive front",
         "topics": [
-          "receiver balance",
+          "defensive front",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "If Texas tilts help toward Smith, watch the next target. Sustaining a drive may depend on the receiver working away from that attention."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the pocket close without leaving an escape lane. Pressure and containment need to work together."
       },
       {
         "id": "watch-4",
-        "title": "Edge rotation",
+        "title": "Quarterback runs",
         "topics": [
-          "edge rotation",
+          "quarterback runs",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.074Z",
-        "body": "If Russaw enters the rotation, watch the role and snap distribution before judging his impact. Clearance does not guarantee a full workload."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the defender outside the tackle when DeShields keeps the ball. Make him turn back toward help."
       }
     ]
   },
   "lsu-football": {
     "schemaVersion": 1,
     "teamSlug": "lsu-football",
-    "weekOf": "2026-09-08",
-    "publishedAt": "2026-09-12T12:26:33.529Z",
+    "weekOf": "2026-09-13",
+    "publishedAt": "2026-09-15T00:45:08.023Z",
     "issue": {
       "season": 2026,
-      "week": 2
+      "week": 3
     },
-    "summary": "LSU’s next step is cleaner protection and disciplined coverage against Louisiana Tech. Watch whether the guards hold the pocket without a quarterback escape, and whether the defense can force long drives instead of trading big plays.",
+    "summary": "LSU beat Louisiana Tech 45-14 despite four first-half turnovers. The trip to Ole Miss makes ball security the priority. Watch Leavitt’s decisions near the goal line and whether the defensive pressure travels to Oxford.",
     "items": [
       {
-        "id": "sec-meeting-update",
-        "headline": "SEC meeting ends with discussions continuing",
-        "tldr": "WBRZ reports that expulsion was off Thursday’s agenda and LSU left Wright and Harris off its roster. The roster decision does not mean the wider conference dispute is resolved.",
-        "outlet": "WBRZ",
+        "id": "red-zone-turnovers",
+        "headline": "Leavitt threw three interceptions, two in the red zone",
+        "tldr": "Watch the decision when the first scoring option is covered. Keeping a possession alive matters more than forcing a touchdown throw.",
+        "outlet": "WWL",
         "tier": "local",
-        "url": "https://content.wbrz.com/news/sec-issues-statement-on-thursday-meeting-on-recent-matters-involving-conference-expectations-",
-        "publishedAt": "2026-09-10",
+        "url": "https://www.audacy.com/wwl/news/local/lsu-football-2677852078",
+        "publishedAt": "2026-09-13T03:13:00Z",
         "grade": {
           "impact": 5,
           "echo": 3,
@@ -568,72 +568,72 @@
         }
       },
       {
-        "id": "guard-protection",
-        "headline": "Kiffin wants better guard play despite a sack-free opener",
-        "tldr": "Watch whether Leavitt can complete the play from the pocket. An escape that saves a possession is useful, but it can hide a blocking problem.",
-        "outlet": "Shreveport-Bossier Journal",
-        "tier": "local",
-        "url": "https://shreveportbossierjournal.com/2026/09/08/leavitt-to-foes-twinkle-toes-full-speed-ahead/",
-        "publishedAt": "2026-09-08",
+        "id": "umanmielen-pressure",
+        "headline": "Umanmielen recorded three sacks against Louisiana Tech",
+        "tldr": "Watch whether the defensive front can disrupt the pocket while keeping its lanes. A free scramble can undo otherwise effective pressure.",
+        "outlet": "LSU Athletics",
+        "tier": "official",
+        "url": "https://lsusports.net/news/2026/09/13/football-powers-past-louisiana-tech-45-14",
+        "publishedAt": "2026-09-12",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "chambliss-efficiency",
+        "headline": "Chambliss completed 23 of 26 passes against Charlotte",
+        "tldr": "Watch the underneath coverage as closely as the pass rush. Making the quarterback hold the ball would give pressure time to arrive.",
+        "outlet": "Ole Miss Athletics",
+        "tier": "official",
+        "url": "https://olemisssports.com/news/2026/9/12/no-9-football-tops-charlotte-in-home-opener",
+        "publishedAt": "2026-09-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "oxford-traffic",
+        "headline": "Construction changes the route around The Grove",
+        "tldr": "Check the revised pickup and dropoff directions before driving into Oxford. Plan the approach to campus as well as the parking spot.",
+        "outlet": "Ole Miss Athletics",
+        "tier": "official",
+        "url": "https://olemisssports.com/news/2026/9/10/football-unveils-2026-gameday-enhancements-adjustments",
+        "publishedAt": "2026-09-10",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
           "freshness": 4
         }
       },
       {
-        "id": "elzy-opportunities",
-        "headline": "Kiffin expects more opportunities for Elzy",
-        "tldr": "Watch his involvement without treating a bigger role as guaranteed. The useful signal is whether the next target produces a routine completion and keeps the offense moving.",
-        "outlet": "LSU Wire",
+        "id": "oxford-composure",
+        "headline": "Kiffin wants LSU focused on preparation for his Oxford return",
+        "tldr": "Watch the communication before the snap and the response after a bad play. Keeping attention on the next assignment is the useful test of that message.",
+        "outlet": "WAFB / Gray Louisiana",
         "tier": "local",
-        "url": "https://sports.yahoo.com/articles/lsus-lane-kiffin-expects-more-111819953.html",
-        "publishedAt": "2026-09-08T11:18:19Z",
+        "url": "https://www.wtok.com/2026/09/14/lane-kiffin-downplays-emotional-ole-miss-return-ahead-top-10-showdown/",
+        "publishedAt": "2026-09-14T17:59:00Z",
         "grade": {
           "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "ross-disruption",
-        "headline": "Ross scored on an interception and added a sack against Clemson",
-        "tldr": "Watch whether LSU can disrupt the next opponent without needing another defensive touchdown. Pressure and sound tackling are the more repeatable ways to end a drive.",
-        "outlet": "LSU Athletics",
-        "tier": "official",
-        "url": "https://lsusports.net/news/2026/09/7/three-football-players-earn-sec-honors-after-impressive-debut",
-        "publishedAt": "2026-09-07",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 3
-        }
-      },
-      {
-        "id": "tech-gameday",
-        "headline": "Friday’s game guide sets LSU–Tech kickoff at 6:32 p.m. CT",
-        "tldr": "The guide lists SEC Network+ and a sold-out Tiger Stadium. Set up your stream early, and use the parking and traffic links before heading to campus.",
-        "outlet": "LSU Athletics",
-        "tier": "official",
-        "url": "https://lsusports.net/news/2026/09/11/football-returns-to-death-valley-for-matchup-with-louisiana-tech",
-        "publishedAt": "2026-09-11",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
+          "echo": 3,
           "freshness": 5
         }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Give Leavitt a cleaner pocket.",
-        "body": "Watch the guards before judging the passing game. Clean protection would let LSU finish plays without asking its quarterback to rescue them.",
+        "headline": "Keep the ball in Oxford.",
+        "body": "Watch Leavitt’s decisions when space gets tight. A throw away can preserve a scoring chance; a forced pass can give the opponent the next possession.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Protect the rhythm",
-        "question": "What should LSU improve against Louisiana Tech?",
-        "answer": "Keep the pocket intact and make the routine completion. On defense, stay disciplined against the deep ball and force the opponent to build a drive.",
+        "thesis": "Make the possession count",
+        "question": "What matters most at Ole Miss?",
+        "answer": "Protect the ball near the goal line, make the opposing quarterback work past his first read, and keep defensive pressure under control.",
         "citationNoteIds": [
           "watch-1",
           "watch-2"
@@ -642,84 +642,84 @@
       "signals": [
         {
           "id": "watch-1",
-          "title": "Guard play",
-          "summary": "Make the pocket cleaner",
-          "detail": "Watch whether the guards hold their assignments when the quarterback stays in place. Escaping pressure should be an option, not the whole protection plan.",
+          "title": "Red-zone decisions",
+          "summary": "Keep the scoring chance",
+          "detail": "Watch the throw when the first option disappears. Taking the safe exit can leave another chance to score.",
           "state": "watch",
-          "prompt": "What should I watch up front for LSU?",
+          "prompt": "What should Leavitt change near the goal line?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Coverage discipline",
-          "summary": "Make Tech build a drive",
-          "detail": "Watch the first deep route and how the safety responds. Keeping the ball in front can make the opponent earn another set of downs.",
+          "title": "Defensive pressure",
+          "summary": "Close the pocket together",
+          "detail": "Watch the inside and outside defenders work toward the same escape point. Avoid giving the quarterback a clean running lane.",
           "state": "watch",
-          "prompt": "What should LSU watch in Louisiana Tech’s passing game?",
+          "prompt": "What should I watch from LSU’s pass rush?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Receiver involvement",
-          "summary": "Watch the next target",
-          "detail": "Watch which receiver becomes the reliable option when the first read is covered. A larger role has to show up in useful plays, not just snaps.",
+          "title": "Underneath coverage",
+          "summary": "Make the next read harder",
+          "detail": "Watch the linebackers and defensive backs close the short windows. A quick completion can neutralize pressure.",
           "state": "watch",
-          "prompt": "What should I watch from Malik Elzy?",
+          "prompt": "How can LSU disrupt Ole Miss’s passing game?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Defensive disruption",
-          "summary": "Finish the ordinary play",
-          "detail": "Watch whether the defense turns pressure into a stop without losing its tackling shape. A takeaway touchdown is a bonus, not a requirement.",
+          "title": "Early-down runs",
+          "summary": "Earn manageable downs",
+          "detail": "Watch whether the backs can find steady gains before the passing situation becomes obvious. Consistency would make the next decision easier.",
           "state": "watch",
-          "prompt": "What should LSU’s defense carry into this game?",
+          "prompt": "What should LSU improve in its running game?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "The Friday guide specifies a 6:32 p.m. CT kickoff against Louisiana Tech on SEC Network+. Have the stream ready before then.",
+    "nextGameNote": "At Ole Miss, watch red-zone decisions, underneath coverage and pressure that contains the quarterback.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Guard play",
+        "title": "Red-zone decisions",
         "topics": [
-          "guard play",
+          "red-zone decisions",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.075Z",
-        "body": "Watch whether the guards hold their assignments when the quarterback stays in place. Escaping pressure should be an option, not the whole protection plan."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the throw when the first option disappears. Taking the safe exit can leave another chance to score."
       },
       {
         "id": "watch-2",
-        "title": "Coverage discipline",
+        "title": "Defensive pressure",
         "topics": [
-          "coverage discipline",
+          "defensive pressure",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.075Z",
-        "body": "Watch the first deep route and how the safety responds. Keeping the ball in front can make the opponent earn another set of downs."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the inside and outside defenders work toward the same escape point. Avoid giving the quarterback a clean running lane."
       },
       {
         "id": "watch-3",
-        "title": "Receiver involvement",
+        "title": "Underneath coverage",
         "topics": [
-          "receiver involvement",
+          "underneath coverage",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.075Z",
-        "body": "Watch which receiver becomes the reliable option when the first read is covered. A larger role has to show up in useful plays, not just snaps."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch the linebackers and defensive backs close the short windows. A quick completion can neutralize pressure."
       },
       {
         "id": "watch-4",
-        "title": "Defensive disruption",
+        "title": "Early-down runs",
         "topics": [
-          "defensive disruption",
+          "early-down runs",
           "matchup"
         ],
-        "publishedAt": "2026-09-11T22:56:47.075Z",
-        "body": "Watch whether the defense turns pressure into a stop without losing its tackling shape. A takeaway touchdown is a bonus, not a requirement."
+        "publishedAt": "2026-09-13T12:43:28.576Z",
+        "body": "Watch whether the backs can find steady gains before the passing situation becomes obvious. Consistency would make the next decision easier."
       }
     ]
   }

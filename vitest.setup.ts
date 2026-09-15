@@ -20,6 +20,24 @@ vi.mock("@/server/facts/poll-snapshot", async (importOriginal) => {
   return { ...original, getBundledPoll: (season: number) => season === fixture.season ? fixture : undefined,
     getPollSnapshot: (season: number) => season === fixture.season ? fixture : undefined };
 });
+
+// The clock below represents September 8. Keep its schedules at the same
+// point in time, including game statuses and capture dates. Publication tests
+// read the actual JSON from disk, and browser tests use the current registry.
+vi.mock("@/lib/teams/current", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@/lib/teams/current")>();
+  const { default: schedules } = await import("./src/test/fixtures/schedules.json");
+  const { teamScheduleSchema } = await import("./src/lib/facts/schedule");
+  return {
+    ...original,
+    teamManifests: Object.fromEntries(Object.entries(original.teamManifests).map(([slug, manifest]) => [
+      slug,
+      slug in schedules
+        ? { ...manifest, schedule: teamScheduleSchema.parse(schedules[slug as keyof typeof schedules]) }
+        : manifest,
+    ])),
+  };
+});
 process.env.SPORTS_FACTS = "fixture";
 
 beforeEach(() => {

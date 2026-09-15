@@ -2,7 +2,7 @@
 import { expect, it, vi } from "vitest";
 import { createPollRefresher } from "./poll-refresh";
 import { pollWeekSchema } from "@/lib/facts/poll";
-import saved from "../../../data/facts/ap-poll.json";
+import saved from "../../test/fixtures/ap-poll.json";
 
 const baseline = pollWeekSchema.parse({ ...saved, capturedAt: "2026-09-08T12:00:00Z" });
 it("shares refresh work, saves accepted changes and retains last-good data on failure", async () => {

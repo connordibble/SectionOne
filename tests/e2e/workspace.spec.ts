@@ -363,9 +363,11 @@ test("the field section reads an unranked team's schedule, not a national list",
   const field = page.locator('[aria-labelledby="ranking-heading"]');
 
   await expect(field.getByText("Unranked")).toBeVisible();
-  await expect(field.getByText(/2 of 12 opponents ranked/)).toBeVisible();
-  await expect(field.getByText("at Washington")).toBeVisible();
-  await expect(field.getByText("at Utah")).toBeVisible();
+  const ranking = getTeamRankingSummary(utahState)!;
+  await expect(field.getByText(`${ranking.rankedOpponents.length} of ${ranking.opponentCount} opponents ranked.`, { exact: true })).toBeVisible();
+  for (const opponent of ranking.rankedOpponents.slice(0, 5)) {
+    await expect(field.getByText(`${formatSite(opponent.site)} ${opponent.opponent}`, { exact: true })).toBeVisible();
+  }
   // The section says which poll it is quoting, because "unranked" is only a
   // fact about one ballot.
   await expect(field.getByText(/AP Top 25/)).toBeVisible();
@@ -379,9 +381,11 @@ test("the field section leads with a ranked team's own number", async ({ page })
   const field = page.locator('[aria-labelledby="ranking-heading"]');
 
   await expect(field.getByText(new RegExp(`No\\.\\s*${getTeamRankingSummary(getTeamConfig("texas-football")!)!.teamRank}`)).first()).toBeVisible();
-  await expect(field.getByText(/7 of 12 opponents ranked/)).toBeVisible();
-  await expect(field.locator("li")).toHaveCount(5);
-  await expect(field.getByText(/2 more ranked opponents/)).toBeVisible();
+  const ranking = getTeamRankingSummary(texas)!;
+  await expect(field.getByText(`${ranking.rankedOpponents.length} of ${ranking.opponentCount} opponents ranked.`, { exact: true })).toBeVisible();
+  await expect(field.locator("li")).toHaveCount(Math.min(5, ranking.rankedOpponents.length));
+  const remaining = ranking.rankedOpponents.length - 5;
+  if (remaining > 0) await expect(field.getByText(new RegExp(`${remaining} more ranked opponent`))).toBeVisible();
 });
 
 test("this week carries a headline, a takeaway, and the outlet behind it", async ({ page }) => {
@@ -648,13 +652,13 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   // Asserted on sourcing rather than on wording. This question escalates now,
   // so its text comes from whichever answer path is live: a model where a key
   // is configured, the composer where none is. What has to hold either way is
-  // that the follow-up is answered from the Ohio State material and that the
+  // that the follow-up is answered from the current team material and that the
   // first exchange is still on screen. Pinning the old template's prose here
   // was really testing which branch ran.
   const thread = page.locator("[aria-live='polite']").last();
   await expect(thread.getByText(texasNext.opponent, { exact: false }).first()).toBeVisible();
   await expect(
-    page.getByTestId("team-chat-panel").getByText(texasLeadNote.title),
+    page.getByTestId("team-chat-panel").getByText(texasLeadNote.title, { exact: true }),
   ).toBeVisible();
   await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });

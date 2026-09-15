@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "lsu-football",
+  "weekOf": "2026-09-13",
+  "publishedAt": "2026-09-13T12:43:28.576Z",
+  "issue": {
+    "season": 2026,
+    "week": 3
+  },
+  "summary": "LSU beat Louisiana Tech 45-14 despite four first-half turnovers. The trip to Ole Miss makes ball security the priority. Watch Leavitt’s decisions near the goal line and whether the defensive pressure travels to Oxford.",
+  "items": [
+    {
+      "id": "red-zone-turnovers",
+      "headline": "Leavitt threw three interceptions, two in the red zone",
+      "tldr": "Watch the decision when the first scoring option is covered. Keeping a possession alive matters more than forcing a touchdown throw.",
+      "outlet": "WWL",
+      "tier": "local",
+      "url": "https://www.audacy.com/wwl/news/local/lsu-football-2677852078",
+      "publishedAt": "2026-09-13T03:13:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "umanmielen-pressure",
+      "headline": "Umanmielen recorded three sacks against Louisiana Tech",
+      "tldr": "Watch whether the defensive front can disrupt the pocket while keeping its lanes. A free scramble can undo otherwise effective pressure.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/09/13/football-powers-past-louisiana-tech-45-14",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "chambliss-efficiency",
+      "headline": "Chambliss completed 23 of 26 passes against Charlotte",
+      "tldr": "Watch the underneath coverage as closely as the pass rush. Making the quarterback hold the ball would give pressure time to arrive.",
+      "outlet": "Ole Miss Athletics",
+      "tier": "official",
+      "url": "https://olemisssports.com/news/2026/9/12/no-9-football-tops-charlotte-in-home-opener",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "oxford-traffic",
+      "headline": "Construction changes the route around The Grove",
+      "tldr": "Check the revised pickup and dropoff directions before driving into Oxford. Plan the approach to campus as well as the parking spot.",
+      "outlet": "Ole Miss Athletics",
+      "tier": "official",
+      "url": "https://olemisssports.com/news/2026/9/10/football-unveils-2026-gameday-enhancements-adjustments",
+      "publishedAt": "2026-09-10",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "conference-discussions",
+      "headline": "SEC said discussions would continue after Thursday’s meeting",
+      "tldr": "The statement did not announce a resolution. Keep the dated conference update separate from assumptions about this week’s roster or game.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://content.wbrz.com/news/sec-issues-statement-on-thursday-meeting-on-recent-matters-involving-conference-expectations-",
+      "publishedAt": "2026-09-10",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the ball in Oxford.",
+      "body": "Watch Leavitt’s decisions when space gets tight. A throw away can preserve a scoring chance; a forced pass can give the opponent the next possession.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the possession count",
+      "question": "What matters most at Ole Miss?",
+      "answer": "Protect the ball near the goal line, make the opposing quarterback work past his first read, and keep defensive pressure under control.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Red-zone decisions",
+        "summary": "Keep the scoring chance",
+        "detail": "Watch the throw when the first option disappears. Taking the safe exit can leave another chance to score.",
+        "state": "watch",
+        "prompt": "What should Leavitt change near the goal line?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Defensive pressure",
+        "summary": "Close the pocket together",
+        "detail": "Watch the inside and outside defenders work toward the same escape point. Avoid giving the quarterback a clean running lane.",
+        "state": "watch",
+        "prompt": "What should I watch from LSU’s pass rush?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Underneath coverage",
+        "summary": "Make the next read harder",
+        "detail": "Watch the linebackers and defensive backs close the short windows. A quick completion can neutralize pressure.",
+        "state": "watch",
+        "prompt": "How can LSU disrupt Ole Miss’s passing game?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Early-down runs",
+        "summary": "Earn manageable downs",
+        "detail": "Watch whether the backs can find steady gains before the passing situation becomes obvious. Consistency would make the next decision easier.",
+        "state": "watch",
+        "prompt": "What should LSU improve in its running game?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Ole Miss, watch red-zone decisions, underneath coverage and pressure that contains the quarterback.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Red-zone decisions",
+      "topics": [
+        "red-zone decisions",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the throw when the first option disappears. Taking the safe exit can leave another chance to score."
+    },
+    {
+      "id": "watch-2",
+      "title": "Defensive pressure",
+      "topics": [
+        "defensive pressure",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the inside and outside defenders work toward the same escape point. Avoid giving the quarterback a clean running lane."
+    },
+    {
+      "id": "watch-3",
+      "title": "Underneath coverage",
+      "topics": [
+        "underneath coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the linebackers and defensive backs close the short windows. A quick completion can neutralize pressure."
+    },
+    {
+      "id": "watch-4",
+      "title": "Early-down runs",
+      "topics": [
+        "early-down runs",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch whether the backs can find steady gains before the passing situation becomes obvious. Consistency would make the next decision easier."
+    }
+  ]
+}

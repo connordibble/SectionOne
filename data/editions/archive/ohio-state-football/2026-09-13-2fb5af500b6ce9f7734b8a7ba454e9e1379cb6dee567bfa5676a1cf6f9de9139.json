@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "ohio-state-football",
+  "weekOf": "2026-09-13",
+  "publishedAt": "2026-09-13T12:43:28.576Z",
+  "issue": {
+    "season": 2026,
+    "week": 3
+  },
+  "summary": "Ohio State lost 24-23 at Texas after its fourth-quarter lead disappeared. Kent State is next. Watch whether the offense can keep moving beyond its first receiving option and whether the defensive front can finish a possession.",
+  "items": [
+    {
+      "id": "defensive-pressure",
+      "headline": "Day said the defensive line did not reach Manning often enough",
+      "tldr": "Watch whether pressure arrives without sacrificing the edge. A clean pocket lets a quarterback wait for the coverage to break.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163854/presser-bullets-ryan-day-says-ohio-state-will-take-accountability-explains-defensive-breakdown-and-lack-of",
+      "publishedAt": "2026-09-13",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "receiver-distribution",
+      "headline": "Smith drew 15 targets; the other wideouts caught two passes",
+      "tldr": "Watch the second read and the routes underneath. Keeping more receivers involved would make it harder to stall the offense by covering Smith.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/09/163855/proof-points-from-ohio-state-s-devastating-and-historical-loss-at-texas-presented-by-high-bank-distillery",
+      "publishedAt": "2026-09-13",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "timmons-takeaway",
+      "headline": "Timmons forced and recovered a fumble on the opening snap",
+      "tldr": "Watch his tackling and ball awareness continue through a full possession. The early takeaway is useful evidence of what he can contribute.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/9/13/football-no-1-ohio-state-falls-on-the-road-at-no-4-texas",
+      "publishedAt": "2026-09-13",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "field-goal-finish",
+      "headline": "Hawkins made three field goals, then missed from 45 yards",
+      "tldr": "Watch the full kicking operation when a drive stalls. Points from those possessions can decide whether a late defensive stop is enough.",
+      "outlet": "Associated Press",
+      "tier": "national",
+      "url": "https://apnews.com/article/b77928703d2e378f57773efb464f23c8",
+      "publishedAt": "2026-09-13T03:18:52Z",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "deshields-dual-threat",
+      "headline": "Kent State’s DeShields ran for two touchdowns against Wofford",
+      "tldr": "The quarterback is another player the run defense must account for. Watch the edge and open-field tackling when he leaves the pocket.",
+      "outlet": "Kent State Athletics",
+      "tier": "official",
+      "url": "https://kentstatesports.com/news/2026/9/12/football-22-point-4th-quarter-lifts-flashes-to-victory-1-0-at-home",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the next drive alive.",
+      "body": "Watch for a clean answer when the first receiver is covered. Moving the chains would let the defense recover and make a lead easier to protect.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Finish the possession",
+      "question": "What would show progress against Kent State?",
+      "answer": "Convert manageable third downs, find receivers beyond the first read, and pressure the quarterback without opening a running lane.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Passing balance",
+        "summary": "Get to the next read",
+        "detail": "Watch Sayin move on when Smith is covered. An available short throw can keep the drive alive.",
+        "state": "watch",
+        "prompt": "How can Ohio State involve more receivers?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Third downs",
+        "summary": "Sustain the drive",
+        "detail": "Watch the blocking and route timing after halftime. A stalled series sends the defense straight back out.",
+        "state": "watch",
+        "prompt": "What should Ohio State fix on third down?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive front",
+        "summary": "Pressure with discipline",
+        "detail": "Watch the pocket close without leaving an escape lane. Pressure and containment need to work together.",
+        "state": "watch",
+        "prompt": "What should I watch from Ohio State’s defensive line?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Quarterback runs",
+        "summary": "Keep the edge",
+        "detail": "Watch the defender outside the tackle when DeShields keeps the ball. Make him turn back toward help.",
+        "state": "watch",
+        "prompt": "What is the key to defending Kent State’s quarterback?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Kent State, watch passing balance, third-down execution and containment of the quarterback.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Passing balance",
+      "topics": [
+        "passing balance",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch Sayin move on when Smith is covered. An available short throw can keep the drive alive."
+    },
+    {
+      "id": "watch-2",
+      "title": "Third downs",
+      "topics": [
+        "third downs",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the blocking and route timing after halftime. A stalled series sends the defense straight back out."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive front",
+      "topics": [
+        "defensive front",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the pocket close without leaving an escape lane. Pressure and containment need to work together."
+    },
+    {
+      "id": "watch-4",
+      "title": "Quarterback runs",
+      "topics": [
+        "quarterback runs",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the defender outside the tackle when DeShields keeps the ball. Make him turn back toward help."
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-09-13",
+  "publishedAt": "2026-09-13T12:43:28.576Z",
+  "issue": {
+    "season": 2026,
+    "week": 3
+  },
+  "summary": "Utah State fell 16-14 at Washington with Brosterhous making his first start. Utah is next. The defense kept the game close, but the offense needs designed runs that work and fewer possessions ending with the ball in opposing hands.",
+  "items": [
+    {
+      "id": "quarterback-change",
+      "headline": "Brosterhous started at Washington in place of Hillstead",
+      "tldr": "Watch this week’s quarterback announcement before assuming the same starter for Utah.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state-football/washington-wins-16-14/577101",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "designed-running",
+      "headline": "Seven of eight running-back carries failed to gain yards",
+      "tldr": "Watch whether the blocks create a path for the backs. The offense needs dependable designed runs alongside the quarterback’s scrambles.",
+      "outlet": "Cache Valley Daily",
+      "tier": "local",
+      "url": "https://1069thefan.com/2026/09/12/utah-state-comes-a-few-mistakes-shy-of-upset-at-19-washington-sports/",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "defensive-resistance",
+      "headline": "Utah State allowed one touchdown at Washington",
+      "tldr": "Repeat those stops against Utah.",
+      "outlet": "Associated Press",
+      "tier": "national",
+      "url": "https://www.cbssports.com/college-football/gametracker/recap/NCAAF_20260912_UTAHST@WASH/",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "utah-opponent",
+      "headline": "Utah beat Arkansas 43-10 before the rivalry game",
+      "tldr": "Watch the quarterback both in the pocket and on keepers. Losing track of the back or tight end can turn containment into an open passing lane.",
+      "outlet": "Utah Athletics",
+      "tier": "official",
+      "url": "https://utahutes.com/news/2026/9/13/football-no-20-utah-dominates-arkansas-improves-to-2-0",
+      "publishedAt": "2026-09-13",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "rice-eccles-entry",
+      "headline": "Rice-Eccles scans tickets before security screening",
+      "tldr": "Download your ticket into your phone’s wallet before arrival. Utah’s entry guide also points to no-bag lanes at the main gates.",
+      "outlet": "Utah Athletics",
+      "tier": "official",
+      "url": "https://utahutes.com/news/2026/9/7/general-game-week-fan-guide-presented-by-utah-360-ring-of-honor-vs-arkansas",
+      "publishedAt": "2026-09-07",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give the backs somewhere to go.",
+      "body": "Watch the designed runs before judging the offense by a scramble or a deep completion. Useful gains would make the next passing down less predictable.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Build a repeatable drive",
+      "question": "What would give Utah State a chance at Utah?",
+      "answer": "Create space for the running backs, protect the ball, and make the opposing quarterback finish drives through tight coverage.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Run blocking",
+        "summary": "Create a running lane",
+        "detail": "Watch whether the backs can get beyond the line of scrimmage without needing to escape a defender first.",
+        "state": "watch",
+        "prompt": "What should Utah State fix in the running game?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback choice",
+        "summary": "Wait for the weekly decision",
+        "detail": "Watch the practice and availability updates. A completed start does not settle who takes the next opening snap.",
+        "state": "watch",
+        "prompt": "What should I watch in Utah State’s quarterback situation?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive assignments",
+        "summary": "Account for the keeper",
+        "detail": "Watch the edge stay patient while the secondary follows its receivers. The quarterback must remain someone’s responsibility.",
+        "state": "watch",
+        "prompt": "What should Utah State watch against Utah’s offense?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Field position",
+        "summary": "Make the punt count",
+        "detail": "Watch placement as well as distance. Pinning an opponent deep gives the defense more room to defend.",
+        "state": "watch",
+        "prompt": "Why does Utah State’s punting matter?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Utah, watch designed runs, quarterback availability and disciplined defense against the keeper.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Run blocking",
+      "topics": [
+        "run blocking",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch whether the backs can get beyond the line of scrimmage without needing to escape a defender first."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback choice",
+      "topics": [
+        "quarterback choice",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the practice and availability updates. A completed start does not settle who takes the next opening snap."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive assignments",
+      "topics": [
+        "defensive assignments",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the edge stay patient while the secondary follows its receivers. The quarterback must remain someone’s responsibility."
+    },
+    {
+      "id": "watch-4",
+      "title": "Field position",
+      "topics": [
+        "field position",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch placement as well as distance. Pinning an opponent deep gives the defense more room to defend."
+    }
+  ]
+}
