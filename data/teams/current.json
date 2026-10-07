@@ -79,13 +79,13 @@
       "teamDisplayName": "Texas football",
       "seasonYear": 2026,
       "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-      "capturedAt": "2026-09-15T00:48:12.033Z",
+      "capturedAt": "2026-10-07T00:06:42.125Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-        "retrievedAt": "2026-09-15T00:48:12.033Z",
-        "officialVerifiedAt": "2026-09-15T00:48:12.033Z"
+        "retrievedAt": "2026-10-07T00:06:42.125Z",
+        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
       },
       "games": [
         {
@@ -119,7 +119,7 @@
           "dateLabel": "Saturday, September 19",
           "startsAt": "2026-09-19T19:00:00-05:00",
           "date": "2026-09-19",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "SEC Network+"
@@ -131,7 +131,7 @@
           "dateLabel": "Saturday, September 26",
           "startsAt": "2026-09-26T11:00:00-05:00",
           "date": "2026-09-26",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "11 a.m. CT",
           "venue": "Neyland Stadium, Knoxville, Tenn.",
           "tv": "ABC"
@@ -146,19 +146,19 @@
           "status": "scheduled",
           "kickoff": "2:30 p.m. CT",
           "venue": "Cotton Bowl, Dallas, Texas",
-          "tv": "ABC or ESPN"
+          "tv": "ABC"
         },
         {
           "id": "2026-texas-florida",
           "opponent": "Florida",
           "site": "home",
           "dateLabel": "Saturday, October 17",
-          "startsAt": null,
+          "startsAt": "2026-10-17T11:00:00-05:00",
           "date": "2026-10-17",
           "status": "scheduled",
-          "kickoff": "Early start time (11 a.m.-12 p.m. CT)",
+          "kickoff": "11 a.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": null
+          "tv": "ABC or ESPN"
         },
         {
           "id": "2026-texas-ole-miss",
@@ -313,14 +313,14 @@
       "teamName": "Utah State",
       "teamDisplayName": "Utah State football",
       "seasonYear": 2026,
-      "sourceUrl": "https://utahstateaggies.com/sports/football/schedule/2026",
-      "capturedAt": "2026-08-28T13:12:58.000Z",
+      "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
+      "capturedAt": "2026-10-07T00:06:42.125Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://utahstateaggies.com/sports/football/schedule/2026",
-        "retrievedAt": "2026-08-28T13:12:58.000Z",
-        "officialVerifiedAt": "2026-08-28T13:12:58.000Z"
+        "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
+        "retrievedAt": "2026-10-07T00:06:42.125Z",
+        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
       },
       "games": [
         {
@@ -330,7 +330,7 @@
           "dateLabel": "Saturday, September 5",
           "startsAt": "2026-09-05T17:00:00-06:00",
           "date": "2026-09-05",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "5 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network"
@@ -342,7 +342,7 @@
           "dateLabel": "Saturday, September 12",
           "startsAt": "2026-09-12T13:30:00-06:00",
           "date": "2026-09-12",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "1:30 p.m. MT",
           "venue": "Husky Stadium, Seattle, Wash.",
           "tv": "Big Ten Network"
@@ -354,7 +354,7 @@
           "dateLabel": "Saturday, September 19",
           "startsAt": "2026-09-19T13:30:00-06:00",
           "date": "2026-09-19",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "1:30 p.m. MT",
           "venue": "Rice-Eccles Stadium, Salt Lake City, Utah",
           "tv": "FOX"
@@ -366,7 +366,7 @@
           "dateLabel": "Saturday, September 26",
           "startsAt": "2026-09-26T17:30:00-06:00",
           "date": "2026-09-26",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "5:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network"
@@ -378,7 +378,7 @@
           "dateLabel": "Saturday, October 3",
           "startsAt": "2026-10-03T17:30:00-06:00",
           "date": "2026-10-03",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "5:30 p.m. MT",
           "venue": "Albertsons Stadium, Boise, Idaho",
           "tv": "CBS Sports Network"
@@ -550,13 +550,13 @@
       "teamDisplayName": "Ohio State football",
       "seasonYear": 2026,
       "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-      "capturedAt": "2026-09-15T00:48:12.033Z",
+      "capturedAt": "2026-10-07T00:06:42.125Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-        "retrievedAt": "2026-09-15T00:48:12.033Z",
-        "officialVerifiedAt": "2026-09-15T00:48:12.033Z"
+        "retrievedAt": "2026-10-07T00:06:42.125Z",
+        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
       },
       "games": [
         {
@@ -590,7 +590,7 @@
           "dateLabel": "Sep 19",
           "startsAt": "2026-09-19T16:00:00.000Z",
           "date": "2026-09-19",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX"
@@ -602,7 +602,7 @@
           "dateLabel": "Sep 26",
           "startsAt": "2026-09-26T16:00:00Z",
           "date": "2026-09-26",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX"
@@ -612,36 +612,36 @@
           "opponent": "Iowa",
           "site": "away",
           "dateLabel": "Oct 3",
-          "startsAt": null,
+          "startsAt": "2026-10-03T15:30:00-04:00",
           "date": "2026-10-03",
-          "status": "scheduled",
-          "kickoff": "TBD",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
           "venue": "Iowa City, Iowa",
-          "tv": null
+          "tv": "CBS"
         },
         {
           "id": "ohio-state-football-2026-6",
           "opponent": "Maryland",
           "site": "home",
           "dateLabel": "Oct 10",
-          "startsAt": null,
+          "startsAt": "2026-10-10T16:15:00-04:00",
           "date": "2026-10-10",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "4:15 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
-          "tv": null
+          "tv": "Big Ten Network"
         },
         {
           "id": "ohio-state-football-2026-7",
           "opponent": "Indiana",
           "site": "away",
           "dateLabel": "Oct 17",
-          "startsAt": null,
+          "startsAt": "2026-10-17T12:00:00-04:00",
           "date": "2026-10-17",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "12 p.m. ET",
           "venue": "Bloomington, Ind.",
-          "tv": null
+          "tv": "FOX"
         },
         {
           "id": "ohio-state-football-2026-8",
@@ -787,13 +787,13 @@
       "teamDisplayName": "LSU football",
       "seasonYear": 2026,
       "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-      "capturedAt": "2026-09-15T00:48:12.033Z",
+      "capturedAt": "2026-10-07T00:06:42.125Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-        "retrievedAt": "2026-09-15T00:48:12.033Z",
-        "officialVerifiedAt": "2026-09-15T00:48:12.033Z"
+        "retrievedAt": "2026-10-07T00:06:42.125Z",
+        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
       },
       "games": [
         {
@@ -827,7 +827,7 @@
           "dateLabel": "Sep 19",
           "startsAt": "2026-09-19T23:30:00.000Z",
           "date": "2026-09-19",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:30 p.m. CT",
           "venue": "Oxford, Miss. (Vaught-Hemingway Stadium)",
           "tv": "ABC"
@@ -839,7 +839,7 @@
           "dateLabel": "Sep 26",
           "startsAt": "2026-09-26T23:30:00Z",
           "date": "2026-09-26",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC"
@@ -851,7 +851,7 @@
           "dateLabel": "Oct 3",
           "startsAt": "2026-10-03T23:45:00.000Z",
           "date": "2026-10-03",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:45 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "SEC Network"
@@ -861,24 +861,24 @@
           "opponent": "Kentucky",
           "site": "away",
           "dateLabel": "Oct 10",
-          "startsAt": null,
+          "startsAt": "2026-10-10T18:00:00-05:00",
           "date": "2026-10-10",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "6 p.m. CT",
           "venue": "Lexington, Ky. (Kroger Field at Commonwealth Stadium)",
-          "tv": null
+          "tv": "ESPN"
         },
         {
           "id": "lsu-football-2026-7",
           "opponent": "Mississippi State",
           "site": "home",
           "dateLabel": "Oct 17",
-          "startsAt": null,
+          "startsAt": "2026-10-17T11:00:00-05:00",
           "date": "2026-10-17",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "11 a.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
-          "tv": null
+          "tv": "ABC or ESPN"
         },
         {
           "id": "lsu-football-2026-8",

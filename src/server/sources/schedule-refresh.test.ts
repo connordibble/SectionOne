@@ -14,6 +14,11 @@ it("keeps verified broadcasts after failed or incomplete acquisition and replace
   const manifest = structuredClone(manifests["utah-state-football"]);
   manifest.schedule.games = [];
   manifest.schedule.capturedAt = "2026-09-07T12:00:00Z";
+  manifest.schedule.provenance = {
+    ...manifest.schedule.provenance,
+    retrievedAt: manifest.schedule.capturedAt,
+    officialVerifiedAt: manifest.schedule.capturedAt,
+  };
   await mkdir(directory, { recursive: true });
   await writeFile(file, JSON.stringify({ "utah-state-football": manifest }));
   const team = teamConfigs["utah-state-football"];

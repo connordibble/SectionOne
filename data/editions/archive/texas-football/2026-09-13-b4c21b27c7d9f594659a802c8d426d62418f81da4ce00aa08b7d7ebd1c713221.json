@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-09-13",
+  "publishedAt": "2026-09-18T18:37:35.129Z",
+  "issue": {
+    "season": 2026,
+    "week": 3
+  },
+  "summary": "Texas turns from its Ohio State comeback to UTSA with Cooper expected back and Townsend unlikely to play, according to Sarkisian’s Thursday update. Watch the goal-line blocking and whether the defense can finish possessions.",
+  "items": [
+    {
+      "id": "goal-line-blocking",
+      "headline": "Coleman added a sixth offensive lineman on the goal line",
+      "tldr": "Watch the extra blocker when Texas gets close to the end zone. The package helped create room against Ohio State; the next test is finishing without needing a late comeback.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/24481007/jordan-coleman-goal-line-texas-longhorns",
+      "publishedAt": "2026-09-18T16:08:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "friday-availability",
+      "headline": "Sarkisian expects Cooper back; Townsend is unlikely to play",
+      "tldr": "Thursday’s update points toward more backfield depth, while the tight ends need to cover Townsend’s role. Check the final availability update before kickoff.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104812/derrek-cooper-nick-townsend-injury-updates-texas-longhorns",
+      "publishedAt": "2026-09-17T18:44:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "second-half-defense",
+      "headline": "Texas shut Ohio State out in the fourth quarter",
+      "tldr": "Watch the coverage discipline after halftime carry into the opening series. Getting off the field would give the offense room to settle.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/12/no-4-3-football-earns-historic-24-23-comeback-win-over-no-1-1-ohio-state",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "utsa-fourth-downs",
+      "headline": "UTSA converted two fourth downs on its winning drive",
+      "tldr": "Prepare for an opponent willing to extend possessions. Watch McCown’s keeper as well as the short pass when Texas needs one more stop.",
+      "outlet": "UTSA Athletics",
+      "tier": "official",
+      "url": "https://goutsa.com/news/2026/09/13/strong-second-half-late-td-propel-roadrunners-past-bobcats-in-battle-for-i-35",
+      "publishedAt": "2026-09-12",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "linebacker-coaching",
+      "headline": "Orangebloods reports a one-game suspension for Nansen",
+      "tldr": "Watch the linebacker communication against UTSA. The report concerns Saturday’s coaching availability; it does not establish a permanent staffing change.",
+      "outlet": "Burnt Orange Nation / Orangebloods",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/104788/johnny-nansen-dwi-charge-texas-longhorns",
+      "publishedAt": "2026-09-17T17:03:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Finish the drive.",
+      "body": "Watch the extra blocker near the goal line and the available tight ends in the passing game. Texas needs useful early possessions before another comeback becomes necessary.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Control the ordinary downs",
+      "question": "What should Texas carry into UTSA?",
+      "answer": "Build drives with the running backs, use the tight end when the outside throw is covered, and defend through fourth down.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Early-down runs",
+        "summary": "Make the first drive count",
+        "detail": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent.",
+        "state": "watch",
+        "prompt": "What should I watch in Texas’s running game?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Tight-end options",
+        "summary": "Cover the available routes",
+        "detail": "With Townsend unlikely to play, watch the other tight ends give Manning an underneath answer when the wideouts are covered.",
+        "state": "watch",
+        "prompt": "What should I watch from Texas’s available tight ends?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive patience",
+        "summary": "Finish the possession",
+        "detail": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment.",
+        "state": "watch",
+        "prompt": "What makes UTSA hard to get off the field?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage",
+        "summary": "Carry the stops forward",
+        "detail": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet.",
+        "state": "watch",
+        "prompt": "What should I watch from Texas’s secondary?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against UTSA, watch early-down running, the tight-end outlet and fourth-down defense.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Early-down runs",
+      "topics": [
+        "early-down runs",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the initial blocks and the backs’ first cuts. Useful gains should arrive before the game gets urgent."
+    },
+    {
+      "id": "watch-2",
+      "title": "Tight-end options",
+      "topics": [
+        "tight-end options",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-18T18:33:10.228053Z",
+      "body": "With Townsend unlikely to play, watch the other tight ends give Manning an underneath answer when the wideouts are covered."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive patience",
+      "topics": [
+        "defensive patience",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Stay alert after a third-down stop. Against a quarterback keeper, the edge defender still has an assignment."
+    },
+    {
+      "id": "watch-4",
+      "title": "Coverage",
+      "topics": [
+        "coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-09-13T12:43:28.576Z",
+      "body": "Watch the secondary stay connected when the play extends. Force another difficult throw instead of conceding an easy outlet."
+    }
+  ]
+}
