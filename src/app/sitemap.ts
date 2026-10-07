@@ -24,6 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 1,
     },
+    {
+      url: new URL("/playoff", siteUrl).toString(),
+      // The committee publishes weekly in season; the page changes with it.
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
     ...editions,
   ];
 }

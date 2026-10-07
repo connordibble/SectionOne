@@ -1137,6 +1137,87 @@
   font-size: var(--text-sm);
 }
 
+/* ── Postseason ────────────────────────────────────────────────────────────
+ *
+ * Shares the standing rail with "In the field" and borrows its figure and
+ * context roles, so the rail reads as one column about where the team stands.
+ * The facts are a definition list on spacing alone: the rows are text, so they
+ * get no rules and no hover state.
+ */
+.standingRail {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+}
+
+.postseasonSection {
+  min-width: 0;
+  padding-block: var(--space-xl);
+  scroll-margin-block-start: 8rem;
+}
+
+.postseasonUnit {
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-label);
+}
+
+.postseasonLeadLabel {
+  display: block;
+  margin-block-end: var(--space-3xs);
+  color: var(--team-accent-strong);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.postseasonFacts {
+  display: grid;
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0 0;
+}
+
+.postseasonFacts > div {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: var(--space-xs);
+  align-items: baseline;
+}
+
+.postseasonFacts dt {
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.postseasonFacts dd {
+  max-width: var(--measure);
+  margin: 0;
+  color: var(--team-ink);
+  line-height: 1.5;
+}
+
+.postseasonLink {
+  color: var(--team-accent-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  white-space: nowrap;
+}
+
+.postseasonLink:hover {
+  text-decoration-thickness: var(--rule-fine);
+}
+
+.postseasonLink:focus-visible {
+  outline: var(--rule-fine) solid var(--team-focus);
+  outline-offset: var(--space-3xs);
+}
+
 /* ── This week (news) ──────────────────────────────────────────────────── */
 
 .newsList h3 a {
@@ -1946,6 +2027,7 @@
 }
 
 .rankingSection .sectionHeadingRow,
+.postseasonSection .sectionHeadingRow,
 .newsSection .sectionHeadingRow {
   display: flex;
   flex-wrap: wrap;
@@ -1957,6 +2039,7 @@
 /* A two-word section head does not wrap. If the row is tight the poll label
    drops to its own line instead — the heading is the anchor. */
 .rankingSection .sectionHeadingRow h2,
+.postseasonSection .sectionHeadingRow h2,
 .newsSection .sectionHeadingRow h2 {
   overflow-wrap: normal;
   text-wrap: nowrap;
@@ -3209,7 +3292,8 @@
     gap: var(--space-2xl);
   }
 
-  .rankingSection {
+  .rankingSection,
+  .postseasonSection {
     padding-inline-end: var(--space-2xl);
   }
 

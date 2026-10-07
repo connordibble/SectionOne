@@ -18,8 +18,10 @@ import type {
   TeamSchedule,
 } from "@/server/schedule/schedule";
 import type { TeamRankingSummary } from "@/server/sources/rankings";
+import type { TeamPostseason } from "@/lib/postseason/outlook";
 import { formatNewsDate } from "@/lib/news-date";
 import type { WeeklyEdition } from "@/server/sources/weekly";
+import { PostseasonSection } from "./postseason-section";
 import { RankingSection } from "./ranking-section";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
@@ -40,6 +42,7 @@ type TeamWorkspaceProps = {
   countdown: KickoffCountdown;
   leadSourceTitle: string;
   nextGame?: ScheduleGame;
+  postseason?: TeamPostseason;
   ranking?: TeamRankingSummary;
   schedule?: TeamSchedule;
   scheduleCapturedLabel?: string;
@@ -100,6 +103,7 @@ export function TeamWorkspace({
   countdown,
   leadSourceTitle,
   nextGame,
+  postseason,
   ranking,
   schedule,
   scheduleCapturedLabel,
@@ -330,6 +334,7 @@ export function TeamWorkspace({
               issueLabel={team.referenceLabel}
               lead={team.editorial.lead}
               leadSourceTitle={leadSourceTitle}
+              postseason={postseason}
               ranking={ranking}
               signals={signals}
               teamName={team.shortName}
@@ -451,6 +456,7 @@ function BriefView({
   issueLabel,
   lead,
   leadSourceTitle,
+  postseason,
   ranking,
   signals,
   teamName,
@@ -461,6 +467,7 @@ function BriefView({
   issueLabel: string;
   lead: TeamConfig["editorial"]["lead"];
   leadSourceTitle: string;
+  postseason?: TeamPostseason;
   ranking?: TeamRankingSummary;
   signals: WorkspaceSignal[];
   teamName: string;
@@ -524,7 +531,12 @@ function BriefView({
       </div>
 
       <div className={styles.briefLower}>
-        {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+        {ranking || postseason ? (
+          <div className={styles.standingRail}>
+            {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+            {postseason ? <PostseasonSection outlook={postseason} teamName={teamName} /> : null}
+          </div>
+        ) : null}
         {weekly ? <WeeklyNewsSection weekly={weekly} /> : null}
       </div>
     </div>

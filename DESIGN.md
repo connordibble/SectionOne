@@ -65,8 +65,9 @@ At wide widths, Brief reads as one composed issue rather than a stack of cards.
    is inset by the same amount on all four sides so the content sits *in* its half.
 4. “What matters Saturday” uses three numbered rows. “The read” sits beside it as a raised card at
    wide widths, sized to its content, and follows the rows on small screens.
-5. “In the field” and “This week” form the issue body: a compact standing rail beside sourced weekly
-   reporting on desktop, one reading sequence on mobile.
+5. “In the field”, “Postseason”, and “This week” form the issue body: a compact standing rail
+   (rankings, then postseason) beside sourced weekly reporting on desktop, one reading sequence on
+   mobile.
 6. “Tune your signal” is a full-width Ask the Desk band. It has no chat-window framing before the
    first question.
 7. “Quick questions” stacks: the label sits above a set of content-sized prompt chips. They are
@@ -93,6 +94,13 @@ Two rules govern the weekly sections:
   with nothing but a console warning. An item without a usable link is dropped rather than shown
   link-less, because the link is the whole basis on which a fan is asked to believe the summary. The summary is ours and must be checkable against the thing it links to. An item without
   a source is not publishable, and the fixture tests enforce that rather than trusting the author.
+- **The postseason reads the same way, and never in odds.** One figure leads: the record or the
+  committee rank while the team is in the playoff picture, the wins still needed once it is not.
+  The race that leads is stated once beside the figure; the other race's rows stay underneath, so
+  a team out of the picture still sees its playoff path. “In the picture” is a stated rule of
+  record and rank, and the section says so. Projections never look like confirmations: a field
+  position or bowl destination appears only from an announced selection with its source. The
+  rules and data are in `docs/postseason.md`.
 - **No outlet owns the list.** Items are graded on impact, echo, and freshness, decayed by age, and
   filled under a cap of two per outlet with at least three distinct outlets and local reporting never
   outnumbered by national. Local beat writers are at practice and know the two-deep; a list national
@@ -101,12 +109,13 @@ Two rules govern the weekly sections:
 
 ## Surfaces
 
-There are two, and they must not blur into each other.
+There are three, and they must not blur into each other.
 
 | Surface | Route | Job |
 | --- | --- | --- |
 | **Home** | `/` | Say what Section One is, show a live edition as proof, and take a team request. |
 | **Edition** | `/teams/[slug]` | The game-week product for one team. |
+| **Playoff** | `/playoff` | The national race: committee top 25 or announced field, each edition's postseason status, format, and dates. |
 
 On both surfaces, the colophon sits at the viewport bottom on short pages and follows the content
 on longer pages. It stays in document flow.
@@ -115,6 +124,12 @@ The home page shares the tokens, chrome, band rhythm, rule discipline, and voice
 not the shape. An edition is a split studio built around a live game object; the home page is an
 argument that ends in one action. If the two ever read as the same page, the product and its pitch
 have blurred.
+
+The playoff page is a house surface like home: house colour, the same masthead, bands, and cards,
+and no team stage. Edition cards on it may carry their own accent on the figure, under the same
+rule as the home edition card. Its one composed object is the next-milestone clock, because a
+countdown to a real date is the most useful thing on the page before the committee ranks anyone.
+It never stands a media poll in for the committee.
 
 Home page rules:
 

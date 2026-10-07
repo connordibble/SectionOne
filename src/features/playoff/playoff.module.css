@@ -1,0 +1,347 @@
+/* The national playoff page. A house surface like the home page: house
+ * colour, the same bands and cards, no team stage. Its one composed object is
+ * the next-milestone clock, because a countdown to a real date is the most
+ * useful thing on the page before the committee ranks anyone. Ranks and dates
+ * are tables, so they are ruled by spacing, not by lines (DESIGN.md § Lines).
+ */
+
+.hero {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+  padding-block: clamp(var(--space-2xl), 8vw, var(--space-3xl));
+}
+
+.heroCopy {
+  display: grid;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--team-accent-strong);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--display-weight);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.heroBody {
+  max-width: var(--measure);
+  margin: 0;
+  color: var(--team-ink-subtle);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+}
+
+/* A card like every other card: hairline, card radius, surface ground. The
+   figure carries the accent; the card does not. */
+.milestone {
+  display: grid;
+  gap: var(--space-2xs);
+  align-content: start;
+  min-width: 0;
+  padding: var(--space-lg);
+  border: var(--rule-hair) solid var(--team-border-strong);
+  border-radius: var(--radius-card);
+  background: var(--team-surface);
+}
+
+.milestoneLabel,
+.cardLabel {
+  margin: 0;
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.cardLabel {
+  margin-block-start: var(--space-xs);
+  color: var(--edition-accent-strong, var(--team-accent-strong));
+}
+
+.milestoneFigure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  align-items: baseline;
+  margin: 0;
+  color: var(--team-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-figure);
+  font-weight: var(--display-weight);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.milestoneFigure span + span {
+  font-size: var(--text-2xl);
+}
+
+.milestoneName {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--display-weight);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.milestoneDate {
+  margin: 0;
+  color: var(--team-ink-subtle);
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
+}
+
+/* ── Committee ranking and field ─────────────────────────────────────── */
+
+.notice,
+.empty,
+.prose {
+  max-width: var(--measure);
+  margin: var(--space-lg) 0 0;
+  color: var(--team-ink-subtle);
+  line-height: 1.6;
+}
+
+.notice {
+  color: var(--team-ink);
+  font-weight: 600;
+}
+
+.note {
+  max-width: var(--measure);
+  margin: var(--space-md) 0 0;
+  color: var(--team-muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.note a,
+.rankTeam a {
+  color: var(--team-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.note a:focus-visible,
+.rankTeam a:focus-visible {
+  outline: var(--rule-fine) solid var(--team-focus);
+  outline-offset: var(--space-3xs);
+}
+
+.rankColumns {
+  display: grid;
+  min-width: 0;
+}
+
+.rankColumns > div {
+  min-width: 0;
+}
+
+.rankGroup {
+  margin-block-start: var(--space-xl);
+}
+
+.rankGroupHeading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  margin: 0;
+  color: var(--team-ink-subtle);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.rankGroupHeading span {
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-2xs);
+}
+
+.rankList {
+  display: grid;
+  margin: var(--space-xs) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rankList li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  gap: var(--space-xs);
+  align-items: baseline;
+  padding-block: var(--space-xs);
+}
+
+.rank {
+  color: var(--team-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--display-weight);
+  line-height: 1;
+}
+
+.rankTeam {
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* An edition's own team says so in text, not colour alone. */
+.rankList li[data-edition] .rankTeam::after {
+  content: " · Section One edition";
+  color: var(--team-muted);
+  font-size: var(--text-xs);
+  font-weight: 400;
+}
+
+.rankRecord {
+  color: var(--team-ink-subtle);
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
+  text-align: end;
+  white-space: nowrap;
+}
+
+/* ── Format and dates ────────────────────────────────────────────────── */
+
+.ruleList {
+  display: grid;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruleList li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: baseline;
+}
+
+.ruleNumber {
+  color: var(--team-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--display-weight);
+  line-height: 1;
+}
+
+.ruleList h3,
+.subheading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.ruleList p {
+  max-width: var(--measure);
+  margin: var(--space-3xs) 0 0;
+  color: var(--team-ink-subtle);
+  line-height: 1.6;
+}
+
+.subheading {
+  margin-block-start: var(--space-2xl);
+  font-size: var(--text-xl);
+}
+
+.dateList {
+  display: grid;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Stacked on small screens: date, then what happens, then where. */
+.dateList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3xs);
+  padding-block: var(--space-sm);
+}
+
+.dateList li[data-past] {
+  color: var(--team-muted);
+}
+
+.dateValue {
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.dateLabel {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.dateDetail {
+  color: var(--team-ink-subtle);
+  font-size: var(--text-sm);
+}
+
+.dateList li[data-past] .dateDetail {
+  color: var(--team-muted);
+}
+
+@media (min-width: 48rem) {
+  .dateList li {
+    grid-template-columns: 11rem minmax(0, 14rem) minmax(0, 1fr);
+    gap: var(--space-md);
+    align-items: baseline;
+  }
+}
+
+/* Two columns only where the clock can hold its figure at full size. */
+@media (min-width: 60rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: var(--space-2xl);
+  }
+
+  .rankGroup + .rankGroup {
+    margin-block-start: var(--space-lg);
+  }
+}
+
+@media (min-width: 64rem) {
+  .rankColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3xl);
+  }
+}
