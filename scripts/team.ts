@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { z } from "zod";
 import { onboardingPackageSchema } from "../src/lib/teams/contract";
-import { onboardTeam, readTeamRegistry } from "../src/lib/teams/publish";
+import { onboardTeam, publishTeamSchedule, readTeamRegistry } from "../src/lib/teams/publish";
 import { checkTeams, preflightOnboarding } from "../src/lib/teams/preflight";
 import { readEditionRegistry } from "../src/lib/editions/publish";
 import { reportError } from "../src/server/observability/report";
@@ -18,8 +18,13 @@ async function main() {
       poll: { season: poll.season, capturedAt: poll.capturedAt, week: poll.week },
       teams: Object.values(teams).map(({ identity, schedule }) => ({ identity,
         schedule: { season: schedule.seasonYear, checkedAt: schedule.provenance?.officialVerifiedAt ?? schedule.provenance?.retrievedAt ?? schedule.capturedAt,
-          games: schedule.games.map(({ date, status }) => ({ date, status })) },
+          games: schedule.games.map(({ id, opponent, date, status, result }) => ({ id, opponent, date, status, result })) },
         edition: editions[identity.slug] ? { publishedAt: editions[identity.slug].publishedAt, weekOf: editions[identity.slug].weekOf } : null })) };
+  }
+  if (command === "schedule" && argument) {
+    const input: unknown = JSON.parse(await readFile(argument, "utf8"));
+    const schedule = await publishTeamSchedule(root, input);
+    return { status: "refreshed", teamSlug: schedule.teamSlug, games: schedule.games.length };
   }
   if (command === "check") {
     const result = await checkTeams(root);
@@ -46,7 +51,7 @@ async function main() {
     if (command === "validate") return { status: "valid", teamSlug: onboardingPackageSchema.parse(input).edition.teamSlug };
     return command === "onboard" ? onboardTeam(root, input) : preflightOnboarding(root, input);
   }
-  throw new Error("Usage: pnpm teams <schema | status | check [--database] | manifest slug | export slug output.json | validate package.json | preflight package.json | onboard package.json>");
+  throw new Error("Usage: pnpm teams <schema | status | schedule schedule.json | check [--database] | manifest slug | export slug output.json | validate package.json | preflight package.json | onboard package.json>");
 }
 main().then((result) => {
   if ("ok" in result && result.ok === false) process.exitCode = 1;

@@ -60,6 +60,16 @@ export async function publishTeamSchedule(root: string, input: unknown, now = ne
     const previous = current.schedule;
     if (previous.seasonYear > schedule.seasonYear || Date.parse(previous.capturedAt) > Date.parse(schedule.capturedAt)) throw new Error("Schedule refresh regressed");
     if (previous.seasonYear === schedule.seasonYear && previous.games.length > schedule.games.length) throw new Error("Schedule provider omitted existing games; retained the current schedule");
+    if (previous.seasonYear === schedule.seasonYear) {
+      for (const game of previous.games.filter((game) => game.status === "final")) {
+        // Official imports and provider builds may use different game IDs.
+        const next = schedule.games.find((candidate) => candidate.id === game.id)
+          ?? schedule.games.find((candidate) => candidate.opponent === game.opponent && candidate.date === game.date);
+        if (!next || next.status !== "final" || (game.result && !next.result)) {
+          throw new Error("Schedule refresh omitted a completed game or verified final score; retained the current schedule");
+        }
+      }
+    }
     current.schedule = schedule;
     teamRegistrySchema.parse(registry);
     await writeFile(temporary, `${JSON.stringify(registry, null, 2)}\n`, { flag: "wx" });

@@ -66,6 +66,31 @@ it("release preflight reports missing assets and orphaned editions without prete
   expect((await checkTeams(root, now)).findings).toContainEqual({ code: "edition-without-team", teamSlug: "example-football", severity: "error" });
 });
 
+it("retains verified results after incomplete refreshes and permits sourced score corrections", async () => {
+  const { root, candidate, now } = await fixture();
+  const game = candidate.manifest.schedule.games[0];
+  game.status = "final"; game.result = { teamScore: 0, opponentScore: 33 };
+  await onboardTeam(root, candidate, now);
+  const file = path.join(root, "data/teams/current.json");
+  const original = await readFile(file, "utf8");
+  for (const mode of ["missing-score", "not-final", "replaced-game"]) {
+    const next = structuredClone(candidate.manifest.schedule);
+    next.capturedAt = now.toISOString();
+    next.games[0].id = "provider-game-id";
+    if (mode === "missing-score") delete next.games[0].result;
+    if (mode === "not-final") { next.games[0].status = "scheduled"; delete next.games[0].result; }
+    if (mode === "replaced-game") next.games[0].opponent = "Different opponent";
+    await expect(publishTeamSchedule(root, next, now)).rejects.toThrow("completed game or verified final score");
+    expect(await readFile(file, "utf8")).toBe(original);
+  }
+  const correction = structuredClone(candidate.manifest.schedule);
+  correction.capturedAt = now.toISOString();
+  correction.games[0].id = "provider-game-id";
+  correction.games[0].result = { teamScore: 0, opponentScore: 34 };
+  await publishTeamSchedule(root, correction, now);
+  expect((await readTeamRegistry(root))["example-football"].schedule.games[0].result).toEqual({ teamScore: 0, opponentScore: 34 });
+});
+
 it("loads an additional program in a separate checkout without modifying source code", async () => {
   const { root, candidate, now } = await fixture();
   for (const name of ["src", "data", "tsconfig.json"]) await cp(path.join(process.cwd(), name), path.join(root, name), { recursive: true });

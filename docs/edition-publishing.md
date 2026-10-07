@@ -115,4 +115,18 @@ never recycled as the next game. Countdown dates use the team's timezone.
 Schedule provenance distinguishes the provider's retrieval from a separate
 check of the official page. A CFBD refresh cannot claim an official-page check.
 
+Final games may carry `result: {teamScore, opponentScore}` with nonnegative integer
+scores from the edition team's perspective. Zero is a score; an absent result is
+unknown. Rankings separate played and upcoming opponents using confirmed status,
+and both rankings and Schedule render final results. Ranked opponents always use
+the displayed poll, including completed games.
+
+`pnpm teams status` includes game IDs, opponents, statuses and results for maintenance.
+After inspecting an official source, import a complete verified schedule with
+`pnpm teams schedule /absolute/schedule.json`. This validates and publishes facts
+without committing or deploying them. Keep actual capture and provenance dates.
+Refreshes cannot drop a completed game, remove a known score or regress a final
+status within the same season; failure retains the existing file. A supplied
+corrected score can replace a previous result.
+
 The poll file refresh and runtime refresh both reject older snapshots. File publication uses a lock and atomic replacement; failed validation preserves the existing file. Schedule acquisition requires successful, schema-valid game and media responses before replacement, rejects missing existing games and preserves the last snapshot after provider failure. API data is attributed to its provider, separately from the official schedule link fans can open.
