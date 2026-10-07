@@ -75,7 +75,7 @@ export function admitWeeklyEdition(edition: WeeklyEdition): WeeklyEdition {
 // verifies the package; this adapter preserves the existing reader contract.
 export function getWeeklyEdition(teamSlug: string): WeeklyEdition | undefined {
   const published = getPublishedEdition(teamSlug);
-  const edition = published ? admitWeeklyEdition(published) : undefined;
+  const edition = published ? admitWeeklyEdition({ ...published, publishedAt: published.storiesUpdatedAt ?? published.publishedAt }) : undefined;
 
   if (!edition) {
     return undefined;

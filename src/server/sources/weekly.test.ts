@@ -1,5 +1,6 @@
 // @vitest-environment node
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import * as publishedEditions from "@/lib/editions/current";
 import { enabledTeamSlugs } from "@/config/team";
 import {
   describeSourceMix,
@@ -16,6 +17,14 @@ import {
 } from "./weekly";
 
 describe("weekly edition", () => {
+  afterEach(() => vi.restoreAllMocks());
+  it("dates and grades the news section against its refresh without renewing the whole briefing", () => {
+    const original = publishedEditions.getPublishedEdition("texas-football");
+    const storiesUpdatedAt = "2026-09-09T12:00:00Z";
+    vi.spyOn(publishedEditions, "getPublishedEdition").mockReturnValue({ ...original, storiesUpdatedAt });
+    expect(getWeeklyEdition("texas-football")?.publishedAt).toBe(storiesUpdatedAt);
+    expect(original.publishedAt).not.toBe(storiesUpdatedAt);
+  });
   it("publishes a package for every live edition", () => {
     for (const slug of enabledTeamSlugs) {
       expect(getWeeklyEdition(slug), `${slug} has no weekly package`).toBeDefined();

@@ -19,7 +19,7 @@ async function main() {
       teams: Object.values(teams).map(({ identity, schedule }) => ({ identity,
         schedule: { season: schedule.seasonYear, checkedAt: schedule.provenance?.officialVerifiedAt ?? schedule.provenance?.retrievedAt ?? schedule.capturedAt,
           games: schedule.games.map(({ id, opponent, date, status, result }) => ({ id, opponent, date, status, result })) },
-        edition: editions[identity.slug] ? { publishedAt: editions[identity.slug].publishedAt, weekOf: editions[identity.slug].weekOf } : null })) };
+        edition: editions[identity.slug] ? { publishedAt: editions[identity.slug].publishedAt, storiesUpdatedAt: editions[identity.slug].storiesUpdatedAt, weekOf: editions[identity.slug].weekOf } : null })) };
   }
   if (command === "schedule" && argument) {
     const input: unknown = JSON.parse(await readFile(argument, "utf8"));

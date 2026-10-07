@@ -31,6 +31,7 @@ export const newsItemSchema = z.object({
 export const editionPackageSchema = z.object({
   schemaVersion: z.literal(1), teamSlug: id,
   weekOf: z.iso.date(), publishedAt: timestamp,
+  storiesUpdatedAt: timestamp.optional(),
   issue: z.object({ season: z.number().int().min(2000).max(2200), week: z.number().int().min(0).max(60) }),
   summary: text, items: z.array(newsItemSchema).min(1).max(5),
   editorial: editorialSchema, nextGameNote: text, notesDisclaimer: text,
@@ -50,9 +51,14 @@ export const editionPackageSchema = z.object({
     ...edition.editorial.signals.map((signal) => signal.noteId)];
   if (references.some((reference) => !notes.has(reference))) error("Editorial reference has no matching note");
   const asOf = Date.parse(edition.publishedAt);
+  const storiesAsOf = Date.parse(edition.storiesUpdatedAt ?? edition.publishedAt);
+  if (storiesAsOf < asOf) error("Story refresh predates edition publication");
   if (Date.parse(edition.weekOf) > asOf) error("Week starts after publication");
-  for (const item of [...edition.items, ...edition.notes]) {
-    if (Date.parse(item.publishedAt) > asOf) error(`Future source date: ${item.id}`);
+  for (const item of edition.items) {
+    if (Date.parse(item.publishedAt) > storiesAsOf) error(`Future source date: ${item.id}`);
+  }
+  for (const note of edition.notes) {
+    if (Date.parse(note.publishedAt) > asOf) error(`Future source date: ${note.id}`);
   }
 });
 

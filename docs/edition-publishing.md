@@ -40,6 +40,18 @@ checks evidence and review state before invoking this consumer import. The publi
 reader contract; it cannot prove that reporting supports a claim. It is a trusted operator tool,
 not an authenticated publishing service. Do not expose it as a public endpoint.
 
+For daily story-only updates, the consumer also exposes `edition validate-stories <draft.json>`
+and `edition publish-stories <draft.json>`. These accept the same exported envelope but allow
+changes only to `items`, their section `summary`, and `storiesUpdatedAt`, with exactly five stories.
+The publisher checks that boundary under the same revision lock used for weekly updates.
+Timestamp-only refreshes leave the current file and archive unchanged. The private producer's
+`--scope stories` mode reviews eleven story/summary fields with the existing evidence and source
+mix checks; it cannot authorize a full edition import. Weekly updates keep their complete review.
+The news section uses `storiesUpdatedAt` for its date and grading cutoff, falling back to
+`publishedAt` on existing editions. The full-edition review clock and retained note dates do not
+advance during a daily refresh. On a full weekly update, remove a previous `storiesUpdatedAt`
+so the new `publishedAt` also dates the reviewed story selection.
+
 The private engine lives in the separate `SectionOneEngine` repository. Its local checkout can live
 under `.private/edition-engine/`, which Git, TypeScript and ESLint exclude from this public app.
 It has no source-code imports from the app; it invokes the documented CLI with an explicit app
@@ -65,9 +77,10 @@ requires review for each prose field and records measured usage by team/run. Rev
 hashes invalidate outdated approval. Quote matching and numeric checks catch some unsupported
 claims; semantic support, original reporting, missing stories and latest status still need review.
 
-This release makes no paid model calls and starts no recurring job. Automated source discovery,
-publisher-specific extraction, model benchmarking, scheduled refreshes and unattended alert routing
-remain follow-up work. It preserves the last good edition on failed validation; it does not add a
+The tooling makes no paid model calls and starts no recurring job itself. A separately configured
+Codex schedule can run the daily story-only workflow and push reviewed changes to main.
+Automated source discovery, publisher-specific extraction, model benchmarking and unattended alert
+routing remain follow-up work. It preserves the last good edition on failed validation; it does not add a
 reader-facing stale indicator. API/model cost savings have not yet been measured.
 
 ## New-team data and colors
