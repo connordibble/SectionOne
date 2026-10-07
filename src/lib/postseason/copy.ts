@@ -49,13 +49,16 @@ export function playoffLine(playoff: PlayoffOutlook, record: SeasonRecord): stri
   return `${poll}, ${losses}. ${playoff.standing === "in-picture" ? "In the picture." : "Outside the picture."}`;
 }
 
+// A top-12 ranking alone does not earn an at-large spot: automatic qualifiers
+// ranked below the line take places inside it, so the cutoff moves with them.
+const atLargeLine = "one of the at-large spots, where the cutoff depends on where the automatic qualifiers are ranked";
+
 export function pathLine(playoff: PlayoffOutlook): string {
-  const atLarge = `a top-${playoff.fieldSize} finish`;
   switch (playoff.path) {
-    case "champion": return `Win the ${playoff.conference} and the bid is automatic, whatever the ranking. Otherwise ${atLarge} for an at-large spot.`;
-    case "group": return `Finish as the highest-ranked ${playoff.groupLabel} team, champion or not. Otherwise ${atLarge} for an at-large spot.`;
-    case "independent": return `${capitalized(atLarge)} in the final rankings carries an automatic bid.`;
-    default: return `${capitalized(atLarge)} in the final rankings for an at-large spot.`;
+    case "champion": return `Win the ${playoff.conference} and the bid is automatic, whatever the ranking. Otherwise, ${atLargeLine}.`;
+    case "group": return `Finish as the highest-ranked ${playoff.groupLabel} team, champion or not. Otherwise, ${atLargeLine}.`;
+    case "independent": return `A top-${playoff.fieldSize} finish in the final rankings carries an automatic bid.`;
+    default: return `${capitalized(atLargeLine)}.`;
   }
 }
 

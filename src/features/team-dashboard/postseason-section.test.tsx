@@ -49,6 +49,25 @@ describe("postseason section", () => {
     expect(screen.getByText("Path")).toBeVisible();
   });
 
+  it("never promises an at-large spot for a top-12 finish", () => {
+    show({});
+    expect(screen.getByText(/where the cutoff depends on where the automatic qualifiers are ranked/)).toBeVisible();
+    expect(screen.queryByText(/top-12 finish for an at-large spot/)).not.toBeInTheDocument();
+  });
+
+  it.each([
+    ["selected", "Example", /No\. 3 seed, hosting|No\. 3 seed with/],
+    ["left out", "Someone Else", /Not in the field/],
+  ])("retires the qualification path once the field is set (%s)", (_, team, outcome) => {
+    const seeds = Array.from({ length: 12 }, (_, index) => ({ seed: index + 1, team: index === 2 ? team : `Seed ${index + 1}`, bid: "at-large" as const }));
+    const confirmed = postseasonSeasonSchema.parse({ ...seasonFile, confirmed: { ...seasonFile.confirmed, playoffField: {
+      announcedAt: "2026-12-06T18:00:00.000Z", sourceUrl: "https://collegefootballplayoff.com/", seeds } } });
+    show({ season: confirmed, today: "2026-12-07" });
+    expect(screen.getAllByText(outcome).length).toBeGreaterThan(0);
+    expect(screen.queryByText("Path")).not.toBeInTheDocument();
+    expect(screen.queryByText(/bid is automatic|highest-ranked Group of 6/)).not.toBeInTheDocument();
+  });
+
   it("says when a committee release has not been checked rather than presenting older data as current", () => {
     show({ today: "2026-11-05" });
     expect(screen.getByText(/The Tue, Nov 3 committee rankings have not been checked yet\./)).toBeVisible();

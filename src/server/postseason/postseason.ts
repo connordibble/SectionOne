@@ -53,7 +53,9 @@ const nationalZone = "America/New_York";
 
 export function nextPlayoffMilestone(season: PostseasonSeason, today: string, committee?: CommitteeRanking): PlayoffMilestone | undefined {
   const releases = season.playoff.rankings.filter((release) => !committee || release.date > committee.releasedAt);
-  const games = season.playoff.rounds.map((round) => ({ date: round.dates[0], label: round.name }));
+  // Every game day counts: a round spread over two days is still on during its
+  // second, and the clock must not jump past games being played.
+  const games = season.playoff.rounds.flatMap((round) => round.dates.map((date) => ({ date, label: round.name })));
   return [...(season.confirmed.playoffField ? [] : releases), ...games]
     .filter((milestone) => milestone.date >= today)
     .sort((a, b) => a.date.localeCompare(b.date))[0];

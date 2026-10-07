@@ -30,8 +30,10 @@ export function PostseasonSection({ outlook, teamName }: { outlook: TeamPostseas
     { label: "Bowl", value: bowlLine(bowl) },
   ];
   // The race that leads is stated once, beside the figure; its row is not
-  // repeated underneath.
-  const ordered = rows.filter((row) => row.label !== (outlook.lead === "bowl" ? "Bowl" : "Playoff"));
+  // repeated underneath. Once the field is set, how to qualify is history:
+  // the confirmed outcome replaces the path.
+  const ordered = rows.filter((row) => row.label !== (outlook.lead === "bowl" ? "Bowl" : "Playoff")
+    && !(row.label === "Path" && playoff.phase === "field-set"));
   const rankingHref = playoff.ranking ? safeExternalHref(playoff.ranking.sourceUrl) : undefined;
   const fieldHref = playoff.fieldSourceUrl ? safeExternalHref(playoff.fieldSourceUrl) : undefined;
   const selectionHref = bowl.selection ? safeExternalHref(bowl.selection.sourceUrl) : undefined;

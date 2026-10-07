@@ -189,8 +189,8 @@ function Committee({ tracker }: { tracker: PlayoffTracker }) {
       ) : (
         <p className={styles.empty}>
           Nothing to rank yet. The committee&apos;s first top 25 comes out {formatEventDate(season.playoff.rankings[0].date)}, and it
-          appears here once two published versions of it agree. Media polls are not the committee, so this page does not
-          stand one in for it.
+          appears here once it is out and checked. Media polls are not the committee, so this page does not stand one in
+          for it.
         </p>
       )}
     </>
