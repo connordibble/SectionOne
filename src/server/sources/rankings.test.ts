@@ -7,6 +7,13 @@ const texas = teamConfigs["texas-football"];
 const utahState = teamConfigs["utah-state-football"];
 
 describe("getTeamRankingSummary", () => {
+  it("moves an unconfirmed game to updates at midnight in the schedule's time zone", () => {
+    const washington = (now: string) => getTeamRankingSummary(utahState, new Date(now))
+      ?.rankedOpponents.find((opponent) => opponent.opponent === "Washington");
+    expect(washington("2026-09-13T05:59:00Z")?.phase).toBe("upcoming");
+    expect(washington("2026-09-13T06:00:00Z")?.phase).toBe("updates");
+  });
+
   it("reports a ranked team's own position", () => {
     expect(getTeamRankingSummary(texas)?.teamRank).toBe(5);
   });

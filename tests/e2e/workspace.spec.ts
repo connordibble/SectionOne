@@ -365,7 +365,7 @@ test("the field section reads an unranked team's schedule, not a national list",
   await expect(field.getByText("Unranked")).toBeVisible();
   const ranking = getTeamRankingSummary(utahState)!;
   await expect(field.getByText(`${ranking.rankedOpponents.length} of ${ranking.opponentCount} opponents ranked.`, { exact: true })).toBeVisible();
-  for (const opponent of ranking.rankedOpponents.slice(0, 5)) {
+  for (const opponent of ranking.rankedOpponents) {
     await expect(field.getByText(`${formatSite(opponent.site)} ${opponent.opponent}`, { exact: true })).toBeVisible();
   }
   // The section says which poll it is quoting, because "unranked" is only a
@@ -383,9 +383,17 @@ test("the field section leads with a ranked team's own number", async ({ page })
   await expect(field.getByText(new RegExp(`No\\.\\s*${getTeamRankingSummary(getTeamConfig("texas-football")!)!.teamRank}`)).first()).toBeVisible();
   const ranking = getTeamRankingSummary(texas)!;
   await expect(field.getByText(`${ranking.rankedOpponents.length} of ${ranking.opponentCount} opponents ranked.`, { exact: true })).toBeVisible();
-  await expect(field.locator("li")).toHaveCount(Math.min(5, ranking.rankedOpponents.length));
-  const remaining = ranking.rankedOpponents.length - 5;
-  if (remaining > 0) await expect(field.getByText(new RegExp(`${remaining} more ranked opponent`))).toBeVisible();
+  await expect(field.locator("li")).toHaveCount(ranking.rankedOpponents.length);
+  for (const [phase, label] of [["upcoming", "Upcoming"], ["played", "Played"], ["updates", "Game updates"]] as const) {
+    const opponents = ranking.rankedOpponents.filter((opponent) => opponent.phase === phase);
+    const group = field.getByRole("list", { name: new RegExp(label) });
+    await expect(group).toHaveCount(opponents.length ? 1 : 0);
+    for (const opponent of opponents) {
+      const row = group.getByRole("listitem").filter({ hasText: `${formatSite(opponent.site)} ${opponent.opponent}` });
+      await expect(row).toContainText(opponent.dateLabel);
+      if (opponent.result) await expect(row).toContainText(`${opponent.result.teamScore}–${opponent.result.opponentScore}`);
+    }
+  }
 });
 
 test("this week carries a headline, a takeaway, and the outlet behind it", async ({ page }) => {

@@ -5,12 +5,17 @@ import type { Poll, PollWeek, PendingPoll } from "@/lib/facts/poll";
 export type { Poll, PollWeek, PollEntry, PendingPoll } from "@/lib/facts/poll";
 import { createSourceDocumentId } from "./ids";
 import type { SourceDocument } from "./types";
+import { calendarDate, rankedGamePhase, type RankedGamePhase, type ScheduleGame } from "@/lib/facts/schedule";
 
 export type RankedOpponent = {
+  gameId: string;
   opponent: string;
   rank: number;
   site: ScheduleSite;
   dateLabel: string;
+  status: ScheduleGame["status"];
+  phase: RankedGamePhase;
+  result?: ScheduleGame["result"];
 };
 
 export type TeamRankingSummary = {
@@ -23,6 +28,7 @@ export type TeamRankingSummary = {
   opponentCount: number;
   pending: PendingPoll[];
   checkedAt: string;
+  scheduleSource?: { url: string; checkedAt: string };
 };
 
 export function getPollWeek(season: number): PollWeek | undefined {
@@ -36,7 +42,7 @@ export function getPollWeek(season: number): PollWeek | undefined {
 // answers that only if the fan cross-references it themselves. Deriving the
 // opponent view from the team's own schedule is the part that makes this
 // section worth reading for a Sun Belt fan and not just an SEC one.
-export function getTeamRankingSummary(team: TeamConfig): TeamRankingSummary | undefined {
+export function getTeamRankingSummary(team: TeamConfig, now = new Date()): TeamRankingSummary | undefined {
   const season = team.cfbd?.season ?? getTeamSchedule(team.slug)?.seasonYear;
   const week = season === undefined ? undefined : getPollWeek(season);
   const poll = week?.polls[0];
@@ -48,13 +54,15 @@ export function getTeamRankingSummary(team: TeamConfig): TeamRankingSummary | un
   const rankByTeam = new Map(poll.ranks.map((entry) => [normalize(entry.team), entry.rank]));
   const schedule = getTeamSchedule(team.slug);
   const games = schedule?.games ?? [];
+  const today = calendarDate(now, schedule?.timeZone ?? team.timeZone);
 
   const rankedOpponents = games.flatMap((game) => {
     const rank = rankByTeam.get(normalize(game.opponent));
 
     return rank === undefined
       ? []
-      : [{ opponent: game.opponent, rank, site: game.site, dateLabel: game.dateLabel }];
+      : [{ gameId: game.id, opponent: game.opponent, rank, site: game.site, dateLabel: game.dateLabel,
+          status: game.status, phase: rankedGamePhase(game, today), result: game.result }];
   });
 
   return {
@@ -67,6 +75,7 @@ export function getTeamRankingSummary(team: TeamConfig): TeamRankingSummary | un
     opponentCount: games.length,
     pending: week.pending,
     checkedAt: week.capturedAt,
+    scheduleSource: schedule ? { url: schedule.sourceUrl, checkedAt: schedule.capturedAt } : undefined,
   };
 }
 

@@ -147,6 +147,25 @@ describe("buildTeamSchedule", () => {
   it("builds stable ids from the season and both team names", () => {
     expect(build().games[0].id).toBe("2026-utah-state-idaho-state");
   });
+
+  it.each([false, true])("keeps final scores in the team's perspective, including neutral=%s", (neutralSite) => {
+    const schedule = build({ games: [
+      { ...games[0], completed: true, homePoints: 16, awayPoints: 0, neutralSite },
+      { ...games[1], completed: true, homePoints: 24, awayPoints: 23, neutralSite },
+    ] });
+    expect(schedule.games[0].result).toEqual({ teamScore: 24, opponentScore: 23 });
+    expect(schedule.games[1].result).toEqual({ teamScore: 0, opponentScore: 16 });
+  });
+
+  it("does not turn live zeroes or incomplete provider scores into a final result", () => {
+    const schedule = build({ games: [
+      { ...games[0], completed: false, homePoints: 0, awayPoints: 0 },
+      { ...games[1], completed: true, homePoints: 24, awayPoints: null },
+    ] });
+    expect(schedule.games.every((game) => game.result === undefined)).toBe(true);
+    expect(schedule.games[0].status).toBe("final");
+    expect(schedule.games[1].status).toBe("scheduled");
+  });
 });
 
 describe("formatKickoff", () => {

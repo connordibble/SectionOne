@@ -20,6 +20,7 @@ import type {
 import type { TeamRankingSummary } from "@/server/sources/rankings";
 import { formatNewsDate } from "@/lib/news-date";
 import type { WeeklyEdition } from "@/server/sources/weekly";
+import { RankingSection } from "./ranking-section";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
 import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
@@ -391,77 +392,6 @@ export function TeamWorkspace({
         </div>
       </footer>
     </main>
-  );
-}
-
-// The team's own place in the field, not a national top 25.
-//
-// Most teams are unranked, and for them a list of the best 25 programs in the
-// country answers nothing. What a fan of an unranked team actually wants is
-// which weeks on their own schedule are the hard ones — so that is the list,
-// and the team's own standing is one line above it either way.
-function RankingSection({
-  ranking,
-  teamName,
-}: {
-  ranking: TeamRankingSummary;
-  teamName: string;
-}) {
-  const { rankedOpponents, opponentCount, teamRank } = ranking;
-  const shown = rankedOpponents.slice(0, 5);
-  const remaining = rankedOpponents.length - shown.length;
-
-  return (
-    <section aria-labelledby="ranking-heading" className={styles.rankingSection}>
-      <div className={styles.sectionHeadingRow}>
-        <h2 id="ranking-heading">In the field</h2>
-        <p className={styles.sectionAside}>
-          {ranking.poll.name} · {ranking.weekLabel}
-        </p>
-      </div>
-
-      <div className={styles.rankingStanding}>
-        <p className={styles.rankingFigure}>
-          {teamRank === null ? (
-            "Unranked"
-          ) : (
-            <>
-              No. <span className="tnum">{teamRank}</span>
-            </>
-          )}
-        </p>
-        <p className={styles.rankingContext}>
-          {rankedOpponents.length === 0
-            ? `No ranked opponents on the ${teamName} schedule.`
-            : `${rankedOpponents.length} of ${opponentCount} opponents ranked.`}
-        </p>
-      </div>
-
-      {shown.length > 0 ? (
-        <ol className={styles.rankingList}>
-          {shown.map((opponent) => (
-            <li key={`${opponent.rank}-${opponent.opponent}`}>
-              <span className={`${styles.rankingRank} tnum`}>{opponent.rank}</span>
-              <span className={styles.rankingOpponent}>
-                {siteWord(opponent.site)} {opponent.opponent}
-              </span>
-              <span className={`${styles.rankingDate} tnum`}>{opponent.dateLabel}</span>
-            </li>
-          ))}
-        </ol>
-      ) : null}
-
-      <p className={styles.rankingNote}>
-        <a href={safeExternalHref(ranking.poll.sourceUrl)} target="_blank" rel="noreferrer">
-          Poll published {formatNewsDate(ranking.poll.releasedAt)}
-        </a>{". "}
-        Checked {formatNewsDate(ranking.checkedAt)}.{" "}
-        {remaining > 0 ? `${remaining} more ranked opponent${remaining === 1 ? "" : "s"}. ` : ""}
-        {ranking.pending
-          .map((poll) => `The ${poll.name} is out ${poll.expectedLabel}.`)
-          .join(" ")}
-      </p>
-    </section>
   );
 }
 

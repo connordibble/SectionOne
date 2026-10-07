@@ -82,7 +82,11 @@ Two rules govern the weekly sections:
 
 - **Rankings are read from the team outward.** Most teams are unranked, and a national top 25 answers
   nothing for them. The standing line is one line; the list underneath is the ranked opponents on
-  that team's own schedule, hardest first. A poll that has not been released says so.
+  that team's own schedule, separated into upcoming and played games and hardest first within
+  each group. Played games carry the final score from the team's perspective; an unconfirmed
+  result never becomes a win, loss, or completed game just because its date passed. Postponed,
+  cancelled, in-progress, and overdue games appear under game updates. Opponent ranks always
+  reflect the displayed poll, including for played games. A poll that has not been released says so.
 - **We write the takeaway; we do not write the reporting.** Every news item carries its outlet and a
   link out. That link must be an absolute `http(s)` URL, checked by `safeExternalHref` where the
   package is admitted: it is rendered into an `href`, and React puts a `javascript:` URL in an href

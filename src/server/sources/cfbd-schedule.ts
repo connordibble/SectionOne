@@ -9,6 +9,8 @@ export const cfbdGamesSchema = z.array(z.object({
   startTimeTBD: z.boolean().nullish(), homeTeam: z.string().trim().min(1),
   awayTeam: z.string().trim().min(1), neutralSite: z.boolean().nullish(),
   venue: z.string().nullish(), completed: z.boolean().nullish(),
+  homePoints: z.number().int().nonnegative().nullish(),
+  awayPoints: z.number().int().nonnegative().nullish(),
 }));
 export const cfbdMediaSchema = z.array(z.object({
   id: z.number().int().positive(), mediaType: z.string().nullish(), outlet: z.string().nullish(),
@@ -28,6 +30,8 @@ export type CfbdScheduleGame = {
   neutralSite?: boolean | null;
   venue?: string | null;
   completed?: boolean | null;
+  homePoints?: number | null;
+  awayPoints?: number | null;
 };
 
 // From /games/media. One game can have several rows (TV plus radio plus web),
@@ -92,6 +96,11 @@ function toScheduleGame(
   const confirmed = Boolean(game.startDate) && game.startTimeTBD !== true;
   const kickoffDate = game.startDate ? new Date(game.startDate) : null;
   const usable = kickoffDate && !Number.isNaN(kickoffDate.getTime()) ? kickoffDate : null;
+  const result = game.completed && game.homePoints != null && game.awayPoints != null
+    ? matches(game.homeTeam, cfbdTeamName(team))
+      ? { teamScore: game.homePoints, opponentScore: game.awayPoints }
+      : { teamScore: game.awayPoints, opponentScore: game.homePoints }
+    : undefined;
 
   return {
     id: buildGameId(game, team, opponent),
@@ -106,6 +115,7 @@ function toScheduleGame(
     kickoff: confirmed && usable ? formatKickoff(usable, timeZone) : "still to be announced",
     venue: game.venue?.trim() || "Venue to be announced",
     tv: outlets.get(game.id)?.join(" or ") ?? null,
+    ...(result ? { result } : {}),
   };
 }
 

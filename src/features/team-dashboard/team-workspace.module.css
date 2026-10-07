@@ -1099,13 +1099,36 @@
   min-width: 0;
   color: var(--team-ink);
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .rankingDate {
+  grid-column: 2;
+  grid-row: 2;
   color: var(--team-muted);
   font-family: var(--font-outlier);
   font-size: var(--text-2xs);
+  text-align: start;
+}
+
+.rankingResult,
+.rankingStatus {
+  grid-column: 3;
+  grid-row: 1;
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
   text-align: end;
+}
+
+.rankingResult {
+  color: var(--team-ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rankingStatus {
+  max-inline-size: 10ch;
+  color: var(--team-muted);
 }
 
 .rankingNote {
@@ -1963,19 +1986,41 @@
   line-height: 1;
 }
 
+.rankingGroup {
+  margin-block-start: var(--space-lg);
+}
+
+.rankingGroupHeading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin: 0;
+  color: var(--team-ink-subtle);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.rankingGroupHeading span {
+  color: var(--team-muted);
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+}
+
 .rankingList {
-  margin: var(--space-sm) 0 0;
+  margin: var(--space-xs) 0 0;
   padding: 0;
   list-style: none;
-  margin-block-start: var(--space-lg);
 }
 
 .rankingList li {
   display: grid;
   grid-template-columns: 3rem minmax(0, 1fr) auto;
-  gap: var(--space-xs);
+  gap: var(--space-2xs) var(--space-xs);
   align-items: baseline;
-  min-height: 3.5rem;
   padding-block: var(--space-xs);
 }
 
@@ -2795,17 +2840,6 @@
     border-block-start-color: var(--team-accent);
     background: var(--team-surface-strong);
     border-color: var(--team-on-stage);
-  }
-}
-
-@media (max-width: 40rem) {
-  .rankingList li {
-    grid-template-columns: 3rem minmax(0, 1fr);
-  }
-
-  .rankingDate {
-    grid-column: 2;
-    text-align: start;
   }
 }
 

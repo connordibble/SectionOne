@@ -14,6 +14,14 @@ export const scheduleGameSchema = z.object({
   dateLabel: z.string().min(1), startsAt: z.iso.datetime({ offset: true }).nullable(),
   date: z.iso.date().nullable(), status: z.enum(["scheduled", "in-progress", "final", "postponed", "cancelled"]),
   kickoff: z.string().min(1), venue: z.string().min(1), tv: z.string().min(1).nullable(),
+  result: z.object({
+    teamScore: z.number().int().nonnegative(),
+    opponentScore: z.number().int().nonnegative(),
+  }).optional(),
+}).superRefine((game, ctx) => {
+  if (game.result && game.status !== "final") {
+    ctx.addIssue({ code: "custom", path: ["result"], message: "A final score requires a completed game" });
+  }
 });
 export const teamScheduleSchema = z.object({
   teamSlug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), teamName: z.string().min(1), teamDisplayName: z.string().min(1),
@@ -43,6 +51,14 @@ export const teamScheduleSchema = z.object({
 export type TeamSchedule = z.infer<typeof teamScheduleSchema>;
 export type ScheduleGame = z.infer<typeof scheduleGameSchema>;
 export type ScheduleSite = ScheduleGame["site"];
+
+export type RankedGamePhase = "upcoming" | "played" | "updates";
+
+export function rankedGamePhase(game: Pick<ScheduleGame, "status" | "date">, today: string): RankedGamePhase {
+  if (game.status === "final") return "played";
+  if (game.status === "scheduled" && (game.date === null || game.date >= today)) return "upcoming";
+  return "updates";
+}
 
 export function calendarDate(value: Date, timeZone: string): string {
   const parts = new Intl.DateTimeFormat("en-US", {
