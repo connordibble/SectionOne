@@ -21,7 +21,7 @@ describe("ranked opponent groups", () => {
     const played = screen.getByRole("list", { name: /Played/ });
     expect(within(played).getByText("vs Past")).toBeVisible();
     expect(played).toHaveTextContent("W Win: 24–23");
-    expect(screen.getByText("Opponent ranks reflect this poll.", { exact: false })).toBeVisible();
+    expect(screen.getByText("Upcoming opponents use this AP poll. Played opponents use their AP rank at kickoff.", { exact: false })).toBeVisible();
     expect(screen.getByRole("link", { name: /Results checked/ })).toHaveAttribute("href", "https://example.com/schedule");
   });
   it.each([

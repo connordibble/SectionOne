@@ -136,3 +136,6 @@ present and continues without it in CI. That flag needs Node 22.9, so the
   a blocker before the product takes money, not before it launches.
 - The model provider's account-level ceiling is external to this repository;
   nothing here can verify its amount or that it exists.
+
+- Played opponents use saved AP ranks at kickoff; upcoming opponents use the current poll. Refresh game-day ranks after importing final scores (`pnpm ranks:refresh`). Missing historical ranks must never fall back to today’s poll.
+- The unranked standing must size to its rail: at 1024px a viewport-sized display font can extend into the news column without causing page overflow. Check the element bounds, not only document scroll width.

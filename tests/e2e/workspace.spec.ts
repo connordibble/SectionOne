@@ -1,4 +1,4 @@
-import { getTeamRankingSummary } from "../../src/server/sources/rankings";
+import { getRankingDocuments, getTeamRankingSummary } from "../../src/server/sources/rankings";
 import { expect, test } from "@playwright/test";
 import { getTeamConfig, enabledTeamSlugs } from "../../src/config/team";
 import { getNextGame, getTeamSchedule, formatCaptureDate, formatSite } from "../../src/server/schedule/schedule";
@@ -458,10 +458,10 @@ test("health and ingest APIs respond", async ({ request }) => {
     documentCount: number;
   };
   expect(ingestBody.teamSlug).toBe("texas-football");
-  // Twelve schedule rows, two official links, one poll, and the edition's
+  // Twelve schedule rows, two official links, ranking sources, and the edition's
   // published notes and stories. Editorial refreshes can change the note count.
   const edition = getPublishedEdition(texas.slug)!;
-  expect(ingestBody.documentCount).toBe(15 + edition.notes.length + edition.items.length);
+  expect(ingestBody.documentCount).toBe(14 + getRankingDocuments(texas).length + edition.notes.length + edition.items.length);
 });
 
 test("chat API returns named sources", async ({ request }) => {
@@ -689,3 +689,31 @@ test("full schedules show completed results from each team's perspective", async
     }
   }
 });
+
+
+test("played opponents retain their AP rank at kickoff with a linked source and final score", async ({ page }) => {
+  await page.goto("/teams/texas-football");
+  const played = page.getByRole("list", { name: /Played.*AP at kickoff/ });
+  const osu = played.locator("li").filter({ hasText: "Ohio State" });
+  await expect(osu).toContainText("W");
+  await expect(osu).toContainText("24–23");
+  await expect(osu.getByRole("link", { name: "No. 1 Ohio State, AP rank at kickoff: source" })).toHaveAttribute("href", "https://www.espn.com/college-football/game/_/gameId/401856682");
+  await page.goto("/teams/ohio-state-football");
+  await expect(page.getByRole("list", { name: /Played/ }).getByRole("link", { name: "No. 4 Texas, AP rank at kickoff: source" })).toBeVisible();
+});
+
+for (const theme of ["light", "dark"]) {
+  test(`the unranked standing stays inside its rail (${theme})`, async ({ page }) => {
+    await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
+    for (const width of [320, 375, 959, 960, 1023, 1024, 1280, 1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto("/teams/utah-state-football");
+      const fits = await page.locator('[data-unranked="true"]').evaluate((element) => {
+        const figure = element.getBoundingClientRect();
+        const rail = element.closest("section")!.getBoundingClientRect();
+        return figure.right <= rail.right && element.scrollWidth <= element.clientWidth;
+      });
+      expect(fits, `${theme} at ${width}px`).toBe(true);
+    }
+  });
+}

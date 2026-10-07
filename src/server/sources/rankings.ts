@@ -16,6 +16,7 @@ export type RankedOpponent = {
   status: ScheduleGame["status"];
   phase: RankedGamePhase;
   result?: ScheduleGame["result"];
+  rankSourceUrl?: string;
 };
 
 export type TeamRankingSummary = {
@@ -26,6 +27,7 @@ export type TeamRankingSummary = {
   teamRank: number | null;
   rankedOpponents: RankedOpponent[];
   opponentCount: number;
+  missingGameDayRanks?: number;
   pending: PendingPoll[];
   checkedAt: string;
   scheduleSource?: { url: string; checkedAt: string };
@@ -57,12 +59,16 @@ export function getTeamRankingSummary(team: TeamConfig, now = new Date()): TeamR
   const today = calendarDate(now, schedule?.timeZone ?? team.timeZone);
 
   const rankedOpponents = games.flatMap((game) => {
-    const rank = rankByTeam.get(normalize(game.opponent));
+    const phase = rankedGamePhase(game, today);
+    // Once a game starts, today's poll cannot rewrite what the opponent was.
+    const useGameDay = phase !== "upcoming";
+    const historical = game.opponentRankAtKickoff;
+    const rank = useGameDay ? historical?.rank ?? undefined : rankByTeam.get(normalize(game.opponent));
 
     return rank === undefined
       ? []
       : [{ gameId: game.id, opponent: game.opponent, rank, site: game.site, dateLabel: game.dateLabel,
-          status: game.status, phase: rankedGamePhase(game, today), result: game.result }];
+          status: game.status, phase, result: game.result, rankSourceUrl: useGameDay ? historical?.sourceUrl : undefined }];
   });
 
   return {
@@ -73,6 +79,7 @@ export function getTeamRankingSummary(team: TeamConfig, now = new Date()): TeamR
     // and a fan reads the top of it and stops.
     rankedOpponents: rankedOpponents.sort((left, right) => left.rank - right.rank),
     opponentCount: games.length,
+    missingGameDayRanks: games.filter((game) => game.status !== "cancelled" && rankedGamePhase(game, today) !== "upcoming" && !game.opponentRankAtKickoff).length,
     pending: week.pending,
     checkedAt: week.capturedAt,
     scheduleSource: schedule ? { url: schedule.sourceUrl, checkedAt: schedule.capturedAt } : undefined,
@@ -94,11 +101,12 @@ export function getRankingDocuments(team: TeamConfig): SourceDocument[] {
       ? `${team.shortName} is not ranked in the ${summary.poll.name}.`
       : `${team.shortName} is No. ${summary.teamRank} in the ${summary.poll.name}.`;
 
+  const upcoming = summary.rankedOpponents.filter((opponent) => opponent.phase === "upcoming");
   const opponents =
-    summary.rankedOpponents.length === 0
-      ? "No ranked opponents on the schedule."
-      : `Ranked opponents: ${summary.rankedOpponents
-          .map((opponent) => `No. ${opponent.rank} ${opponent.opponent} (${opponent.dateLabel})`)
+    upcoming.length === 0
+      ? "No upcoming opponents are ranked in this poll."
+      : `Ranked opponents: ${upcoming
+          .map((opponent) => `No. ${opponent.rank} ${opponent.opponent} (${opponent.dateLabel}; ${opponent.phase === "upcoming" ? "current AP rank" : "AP rank at kickoff"})`)
           .join("; ")}.`;
 
   const pending = summary.pending
@@ -113,7 +121,7 @@ export function getRankingDocuments(team: TeamConfig): SourceDocument[] {
       sourceType: "ranking",
       sourceUrl: summary.poll.sourceUrl,
       title: `${summary.poll.name}: ${summary.weekLabel}`,
-      body: `${standing} ${opponents} ${pending} Poll: ${summary.weekLabel}, published ${summary.poll.releasedAt.slice(0, 10)}.`.trim(),
+      body: `${standing} ${opponents} Upcoming opponents use the current AP poll; played opponents use AP rankings at kickoff. ${summary.missingGameDayRanks ? `${summary.missingGameDayRanks} game-day rankings are not yet verified.` : ""} ${pending} Poll: ${summary.weekLabel}, published ${summary.poll.releasedAt.slice(0, 10)}.`.trim(),
       metadata: {
         pollId: summary.poll.id,
         teamRank: summary.teamRank,
@@ -122,6 +130,15 @@ export function getRankingDocuments(team: TeamConfig): SourceDocument[] {
       publishedAt: summary.poll.releasedAt,
       fetchedAt: summary.checkedAt,
     },
+    ...summary.rankedOpponents.filter((opponent) => opponent.phase !== "upcoming" && opponent.rankSourceUrl).map((opponent): SourceDocument => ({
+      id: createSourceDocumentId([team.slug, "game-day-ranking", opponent.gameId]),
+      teamSlug: team.slug, provider: "press", sourceType: "ranking", sourceUrl: opponent.rankSourceUrl!,
+      title: `AP rank at kickoff: ${opponent.opponent}, ${opponent.dateLabel}`,
+      body: `${team.shortName} played No. ${opponent.rank} ${opponent.opponent} (${opponent.dateLabel}), using the AP rank at kickoff, not today's poll.${opponent.result ? ` Final score from ${team.shortName}'s perspective: ${opponent.result.teamScore}-${opponent.result.opponentScore}.` : ""}`,
+      metadata: { pollId: "ap", gameId: opponent.gameId, opponentRankAtKickoff: opponent.rank },
+      publishedAt: getTeamSchedule(team.slug)?.games.find((game) => game.id === opponent.gameId)?.date ?? summary.poll.releasedAt,
+      fetchedAt: getTeamSchedule(team.slug)?.games.find((game) => game.id === opponent.gameId)?.opponentRankAtKickoff?.checkedAt ?? summary.checkedAt,
+    })),
   ];
 }
 

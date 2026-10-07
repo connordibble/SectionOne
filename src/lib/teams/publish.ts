@@ -71,13 +71,15 @@ export async function publishTeamSchedule(root: string, input: unknown, now = ne
       }
     }
     if (previous.seasonYear === schedule.seasonYear) {
-      // An import that does not carry classification is not evidence that an
-      // opponent changed division, so a classification already on file stays.
+      // Imports that omit a fact already on file are not evidence the fact
+      // changed: an opponent's division and its game-day rank both stay.
       for (const game of schedule.games) {
-        if (game.opponentClassification) continue;
         const known = previous.games.find((candidate) => candidate.id === game.id)
           ?? previous.games.find((candidate) => candidate.opponent === game.opponent && candidate.date === game.date);
-        if (known?.opponentClassification) game.opponentClassification = known.opponentClassification;
+        if (!game.opponentClassification && known?.opponentClassification) game.opponentClassification = known.opponentClassification;
+        if (!game.opponentRankAtKickoff && known?.opponent === game.opponent && known.opponentRankAtKickoff?.gameDate === game.date) {
+          game.opponentRankAtKickoff = known.opponentRankAtKickoff;
+        }
       }
     }
     current.schedule = schedule;

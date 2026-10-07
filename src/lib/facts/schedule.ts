@@ -17,11 +17,19 @@ export const scheduleGameSchema = z.object({
   // Bowl eligibility counts at most one win over an FCS opponent, and none over
   // a lower division. Absent means not yet classified, never assumed FBS.
   opponentClassification: z.enum(["fbs", "fcs", "lower-division"]).optional(),
+  // null is confirmed unranked; absence means the game-day poll is unknown.
+  opponentRankAtKickoff: z.object({
+    pollId: z.literal("ap"), rank: z.number().int().min(1).max(25).nullable(),
+    gameDate: z.iso.date(), sourceUrl: sourceUrlSchema, checkedAt: z.iso.datetime({ offset: true }),
+  }).optional(),
   result: z.object({
     teamScore: z.number().int().nonnegative(),
     opponentScore: z.number().int().nonnegative(),
   }).optional(),
 }).superRefine((game, ctx) => {
+  if (game.opponentRankAtKickoff && game.opponentRankAtKickoff.gameDate !== game.date) {
+    ctx.addIssue({ code: "custom", path: ["opponentRankAtKickoff"], message: "Game-day ranking belongs to another date" });
+  }
   if (game.result && game.status !== "final") {
     ctx.addIssue({ code: "custom", path: ["result"], message: "A final score requires a completed game" });
   }
