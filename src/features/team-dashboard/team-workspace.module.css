@@ -2308,6 +2308,7 @@
 }
 
 .matchupLead {
+  container-type: inline-size;
   position: relative;
   z-index: var(--z-raised);
   display: flex;
@@ -2350,16 +2351,16 @@
 
 .matchupLead h1 {
   margin: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   font-family: var(--font-display);
   font-style: normal;
   font-weight: var(--display-weight);
   letter-spacing: var(--tracking-display);
   text-transform: uppercase;
   margin-inline-start: var(--space-sm);
-  max-width: 11ch;
+  max-width: 100%;
   color: var(--team-on-stage);
-  font-size: clamp(3.25rem, 16vw, 5.75rem);
+  font-size: clamp(2.5rem, 14cqi, 8.25rem);
   line-height: 1;
   text-wrap: balance;
 }
@@ -4324,17 +4325,11 @@
     padding-block: var(--space-2xl);
   }
 
-  /* A 9ch measure belongs to the split, where the headline owns one column.
-     Stacked, it left the right half of a full-width hero empty. */
+  /* The headline scales to its own column, including long school names. */
   .matchupLead {
     min-height: 39rem;
     --panel-pad: var(--stage-gutter);
     padding-block: var(--space-2xl);
-  }
-
-  .matchupLead h1 {
-    max-width: 9ch;
-    font-size: clamp(5.25rem, 8vw, 8.25rem);
   }
 }
 

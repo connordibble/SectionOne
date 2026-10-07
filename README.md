@@ -3,11 +3,13 @@
 Section One is an independent college-football intelligence desk: what matters before kickoff,
 what to watch during the game, and the evidence behind the read.
 
-Four editions are available: Texas, Utah State, Ohio State, and LSU. The team selector groups them
-by conference. Each uses the same edition contract, workspace, and publication checks.
+Eight editions are available: Texas, Utah State, Ohio State, LSU, Northwestern, Kansas, Alabama,
+and Georgia. The team selector groups them by conference. Each uses the same edition contract,
+workspace, and publication checks.
 
-Each edition connects three views: Brief, Matchup, and Schedule. One grounded chat thread follows
-the reader between them. Brief also carries the team's poll standing read against its own schedule,
+Each edition connects four views: Brief, Matchup, Schedule, and Postseason. One grounded chat thread
+follows the reader between them. Postseason tracks the playoff path and bowl eligibility using
+sourced season rules, results, and committee rankings when available. Brief also carries the team's poll standing read against its own schedule,
 and a graded weekly briefing of up to five stories. Team identity, source policy and light/dark palettes live in typed configuration. Weekly editorial
 content lives in a versioned edition package, so another team can reuse the same UI.
 

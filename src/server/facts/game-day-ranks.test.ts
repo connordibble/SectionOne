@@ -14,6 +14,13 @@ it("reads the archived No. 1 opponent instead of today's rank", () => {
   expect(read()).toMatchObject({ rank: 1, pollId: "ap", gameDate: "2026-09-12", sourceUrl: expect.stringContaining("401856682") });
   expect(gameDayFeedUrl("2026-09-12")).toContain("limit=200");
 });
+it("matches a schedule abbreviation while still verifying the game and score", () => {
+  const copy = JSON.parse(JSON.stringify(feed));
+  copy.events[0].competitions[0].competitors[1].team.abbreviation = "OSU";
+  expect(read(copy, { ...game, opponent: "OSU" })?.rank).toBe(1);
+  expect(read(copy, { ...game, opponent: "LIU" })).toBeUndefined();
+  expect(() => read(copy, { ...game, opponent: "OSU", result: { teamScore: 0, opponentScore: 23 } })).toThrow("disagrees");
+});
 it("distinguishes explicit unranked from missing evidence and rejects invalid ranks", () => {
   const copy = structuredClone(feed);
   const opponent = copy.events[0].competitions[0].competitors[1];

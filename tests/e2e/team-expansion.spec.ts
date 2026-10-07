@@ -5,6 +5,29 @@ const teams = enabledTeamSlugs.map((slug) => getTeamConfig(slug)!);
 const colorAnchors: Record<string, number[]> = { "ohio-state-football": [186, 12, 47], "lsu-football": [70, 29, 124] };
 
 for (const theme of ["light", "dark"] as const) {
+  test(`matchup headlines keep school names whole in ${theme}`, async ({ page }) => {
+    await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
+    for (const team of teams) {
+      await page.goto(`/teams/${team.slug}`);
+      await page.evaluate(() => document.fonts.ready);
+      for (const width of [320, 375, 1280, 1376, 1440, 1920]) {
+        await page.setViewportSize({ width, height: 900 });
+        const brokenWords = await page.locator('[data-testid="kickoff-lead"] h1').evaluate((heading) => {
+          const text = heading.firstChild!;
+          const bounds = heading.getBoundingClientRect();
+          return [...text.textContent!.matchAll(/\S+/g)].flatMap((match) => {
+            const range = document.createRange();
+            range.setStart(text, match.index!);
+            range.setEnd(text, match.index! + match[0].length);
+            const rects = [...range.getClientRects()];
+            return rects.length !== 1 || rects.some((rect) => rect.right > bounds.right + 1)
+              ? [match[0]] : [];
+          });
+        });
+        expect(brokenWords, `${team.shortName} at ${width}px`).toEqual([]);
+      }
+    }
+  });
   test(`new editions preserve school colors and conference navigation in ${theme}`, async ({ page }) => {
     await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
     for (const team of teams) {

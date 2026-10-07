@@ -6,6 +6,13 @@ is for how the project is worked on.
 
 ## Verification traps
 
+### A headline can fit the page and still break a school name
+
+Northwestern exposed the Brief headline's fixed `ch` measure: the page had no horizontal overflow,
+but the name broke into “Northweste” and “rn.” The headline now scales against its own column with
+container units. The expansion browser check verifies each word occupies one line and stays within
+the heading at mobile, stacked desktop, and split desktop widths for every enabled team.
+
 ### Playwright used to silently test a stale server — fixed
 
 `playwright.config.ts` once ran on port 3000 with `reuseExistingServer` set

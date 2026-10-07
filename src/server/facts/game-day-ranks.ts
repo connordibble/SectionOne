@@ -4,7 +4,7 @@ import { calendarDate, type ScheduleGame } from "@/lib/facts/schedule";
 
 const key = (name: string) => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, " ").trim();
 const competitorSchema = z.object({
-  team: z.object({ location: z.string(), displayName: z.string(), shortDisplayName: z.string().optional() }),
+  team: z.object({ location: z.string(), displayName: z.string(), shortDisplayName: z.string().optional(), abbreviation: z.string().optional() }),
   curatedRank: z.object({ current: z.number().int() }).optional(),
   score: z.string().optional(),
 });
@@ -28,7 +28,7 @@ export function verifiedGameDayRank(feed: unknown, team: TeamConfig, game: Sched
   const teamNames = [team.shortName, team.displayName, ...team.aliases].map(key);
   const opponentNames = [game.opponent, ...(key(game.opponent) === "ole miss" ? ["Mississippi"] : [])].map(key);
   const matches = (names: string[], competitor: z.infer<typeof competitorSchema>) =>
-    [competitor.team.location, competitor.team.displayName, competitor.team.shortDisplayName].some((name) => name && names.includes(key(name)));
+    [competitor.team.location, competitor.team.displayName, competitor.team.shortDisplayName, competitor.team.abbreviation].some((name) => name && names.includes(key(name)));
   const candidates = feedSchema.parse(feed).events.flatMap((raw) => {
     const parsed = eventSchema.safeParse(raw);
     if (!parsed.success) return [];

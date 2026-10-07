@@ -472,7 +472,8 @@ asserts the contracts below that can be measured; verify the rest by eye at 320,
   consumed most of its track and the countdown clipped out of the box.
 - The page never scrolls horizontally.
 - Interactive labels remain on one line; their parent reflows first.
-- Display headings wrap safely within long words.
+- Display headings wrap safely. The Brief matchup headline scales to its own column and keeps
+  school names whole; a fixed character measure must not split a name such as Northwestern.
 - Tabs may scroll horizontally.
 - Desktop field geometry in Matchup becomes a compact 2×2 key picker followed by the selected read
   on mobile.

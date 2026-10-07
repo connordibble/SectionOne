@@ -1198,5 +1198,1194 @@
         }
       ]
     }
+  },
+  "northwestern-football": {
+    "identity": {
+      "slug": "northwestern-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big Ten",
+      "displayName": "Northwestern football",
+      "shortName": "Northwestern",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Chicago",
+      "officialScheduleUrl": "https://nusports.com/sports/football/schedule",
+      "aliases": [
+        "Northwestern",
+        "Northwestern University",
+        "Wildcats",
+        "NU"
+      ],
+      "theme": {
+        "hue": 300,
+        "chroma": 0.15,
+        "structuralHue": 300,
+        "structuralChroma": 0.15,
+        "structuralLightness": 35,
+        "preserveStageInDark": true
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Northwestern Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "nusports.com",
+          "insidenu.com",
+          "dailynorthwestern.com",
+          "ballstatesports.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "explosiveness",
+          "field position",
+          "pressure",
+          "success rate",
+          "EPA",
+          "PPA"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Northwestern",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What should I watch for with blocking angles?",
+        "Who does Northwestern play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "northwestern-football",
+      "teamName": "Northwestern",
+      "teamDisplayName": "Northwestern football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://nusports.com/sports/football/schedule",
+      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "timeZone": "America/Chicago",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://nusports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-07T02:35:21.494568Z",
+        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+      },
+      "games": [
+        {
+          "id": "northwestern-football-2026-401858431",
+          "opponent": "South Dakota State",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-06T00:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "Northwestern Medicine Field at Martin Stadium, Evanston, IL",
+          "tv": "BTN",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858431",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 34,
+            "opponentScore": 18
+          }
+        },
+        {
+          "id": "northwestern-football-2026-401856796",
+          "opponent": "Colorado",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T23:30:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "6:30 p.m. CT",
+          "venue": "Northwestern Medicine Field at Martin Stadium, Evanston, IL",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856796",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 41,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "northwestern-football-2026-401858461",
+          "opponent": "Indiana",
+          "site": "away",
+          "dateLabel": "Sep 25",
+          "startsAt": "2026-09-26T00:00:00Z",
+          "date": "2026-09-25",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 5,
+            "gameDate": "2026-09-25",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858461",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 23,
+            "opponentScore": 29
+          }
+        },
+        {
+          "id": "northwestern-football-2026-401858476",
+          "opponent": "Penn State",
+          "site": "home",
+          "dateLabel": "Oct 2",
+          "startsAt": "2026-10-03T00:00:00Z",
+          "date": "2026-10-02",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-02",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858476",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 34,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "northwestern-football-2026-401858482",
+          "opponent": "Ball State",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T16:30:00Z",
+          "date": "2026-10-10",
+          "status": "scheduled",
+          "kickoff": "11:30 a.m. CT",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": "BTN",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858491",
+          "opponent": "Michigan State",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T16:00:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Spartan Stadium, East Lansing, MI",
+          "tv": "Peacock",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858498",
+          "opponent": "Rutgers",
+          "site": "home",
+          "dateLabel": "Oct 24",
+          "startsAt": null,
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858505",
+          "opponent": "Oregon",
+          "site": "away",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Autzen Stadium, Eugene, OR",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858513",
+          "opponent": "Iowa",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858522",
+          "opponent": "Ohio State",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Ohio Stadium, Columbus, OH",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858530",
+          "opponent": "Minnesota",
+          "site": "away",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Huntington Bank Stadium, Minneapolis, MN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "northwestern-football-2026-401858537",
+          "opponent": "Illinois",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "kansas-football": {
+    "identity": {
+      "slug": "kansas-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big 12",
+      "displayName": "Kansas football",
+      "shortName": "Kansas",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Chicago",
+      "officialScheduleUrl": "https://kuathletics.com/sports/football/schedule",
+      "aliases": [
+        "Kansas",
+        "University of Kansas",
+        "KU",
+        "Jayhawks"
+      ],
+      "theme": {
+        "hue": 264,
+        "chroma": 0.17,
+        "structuralHue": 264,
+        "structuralChroma": 0.17,
+        "structuralLightness": 43,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 27,
+          "chroma": 0.18,
+          "lightness": 65
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Kansas Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "kuathletics.com",
+          "kusports.com",
+          "kansan.com",
+          "utahutes.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "explosiveness",
+          "field position",
+          "pressure",
+          "success rate",
+          "EPA",
+          "PPA"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Kansas",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What should I watch for with backfield workload?",
+        "Who does Kansas play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "kansas-football",
+      "teamName": "Kansas",
+      "teamDisplayName": "Kansas football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://kuathletics.com/sports/football/schedule",
+      "capturedAt": "2026-10-07T02:43:13.553Z",
+      "timeZone": "America/Chicago",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://kuathletics.com/sports/football/schedule",
+        "retrievedAt": "2026-10-07T02:35:21.494568Z",
+        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+      },
+      "games": [
+        {
+          "id": "kansas-football-2026-401856769",
+          "opponent": "LIU",
+          "site": "home",
+          "dateLabel": "Sep 4",
+          "startsAt": "2026-09-05T00:00:00Z",
+          "date": "2026-09-04",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": "ESPNU",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-04",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856769",
+            "checkedAt": "2026-10-07T02:43:13.553Z"
+          },
+          "result": {
+            "teamScore": 51,
+            "opponentScore": 6
+          }
+        },
+        {
+          "id": "kansas-football-2026-401856678",
+          "opponent": "Missouri",
+          "site": "home",
+          "dateLabel": "Sep 11",
+          "startsAt": "2026-09-12T00:00:00Z",
+          "date": "2026-09-11",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 23,
+            "gameDate": "2026-09-11",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856678",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 21,
+            "opponentScore": 38
+          }
+        },
+        {
+          "id": "kansas-football-2026-401856812",
+          "opponent": "Arizona State",
+          "site": "neutral",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T16:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Wembley Stadium, London",
+          "tv": "FS1",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856812",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "kansas-football-2026-401856807",
+          "opponent": "Middle Tennessee",
+          "site": "home",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T16:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856807",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 55,
+            "opponentScore": 0
+          }
+        },
+        {
+          "id": "kansas-football-2026-401856827",
+          "opponent": "Utah",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-11T02:15:00Z",
+          "date": "2026-10-10",
+          "status": "scheduled",
+          "kickoff": "9:15 p.m. CT",
+          "venue": "Rice-Eccles Stadium, Salt Lake City, UT",
+          "tv": "ESPN",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856830",
+          "opponent": "Kansas State",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T16:00:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Bill Snyder Family Stadium, Manhattan, KS",
+          "tv": "FS1",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856834",
+          "opponent": "Baylor",
+          "site": "home",
+          "dateLabel": "Oct 24",
+          "startsAt": null,
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856845",
+          "opponent": "TCU",
+          "site": "away",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Amon G. Carter Stadium, Fort Worth, TX",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856850",
+          "opponent": "UCF",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856861",
+          "opponent": "West Virginia",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Milan Puskar Stadium, Morgantown, WV",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856866",
+          "opponent": "BYU",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "kansas-football-2026-401856877",
+          "opponent": "Oklahoma State",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Boone Pickens Stadium, Stillwater, OK",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "alabama-football": {
+    "identity": {
+      "slug": "alabama-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "SEC",
+      "displayName": "Alabama football",
+      "shortName": "Alabama",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Chicago",
+      "officialScheduleUrl": "https://rolltide.com/sports/football/schedule",
+      "aliases": [
+        "Alabama",
+        "University of Alabama",
+        "Crimson Tide"
+      ],
+      "theme": {
+        "hue": 22,
+        "chroma": 0.16,
+        "structuralHue": 22,
+        "structuralChroma": 0.16,
+        "structuralLightness": 40,
+        "preserveStageInDark": true
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Alabama Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "rolltide.com",
+          "si.com",
+          "al.com",
+          "tuscaloosanews.com",
+          "georgiadogs.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "explosiveness",
+          "field position",
+          "pressure",
+          "success rate",
+          "EPA",
+          "PPA"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Alabama",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What should I watch for with right tackle?",
+        "Who does Alabama play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "alabama-football",
+      "teamName": "Alabama",
+      "teamDisplayName": "Alabama football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://rolltide.com/sports/football/schedule",
+      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "timeZone": "America/Chicago",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://rolltide.com/sports/football/schedule",
+        "retrievedAt": "2026-10-07T02:35:21.494568Z",
+        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+      },
+      "games": [
+        {
+          "id": "alabama-football-2026-401856634",
+          "opponent": "East Carolina",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T16:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "ABC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856634",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 48,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "alabama-football-2026-401856674",
+          "opponent": "Kentucky",
+          "site": "away",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T19:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "2:30 p.m. CT",
+          "venue": "Kroger Field, Lexington, KY",
+          "tv": "ABC / Disney+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856674",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "alabama-football-2026-401856685",
+          "opponent": "Florida State",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T21:15:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "4:15 p.m. CT",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "ESPN2",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856685",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 50,
+            "opponentScore": 36
+          }
+        },
+        {
+          "id": "alabama-football-2026-401856696",
+          "opponent": "South Carolina",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T23:10:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "6:10 p.m. CT",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "ESPN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856696",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 49,
+            "opponentScore": 18
+          }
+        },
+        {
+          "id": "alabama-football-2026-401856707",
+          "opponent": "Mississippi State",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T16:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Davis Wade Stadium, Starkville, MS",
+          "tv": "ABC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 16,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856707",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 56,
+            "opponentScore": 23
+          }
+        },
+        {
+          "id": "alabama-football-2026-401856712",
+          "opponent": "Georgia",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T23:30:00Z",
+          "date": "2026-10-10",
+          "status": "scheduled",
+          "kickoff": "6:30 p.m. CT",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "alabama-football-2026-401856723",
+          "opponent": "Tennessee",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T19:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "2:30 p.m. CT",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "ABC or ESPN or SEC Network",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "alabama-football-2026-401856727",
+          "opponent": "Texas A&M",
+          "site": "home",
+          "dateLabel": "Oct 24",
+          "startsAt": null,
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "Flex window (afternoon or night)",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "alabama-football-2026-401856740",
+          "opponent": "LSU",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "Flex window (afternoon or night)",
+          "venue": "Tiger Stadium (LA), Baton Rouge, LA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "alabama-football-2026-401856889",
+          "opponent": "Vanderbilt",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "Early window (11 a.m.–12 p.m. CT)",
+          "venue": "FirstBank Stadium, Nashville, TN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "alabama-football-2026-401856746",
+          "opponent": "Chattanooga",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": "2026-11-21T19:00:00Z",
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "1:00 p.m. CT",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "SECN+",
+          "opponentClassification": "fcs"
+        },
+        {
+          "id": "alabama-football-2026-401856757",
+          "opponent": "Auburn",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "Flex window (afternoon or night)",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "georgia-football": {
+    "identity": {
+      "slug": "georgia-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "SEC",
+      "displayName": "Georgia football",
+      "shortName": "Georgia",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://georgiadogs.com/sports/football/schedule",
+      "aliases": [
+        "Georgia",
+        "University of Georgia",
+        "UGA",
+        "Bulldogs"
+      ],
+      "theme": {
+        "hue": 25,
+        "chroma": 0.19,
+        "structuralHue": 25,
+        "structuralChroma": 0.19,
+        "structuralLightness": 43,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 25,
+          "chroma": 0.01,
+          "lightness": 85
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Georgia Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "georgiadogs.com",
+          "si.com",
+          "dawgnation.com",
+          "onlineathens.com",
+          "rolltide.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "explosiveness",
+          "field position",
+          "pressure",
+          "success rate",
+          "EPA",
+          "PPA"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Georgia",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What should I watch for with run fits?",
+        "Who does Georgia play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "georgia-football",
+      "teamName": "Georgia",
+      "teamDisplayName": "Georgia football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
+      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
+        "retrievedAt": "2026-10-07T02:35:21.494568Z",
+        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+      },
+      "games": [
+        {
+          "id": "georgia-football-2026-401856658",
+          "opponent": "Tennessee State",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T19:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "3:00 p.m. ET",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": "SECN+",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856658",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 63,
+            "opponentScore": 3
+          }
+        },
+        {
+          "id": "georgia-football-2026-401856673",
+          "opponent": "Western Kentucky",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T16:45:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "12:45 p.m. ET",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": "SEC Network",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856673",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 70,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "georgia-football-2026-401856686",
+          "opponent": "Arkansas",
+          "site": "away",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T16:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Donald W. Reynolds Razorback Stadium, Fayetteville, AR",
+          "tv": "ABC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856686",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "georgia-football-2026-401856700",
+          "opponent": "Oklahoma",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T19:30:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": "ESPN / Disney+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856700",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 41,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "georgia-football-2026-401856705",
+          "opponent": "Vanderbilt",
+          "site": "home",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T16:45:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "12:45 p.m. ET",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": "SEC Network",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856705",
+            "checkedAt": "2026-10-07T02:38:59.757Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 14
+          }
+        },
+        {
+          "id": "georgia-football-2026-401856712",
+          "opponent": "Alabama",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T23:30:00Z",
+          "date": "2026-10-10",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Bryant-Denny Stadium, Tuscaloosa, AL",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856719",
+          "opponent": "Auburn",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": null,
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856734",
+          "opponent": "Florida",
+          "site": "neutral",
+          "dateLabel": "Oct 31",
+          "startsAt": "2026-10-31T19:30:00Z",
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Mercedes-Benz Stadium, Atlanta, GA",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856741",
+          "opponent": "Ole Miss",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Vaught-Hemingway Stadium, Oxford, MS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856883",
+          "opponent": "Missouri",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856753",
+          "opponent": "South Carolina",
+          "site": "away",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Williams-Brice Stadium, Columbia, SC",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "georgia-football-2026-401856760",
+          "opponent": "Georgia Tech",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Sanford Stadium, Athens, GA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
   }
 }
