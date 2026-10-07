@@ -25,17 +25,17 @@
         }
       },
       {
-        "id": "first-down-efficiency",
-        "headline": "Texas’s six three-and-outs at Tennessee began with poor first downs",
-        "tldr": "Burnt Orange Nation’s review found four of those six opening plays lost at least four yards. Watch whether Texas can avoid penalties and negative plays before the defense knows a pass is coming.",
+        "id": "bishop-personnel",
+        "headline": "Bishop’s four-receiver package gives Texas another offensive look",
+        "tldr": "Texas introduced the package against UTSA to get Bishop on the field alongside its top three receivers. Watch the screen game and protection when the tight end comes off.",
         "outlet": "Burnt Orange Nation",
         "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/105433/texas-longhorns-first-down-offense-tennessee-volunteers",
-        "publishedAt": "2026-10-03T12:46:00Z",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/105544/jermaine-bishop-10-personnel-steve-sarkisian",
+        "publishedAt": "2026-10-07T16:44:00Z",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -178,7 +178,8 @@
         "publishedAt": "2026-10-07T00:06:19.216Z",
         "body": "Watch ball security after a takeaway. A short field still requires sound blocking and a clean decision to become points."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-07T23:12:31.885Z"
   },
   "utah-state-football": {
     "schemaVersion": 1,
@@ -791,17 +792,17 @@
         }
       },
       {
-        "id": "homecoming-kickoff",
-        "headline": "Ball State visits at 11:30 a.m. CT Saturday on BTN",
-        "tldr": "The October 10 game is back at Ryan Field. Plan for the early start and watch whether the offense settles in from its first possession.",
-        "outlet": "Ball State Athletics",
+        "id": "secondary-depth",
+        "headline": "Deasfernandes and Stevens stepped up against Penn State",
+        "tldr": "Deasfernandes made seven tackles from nickel; Stevens added two pass breakups at safety. Watch the coverage communication against Ball State.",
+        "outlet": "Northwestern Athletics",
         "tier": "official",
-        "url": "https://ballstatesports.com/news/2026/9/28/football-cardinals-and-wildcats-kickoff-at-12-30-pm-et-october-10-at-new-ryan-field",
-        "publishedAt": "2026-09-28",
+        "url": "https://nusports.com/news/2026/10/7/next-man-up-brenden-deasfernandes-jon-jon-stevens-answer-the-call-in-nu-secondary",
+        "publishedAt": "2026-10-07",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       }
     ],
@@ -902,7 +903,8 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Watch defenders communicate when a receiver changes direction. Pressure should not leave a free target behind it."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-07T23:11:20.732Z"
   },
   "kansas-football": {
     "schemaVersion": 1,
@@ -1139,17 +1141,17 @@
         }
       },
       {
-        "id": "takeaway-conversion",
-        "headline": "Four Mississippi State turnovers produced 21 Alabama points",
-        "tldr": "The defense created extra chances and the team converted them. Watch ball security on the return and clean execution on the ensuing possession.",
-        "outlet": "Alabama Athletics",
-        "tier": "official",
-        "url": "https://rolltide.com/news/2026/10/3/football-no-7-7-alabama-races-past-no-16-16-mississippi-state-56-23",
-        "publishedAt": "2026-10-03",
+        "id": "weather-monitoring",
+        "headline": "Alabama is monitoring the weather; no game change is announced",
+        "tldr": "The school says it currently has no plans to alter Saturday’s Georgia game. Check official updates before traveling; a possible change is not a confirmed postponement.",
+        "outlet": "Georgia Bulldogs on SI",
+        "tier": "local",
+        "url": "https://www.si.com/college/georgia/the-nightmare-is-here-for-georgia-football-and-the-alabama-crimson-tide-01m49w9y8vea",
+        "publishedAt": "2026-10-07T00:44:45Z",
         "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
+          "impact": 5,
+          "echo": 3,
+          "freshness": 5
         }
       },
       {
@@ -1264,7 +1266,8 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-07T23:11:20.795Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1334,16 +1337,16 @@
         }
       },
       {
-        "id": "prime-time-plan",
-        "headline": "Georgia–Alabama kicks off at 7:30 p.m. ET Saturday on ABC",
-        "tldr": "The October 10 game is in Tuscaloosa. Set aside the evening for a road test and watch how the offense handles its first noisy possession.",
+        "id": "weather-monitoring",
+        "headline": "Alabama is monitoring the weather; no game change is announced",
+        "tldr": "The school says it currently has no plans to alter Saturday’s Georgia game. Check official updates before traveling; a possible change is not a confirmed postponement.",
         "outlet": "Georgia Bulldogs on SI",
         "tier": "local",
-        "url": "https://www.si.com/college/georgia/how-to-watch-georgia-football-vs-alabama-game-time-tv-channel-streaming-odds-for-week-6-game-oct-10-2026-01m43k4cr8ec",
-        "publishedAt": "2026-10-04",
+        "url": "https://www.si.com/college/georgia/the-nightmare-is-here-for-georgia-football-and-the-alabama-crimson-tide-01m49w9y8vea",
+        "publishedAt": "2026-10-07T00:44:45Z",
         "grade": {
-          "impact": 3,
-          "echo": 1,
+          "impact": 5,
+          "echo": 3,
           "freshness": 5
         }
       }
@@ -1445,6 +1448,7 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-07T23:11:20.858Z"
   }
 }
