@@ -90,6 +90,10 @@ present and continues without it in CI. That flag needs Node 22.9, so the
   September 12 at Washington is 1:30 p.m. MT on Big Ten Network. November 14 at
   San Diego State is 7:30 p.m. MT on USA Network. Fixture assertions now lock
   both values until the next generated schedule refresh.
+- **Opponent classification was added to the four live schedules on 2026-10-06.** Idaho State
+  and McNeese are FCS; every other named opponent is FBS. Utah State's unnamed Pac-12 flex game
+  stays unclassified until it has an opponent. Refreshes carry these forward; a CFBD rebuild
+  replaces them with the provider's own classification.
 - **Poll data is ranks only.** The published first-place vote counts for the
   2026 preseason Coaches Poll were internally inconsistent across sources, so
   only the ordering — which is corroborated — was taken.

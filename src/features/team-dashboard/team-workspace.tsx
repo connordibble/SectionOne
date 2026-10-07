@@ -2,6 +2,7 @@
 
 import {
   useEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
@@ -18,8 +19,11 @@ import type {
   TeamSchedule,
 } from "@/server/schedule/schedule";
 import type { TeamRankingSummary } from "@/server/sources/rankings";
+import type { PostseasonView as PostseasonViewData } from "@/lib/postseason/view";
 import { formatNewsDate } from "@/lib/news-date";
 import type { WeeklyEdition } from "@/server/sources/weekly";
+import { PostseasonSection } from "./postseason-section";
+import { PostseasonView } from "./postseason-view";
 import { RankingSection } from "./ranking-section";
 import { SchedulePreview } from "./schedule-preview";
 import { SignalBoard, type WorkspaceSignal } from "./signal-board";
@@ -27,7 +31,7 @@ import { TeamChat, type ChatCitation, type DraftRequest } from "./team-chat";
 import styles from "./team-workspace.module.css";
 import { safeExternalHref } from "@/lib/safe-url";
 
-export type WorkspaceView = "brief" | "matchup" | "schedule";
+export type WorkspaceView = "brief" | "matchup" | "schedule" | "postseason";
 type ThemeMode = "light" | "dark";
 
 type TeamOption = {
@@ -40,6 +44,7 @@ type TeamWorkspaceProps = {
   countdown: KickoffCountdown;
   leadSourceTitle: string;
   nextGame?: ScheduleGame;
+  postseason?: PostseasonViewData;
   ranking?: TeamRankingSummary;
   schedule?: TeamSchedule;
   scheduleCapturedLabel?: string;
@@ -51,10 +56,11 @@ type TeamWorkspaceProps = {
   weekly?: WeeklyEdition;
 };
 
-const views: Array<{ id: WorkspaceView; label: string }> = [
+const allViews: Array<{ id: WorkspaceView; label: string }> = [
   { id: "brief", label: "Brief" },
   { id: "matchup", label: "Matchup" },
   { id: "schedule", label: "Schedule" },
+  { id: "postseason", label: "Postseason" },
 ];
 
 function isTouchLikePointer(event: PointerEvent<HTMLSelectElement>): boolean {
@@ -100,6 +106,7 @@ export function TeamWorkspace({
   countdown,
   leadSourceTitle,
   nextGame,
+  postseason,
   ranking,
   schedule,
   scheduleCapturedLabel,
@@ -110,6 +117,13 @@ export function TeamWorkspace({
   themeStyle,
   weekly,
 }: TeamWorkspaceProps) {
+  // A season without postseason rules has no fourth view, rather than an
+  // empty one.
+  const hasPostseason = Boolean(postseason);
+  const views = useMemo(
+    () => (hasPostseason ? allViews : allViews.filter((view) => view.id !== "postseason")),
+    [hasPostseason],
+  );
   const [activeView, setActiveView] = useState<WorkspaceView>("brief");
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
   const [draftRequest, setDraftRequest] = useState<DraftRequest>();
@@ -117,7 +131,7 @@ export function TeamWorkspace({
   useEffect(() => {
     const syncHash = (focusTab = false) => {
       const hashView = window.location.hash.slice(1);
-      const nextView = isWorkspaceView(hashView) ? hashView : "brief";
+      const nextView = views.some((view) => view.id === hashView) ? hashView as WorkspaceView : "brief";
 
       setActiveView(nextView);
 
@@ -146,7 +160,7 @@ export function TeamWorkspace({
       window.removeEventListener("hashchange", syncHistory);
       window.removeEventListener("popstate", syncHistory);
     };
-  }, []);
+  }, [views]);
 
   function selectView(view: WorkspaceView, options: { focusTab?: boolean } = {}) {
     setActiveView(view);
@@ -330,6 +344,8 @@ export function TeamWorkspace({
               issueLabel={team.referenceLabel}
               lead={team.editorial.lead}
               leadSourceTitle={leadSourceTitle}
+              onOpenPostseason={() => selectView("postseason", { focusTab: true })}
+              postseason={postseason?.outlook}
               ranking={ranking}
               signals={signals}
               teamName={team.shortName}
@@ -349,6 +365,9 @@ export function TeamWorkspace({
               schedule={schedule}
               variant="full"
             />
+          ) : null}
+          {activeView === "postseason" && postseason ? (
+            <PostseasonView teamName={team.shortName} view={postseason} />
           ) : null}
         </section>
 
@@ -451,6 +470,8 @@ function BriefView({
   issueLabel,
   lead,
   leadSourceTitle,
+  onOpenPostseason,
+  postseason,
   ranking,
   signals,
   teamName,
@@ -461,6 +482,8 @@ function BriefView({
   issueLabel: string;
   lead: TeamConfig["editorial"]["lead"];
   leadSourceTitle: string;
+  onOpenPostseason: () => void;
+  postseason?: PostseasonViewData["outlook"];
   ranking?: TeamRankingSummary;
   signals: WorkspaceSignal[];
   teamName: string;
@@ -524,7 +547,12 @@ function BriefView({
       </div>
 
       <div className={styles.briefLower}>
-        {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+        {ranking || postseason ? (
+          <div className={styles.standingRail}>
+            {ranking ? <RankingSection ranking={ranking} teamName={teamName} /> : null}
+            {postseason ? <PostseasonSection onOpen={onOpenPostseason} outlook={postseason} /> : null}
+          </div>
+        ) : null}
         {weekly ? <WeeklyNewsSection weekly={weekly} /> : null}
       </div>
     </div>
@@ -681,10 +709,6 @@ function siteWord(site: ScheduleGame["site"]): string {
 
 function shortDate(dateLabel: string): string {
   return dateLabel.replace(/^\w+day,\s*/, "");
-}
-
-function isWorkspaceView(value: string): value is WorkspaceView {
-  return views.some((view) => view.id === value);
 }
 
 function isThemeMode(value: string | null): value is ThemeMode {

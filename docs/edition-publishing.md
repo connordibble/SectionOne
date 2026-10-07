@@ -129,6 +129,13 @@ Refreshes cannot drop a completed game, remove a known score or regress a final
 status within the same season; failure retains the existing file. A supplied
 corrected score can replace a previous result.
 
+Games may also carry `opponentClassification` (`fbs`, `fcs` or `lower-division`),
+which bowl eligibility depends on. The CFBD builder fills it from the provider's
+classification fields. An import that omits it keeps the value already on file for
+the same game; one that supplies it replaces it. Absent means unclassified, and an
+unclassified win is never counted toward eligibility. See
+[postseason.md](postseason.md).
+
 The poll file refresh and runtime refresh both reject older snapshots. File publication uses a lock and atomic replacement; failed validation preserves the existing file. Schedule acquisition requires successful, schema-valid game and media responses before replacement, rejects missing existing games and preserves the last snapshot after provider failure. API data is attributed to its provider, separately from the official schedule link fans can open.
 
 ### Opponent rankings at kickoff

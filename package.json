@@ -27,6 +27,7 @@
     "edition": "node --import tsx scripts/edition.ts",
     "ranks:refresh": "node --import tsx scripts/refresh-game-day-ranks.ts",
     "poll:refresh": "node --import tsx scripts/refresh-poll.ts",
+    "committee:refresh": "node --import tsx scripts/refresh-committee.ts",
     "teams": "node --env-file-if-exists=.env.local --import tsx scripts/team.ts"
   },
   "dependencies": {

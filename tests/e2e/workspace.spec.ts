@@ -245,11 +245,11 @@ test("the schedule dock draws no bottom rule once it is a sidebar", async ({ pag
 });
 
 for (const width of [1440, 768, 414, 375, 320]) {
-  test(`all three views avoid horizontal overflow at ${width}px`, async ({ page }) => {
+  test(`all four views avoid horizontal overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/teams/texas-football");
 
-    for (const view of ["Brief", "Matchup", "Schedule"]) {
+    for (const view of ["Brief", "Matchup", "Schedule", "Postseason"]) {
       await page.getByRole("tab", { name: view }).click();
       await expect(page.getByRole("tab", { name: view })).toHaveAttribute(
         "aria-selected",

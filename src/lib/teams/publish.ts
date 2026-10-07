@@ -71,9 +71,12 @@ export async function publishTeamSchedule(root: string, input: unknown, now = ne
       }
     }
     if (previous.seasonYear === schedule.seasonYear) {
+      // Imports that omit a fact already on file are not evidence the fact
+      // changed: an opponent's division and its game-day rank both stay.
       for (const game of schedule.games) {
         const known = previous.games.find((candidate) => candidate.id === game.id)
           ?? previous.games.find((candidate) => candidate.opponent === game.opponent && candidate.date === game.date);
+        if (!game.opponentClassification && known?.opponentClassification) game.opponentClassification = known.opponentClassification;
         if (!game.opponentRankAtKickoff && known?.opponent === game.opponent && known.opponentRankAtKickoff?.gameDate === game.date) {
           game.opponentRankAtKickoff = known.opponentRankAtKickoff;
         }

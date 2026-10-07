@@ -6,7 +6,7 @@ import { readSseStream } from "@/lib/sse";
 import styles from "./team-workspace.module.css";
 import { safeExternalHref } from "@/lib/safe-url";
 
-type ChatMode = "brief" | "matchup" | "schedule";
+type ChatMode = "brief" | "matchup" | "schedule" | "postseason";
 
 type TeamChatProps = {
   draftRequest?: DraftRequest;
@@ -66,6 +66,10 @@ const modeCopy: Record<Exclude<ChatMode, "matchup">, { heading: string; body: st
   schedule: {
     heading: "Ask the schedule",
     body: "Ask about dates, times, or the road ahead.",
+  },
+  postseason: {
+    heading: "Ask about the postseason",
+    body: "Ask about the playoff path, bowl eligibility, or the rankings.",
   },
 };
 
@@ -444,6 +448,7 @@ function ChatComposer({
     brief: "What should I watch?",
     matchup: "Ask about this matchup",
     schedule: "Ask about the schedule",
+    postseason: "Ask about the postseason",
   };
 
   return (

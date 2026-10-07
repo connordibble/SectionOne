@@ -1,0 +1,78 @@
+{
+  "season": 2026,
+  "checkedAt": "2026-10-07T01:30:00.000Z",
+  "sources": [
+    {
+      "id": "ncaa-cfp-format",
+      "label": "NCAA.com: How the College Football Playoff works",
+      "url": "https://www.ncaa.com/news/football/article/2026-08-11/how-college-football-playoff-works-schedule-selections-rankings-byes-and-more"
+    },
+    {
+      "id": "ncaa-cfp-rankings-dates",
+      "label": "NCAA.com: When the playoff rankings come out",
+      "url": "https://www.ncaa.com/news/football/article/2026-08-11/when-do-college-football-playoff-rankings-come-out"
+    },
+    {
+      "id": "ncaa-cfp-schedule",
+      "label": "NCAA.com: 2026-27 playoff schedule and sites",
+      "url": "https://www.ncaa.com/news/football/article/2026-08-04/2026-27-college-football-playoff-schedule-dates-tv-channel-sites"
+    },
+    {
+      "id": "ncaa-bowl-alternates",
+      "label": "NCAA: 5-7 teams and bowl agreements",
+      "url": "https://www.ncaa.org/media-center-di-fbs-proposal-would-allow-conferences-more-flexibility-to-fulfill-bowl-game-agreements/"
+    },
+    {
+      "id": "fbschedules-bowl-eligibility-2026",
+      "label": "FBSchedules: 2026 bowl eligibility changes adopted",
+      "url": "https://fbschedules.com/ncaa-adopts-14-week-football-season-changes-fcs-to-fbs-bowl-eligibility/"
+    }
+  ],
+  "playoff": {
+    "sourceIds": ["ncaa-cfp-format", "ncaa-cfp-rankings-dates", "ncaa-cfp-schedule"],
+    "fieldSize": 12,
+    "byes": 4,
+    "bracket": {
+      "firstRound": [[8, 9], [5, 12], [7, 10], [6, 11]],
+      "quarterfinals": [
+        { "seed": 1, "against": [8, 9] },
+        { "seed": 4, "against": [5, 12] },
+        { "seed": 2, "against": [7, 10] },
+        { "seed": 3, "against": [6, 11] }
+      ],
+      "semifinals": [[1, 4], [2, 3]]
+    },
+    "championBids": ["ACC", "Big 12", "Big Ten", "SEC"],
+    "groupBid": {
+      "label": "Group of 6",
+      "conferences": ["American", "Conference USA", "MAC", "Mountain West", "Pac-12", "Sun Belt"]
+    },
+    "independentBids": [{ "team": "Notre Dame", "withinRank": 12 }],
+    "rankings": [
+      { "date": "2026-11-03", "label": "First rankings" },
+      { "date": "2026-11-10", "label": "Second rankings" },
+      { "date": "2026-11-17", "label": "Third rankings" },
+      { "date": "2026-11-24", "label": "Fourth rankings" },
+      { "date": "2026-12-01", "label": "Fifth rankings" },
+      { "date": "2026-12-06", "label": "Selection Day" }
+    ],
+    "selectionDay": "2026-12-06",
+    "rounds": [
+      { "name": "First round", "dates": ["2026-12-18", "2026-12-19"], "sites": ["Home field of the higher seed"] },
+      { "name": "Quarterfinals", "dates": ["2026-12-30", "2027-01-01"], "sites": ["Fiesta Bowl", "Cotton Bowl", "Rose Bowl", "Peach Bowl"] },
+      { "name": "Semifinals", "dates": ["2027-01-14", "2027-01-15"], "sites": ["Orange Bowl", "Sugar Bowl"] },
+      { "name": "National championship", "dates": ["2027-01-25"], "sites": ["Allegiant Stadium, Las Vegas"] }
+    ]
+  },
+  "bowls": {
+    "sourceIds": ["fbschedules-bowl-eligibility-2026", "ncaa-bowl-alternates"],
+    "winsRequired": 6,
+    "maxCountedFcsWins": 1,
+    "regularSeasonGames": 12,
+    "alternates": { "wins": 5, "losses": 7, "minimumApr": 930 }
+  },
+  "confirmed": {
+    "playoffField": null,
+    "bowlSelections": []
+  }
+}

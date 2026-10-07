@@ -41,13 +41,14 @@ production shape combines three ideas with clear ownership:
 
 ## Product shape
 
-The shell holds three views and one question thread. The thread stays put when the fan changes views.
+The shell holds four views and one question thread. The thread stays put when the fan changes views.
 
 | View | Job | Main content |
 | --- | --- | --- |
 | **Brief** | Catch up in under a minute. | Countdown, matchup, three keys, short read, question box, next three. |
 | **Matchup** | Know what to watch. | Four selectable keys and one focused explanation. |
 | **Schedule** | See what is next. | Dates, opponents, kickoff times, TV, and venue. |
+| **Postseason** | Know what the season is playing for. | Race board, standing, committee top 25, bracket, rules, and dates. |
 
 The countdown always comes from schedule data. It may show a real number, `Today`, or `TBD`. It is
 never decorative.
@@ -65,8 +66,9 @@ At wide widths, Brief reads as one composed issue rather than a stack of cards.
    is inset by the same amount on all four sides so the content sits *in* its half.
 4. “What matters Saturday” uses three numbered rows. “The read” sits beside it as a raised card at
    wide widths, sized to its content, and follows the rows on small screens.
-5. “In the field” and “This week” form the issue body: a compact standing rail beside sourced weekly
-   reporting on desktop, one reading sequence on mobile.
+5. “In the field”, “Postseason”, and “This week” form the issue body: a compact standing rail
+   (rankings, then postseason) beside sourced weekly reporting on desktop, one reading sequence on
+   mobile.
 6. “Tune your signal” is a full-width Ask the Desk band. It has no chat-window framing before the
    first question.
 7. “Quick questions” stacks: the label sits above a set of content-sized prompt chips. They are
@@ -94,6 +96,14 @@ Two rules govern the weekly sections:
   with nothing but a console warning. An item without a usable link is dropped rather than shown
   link-less, because the link is the whole basis on which a fan is asked to believe the summary. The summary is ours and must be checkable against the thing it links to. An item without
   a source is not publishable, and the fixture tests enforce that rather than trusting the author.
+- **The postseason reads the same way, and never in odds.** One figure leads: the record or the
+  committee rank while the team is in the playoff picture, the wins still needed once it is not.
+  The race that leads is stated once beside the figure; the other race follows in a line, so a
+  team out of the picture still sees its playoff path. The Brief carries that summary and a way
+  into the Postseason view, which holds the rest. “In the picture” is a stated rule of
+  record and rank, and the section says so. Projections never look like confirmations: a field
+  position or bowl destination appears only from an announced selection with its source. The
+  rules and data are in `docs/postseason.md`.
 - **No outlet owns the list.** Items are graded on impact, echo, and freshness, decayed by age, and
   filled under a cap of two per outlet with at least three distinct outlets and local reporting never
   outnumbered by national. Local beat writers are at practice and know the two-deep; a list national
@@ -194,6 +204,27 @@ The field is explanatory structure, not a decorative green rectangle.
 - On mobile, the same keys become a 2×2 picker followed immediately by the selected read.
 - A key exposes state, number, title, cue, and selection without relying on color alone.
 - “Ask about this” moves the selected prompt into the persistent question composer.
+
+### Postseason
+
+Postseason is read from the team outward, like the rankings on Brief. Its one stage is the **race
+board**: the team's standing figure, the next date that matters on a clock, and the bowl line drawn
+as a ladder — one rung per possible win, filled for counted wins, open for wins still possible,
+hatched once out of reach, with a rule at six. A fan sees "five to go" instead of computing it.
+
+- The board is the only team-coloured surface. Everything below is reference on the page ground.
+- The committee top 25 marks this team and every ranked team on its schedule in text, with the
+  result when they have played. Before the first release the section says when it will come; a
+  media poll never stands in for the committee.
+- The bracket is the published format drawn out: seeds only before Selection Day, announced teams
+  after, with the team's road traced in its accent. It is a drawn tree only where four rounds fit
+  side by side, two across at mid widths, and a reading sequence on a phone. Bowl sites are named
+  per round, because the top seeds pick their quarterfinal sites.
+- Bracket connectors and the calendar's line are drawn because they carry meaning: who meets
+  whom, and in what order. That is the test for any line here. **Field Geometry does not extend to
+  this view** — the rule in `docs/future-work.md` still holds.
+- The view sizes to its own column with container queries, not the window: beside the question
+  dock it is far narrower than the viewport.
 
 ### Schedule
 

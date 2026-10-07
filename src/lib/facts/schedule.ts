@@ -14,6 +14,9 @@ export const scheduleGameSchema = z.object({
   dateLabel: z.string().min(1), startsAt: z.iso.datetime({ offset: true }).nullable(),
   date: z.iso.date().nullable(), status: z.enum(["scheduled", "in-progress", "final", "postponed", "cancelled"]),
   kickoff: z.string().min(1), venue: z.string().min(1), tv: z.string().min(1).nullable(),
+  // Bowl eligibility counts at most one win over an FCS opponent, and none over
+  // a lower division. Absent means not yet classified, never assumed FBS.
+  opponentClassification: z.enum(["fbs", "fcs", "lower-division"]).optional(),
   // null is confirmed unranked; absence means the game-day poll is unknown.
   opponentRankAtKickoff: z.object({
     pollId: z.literal("ap"), rank: z.number().int().min(1).max(25).nullable(),
@@ -59,6 +62,7 @@ export const teamScheduleSchema = z.object({
 export type TeamSchedule = z.infer<typeof teamScheduleSchema>;
 export type ScheduleGame = z.infer<typeof scheduleGameSchema>;
 export type ScheduleSite = ScheduleGame["site"];
+export type OpponentClassification = NonNullable<ScheduleGame["opponentClassification"]>;
 
 export type RankedGamePhase = "upcoming" | "played" | "updates";
 
