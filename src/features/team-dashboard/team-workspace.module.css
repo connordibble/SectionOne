@@ -1155,8 +1155,14 @@
 
 .newsList h3 a:hover {
   color: var(--team-accent-strong);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+}
+
+.newsList h3 a:hover > span:first-child,
+.newsList h3 a:focus-visible > span:first-child {
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--rule-hair);
+  text-underline-offset: 0.12em;
+  text-decoration-skip-ink: auto;
 }
 
 .newsList h3 a:focus-visible {
@@ -1186,7 +1192,10 @@
  */
 
 .shell {
+  display: flex;
+  flex-direction: column;
   min-height: 100svh;
+  min-height: 100dvh;
   color: var(--team-ink);
   font-family: var(--font-body);
   background: var(--team-page);
@@ -2056,7 +2065,7 @@
   letter-spacing: var(--tracking-display);
   text-transform: uppercase;
   font-size: var(--text-xl);
-  line-height: 1;
+  line-height: 1.25;
 }
 
 /* ── Rows: structure on demand, where there is something to engage ─────
@@ -2257,7 +2266,9 @@
 
 .scheduleRow,
 .scheduleFull .scheduleRow {
-  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  /* Wrap descriptive kickoff windows before they can squeeze the opponent.
+     Desktop rows replace this with their four-column layout. */
+  grid-template-columns: 2.5rem minmax(0, 1fr) 7rem;
   gap: var(--space-2xs) var(--space-xs);
   min-height: 5.25rem;
   align-items: center;
@@ -2300,6 +2311,7 @@
   font-size: var(--text-md);
   line-height: 1.45;
   font-family: var(--font-body);
+  overflow-wrap: anywhere;
 }
 
 .scheduleOpponent strong {
@@ -2321,6 +2333,13 @@
   text-align: end;
 }
 
+.scheduleResult {
+  color: var(--team-ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 /* Stacked, the cards sit directly on top of one another with nothing between
    them, so three objects read as one block. */
 .scheduleCompact .scheduleList {
@@ -2329,7 +2348,7 @@
 }
 
 .scheduleCompact .scheduleRow {
-  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  grid-template-columns: 2.25rem minmax(0, 1fr) 7rem;
   /* Padding at every width, not only where the desktop rule lands. The card
      treatment is unconditioned, so inheriting the list row's `padding-right: 0`
      put the kickoff time hard against the card's own border on mobile. */
@@ -2625,7 +2644,7 @@
 }
 
 .footer {
-  margin-block-start: 0;
+  margin-block-start: auto;
   border-block-start: 0;
   background: var(--team-steel);
   color: var(--team-on-steel);
@@ -3407,6 +3426,7 @@
 
   .scheduleCompact .scheduleKickoff {
     display: flex;
+    flex-wrap: wrap;
     grid-row: 3;
     grid-column: 1 / -1;
     gap: var(--space-xs);

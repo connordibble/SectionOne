@@ -108,6 +108,9 @@ There are two, and they must not blur into each other.
 | **Home** | `/` | Say what Section One is, show a live edition as proof, and take a team request. |
 | **Edition** | `/teams/[slug]` | The game-week product for one team. |
 
+On both surfaces, the colophon sits at the viewport bottom on short pages and follows the content
+on longer pages. It stays in document flow.
+
 The home page shares the tokens, chrome, band rhythm, rule discipline, and voice — and deliberately
 not the shape. An edition is a split studio built around a live game object; the home page is an
 argument that ends in one action. If the two ever read as the same page, the product and its pitch
@@ -194,8 +197,9 @@ The field is explanatory structure, not a decorative green rectangle.
 ### Schedule
 
 The full Schedule view is a season file, not twelve repeated cards: one tabular spec sheet with a
-game number, date, opponent, venue, kickoff, and network. Dates and broadcast windows stay legible
-when the row collapses on mobile.
+game number, date, opponent, venue, kickoff, and network. Completed games replace the broadcast
+window with a final result from the team's perspective; an unavailable score says “Final.” Dates
+and broadcast windows stay legible when the row collapses on mobile.
 
 “Next three” on Brief is the exception, and it is a deliberate one. Three games are three objects,
 and once the section rules came out they read as one wide band of fragments with the dates stranded

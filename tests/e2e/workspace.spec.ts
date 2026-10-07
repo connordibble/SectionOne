@@ -670,3 +670,22 @@ test("chat supports a sourced follow-up", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByText("Give me the next-game briefing.")).toBeVisible();
 });
+test("full schedules show completed results from each team's perspective", async ({ page }) => {
+  for (const slug of ["texas-football", "utah-state-football", "ohio-state-football", "lsu-football"]) {
+    await page.goto(`/teams/${slug}#schedule`);
+    await expect(page.getByRole("tab", { name: "Schedule", exact: true })).toHaveAttribute("aria-selected", "true");
+    const schedule = getTeamSchedule(slug)!;
+    const rows = page.getByTestId("schedule-strip").getByRole("listitem");
+    await expect(rows).toHaveCount(schedule.games.length);
+    for (const [index, game] of schedule.games.entries()) {
+      const row = rows.nth(index);
+      if (game.status === "final") {
+        await expect(row.getByText("Final", { exact: true })).toBeVisible();
+        if (game.result) await expect(row).toContainText(`${game.result.teamScore}–${game.result.opponentScore}`);
+        await expect(row.getByText(game.kickoff, { exact: true })).toHaveCount(0);
+      } else {
+        await expect(row.getByText("Final", { exact: true })).toHaveCount(0);
+      }
+    }
+  }
+});

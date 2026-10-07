@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import type { ScheduleGame, TeamSchedule } from "@/server/schedule/schedule";
+import { FinalScore } from "./final-score";
 import styles from "./team-workspace.module.css";
 
 type SchedulePreviewProps = {
@@ -101,8 +102,13 @@ function ScheduleRow({
         {variant === "full" ? <span>{game.venue}</span> : null}
       </div>
       <p className={`${styles.scheduleKickoff} tnum`}>
-        <span>{game.status === "cancelled" ? "Cancelled" : game.status === "postponed" ? "Postponed" : game.kickoff}</span>
-        <span>{game.tv ?? "TV TBD"}</span>
+        {game.status === "final" ? <>
+          {game.result ? <FinalScore result={game.result} className={styles.scheduleResult} /> : null}
+          <span>Final</span>
+        </> : <>
+          <span>{game.status === "cancelled" ? "Cancelled" : game.status === "postponed" ? "Postponed" : game.kickoff}</span>
+          <span>{game.tv ?? "TV TBD"}</span>
+        </>}
       </p>
     </li>
   );

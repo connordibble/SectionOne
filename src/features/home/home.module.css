@@ -10,7 +10,10 @@
  */
 
 .shell {
+  display: flex;
+  flex-direction: column;
   min-height: 100svh;
+  min-height: 100dvh;
   background: var(--team-page);
   color: var(--team-ink);
   font-family: var(--font-body);
@@ -768,6 +771,7 @@
 /* ── Colophon ─────────────────────────────────────────────────────────── */
 
 .footer {
+  margin-block-start: auto;
   border-block-start: 0;
   background: var(--team-steel);
   color: var(--team-on-steel);

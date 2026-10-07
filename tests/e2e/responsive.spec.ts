@@ -11,6 +11,69 @@ import { expect, test } from "@playwright/test";
 // This sweeps the supported range and asserts the contract directly.
 const SPLIT_AT = 86 * 16;
 
+test("the colophon ends the page at the viewport bottom or below longer content", async ({ page }) => {
+  for (const width of [375, 1023, 1024, 1280, 1376, 1920]) {
+    await page.setViewportSize({ width, height: 1800 });
+    for (const view of ["matchup", "schedule", "brief"]) {
+      await page.goto(`/teams/texas-football#${view}`);
+      await expect(page.locator("main[data-view]")).toHaveAttribute("data-view", view);
+      const report = await page.getByTestId("source-colophon").evaluate(footer => {
+        const box = footer.getBoundingClientRect();
+        const content = document.querySelector("main > div[data-view]")!.getBoundingClientRect();
+        return { bottom: box.bottom + scrollY, contentBottom: content.bottom + scrollY,
+          top: box.top + scrollY, viewportHeight: innerHeight, pageHeight: document.documentElement.scrollHeight };
+      });
+      expect(report.bottom).toBeGreaterThanOrEqual(report.viewportHeight - 1);
+      expect(Math.abs(report.bottom - report.pageHeight)).toBeLessThanOrEqual(1);
+      expect(report.top).toBeGreaterThanOrEqual(report.contentBottom - 1);
+    }
+  }
+});
+
+test("wrapped article titles leave space for hover underlines", async ({ page }) => {
+  for (const width of [375, 768, 1024, 1280, 1376]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/teams/texas-football");
+    const title = page.locator('[aria-labelledby="news-heading"] h3 a').first();
+    await title.hover();
+    const lines = await title.locator("span").first().evaluate(span => {
+      const range = document.createRange();
+      range.selectNodeContents(span);
+      const style = getComputedStyle(span);
+      return { boxes: [...range.getClientRects()].map(box => ({ top: box.top, bottom: box.bottom })),
+        fontSize: parseFloat(style.fontSize) };
+    });
+    expect(lines.boxes.length).toBeGreaterThan(1);
+    for (let i = 1; i < lines.boxes.length; i++) {
+      expect(lines.boxes[i].top - lines.boxes[i - 1].top).toBeGreaterThanOrEqual(lines.fontSize * 1.2);
+    }
+  }
+});
+
+test("schedule opponents and long kickoff windows stay in their own columns", async ({ page }) => {
+  for (const width of [320, 375, 639, 640, 768, 1023, 1024, 1280, 1376]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/teams/texas-football#schedule");
+    await expect(page.getByRole("tab", { name: "Schedule", exact: true })).toHaveAttribute("aria-selected", "true");
+    const problems = await page.getByTestId("schedule-strip").evaluate(schedule => {
+      const issues: string[] = [];
+      for (const row of schedule.querySelectorAll("li")) {
+        const opponent = row.querySelector("[class*=scheduleOpponent]") as HTMLElement;
+        const kickoff = row.querySelector("[class*=scheduleKickoff]") as HTMLElement;
+        if (opponent.scrollWidth > opponent.clientWidth + 1 || kickoff.scrollWidth > kickoff.clientWidth + 1) {
+          issues.push(`${opponent.textContent}: text exceeds its column`);
+        }
+        const a = opponent.getBoundingClientRect(), b = kickoff.getBoundingClientRect();
+        if (a.right > b.left + 1 && a.left < b.right - 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1) {
+          issues.push(`${opponent.textContent}: opponent and kickoff overlap`);
+        }
+      }
+      return issues;
+    });
+    expect(problems, `${width}px: ${problems.join("; ")}`).toEqual([]);
+  }
+});
+
 const widths = [
   320, 375, 414, 600, 768, 900, 1024, 1200, 1280, 1366, SPLIT_AT - 1, SPLIT_AT, 1440, 1536, 1600,
   1792, 1920, 2560,

@@ -1,6 +1,7 @@
 import type { RankedOpponent, TeamRankingSummary } from "@/server/sources/rankings";
 import { formatNewsDate } from "@/lib/news-date";
 import { safeExternalHref } from "@/lib/safe-url";
+import { FinalScore } from "./final-score";
 import styles from "./team-workspace.module.css";
 
 const groups = [
@@ -11,15 +12,7 @@ const groups = [
 
 function OpponentResult({ opponent }: { opponent: RankedOpponent }) {
   if (opponent.status === "final" && opponent.result) {
-    const { teamScore, opponentScore } = opponent.result;
-    const outcome = teamScore > opponentScore ? "Win" : teamScore < opponentScore ? "Loss" : "Tie";
-    return (
-      <span className={`${styles.rankingResult} tnum`}>
-        <span aria-hidden="true">{outcome[0]} </span>
-        <span className={styles.visuallyHidden}>{outcome}: </span>
-        {teamScore}–{opponentScore}
-      </span>
-    );
+    return <FinalScore result={opponent.result} className={styles.rankingResult} />;
   }
   const label = opponent.status === "final" ? "Final"
     : opponent.status === "in-progress" ? "In progress"
