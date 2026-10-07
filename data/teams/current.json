@@ -79,7 +79,7 @@
       "teamDisplayName": "Texas football",
       "seasonYear": 2026,
       "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-      "capturedAt": "2026-10-07T00:06:42.125Z",
+      "capturedAt": "2026-10-07T02:09:43.391Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
@@ -99,6 +99,13 @@
           "kickoff": "2:30 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "ESPN",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856667",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 59,
             "opponentScore": 7
@@ -115,6 +122,13 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 1,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856682",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 24,
             "opponentScore": 23
@@ -131,6 +145,13 @@
           "kickoff": "7 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "SEC Network+",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856693",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 30,
             "opponentScore": 6
@@ -147,6 +168,13 @@
           "kickoff": "11 a.m. CT",
           "venue": "Neyland Stadium, Knoxville, Tenn.",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 14,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856704",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 20,
             "opponentScore": 17
@@ -330,7 +358,7 @@
       "teamDisplayName": "Utah State football",
       "seasonYear": 2026,
       "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
-      "capturedAt": "2026-10-07T00:06:42.125Z",
+      "capturedAt": "2026-10-07T02:11:04.126Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
@@ -350,6 +378,13 @@
           "kickoff": "5 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860880",
+            "checkedAt": "2026-10-07T02:11:04.126Z"
+          },
           "result": {
             "teamScore": 17,
             "opponentScore": 29
@@ -366,6 +401,13 @@
           "kickoff": "1:30 p.m. MT",
           "venue": "Husky Stadium, Seattle, Wash.",
           "tv": "Big Ten Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 19,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858446",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 14,
             "opponentScore": 16
@@ -382,6 +424,13 @@
           "kickoff": "1:30 p.m. MT",
           "venue": "Rice-Eccles Stadium, Salt Lake City, Utah",
           "tv": "FOX",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 17,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856801",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 0,
             "opponentScore": 33
@@ -398,6 +447,13 @@
           "kickoff": "5:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860894",
+            "checkedAt": "2026-10-07T02:11:04.126Z"
+          },
           "result": {
             "teamScore": 21,
             "opponentScore": 10
@@ -414,6 +470,13 @@
           "kickoff": "5:30 p.m. MT",
           "venue": "Albertsons Stadium, Boise, Idaho",
           "tv": "CBS Sports Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 22,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860898",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 18,
             "opponentScore": 37
@@ -586,7 +649,7 @@
       "teamDisplayName": "Ohio State football",
       "seasonYear": 2026,
       "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-      "capturedAt": "2026-10-07T00:06:42.125Z",
+      "capturedAt": "2026-10-07T02:09:43.391Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
@@ -606,6 +669,13 @@
           "kickoff": "12:30 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "Big Ten Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858432",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 56,
             "opponentScore": 3
@@ -622,6 +692,13 @@
           "kickoff": "7:30 p.m. ET",
           "venue": "Austin, Texas",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 4,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856682",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 23,
             "opponentScore": 24
@@ -638,6 +715,13 @@
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858454",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 59,
             "opponentScore": 3
@@ -654,6 +738,13 @@
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858465",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 42,
             "opponentScore": 19
@@ -670,6 +761,13 @@
           "kickoff": "3:30 p.m. ET",
           "venue": "Iowa City, Iowa",
           "tv": "CBS",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 14,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858473",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 31,
             "opponentScore": 14
@@ -843,7 +941,7 @@
       "teamDisplayName": "LSU football",
       "seasonYear": 2026,
       "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-      "capturedAt": "2026-10-07T00:06:42.125Z",
+      "capturedAt": "2026-10-07T02:09:43.391Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
@@ -863,6 +961,13 @@
           "kickoff": "8:40 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856660",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 51,
             "opponentScore": 10
@@ -879,6 +984,13 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "SEC Network+",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401867796",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 45,
             "opponentScore": 14
@@ -895,6 +1007,13 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Oxford, Miss. (Vaught-Hemingway Stadium)",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 8,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856688",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 24,
             "opponentScore": 32
@@ -911,6 +1030,13 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 23,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856702",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 35,
             "opponentScore": 6
@@ -927,6 +1053,13 @@
           "kickoff": "6:45 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "SEC Network",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856706",
+            "checkedAt": "2026-10-07T02:09:43.391Z"
+          },
           "result": {
             "teamScore": 63,
             "opponentScore": 14

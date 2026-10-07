@@ -130,3 +130,15 @@ status within the same season; failure retains the existing file. A supplied
 corrected score can replace a previous result.
 
 The poll file refresh and runtime refresh both reject older snapshots. File publication uses a lock and atomic replacement; failed validation preserves the existing file. Schedule acquisition requires successful, schema-valid game and media responses before replacement, rejects missing existing games and preserves the last snapshot after provider failure. API data is attributed to its provider, separately from the official schedule link fans can open.
+
+### Opponent rankings at kickoff
+
+After publishing confirmed final results, run `pnpm ranks:refresh`. The command reads
+archived ESPN game-day scoreboards once per date and saves each opponent’s AP rank
+(or explicit unranked status) with its game date and source. It verifies both schools,
+season, date and final score against the schedule before accepting a rank. Existing
+ranks are retained without refetching and carried forward through schedule imports.
+Missing historical ranks are shown as unverified and never replaced with today’s poll.
+A sourced correction can be imported with `pnpm teams schedule <schedule.json>`.
+Upcoming opponents continue to use the current AP poll. These are AP ranks at kickoff,
+not a claim about how the playoff committee counts ranked wins.

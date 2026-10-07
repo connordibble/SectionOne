@@ -14,11 +14,19 @@ export const scheduleGameSchema = z.object({
   dateLabel: z.string().min(1), startsAt: z.iso.datetime({ offset: true }).nullable(),
   date: z.iso.date().nullable(), status: z.enum(["scheduled", "in-progress", "final", "postponed", "cancelled"]),
   kickoff: z.string().min(1), venue: z.string().min(1), tv: z.string().min(1).nullable(),
+  // null is confirmed unranked; absence means the game-day poll is unknown.
+  opponentRankAtKickoff: z.object({
+    pollId: z.literal("ap"), rank: z.number().int().min(1).max(25).nullable(),
+    gameDate: z.iso.date(), sourceUrl: sourceUrlSchema, checkedAt: z.iso.datetime({ offset: true }),
+  }).optional(),
   result: z.object({
     teamScore: z.number().int().nonnegative(),
     opponentScore: z.number().int().nonnegative(),
   }).optional(),
 }).superRefine((game, ctx) => {
+  if (game.opponentRankAtKickoff && game.opponentRankAtKickoff.gameDate !== game.date) {
+    ctx.addIssue({ code: "custom", path: ["opponentRankAtKickoff"], message: "Game-day ranking belongs to another date" });
+  }
   if (game.result && game.status !== "final") {
     ctx.addIssue({ code: "custom", path: ["result"], message: "A final score requires a completed game" });
   }

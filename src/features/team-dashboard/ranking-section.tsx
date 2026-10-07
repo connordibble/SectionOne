@@ -31,12 +31,12 @@ export function RankingSection({ ranking, teamName }: { ranking: TeamRankingSumm
         <p className={styles.sectionAside}>{ranking.poll.name} · {ranking.weekLabel}</p>
       </div>
       <div className={styles.rankingStanding}>
-        <p className={styles.rankingFigure}>
+        <p className={styles.rankingFigure} data-unranked={teamRank === null ? "true" : undefined}>
           {teamRank === null ? "Unranked" : <>No. <span className="tnum">{teamRank}</span></>}
         </p>
         <p className={styles.rankingContext}>
           {rankedOpponents.length === 0
-            ? `No ranked opponents on the ${teamName} schedule.`
+            ? `No ${ranking.missingGameDayRanks ? "verified " : ""}ranked opponents on the ${teamName} schedule.`
             : `${rankedOpponents.length} of ${opponentCount} opponents ranked.`}
         </p>
       </div>
@@ -47,12 +47,14 @@ export function RankingSection({ ranking, teamName }: { ranking: TeamRankingSumm
         return (
           <div key={phase} className={styles.rankingGroup}>
             <h3 id={headingId} className={styles.rankingGroupHeading}>
-              {label}<span className="tnum">{opponents.length}</span>
+              {label}{phase !== "upcoming" ? " · AP at kickoff" : ""}<span className="tnum">{opponents.length}</span>
             </h3>
             <ol className={styles.rankingList} aria-labelledby={headingId}>
               {opponents.map((opponent) => (
                 <li key={opponent.gameId}>
-                  <span className={`${styles.rankingRank} tnum`}>{opponent.rank}</span>
+                  <span className={`${styles.rankingRank} tnum`}>
+                    {opponent.rankSourceUrl ? <a href={safeExternalHref(opponent.rankSourceUrl)} target="_blank" rel="noreferrer" aria-label={`No. ${opponent.rank} ${opponent.opponent}, AP rank at kickoff: source`}>{opponent.rank}</a> : opponent.rank}
+                  </span>
                   <span className={styles.rankingOpponent}>
                     {opponent.site === "away" ? "at" : "vs"} {opponent.opponent}
                   </span>
@@ -65,7 +67,7 @@ export function RankingSection({ ranking, teamName }: { ranking: TeamRankingSumm
         );
       })}
       <p className={styles.rankingNote}>
-        Opponent ranks reflect this poll.{" "}
+        Upcoming opponents use this AP poll. Played opponents use their AP rank at kickoff.{" "}
         <a href={safeExternalHref(ranking.poll.sourceUrl)} target="_blank" rel="noreferrer">
           Poll published {formatNewsDate(ranking.poll.releasedAt)}
         </a>{". "}Checked {formatNewsDate(ranking.checkedAt)}.
@@ -74,6 +76,7 @@ export function RankingSection({ ranking, teamName }: { ranking: TeamRankingSumm
             Results checked {formatNewsDate(ranking.scheduleSource.checkedAt)}
           </a>.
         </> : null}
+        {ranking.missingGameDayRanks ? ` ${ranking.missingGameDayRanks} game-day ${ranking.missingGameDayRanks === 1 ? "ranking is" : "rankings are"} not yet verified; those games are excluded from the ranked-opponent count.` : ""}
         {ranking.pending.map((poll) => ` The ${poll.name} is out ${poll.expectedLabel}.`).join("")}
       </p>
     </section>

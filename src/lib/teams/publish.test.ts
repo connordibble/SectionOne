@@ -109,3 +109,15 @@ it("loads an additional program in a separate checkout without modifying source 
   expect(child.status, child.stderr).toBe(0);
   expect(await readFile(configFile, "utf8")).toBe(before);
 });
+
+it("preserves sourced game-day rankings across provider IDs, including confirmed unranked", async () => {
+  const { root, candidate, now } = await fixture();
+  const rank = { pollId: "ap" as const, rank: null, gameDate: candidate.manifest.schedule.games[0].date!, sourceUrl: "https://example.edu/game", checkedAt: now.toISOString() };
+  candidate.manifest.schedule.games[0].opponentRankAtKickoff = rank;
+  await onboardTeam(root, candidate, now);
+  const next = structuredClone(candidate.manifest.schedule);
+  next.games[0].id = "provider-id";
+  delete next.games[0].opponentRankAtKickoff;
+  await publishTeamSchedule(root, next, now);
+  expect((await readTeamRegistry(root))["example-football"].schedule.games[0].opponentRankAtKickoff).toEqual(rank);
+});

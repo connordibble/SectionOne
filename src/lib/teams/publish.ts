@@ -70,6 +70,15 @@ export async function publishTeamSchedule(root: string, input: unknown, now = ne
         }
       }
     }
+    if (previous.seasonYear === schedule.seasonYear) {
+      for (const game of schedule.games) {
+        const known = previous.games.find((candidate) => candidate.id === game.id)
+          ?? previous.games.find((candidate) => candidate.opponent === game.opponent && candidate.date === game.date);
+        if (!game.opponentRankAtKickoff && known?.opponent === game.opponent && known.opponentRankAtKickoff?.gameDate === game.date) {
+          game.opponentRankAtKickoff = known.opponentRankAtKickoff;
+        }
+      }
+    }
     current.schedule = schedule;
     teamRegistrySchema.parse(registry);
     await writeFile(temporary, `${JSON.stringify(registry, null, 2)}\n`, { flag: "wx" });

@@ -1,0 +1,53 @@
+{
+  "events": [
+    {
+      "id": "401856682",
+      "date": "2026-09-12T23:30Z",
+      "season": {
+        "year": 2026,
+        "type": 2,
+        "slug": "regular-season"
+      },
+      "status": {
+        "clock": 0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "team": {
+                "location": "Texas",
+                "displayName": "Texas Longhorns"
+              },
+              "curatedRank": {
+                "current": 4
+              },
+              "score": "24"
+            },
+            {
+              "team": {
+                "location": "Ohio State",
+                "displayName": "Ohio State Buckeyes"
+              },
+              "curatedRank": {
+                "current": 1
+              },
+              "score": "23"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

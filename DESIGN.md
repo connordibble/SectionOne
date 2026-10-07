@@ -85,8 +85,9 @@ Two rules govern the weekly sections:
   that team's own schedule, separated into upcoming and played games and hardest first within
   each group. Played games carry the final score from the team's perspective; an unconfirmed
   result never becomes a win, loss, or completed game just because its date passed. Postponed,
-  cancelled, in-progress, and overdue games appear under game updates. Opponent ranks always
-  reflect the displayed poll, including for played games. A poll that has not been released says so.
+  cancelled, in-progress, and overdue games appear under game updates. Upcoming opponent ranks reflect the displayed AP poll. Played and overdue games use verified
+  AP ranks at kickoff, with a link to the game-day source. Missing historical ranks stay unknown,
+  never replaced with today’s poll; confirmed unranked opponents stay out of the ranked list. A poll that has not been released says so.
 - **We write the takeaway; we do not write the reporting.** Every news item carries its outlet and a
   link out. That link must be an absolute `http(s)` URL, checked by `safeExternalHref` where the
   package is admitted: it is rendered into an `href`, and React puts a `javascript:` URL in an href

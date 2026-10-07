@@ -1089,6 +1089,13 @@
   line-height: 1;
 }
 
+.rankingRank a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: var(--rule-hair);
+}
+
 .rankingRank::before {
   content: "No. ";
   font-size: var(--text-2xs);
@@ -2001,6 +2008,7 @@
 
 .rankingGroupHeading {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-xs);
   margin: 0;
@@ -3582,4 +3590,14 @@
       opacity: 1;
     }
   }
+}
+
+/* A long standing label must fit its own rail, including the narrow desktop
+   column. Ranked figures keep their existing display size. */
+.rankingSection {
+  container-type: inline-size;
+}
+
+.rankingFigure[data-unranked="true"] {
+  font-size: clamp(var(--text-3xl), min(12vw, 20cqi), 5.25rem);
 }
