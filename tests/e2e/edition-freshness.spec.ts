@@ -7,7 +7,7 @@ for (const slug of enabledTeamSlugs) {
     await page.goto(`/teams/${slug}`);
     for (const theme of ["light", "dark"]) {
       if (theme === "dark") await page.getByRole("button", { name: /Color theme:/ }).click();
-      for (const view of ["Brief", "Matchup", "Schedule"]) {
+      for (const view of ["Brief", "Matchup", "Schedule", "Postseason"]) {
         await page.getByRole("tab", { name: view, exact: true }).click();
         await expect(page.getByRole("complementary", { name: "Briefing freshness" })).toHaveCount(0);
         await expect(page.getByText("needs a fresh review", { exact: false })).toHaveCount(0);

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import seasonFile from "../../../data/facts/postseason/2026.json";
 import type { ScheduleGame, TeamSchedule } from "@/lib/facts/schedule";
 import type { CommitteeRanking } from "./committee";
-import { bowlOutlook, contentionLossLimit, firstRoundPairs, seasonRecord, teamPostseason, type OutlookInput } from "./outlook";
+import { bowlOutlook, contentionLossLimit, seasonRecord, teamPostseason, type OutlookInput } from "./outlook";
 import { postseasonSeasonSchema, type PostseasonSeason } from "./season";
 
 const season = postseasonSeasonSchema.parse(seasonFile);
@@ -71,7 +71,7 @@ describe("bowl eligibility", () => {
   it("is eligible at six counted wins and alive while enough countable games remain", () => {
     expect(bowlOutlook(schedule(games(6, 2, 4)), season.bowls).state).toBe("eligible");
     const alive = bowlOutlook(schedule(games(1, 4, 7)), season.bowls);
-    expect(alive).toMatchObject({ state: "alive", countedWins: 1, winsNeeded: 5, countableGamesLeft: 7 });
+    expect(alive).toMatchObject({ state: "alive", countedWins: 1, winsNeeded: 5, countableGamesLeft: 7, reachableWins: 8 });
   });
 
   it("counts one FCS win and no lower-division wins", () => {
@@ -158,10 +158,5 @@ describe("playoff outlook and the bowl fallback", () => {
       committee: committee(["Example"]), apRank: 9, today: "2026-12-07",
     }));
     expect(left).toMatchObject({ lead: "bowl", playoff: { standing: "not-selected" }, bowl: { state: "selected", selection: { bowl: "Example Bowl" } } });
-  });
-
-  it("pairs first-round seeds outside-in below the bye line", () => {
-    const seeds = Array.from({ length: 12 }, (_, index) => ({ seed: index + 1, team: `T${index + 1}`, bid: "at-large" as const }));
-    expect(firstRoundPairs(seeds, 4).map((pair) => [pair.higher.seed, pair.lower.seed])).toEqual([[5, 12], [6, 11], [7, 10], [8, 9]]);
   });
 });

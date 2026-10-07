@@ -1,9 +1,11 @@
 # Postseason: playoff race and bowl fallback
 
-Every edition has a **Postseason** section in its standing rail, under "In the field".
-`/playoff` is the national page: the committee's top 25 (or the announced field), each
-edition's status, the format, and the calendar. Both read the same engine, so a state
-never reads two ways. This answers [issue #14](https://github.com/connordibble/SectionOne/issues/14),
+Every edition has a **Postseason** view, the fourth tab beside Brief, Matchup and Schedule
+(`/teams/<slug>#postseason`): a race board with the team's standing, the next date and the
+bowl ladder; the committee's top 25 read from the team outward; the published bracket; the
+rules; and the calendar. The Brief's standing rail carries a one-line summary that opens it.
+Both read the same engine and the same wording (`src/lib/postseason/copy.ts`), so a state
+never reads two ways. `DESIGN.md` § Postseason covers the composition. This answers [issue #14](https://github.com/connordibble/SectionOne/issues/14),
 with one deliberate change from how it was first written, described next.
 
 ## No probabilities, and why the 5% trigger went away
@@ -37,7 +39,7 @@ it belongs beside this as display-only context, never as the trigger.
 
 | Fact | Where | How it updates |
 | --- | --- | --- |
-| Format, calendar, bowl standard | `data/facts/postseason/<season>.json` | By hand once a season, from the sources named in the file |
+| Format, bracket, calendar, bowl standard | `data/facts/postseason/<season>.json` | By hand once a season, from the sources named in the file |
 | Committee top 25 | ESPN rankings feed (`type: "cfp"`) verified against NCAA.com's CFP table | Runtime refresh, 15 min per process, from the first scheduled release |
 | Record, games left | Edition schedule results | Existing schedule refresh |
 | FBS / FCS opponent | `opponentClassification` on schedule games | CFBD builder; carried forward on official imports |
@@ -46,8 +48,9 @@ it belongs beside this as display-only context, never as the trigger.
 
 The season file is schema-checked (`src/lib/postseason/season.ts`): every rule block names
 its sources, ranking dates must be in order and end on Selection Day, and a confirmed
-field must list every seed once. A season with no file renders no postseason section and
-an explicit "not posted" state on `/playoff`; last year's format is never carried forward.
+field must list every seed once, and the bracket must hold every seed exactly once with each
+quarterfinal fed by one first-round game. A season with no file renders no Postseason tab
+and no summary; last year's format is never carried forward.
 
 ### Committee rankings
 
@@ -83,7 +86,7 @@ Recurring work is per season and per Selection Day, not per reader or per editio
 1. **Before the season:** add `data/facts/postseason/<season>.json` from the official
    format, rankings calendar, round dates and the bowl standard, and import it in
    `src/server/postseason/postseason.ts`. Set `checkedAt` to when you checked.
-2. **First committee release:** confirm `/playoff` shows the ranking. If it shows "not
+2. **First committee release:** confirm an edition's Postseason tab shows the ranking. If it shows "not
    checked yet", read the `facts/committee` degradations: a feed shape change must be
    fixed in the adapter, never by loosening the agreement checks.
 3. **Selection Day:** fill `confirmed.playoffField` (seeds, bid type, source URL) and

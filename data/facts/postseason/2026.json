@@ -32,6 +32,16 @@
     "sourceIds": ["ncaa-cfp-format", "ncaa-cfp-rankings-dates", "ncaa-cfp-schedule"],
     "fieldSize": 12,
     "byes": 4,
+    "bracket": {
+      "firstRound": [[8, 9], [5, 12], [7, 10], [6, 11]],
+      "quarterfinals": [
+        { "seed": 1, "against": [8, 9] },
+        { "seed": 4, "against": [5, 12] },
+        { "seed": 2, "against": [7, 10] },
+        { "seed": 3, "against": [6, 11] }
+      ],
+      "semifinals": [[1, 4], [2, 3]]
+    },
     "championBids": ["ACC", "Big 12", "Big Ten", "SEC"],
     "groupBid": {
       "label": "Group of 6",

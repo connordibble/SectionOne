@@ -25,6 +25,9 @@ export type BowlOutlook = {
   state: BowlState;
   winsRequired: number;
   countedWins: number;
+  // The most counted wins still possible, if every countable game left is won
+  // and every unclassified win turns out to count.
+  reachableWins: number;
   winsNeeded: number;
   gamesLeft: number;
   // Remaining games that could still add a counted win.
@@ -129,6 +132,7 @@ export function bowlOutlook(schedule: TeamSchedule, rules: PostseasonSeason["bow
   const base = {
     winsRequired: rules.winsRequired,
     countedWins,
+    reachableWins: best,
     winsNeeded: Math.max(0, rules.winsRequired - countedWins),
     gamesLeft,
     countableGamesLeft,
@@ -225,16 +229,4 @@ export function teamPostseason(input: OutlookInput): TeamPostseason {
     scheduleCheckedAt: input.schedule.provenance?.officialVerifiedAt ?? input.schedule.capturedAt,
     scheduleSourceUrl: input.schedule.sourceUrl,
   };
-}
-
-export type FirstRoundGame = { higher: PlayoffSeed; lower: PlayoffSeed };
-
-// Seeds outside the bye line meet outside-in: 5 v 12, 6 v 11, and so on.
-export function firstRoundPairs(seeds: readonly PlayoffSeed[], byes: number): FirstRoundGame[] {
-  const ordered = [...seeds].sort((a, b) => a.seed - b.seed).slice(byes);
-  const pairs: FirstRoundGame[] = [];
-  for (let index = 0; index < Math.floor(ordered.length / 2); index += 1) {
-    pairs.push({ higher: ordered[index], lower: ordered[ordered.length - 1 - index] });
-  }
-  return pairs;
 }

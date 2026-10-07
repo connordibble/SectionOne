@@ -13,31 +13,19 @@ const themeLabels: Record<ThemeMode, string> = {
   dark: "Dark",
 };
 
-type NavItem = { href: string; label: string };
-
-const homeNav: NavItem[] = [
-  { href: "#what-you-get", label: "What you get" },
-  { href: "#editions", label: "Editions" },
-  { href: "/playoff", label: "Playoff race" },
-  { href: "#request", label: "Request a team" },
-];
-
 type HomeShellProps = {
   children: ReactNode;
   // Passed in rather than read from config: this is a client component, and
   // importing the team config here would pull every edition's schedule and
   // notes fixture into the browser bundle to produce one href.
   editionHref: string;
-  // House surfaces share this masthead; each names its own sections.
-  nav?: NavItem[];
-  navLabel?: string;
   themeStyle: CSSProperties;
 };
 
 // Owns the same light/dark contract as the team workspace, including the
 // storage key, so a fan who picks dark on an edition page does not get flashed
 // back to light when they land on the home page.
-export function HomeShell({ children, editionHref, nav = homeNav, navLabel = "Home sections", themeStyle }: HomeShellProps) {
+export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps) {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
@@ -70,10 +58,10 @@ export function HomeShell({ children, editionHref, nav = homeNav, navLabel = "Ho
             <Wordmark />
           </div>
 
-          <nav aria-label={navLabel} className={styles.nav}>
-            {nav.map((item) => (
-              <a href={item.href} key={item.href}>{item.label}</a>
-            ))}
+          <nav aria-label="Home sections" className={styles.nav}>
+            <a href="#what-you-get">What you get</a>
+            <a href="#editions">Editions</a>
+            <a href="#request">Request a team</a>
           </nav>
 
           <div className={styles.headerControls}>

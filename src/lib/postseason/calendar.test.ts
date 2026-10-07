@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { describe, expect, it } from "vitest";
 import seasonFile from "../../../data/facts/postseason/2026.json";
-import { postseasonSeasonSchema } from "@/lib/postseason/season";
-import { nextPlayoffMilestone } from "./postseason";
+import { postseasonSeasonSchema } from "./season";
+import { nextPlayoffMilestone, postseasonTimeline } from "./calendar";
 
 const season = postseasonSeasonSchema.parse(seasonFile);
 const field = postseasonSeasonSchema.parse({ ...seasonFile, confirmed: { ...seasonFile.confirmed, playoffField: {
@@ -28,5 +28,13 @@ describe("next playoff milestone", () => {
 
   it("has nothing left after the championship", () => {
     expect(nextPlayoffMilestone(field, "2027-01-26")).toBeUndefined();
+  });
+
+  it("marks a timeline of past, current and next entries without inventing any", () => {
+    const states = (today: string) => Object.fromEntries(postseasonTimeline(season, today).map((entry) => [entry.label, entry.state]));
+    expect(states("2026-10-06")).toMatchObject({ "First rankings": "next", "Second rankings": "later", "National championship": "later" });
+    expect(states("2026-11-12")).toMatchObject({ "Second rankings": "past", "Third rankings": "next" });
+    expect(states("2026-12-19")).toMatchObject({ "Selection Day": "past", "First round": "now", Quarterfinals: "later" });
+    expect(postseasonTimeline(season, "2026-10-06").find((entry) => entry.label === "Selection Day")?.kind).toBe("selection");
   });
 });

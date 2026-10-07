@@ -14,7 +14,7 @@ import {
   getTeamSchedule,
 } from "@/server/schedule/schedule";
 import { getTeamNoteDocuments } from "@/server/sources/notes";
-import { getTeamPostseason } from "@/server/postseason/postseason";
+import { getTeamPostseasonView } from "@/server/postseason/postseason";
 import { getTeamRankingSummary } from "@/server/sources/rankings";
 import { getWeeklyEdition } from "@/server/sources/weekly";
 import { TeamWorkspace } from "./team-workspace";
@@ -30,7 +30,7 @@ export async function TeamDashboard({ team }: TeamDashboardProps) {
   const schedule = getTeamSchedule(team.slug);
   const poll = schedule ? await getLatestPollWeek(schedule.seasonYear) : undefined;
   const ranking = withPollSnapshot(poll, () => getTeamRankingSummary(team));
-  const postseason = await getTeamPostseason(team, ranking ? ranking.teamRank : undefined, now);
+  const postseason = await getTeamPostseasonView(team, ranking ? ranking.teamRank : undefined, now);
   const noteDocuments = getTeamNoteDocuments(team.slug);
   const notesById = new Map(
     noteDocuments.map((document) => [String(document.metadata.noteId), document]),

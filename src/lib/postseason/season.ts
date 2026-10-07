@@ -21,6 +21,17 @@ export const postseasonSeasonSchema = z.object({
     sourceIds: z.array(z.string().min(1)).min(1),
     fieldSize: z.number().int().min(4).max(32),
     byes: z.number().int().min(0).max(16),
+    // The published bracket. Listed in drawing order, top to bottom: each
+    // quarterfinal names the bye seed and the first-round game that feeds it,
+    // and each semifinal names the two bye seeds whose quarterfinals meet.
+    // There is no re-seeding, so this fixes every path from Selection Day on.
+    bracket: z.object({
+      firstRound: z.array(z.tuple([z.number().int().min(1), z.number().int().min(1)])),
+      quarterfinals: z.array(z.object({
+        seed: z.number().int().min(1), against: z.tuple([z.number().int().min(1), z.number().int().min(1)]),
+      })),
+      semifinals: z.array(z.tuple([z.number().int().min(1), z.number().int().min(1)])),
+    }),
     // Champions of these conferences are in whatever their final ranking.
     championBids: z.array(z.string().min(1)).min(1),
     // The highest-ranked team from these conferences gets a bid, champion or not.
@@ -71,6 +82,23 @@ export const postseasonSeasonSchema = z.object({
   if (season.playoff.byes > season.playoff.fieldSize) {
     ctx.addIssue({ code: "custom", path: ["playoff", "byes"], message: "More byes than teams" });
   }
+  const { bracket, byes, fieldSize } = season.playoff;
+  const key = (pair: readonly number[]) => [...pair].sort((a, b) => a - b).join("-");
+  const firstRound = bracket.firstRound.flat().sort((a, b) => a - b);
+  const unseeded = Array.from({ length: fieldSize - byes }, (_, index) => byes + index + 1);
+  if (firstRound.join() !== unseeded.join()) {
+    ctx.addIssue({ code: "custom", path: ["playoff", "bracket", "firstRound"], message: "First round must hold every seed below the bye line once" });
+  }
+  const games = new Set(bracket.firstRound.map(key));
+  const byeSeeds = bracket.quarterfinals.map((game) => game.seed).sort((a, b) => a - b);
+  if (byeSeeds.join() !== Array.from({ length: byes }, (_, index) => index + 1).join()
+    || bracket.quarterfinals.some((game) => !games.has(key(game.against)))
+    || new Set(bracket.quarterfinals.map((game) => key(game.against))).size !== bracket.quarterfinals.length) {
+    ctx.addIssue({ code: "custom", path: ["playoff", "bracket", "quarterfinals"], message: "Each bye seed meets one first-round winner" });
+  }
+  if (bracket.semifinals.flat().sort((a, b) => a - b).join() !== byeSeeds.join()) {
+    ctx.addIssue({ code: "custom", path: ["playoff", "bracket", "semifinals"], message: "Each quarterfinal feeds one semifinal" });
+  }
   const field = season.confirmed.playoffField;
   if (field) {
     const seeds = field.seeds.map((entry) => entry.seed).sort((a, b) => a - b);
@@ -86,3 +114,4 @@ export const postseasonSeasonSchema = z.object({
 export type PostseasonSeason = z.infer<typeof postseasonSeasonSchema>;
 export type BowlSelection = PostseasonSeason["confirmed"]["bowlSelections"][number];
 export type PlayoffSeed = NonNullable<PostseasonSeason["confirmed"]["playoffField"]>["seeds"][number];
+export type PlayoffBracket = PostseasonSeason["playoff"]["bracket"];
