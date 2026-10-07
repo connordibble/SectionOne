@@ -99,6 +99,7 @@
           "kickoff": "2:30 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "ESPN",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 59,
             "opponentScore": 7
@@ -115,6 +116,7 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 24,
             "opponentScore": 23
@@ -131,6 +133,7 @@
           "kickoff": "7 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
           "tv": "SEC Network+",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 30,
             "opponentScore": 6
@@ -147,6 +150,7 @@
           "kickoff": "11 a.m. CT",
           "venue": "Neyland Stadium, Knoxville, Tenn.",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 20,
             "opponentScore": 17
@@ -162,7 +166,8 @@
           "status": "scheduled",
           "kickoff": "2:30 p.m. CT",
           "venue": "Cotton Bowl, Dallas, Texas",
-          "tv": "ABC"
+          "tv": "ABC",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-florida",
@@ -174,7 +179,8 @@
           "status": "scheduled",
           "kickoff": "11 a.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": "ABC or ESPN"
+          "tv": "ABC or ESPN",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-ole-miss",
@@ -186,7 +192,8 @@
           "status": "scheduled",
           "kickoff": "Flex start time (afternoon or night)",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-mississippi-state",
@@ -198,7 +205,8 @@
           "status": "scheduled",
           "kickoff": "Night start time (5-7 p.m. CT)",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-missouri",
@@ -210,7 +218,8 @@
           "status": "scheduled",
           "kickoff": "Early start time (11 a.m.-12 p.m. CT)",
           "venue": "Faurot Field at Memorial Stadium, Columbia, Mo.",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-lsu",
@@ -222,7 +231,8 @@
           "status": "scheduled",
           "kickoff": "Flex start time (afternoon or night)",
           "venue": "Tiger Stadium, Baton Rouge, La.",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-arkansas",
@@ -234,7 +244,8 @@
           "status": "scheduled",
           "kickoff": "Afternoon start time (2:30-3:30 p.m. CT)",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-texas-texas-am",
@@ -246,7 +257,8 @@
           "status": "scheduled",
           "kickoff": "6:30 p.m. CT",
           "venue": "Kyle Field, College Station, Texas",
-          "tv": "ABC"
+          "tv": "ABC",
+          "opponentClassification": "fbs"
         }
       ]
     }
@@ -350,6 +362,7 @@
           "kickoff": "5 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network",
+          "opponentClassification": "fcs",
           "result": {
             "teamScore": 17,
             "opponentScore": 29
@@ -366,6 +379,7 @@
           "kickoff": "1:30 p.m. MT",
           "venue": "Husky Stadium, Seattle, Wash.",
           "tv": "Big Ten Network",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 14,
             "opponentScore": 16
@@ -382,6 +396,7 @@
           "kickoff": "1:30 p.m. MT",
           "venue": "Rice-Eccles Stadium, Salt Lake City, Utah",
           "tv": "FOX",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 0,
             "opponentScore": 33
@@ -398,6 +413,7 @@
           "kickoff": "5:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "CBS Sports Network",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 21,
             "opponentScore": 10
@@ -414,6 +430,7 @@
           "kickoff": "5:30 p.m. MT",
           "venue": "Albertsons Stadium, Boise, Idaho",
           "tv": "CBS Sports Network",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 18,
             "opponentScore": 37
@@ -429,7 +446,8 @@
           "status": "scheduled",
           "kickoff": "7 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
-          "tv": "The CW"
+          "tv": "The CW",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-texas-state",
@@ -441,7 +459,8 @@
           "status": "scheduled",
           "kickoff": "5:30 p.m. MT",
           "venue": "UFCU Stadium, San Marcos, Texas",
-          "tv": "CBS Sports Network"
+          "tv": "CBS Sports Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-colorado-state",
@@ -453,7 +472,8 @@
           "status": "scheduled",
           "kickoff": "1:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
-          "tv": "USA Network"
+          "tv": "USA Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-fresno-state",
@@ -465,7 +485,8 @@
           "status": "scheduled",
           "kickoff": "7:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
-          "tv": "USA Network"
+          "tv": "USA Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-san-diego-state",
@@ -477,7 +498,8 @@
           "status": "scheduled",
           "kickoff": "7:30 p.m. MT",
           "venue": "Snapdragon Stadium, San Diego, Calif.",
-          "tv": "USA Network"
+          "tv": "USA Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-oregon-state",
@@ -489,7 +511,8 @@
           "status": "scheduled",
           "kickoff": "8:30 p.m. MT",
           "venue": "Reser Stadium, Corvallis, Ore.",
-          "tv": "CBS Sports Network"
+          "tv": "CBS Sports Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "2026-utah-state-pac-12-flex",
@@ -606,6 +629,7 @@
           "kickoff": "12:30 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "Big Ten Network",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 56,
             "opponentScore": 3
@@ -622,6 +646,7 @@
           "kickoff": "7:30 p.m. ET",
           "venue": "Austin, Texas",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 23,
             "opponentScore": 24
@@ -638,6 +663,7 @@
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 59,
             "opponentScore": 3
@@ -654,6 +680,7 @@
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "FOX",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 42,
             "opponentScore": 19
@@ -670,6 +697,7 @@
           "kickoff": "3:30 p.m. ET",
           "venue": "Iowa City, Iowa",
           "tv": "CBS",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 31,
             "opponentScore": 14
@@ -685,7 +713,8 @@
           "status": "scheduled",
           "kickoff": "4:15 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
-          "tv": "Big Ten Network"
+          "tv": "Big Ten Network",
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-7",
@@ -697,7 +726,8 @@
           "status": "scheduled",
           "kickoff": "12 p.m. ET",
           "venue": "Bloomington, Ind.",
-          "tv": "FOX"
+          "tv": "FOX",
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-8",
@@ -709,7 +739,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Los Angeles, Calif.",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-9",
@@ -721,7 +752,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Columbus, Ohio · Ohio Stadium",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-10",
@@ -733,7 +765,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Columbus, Ohio · Ohio Stadium",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-11",
@@ -745,7 +778,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Lincoln, Neb.",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "ohio-state-football-2026-12",
@@ -757,7 +791,8 @@
           "status": "scheduled",
           "kickoff": "12:00 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
-          "tv": "FOX"
+          "tv": "FOX",
+          "opponentClassification": "fbs"
         }
       ]
     }
@@ -863,6 +898,7 @@
           "kickoff": "8:40 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 51,
             "opponentScore": 10
@@ -879,6 +915,7 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "SEC Network+",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 45,
             "opponentScore": 14
@@ -895,6 +932,7 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Oxford, Miss. (Vaught-Hemingway Stadium)",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 24,
             "opponentScore": 32
@@ -911,6 +949,7 @@
           "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
+          "opponentClassification": "fbs",
           "result": {
             "teamScore": 35,
             "opponentScore": 6
@@ -927,6 +966,7 @@
           "kickoff": "6:45 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "SEC Network",
+          "opponentClassification": "fcs",
           "result": {
             "teamScore": 63,
             "opponentScore": 14
@@ -942,7 +982,8 @@
           "status": "scheduled",
           "kickoff": "6 p.m. CT",
           "venue": "Lexington, Ky. (Kroger Field at Commonwealth Stadium)",
-          "tv": "ESPN"
+          "tv": "ESPN",
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-7",
@@ -954,7 +995,8 @@
           "status": "scheduled",
           "kickoff": "11 a.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
-          "tv": "ABC or ESPN"
+          "tv": "ABC or ESPN",
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-8",
@@ -966,7 +1008,8 @@
           "status": "scheduled",
           "kickoff": "11:00 a.m. CT",
           "venue": "Auburn, Ala. (Jordan-Hare Stadium)",
-          "tv": "ABC or ESPN"
+          "tv": "ABC or ESPN",
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-9",
@@ -978,7 +1021,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-10",
@@ -990,7 +1034,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-11",
@@ -1002,7 +1047,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Knoxville, Tenn. (Neyland Stadium)",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         },
         {
           "id": "lsu-football-2026-12",
@@ -1014,7 +1060,8 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Fayetteville, Ark. (Reynolds Razorback Stadium at Broyles Field)",
-          "tv": null
+          "tv": null,
+          "opponentClassification": "fbs"
         }
       ]
     }

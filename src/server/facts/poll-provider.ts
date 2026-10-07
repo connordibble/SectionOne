@@ -13,7 +13,7 @@ const normalize = (name: string) => {
   const key = name.toLowerCase().replace(/\(\d+\)/g, "").replace(/[^a-z0-9]+/g, " ").trim();
   return aliases[key] ?? key;
 };
-const plain = (html: string) => html.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&").replace(/&#0*39;|&apos;/g, "'").replace(/&nbsp;/g, " ").trim();
+export const plain = (html: string) => html.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&").replace(/&#0*39;|&apos;/g, "'").replace(/&nbsp;/g, " ").trim();
 
 // Provider parsing never asks a model to supply a rank, date or team name.
 // Two published representations must agree before a new snapshot is admitted.
@@ -48,20 +48,24 @@ export function parseVerifiedPoll(feed: unknown, ncaaHtml: string, season: numbe
   });
 }
 
+// Bounded, redirect-refusing read shared by every ranking source.
+export async function readBoundedText(url: string, maximum: number, fetchImpl: typeof fetch = fetch): Promise<string> {
+  const response = await fetchImpl(url, { signal: AbortSignal.timeout(8000), redirect: "error", cache: "no-store" });
+  if (!response.ok || !response.body) throw new Error("Poll source unavailable");
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = []; let bytes = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read(); if (done) break;
+      bytes += value.byteLength; if (bytes > maximum) throw new Error("Poll source too large"); chunks.push(value);
+    }
+  } finally { await reader.cancel(); }
+  return Buffer.concat(chunks).toString("utf8");
+}
+
 export async function fetchVerifiedPoll(season: number, now = new Date(), fetchImpl = fetch): Promise<PollWeek> {
-  const read = async (url: string, maximum: number) => {
-    const response = await fetchImpl(url, { signal: AbortSignal.timeout(8000), redirect: "error", cache: "no-store" });
-    if (!response.ok || !response.body) throw new Error("Poll source unavailable");
-    const reader = response.body.getReader();
-    const chunks: Uint8Array[] = []; let bytes = 0;
-    try {
-      while (true) {
-        const { done, value } = await reader.read(); if (done) break;
-        bytes += value.byteLength; if (bytes > maximum) throw new Error("Poll source too large"); chunks.push(value);
-      }
-    } finally { await reader.cancel(); }
-    return Buffer.concat(chunks).toString("utf8");
-  };
-  const [feed, verification] = await Promise.all([read(rankingFeedUrl, 2_000_000), read(rankingVerificationUrl, 1_000_000)]);
+  const [feed, verification] = await Promise.all([
+    readBoundedText(rankingFeedUrl, 2_000_000, fetchImpl), readBoundedText(rankingVerificationUrl, 1_000_000, fetchImpl),
+  ]);
   return parseVerifiedPoll(JSON.parse(feed), verification, season, now);
 }

@@ -70,6 +70,16 @@ export async function publishTeamSchedule(root: string, input: unknown, now = ne
         }
       }
     }
+    if (previous.seasonYear === schedule.seasonYear) {
+      // An import that does not carry classification is not evidence that an
+      // opponent changed division, so a classification already on file stays.
+      for (const game of schedule.games) {
+        if (game.opponentClassification) continue;
+        const known = previous.games.find((candidate) => candidate.id === game.id)
+          ?? previous.games.find((candidate) => candidate.opponent === game.opponent && candidate.date === game.date);
+        if (known?.opponentClassification) game.opponentClassification = known.opponentClassification;
+      }
+    }
     current.schedule = schedule;
     teamRegistrySchema.parse(registry);
     await writeFile(temporary, `${JSON.stringify(registry, null, 2)}\n`, { flag: "wx" });

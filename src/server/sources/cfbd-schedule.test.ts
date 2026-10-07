@@ -166,6 +166,18 @@ describe("buildTeamSchedule", () => {
     expect(schedule.games[0].status).toBe("final");
     expect(schedule.games[1].status).toBe("scheduled");
   });
+
+  it("classifies the opponent from the other side of the fixture and never guesses FBS", () => {
+    const schedule = build({ games: [
+      { ...games[1], homeClassification: "fbs", awayClassification: "fcs" },
+      { ...games[0], homeClassification: "fbs", awayClassification: "fbs" },
+      { ...games[2], homeClassification: "fbs", awayClassification: "ii" },
+      { ...games[3] },
+    ] });
+    expect(schedule.games.map((game) => game.opponentClassification)).toEqual(["fcs", "fbs", "lower-division"]);
+    const unlabeled = build({ games: [{ ...games[1], awayClassification: "unknown" }] });
+    expect(unlabeled.games[0]).not.toHaveProperty("opponentClassification");
+  });
 });
 
 describe("formatKickoff", () => {

@@ -91,6 +91,23 @@ it("retains verified results after incomplete refreshes and permits sourced scor
   expect((await readTeamRegistry(root))["example-football"].schedule.games[0].result).toEqual({ teamScore: 0, opponentScore: 34 });
 });
 
+it("keeps an opponent classification on file when a refresh does not carry one", async () => {
+  const { root, candidate, now } = await fixture();
+  candidate.manifest.schedule.games[0].opponentClassification = "fcs";
+  candidate.manifest.schedule.games[1].opponentClassification = "fbs";
+  await onboardTeam(root, candidate, now);
+  const next = structuredClone(candidate.manifest.schedule);
+  next.capturedAt = now.toISOString();
+  next.games[0].id = "provider-game-id";
+  delete next.games[0].opponentClassification;
+  next.games[1].opponentClassification = "fcs";
+  await publishTeamSchedule(root, next, now);
+  const games = (await readTeamRegistry(root))["example-football"].schedule.games;
+  expect(games[0].opponentClassification).toBe("fcs");
+  // A refresh that does classify the opponent is the newer fact and wins.
+  expect(games[1].opponentClassification).toBe("fcs");
+});
+
 it("loads an additional program in a separate checkout without modifying source code", async () => {
   const { root, candidate, now } = await fixture();
   for (const name of ["src", "data", "tsconfig.json"]) await cp(path.join(process.cwd(), name), path.join(root, name), { recursive: true });

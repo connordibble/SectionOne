@@ -1,5 +1,5 @@
 import type { TeamConfig } from "@/config/team";
-import type { ScheduleGame, ScheduleSite, TeamSchedule } from "@/lib/facts/schedule";
+import type { OpponentClassification, ScheduleGame, ScheduleSite, TeamSchedule } from "@/lib/facts/schedule";
 import { calendarDate } from "@/lib/facts/schedule";
 import { z } from "zod";
 
@@ -11,6 +11,7 @@ export const cfbdGamesSchema = z.array(z.object({
   venue: z.string().nullish(), completed: z.boolean().nullish(),
   homePoints: z.number().int().nonnegative().nullish(),
   awayPoints: z.number().int().nonnegative().nullish(),
+  homeClassification: z.string().nullish(), awayClassification: z.string().nullish(),
 }));
 export const cfbdMediaSchema = z.array(z.object({
   id: z.number().int().positive(), mediaType: z.string().nullish(), outlet: z.string().nullish(),
@@ -32,6 +33,9 @@ export type CfbdScheduleGame = {
   completed?: boolean | null;
   homePoints?: number | null;
   awayPoints?: number | null;
+  // "fbs", "fcs", "ii" or "iii". Bowl eligibility depends on it.
+  homeClassification?: string | null;
+  awayClassification?: string | null;
 };
 
 // From /games/media. One game can have several rows (TV plus radio plus web),
@@ -90,6 +94,7 @@ function toScheduleGame(
   outlets: Map<number, string[]>,
 ): ScheduleGame {
   const opponent = opponentOf(game, cfbdTeamName(team));
+  const classification = classify(matches(game.homeTeam, cfbdTeamName(team)) ? game.awayClassification : game.homeClassification);
   // CFBD publishes a placeholder kickoff for games whose window is not set and
   // flags them with startTimeTBD. Rendering that placeholder as a real time is
   // how a schedule quietly starts lying, so an unset window stays unset.
@@ -115,6 +120,7 @@ function toScheduleGame(
     kickoff: confirmed && usable ? formatKickoff(usable, timeZone) : "still to be announced",
     venue: game.venue?.trim() || "Venue to be announced",
     tv: outlets.get(game.id)?.join(" or ") ?? null,
+    ...(classification ? { opponentClassification: classification } : {}),
     ...(result ? { result } : {}),
   };
 }
@@ -199,6 +205,15 @@ function involvesTeam(game: CfbdScheduleGame, teamName: string): boolean {
 
 function opponentOf(game: CfbdScheduleGame, teamName: string): string {
   return matches(game.homeTeam, teamName) ? game.awayTeam : game.homeTeam;
+}
+
+// An unrecognised value stays unclassified rather than defaulting to FBS:
+// counting a win the rules do not count would overstate eligibility.
+function classify(value: string | null | undefined): OpponentClassification | undefined {
+  const key = value?.trim().toLowerCase();
+  if (key === "fbs" || key === "fcs") return key;
+  if (key === "ii" || key === "iii") return "lower-division";
+  return undefined;
 }
 
 function siteOf(game: CfbdScheduleGame, teamName: string): ScheduleSite {
