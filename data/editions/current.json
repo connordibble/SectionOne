@@ -596,17 +596,17 @@
         }
       },
       {
-        "id": "kentucky-tight-ends",
-        "headline": "Kentucky’s tight ends finished its overtime win at South Carolina",
-        "tldr": "Minchey found Boyer for the touchdown, then Rodriguez for the winning two-point conversion. Watch LSU’s coverage communicate near the goal line, including when a tight end releases late.",
-        "outlet": "Kentucky Athletics",
-        "tier": "official",
-        "url": "https://ukathletics.com/news/2026/10/03/comeback-cats-rally-for-overtime-win-at-south-carolina/",
-        "publishedAt": "2026-10-03",
+        "id": "kentucky-defensive-availability",
+        "headline": "Kentucky lists Edwards doubtful; Miller is off the report",
+        "tldr": "Thursday’s update moved Edwards from questionable to doubtful and removed Miller from the list. Watch LSU’s blocking against the available front and its coverage outside.",
+        "outlet": "A Sea of Blue",
+        "tier": "local",
+        "url": "https://sports.yahoo.com/articles/kentucky-vs-lsu-injury-report-003141330.html",
+        "publishedAt": "2026-10-09T00:31:41Z",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -721,7 +721,8 @@
         "publishedAt": "2026-10-09T13:05:51.945502Z",
         "body": "Watch which linebackers handle the calls and which receivers or tight ends provide the short option. A projected replacement is useful only once the assignment works on the field."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -944,13 +945,13 @@
         }
       },
       {
-        "id": "defensive-test",
-        "headline": "Kansas heads west after holding Middle Tennessee to 138 total yards",
-        "tldr": "That completed-game result sets up a tougher test. Watch the defense finish tackles and avoid giving away a long gain after initial contact.",
-        "outlet": "Kansas Athletics",
-        "tier": "official",
-        "url": "https://kuathletics.com/news/2026/10/5/football-jayhawks-head-to-utah-to-face-12th-ranked-utes",
-        "publishedAt": "2026-10-05",
+        "id": "kickoff-coverage",
+        "headline": "Kansas needs cleaner kickoff coverage after two long returns",
+        "tldr": "Middle Tennessee returned consecutive kicks for 38 and 52 yards up the right sideline. Watch the kick placement and lane assignments against Utah.",
+        "outlet": "KUSports.com",
+        "tier": "local",
+        "url": "https://www2.kusports.com/sports/college/football/2026/oct/09/preview-seasons-first-true-road-game-sends-ku-to-no-12-utah/",
+        "publishedAt": "2026-10-09",
         "grade": {
           "impact": 4,
           "echo": 1,
@@ -1083,7 +1084,8 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Watch communication before the snap and the exchange afterward. A quiet, clean possession can keep the offense out of its own way."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
   },
   "alabama-football": {
     "schemaVersion": 1,
@@ -1140,8 +1142,8 @@
       },
       {
         "id": "gameday-arrival",
-        "headline": "Alabama changes parking, tailgating and stadium-entry plans for Saturday",
-        "tldr": "No Friday tailgate setup; campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible. Gates open at 4 p.m. CT; be in line by 5 p.m. at your designated checkpoint.",
+        "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
+        "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
         "outlet": "UA Gameday",
         "tier": "official",
         "url": "https://uagameday.com/tidetips/",
@@ -1264,7 +1266,8 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1335,8 +1338,8 @@
       },
       {
         "id": "gameday-arrival",
-        "headline": "Alabama changes parking, tailgating and stadium-entry plans for Saturday",
-        "tldr": "No Friday tailgate setup; campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible. Gates open at 4 p.m. CT; be in line by 5 p.m. at your designated checkpoint.",
+        "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
+        "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
         "outlet": "UA Gameday",
         "tier": "official",
         "url": "https://uagameday.com/tidetips/",
@@ -1445,6 +1448,7 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
   }
 }
