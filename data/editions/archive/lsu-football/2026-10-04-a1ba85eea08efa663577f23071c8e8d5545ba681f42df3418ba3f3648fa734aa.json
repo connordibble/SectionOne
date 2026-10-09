@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "lsu-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-07T00:06:19.216Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "LSU heads to Kentucky after its 63-14 win over McNeese. Green is out of his brace but has no confirmed return, while Kentucky’s latest coaching focus is third-down execution on both sides of the ball.",
+  "items": [
+    {
+      "id": "green-recovery",
+      "headline": "Kiffin says Green is out of his brace and getting closer",
+      "tldr": "Monday’s recovery update did not confirm a return date or clearance for Kentucky. Check the availability report, then watch how the available tight ends are used.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://content.wbrz.com/news/lsu-prepares-to-play-kentucky-on-the-road-following-dominant-win-over-mcneese-state",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "rushing-finish",
+      "headline": "LSU scored six rushing touchdowns against McNeese",
+      "tldr": "The 63-14 win featured 731 yards of total offense. Watch whether the blocking and ball security can carry into an SEC road game, where each finished possession matters.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/10/4/football-dominates-mcneese-63-14-behind-historic-offensive-night",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "kentucky-third-downs",
+      "headline": "Stein wants better third-down execution on both sides",
+      "tldr": "Kentucky’s coach pointed Tuesday to route detail on offense and quarterback scrambles allowed on defense. Watch LSU’s protection and whether its own rush keeps the quarterback contained.",
+      "outlet": "Kentucky Athletics",
+      "tier": "official",
+      "url": "https://ukathletics.com/news/2026/10/06/cats-looking-to-improve-third-down-efficiency/",
+      "publishedAt": "2026-10-06",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "kentucky-tight-ends",
+      "headline": "Kentucky’s tight ends finished its overtime win at South Carolina",
+      "tldr": "Minchey found Boyer for the touchdown, then Rodriguez for the winning two-point conversion. Watch LSU’s coverage communicate near the goal line, including when a tight end releases late.",
+      "outlet": "Kentucky Athletics",
+      "tier": "official",
+      "url": "https://ukathletics.com/news/2026/10/03/comeback-cats-rally-for-overtime-win-at-south-carolina/",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "homecoming-kickoff",
+      "headline": "LSU’s October 17 homecoming game is set for 11 a.m. CT",
+      "tldr": "Mississippi State visits next week on ABC or ESPN. The final network will be selected after October 10; the early kickoff is already confirmed.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/10/5/lsu-football-homecoming-game-to-air-on-abc-or-espn",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Earn the road possessions.",
+      "body": "Keep the running game on schedule and the quarterback protected. On defense, finish the tackle before the quarterback turns a passing down into another first down.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Third down deserves the attention",
+      "question": "What should LSU emphasize at Kentucky?",
+      "answer": "Set up manageable third downs, use the available running lane and contain the quarterback when coverage holds. Be ready for the tight end when Kentucky gets close to the goal line.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Third-down rush",
+        "summary": "Keep the escape covered",
+        "detail": "Watch LSU close the pocket without opening a lane through the middle. A covered receiver is useful only if the quarterback cannot run for the first down.",
+        "state": "watch",
+        "prompt": "How should LSU handle Kentucky on third down?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Running game",
+        "summary": "Finish the possession",
+        "detail": "Watch the line create room and the backs protect the ball through contact. A useful early gain should leave more than one option on the next down.",
+        "state": "watch",
+        "prompt": "What should I watch from LSU’s running game?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Tight-end coverage",
+        "summary": "Communicate near the goal line",
+        "detail": "Watch defenders account for a tight end slipping behind the initial action. Pass off routes without letting the last receiver disappear.",
+        "state": "watch",
+        "prompt": "What should LSU watch near its goal line?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Availability",
+        "summary": "Check the final report",
+        "detail": "Follow the final status before assigning a player a role. Watch the available tight ends provide a short option when outside receivers are covered.",
+        "state": "watch",
+        "prompt": "What remains unresolved about LSU’s availability?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Kentucky, watch third-down containment, the running game and the final availability report.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Third-down rush",
+      "topics": [
+        "third-down rush",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch LSU close the pocket without opening a lane through the middle. A covered receiver is useful only if the quarterback cannot run for the first down."
+    },
+    {
+      "id": "watch-2",
+      "title": "Running game",
+      "topics": [
+        "running game",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the line create room and the backs protect the ball through contact. A useful early gain should leave more than one option on the next down."
+    },
+    {
+      "id": "watch-3",
+      "title": "Tight-end coverage",
+      "topics": [
+        "tight-end coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch defenders account for a tight end slipping behind the initial action. Pass off routes without letting the last receiver disappear."
+    },
+    {
+      "id": "watch-4",
+      "title": "Availability",
+      "topics": [
+        "availability",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Follow the final status before assigning a player a role. Watch the available tight ends provide a short option when outside receivers are covered."
+    }
+  ]
+}

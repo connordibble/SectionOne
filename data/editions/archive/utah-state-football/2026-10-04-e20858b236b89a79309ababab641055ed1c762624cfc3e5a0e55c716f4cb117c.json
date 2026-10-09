@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-07T00:06:19.216Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Utah State hosts Washington State on Friday with its starting quarterback still unannounced. Jacobs’ rushing and Wood’s receiving offer ways to build drives; the defense must avoid another quick answer after a score.",
+  "items": [
+    {
+      "id": "quarterback-decision",
+      "headline": "Mendenhall has not named Friday’s starting quarterback",
+      "tldr": "Monday’s update left the choice unresolved after both quarterbacks played at Boise State. Follow the final decision and watch whether the offense can build a rhythm with its practice preparation.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state/faces-washington-state/577857",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "wood-targets",
+      "headline": "Local analysis calls for steadier involvement from Eli Wood",
+      "tldr": "Cache Valley Daily traced how Wood’s targets disappeared between productive drives at Boise State. Watch whether the passing game keeps finding him when the first series is over.",
+      "outlet": "Cache Valley Daily / The Fan",
+      "tier": "local",
+      "url": "https://1069thefan.com/2026/10/05/monday-cooldown-can-the-aggies-1-4-season-be-salvaged-sports/",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "jacobs-rushing",
+      "headline": "Jacobs rushed for 139 yards at Boise State",
+      "tldr": "His first 100-yard rushing game gives the offense something to build on. Watch the blocks that create space and whether Utah State can turn a long gain into a finished drive.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/10/3/utah-state-football-drops-pac-12-opener-at-boise-state-37-18.aspx",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "cougar-offense",
+      "headline": "Washington State scored only on two field goals against Fresno State",
+      "tldr": "The Cougars lost 26-6 and went scoreless after halftime. Utah State should make them sustain a drive, with sound coverage and tackles instead of a quick explosive play.",
+      "outlet": "Washington State Athletics",
+      "tier": "official",
+      "url": "https://wsucougars.com/news/2026/10/4/washington-state-falls-short-against-fresno-state",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "friday-game-guide",
+      "headline": "Friday’s home game starts at 7 p.m. MT on The CW",
+      "tldr": "Maverik Stadium gates open at 5:30 p.m., and fans are asked to wear blue. Set the earlier arrival or broadcast reminder now: this is a Friday game.",
+      "outlet": "KSL Sports / USU Football",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state/vs-washington-state/577665",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the next drive alive.",
+      "body": "Find the available throw, give the runner room and make the next tackle. After scoring, the defense needs to hold its coverage long enough to earn another possession.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Build rhythm and sustain it",
+      "question": "What should Utah State emphasize on Friday?",
+      "answer": "Keep the productive receivers involved and take the available running lane. On defense, communicate through changes in formation and finish the tackle before a short gain becomes a long one.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback decision",
+        "summary": "Follow the final choice",
+        "detail": "Check who takes the first snaps and how the offense shares its work. Avoid assuming that Monday’s unresolved choice guarantees a split on Friday.",
+        "state": "watch",
+        "prompt": "What should I watch about Utah State’s quarterback choice?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving rhythm",
+        "summary": "Keep the outlet involved",
+        "detail": "Watch whether the passing game returns to the receiver who is finding space. The offense needs an answer after the first scripted possession.",
+        "state": "watch",
+        "prompt": "How can Utah State keep Eli Wood involved?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Running room",
+        "summary": "Build on the first block",
+        "detail": "Watch the line create a lane before the runner has to improvise. Take the useful gain and protect the ball through contact.",
+        "state": "watch",
+        "prompt": "What should I watch in Utah State’s running game?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage communication",
+        "summary": "Make the next stop",
+        "detail": "Watch the secondary pass off routes and stay connected after a Utah State score. Make the opponent earn another first down.",
+        "state": "watch",
+        "prompt": "What should Utah State improve in coverage?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Washington State visits Friday: watch the quarterback decision, touches for Wood and Jacobs, and defensive communication.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback decision",
+      "topics": [
+        "quarterback decision",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Check who takes the first snaps and how the offense shares its work. Avoid assuming that Monday’s unresolved choice guarantees a split on Friday."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving rhythm",
+      "topics": [
+        "receiving rhythm",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch whether the passing game returns to the receiver who is finding space. The offense needs an answer after the first scripted possession."
+    },
+    {
+      "id": "watch-3",
+      "title": "Running room",
+      "topics": [
+        "running room",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the line create a lane before the runner has to improvise. Take the useful gain and protect the ball through contact."
+    },
+    {
+      "id": "watch-4",
+      "title": "Coverage communication",
+      "topics": [
+        "coverage communication",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the secondary pass off routes and stay connected after a Utah State score. Make the opponent earn another first down."
+    }
+  ]
+}

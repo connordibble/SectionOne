@@ -79,13 +79,13 @@
       "teamDisplayName": "Texas football",
       "seasonYear": 2026,
       "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-      "capturedAt": "2026-10-07T02:09:43.391Z",
+      "capturedAt": "2026-10-09T12:52:38.367Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-        "retrievedAt": "2026-10-07T00:06:42.125Z",
-        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
+        "retrievedAt": "2026-10-09T12:52:38.367Z",
+        "officialVerifiedAt": "2026-10-09T12:52:38.367Z"
       },
       "games": [
         {
@@ -370,13 +370,13 @@
       "teamDisplayName": "Utah State football",
       "seasonYear": 2026,
       "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
-      "capturedAt": "2026-10-07T02:11:04.126Z",
+      "capturedAt": "2026-10-09T12:52:40.407Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
-        "retrievedAt": "2026-10-07T00:06:42.125Z",
-        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
+        "retrievedAt": "2026-10-09T12:52:40.407Z",
+        "officialVerifiedAt": "2026-10-09T12:52:40.407Z"
       },
       "games": [
         {
@@ -672,13 +672,13 @@
       "teamDisplayName": "Ohio State football",
       "seasonYear": 2026,
       "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-      "capturedAt": "2026-10-07T02:09:43.391Z",
+      "capturedAt": "2026-10-09T12:52:37.886Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-        "retrievedAt": "2026-10-07T00:06:42.125Z",
-        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
+        "retrievedAt": "2026-10-09T12:52:37.886Z",
+        "officialVerifiedAt": "2026-10-09T12:52:37.886Z"
       },
       "games": [
         {
@@ -976,13 +976,13 @@
       "teamDisplayName": "LSU football",
       "seasonYear": 2026,
       "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-      "capturedAt": "2026-10-07T02:09:43.391Z",
+      "capturedAt": "2026-10-09T12:52:38.295Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-        "retrievedAt": "2026-10-07T00:06:42.125Z",
-        "officialVerifiedAt": "2026-10-07T00:06:42.125Z"
+        "retrievedAt": "2026-10-09T12:52:38.295Z",
+        "officialVerifiedAt": "2026-10-09T12:52:38.295Z"
       },
       "games": [
         {
@@ -1276,13 +1276,13 @@
       "teamDisplayName": "Northwestern football",
       "seasonYear": 2026,
       "sourceUrl": "https://nusports.com/sports/football/schedule",
-      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "capturedAt": "2026-10-09T12:52:37.773Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://nusports.com/sports/football/schedule",
-        "retrievedAt": "2026-10-07T02:35:21.494568Z",
-        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+        "retrievedAt": "2026-10-09T12:52:37.773Z",
+        "officialVerifiedAt": "2026-10-09T12:52:37.773Z"
       },
       "games": [
         {
@@ -1570,13 +1570,13 @@
       "teamDisplayName": "Kansas football",
       "seasonYear": 2026,
       "sourceUrl": "https://kuathletics.com/sports/football/schedule",
-      "capturedAt": "2026-10-07T02:43:13.553Z",
+      "capturedAt": "2026-10-09T12:52:41.030Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://kuathletics.com/sports/football/schedule",
-        "retrievedAt": "2026-10-07T02:35:21.494568Z",
-        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+        "retrievedAt": "2026-10-09T12:52:41.030Z",
+        "officialVerifiedAt": "2026-10-09T12:52:41.030Z"
       },
       "games": [
         {
@@ -1859,13 +1859,13 @@
       "teamDisplayName": "Alabama football",
       "seasonYear": 2026,
       "sourceUrl": "https://rolltide.com/sports/football/schedule",
-      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "capturedAt": "2026-10-09T12:52:40.920Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://rolltide.com/sports/football/schedule",
-        "retrievedAt": "2026-10-07T02:35:21.494568Z",
-        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+        "retrievedAt": "2026-10-09T12:52:40.920Z",
+        "officialVerifiedAt": "2026-10-09T12:52:40.920Z"
       },
       "games": [
         {
@@ -2165,13 +2165,13 @@
       "teamDisplayName": "Georgia football",
       "seasonYear": 2026,
       "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-      "capturedAt": "2026-10-07T02:38:59.757Z",
+      "capturedAt": "2026-10-09T12:52:40.865Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-        "retrievedAt": "2026-10-07T02:35:21.494568Z",
-        "officialVerifiedAt": "2026-10-07T02:35:21.494568Z"
+        "retrievedAt": "2026-10-09T12:52:40.865Z",
+        "officialVerifiedAt": "2026-10-09T12:52:40.865Z"
       },
       "games": [
         {
@@ -2312,12 +2312,12 @@
           "opponent": "Auburn",
           "site": "home",
           "dateLabel": "Oct 17",
-          "startsAt": null,
+          "startsAt": "2026-10-17T15:30:00-04:00",
           "date": "2026-10-17",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "3:30 p.m. ET",
           "venue": "Sanford Stadium, Athens, GA",
-          "tv": null,
+          "tv": "ABC or ESPN or SEC Network",
           "opponentClassification": "fbs"
         },
         {

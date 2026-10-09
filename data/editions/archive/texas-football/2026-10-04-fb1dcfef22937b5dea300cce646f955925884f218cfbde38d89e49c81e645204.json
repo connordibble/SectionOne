@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-07T00:06:19.216Z",
+  "storiesUpdatedAt": "2026-10-07T23:12:31.885Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Texas comes out of its bye for Oklahoma with Sarkisian reporting better overall health, but no individual clearance yet. First-down efficiency and a disciplined pass rush are the priorities in Dallas.",
+  "items": [
+    {
+      "id": "post-bye-health",
+      "headline": "Sarkisian reports better health; individual statuses remain pending",
+      "tldr": "Monday’s assessment was encouraging, but it did not clear individual players. Check the availability report before assuming the full rotation is back.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/105504/texas-longhorns-injuries-bye-week-oklahoma-sooners",
+      "publishedAt": "2026-10-05T17:30:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "bishop-personnel",
+      "headline": "Bishop’s four-receiver package gives Texas another offensive look",
+      "tldr": "Texas introduced the package against UTSA to get Bishop on the field alongside its top three receivers. Watch the screen game and protection when the tight end comes off.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/105544/jermaine-bishop-10-personnel-steve-sarkisian",
+      "publishedAt": "2026-10-07T16:44:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "simmons-pressure",
+      "headline": "Simmons set a Texas record with 5.5 sacks at Tennessee",
+      "tldr": "The record describes the September 26 game, not a projection for Dallas. Watch whether the edge pressure can hurry Oklahoma’s quarterback while keeping an escape lane covered.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/9/29/no-1-1-footballs-simmons-earns-national-player-of-the-week-honors-from-bednarik-award-nagurski-trophy-walter-camp-award",
+      "publishedAt": "2026-09-29",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "oklahoma-turnovers",
+      "headline": "Oklahoma gave up 17 points off four turnovers at Georgia",
+      "tldr": "The Sooners’ last game shows why possession swings matter. Texas should try to force difficult decisions, then give its offense a useful field position.",
+      "outlet": "Oklahoma Athletics",
+      "tier": "official",
+      "url": "https://soonersports.com/news/2026/9/26/football-falls-to-no-2-georgia-in-athens",
+      "publishedAt": "2026-09-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "florida-kickoff",
+      "headline": "Texas–Florida is set for 11 a.m. CT on October 17",
+      "tldr": "The network remains ABC or ESPN, with the final choice due after October 10. Plan for the early start next week while this week’s focus stays on Oklahoma.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/10/5/lsu-football-homecoming-game-to-air-on-abc-or-espn",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Win first down.",
+      "body": "Avoid the early loss that turns a possession into an obvious passing situation. On defense, close the pocket without letting the quarterback escape through the middle.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep the next down manageable",
+      "question": "What should Texas emphasize against Oklahoma?",
+      "answer": "Use the available short throw or running lane to stay ahead of the chains. Make the quarterback move without abandoning containment, and be ready to capitalize on a turnover.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "First down",
+        "summary": "Avoid the long-yardage trap",
+        "detail": "Watch the opening block and the first throw of each possession. Take a useful gain before a sack or penalty makes the next down predictable.",
+        "state": "watch",
+        "prompt": "How can Texas improve its first downs?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Pass-rush lanes",
+        "summary": "Close the pocket together",
+        "detail": "Watch the edge and interior rush work toward the same point. Getting near the quarterback matters only if someone still covers the escape lane.",
+        "state": "watch",
+        "prompt": "What should I watch from Texas’s pass rush?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Availability",
+        "summary": "Wait for individual decisions",
+        "detail": "Check the final report before assuming a player has returned. Watch how the available backs and tight ends share the work.",
+        "state": "watch",
+        "prompt": "What remains unresolved about Texas’s availability?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Possession swings",
+        "summary": "Make the extra chance count",
+        "detail": "Watch ball security after a takeaway. A short field still requires sound blocking and a clean decision to become points.",
+        "state": "watch",
+        "prompt": "How can Texas capitalize on Oklahoma’s mistakes?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Oklahoma in Dallas, watch first-down execution, controlled pressure and the final availability report.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "First down",
+      "topics": [
+        "first down",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the opening block and the first throw of each possession. Take a useful gain before a sack or penalty makes the next down predictable."
+    },
+    {
+      "id": "watch-2",
+      "title": "Pass-rush lanes",
+      "topics": [
+        "pass-rush lanes",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the edge and interior rush work toward the same point. Getting near the quarterback matters only if someone still covers the escape lane."
+    },
+    {
+      "id": "watch-3",
+      "title": "Availability",
+      "topics": [
+        "availability",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Check the final report before assuming a player has returned. Watch how the available backs and tight ends share the work."
+    },
+    {
+      "id": "watch-4",
+      "title": "Possession swings",
+      "topics": [
+        "possession swings",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch ball security after a takeaway. A short field still requires sound blocking and a clean decision to become points."
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "alabama-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-07T02:38:32.788Z",
+  "storiesUpdatedAt": "2026-10-07T23:11:20.795Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "For Georgia, pair patient quarterback decisions with sound protection and disciplined pressure. Follow the final availability report before assuming the offensive line is settled.",
+  "items": [
+    {
+      "id": "right-tackle-status",
+      "headline": "DeBoer is optimistic about James; a return is not confirmed",
+      "tldr": "Monday’s update left his availability open. Check the final report before assuming he will reclaim the right-tackle job.",
+      "outlet": "Alabama Crimson Tide on SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/alabama-injury-updates-jayvin-james-three-more-players-ahead-georgia-game",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "russell-decisions",
+      "headline": "Russell threw for 285 yards and three touchdowns at Mississippi State",
+      "tldr": "His decision-making is the useful part to carry forward. Watch him take the available receiver before trying to extend a play against Georgia.",
+      "outlet": "Alabama Crimson Tide on SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/what-we-learned-from-alabama-dominant-win-mississippi-state-tide-takeaways",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "griffin-depth",
+      "headline": "Griffin led Alabama with nine tackles off the bench",
+      "tldr": "Tuesday’s national freshman award recognizes his Mississippi State performance. Watch assignment discipline along with the tackle totals.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/6/footballs-xavier-griffin-named-shaun-alexander-award-player-of-the-week",
+      "publishedAt": "2026-10-06",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "weather-monitoring",
+      "headline": "Alabama is monitoring the weather; no game change is announced",
+      "tldr": "The school says it currently has no plans to alter Saturday’s Georgia game. Check official updates before traveling; a possible change is not a confirmed postponement.",
+      "outlet": "Georgia Bulldogs on SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/georgia/the-nightmare-is-here-for-georgia-football-and-the-alabama-crimson-tide-01m49w9y8vea",
+      "publishedAt": "2026-10-07T00:44:45Z",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "opponent-line",
+      "headline": "Georgia has used the same starting offensive line in every game",
+      "tldr": "The opponent’s preview highlights continuity up front. Watch the pressure arrive without opening an escape lane or losing a receiver behind it.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/5/football-georgia-visits-alabama-for-top-10-matchup",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect the next play.",
+      "body": "Take the useful throw, protect the ball through contact and keep pressure connected to coverage. A short field still needs a clean finish.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Pair pressure with ball security",
+      "question": "What should Alabama emphasize this week?",
+      "answer": "Against Georgia, watch right-tackle availability, controlled pressure and decisions after a takeaway.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Right tackle",
+        "summary": "Use the final status",
+        "detail": "Follow the final availability decision, then watch the active tackle handle the edge without help arriving late.",
+        "state": "watch",
+        "prompt": "What should I watch for with right tackle?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback choices",
+        "summary": "Take the useful throw",
+        "detail": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback choices?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Connected pressure",
+        "summary": "Close the pocket together",
+        "detail": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play.",
+        "state": "watch",
+        "prompt": "What should I watch for with connected pressure?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Possession swings",
+        "summary": "Finish the extra chance",
+        "detail": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play.",
+        "state": "watch",
+        "prompt": "What should I watch for with possession swings?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Georgia, watch right-tackle availability, controlled pressure and decisions after a takeaway.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Right tackle",
+      "topics": [
+        "right tackle",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Follow the final availability decision, then watch the active tackle handle the edge without help arriving late."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback choices",
+      "topics": [
+        "quarterback choices",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball."
+    },
+    {
+      "id": "watch-3",
+      "title": "Connected pressure",
+      "topics": [
+        "connected pressure",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play."
+    },
+    {
+      "id": "watch-4",
+      "title": "Possession swings",
+      "topics": [
+        "possession swings",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
+    }
+  ]
+}
