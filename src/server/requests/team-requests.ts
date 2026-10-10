@@ -1,3 +1,5 @@
+import { normalizeTeamName } from "@/lib/teams/request-match";
+export { normalizeTeamName } from "@/lib/teams/request-match";
 import { z } from "zod";
 import { getSharedDb, type Db } from "@/server/db/client";
 import { teamRequests } from "@/server/db/schema";
@@ -36,25 +38,6 @@ export type RecordedTeamRequest = {
   // that is worth telling the fan about.
   stored: boolean;
 };
-
-// Folds case, strips accents and punctuation, and drops filler words, so
-// "App State", "app-state", and "APP STATE!" group together without rewriting
-// what the fan typed.
-//
-// It does not expand abbreviations or do fuzzy matching: "Appalachian St."
-// normalizes to "appalachian st" and will not group with "app state". Counting
-// demand across those spellings is a read-time problem, and guessing at it here
-// would silently merge programs that only look similar.
-export function normalizeTeamName(teamName: string): string {
-  return teamName
-    .toLowerCase()
-    .normalize("NFKD")
-    .replaceAll(/[\u0300-\u036f]/gu, "")
-    .replaceAll(/[^a-z0-9\s]/g, " ")
-    .replaceAll(/\b(university|college|the|of|at)\b/g, " ")
-    .replaceAll(/\s+/g, " ")
-    .trim();
-}
 
 export async function recordTeamRequest(
   input: TeamRequestInput,

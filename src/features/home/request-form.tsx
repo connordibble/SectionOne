@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { findRequestedTeam, type RequestTeam } from "@/lib/teams/request-match";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import styles from "./home.module.css";
 
@@ -10,12 +12,14 @@ type SubmitState =
   | { status: "sent" }
   | { status: "error"; message: string };
 
-export function RequestForm() {
+export function RequestForm({ teams }: { teams: readonly RequestTeam[] }) {
+  const router = useRouter();
   const teamFieldId = useId();
   const emailFieldId = useId();
   const [teamName, setTeamName] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const existingTeam = findRequestedTeam(teamName, teams);
   const sentMessageRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -28,6 +32,11 @@ export function RequestForm() {
     event.preventDefault();
 
     if (state.status === "sending") {
+      return;
+    }
+
+    if (existingTeam) {
+      router.push(`/teams/${existingTeam.slug}`);
       return;
     }
 
@@ -44,6 +53,14 @@ export function RequestForm() {
         const detail = (await response.json().catch(() => null)) as { error?: string } | null;
 
         throw new Error(detail?.error ?? "That did not go through. Try again in a moment.");
+      }
+
+      const detail = await response.json() as { teamSlug?: string };
+      const liveTeam = teams.find((team) => team.slug === detail.teamSlug);
+      if (liveTeam) {
+        router.push(`/teams/${liveTeam.slug}`);
+        setState({ status: "idle" });
+        return;
       }
 
       setState({ status: "sent" });
@@ -83,8 +100,11 @@ export function RequestForm() {
             id={teamFieldId}
             maxLength={80}
             name="teamName"
-            onChange={(event) => setTeamName(event.target.value)}
-            placeholder="App State"
+            onChange={(event) => {
+              setTeamName(event.target.value);
+              if (state.status === "error") setState({ status: "idle" });
+            }}
+            placeholder="Team name"
             required
             type="text"
             value={teamName}
@@ -113,12 +133,16 @@ export function RequestForm() {
         ) : (
           <ArrowRight aria-hidden="true" />
         )}
-        {state.status === "sending" ? "Sending" : "Request this team"}
+        {state.status === "sending" ? "Sending" : existingTeam ? `Open ${existingTeam.shortName} edition` : "Request this team"}
       </button>
 
-      <p className={styles.requestNote}>
-        Leave the email blank and it still counts. Give us one and we will tell you when your team
-        is up — nothing else.
+      <p className={styles.requestNote} role="status">
+        {existingTeam ? (
+          `${existingTeam.shortName} already has an edition. Open it above — no request or email needed.`
+        ) : (
+          <>Leave the email blank and it still counts. Give us one and we will tell you when your team
+          is up — nothing else.</>
+        )}
       </p>
 
       {state.status === "error" ? (

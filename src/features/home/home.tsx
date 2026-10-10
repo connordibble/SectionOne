@@ -183,7 +183,9 @@ export function Home() {
               Tell us who you follow. The teams fans ask for most are the ones we cover next.
             </p>
           </div>
-          <RequestForm />
+          <RequestForm teams={editions.map(({ slug, shortName, displayName, aliases }) => ({
+            slug, shortName, displayName, aliases,
+          }))} />
         </section>
       </div>
 

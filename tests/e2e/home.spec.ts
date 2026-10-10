@@ -75,7 +75,7 @@ test("a request without an email is still accepted", async ({ page }) => {
   await page.getByLabel("Your team").fill("Toledo");
   await page.getByRole("button", { name: /request this team/i }).click();
 
-  await expect(page.locator("#request").getByRole("status")).toBeVisible();
+  await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
 });
 
 test("a malformed email is reported in fan-readable text", async ({ page }) => {
@@ -182,3 +182,42 @@ for (const width of [1440, 768, 375, 320]) {
     }
   });
 }
+
+
+test("an existing team opens its edition without posting a request", async ({ page }) => {
+  const posts: string[] = [];
+  page.on("request", (request) => {
+    if (request.method() === "POST" && request.url().includes("/api/team-requests")) posts.push(request.url());
+  });
+  await page.goto("/");
+  await expect(page.getByLabel("Your team")).toHaveAttribute("placeholder", "Team name");
+  await page.getByLabel("Your team").fill("  UT Austin  ");
+  await page.getByLabel(/email/i).fill("nope");
+  await expect(page.locator("#request").getByRole("status")).toContainText("Texas already has an edition");
+  await page.getByRole("button", { name: "Open Texas edition" }).click();
+  await expect(page).toHaveURL(/\/teams\/texas-football$/);
+  expect(posts).toHaveLength(0);
+});
+
+test("Enter opens an existing edition and changing the name restores requests", async ({ page }) => {
+  await page.goto("/");
+  const name = page.getByLabel("Your team");
+  await name.fill("Ohio State");
+  await expect(page.getByRole("button", { name: "Open Ohio State edition" })).toBeVisible();
+  await name.fill("Ohio");
+  await expect(page.getByRole("button", { name: "Request this team" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Open Ohio State edition" })).toHaveCount(0);
+  await name.fill("Buckeyes");
+  await name.press("Enter");
+  await expect(page).toHaveURL(/\/teams\/ohio-state-football$/);
+});
+
+test("the API returns live editions instead of accepting duplicate demand", async ({ request }) => {
+  const response = await request.post("/api/team-requests", {
+    // A separate visitor keeps this case from consuming the form tests' budget.
+    headers: { "x-forwarded-for": "192.0.2.20" },
+    data: { teamName: "Louisiana State University", email: "nope" },
+  });
+  expect(response.status()).toBe(200);
+  expect(await response.json()).toEqual({ ok: true, teamSlug: "lsu-football" });
+});

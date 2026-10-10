@@ -1,3 +1,5 @@
+import { teamManifests } from "@/lib/teams/current";
+import { findRequestedTeam } from "@/lib/teams/request-match";
 import { withRouteErrors } from "@/server/observability/route";
 import {
   checkRateLimit,
@@ -23,6 +25,12 @@ export const POST = withRouteErrors("api/team-requests", async (request: Request
 
   if (body === null || typeof body !== "object") {
     return Response.json({ error: "Send a team name." }, { status: 400 });
+  }
+
+  const name = teamRequestSchema.shape.teamName.safeParse((body as { teamName?: unknown }).teamName);
+  if (name.success) {
+    const team = findRequestedTeam(name.data, Object.values(teamManifests).map(({ identity }) => identity));
+    if (team) return Response.json({ ok: true, teamSlug: team.slug });
   }
 
   const parsed = teamRequestSchema.safeParse(body);

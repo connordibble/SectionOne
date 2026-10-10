@@ -3,6 +3,10 @@ import { describe, expect, it, vi } from "vitest";
 import { enabledTeamSlugs } from "@/config/team";
 import HomePage from "./page";
 
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: vi.fn() }),
+}));
+
 vi.mock("next/server", () => ({
   connection: vi.fn(async () => undefined),
 }));
