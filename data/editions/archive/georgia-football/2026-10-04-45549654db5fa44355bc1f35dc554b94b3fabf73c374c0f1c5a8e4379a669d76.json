@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "georgia-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-09T13:14:46.251063Z",
+  "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Georgia’s Thursday report lists Bowens out, while Frazier is absent from the list. At Alabama, follow the available backfield, keep the run fits disciplined and use the updated stadium-entry instructions.",
+  "items": [
+    {
+      "id": "run-fit-corrections",
+      "headline": "Smart flags run-defense problems against Vanderbilt’s unusual looks",
+      "tldr": "Monday’s comments put both scheme and execution under review. Watch the first step and the gap responsibility before judging the final tackle.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/5/football-smart-players-talk-alabama",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "phillips-receiving",
+      "headline": "Phillips caught five passes for 75 yards against Vanderbilt",
+      "tldr": "His work as a receiving back offers another way to keep a possession moving. Watch the outlet when downfield coverage holds.",
+      "outlet": "Georgia Bulldogs on SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/georgia/georgia-football-coach-kirby-smart-gives-major-shout-out-after-big-uga-football-win-01m43zbez3a0",
+      "publishedAt": "2026-10-04",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "thursday-availability",
+      "headline": "Bowens is listed out; Frazier is absent from Georgia’s injury report",
+      "tldr": "Thursday’s SEC report also lists Canion questionable; follow the actual backfield workload. Absence from the report does not establish a snap count.",
+      "outlet": "Atlanta Journal-Constitution",
+      "tier": "local",
+      "url": "https://www.ajc.com/sports/2026/10/georgia-nate-frazier-off-injury-report/",
+      "publishedAt": "2026-10-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "opponent-depth",
+      "headline": "Alabama’s Griffin posted nine tackles and a sack off the bench",
+      "tldr": "The opponent’s depth matters when the personnel changes. Watch the protection identify the active pressure threat rather than relying on the first lineup.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/6/footballs-xavier-griffin-named-shaun-alexander-award-player-of-the-week",
+      "publishedAt": "2026-10-06",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "gameday-arrival",
+      "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
+      "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
+      "outlet": "UA Gameday",
+      "tier": "official",
+      "url": "https://uagameday.com/tidetips/",
+      "publishedAt": "2026-10-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Fit the run, then stay in coverage.",
+      "body": "Read the block before chasing the first motion. Keep coverage attached when Russell moves outside the pocket; on offense, find the available back without forcing the throw.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep the assignment through the second action",
+      "question": "What should Georgia emphasize at Alabama?",
+      "answer": "Watch the run fits and coverage when Russell extends a play. On offense, follow the available backfield and identify the pressure threat before choosing the short outlet.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Run fits",
+        "summary": "Read the block first",
+        "detail": "Watch defenders hold their gap until the ball declares. Chasing the first motion can open a lane behind it.",
+        "state": "watch",
+        "prompt": "What should I watch for with run fits?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Backfield roles",
+        "summary": "Follow the available workload",
+        "detail": "Watch how the active backs share carries, protection and receiving work. Keep an outlet available when Alabama takes away the outside route.",
+        "state": "watch",
+        "prompt": "How should I follow Georgia’s backfield at Alabama?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Protection",
+        "summary": "Name the pressure threat",
+        "detail": "Watch communication across the line when a defender changes position. Keep the quarterback’s first decision available.",
+        "state": "watch",
+        "prompt": "What should I watch for with protection?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Road discipline",
+        "summary": "Protect the possession",
+        "detail": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance.",
+        "state": "watch",
+        "prompt": "What should I watch for with road discipline?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Alabama, watch run fits, the available backfield and coverage through extended plays. Check the updated arrival instructions.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Run fits",
+      "topics": [
+        "run fits",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch defenders hold their gap until the ball declares. Chasing the first motion can open a lane behind it."
+    },
+    {
+      "id": "watch-2",
+      "title": "Backfield roles",
+      "topics": [
+        "backfield roles",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-09T13:05:51.945502Z",
+      "body": "Watch how the active backs share carries, protection and receiving work. Keep an outlet available when Alabama takes away the outside route."
+    },
+    {
+      "id": "watch-3",
+      "title": "Protection",
+      "topics": [
+        "protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch communication across the line when a defender changes position. Keep the quarterback’s first decision available."
+    },
+    {
+      "id": "watch-4",
+      "title": "Road discipline",
+      "topics": [
+        "road discipline",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance."
+    }
+  ]
+}

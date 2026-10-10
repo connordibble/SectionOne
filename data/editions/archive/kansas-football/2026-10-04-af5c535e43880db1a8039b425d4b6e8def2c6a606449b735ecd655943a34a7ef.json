@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "kansas-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-09T13:14:46.251063Z",
+  "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Cummings-Coleman is absent from Thursday’s report, while Amachree, Willis and Thurman are listed out. At Utah, follow the available backfield workload and make sure Parker stays accounted for when he releases into a route.",
+  "items": [
+    {
+      "id": "thursday-availability",
+      "headline": "Cummings-Coleman is off Thursday’s report; three Kansas backs are out",
+      "tldr": "The Big 12 report lists Amachree, Willis and Thurman out, with Moses doubtful. Cummings-Coleman’s absence from the report leaves his workload to be observed, rather than assumed.",
+      "outlet": "Big 12 Conference",
+      "tier": "official",
+      "url": "https://big12sports.com/sports/2025/8/14/FBreporting.aspx",
+      "publishedAt": "2026-10-09T02:00:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "edwards-workload",
+      "headline": "Edwards delivered 137 rushing yards and three touchdowns",
+      "tldr": "The Middle Tennessee game showed he could carry a larger workload. Watch whether the blocking gives him a useful first cut against Utah.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/03/edwards-scores-first-three-touchdowns-at-ku-in-career-high-day-against-mtsu/",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "kickoff-coverage",
+      "headline": "Kansas needs cleaner kickoff coverage after two long returns",
+      "tldr": "Middle Tennessee returned consecutive kicks for 38 and 52 yards up the right sideline. Watch the kick placement and lane assignments against Utah.",
+      "outlet": "KUSports.com",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/09/preview-seasons-first-true-road-game-sends-ku-to-no-12-utah/",
+      "publishedAt": "2026-10-09",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "parker-dual-threat",
+      "headline": "Utah’s Parker has scored as both runner and receiver",
+      "tldr": "Utah’s preview lists touchdowns in both roles. Account for him after the snap, especially when a short throw can replace a running play.",
+      "outlet": "Utah Athletics",
+      "tier": "official",
+      "url": "https://utahutes.com/news/2026/10/5/football-no-12-utah-meets-kansas-under-the-lights",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "sunflower-kickoff",
+      "headline": "Kansas–Kansas State is set for 11 a.m. CT on October 17",
+      "tldr": "FS1 will carry the game in Manhattan. First comes the late trip to Utah; plan for the quick change in viewing time the following week.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/5/football-dillons-sunflower-showdown-set-for-11-am-kickoff-on-fs1",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the backfield assignments work.",
+      "body": "Watch who carries, who protects and who provides a short receiving option. On defense, keep a defender attached when Utah’s back leaves the backfield.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Track the back on both sides",
+      "question": "What should Kansas emphasize at Utah?",
+      "answer": "Follow the active Kansas backs through carries and pass protection. On defense, account for Parker after the snap and finish the tackle before a short throw becomes a long gain.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Backfield workload",
+        "summary": "Follow carries and protection",
+        "detail": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange.",
+        "state": "watch",
+        "prompt": "How should I follow Kansas’s backfield at Utah?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Early downs",
+        "summary": "Leave more than one option",
+        "detail": "Take the available gain and avoid the penalty that makes the next call predictable.",
+        "state": "watch",
+        "prompt": "What should I watch for with early downs?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Backfield coverage",
+        "summary": "Follow the back into space",
+        "detail": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain.",
+        "state": "watch",
+        "prompt": "What should I watch for with backfield coverage?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Road operation",
+        "summary": "Keep the snap clean",
+        "detail": "Watch communication before the snap and the exchange afterward. A quiet, clean possession can keep the offense out of its own way.",
+        "state": "watch",
+        "prompt": "What should I watch for with road operation?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Utah, follow the available backfield workload, pass protection and coverage of Parker out of the backfield.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Backfield workload",
+      "topics": [
+        "backfield workload",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-09T13:05:51.945502Z",
+      "body": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange."
+    },
+    {
+      "id": "watch-2",
+      "title": "Early downs",
+      "topics": [
+        "early downs",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Take the available gain and avoid the penalty that makes the next call predictable."
+    },
+    {
+      "id": "watch-3",
+      "title": "Backfield coverage",
+      "topics": [
+        "backfield coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain."
+    },
+    {
+      "id": "watch-4",
+      "title": "Road operation",
+      "topics": [
+        "road operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch communication before the snap and the exchange afterward. A quiet, clean possession can keep the offense out of its own way."
+    }
+  ]
+}

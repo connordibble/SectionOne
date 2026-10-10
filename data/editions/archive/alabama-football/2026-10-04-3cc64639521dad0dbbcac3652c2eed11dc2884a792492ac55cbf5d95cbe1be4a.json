@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "alabama-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-09T13:20:42.602309Z",
+  "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "James is absent from Alabama’s Thursday report; Ford and Edmonds remain questionable. Watch the active right tackle and Russell’s first decision against Georgia, and use the updated parking and stadium-entry instructions.",
+  "items": [
+    {
+      "id": "thursday-availability",
+      "headline": "James is absent from the injury report; Ford and Edmonds are questionable",
+      "tldr": "Thursday’s SEC report retains those statuses. James’s absence from the list does not settle the starting lineup or snap count; watch the active right tackle and any help in protection.",
+      "outlet": "Tuscaloosa News via Roll Bama Roll",
+      "tier": "local",
+      "url": "https://www.rollbamaroll.com/alabama-crimson-tide-football/84892/alabama-football-injury-report-released-for-alabama-vs-georgia",
+      "publishedAt": "2026-10-08T11:53:00+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "russell-decisions",
+      "headline": "Russell threw for 285 yards and three touchdowns at Mississippi State",
+      "tldr": "His decision-making is the useful part to carry forward. Watch him take the available receiver before trying to extend a play against Georgia.",
+      "outlet": "Alabama Crimson Tide on SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/what-we-learned-from-alabama-dominant-win-mississippi-state-tide-takeaways",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "griffin-depth",
+      "headline": "Griffin led Alabama with nine tackles off the bench",
+      "tldr": "Tuesday’s national freshman award recognizes his Mississippi State performance. Watch assignment discipline along with the tackle totals.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/6/footballs-xavier-griffin-named-shaun-alexander-award-player-of-the-week",
+      "publishedAt": "2026-10-06",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "gameday-arrival",
+      "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
+      "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
+      "outlet": "UA Gameday",
+      "tier": "official",
+      "url": "https://uagameday.com/tidetips/",
+      "publishedAt": "2026-10-08",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "opponent-line",
+      "headline": "Georgia has used the same starting offensive line in every game",
+      "tldr": "The opponent’s preview highlights continuity up front. Watch the pressure arrive without opening an escape lane or losing a receiver behind it.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/5/football-georgia-visits-alabama-for-top-10-matchup",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect Russell’s first read.",
+      "body": "Watch the tackle hold the edge long enough for the first route to develop. Take the useful throw before trying to extend the play; keep defensive pressure connected to coverage.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Protection before improvisation",
+      "question": "What should Alabama emphasize against Georgia?",
+      "answer": "Follow the active right tackle and help at the edge, then Russell’s decision when the first route is covered. On defense, keep the pressure coordinated so the quarterback cannot escape into an uncovered throw.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Right tackle",
+        "summary": "Follow the active protection",
+        "detail": "Watch who takes the first snaps and how help arrives against edge pressure. Being off the report does not promise a starting job or full workload.",
+        "state": "watch",
+        "prompt": "What should I watch at Alabama’s right tackle?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback choices",
+        "summary": "Take the useful throw",
+        "detail": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback choices?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Connected pressure",
+        "summary": "Close the pocket together",
+        "detail": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play.",
+        "state": "watch",
+        "prompt": "What should I watch for with connected pressure?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Possession swings",
+        "summary": "Finish the extra chance",
+        "detail": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play.",
+        "state": "watch",
+        "prompt": "What should I watch for with possession swings?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Georgia, watch right-tackle protection and Russell’s decisions. Check the updated campus-arrival instructions before traveling.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Right tackle",
+      "topics": [
+        "right tackle",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-09T13:05:51.945502Z",
+      "body": "Watch who takes the first snaps and how help arrives against edge pressure. Being off the report does not promise a starting job or full workload."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback choices",
+      "topics": [
+        "quarterback choices",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball."
+    },
+    {
+      "id": "watch-3",
+      "title": "Connected pressure",
+      "topics": [
+        "connected pressure",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play."
+    },
+    {
+      "id": "watch-4",
+      "title": "Possession swings",
+      "topics": [
+        "possession swings",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
+    }
+  ]
+}

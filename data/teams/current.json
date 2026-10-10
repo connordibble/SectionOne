@@ -79,13 +79,13 @@
       "teamDisplayName": "Texas football",
       "seasonYear": 2026,
       "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-      "capturedAt": "2026-10-09T12:52:38.367Z",
+      "capturedAt": "2026-10-10T13:13:31.979Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-        "retrievedAt": "2026-10-09T12:52:38.367Z",
-        "officialVerifiedAt": "2026-10-09T12:52:38.367Z"
+        "retrievedAt": "2026-10-10T13:13:31.979Z",
+        "officialVerifiedAt": "2026-10-10T13:13:31.979Z"
       },
       "games": [
         {
@@ -369,14 +369,14 @@
       "teamName": "Utah State",
       "teamDisplayName": "Utah State football",
       "seasonYear": 2026,
-      "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
-      "capturedAt": "2026-10-09T12:52:40.407Z",
+      "sourceUrl": "https://utahstateaggies.com/news/2026/10/10/football-aggies-pull-off-second-half-comeback-for-17-16-win-over-washington-state.aspx",
+      "capturedAt": "2026-10-10T13:16:47.014Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://utahstateaggies.com/sports/2024/8/12/football-media-center.aspx",
-        "retrievedAt": "2026-10-09T12:52:40.407Z",
-        "officialVerifiedAt": "2026-10-09T12:52:40.407Z"
+        "sourceUrl": "https://utahstateaggies.com/news/2026/10/10/football-aggies-pull-off-second-half-comeback-for-17-16-win-over-washington-state.aspx",
+        "retrievedAt": "2026-10-10T13:13:30.676Z",
+        "officialVerifiedAt": "2026-10-10T13:13:30.676Z"
       },
       "games": [
         {
@@ -506,11 +506,22 @@
           "dateLabel": "Friday, October 9",
           "startsAt": "2026-10-09T19:00:00-06:00",
           "date": "2026-10-09",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "The CW",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-09",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860922",
+            "checkedAt": "2026-10-10T13:16:47.014Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 16
+          }
         },
         {
           "id": "2026-utah-state-texas-state",
@@ -672,13 +683,13 @@
       "teamDisplayName": "Ohio State football",
       "seasonYear": 2026,
       "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-      "capturedAt": "2026-10-09T12:52:37.886Z",
+      "capturedAt": "2026-10-10T13:13:31.614Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/print",
-        "retrievedAt": "2026-10-09T12:52:37.886Z",
-        "officialVerifiedAt": "2026-10-09T12:52:37.886Z"
+        "retrievedAt": "2026-10-10T13:13:31.614Z",
+        "officialVerifiedAt": "2026-10-10T13:13:31.614Z"
       },
       "games": [
         {
@@ -976,13 +987,13 @@
       "teamDisplayName": "LSU football",
       "seasonYear": 2026,
       "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-      "capturedAt": "2026-10-09T12:52:38.295Z",
+      "capturedAt": "2026-10-10T13:13:32.233Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-        "retrievedAt": "2026-10-09T12:52:38.295Z",
-        "officialVerifiedAt": "2026-10-09T12:52:38.295Z"
+        "retrievedAt": "2026-10-10T13:13:32.233Z",
+        "officialVerifiedAt": "2026-10-10T13:13:32.233Z"
       },
       "games": [
         {
@@ -1276,13 +1287,13 @@
       "teamDisplayName": "Northwestern football",
       "seasonYear": 2026,
       "sourceUrl": "https://nusports.com/sports/football/schedule",
-      "capturedAt": "2026-10-09T12:52:37.773Z",
+      "capturedAt": "2026-10-10T13:13:34.426Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://nusports.com/sports/football/schedule",
-        "retrievedAt": "2026-10-09T12:52:37.773Z",
-        "officialVerifiedAt": "2026-10-09T12:52:37.773Z"
+        "retrievedAt": "2026-10-10T13:13:34.426Z",
+        "officialVerifiedAt": "2026-10-10T13:13:34.426Z"
       },
       "games": [
         {
@@ -1570,13 +1581,13 @@
       "teamDisplayName": "Kansas football",
       "seasonYear": 2026,
       "sourceUrl": "https://kuathletics.com/sports/football/schedule",
-      "capturedAt": "2026-10-09T12:52:41.030Z",
+      "capturedAt": "2026-10-10T13:13:34.318Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://kuathletics.com/sports/football/schedule",
-        "retrievedAt": "2026-10-09T12:52:41.030Z",
-        "officialVerifiedAt": "2026-10-09T12:52:41.030Z"
+        "retrievedAt": "2026-10-10T13:13:34.318Z",
+        "officialVerifiedAt": "2026-10-10T13:13:34.318Z"
       },
       "games": [
         {
@@ -1680,12 +1691,12 @@
           "opponent": "Utah",
           "site": "away",
           "dateLabel": "Oct 10",
-          "startsAt": "2026-10-11T02:15:00Z",
+          "startsAt": "2026-10-10T19:00:00-05:00",
           "date": "2026-10-10",
           "status": "scheduled",
-          "kickoff": "9:15 p.m. CT",
+          "kickoff": "7 p.m. CT",
           "venue": "Rice-Eccles Stadium, Salt Lake City, UT",
-          "tv": "ESPN",
+          "tv": "ESPN App; ESPN network TBA",
           "opponentClassification": "fbs"
         },
         {
@@ -1859,13 +1870,13 @@
       "teamDisplayName": "Alabama football",
       "seasonYear": 2026,
       "sourceUrl": "https://rolltide.com/sports/football/schedule",
-      "capturedAt": "2026-10-09T12:52:40.920Z",
+      "capturedAt": "2026-10-10T13:13:34.371Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://rolltide.com/sports/football/schedule",
-        "retrievedAt": "2026-10-09T12:52:40.920Z",
-        "officialVerifiedAt": "2026-10-09T12:52:40.920Z"
+        "retrievedAt": "2026-10-10T13:13:34.371Z",
+        "officialVerifiedAt": "2026-10-10T13:13:34.371Z"
       },
       "games": [
         {
@@ -2165,13 +2176,13 @@
       "teamDisplayName": "Georgia football",
       "seasonYear": 2026,
       "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-      "capturedAt": "2026-10-09T12:52:40.865Z",
+      "capturedAt": "2026-10-10T13:13:34.192Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-        "retrievedAt": "2026-10-09T12:52:40.865Z",
-        "officialVerifiedAt": "2026-10-09T12:52:40.865Z"
+        "retrievedAt": "2026-10-10T13:13:34.192Z",
+        "officialVerifiedAt": "2026-10-10T13:13:34.192Z"
       },
       "games": [
         {

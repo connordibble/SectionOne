@@ -3,17 +3,17 @@
     "schemaVersion": 1,
     "teamSlug": "texas-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:20:42.602309Z",
+    "publishedAt": "2026-10-10T13:20:31.939738Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "Thursday’s report moved Townsend to available and Terry to questionable for Oklahoma. Watch how Texas combines its tight ends with Bishop’s four-receiver package, then keeps Oklahoma’s quarterback inside the pocket.",
+    "summary": "Friday’s report leaves Townsend off the list and Terry questionable. Oklahoma will be without left tackle Michael Fasusi, with guard Eddy Pierre-Louis doubtful; watch how Texas attacks those protection assignments while keeping a quick answer ready on offense.",
     "items": [
       {
         "id": "thursday-availability",
-        "headline": "Townsend moved to available; Terry is questionable on Thursday’s report",
-        "tldr": "Lockett, Coleman and Zion Williams are listed out. Townsend’s status gives Texas another tight-end option; check the final report before assigning Terry a role.",
+        "headline": "Townsend is off the report; Terry remains questionable for Oklahoma",
+        "tldr": "Friday’s SEC report keeps Lockett, Coleman and Zion Williams out. Follow Townsend’s actual workload and the final update on Terry before assigning him a role.",
         "outlet": "Burnt Orange Nation",
         "tier": "local",
         "url": "https://www.burntorangenation.com/ousucks/105592/texas-oklahoma-injury-report-thursday-nick-townsend",
@@ -53,17 +53,17 @@
         }
       },
       {
-        "id": "oklahoma-turnovers",
-        "headline": "Oklahoma gave up 17 points off four turnovers at Georgia",
-        "tldr": "The Sooners’ last game shows why possession swings matter. Texas should try to force difficult decisions, then give its offense a useful field position.",
-        "outlet": "Oklahoma Athletics",
-        "tier": "official",
-        "url": "https://soonersports.com/news/2026/9/26/football-falls-to-no-2-georgia-in-athens",
-        "publishedAt": "2026-09-26",
+        "id": "opponent-availability",
+        "headline": "Oklahoma lists Fasusi out and Pierre-Louis doubtful on Friday",
+        "tldr": "Eli Bowen is also questionable. Watch how Oklahoma protects the left side of its line; Texas still needs connected pressure that accounts for the quarterback’s escape lane.",
+        "outlet": "Orangebloods",
+        "tier": "local",
+        "url": "https://www.orangebloods.com/2026/10/09/texas-oklahoma-injury/",
+        "publishedAt": "2026-10-09",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
@@ -84,13 +84,13 @@
     "editorial": {
       "lead": {
         "headline": "Keep a quick answer ready.",
-        "body": "Watch whether the screen or short route gives Texas a useful gain when Oklahoma sends pressure. Keep the protection connected when another receiver replaces the tight end.",
+        "body": "Oklahoma’s left-side protection has changed availability to work around. Watch Texas close the pocket together; on offense, keep the screen or short route ready when Oklahoma sends pressure.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Match the personnel to the pressure",
+        "thesis": "Test the protection without losing contain",
         "question": "What should Texas emphasize against Oklahoma?",
-        "answer": "Watch the protection and the quick throw when Bishop joins the receiver group. On defense, close the pocket together and leave someone responsible for the quarterback’s escape lane.",
+        "answer": "Watch the left side of Oklahoma’s protection with Fasusi out and Pierre-Louis doubtful. Keep the quarterback’s escape lane covered, then give the Texas offense a quick throw when pressure comes.",
         "citationNoteIds": [
           "watch-1",
           "watch-2"
@@ -108,11 +108,11 @@
         },
         {
           "id": "watch-2",
-          "title": "Pass-rush lanes",
-          "summary": "Close the pocket together",
-          "detail": "Watch the edge and interior rush work toward the same point. Getting near the quarterback matters only if someone still covers the escape lane.",
+          "title": "Oklahoma’s protection",
+          "summary": "Pressure with an escape-lane assignment",
+          "detail": "Fasusi is out and Pierre-Louis is doubtful on Friday’s report. Watch how Texas tests the left-side protection without giving the quarterback a lane outside the pocket.",
           "state": "watch",
-          "prompt": "What should I watch from Texas’s pass rush?",
+          "prompt": "How do Oklahoma’s absences affect Texas’s defensive pressure?",
           "noteId": "watch-2"
         },
         {
@@ -121,7 +121,7 @@
           "summary": "Follow the available rotation",
           "detail": "Watch how Townsend is used alongside the receiver packages. Check the final report before assuming Terry will join the defensive-line rotation.",
           "state": "watch",
-          "prompt": "How does Thursday’s report affect Texas’s rotation?",
+          "prompt": "How does the latest report affect Texas’s rotation?",
           "noteId": "watch-3"
         },
         {
@@ -135,7 +135,7 @@
         }
       ]
     },
-    "nextGameNote": "Against Oklahoma in Dallas, watch receiver packages, tight-end usage and pressure that keeps the quarterback contained.",
+    "nextGameNote": "Against Oklahoma in Dallas, watch the changed left-side protection, receiver packages and tight-end usage.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
@@ -150,13 +150,13 @@
       },
       {
         "id": "watch-2",
-        "title": "Pass-rush lanes",
+        "title": "Oklahoma’s protection",
         "topics": [
-          "pass-rush lanes",
+          "oklahoma’s protection",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the edge and interior rush work toward the same point. Getting near the quarterback matters only if someone still covers the escape lane."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Fasusi is out and Pierre-Louis is doubtful on Friday’s report. Watch how Texas tests the left-side protection without giving the quarterback a lane outside the pocket."
       },
       {
         "id": "watch-3",
@@ -184,21 +184,21 @@
     "schemaVersion": 1,
     "teamSlug": "utah-state-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:13:19.278328Z",
+    "publishedAt": "2026-10-10T13:25:21.050668Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "Utah State hosts Washington State tonight. Monday’s quarterback update left the starter unresolved; watch the final choice, keep Wood involved beyond the opening drive and make the Cougars sustain their possessions.",
+    "summary": "Utah State beat Washington State 17-16 after trailing 16-3 at halftime. Cunningham’s two forced fumbles set up both touchdowns, but the offense and costly penalties still need work. The bye comes before an October 24 trip to Texas State.",
     "items": [
       {
-        "id": "quarterback-decision",
-        "headline": "Monday’s update left Utah State’s Friday quarterback choice unresolved",
-        "tldr": "Mendenhall declined to name the starter after both quarterbacks played at Boise State. Follow tonight’s final choice, then watch whether the offense can maintain its timing.",
-        "outlet": "KSL Sports",
+        "id": "friday-result",
+        "headline": "Utah State erased a 13-point halftime deficit to beat Washington State 17-16",
+        "tldr": "The Cougars went scoreless after halftime. Utah State has its first Pac-12 win; the comeback gives the bye a better starting point without erasing the first-half problems.",
+        "outlet": "CougCenter",
         "tier": "local",
-        "url": "https://sports.ksl.com/ncaa/utah-state/faces-washington-state/577857",
-        "publishedAt": "2026-10-05",
+        "url": "https://www.cougcenter.com/wsu-cougars-football-2026-pac-12/49789/post-game-vent-discussion-cougs-fall-to-1-5",
+        "publishedAt": "2026-10-10T04:58:00Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -206,13 +206,27 @@
         }
       },
       {
-        "id": "wood-targets",
-        "headline": "Local analysis calls for steadier involvement from Eli Wood",
-        "tldr": "Cache Valley Daily traced how Wood’s targets disappeared between productive drives at Boise State. Watch whether the passing game keeps finding him when the first series is over.",
-        "outlet": "Cache Valley Daily / The Fan",
+        "id": "cunningham-turnovers",
+        "headline": "Cunningham forced two fumbles that became Utah State touchdowns",
+        "tldr": "He finished with 17 tackles, and both recoveries gave the offense a short field. That defensive contribution decided the game; keep it separate from the offense’s ability to sustain a drive.",
+        "outlet": "Utah State Athletics",
+        "tier": "official",
+        "url": "https://utahstateaggies.com/news/2026/10/10/football-aggies-pull-off-second-half-comeback-for-17-16-win-over-washington-state.aspx",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "passing-efficiency",
+        "headline": "Brosterhous completed 11 of 26 passes in Friday’s win",
+        "tldr": "Both touchdown drives started in Washington State territory. The bye should be about finding completions and first downs that let the offense score without needing another takeaway.",
+        "outlet": "Cache Valley Daily",
         "tier": "local",
-        "url": "https://1069thefan.com/2026/10/05/monday-cooldown-can-the-aggies-1-4-season-be-salvaged-sports/",
-        "publishedAt": "2026-10-05",
+        "url": "https://www.cachevalleydaily.com/sports/utah-state-rallies-to-top-washington-state-in-pac-12-home-opener/article_6f364594-3fd2-4a5a-a0ff-3fa3b1dc9f05.html",
+        "publishedAt": "2026-10-10T00:45:00-06:00",
         "grade": {
           "impact": 4,
           "echo": 1,
@@ -220,41 +234,27 @@
         }
       },
       {
-        "id": "jacobs-rushing",
-        "headline": "Jacobs rushed for 139 yards at Boise State",
-        "tldr": "His first 100-yard rushing game gives the offense something to build on. Watch the blocks that create space and whether Utah State can turn a long gain into a finished drive.",
+        "id": "discipline",
+        "headline": "Mendenhall says his own penalty needs correcting",
+        "tldr": "The coach’s personal foul helped push a drive out of field-goal range. Utah State also extended a Washington State scoring drive with a post-play penalty; the bye needs a cleaner response to the whistle.",
+        "outlet": "The Utah Statesman",
+        "tier": "local",
+        "url": "https://usustatesman.com/aggies-fend-of-cougars-in-comeback-victory-over-washington-state/",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "future-seating",
+        "headline": "Utah State plans field-level suites for the 2027 season",
+        "tldr": "The end-zone suites will have 10-16 seats. Pricing and the number available are still to come; fans interested in next season can use the athletics department’s interest form.",
         "outlet": "Utah State Athletics",
         "tier": "official",
-        "url": "https://utahstateaggies.com/news/2026/10/3/utah-state-football-drops-pac-12-opener-at-boise-state-37-18.aspx",
-        "publishedAt": "2026-10-03",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "cougar-offense",
-        "headline": "Washington State scored only on two field goals against Fresno State",
-        "tldr": "The Cougars lost 26-6 and went scoreless after halftime. Utah State should make them sustain a drive, with sound coverage and tackles instead of a quick explosive play.",
-        "outlet": "Washington State Athletics",
-        "tier": "official",
-        "url": "https://wsucougars.com/news/2026/10/4/washington-state-falls-short-against-fresno-state",
-        "publishedAt": "2026-10-03",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "friday-game-guide",
-        "headline": "Tonight’s home game starts at 7 p.m. MT on The CW",
-        "tldr": "Maverik Stadium gates open at 5:30 p.m. MT, and fans are asked to wear blue. Set the arrival or broadcast reminder for tonight.",
-        "outlet": "KSL Sports / USU Football",
-        "tier": "local",
-        "url": "https://sports.ksl.com/ncaa/utah-state/vs-washington-state/577665",
-        "publishedAt": "2026-10-05",
+        "url": "https://utahstateaggies.com/news/2026/10/9/football-utah-state-athletics-adds-field-level-suites-at-jim-laub-family-stadium-for-2027-season.aspx",
+        "publishedAt": "2026-10-09",
         "grade": {
           "impact": 3,
           "echo": 1,
@@ -264,14 +264,14 @@
     ],
     "editorial": {
       "lead": {
-        "headline": "Keep Wood in the next series.",
-        "body": "Watch the passing game return to Wood after the opening script. Pair those throws with running lanes for Jacobs, then make Washington State earn its response after a score.",
+        "headline": "Build drives without the short field.",
+        "body": "The defense supplied the comeback’s two touchdown opportunities. Use the bye to improve the next completion, the handoff and the decision after the whistle, so the offense can earn a scoring drive of its own.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Carry the opening rhythm forward",
-        "question": "What should Utah State emphasize on Friday?",
-        "answer": "Follow the quarterback choice without assuming a split. Watch whether the next series keeps Wood involved and gives Jacobs room; on defense, finish the tackle before a short completion becomes an easy answer.",
+        "thesis": "Turn the comeback into cleaner possessions",
+        "question": "What should Utah State carry into the bye?",
+        "answer": "Keep the defensive pursuit that produced the turnovers, then work on the offense’s next first down. Clean up the post-play penalties and kick-return exchange before the October 24 trip to Texas State.",
         "citationNoteIds": [
           "watch-1",
           "watch-2"
@@ -280,84 +280,84 @@
       "signals": [
         {
           "id": "watch-1",
-          "title": "Quarterback decision",
-          "summary": "Follow the final choice",
-          "detail": "Check who takes the first snaps and how the offense shares its work. Avoid assuming that Monday’s unresolved choice guarantees a split on Friday.",
+          "title": "Passing efficiency",
+          "summary": "Find the next completion",
+          "detail": "Brosterhous completed 11 of 26 passes Friday. Watch whether the next game brings useful short completions and sustained drives, rather than depending on another short field.",
           "state": "watch",
-          "prompt": "What should I watch about Utah State’s quarterback choice?",
+          "prompt": "What should Utah State improve in the passing game after Friday’s win?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Wood’s involvement",
-          "summary": "Return to the productive receiver",
-          "detail": "Watch whether the offense finds Wood again after the opening drive. A receiver finding space should stay part of the answer as the defense adjusts.",
+          "title": "Defensive takeaways",
+          "summary": "Keep pursuit connected to coverage",
+          "detail": "Cunningham’s two forced fumbles set up both touchdowns. Carry the tackling and pursuit forward while keeping routes covered; another takeaway is an opportunity, not a scoring plan.",
           "state": "watch",
-          "prompt": "How can Utah State keep Eli Wood involved?",
+          "prompt": "What did Cunningham’s turnovers change for Utah State?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Running room",
-          "summary": "Build on the first block",
-          "detail": "Watch the line create a lane before the runner has to improvise. Take the useful gain and protect the ball through contact.",
+          "title": "Possession discipline",
+          "summary": "Finish the play without the penalty",
+          "detail": "Utah State lost 87 yards to penalties Friday. Protect the kick-return exchange and leave the whistle alone after a stop; the defense should keep the field position it earns.",
           "state": "watch",
-          "prompt": "What should I watch in Utah State’s running game?",
+          "prompt": "What mistakes should Utah State clean up during the bye?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Coverage communication",
-          "summary": "Make the next stop",
-          "detail": "Watch the secondary pass off routes and stay connected after a Utah State score. Make the opponent earn another first down.",
+          "title": "Next game",
+          "summary": "Use the bye before Texas State",
+          "detail": "After the bye, Utah State visits Texas State October 24 at 5:30 p.m. MT on CBS Sports Network. Use the break to improve sustained offense and reduce avoidable penalties.",
           "state": "watch",
-          "prompt": "What should Utah State improve in coverage?",
+          "prompt": "When does Utah State play again after Friday’s win?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Washington State visits tonight: follow the quarterback choice, Wood’s involvement and the defense’s response after a score.",
+    "nextGameNote": "After the bye, Utah State visits Texas State on October 24 at 5:30 p.m. MT on CBS Sports Network. Watch for cleaner possessions after the comeback win.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Quarterback decision",
+        "title": "Passing efficiency",
         "topics": [
-          "quarterback decision",
+          "passing efficiency",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Check who takes the first snaps and how the offense shares its work. Avoid assuming that Monday’s unresolved choice guarantees a split on Friday."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Brosterhous completed 11 of 26 passes Friday. Watch whether the next game brings useful short completions and sustained drives, rather than depending on another short field."
       },
       {
         "id": "watch-2",
-        "title": "Wood’s involvement",
+        "title": "Defensive takeaways",
         "topics": [
-          "wood’s involvement",
+          "defensive takeaways",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch whether the offense finds Wood again after the opening drive. A receiver finding space should stay part of the answer as the defense adjusts."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Cunningham’s two forced fumbles set up both touchdowns. Carry the tackling and pursuit forward while keeping routes covered; another takeaway is an opportunity, not a scoring plan."
       },
       {
         "id": "watch-3",
-        "title": "Running room",
+        "title": "Possession discipline",
         "topics": [
-          "running room",
+          "possession discipline",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the line create a lane before the runner has to improvise. Take the useful gain and protect the ball through contact."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Utah State lost 87 yards to penalties Friday. Protect the kick-return exchange and leave the whistle alone after a stop; the defense should keep the field position it earns."
       },
       {
         "id": "watch-4",
-        "title": "Coverage communication",
+        "title": "Next game",
         "topics": [
-          "coverage communication",
+          "next game",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the secondary pass off routes and stay connected after a Utah State score. Make the opponent earn another first down."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "After the bye, Utah State visits Texas State October 24 at 5:30 p.m. MT on CBS Sports Network. Use the break to improve sustained offense and reduce avoidable penalties."
       }
     ]
   },
@@ -365,21 +365,21 @@
     "schemaVersion": 1,
     "teamSlug": "ohio-state-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:13:19.278328Z",
+    "publishedAt": "2026-10-10T13:20:31.939738Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "Thursday’s report lists five Ohio State starters as questionable for Maryland. Confirm the active receiver and defensive rotations, watch protection at right tackle and look for cleaner special teams at Homecoming.",
+    "summary": "Friday’s report lists Inniss, Daniels and Alliegro doubtful for Maryland; McCuin and Timmons are probable. Follow the active receiver group, right-tackle protection and linebacker assignments, then look for cleaner special teams at Homecoming.",
     "items": [
       {
         "id": "thursday-availability",
-        "headline": "Ohio State lists five starters as questionable for Maryland on Thursday",
-        "tldr": "McCuin, Inniss, Daniels, Alliegro and Timmons are questionable. Check the final report before assuming the usual receiving group, right tackle or underneath coverage personnel.",
+        "headline": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable",
+        "tldr": "Friday’s report changes the outlook at receiver, right tackle, linebacker and nickel. Probable still leaves the workload to be observed; check the final report before assuming the usual rotation.",
         "outlet": "Eleven Warriors",
         "tier": "local",
         "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164429/ohio-state-injury-report-devin-mccuin-brandon-inniss-and-phillip-daniels-questionable-vs-maryland-jay-timmons",
-        "publishedAt": "2026-10-09T00:13:00Z",
+        "publishedAt": "2026-10-10T00:12:00Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -446,7 +446,7 @@
     "editorial": {
       "lead": {
         "headline": "Check who is taking the snaps.",
-        "body": "Follow the active receiver group and protection at right tackle. On defense, keep Maryland’s short completions from turning into long gains; on special teams, protect the field position.",
+        "body": "With Inniss, Daniels and Alliegro doubtful, follow the actual receiver, right-tackle and linebacker assignments. McCuin and Timmons are probable; watch their workload while keeping Maryland’s short completions contained.",
         "noteId": "watch-1"
       },
       "matchup": {
@@ -489,8 +489,8 @@
         {
           "id": "watch-4",
           "title": "Availability",
-          "summary": "Check the active group",
-          "detail": "Follow the final report and who takes the first snaps at receiver, right tackle, linebacker and nickel. Watch communication when the rotation changes.",
+          "summary": "Follow the Friday changes",
+          "detail": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments.",
           "state": "watch",
           "prompt": "How could Ohio State’s availability affect the matchup?",
           "noteId": "watch-4"
@@ -537,8 +537,8 @@
           "availability",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Follow the final report and who takes the first snaps at receiver, right tackle, linebacker and nickel. Watch communication when the rotation changes."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments."
       }
     ]
   },
@@ -546,17 +546,17 @@
     "schemaVersion": 1,
     "teamSlug": "lsu-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:14:46.251063Z",
+    "publishedAt": "2026-10-10T13:25:21.050668Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "LSU’s Thursday report lists Green and Weeks out for Kentucky. Watch how the offense finds its short passing option and how the linebackers communicate against Kentucky’s quarterback and tight ends.",
+    "summary": "Green and Weeks remain out for LSU, while Friday’s report now rules out Kentucky defensive lineman Kalen Edwards. Watch the available offense’s short option and the linebackers’ communication against Kentucky’s quarterback and tight ends.",
     "items": [
       {
         "id": "kentucky-availability",
-        "headline": "Green and Weeks are listed out for LSU’s trip to Kentucky",
-        "tldr": "Thursday’s SEC report retains both absences; LSU Wire projects more four-receiver sets and changes at linebacker. Follow the actual personnel.",
+        "headline": "Green and Weeks remain out for LSU’s trip to Kentucky",
+        "tldr": "Friday’s SEC report retains both absences. LSU Wire expects more four-receiver sets and changes at linebacker; follow the actual personnel before treating those projections as the game plan.",
         "outlet": "LSU Wire",
         "tier": "local",
         "url": "https://sports.yahoo.com/articles/lsu-football-releases-first-injury-162334955.html",
@@ -596,9 +596,9 @@
         }
       },
       {
-        "id": "kentucky-defensive-availability",
-        "headline": "Kentucky lists Edwards doubtful; Miller is off the report",
-        "tldr": "Thursday’s update moved Edwards from questionable to doubtful and removed Miller from the list. Watch LSU’s blocking against the available front and its coverage outside.",
+        "id": "opponent-kentucky-availability",
+        "headline": "Kentucky’s Kalen Edwards is now out; DJ Miller remains off the report",
+        "tldr": "Friday’s SEC update supersedes Thursday’s doubtful designation for Edwards. Miller’s absence from the list leaves his workload to be observed; track Kentucky’s receiving group against LSU’s changed personnel.",
         "outlet": "A Sea of Blue",
         "tier": "local",
         "url": "https://sports.yahoo.com/articles/kentucky-vs-lsu-injury-report-003141330.html",
@@ -627,7 +627,7 @@
     "editorial": {
       "lead": {
         "headline": "Keep the replacement assignments clear.",
-        "body": "Watch the linebackers pass off Kentucky’s tight ends and keep an escape lane covered. On offense, identify the short passing option when the first outside route is taken away.",
+        "body": "Kentucky’s Edwards is now out, while LSU still has Green and Weeks unavailable. Watch the linebackers pass off tight ends and keep an escape lane covered; on offense, find the short option when the outside route is taken away.",
         "noteId": "watch-1"
       },
       "matchup": {
@@ -721,8 +721,7 @@
         "publishedAt": "2026-10-09T13:05:51.945502Z",
         "body": "Watch which linebackers handle the calls and which receivers or tight ends provide the short option. A projected replacement is useful only once the assignment works on the field."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
+    ]
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -909,21 +908,21 @@
     "schemaVersion": 1,
     "teamSlug": "kansas-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:14:46.251063Z",
+    "publishedAt": "2026-10-10T13:25:21.050668Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "Cummings-Coleman is absent from Thursday’s report, while Amachree, Willis and Thurman are listed out. At Utah, follow the available backfield workload and make sure Parker stays accounted for when he releases into a route.",
+    "summary": "Kansas–Utah now kicks off at 7 p.m. CT, with the full game on the ESPN App and the television network still to be named. Friday’s report lists Moses out alongside three running backs; follow the available backfield and keep Parker covered when he releases into a route.",
     "items": [
       {
         "id": "thursday-availability",
-        "headline": "Cummings-Coleman is off Thursday’s report; three Kansas backs are out",
-        "tldr": "The Big 12 report lists Amachree, Willis and Thurman out, with Moses doubtful. Cummings-Coleman’s absence from the report leaves his workload to be observed, rather than assumed.",
+        "headline": "Three Kansas backs and tight end Carter Moses are out on Friday’s report",
+        "tldr": "Amachree, Willis and Thurman remain out; Moses has moved from doubtful to out. Cummings-Coleman remains absent from the report, so follow his actual workload rather than assigning a snap count.",
         "outlet": "Big 12 Conference",
         "tier": "official",
         "url": "https://big12sports.com/sports/2025/8/14/FBreporting.aspx",
-        "publishedAt": "2026-10-09T02:00:00Z",
+        "publishedAt": "2026-10-10T02:00:00Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -948,7 +947,7 @@
         "id": "kickoff-coverage",
         "headline": "Kansas needs cleaner kickoff coverage after two long returns",
         "tldr": "Middle Tennessee returned consecutive kicks for 38 and 52 yards up the right sideline. Watch the kick placement and lane assignments against Utah.",
-        "outlet": "KUSports.com",
+        "outlet": "KUSports",
         "tier": "local",
         "url": "https://www2.kusports.com/sports/college/football/2026/oct/09/preview-seasons-first-true-road-game-sends-ku-to-no-12-utah/",
         "publishedAt": "2026-10-09",
@@ -973,15 +972,15 @@
         }
       },
       {
-        "id": "sunflower-kickoff",
-        "headline": "Kansas–Kansas State is set for 11 a.m. CT on October 17",
-        "tldr": "FS1 will carry the game in Manhattan. First comes the late trip to Utah; plan for the quick change in viewing time the following week.",
+        "id": "gameday-time",
+        "headline": "Kansas–Utah moved to 7 p.m. CT; ESPN App carries the full game",
+        "tldr": "The earlier kickoff follows a weather-related schedule change. The ESPN television network is still to be announced; update the reminder and use the ESPN App for the full broadcast.",
         "outlet": "Kansas Athletics",
         "tier": "official",
-        "url": "https://kuathletics.com/news/2026/10/5/football-dillons-sunflower-showdown-set-for-11-am-kickoff-on-fs1",
-        "publishedAt": "2026-10-05",
+        "url": "https://kuathletics.com/news/2026/10/9/football-kansas-at-utah-moved-to-7-pm-ct",
+        "publishedAt": "2026-10-09",
         "grade": {
-          "impact": 3,
+          "impact": 5,
           "echo": 1,
           "freshness": 5
         }
@@ -990,7 +989,7 @@
     "editorial": {
       "lead": {
         "headline": "Make the backfield assignments work.",
-        "body": "Watch who carries, who protects and who provides a short receiving option. On defense, keep a defender attached when Utah’s back leaves the backfield.",
+        "body": "The kickoff is earlier and Moses is now out. Watch the available backs share carries, protection and short receiving work; on defense, keep a defender attached when Parker leaves the backfield.",
         "noteId": "watch-1"
       },
       "matchup": {
@@ -1032,16 +1031,16 @@
         },
         {
           "id": "watch-4",
-          "title": "Road operation",
-          "summary": "Keep the snap clean",
-          "detail": "Watch communication before the snap and the exchange afterward. A quiet, clean possession can keep the offense out of its own way.",
+          "title": "Gameday timing",
+          "summary": "Reset the kickoff reminder",
+          "detail": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced.",
           "state": "watch",
-          "prompt": "What should I watch for with road operation?",
+          "prompt": "What changed about Kansas–Utah’s kickoff and broadcast?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "At Utah, follow the available backfield workload, pass protection and coverage of Parker out of the backfield.",
+    "nextGameNote": "At Utah, kickoff is now 7 p.m. CT. The full game streams on the ESPN App; the television network is still to be announced.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
@@ -1076,32 +1075,31 @@
       },
       {
         "id": "watch-4",
-        "title": "Road operation",
+        "title": "Gameday timing",
         "topics": [
-          "road operation",
+          "gameday timing",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch communication before the snap and the exchange afterward. A quiet, clean possession can keep the offense out of its own way."
+        "publishedAt": "2026-10-10T13:19:05.291259Z",
+        "body": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
+    ]
   },
   "alabama-football": {
     "schemaVersion": 1,
     "teamSlug": "alabama-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:20:42.602309Z",
+    "publishedAt": "2026-10-10T13:20:31.939738Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "James is absent from Alabama’s Thursday report; Ford and Edmonds remain questionable. Watch the active right tackle and Russell’s first decision against Georgia, and use the updated parking and stadium-entry instructions.",
+    "summary": "James remains absent from Alabama’s Friday report; Ford and Edmonds are questionable. Watch the active right tackle and Russell’s first decision against Georgia. Campus lots and shuttles open no earlier than noon CT, with weather delays possible.",
     "items": [
       {
         "id": "thursday-availability",
         "headline": "James is absent from the injury report; Ford and Edmonds are questionable",
-        "tldr": "Thursday’s SEC report retains those statuses. James’s absence from the list does not settle the starting lineup or snap count; watch the active right tackle and any help in protection.",
+        "tldr": "Friday’s SEC report retains those statuses. Follow the actual right-tackle workload and any help in protection; being off the list does not establish the starting lineup.",
         "outlet": "Tuscaloosa News via Roll Bama Roll",
         "tier": "local",
         "url": "https://www.rollbamaroll.com/alabama-crimson-tide-football/84892/alabama-football-injury-report-released-for-alabama-vs-georgia",
@@ -1142,8 +1140,8 @@
       },
       {
         "id": "gameday-arrival",
-        "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
-        "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
+        "headline": "Campus lots and shuttles open no earlier than noon CT for Alabama–Georgia",
+        "tldr": "Weather could delay operations further, and only uncovered tailgating is permitted after noon. College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT.",
         "outlet": "UA Gameday",
         "tier": "official",
         "url": "https://uagameday.com/tidetips/",
@@ -1266,19 +1264,18 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
+    ]
   },
   "georgia-football": {
     "schemaVersion": 1,
     "teamSlug": "georgia-football",
     "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:14:46.251063Z",
+    "publishedAt": "2026-10-10T13:20:31.939738Z",
     "issue": {
       "season": 2026,
       "week": 6
     },
-    "summary": "Georgia’s Thursday report lists Bowens out, while Frazier is absent from the list. At Alabama, follow the available backfield, keep the run fits disciplined and use the updated stadium-entry instructions.",
+    "summary": "Georgia’s Friday report lists Bowens and Canion out, while Frazier remains absent from the list. At Alabama, follow the available backfield and disciplined run fits. Host campus lots and shuttles open no earlier than noon CT, with weather delays possible.",
     "items": [
       {
         "id": "run-fit-corrections",
@@ -1310,8 +1307,8 @@
       },
       {
         "id": "thursday-availability",
-        "headline": "Bowens is listed out; Frazier is absent from Georgia’s injury report",
-        "tldr": "Thursday’s SEC report also lists Canion questionable; follow the actual backfield workload. Absence from the report does not establish a snap count.",
+        "headline": "Bowens and Canion are out; Frazier remains off Georgia’s report",
+        "tldr": "Friday’s SEC update changes Canion from questionable to out. Watch the available receivers and backfield; absence from the report does not establish Frazier’s snap count.",
         "outlet": "Atlanta Journal-Constitution",
         "tier": "local",
         "url": "https://www.ajc.com/sports/2026/10/georgia-nate-frazier-off-injury-report/",
@@ -1338,8 +1335,8 @@
       },
       {
         "id": "gameday-arrival",
-        "headline": "College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT",
-        "tldr": "No Friday tailgate setup. Campus lots, shuttles and uncovered tailgating start no earlier than noon CT, with weather delays possible; check the official page before traveling.",
+        "headline": "Campus lots and shuttles open no earlier than noon CT for Alabama–Georgia",
+        "tldr": "Weather could delay operations further, and only uncovered tailgating is permitted after noon. College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT.",
         "outlet": "UA Gameday",
         "tier": "official",
         "url": "https://uagameday.com/tidetips/",
@@ -1354,7 +1351,7 @@
     "editorial": {
       "lead": {
         "headline": "Fit the run, then stay in coverage.",
-        "body": "Read the block before chasing the first motion. Keep coverage attached when Russell moves outside the pocket; on offense, find the available back without forcing the throw.",
+        "body": "Read the block before chasing the first motion, then stay in coverage when Russell moves. On offense, Canion is now out; follow the available receivers and backs without forcing the short throw.",
         "noteId": "watch-1"
       },
       "matchup": {
@@ -1448,7 +1445,6 @@
         "publishedAt": "2026-10-07T02:38:32.788Z",
         "body": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-09T23:05:42.210954Z"
+    ]
   }
 }
