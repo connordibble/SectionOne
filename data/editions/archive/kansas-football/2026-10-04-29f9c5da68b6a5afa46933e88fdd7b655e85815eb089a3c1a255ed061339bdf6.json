@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "kansas-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-10T13:25:21.050668Z",
+  "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Kansas–Utah kicks off at 7 p.m. CT, beginning on ESPNEWS with the full game on the ESPN App. The final report lists Amachree, Willis, Thurman and Moses out; follow the available backfield workload.",
+  "items": [
+    {
+      "id": "thursday-availability",
+      "headline": "Three Kansas backs and tight end Carter Moses are out on the final report",
+      "tldr": "Amachree, Willis, Thurman and Moses are out; Cummings-Coleman is absent from the report. Follow his actual workload rather than assigning a snap count.",
+      "outlet": "Big 12 Conference",
+      "tier": "official",
+      "url": "https://big12sports.com/sports/2025/8/14/FBreporting.aspx",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "edwards-workload",
+      "headline": "Edwards delivered 137 rushing yards and three touchdowns",
+      "tldr": "The Middle Tennessee game showed he could carry a larger workload. Watch whether the blocking gives him a useful first cut against Utah.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/03/edwards-scores-first-three-touchdowns-at-ku-in-career-high-day-against-mtsu/",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "kickoff-coverage",
+      "headline": "Kansas needs cleaner kickoff coverage after two long returns",
+      "tldr": "Middle Tennessee returned consecutive kicks for 38 and 52 yards up the right sideline. Watch the kick placement and lane assignments against Utah.",
+      "outlet": "KUSports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/09/preview-seasons-first-true-road-game-sends-ku-to-no-12-utah/",
+      "publishedAt": "2026-10-09",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "parker-dual-threat",
+      "headline": "Utah’s Parker has scored as both runner and receiver",
+      "tldr": "Utah’s preview lists touchdowns in both roles. Account for him after the snap, especially when a short throw can replace a running play.",
+      "outlet": "Utah Athletics",
+      "tier": "official",
+      "url": "https://utahutes.com/news/2026/10/5/football-no-12-utah-meets-kansas-under-the-lights",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "gameday-time",
+      "headline": "Kansas–Utah starts at 7 p.m. CT, with opening coverage on ESPNEWS",
+      "tldr": "The full game is on the ESPN App; television coverage begins on ESPNEWS. Use the earlier kickoff time after Friday’s weather-related change.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/9/football-kansas-at-utah-moved-to-7-pm-ct",
+      "publishedAt": "2026-10-09",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the backfield assignments work.",
+      "body": "The kickoff is earlier and Moses is now out. Watch the available backs share carries, protection and short receiving work; on defense, keep a defender attached when Parker leaves the backfield.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Track the back on both sides",
+      "question": "What should Kansas emphasize at Utah?",
+      "answer": "Follow the active Kansas backs through carries and pass protection. On defense, account for Parker after the snap and finish the tackle before a short throw becomes a long gain.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Backfield workload",
+        "summary": "Follow carries and protection",
+        "detail": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange.",
+        "state": "watch",
+        "prompt": "How should I follow Kansas’s backfield at Utah?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Early downs",
+        "summary": "Leave more than one option",
+        "detail": "Take the available gain and avoid the penalty that makes the next call predictable.",
+        "state": "watch",
+        "prompt": "What should I watch for with early downs?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Backfield coverage",
+        "summary": "Follow the back into space",
+        "detail": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain.",
+        "state": "watch",
+        "prompt": "What should I watch for with backfield coverage?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Gameday timing",
+        "summary": "Reset the kickoff reminder",
+        "detail": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced.",
+        "state": "watch",
+        "prompt": "What changed about Kansas–Utah’s kickoff and broadcast?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "At Utah, kickoff is now 7 p.m. CT. The full game streams on the ESPN App; the television network is still to be announced.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Backfield workload",
+      "topics": [
+        "backfield workload",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-09T13:05:51.945502Z",
+      "body": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange."
+    },
+    {
+      "id": "watch-2",
+      "title": "Early downs",
+      "topics": [
+        "early downs",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Take the available gain and avoid the penalty that makes the next call predictable."
+    },
+    {
+      "id": "watch-3",
+      "title": "Backfield coverage",
+      "topics": [
+        "backfield coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T02:38:32.788Z",
+      "body": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain."
+    },
+    {
+      "id": "watch-4",
+      "title": "Gameday timing",
+      "topics": [
+        "gameday timing",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-10T13:19:05.291259Z",
+      "body": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced."
+    }
+  ]
+}

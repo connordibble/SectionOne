@@ -35,6 +35,10 @@ test("wrapped article titles leave space for hover underlines", async ({ page })
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/teams/texas-football");
     const title = page.locator('[aria-labelledby="news-heading"] h3 a').first();
+    // Exercise wrapping regardless of this week's first headline length.
+    await title.locator("span").first().evaluate(span => {
+      span.textContent = "A long article headline exercises every wrapped line of the link so its hover underline has enough room above the next line at mobile, tablet and desktop widths";
+    });
     await title.hover();
     const lines = await title.locator("span").first().evaluate(span => {
       const range = document.createRange();

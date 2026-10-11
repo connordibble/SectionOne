@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "ohio-state-football",
+  "weekOf": "2026-10-04",
+  "publishedAt": "2026-10-10T13:20:31.939738Z",
+  "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z",
+  "issue": {
+    "season": 2026,
+    "week": 6
+  },
+  "summary": "Ohio State’s Saturday report lists Inniss, Alliegro, Siereveld and Daniels out. McCuin and Timmons did not start against Maryland; watch the replacement receiver group and protection assignments, along with special teams.",
+  "items": [
+    {
+      "id": "thursday-availability",
+      "headline": "Ohio State is without six starters against Maryland",
+      "tldr": "Inniss, Alliegro, Siereveld and Daniels are listed out; McCuin and Timmons also missed the starting lineup. Watch the replacement receivers and protection assignments.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164429/ohio-state-injury-report-devin-mccuin-brandon-inniss-and-phillip-daniels-questionable-vs-maryland-jay-timmons",
+      "publishedAt": "2026-10-10T00:12:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "special-teams-execution",
+      "headline": "Day says Ohio State needs better special-teams production",
+      "tldr": "Tuesday’s criticism covered kicking, punting and both return units. Watch the operation and coverage on each kick, then whether penalties surrender field position.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164408/ryan-day-says-ohio-state-must-get-better-production-out-of-the-special-teams",
+      "publishedAt": "2026-10-06",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "smith-receiving",
+      "headline": "Smith caught 11 passes for 206 yards and two touchdowns at Iowa",
+      "tldr": "Watch how Ohio State creates room for its receivers against Maryland. The next useful gain can come from the open outlet as well as the difficult catch downfield.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/10/4/football-no-5-buckeyes-grab-ranked-win-over-no-14-iowa",
+      "publishedAt": "2026-10-03",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "maryland-durr",
+      "headline": "Maryland’s Durr had seven catches for 149 yards at Nebraska",
+      "tldr": "The opponent preview identifies a receiver who can keep possessions moving. Watch Ohio State’s first tackle after the catch, especially on throws underneath the coverage.",
+      "outlet": "Maryland Athletics",
+      "tier": "official",
+      "url": "https://umterps.com/news/2026/10/5/football-game-6-maryland-at-ohio-state-preview",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "homecoming-kickoff",
+      "headline": "Maryland visits Saturday at 4:15 p.m. ET on Big Ten Network",
+      "tldr": "Set the afternoon viewing plan for Homecoming. On the field, watch Ohio State’s protection against Maryland’s pass rush before looking for the downfield throw.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/10/5/football-ohio-state-returns-to-ohio-stadium-for-homecoming",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Check who is taking the snaps.",
+      "body": "With Inniss, Daniels and Alliegro doubtful, follow the actual receiver, right-tackle and linebacker assignments. McCuin and Timmons are probable; watch their workload while keeping Maryland’s short completions contained.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the available personnel work together",
+      "question": "What should Ohio State improve against Maryland?",
+      "answer": "Check the final report, then watch protection and route timing with the active offense. Rally to Maryland’s underneath throws and keep the kicking operation free of avoidable penalties.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Special teams",
+        "summary": "Protect field position",
+        "detail": "Watch the snap, protection and coverage on every kick. Avoid the penalty that gives the opponent a cheaper possession.",
+        "state": "watch",
+        "prompt": "What should Ohio State clean up on special teams?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Passing choices",
+        "summary": "Use the open receiver",
+        "detail": "Watch the quarterback work through coverage rather than force the first option. An underneath completion can keep the next down manageable.",
+        "state": "watch",
+        "prompt": "What should I watch in Ohio State’s passing game?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive pursuit",
+        "summary": "Finish after the catch",
+        "detail": "Watch the first defender make the tackle on Maryland’s short throws. Keep the next receiver covered when the quarterback extends the play.",
+        "state": "watch",
+        "prompt": "How should Ohio State defend Maryland’s receivers?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Availability",
+        "summary": "Follow the Friday changes",
+        "detail": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments.",
+        "state": "watch",
+        "prompt": "How could Ohio State’s availability affect the matchup?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Against Maryland, confirm the active personnel, then watch right-tackle protection, special teams and tackles after the catch.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Special teams",
+      "topics": [
+        "special teams",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the snap, protection and coverage on every kick. Avoid the penalty that gives the opponent a cheaper possession."
+    },
+    {
+      "id": "watch-2",
+      "title": "Passing choices",
+      "topics": [
+        "passing choices",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the quarterback work through coverage rather than force the first option. An underneath completion can keep the next down manageable."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive pursuit",
+      "topics": [
+        "defensive pursuit",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-07T00:06:19.216Z",
+      "body": "Watch the first defender make the tackle on Maryland’s short throws. Keep the next receiver covered when the quarterback extends the play."
+    },
+    {
+      "id": "watch-4",
+      "title": "Availability",
+      "topics": [
+        "availability",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-10T13:19:05.291259Z",
+      "body": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments."
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "northwestern-football",
+  "weekOf": "2026-10-11",
+  "publishedAt": "2026-10-11T14:07:12.696370+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 7
+  },
+  "summary": "Northwestern beat Ball State 45-14 with an efficient passing game and another fast start. The next work is boundary tackling and coverage before an October 17 trip to Michigan State at 11 a.m. CT on Peacock.",
+  "items": [
+    {
+      "id": "homecoming-final",
+      "headline": "Northwestern finishes nonconference play with a 45-14 win",
+      "tldr": "The Wildcats scored on five of their first six drives against Ball State. Watch whether that opening execution holds up on the road rather than waiting for a second-half correction.",
+      "outlet": "Northwestern Athletics",
+      "tier": "official",
+      "url": "https://nusports.com/news/2026/10/10/northwestern-takes-down-ball-state-45-14-for-homecoming-win",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "chiles-wilde",
+      "headline": "Chiles and Wilde give the passing game a productive afternoon",
+      "tldr": "Chiles threw for 272 yards and three touchdowns; Wilde caught eight passes for 144 yards. Run action and a clear read can keep that timing useful against Michigan State.",
+      "outlet": "Inside NU",
+      "tier": "local",
+      "url": "https://www.insidenu.com/northwestern-football/72012/rapid-reaction-northwestern-drubs-ball-state-for-a-45-14-homecoming-victory",
+      "publishedAt": "2026-10-10T19:50:26+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "boundary-corrections",
+      "headline": "The blowout still exposed coverage and tackling work",
+      "tldr": "Inside NU’s film observations flag lost coverage assignments and missed tackles near the boundary. Those are the defensive details to watch when the opponent can turn a short play into another first down.",
+      "outlet": "Inside NU",
+      "tier": "local",
+      "url": "https://www.insidenu.com/northwestern-football/72027/stock-up-stock-down-for-northwesterns-blowout-win-over-ball-state",
+      "publishedAt": "2026-10-10T20:06:59+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "patterson-threat",
+      "headline": "Michigan State’s Patterson scores four times in an overtime loss",
+      "tldr": "The Spartans fell 38-37 to Illinois, but Patterson scored on the ground and as a receiver. Northwestern needs an assignment for the back before the snap and a finished tackle after the catch.",
+      "outlet": "Michigan State Athletics",
+      "tier": "official",
+      "url": "https://msuspartans.com/news/2026/10/10/football-spartans-comeback-comes-up-short-in-overtime-against-illinois-38-37",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "east-lansing-peacock",
+      "headline": "Northwestern–Michigan State is set for 11 a.m. CT on Peacock",
+      "tldr": "The October 17 game is in East Lansing. The offense takes its next test on the road; plan for the streaming broadcast and the early kickoff.",
+      "outlet": "Michigan State Athletics",
+      "tier": "official",
+      "url": "https://msuspartans.com/news/2026/10/5/football-michigan-state-northwestern-to-kick-off-at-noon-on-saturday-oct-17",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Carry the passing rhythm into East Lansing.",
+      "body": "The offense found its receivers without asking every drive to live on the ground. Against Michigan State, keep that timing while the defense tightens the coverage handoff and the tackle at the boundary.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep the timing; finish the tackle",
+      "question": "What should Northwestern emphasize at Michigan State?",
+      "answer": "Let the run action create a clear throw without losing the protection assignment. On defense, cover the back as a receiver and finish the outside tackle before a short gain turns into an extended possession.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Play-action timing",
+        "summary": "Keep the throw attached to the run look",
+        "detail": "Chiles threw for 272 yards against Ball State. Watch the run action buy a clear throwing lane while the blockers keep the quarterback protected through the release.",
+        "state": "watch",
+        "prompt": "What should Northwestern carry over in its passing game?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Boundary tackles",
+        "summary": "Close the play after the catch",
+        "detail": "Inside NU identified missed tackles and coverage gaps against Ball State. Keep the outside leverage, shed the receiver’s block and finish the tackle before chasing the turnover.",
+        "state": "watch",
+        "prompt": "What did Ball State expose on Northwestern’s defense?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "The receiving back",
+        "summary": "Do not lose Patterson outside",
+        "detail": "Patterson scored four touchdowns against Illinois, including a receiving score. Pass the back into coverage clearly when he leaves the backfield and keep a defender available to tackle.",
+        "state": "watch",
+        "prompt": "How should Northwestern account for Patterson?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Fast starts",
+        "summary": "Make the opening drive repeatable",
+        "detail": "Northwestern scored on five of its first six drives against Ball State. In East Lansing, watch the first-down choices and the protection before looking for the next explosive gain.",
+        "state": "watch",
+        "prompt": "How can Northwestern maintain its fast starts?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Northwestern visits Michigan State on October 17 at 11 a.m. CT on Peacock. Watch play-action timing, boundary tackles and backfield receiving assignments.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Play-action timing",
+      "topics": [
+        "play-action timing",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Chiles threw for 272 yards against Ball State. Watch the run action buy a clear throwing lane while the blockers keep the quarterback protected through the release."
+    },
+    {
+      "id": "watch-2",
+      "title": "Boundary tackles",
+      "topics": [
+        "boundary tackles",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Inside NU identified missed tackles and coverage gaps against Ball State. Keep the outside leverage, shed the receiver’s block and finish the tackle before chasing the turnover."
+    },
+    {
+      "id": "watch-3",
+      "title": "The receiving back",
+      "topics": [
+        "the receiving back",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Patterson scored four touchdowns against Illinois, including a receiving score. Pass the back into coverage clearly when he leaves the backfield and keep a defender available to tackle."
+    },
+    {
+      "id": "watch-4",
+      "title": "Fast starts",
+      "topics": [
+        "fast starts",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Northwestern scored on five of its first six drives against Ball State. In East Lansing, watch the first-down choices and the protection before looking for the next explosive gain."
+    }
+  ]
+}

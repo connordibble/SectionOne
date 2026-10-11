@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "kansas-football",
+  "weekOf": "2026-10-11",
+  "publishedAt": "2026-10-11T14:07:12.696370+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 7
+  },
+  "summary": "Kansas lost 41-24 at Utah after getting within three late in the third quarter. Start the passing game sooner and finish the goal-to-go drive; Kansas State is next in Manhattan on October 17 at 11 a.m. CT on FS1.",
+  "items": [
+    {
+      "id": "utah-final",
+      "headline": "Utah pulls away from Kansas for a 41-24 win",
+      "tldr": "Kansas closed to 27-24 before Utah took the fourth quarter. Marshall threw for 333 yards, but the late scoring chances need a better finish before the rivalry trip.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/10/football-jayhawks-battle-no-12-utah-fall-41-24",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "slow-start",
+      "headline": "Marshall identifies the slow start as Kansas’s first correction",
+      "tldr": "The offense found its rhythm only late in the first half against Utah. Watch the intermediate route and protection on the opening drives rather than relying on urgency to get the passing game moving.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/11/jayhawks-biggest-problem-put-them-in-early-hole-in-loss-to-utah/",
+      "publishedAt": "2026-10-11",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "goal-line-finish",
+      "headline": "Two late goal-to-go trips end without Kansas points",
+      "tldr": "A false start moved one chance away from the goal line, and the next ended on an incomplete fourth-down throw. Alignment, the catch and the short-yardage choice all matter when there is less field to work with.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/10/quick-recap-jayhawks-fall-41-24-in-road-battle-with-no-12-utah/",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "wildcats-houston",
+      "headline": "Kansas State loses 35-16 as Houston keeps drives alive",
+      "tldr": "Houston converted all three of its fourth-down attempts in Manhattan. Kansas can study the sustained-drive problem, but it still has to earn its own manageable downs against the Wildcats.",
+      "outlet": "Kansas State Athletics",
+      "tier": "official",
+      "url": "https://www.kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "sunflower-fs1",
+      "headline": "The Sunflower Showdown is set for 11 a.m. CT on FS1",
+      "tldr": "Kansas travels to Manhattan on October 17. Plan for the early start and watch whether the offense can establish its rhythm before falling behind again.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/5/football-dillons-sunflower-showdown-set-for-11-am-kickoff-on-fs1",
+      "publishedAt": "2026-10-05",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Start earlier. Finish near the goal line.",
+      "body": "Marshall’s passing kept Kansas in the game, but the opening drives and two late scoring chances did not deliver enough. At Kansas State, watch the first useful completion and the clean assignment when the field gets short.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the whole drive count",
+      "question": "What should Kansas fix for the Sunflower Showdown?",
+      "answer": "Get the passing rhythm established before playing from behind. Keep the protection and alignment clean near the goal line, then make the next completion count as points rather than another missed chance.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Opening rhythm",
+        "summary": "Find the useful throw sooner",
+        "detail": "Marshall described Kansas’s slow starts as the biggest problem after Utah. Watch the early intermediate route and a clean protection call before the offense reaches another long passing down.",
+        "state": "watch",
+        "prompt": "How can Kansas start faster against Kansas State?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Goal-to-go execution",
+        "summary": "Do not move the scoring chance backward",
+        "detail": "Kansas failed to score on two late goal-to-go trips at Utah. Keep the alignment clean, finish the catch and choose the short-yardage play that the blocking can support.",
+        "state": "watch",
+        "prompt": "What cost Kansas its late scoring chances?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Run fits",
+        "summary": "Keep the next explosive run contained",
+        "detail": "Parker’s 90-yard touchdown run helped put the Utah game away. Against Kansas State, watch the inside fit and the outside leverage before pursuing the ball across the formation.",
+        "state": "watch",
+        "prompt": "What must Kansas correct in its run defense?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Sustained possessions",
+        "summary": "Earn the manageable down",
+        "detail": "Houston converted three fourth downs in its 35-16 win over Kansas State. Use the short completion and the run that is available; the Wildcats’ previous loss does not guarantee the next conversion.",
+        "state": "watch",
+        "prompt": "What does Kansas State’s Houston loss show?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Kansas visits Kansas State on October 17 at 11 a.m. CT on FS1. Watch the opening offensive rhythm and goal-to-go execution.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Opening rhythm",
+      "topics": [
+        "opening rhythm",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Marshall described Kansas’s slow starts as the biggest problem after Utah. Watch the early intermediate route and a clean protection call before the offense reaches another long passing down."
+    },
+    {
+      "id": "watch-2",
+      "title": "Goal-to-go execution",
+      "topics": [
+        "goal-to-go execution",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Kansas failed to score on two late goal-to-go trips at Utah. Keep the alignment clean, finish the catch and choose the short-yardage play that the blocking can support."
+    },
+    {
+      "id": "watch-3",
+      "title": "Run fits",
+      "topics": [
+        "run fits",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Parker’s 90-yard touchdown run helped put the Utah game away. Against Kansas State, watch the inside fit and the outside leverage before pursuing the ball across the formation."
+    },
+    {
+      "id": "watch-4",
+      "title": "Sustained possessions",
+      "topics": [
+        "sustained possessions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Houston converted three fourth downs in its 35-16 win over Kansas State. Use the short completion and the run that is available; the Wildcats’ previous loss does not guarantee the next conversion."
+    }
+  ]
+}

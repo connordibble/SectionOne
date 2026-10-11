@@ -2,64 +2,22 @@
   "texas-football": {
     "schemaVersion": 1,
     "teamSlug": "texas-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:20:31.939738Z",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:07:12.696370+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
-    "summary": "Friday’s report leaves Townsend off the list and Terry questionable. Oklahoma will be without left tackle Michael Fasusi, with guard Eddy Pierre-Louis doubtful; watch how Texas attacks those protection assignments while keeping a quick answer ready on offense.",
+    "summary": "Texas lost 27-24 to Oklahoma despite allowing only 238 yards. Punt protection and the decision with the ball need the correction; Florida arrives next Saturday for an 11 a.m. CT kickoff on ABC.",
     "items": [
       {
-        "id": "thursday-availability",
-        "headline": "Townsend is off the report; Terry remains questionable for Oklahoma",
-        "tldr": "Friday’s SEC report keeps Lockett, Coleman and Zion Williams out. Follow Townsend’s actual workload and the final update on Terry before assigning him a role.",
-        "outlet": "Burnt Orange Nation",
-        "tier": "local",
-        "url": "https://www.burntorangenation.com/ousucks/105592/texas-oklahoma-injury-report-thursday-nick-townsend",
-        "publishedAt": "2026-10-09T00:52:00Z",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "bishop-personnel",
-        "headline": "Bishop’s four-receiver package gives Texas another offensive look",
-        "tldr": "Texas introduced the package against UTSA to get Bishop on the field alongside its top three receivers. Watch the screen game and protection when the tight end comes off.",
-        "outlet": "Burnt Orange Nation",
-        "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/105544/jermaine-bishop-10-personnel-steve-sarkisian",
-        "publishedAt": "2026-10-07T16:44:00Z",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "simmons-pressure",
-        "headline": "Simmons set a Texas record with 5.5 sacks at Tennessee",
-        "tldr": "The record describes the September 26 game, not a projection for Dallas. Watch whether the edge pressure can hurry Oklahoma’s quarterback while keeping an escape lane covered.",
+        "id": "red-river-final",
+        "headline": "Texas loses 27-24 after defensive and special-teams touchdowns",
+        "tldr": "The defense allowed 238 yards, but a blocked punt and an interception return supplied Oklahoma touchdowns. Before Florida, watch how Texas protects a possession after earning a stop.",
         "outlet": "Texas Athletics",
         "tier": "official",
-        "url": "https://texaslonghorns.com/news/2026/9/29/no-1-1-footballs-simmons-earns-national-player-of-the-week-honors-from-bednarik-award-nagurski-trophy-walter-camp-award",
-        "publishedAt": "2026-09-29",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 3
-        }
-      },
-      {
-        "id": "opponent-availability",
-        "headline": "Oklahoma lists Fasusi out and Pierre-Louis doubtful on Friday",
-        "tldr": "Eli Bowen is also questionable. Watch how Oklahoma protects the left side of its line; Texas still needs connected pressure that accounts for the quarterback’s escape lane.",
-        "outlet": "Orangebloods",
-        "tier": "local",
-        "url": "https://www.orangebloods.com/2026/10/09/texas-oklahoma-injury/",
-        "publishedAt": "2026-10-09",
+        "url": "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+        "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -67,13 +25,55 @@
         }
       },
       {
-        "id": "florida-kickoff",
-        "headline": "Texas–Florida is set for 11 a.m. CT on October 17",
-        "tldr": "The network remains ABC or ESPN, with the final choice due after October 10. Plan for the early start next week while this week’s focus stays on Oklahoma.",
-        "outlet": "LSU Athletics",
+        "id": "punt-shield",
+        "headline": "The punt shield failed against a look Texas had seen",
+        "tldr": "Oklahoma came free through the middle and recovered the blocked punt for a touchdown. The correction is an assignment and protection job, not simply a request for a longer punt.",
+        "outlet": "Burnt Orange Nation",
+        "tier": "local",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/105693/oklahoma-sooners-blocked-punt-texas-longhorns-protection-justin-cryer",
+        "publishedAt": "2026-10-11T01:12:37+00:00",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "coaching-responsibility",
+        "headline": "Sarkisian says the play-calling and special-teams roles will stay",
+        "tldr": "Sarkisian said he is not considering changes to his play-calling role or Jeff Banks’ responsibilities. Watch whether the same staff can improve the early-down choices and specialist execution.",
+        "outlet": "Burnt Orange Nation",
+        "tier": "local",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/105685/steve-sarkisian-play-caller-jeff-banks-special-teams",
+        "publishedAt": "2026-10-11T00:46:16+00:00",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "cooper-carries",
+        "headline": "Cooper supplied 41 rushing yards on eight carries",
+        "tldr": "The freshman gave Texas a productive stretch on the ground in the loss. Watch whether the rushing attack can earn manageable downs against Florida; Saturday’s work does not guarantee a larger role.",
+        "outlet": "Hook’em Headlines",
+        "tier": "local",
+        "url": "https://hookemheadlines.com/3-losers-2-winners-from-texas-longhorns-inexplicable-loss-to-oklahoma-in-red-river-rivalry",
+        "publishedAt": "2026-10-11T01:45:46Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "florida-abc",
+        "headline": "Texas–Florida is confirmed for 11 a.m. CT on ABC",
+        "tldr": "October 17 brings an early home kickoff. The network choice is now ABC, replacing the earlier ABC-or-ESPN listing.",
+        "outlet": "Florida Athletics",
         "tier": "official",
-        "url": "https://lsusports.net/news/2026/10/5/lsu-football-homecoming-game-to-air-on-abc-or-espn",
-        "publishedAt": "2026-10-05",
+        "url": "https://floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc",
+        "publishedAt": "2026-10-10",
         "grade": {
           "impact": 3,
           "echo": 1,
@@ -83,111 +83,113 @@
     ],
     "editorial": {
       "lead": {
-        "headline": "Keep a quick answer ready.",
-        "body": "Oklahoma’s left-side protection has changed availability to work around. Watch Texas close the pocket together; on offense, keep the screen or short route ready when Oklahoma sends pressure.",
+        "headline": "Stop giving away possessions.",
+        "body": "The defense did enough to keep Texas in the game. Against Florida, watch the punt shield, the first useful throw and the decision when a drive reaches scoring range.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Test the protection without losing contain",
-        "question": "What should Texas emphasize against Oklahoma?",
-        "answer": "Watch the left side of Oklahoma’s protection with Fasusi out and Pierre-Louis doubtful. Keep the quarterback’s escape lane covered, then give the Texas offense a quick throw when pressure comes.",
+        "thesis": "Keep the defense’s work on the scoreboard",
+        "question": "What should Texas fix before Florida?",
+        "answer": "Protect the punt and take the available throw before a pressure play becomes a turnover. Give the rushing attack a chance to keep the next down manageable; make Florida earn its field position.",
         "citationNoteIds": [
           "watch-1",
-          "watch-2"
+          "watch-2",
+          "watch-3",
+          "watch-4"
         ]
       },
       "signals": [
         {
           "id": "watch-1",
-          "title": "Personnel choices",
-          "summary": "Keep the quick answer ready",
-          "detail": "Watch the screen and protection when Texas puts another receiver on the field. A short completion should help avoid an obvious passing down.",
+          "title": "Punt protection",
+          "summary": "Keep the middle covered",
+          "detail": "Oklahoma blocked a punt through the middle and recovered it for a touchdown. Watch the shield identify the overloaded side before the snap and hold its inside assignment.",
           "state": "watch",
-          "prompt": "What changes when Texas uses four receivers?",
+          "prompt": "What failed in Texas’s punt protection?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Oklahoma’s protection",
-          "summary": "Pressure with an escape-lane assignment",
-          "detail": "Fasusi is out and Pierre-Louis is doubtful on Friday’s report. Watch how Texas tests the left-side protection without giving the quarterback a lane outside the pocket.",
+          "title": "Early downs",
+          "summary": "Give the run game a usable role",
+          "detail": "Cooper ran for 41 yards on eight carries against Oklahoma. Against Florida, watch the blocking and carry choices before Texas reaches an obvious passing down.",
           "state": "watch",
-          "prompt": "How do Oklahoma’s absences affect Texas’s defensive pressure?",
+          "prompt": "How can Texas improve its early-down offense?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Tight ends and depth",
-          "summary": "Follow the available rotation",
-          "detail": "Watch how Townsend is used alongside the receiver packages. Check the final report before assuming Terry will join the defensive-line rotation.",
+          "title": "Ball security",
+          "summary": "Keep the last chance alive",
+          "detail": "Manning threw two interceptions against Oklahoma, including the late turnover that preceded the winning kick. Take the available completion without forcing a throw across a crowded field.",
           "state": "watch",
-          "prompt": "How does the latest report affect Texas’s rotation?",
+          "prompt": "What should Texas change about its passing decisions?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Possession swings",
-          "summary": "Make the extra chance count",
-          "detail": "Watch ball security after a takeaway. A short field still requires sound blocking and a clean decision to become points.",
+          "title": "Field position",
+          "summary": "Make Florida drive",
+          "detail": "Texas held Oklahoma to 238 yards but lost 27-24. Keep defensive stops attached to clean punt and possession decisions, so the next opponent must earn its points with its offense.",
           "state": "watch",
-          "prompt": "How can Texas capitalize on Oklahoma’s mistakes?",
+          "prompt": "How does Texas turn defensive stops into an advantage?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Against Oklahoma in Dallas, watch the changed left-side protection, receiver packages and tight-end usage.",
+    "nextGameNote": "Florida visits Austin on October 17 at 11 a.m. CT on ABC. Watch punt protection, early-down execution and ball security.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Personnel choices",
+        "title": "Punt protection",
         "topics": [
-          "personnel choices",
+          "punt protection",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch the screen and protection when Texas puts another receiver on the field. A short completion should help avoid an obvious passing down."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Oklahoma blocked a punt through the middle and recovered it for a touchdown. Watch the shield identify the overloaded side before the snap and hold its inside assignment."
       },
       {
         "id": "watch-2",
-        "title": "Oklahoma’s protection",
+        "title": "Early downs",
         "topics": [
-          "oklahoma’s protection",
+          "early downs",
           "matchup"
         ],
-        "publishedAt": "2026-10-10T13:19:05.291259Z",
-        "body": "Fasusi is out and Pierre-Louis is doubtful on Friday’s report. Watch how Texas tests the left-side protection without giving the quarterback a lane outside the pocket."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Cooper ran for 41 yards on eight carries against Oklahoma. Against Florida, watch the blocking and carry choices before Texas reaches an obvious passing down."
       },
       {
         "id": "watch-3",
-        "title": "Tight ends and depth",
+        "title": "Ball security",
         "topics": [
-          "tight ends and depth",
+          "ball security",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch how Townsend is used alongside the receiver packages. Check the final report before assuming Terry will join the defensive-line rotation."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Manning threw two interceptions against Oklahoma, including the late turnover that preceded the winning kick. Take the available completion without forcing a throw across a crowded field."
       },
       {
         "id": "watch-4",
-        "title": "Possession swings",
+        "title": "Field position",
         "topics": [
-          "possession swings",
+          "field position",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch ball security after a takeaway. A short field still requires sound blocking and a clean decision to become points."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Texas held Oklahoma to 238 yards but lost 27-24. Keep defensive stops attached to clean punt and possession decisions, so the next opponent must earn its points with its offense."
       }
     ]
   },
   "utah-state-football": {
     "schemaVersion": 1,
     "teamSlug": "utah-state-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:25:21.050668Z",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:07:12.696370+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
     "summary": "Utah State beat Washington State 17-16 after trailing 16-3 at halftime. Cunningham’s two forced fumbles set up both touchdowns, but the offense and costly penalties still need work. The bye comes before an October 24 trip to Texas State.",
     "items": [
@@ -264,7 +266,7 @@
     ],
     "editorial": {
       "lead": {
-        "headline": "Build drives without the short field.",
+        "headline": "Use the bye to build longer drives.",
         "body": "The defense supplied the comeback’s two touchdown opportunities. Use the bye to improve the next completion, the handoff and the decision after the whistle, so the offense can earn a scoring drive of its own.",
         "noteId": "watch-1"
       },
@@ -364,22 +366,22 @@
   "ohio-state-football": {
     "schemaVersion": 1,
     "teamSlug": "ohio-state-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:20:31.939738Z",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:07:12.696370+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
-    "summary": "Ohio State’s Saturday report lists Inniss, Alliegro, Siereveld and Daniels out. McCuin and Timmons did not start against Maryland; watch the replacement receiver group and protection assignments, along with special teams.",
+    "summary": "Ohio State beat Maryland 45-16, but penalties and turnovers remain the work before Indiana. The trip to Bloomington is October 17 at noon ET on FOX; follow the next availability update rather than assuming Saturday’s absences are resolved.",
     "items": [
       {
-        "id": "thursday-availability",
-        "headline": "Ohio State is without six starters against Maryland",
-        "tldr": "Inniss, Alliegro, Siereveld and Daniels are listed out; McCuin and Timmons also missed the starting lineup. Watch the replacement receivers and protection assignments.",
-        "outlet": "Eleven Warriors",
-        "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164429/ohio-state-injury-report-devin-mccuin-brandon-inniss-and-phillip-daniels-questionable-vs-maryland-jay-timmons",
-        "publishedAt": "2026-10-10T00:12:00Z",
+        "id": "maryland-final",
+        "headline": "Ohio State beats Maryland 45-16 before the Indiana trip",
+        "tldr": "Smith caught two touchdowns and Sayin threw four in the Maryland win. The scoring options give Indiana several assignments to cover; the next job is to keep penalties and turnovers from shortening the game.",
+        "outlet": "Ohio State Athletics",
+        "tier": "official",
+        "url": "https://ohiostatebuckeyes.com/news/2026/10/10/football-no-5-buckeyes-extends-home-win-streak-to-12-games",
+        "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -387,181 +389,182 @@
         }
       },
       {
-        "id": "special-teams-execution",
-        "headline": "Day says Ohio State needs better special-teams production",
-        "tldr": "Tuesday’s criticism covered kicking, punting and both return units. Watch the operation and coverage on each kick, then whether penalties surrender field position.",
+        "id": "day-cleanup",
+        "headline": "Day calls out eight penalties and the turnovers",
+        "tldr": "The win included a lost fumble and a pick-six. Day’s postgame message puts the cleanup on coaching as well as players; watch the protection assignment and the decision before chasing another big play.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164408/ryan-day-says-ohio-state-must-get-better-production-out-of-the-special-teams",
-        "publishedAt": "2026-10-06",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164503/animated-ryan-day-on-display-in-game-in-ohio-states-win-vs-maryland-not-thrilled-with-sloppy-mistakes",
+        "publishedAt": "2026-10-10",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "smith-receiving",
-        "headline": "Smith caught 11 passes for 206 yards and two touchdowns at Iowa",
-        "tldr": "Watch how Ohio State creates room for its receivers against Maryland. The next useful gain can come from the open outlet as well as the difficult catch downfield.",
-        "outlet": "Ohio State Athletics",
-        "tier": "official",
-        "url": "https://ohiostatebuckeyes.com/news/2026/10/4/football-no-5-buckeyes-grab-ranked-win-over-no-14-iowa",
-        "publishedAt": "2026-10-03",
+        "id": "houston-interior",
+        "headline": "Houston’s interior work is becoming more consistent",
+        "tldr": "He recorded four tackles in each of the Iowa and Maryland games after a slow start. Against Indiana, watch whether that work disrupts an early down without opening a running lane behind him.",
+        "outlet": "Eleven Warriors",
+        "tier": "local",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164510/eddrick-houston-credits-mentality-switch-to-recently-improved-play-i-want-to-be-the-best-3-tech-in-the-nation",
+        "publishedAt": "2026-10-11",
         "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "maryland-durr",
-        "headline": "Maryland’s Durr had seven catches for 149 yards at Nebraska",
-        "tldr": "The opponent preview identifies a receiver who can keep possessions moving. Watch Ohio State’s first tackle after the catch, especially on throws underneath the coverage.",
-        "outlet": "Maryland Athletics",
-        "tier": "official",
-        "url": "https://umterps.com/news/2026/10/5/football-game-6-maryland-at-ohio-state-preview",
-        "publishedAt": "2026-10-05",
-        "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "homecoming-kickoff",
-        "headline": "Maryland visits Saturday at 4:15 p.m. ET on Big Ten Network",
-        "tldr": "Set the afternoon viewing plan for Homecoming. On the field, watch Ohio State’s protection against Maryland’s pass rush before looking for the downfield throw.",
+        "id": "indiana-crossers",
+        "headline": "Indiana escapes Nebraska on two Marsh touchdown catches",
+        "tldr": "Nick Marsh’s long catches helped Indiana rally for a 20-17 win. Ohio State needs clear coverage handoffs on crossing routes, including when a run look draws attention into the box.",
+        "outlet": "Indiana Daily Student",
+        "tier": "local",
+        "url": "https://www.idsnews.com/article/2026/10/indiana-football-win-nebraska-cignetti-bloomington",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "bloomington-fox",
+        "headline": "The Indiana trip is set for noon ET on FOX",
+        "tldr": "The October 17 game moves the next test to Bloomington. Plan for the early window, and check the week’s availability updates before treating the Maryland lineup as next Saturday’s lineup.",
         "outlet": "Ohio State Athletics",
         "tier": "official",
-        "url": "https://ohiostatebuckeyes.com/news/2026/10/5/football-ohio-state-returns-to-ohio-stadium-for-homecoming",
+        "url": "https://ohiostatebuckeyes.com/news/2026/10/5/football-kickoff-time-against-indiana-announced-for-noon-et-on-fox",
         "publishedAt": "2026-10-05",
         "grade": {
           "impact": 3,
           "echo": 1,
-          "freshness": 5
+          "freshness": 3
         }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Check who is taking the snaps.",
-        "body": "With Inniss, Daniels and Alliegro doubtful, follow the actual receiver, right-tackle and linebacker assignments. McCuin and Timmons are probable; watch their workload while keeping Maryland’s short completions contained.",
+        "headline": "Make the clean play travel.",
+        "body": "Maryland could not keep up with Ohio State’s scoring plays. Indiana’s comeback at Nebraska is a reminder to stay in coverage through the whole route; on offense, protect the ball and avoid the penalty that erases a gain.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Make the available personnel work together",
-        "question": "What should Ohio State improve against Maryland?",
-        "answer": "Check the final report, then watch protection and route timing with the active offense. Rally to Maryland’s underneath throws and keep the kicking operation free of avoidable penalties.",
+        "thesis": "Make Indiana earn each possession",
+        "question": "What matters most for Ohio State at Indiana?",
+        "answer": "Keep the explosive completion attached to sound protection and a clean decision. On defense, finish the coverage assignment when a receiver crosses the formation; do not confuse a quiet stretch with a stopped drive.",
         "citationNoteIds": [
           "watch-1",
-          "watch-2"
+          "watch-2",
+          "watch-3",
+          "watch-4"
         ]
       },
       "signals": [
         {
           "id": "watch-1",
-          "title": "Special teams",
-          "summary": "Protect field position",
-          "detail": "Watch the snap, protection and coverage on every kick. Avoid the penalty that gives the opponent a cheaper possession.",
+          "title": "Possession discipline",
+          "summary": "Keep the scoring play on the board",
+          "detail": "Ohio State had eight penalties against Maryland. Watch the blocker’s hands and the decision with the football before a promising gain becomes a long passing down.",
           "state": "watch",
-          "prompt": "What should Ohio State clean up on special teams?",
+          "prompt": "What must Ohio State clean up before Indiana?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Passing choices",
-          "summary": "Use the open receiver",
-          "detail": "Watch the quarterback work through coverage rather than force the first option. An underneath completion can keep the next down manageable.",
+          "title": "Crossing routes",
+          "summary": "Pass the receiver off clearly",
+          "detail": "Marsh scored twice through the air in Indiana’s 20-17 comeback at Nebraska. Stay with the route across the formation and close the tackle before the catch becomes another long gain.",
           "state": "watch",
-          "prompt": "What should I watch in Ohio State’s passing game?",
+          "prompt": "How should Ohio State defend Indiana’s crossing routes?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Defensive pursuit",
-          "summary": "Finish after the catch",
-          "detail": "Watch the first defender make the tackle on Maryland’s short throws. Keep the next receiver covered when the quarterback extends the play.",
+          "title": "Interior defense",
+          "summary": "Keep the early-down disruption",
+          "detail": "Houston had four tackles against Maryland after four at Iowa. Watch the defensive tackle defeat the block while the next defender stays responsible for the runner’s exit.",
           "state": "watch",
-          "prompt": "How should Ohio State defend Maryland’s receivers?",
+          "prompt": "What has changed in Houston’s defensive play?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Availability",
-          "summary": "Follow the Friday changes",
-          "detail": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments.",
+          "title": "The actual lineup",
+          "summary": "Wait for this week’s confirmed update",
+          "detail": "Inniss, McCuin, Daniels, Siereveld, Alliegro and Timmons missed the Maryland game. Those are Saturday absences, not confirmed Indiana statuses; check the new report before assigning next week’s roles.",
           "state": "watch",
-          "prompt": "How could Ohio State’s availability affect the matchup?",
+          "prompt": "Which Maryland absences need a fresh check for Indiana?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Against Maryland, confirm the active personnel, then watch right-tackle protection, special teams and tackles after the catch.",
+    "nextGameNote": "Ohio State visits Indiana on October 17 at noon ET on FOX. Watch possession discipline, crossing routes and the confirmed lineup.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Special teams",
+        "title": "Possession discipline",
         "topics": [
-          "special teams",
+          "possession discipline",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the snap, protection and coverage on every kick. Avoid the penalty that gives the opponent a cheaper possession."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Ohio State had eight penalties against Maryland. Watch the blocker’s hands and the decision with the football before a promising gain becomes a long passing down."
       },
       {
         "id": "watch-2",
-        "title": "Passing choices",
+        "title": "Crossing routes",
         "topics": [
-          "passing choices",
+          "crossing routes",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the quarterback work through coverage rather than force the first option. An underneath completion can keep the next down manageable."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Marsh scored twice through the air in Indiana’s 20-17 comeback at Nebraska. Stay with the route across the formation and close the tackle before the catch becomes another long gain."
       },
       {
         "id": "watch-3",
-        "title": "Defensive pursuit",
+        "title": "Interior defense",
         "topics": [
-          "defensive pursuit",
+          "interior defense",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the first defender make the tackle on Maryland’s short throws. Keep the next receiver covered when the quarterback extends the play."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Houston had four tackles against Maryland after four at Iowa. Watch the defensive tackle defeat the block while the next defender stays responsible for the runner’s exit."
       },
       {
         "id": "watch-4",
-        "title": "Availability",
+        "title": "The actual lineup",
         "topics": [
-          "availability",
+          "the actual lineup",
           "matchup"
         ],
-        "publishedAt": "2026-10-10T13:19:05.291259Z",
-        "body": "Inniss, Daniels and Alliegro are doubtful; McCuin and Timmons are probable. Check the final report, then watch who handles the receiving, protection and underneath coverage assignments."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Inniss, McCuin, Daniels, Siereveld, Alliegro and Timmons missed the Maryland game. Those are Saturday absences, not confirmed Indiana statuses; check the new report before assigning next week’s roles."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z"
+    ]
   },
   "lsu-football": {
     "schemaVersion": 1,
     "teamSlug": "lsu-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:25:21.050668Z",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:07:12.696370+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
-    "summary": "Green and Weeks remain out for LSU, while Friday’s report now rules out Kentucky defensive lineman Kalen Edwards. Watch the available offense’s short option and the linebackers’ communication against Kentucky’s quarterback and tight ends.",
+    "summary": "LSU lost 35-34 in overtime at Kentucky. A punt-return touchdown, late ball-security trouble and the final quarterback keep leave concrete corrections before Mississippi State visits for an 11 a.m. CT kickoff on ESPN.",
     "items": [
       {
-        "id": "kentucky-availability",
-        "headline": "Green and Weeks remain out for LSU’s trip to Kentucky",
-        "tldr": "Friday’s SEC report retains both absences. LSU Wire expects more four-receiver sets and changes at linebacker; follow the actual personnel before treating those projections as the game plan.",
-        "outlet": "LSU Wire",
+        "id": "kentucky-final",
+        "headline": "Kentucky wins 35-34 on an overtime two-point conversion",
+        "tldr": "Minchey kept the ball for the winning conversion after LSU scored first in overtime. Watch the inside fit and the defender assigned to the quarterback before the next short-yardage test.",
+        "outlet": "WBRZ",
         "tier": "local",
-        "url": "https://sports.yahoo.com/articles/lsu-football-releases-first-injury-162334955.html",
-        "publishedAt": "2026-10-08T16:23:34Z",
+        "url": "https://www.wbrz.com/news/final-no-10-lsu-falls-35-34-to-kentucky-in-overtime",
+        "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -569,41 +572,13 @@
         }
       },
       {
-        "id": "rushing-finish",
-        "headline": "LSU scored six rushing touchdowns against McNeese",
-        "tldr": "The 63-14 win featured 731 yards of total offense. Watch whether the blocking and ball security can carry into an SEC road game, where each finished possession matters.",
-        "outlet": "LSU Athletics",
-        "tier": "official",
-        "url": "https://lsusports.net/news/2026/10/4/football-dominates-mcneese-63-14-behind-historic-offensive-night",
-        "publishedAt": "2026-10-03",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "kentucky-third-downs",
-        "headline": "Stein wants better third-down execution on both sides",
-        "tldr": "Kentucky’s coach pointed Tuesday to route detail on offense and quarterback scrambles allowed on defense. Watch LSU’s protection and whether its own rush keeps the quarterback contained.",
+        "id": "punt-coverage",
+        "headline": "Coffman’s punt return supplied a Kentucky touchdown",
+        "tldr": "Kentucky scored on a punt return before halftime. LSU’s coverage has to stay in its lanes and finish the tackle; a productive offensive drive cannot cancel the field position given away on the next kick.",
         "outlet": "Kentucky Athletics",
         "tier": "official",
-        "url": "https://ukathletics.com/news/2026/10/06/cats-looking-to-improve-third-down-efficiency/",
-        "publishedAt": "2026-10-06",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "opponent-kentucky-availability",
-        "headline": "Kentucky’s Kalen Edwards is now out; DJ Miller remains off the report",
-        "tldr": "Friday’s SEC update supersedes Thursday’s doubtful designation for Edwards. Miller’s absence from the list leaves his workload to be observed; track Kentucky’s receiving group against LSU’s changed personnel.",
-        "outlet": "A Sea of Blue",
-        "tier": "local",
-        "url": "https://sports.yahoo.com/articles/kentucky-vs-lsu-injury-report-003141330.html",
-        "publishedAt": "2026-10-09T00:31:41Z",
+        "url": "https://ukathletics.com/news/2026/10/11/kentucky-lsu-postgame-notes-8/",
+        "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -611,9 +586,37 @@
         }
       },
       {
-        "id": "homecoming-kickoff",
-        "headline": "LSU’s October 17 homecoming game is set for 11 a.m. CT",
-        "tldr": "Mississippi State visits next week on ABC or ESPN. The final network will be selected after October 10; the early kickoff is already confirmed.",
+        "id": "late-ball-security",
+        "headline": "A late Leavitt fumble gave Kentucky another chance",
+        "tldr": "Leavitt lost the ball while being sacked with LSU protecting a fourth-quarter lead. Against Mississippi State, watch whether protection and the quarterback’s decision end the play before pressure gets a second chance.",
+        "outlet": "LSU Athletics",
+        "tier": "official",
+        "url": "https://lsusports.net/news/2026/10/11/football-falls-to-kentucky-in-ot-35-34",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "state-next-opponent",
+        "headline": "Mississippi State enters off a bye after its Alabama loss",
+        "tldr": "The Bulldogs’ last game was a 56-23 loss to Alabama on October 3. Treat that as the previous result, not a forecast; LSU still needs clean coverage assignments when State uses its receivers.",
+        "outlet": "Mississippi State Athletics",
+        "tier": "official",
+        "url": "https://hailstate.com/news/2026/10/3/football-game-day-state-vs-alabama",
+        "publishedAt": "2026-10-03",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 3
+        }
+      },
+      {
+        "id": "homecoming-espn",
+        "headline": "LSU’s homecoming kickoff is confirmed for 11 a.m. CT on ESPN",
+        "tldr": "Mississippi State comes to Tiger Stadium on October 17. The final network is ESPN, replacing the earlier either-or listing; plan for a morning kickoff in Baton Rouge.",
         "outlet": "LSU Athletics",
         "tier": "official",
         "url": "https://lsusports.net/news/2026/10/5/lsu-football-homecoming-game-to-air-on-abc-or-espn",
@@ -621,257 +624,78 @@
         "grade": {
           "impact": 3,
           "echo": 1,
-          "freshness": 5
+          "freshness": 3
         }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Keep the replacement assignments clear.",
-        "body": "Kentucky’s Edwards is now out, while LSU still has Green and Weeks unavailable. Watch the linebackers pass off tight ends and keep an escape lane covered; on offense, find the short option when the outside route is taken away.",
+        "headline": "Finish the possession, then the tackle.",
+        "body": "Kentucky turned the last chance into an overtime win. Against Mississippi State, watch the punt coverage stay connected and the defender finish his assignment when the quarterback keeps the ball.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Make the changed personnel communicate",
-        "question": "What should LSU emphasize at Kentucky?",
-        "answer": "Follow the linebacker assignments when Kentucky’s tight ends release late. Watch the available offense create a short option, protect the quarterback and leave more than one choice on the next down.",
+        "thesis": "Protect the next chance",
+        "question": "What should LSU fix before Mississippi State?",
+        "answer": "Keep the coverage lane on punts, protect the ball when extending a passing play and pass off the receiver without losing the quarterback’s escape lane. The offense needs those assignments to support its scoring drives.",
         "citationNoteIds": [
           "watch-1",
-          "watch-2"
+          "watch-2",
+          "watch-3",
+          "watch-4"
         ]
       },
       "signals": [
         {
           "id": "watch-1",
-          "title": "Third-down rush",
-          "summary": "Keep the escape covered",
-          "detail": "Watch LSU close the pocket without opening a lane through the middle. A covered receiver is useful only if the quarterback cannot run for the first down.",
+          "title": "Punt coverage",
+          "summary": "Make the return stop in its lane",
+          "detail": "Coffman scored on a punt return against LSU. Watch the coverage players stay connected downfield and bring the returner down before pursuing a strip or a highlight hit.",
           "state": "watch",
-          "prompt": "How should LSU handle Kentucky on third down?",
-          "noteId": "watch-1"
-        },
-        {
-          "id": "watch-2",
-          "title": "Running game",
-          "summary": "Finish the possession",
-          "detail": "Watch the line create room and the backs protect the ball through contact. A useful early gain should leave more than one option on the next down.",
-          "state": "watch",
-          "prompt": "What should I watch from LSU’s running game?",
-          "noteId": "watch-2"
-        },
-        {
-          "id": "watch-3",
-          "title": "Tight-end coverage",
-          "summary": "Communicate near the goal line",
-          "detail": "Watch defenders account for a tight end slipping behind the initial action. Pass off routes without letting the last receiver disappear.",
-          "state": "watch",
-          "prompt": "What should LSU watch near its goal line?",
-          "noteId": "watch-3"
-        },
-        {
-          "id": "watch-4",
-          "title": "Available personnel",
-          "summary": "Follow the actual replacements",
-          "detail": "Watch which linebackers handle the calls and which receivers or tight ends provide the short option. A projected replacement is useful only once the assignment works on the field.",
-          "state": "watch",
-          "prompt": "What should LSU watch with its changed personnel?",
-          "noteId": "watch-4"
-        }
-      ]
-    },
-    "nextGameNote": "At Kentucky, watch linebacker communication, tight-end coverage and the short passing option with the available offense.",
-    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
-    "notes": [
-      {
-        "id": "watch-1",
-        "title": "Third-down rush",
-        "topics": [
-          "third-down rush",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch LSU close the pocket without opening a lane through the middle. A covered receiver is useful only if the quarterback cannot run for the first down."
-      },
-      {
-        "id": "watch-2",
-        "title": "Running game",
-        "topics": [
-          "running game",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch the line create room and the backs protect the ball through contact. A useful early gain should leave more than one option on the next down."
-      },
-      {
-        "id": "watch-3",
-        "title": "Tight-end coverage",
-        "topics": [
-          "tight-end coverage",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-07T00:06:19.216Z",
-        "body": "Watch defenders account for a tight end slipping behind the initial action. Pass off routes without letting the last receiver disappear."
-      },
-      {
-        "id": "watch-4",
-        "title": "Available personnel",
-        "topics": [
-          "available personnel",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch which linebackers handle the calls and which receivers or tight ends provide the short option. A projected replacement is useful only once the assignment works on the field."
-      }
-    ]
-  },
-  "northwestern-football": {
-    "schemaVersion": 1,
-    "teamSlug": "northwestern-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-09T13:13:19.278328Z",
-    "issue": {
-      "season": 2026,
-      "week": 6
-    },
-    "summary": "Northwestern beat Ball State 45–14 after scoring on five of its first six drives. Chiles threw for 272 yards and three touchdowns; watch whether that passing efficiency carries into the Michigan State trip.",
-    "items": [
-      {
-        "id": "homecoming-win",
-        "headline": "Northwestern beat Ball State 45–14 behind Chiles’s three passing touchdowns",
-        "tldr": "Chiles completed 17 of 23 passes for 272 yards. Watch whether that early-drive efficiency carries into the Michigan State trip.",
-        "outlet": "Northwestern Athletics",
-        "tier": "official",
-        "url": "https://nusports.com/news/2026/10/10/northwestern-takes-down-ball-state-45-14-for-homecoming-win",
-        "publishedAt": "2026-10-10",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "wing-t-blocking",
-        "headline": "Inside NU breaks down Kelly’s Wing-T success",
-        "tldr": "The film review highlights motion and pulling linemen against Penn State. Watch how those movements change the defender responsible for the ball.",
-        "outlet": "Inside NU",
-        "tier": "local",
-        "url": "https://www.insidenu.com/northwestern-football/71601/three-takeaways-from-northwesterns-34-13-thumping-of-penn-state",
-        "publishedAt": "2026-10-04T18:08:00Z",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "costly-mistakes",
-        "headline": "Northwestern’s win still included seven penalties and a lost exchange",
-        "tldr": "The mistakes gave Penn State help it had not earned. Watch for a clean handoff and controlled contact after the whistle.",
-        "outlet": "Inside NU",
-        "tier": "local",
-        "url": "https://www.insidenu.com/northwestern-football/71563/stock-up-stock-down-for-northwesterns-grand-opening-of-the-new-ryan-field",
-        "publishedAt": "2026-10-03T03:54:00Z",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "opponent-third-down",
-        "headline": "Ball State’s coach wants to avoid Northwestern’s third-down blitzes",
-        "tldr": "Uremovich’s Monday plan puts early-down gains first. Watch whether Northwestern can force a long conversion before showing pressure.",
-        "outlet": "Ball State Athletics",
-        "tier": "official",
-        "url": "https://ballstatesports.com/news/2026/10/5/football-cardinals-look-towards-nonconference-matchup-at-northwestern",
-        "publishedAt": "2026-10-05",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "secondary-depth",
-        "headline": "Deasfernandes and Stevens stepped up against Penn State",
-        "tldr": "Deasfernandes made seven tackles from nickel; Stevens added two pass breakups at safety. Watch the coverage communication against Ball State.",
-        "outlet": "Northwestern Athletics",
-        "tier": "official",
-        "url": "https://nusports.com/news/2026/10/7/next-man-up-brenden-deasfernandes-jon-jon-stevens-answer-the-call-in-nu-secondary",
-        "publishedAt": "2026-10-07",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      }
-    ],
-    "editorial": {
-      "lead": {
-        "headline": "Finish what the motion creates.",
-        "body": "Watch the pulling guard reach the defender and the back take the lane. Protect the exchange before looking for the extra gain; on defense, earn the long passing down before sending pressure.",
-        "noteId": "watch-1"
-      },
-      "matchup": {
-        "thesis": "Misdirection with discipline",
-        "question": "What should Northwestern emphasize against Ball State?",
-        "answer": "Watch the block after the misdirection, then the exchange through the mesh point. On defense, deny an easy early gain and keep the last route covered when pressure comes.",
-        "citationNoteIds": [
-          "watch-1",
-          "watch-2"
-        ]
-      },
-      "signals": [
-        {
-          "id": "watch-1",
-          "title": "Blocking angles",
-          "summary": "Finish the pulling block",
-          "detail": "Watch the pulling guard find his assignment after the motion shifts the defense. The back still needs a clean lane through the point of attack.",
-          "state": "watch",
-          "prompt": "How can Northwestern repeat its success with misdirection?",
+          "prompt": "What should LSU correct on punt coverage?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
           "title": "Ball security",
-          "summary": "Finish the exchange",
-          "detail": "Watch the handoff through the mesh point. Protect the possession before looking for an extra yard.",
+          "summary": "End the pressure play safely",
+          "detail": "Leavitt lost a fourth-quarter fumble while being sacked at Kentucky. Use the available throw or protect the ball when the pocket closes; the next offensive chance still matters.",
           "state": "watch",
-          "prompt": "What should I watch for with ball security?",
+          "prompt": "How does LSU protect a late lead?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Early-down defense",
-          "summary": "Earn the long conversion",
-          "detail": "Make the offense work for its first gain. A predictable passing down gives the defense more choices.",
+          "title": "Quarterback keeps",
+          "summary": "Account for the runner inside",
+          "detail": "Minchey’s quarterback keep won Kentucky’s two-point attempt in overtime. Watch the defender responsible for the keep stay in the fit rather than following every other threat outside.",
           "state": "watch",
-          "prompt": "What should I watch for with early-down defense?",
+          "prompt": "What happened on Kentucky’s winning conversion?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Secondary communication",
-          "summary": "Keep the last route covered",
-          "detail": "Watch Deasfernandes and Stevens communicate when routes change direction. Follow the actual rotation and keep coverage attached when pressure arrives.",
+          "title": "Tight-end coverage",
+          "summary": "Keep the handoff clear",
+          "detail": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle.",
           "state": "watch",
-          "prompt": "What should I watch from Northwestern’s secondary?",
+          "prompt": "What should LSU watch in Mississippi State’s passing game?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Against Ball State, watch pulling blocks, clean handoffs and coverage that stays connected to pressure.",
+    "nextGameNote": "Mississippi State visits Tiger Stadium on October 17 at 11 a.m. CT on ESPN. Watch punt coverage, ball security and receiver assignments.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Blocking angles",
+        "title": "Punt coverage",
         "topics": [
-          "blocking angles",
+          "punt coverage",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch the pulling guard find his assignment after the motion shifts the defense. The back still needs a clean lane through the point of attack."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Coffman scored on a punt return against LSU. Watch the coverage players stay connected downfield and bring the returner down before pursuing a strip or a highlight hit."
       },
       {
         "id": "watch-2",
@@ -880,50 +704,49 @@
           "ball security",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch the handoff through the mesh point. Protect the possession before looking for an extra yard."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Leavitt lost a fourth-quarter fumble while being sacked at Kentucky. Use the available throw or protect the ball when the pocket closes; the next offensive chance still matters."
       },
       {
         "id": "watch-3",
-        "title": "Early-down defense",
+        "title": "Quarterback keeps",
         "topics": [
-          "early-down defense",
+          "quarterback keeps",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Make the offense work for its first gain. A predictable passing down gives the defense more choices."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Minchey’s quarterback keep won Kentucky’s two-point attempt in overtime. Watch the defender responsible for the keep stay in the fit rather than following every other threat outside."
       },
       {
         "id": "watch-4",
-        "title": "Secondary communication",
+        "title": "Tight-end coverage",
         "topics": [
-          "secondary communication",
+          "receiver coverage",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch Deasfernandes and Stevens communicate when routes change direction. Follow the actual rotation and keep coverage attached when pressure arrives."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z"
+    ]
   },
-  "kansas-football": {
+  "northwestern-football": {
     "schemaVersion": 1,
-    "teamSlug": "kansas-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:25:21.050668Z",
+    "teamSlug": "northwestern-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:09:24.844359+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
-    "summary": "Kansas–Utah kicks off at 7 p.m. CT, beginning on ESPNEWS with the full game on the ESPN App. The final report lists Amachree, Willis, Thurman and Moses out; follow the available backfield workload.",
+    "summary": "Northwestern beat Ball State 45-14 with an efficient passing game and another fast start. The next work is boundary tackling and coverage before an October 17 trip to Michigan State at 11 a.m. CT on Peacock.",
     "items": [
       {
-        "id": "thursday-availability",
-        "headline": "Three Kansas backs and tight end Carter Moses are out on the final report",
-        "tldr": "Amachree, Willis, Thurman and Moses are out; Cummings-Coleman is absent from the report. Follow his actual workload rather than assigning a snap count.",
-        "outlet": "Big 12 Conference",
+        "id": "homecoming-final",
+        "headline": "Northwestern finishes nonconference play with a 45-14 win",
+        "tldr": "The Wildcats scored on five of their first six drives against Ball State. Watch whether that opening execution holds up on the road rather than waiting for a second-half correction.",
+        "outlet": "Northwestern Athletics",
         "tier": "official",
-        "url": "https://big12sports.com/sports/2025/8/14/FBreporting.aspx",
+        "url": "https://nusports.com/news/2026/10/10/northwestern-takes-down-ball-state-45-14-for-homecoming-win",
         "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
@@ -932,180 +755,191 @@
         }
       },
       {
-        "id": "edwards-workload",
-        "headline": "Edwards delivered 137 rushing yards and three touchdowns",
-        "tldr": "The Middle Tennessee game showed he could carry a larger workload. Watch whether the blocking gives him a useful first cut against Utah.",
-        "outlet": "KU Sports",
+        "id": "chiles-wilde",
+        "headline": "Chiles and Wilde give the passing game a productive afternoon",
+        "tldr": "Chiles threw for 272 yards and three touchdowns; Wilde caught eight passes for 144 yards. Run action and a clear read can keep that timing useful against Michigan State.",
+        "outlet": "Inside NU",
         "tier": "local",
-        "url": "https://www2.kusports.com/sports/college/football/2026/oct/03/edwards-scores-first-three-touchdowns-at-ku-in-career-high-day-against-mtsu/",
-        "publishedAt": "2026-10-03",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "kickoff-coverage",
-        "headline": "Kansas needs cleaner kickoff coverage after two long returns",
-        "tldr": "Middle Tennessee returned consecutive kicks for 38 and 52 yards up the right sideline. Watch the kick placement and lane assignments against Utah.",
-        "outlet": "KUSports",
-        "tier": "local",
-        "url": "https://www2.kusports.com/sports/college/football/2026/oct/09/preview-seasons-first-true-road-game-sends-ku-to-no-12-utah/",
-        "publishedAt": "2026-10-09",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "parker-dual-threat",
-        "headline": "Utah’s Parker has scored as both runner and receiver",
-        "tldr": "Utah’s preview lists touchdowns in both roles. Account for him after the snap, especially when a short throw can replace a running play.",
-        "outlet": "Utah Athletics",
-        "tier": "official",
-        "url": "https://utahutes.com/news/2026/10/5/football-no-12-utah-meets-kansas-under-the-lights",
-        "publishedAt": "2026-10-05",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "gameday-time",
-        "headline": "Kansas–Utah starts at 7 p.m. CT, with opening coverage on ESPNEWS",
-        "tldr": "The full game is on the ESPN App; television coverage begins on ESPNEWS. Use the earlier kickoff time after Friday’s weather-related change.",
-        "outlet": "Kansas Athletics",
-        "tier": "official",
-        "url": "https://kuathletics.com/news/2026/10/9/football-kansas-at-utah-moved-to-7-pm-ct",
-        "publishedAt": "2026-10-09",
+        "url": "https://www.insidenu.com/northwestern-football/72012/rapid-reaction-northwestern-drubs-ball-state-for-a-45-14-homecoming-victory",
+        "publishedAt": "2026-10-10T19:50:26+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
           "freshness": 5
         }
+      },
+      {
+        "id": "boundary-corrections",
+        "headline": "The blowout still exposed coverage and tackling work",
+        "tldr": "Inside NU’s film observations flag lost coverage assignments and missed tackles near the boundary. Those are the defensive details to watch when the opponent can turn a short play into another first down.",
+        "outlet": "Inside NU",
+        "tier": "local",
+        "url": "https://www.insidenu.com/northwestern-football/72027/stock-up-stock-down-for-northwesterns-blowout-win-over-ball-state",
+        "publishedAt": "2026-10-10T20:06:59+00:00",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "patterson-threat",
+        "headline": "Michigan State’s Patterson scores four times in an overtime loss",
+        "tldr": "The Spartans fell 38-37 to Illinois, but Patterson scored on the ground and as a receiver. Northwestern needs an assignment for the back before the snap and a finished tackle after the catch.",
+        "outlet": "Michigan State Athletics",
+        "tier": "official",
+        "url": "https://msuspartans.com/news/2026/10/10/football-spartans-comeback-comes-up-short-in-overtime-against-illinois-38-37",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "east-lansing-peacock",
+        "headline": "Northwestern–Michigan State is set for 11 a.m. CT on Peacock",
+        "tldr": "The October 17 game is in East Lansing. The offense takes its next test on the road; plan for the streaming broadcast and the early kickoff.",
+        "outlet": "Michigan State Athletics",
+        "tier": "official",
+        "url": "https://msuspartans.com/news/2026/10/5/football-michigan-state-northwestern-to-kick-off-at-noon-on-saturday-oct-17",
+        "publishedAt": "2026-10-05",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 3
+        }
       }
     ],
     "editorial": {
       "lead": {
-        "headline": "Make the backfield assignments work.",
-        "body": "The kickoff is earlier and Moses is now out. Watch the available backs share carries, protection and short receiving work; on defense, keep a defender attached when Parker leaves the backfield.",
+        "headline": "Carry the passing rhythm into East Lansing.",
+        "body": "The offense found its receivers without asking every drive to live on the ground. Against Michigan State, keep that timing while the defense tightens the coverage handoff and the tackle at the boundary.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Track the back on both sides",
-        "question": "What should Kansas emphasize at Utah?",
-        "answer": "Follow the active Kansas backs through carries and pass protection. On defense, account for Parker after the snap and finish the tackle before a short throw becomes a long gain.",
+        "thesis": "Keep the timing; finish the tackle",
+        "question": "What should Northwestern emphasize at Michigan State?",
+        "answer": "Let the run action create a clear throw without losing the protection assignment. On defense, cover the back as a receiver and finish the outside tackle before a short gain turns into an extended possession.",
         "citationNoteIds": [
           "watch-1",
-          "watch-2"
+          "watch-2",
+          "watch-3",
+          "watch-4"
         ]
       },
       "signals": [
         {
           "id": "watch-1",
-          "title": "Backfield workload",
-          "summary": "Follow carries and protection",
-          "detail": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange.",
+          "title": "Play-action timing",
+          "summary": "Keep the throw attached to the run look",
+          "detail": "Chiles threw for 272 yards against Ball State. Watch the run action buy a clear throwing lane while the blockers keep the quarterback protected through the release.",
           "state": "watch",
-          "prompt": "How should I follow Kansas’s backfield at Utah?",
+          "prompt": "What should Northwestern carry over in its passing game?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Early downs",
-          "summary": "Leave more than one option",
-          "detail": "Take the available gain and avoid the penalty that makes the next call predictable.",
+          "title": "Boundary tackles",
+          "summary": "Close the play after the catch",
+          "detail": "Inside NU identified missed tackles and coverage gaps against Ball State. Keep the outside leverage, shed the receiver’s block and finish the tackle before chasing the turnover.",
           "state": "watch",
-          "prompt": "What should I watch for with early downs?",
+          "prompt": "What did Ball State expose on Northwestern’s defense?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
-          "title": "Backfield coverage",
-          "summary": "Follow the back into space",
-          "detail": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain.",
+          "title": "The receiving back",
+          "summary": "Do not lose Patterson outside",
+          "detail": "Patterson scored four touchdowns against Illinois, including a receiving score. Pass the back into coverage clearly when he leaves the backfield and keep a defender available to tackle.",
           "state": "watch",
-          "prompt": "What should I watch for with backfield coverage?",
+          "prompt": "How should Northwestern account for Patterson?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Gameday timing",
-          "summary": "Reset the kickoff reminder",
-          "detail": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced.",
+          "title": "Fast starts",
+          "summary": "Make the opening drive repeatable",
+          "detail": "Northwestern scored on five of its first six drives against Ball State. In East Lansing, watch the first-down choices and the protection before looking for the next explosive gain.",
           "state": "watch",
-          "prompt": "What changed about Kansas–Utah’s kickoff and broadcast?",
+          "prompt": "How can Northwestern maintain its fast starts?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "At Utah, kickoff is now 7 p.m. CT. The full game streams on the ESPN App; the television network is still to be announced.",
+    "nextGameNote": "Northwestern visits Michigan State on October 17 at 11 a.m. CT on Peacock. Watch play-action timing, boundary tackles and backfield receiving assignments.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Backfield workload",
+        "title": "Play-action timing",
         "topics": [
-          "backfield workload",
+          "play-action timing",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch how Edwards, Dupree and Cummings-Coleman share the available work. A place in the rotation still requires the right protection assignment and a secure exchange."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Chiles threw for 272 yards against Ball State. Watch the run action buy a clear throwing lane while the blockers keep the quarterback protected through the release."
       },
       {
         "id": "watch-2",
-        "title": "Early downs",
+        "title": "Boundary tackles",
         "topics": [
-          "early downs",
+          "boundary tackles",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Take the available gain and avoid the penalty that makes the next call predictable."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Inside NU identified missed tackles and coverage gaps against Ball State. Keep the outside leverage, shed the receiver’s block and finish the tackle before chasing the turnover."
       },
       {
         "id": "watch-3",
-        "title": "Backfield coverage",
+        "title": "The receiving back",
         "topics": [
-          "backfield coverage",
+          "the receiving back",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch the defender account for a back releasing into a route. Finish the tackle before a short completion turns into a long gain."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Patterson scored four touchdowns against Illinois, including a receiving score. Pass the back into coverage clearly when he leaves the backfield and keep a defender available to tackle."
       },
       {
         "id": "watch-4",
-        "title": "Gameday timing",
+        "title": "Fast starts",
         "topics": [
-          "gameday timing",
+          "fast starts",
           "matchup"
         ],
-        "publishedAt": "2026-10-10T13:19:05.291259Z",
-        "body": "Kansas–Utah starts at 7 p.m. CT after the weather-related move. The ESPN App will carry the full game; the ESPN television network is still to be announced."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Northwestern scored on five of its first six drives against Ball State. In East Lansing, watch the first-down choices and the protection before looking for the next explosive gain."
+      },
+      {
+        "id": "preset-watch",
+        "title": "Blocking angles",
+        "topics": [
+          "blocking angles",
+          "next week"
+        ],
+        "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+        "body": "Inside NU identified receivers and second-level blockers losing blocks against Ball State. Watch the blocker reach the right shoulder and hold that position while the runner chooses the available lane."
       }
-    ],
-    "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z"
+    ]
   },
-  "alabama-football": {
+  "kansas-football": {
     "schemaVersion": 1,
-    "teamSlug": "alabama-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:20:31.939738Z",
+    "teamSlug": "kansas-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:09:24.844359+00:00",
     "issue": {
       "season": 2026,
-      "week": 6
+      "week": 7
     },
-    "summary": "Alabama’s gameday report lists Ford and Edmonds as game-time decisions; James is absent. Watch the active right tackle and how Russell handles Georgia’s pressure.",
+    "summary": "Kansas lost 41-24 at Utah after getting within three late in the third quarter. Start the passing game sooner and finish the goal-to-go drive; Kansas State is next in Manhattan on October 17 at 11 a.m. CT on FS1.",
     "items": [
       {
-        "id": "thursday-availability",
-        "headline": "Ford and Edmonds are game-time decisions; James is off the report",
-        "tldr": "Saturday’s SEC report leaves both players’ participation unresolved. Watch the active tight end and cornerback rotation, plus the right-tackle workload.",
-        "outlet": "SEC",
+        "id": "utah-final",
+        "headline": "Utah pulls away from Kansas for a 41-24 win",
+        "tldr": "Kansas closed to 27-24 before Utah took the fourth quarter. Marshall threw for 333 yards, but the late scoring chances need a better finish before the rivalry trip.",
+        "outlet": "Kansas Athletics",
         "tier": "official",
-        "url": "https://www.secsports.com/fbreports",
+        "url": "https://kuathletics.com/news/2026/10/10/football-jayhawks-battle-no-12-utah-fall-41-24",
         "publishedAt": "2026-10-10",
         "grade": {
           "impact": 5,
@@ -1114,41 +948,13 @@
         }
       },
       {
-        "id": "russell-decisions",
-        "headline": "Russell threw for 285 yards and three touchdowns at Mississippi State",
-        "tldr": "His decision-making is the useful part to carry forward. Watch him take the available receiver before trying to extend a play against Georgia.",
-        "outlet": "Alabama Crimson Tide on SI",
+        "id": "slow-start",
+        "headline": "Marshall identifies the slow start as Kansas’s first correction",
+        "tldr": "The offense found its rhythm only late in the first half against Utah. Watch the intermediate route and protection on the opening drives rather than relying on urgency to get the passing game moving.",
+        "outlet": "KU Sports",
         "tier": "local",
-        "url": "https://www.si.com/college/alabama/football/what-we-learned-from-alabama-dominant-win-mississippi-state-tide-takeaways",
-        "publishedAt": "2026-10-03",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "griffin-depth",
-        "headline": "Griffin led Alabama with nine tackles off the bench",
-        "tldr": "Tuesday’s national freshman award recognizes his Mississippi State performance. Watch assignment discipline along with the tackle totals.",
-        "outlet": "Alabama Athletics",
-        "tier": "official",
-        "url": "https://rolltide.com/news/2026/10/6/footballs-xavier-griffin-named-shaun-alexander-award-player-of-the-week",
-        "publishedAt": "2026-10-06",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "gameday-arrival",
-        "headline": "Campus lots and shuttles open no earlier than noon CT for Alabama–Georgia",
-        "tldr": "Weather could delay operations further, and only uncovered tailgating is permitted after noon. College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT.",
-        "outlet": "UA Gameday",
-        "tier": "official",
-        "url": "https://uagameday.com/tidetips/",
-        "publishedAt": "2026-10-08",
+        "url": "https://www2.kusports.com/sports/college/football/2026/oct/11/jayhawks-biggest-problem-put-them-in-early-hole-in-loss-to-utah/",
+        "publishedAt": "2026-10-11",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1156,15 +962,236 @@
         }
       },
       {
-        "id": "opponent-line",
-        "headline": "Georgia has used the same starting offensive line in every game",
-        "tldr": "The opponent’s preview highlights continuity up front. Watch the pressure arrive without opening an escape lane or losing a receiver behind it.",
-        "outlet": "Georgia Athletics",
+        "id": "goal-line-finish",
+        "headline": "Two late goal-to-go trips end without Kansas points",
+        "tldr": "A false start moved one chance away from the goal line, and the next ended on an incomplete fourth-down throw. Alignment, the catch and the short-yardage choice all matter when there is less field to work with.",
+        "outlet": "KU Sports",
+        "tier": "local",
+        "url": "https://www2.kusports.com/sports/college/football/2026/oct/10/quick-recap-jayhawks-fall-41-24-in-road-battle-with-no-12-utah/",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "wildcats-houston",
+        "headline": "Kansas State loses 35-16 as Houston keeps drives alive",
+        "tldr": "Houston converted all three of its fourth-down attempts in Manhattan. Kansas can study the sustained-drive problem, but it still has to earn its own manageable downs against the Wildcats.",
+        "outlet": "Kansas State Athletics",
         "tier": "official",
-        "url": "https://georgiadogs.com/news/2026/10/5/football-georgia-visits-alabama-for-top-10-matchup",
+        "url": "https://www.kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "sunflower-fs1",
+        "headline": "The Sunflower Showdown is set for 11 a.m. CT on FS1",
+        "tldr": "Kansas travels to Manhattan on October 17. Plan for the early start and watch whether the offense can establish its rhythm before falling behind again.",
+        "outlet": "Kansas Athletics",
+        "tier": "official",
+        "url": "https://kuathletics.com/news/2026/10/5/football-dillons-sunflower-showdown-set-for-11-am-kickoff-on-fs1",
         "publishedAt": "2026-10-05",
         "grade": {
-          "impact": 4,
+          "impact": 3,
+          "echo": 1,
+          "freshness": 3
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Start earlier. Finish near the goal line.",
+        "body": "Marshall’s passing kept Kansas in the game, but the opening drives and two late scoring chances did not deliver enough. At Kansas State, watch the first useful completion and the clean assignment when the field gets short.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Make the whole drive count",
+        "question": "What should Kansas fix for the Sunflower Showdown?",
+        "answer": "Get the passing rhythm established before playing from behind. Keep the protection and alignment clean near the goal line, then make the next completion count as points rather than another missed chance.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Opening rhythm",
+          "summary": "Find the useful throw sooner",
+          "detail": "Marshall described Kansas’s slow starts as the biggest problem after Utah. Watch the early intermediate route and a clean protection call before the offense reaches another long passing down.",
+          "state": "watch",
+          "prompt": "How can Kansas start faster against Kansas State?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Goal-to-go execution",
+          "summary": "Do not move the scoring chance backward",
+          "detail": "Kansas failed to score on two late goal-to-go trips at Utah. Keep the alignment clean, finish the catch and choose the short-yardage play that the blocking can support.",
+          "state": "watch",
+          "prompt": "What cost Kansas its late scoring chances?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Run fits",
+          "summary": "Keep the next explosive run contained",
+          "detail": "Parker’s 90-yard touchdown run helped put the Utah game away. Against Kansas State, watch the inside fit and the outside leverage before pursuing the ball across the formation.",
+          "state": "watch",
+          "prompt": "What must Kansas correct in its run defense?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Sustained possessions",
+          "summary": "Earn the manageable down",
+          "detail": "Houston converted three fourth downs in its 35-16 win over Kansas State. Use the short completion and the run that is available; the Wildcats’ previous loss does not guarantee the next conversion.",
+          "state": "watch",
+          "prompt": "What does Kansas State’s Houston loss show?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Kansas visits Kansas State on October 17 at 11 a.m. CT on FS1. Watch the opening offensive rhythm and goal-to-go execution.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Opening rhythm",
+        "topics": [
+          "opening rhythm",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Marshall described Kansas’s slow starts as the biggest problem after Utah. Watch the early intermediate route and a clean protection call before the offense reaches another long passing down."
+      },
+      {
+        "id": "watch-2",
+        "title": "Goal-to-go execution",
+        "topics": [
+          "goal-to-go execution",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Kansas failed to score on two late goal-to-go trips at Utah. Keep the alignment clean, finish the catch and choose the short-yardage play that the blocking can support."
+      },
+      {
+        "id": "watch-3",
+        "title": "Run fits",
+        "topics": [
+          "run fits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Parker’s 90-yard touchdown run helped put the Utah game away. Against Kansas State, watch the inside fit and the outside leverage before pursuing the ball across the formation."
+      },
+      {
+        "id": "watch-4",
+        "title": "Sustained possessions",
+        "topics": [
+          "sustained possessions",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Houston converted three fourth downs in its 35-16 win over Kansas State. Use the short completion and the run that is available; the Wildcats’ previous loss does not guarantee the next conversion."
+      },
+      {
+        "id": "preset-watch",
+        "title": "Backfield workload",
+        "topics": [
+          "backfield workload",
+          "next week"
+        ],
+        "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+        "body": "Kansas’s running backs supplied 32 rushing yards at Utah. Watch the blocking and the first-down carry choice before expecting a larger workload; Marshall’s passing production alone does not establish next week’s backfield roles."
+      }
+    ]
+  },
+  "alabama-football": {
+    "schemaVersion": 1,
+    "teamSlug": "alabama-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Alabama lost 20-17 to Georgia after giving up too many third-down extensions and a late personal foul. Tennessee is next in Knoxville on October 17 at 2:30 p.m. CT on ABC; watch the run fits and the decision after the whistle.",
+    "items": [
+      {
+        "id": "georgia-final",
+        "headline": "Georgia hands Alabama its first loss, 20-17",
+        "tldr": "Alabama scored only three points after halftime. Keep the offensive drive alive without a negative play, and make the defense’s next stop deliver another possession.",
+        "outlet": "Alabama Athletics",
+        "tier": "official",
+        "url": "https://rolltide.com/news/2026/10/10/football-no-6-7-alabama-falls-to-no-2-2-georgia-20-17",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "third-down-extensions",
+        "headline": "Georgia’s third-down throws kept Alabama on the field",
+        "tldr": "The Bulldogs converted seven of 13 third downs, including the late completion to Elyiss Williams. Before Tennessee, watch coverage through the release rather than treating the long down as a finished stop.",
+        "outlet": "BamaCentral",
+        "tier": "local",
+        "url": "https://www.si.com/college/alabama/alabama-s-third-down-struggles-prove-costly-in-loss-to-georgia",
+        "publishedAt": "2026-10-11T06:00:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "late-personal-foul",
+        "headline": "Lee’s late personal foul closes Alabama’s final chance",
+        "tldr": "The penalty gave Georgia another first down on its last possession. The correction is to finish the play and separate after the whistle; no tackle should give the opponent another set of downs.",
+        "outlet": "BamaCentral",
+        "tier": "local",
+        "url": "https://www.si.com/college/alabama/football/no-6-alabama-football-lacks-discipline-loss-no-2-georgia",
+        "publishedAt": "2026-10-11T05:03:43Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "takeaway-points",
+        "headline": "Hubbard’s interception did not become Alabama points",
+        "tldr": "Georgia turned its takeaway into a field goal while Alabama did not score after its interception. Watch the first offensive choice after a takeaway, before trying to make the entire drive with one throw.",
+        "outlet": "1819 News",
+        "tier": "local",
+        "url": "https://1819news.com/news/item/5-takeaways-from-no-6-alabamas-20-17-loss-to-no-2-georgia",
+        "publishedAt": "2026-10-10T22:39:00-05:00",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "tennessee-ground-game",
+        "headline": "Tennessee’s Bishop leads a late comeback at Arkansas",
+        "tldr": "Bishop ran for 138 yards in Tennessee’s 24-17 win. The next Alabama test needs sound run fits and a finished tackle; MacIntyre’s Saturday start is not a confirmed quarterback decision for next week.",
+        "outlet": "Tennessee Athletics",
+        "tier": "official",
+        "url": "https://utsports.com/news/2026/10/10/football-late-score-secures-no-15-14-vols-win-in-fayetteville",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 3,
           "echo": 1,
           "freshness": 5
         }
@@ -1172,80 +1199,275 @@
     ],
     "editorial": {
       "lead": {
-        "headline": "Protect Russell’s first read.",
-        "body": "Watch the tackle hold the edge long enough for the first route to develop. Take the useful throw before trying to extend the play; keep defensive pressure connected to coverage.",
+        "headline": "Finish the stop without another flag.",
+        "body": "Georgia kept the final possession alive, and Alabama could not get its offense another chance. At Tennessee, keep the run fit, stay attached to the receiving threat and finish the play before reacting after the whistle.",
         "noteId": "watch-1"
       },
       "matchup": {
-        "thesis": "Protection before improvisation",
-        "question": "What should Alabama emphasize against Georgia?",
-        "answer": "Follow the active right tackle and help at the edge, then Russell’s decision when the first route is covered. On defense, keep the pressure coordinated so the quarterback cannot escape into an uncovered throw.",
+        "thesis": "Earn the ball back",
+        "question": "What should Alabama fix before Tennessee?",
+        "answer": "Make the early-down tackle keep the next down long, then cover the outlet without opening an escape lane. On offense, avoid the negative play that pushes a scoring chance out of field-goal range.",
         "citationNoteIds": [
           "watch-1",
-          "watch-2"
+          "watch-2",
+          "watch-3",
+          "watch-4"
         ]
       },
       "signals": [
         {
           "id": "watch-1",
-          "title": "Right tackle",
-          "summary": "Follow the active protection",
-          "detail": "Watch who takes the first snaps and how help arrives against edge pressure. Being off the report does not promise a starting job or full workload.",
+          "title": "Third-down coverage",
+          "summary": "Stay with the outlet through the release",
+          "detail": "Georgia converted seven of 13 third downs. Watch the underneath assignment and the tackle on the first completion before expecting the pass rush to end the possession.",
           "state": "watch",
-          "prompt": "What should I watch at Alabama’s right tackle?",
+          "prompt": "Why could Alabama not get off the field against Georgia?",
           "noteId": "watch-1"
         },
         {
           "id": "watch-2",
-          "title": "Quarterback choices",
-          "summary": "Take the useful throw",
-          "detail": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball.",
+          "title": "After the whistle",
+          "summary": "Keep the stop you earned",
+          "detail": "Lee’s personal foul gave Georgia a first down late in the game. Finish the tackle and step away; the offense needs the chance that the defense is trying to earn.",
           "state": "watch",
-          "prompt": "What should I watch for with quarterback choices?",
+          "prompt": "What should Alabama correct about late-game discipline?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Run fits",
+          "summary": "Keep Bishop in the assigned lane",
+          "detail": "Bishop rushed for 138 yards against Arkansas. Read the block and hold outside leverage before chasing the first motion; keep the tackle attached to the fit.",
+          "state": "watch",
+          "prompt": "What should Alabama watch in Tennessee’s rushing attack?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Scoring-range decisions",
+          "summary": "Avoid the negative play",
+          "detail": "Russell was sacked out of field-goal range on Alabama’s last offensive possession. Against Tennessee, keep the useful throw available and protect the ball when the pocket closes.",
+          "state": "watch",
+          "prompt": "How can Alabama preserve its scoring chances?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Alabama visits Tennessee on October 17 at 2:30 p.m. CT on ABC. Watch third-down coverage, run fits and discipline after the play.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Third-down coverage",
+        "topics": [
+          "third-down coverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Georgia converted seven of 13 third downs. Watch the underneath assignment and the tackle on the first completion before expecting the pass rush to end the possession."
+      },
+      {
+        "id": "watch-2",
+        "title": "After the whistle",
+        "topics": [
+          "after the whistle",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Lee’s personal foul gave Georgia a first down late in the game. Finish the tackle and step away; the offense needs the chance that the defense is trying to earn."
+      },
+      {
+        "id": "watch-3",
+        "title": "Run fits",
+        "topics": [
+          "run fits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Bishop rushed for 138 yards against Arkansas. Read the block and hold outside leverage before chasing the first motion; keep the tackle attached to the fit."
+      },
+      {
+        "id": "watch-4",
+        "title": "Scoring-range decisions",
+        "topics": [
+          "scoring-range decisions",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession. Against Tennessee, keep the useful throw available and protect the ball when the pocket closes."
+      },
+      {
+        "id": "preset-watch",
+        "title": "Right tackle protection",
+        "topics": [
+          "right tackle protection",
+          "next week"
+        ],
+        "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+        "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
+      }
+    ]
+  },
+  "georgia-football": {
+    "schemaVersion": 1,
+    "teamSlug": "georgia-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Georgia won 20-17 at Alabama with Phillips’ rushing production, Stockton’s late completion and four defensive sacks. Auburn comes to Athens next Saturday; review the new availability report before assuming Frazier or Canion will return.",
+    "items": [
+      {
+        "id": "tuscaloosa-final",
+        "headline": "Georgia wins 20-17 with a fourth-quarter field goal",
+        "tldr": "The Bulldogs allowed no fourth-quarter Alabama points. The next test is to keep the defensive assignment intact while the offense earns a drive that can finish the game.",
+        "outlet": "Alabama Athletics",
+        "tier": "official",
+        "url": "https://rolltide.com/news/2026/10/10/football-no-6-7-alabama-falls-to-no-2-2-georgia-20-17",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "stockton-late-read",
+        "headline": "Stockton’s late throw keeps the final possession alive",
+        "tldr": "The completion to Elyiss Williams extended Georgia’s last drive from deep in its own territory. Keep the useful passing answer available against Auburn rather than settling for a punt by default.",
+        "outlet": "DawgNation",
+        "tier": "local",
+        "url": "https://www.dawgnation.com/football/kalen-deboer-gunner-stockton-was-clutch-georgias-20-17-win-alabama/XJWIJMR7OBGCHB6IBUGOYTDOUQ/",
+        "publishedAt": "2026-10-11T10:00:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "phillips-backfield",
+        "headline": "Phillips runs for 120 yards with Frazier and Bowens absent",
+        "tldr": "His first career start gave Georgia a productive rushing attack at Alabama. Those absences belong to Saturday; check the next report before projecting the Auburn backfield.",
+        "outlet": "Georgia Athletics",
+        "tier": "official",
+        "url": "https://georgiadogs.com/news/2026/10/11/football-postgame-notes-georgia-alabama",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "connected-pass-rush",
+        "headline": "Georgia’s coverage and pass rush finish with four sacks",
+        "tldr": "The final sack pushed Alabama out of field-goal range. Keep the pressure connected to coverage against Auburn so a quarterback’s movement does not become an uncovered receiver.",
+        "outlet": "DawgNation",
+        "tier": "local",
+        "url": "https://www.dawgnation.com/football/report-card-georgia-makes-grade-20-17-win-alabama/H7DBDBOR75FW7LNKLNA34K6COA/",
+        "publishedAt": "2026-10-11T13:00:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "auburn-home",
+        "headline": "Auburn is next at Sanford Stadium at 3:30 p.m. ET",
+        "tldr": "The October 17 game returns Georgia to Athens. Keep the backfield and receiver availability check separate from the result in Tuscaloosa; next week’s roles still need a fresh report.",
+        "outlet": "Georgia Athletics",
+        "tier": "official",
+        "url": "https://georgiadogs.com/news/2026/10/10/football-woodring-fg-lifts-bulldogs-past-crimson-tide-20-17",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 5
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Carry the late-down execution home.",
+        "body": "The offense made the completion that kept the final possession alive, and the defense closed the pocket on Alabama’s last drive. Against Auburn, keep the same clear throwing read and connected defensive pressure.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Win the down without losing the assignment",
+        "question": "What should Georgia carry into the Auburn game?",
+        "answer": "Keep the run game attached to a useful passing answer, including the tight end when a defense loads the box. On defense, close the pocket together and stay in coverage until the quarterback releases the ball.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Backfield roles",
+          "summary": "Check the fresh report before assigning carries",
+          "detail": "Frazier and Bowens missed Alabama, and Phillips ran for 120 yards. Follow the Auburn-week update rather than turning a Saturday absence or a productive start into a guaranteed role.",
+          "state": "watch",
+          "prompt": "What needs checking in Georgia’s Auburn-week backfield?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Third-down passing",
+          "summary": "Keep the useful answer available",
+          "detail": "Stockton found Williams to extend Georgia’s final possession. Watch the tight end reach the throwing lane while the protection holds, even when the defense expects a run.",
+          "state": "watch",
+          "prompt": "What made Georgia’s final offensive possession work?",
           "noteId": "watch-2"
         },
         {
           "id": "watch-3",
           "title": "Connected pressure",
-          "summary": "Close the pocket together",
-          "detail": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play.",
+          "summary": "Close the pocket without losing coverage",
+          "detail": "Georgia recorded four sacks at Alabama. Watch defenders keep the escape lane covered while the secondary stays attached to the route; pressure needs somewhere to send the quarterback.",
           "state": "watch",
-          "prompt": "What should I watch for with connected pressure?",
+          "prompt": "What should Georgia carry over from its pass rush?",
           "noteId": "watch-3"
         },
         {
           "id": "watch-4",
-          "title": "Possession swings",
-          "summary": "Finish the extra chance",
-          "detail": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play.",
+          "title": "Punt-return security",
+          "summary": "Secure the next possession first",
+          "detail": "Stewart recovered Georgia’s muffed punt return at Alabama. Catch and secure the ball before pursuing the return lane; the offense needs its next drive more than a forced extra yard.",
           "state": "watch",
-          "prompt": "What should I watch for with possession swings?",
+          "prompt": "What should Georgia clean up on punt returns?",
           "noteId": "watch-4"
         }
       ]
     },
-    "nextGameNote": "Against Georgia, watch right-tackle protection and Russell’s decisions. Check the updated campus-arrival instructions before traveling.",
+    "nextGameNote": "Georgia hosts Auburn on October 17 at 3:30 p.m. ET on ESPN. Watch the backfield update, third-down passing and connected defensive pressure.",
     "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
     "notes": [
       {
         "id": "watch-1",
-        "title": "Right tackle",
+        "title": "Backfield roles",
         "topics": [
-          "right tackle",
+          "backfield roles",
           "matchup"
         ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch who takes the first snaps and how help arrives against edge pressure. Being off the report does not promise a starting job or full workload."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Frazier and Bowens missed Alabama, and Phillips ran for 120 yards. Follow the Auburn-week update rather than turning a Saturday absence or a productive start into a guaranteed role."
       },
       {
         "id": "watch-2",
-        "title": "Quarterback choices",
+        "title": "Third-down passing",
         "topics": [
-          "quarterback choices",
+          "third-down passing",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch the first open option and the decision to end a play. An incompletion can be better than a forced ball."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Stockton found Williams to extend Georgia’s final possession. Watch the tight end reach the throwing lane while the protection holds, even when the defense expects a run."
       },
       {
         "id": "watch-3",
@@ -1254,200 +1476,28 @@
           "connected pressure",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch the edge and interior defenders keep their lanes. Coverage has to stay attached when the quarterback extends the play."
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Georgia recorded four sacks at Alabama. Watch defenders keep the escape lane covered while the secondary stays attached to the route; pressure needs somewhere to send the quarterback."
       },
       {
         "id": "watch-4",
-        "title": "Possession swings",
+        "title": "Punt-return security",
         "topics": [
-          "possession swings",
+          "punt-return security",
           "matchup"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Protect the return after a takeaway. On offense, turn the field position into a sound possession before hunting the big play."
-      }
-    ],
-    "storiesUpdatedAt": "2026-10-10T23:02:04.005952Z"
-  },
-  "georgia-football": {
-    "schemaVersion": 1,
-    "teamSlug": "georgia-football",
-    "weekOf": "2026-10-04",
-    "publishedAt": "2026-10-10T13:20:31.939738Z",
-    "issue": {
-      "season": 2026,
-      "week": 6
-    },
-    "summary": "Georgia’s Friday report lists Bowens and Canion out, while Frazier remains absent from the list. At Alabama, follow the available backfield and disciplined run fits. Host campus lots and shuttles open no earlier than noon CT, with weather delays possible.",
-    "items": [
-      {
-        "id": "run-fit-corrections",
-        "headline": "Smart flags run-defense problems against Vanderbilt’s unusual looks",
-        "tldr": "Monday’s comments put both scheme and execution under review. Watch the first step and the gap responsibility before judging the final tackle.",
-        "outlet": "Georgia Athletics",
-        "tier": "official",
-        "url": "https://georgiadogs.com/news/2026/10/5/football-smart-players-talk-alabama",
-        "publishedAt": "2026-10-05",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
+        "publishedAt": "2026-10-11T13:55:09.913949Z",
+        "body": "Stewart recovered Georgia’s muffed punt return at Alabama. Catch and secure the ball before pursuing the return lane; the offense needs its next drive more than a forced extra yard."
       },
       {
-        "id": "phillips-receiving",
-        "headline": "Phillips caught five passes for 75 yards against Vanderbilt",
-        "tldr": "His work as a receiving back offers another way to keep a possession moving. Watch the outlet when downfield coverage holds.",
-        "outlet": "Georgia Bulldogs on SI",
-        "tier": "local",
-        "url": "https://www.si.com/college/georgia/georgia-football-coach-kirby-smart-gives-major-shout-out-after-big-uga-football-win-01m43zbez3a0",
-        "publishedAt": "2026-10-04",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 4
-        }
-      },
-      {
-        "id": "thursday-availability",
-        "headline": "Bowens and Canion are out; Frazier remains off Georgia’s report",
-        "tldr": "Friday’s SEC update changes Canion from questionable to out. Watch the available receivers and backfield; absence from the report does not establish Frazier’s snap count.",
-        "outlet": "Atlanta Journal-Constitution",
-        "tier": "local",
-        "url": "https://www.ajc.com/sports/2026/10/georgia-nate-frazier-off-injury-report/",
-        "publishedAt": "2026-10-08",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "opponent-depth",
-        "headline": "Alabama’s Griffin posted nine tackles and a sack off the bench",
-        "tldr": "The opponent’s depth matters when the personnel changes. Watch the protection identify the active pressure threat rather than relying on the first lineup.",
-        "outlet": "Alabama Athletics",
-        "tier": "official",
-        "url": "https://rolltide.com/news/2026/10/6/footballs-xavier-griffin-named-shaun-alexander-award-player-of-the-week",
-        "publishedAt": "2026-10-06",
-        "grade": {
-          "impact": 4,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "gameday-arrival",
-        "headline": "Campus lots and shuttles open no earlier than noon CT for Alabama–Georgia",
-        "tldr": "Weather could delay operations further, and only uncovered tailgating is permitted after noon. College GameDay is at Coleman Coliseum; stadium gates open at 4 p.m. CT.",
-        "outlet": "UA Gameday",
-        "tier": "official",
-        "url": "https://uagameday.com/tidetips/",
-        "publishedAt": "2026-10-08",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      }
-    ],
-    "editorial": {
-      "lead": {
-        "headline": "Fit the run, then stay in coverage.",
-        "body": "Read the block before chasing the first motion, then stay in coverage when Russell moves. On offense, Canion is now out; follow the available receivers and backs without forcing the short throw.",
-        "noteId": "watch-1"
-      },
-      "matchup": {
-        "thesis": "Keep the assignment through the second action",
-        "question": "What should Georgia emphasize at Alabama?",
-        "answer": "Watch the run fits and coverage when Russell extends a play. On offense, follow the available backfield and identify the pressure threat before choosing the short outlet.",
-        "citationNoteIds": [
-          "watch-1",
-          "watch-2"
-        ]
-      },
-      "signals": [
-        {
-          "id": "watch-1",
-          "title": "Run fits",
-          "summary": "Read the block first",
-          "detail": "Watch defenders hold their gap until the ball declares. Chasing the first motion can open a lane behind it.",
-          "state": "watch",
-          "prompt": "What should I watch for with run fits?",
-          "noteId": "watch-1"
-        },
-        {
-          "id": "watch-2",
-          "title": "Backfield roles",
-          "summary": "Follow the available workload",
-          "detail": "Watch how the active backs share carries, protection and receiving work. Keep an outlet available when Alabama takes away the outside route.",
-          "state": "watch",
-          "prompt": "How should I follow Georgia’s backfield at Alabama?",
-          "noteId": "watch-2"
-        },
-        {
-          "id": "watch-3",
-          "title": "Protection",
-          "summary": "Name the pressure threat",
-          "detail": "Watch communication across the line when a defender changes position. Keep the quarterback’s first decision available.",
-          "state": "watch",
-          "prompt": "What should I watch for with protection?",
-          "noteId": "watch-3"
-        },
-        {
-          "id": "watch-4",
-          "title": "Road discipline",
-          "summary": "Protect the possession",
-          "detail": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance.",
-          "state": "watch",
-          "prompt": "What should I watch for with road discipline?",
-          "noteId": "watch-4"
-        }
-      ]
-    },
-    "nextGameNote": "At Alabama, watch run fits, the available backfield and coverage through extended plays. Check the updated arrival instructions.",
-    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
-    "notes": [
-      {
-        "id": "watch-1",
+        "id": "preset-watch",
         "title": "Run fits",
         "topics": [
           "run fits",
-          "matchup"
+          "next week"
         ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch defenders hold their gap until the ball declares. Chasing the first motion can open a lane behind it."
-      },
-      {
-        "id": "watch-2",
-        "title": "Backfield roles",
-        "topics": [
-          "backfield roles",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-09T13:05:51.945502Z",
-        "body": "Watch how the active backs share carries, protection and receiving work. Keep an outlet available when Alabama takes away the outside route."
-      },
-      {
-        "id": "watch-3",
-        "title": "Protection",
-        "topics": [
-          "protection",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch communication across the line when a defender changes position. Keep the quarterback’s first decision available."
-      },
-      {
-        "id": "watch-4",
-        "title": "Road discipline",
-        "topics": [
-          "road discipline",
-          "matchup"
-        ],
-        "publishedAt": "2026-10-07T02:38:32.788Z",
-        "body": "Watch the snap count and ball security through contact. Avoid the free field position that turns a routine drive into a scoring chance."
+        "publishedAt": "2026-10-11T14:09:24.844359+00:00",
+        "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ]
   }

@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "alabama-football",
+  "weekOf": "2026-10-11",
+  "publishedAt": "2026-10-11T14:07:12.696370+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 7
+  },
+  "summary": "Alabama lost 20-17 to Georgia after giving up too many third-down extensions and a late personal foul. Tennessee is next in Knoxville on October 17 at 2:30 p.m. CT on ABC; watch the run fits and the decision after the whistle.",
+  "items": [
+    {
+      "id": "georgia-final",
+      "headline": "Georgia hands Alabama its first loss, 20-17",
+      "tldr": "Alabama scored only three points after halftime. Keep the offensive drive alive without a negative play, and make the defense’s next stop deliver another possession.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/10/football-no-6-7-alabama-falls-to-no-2-2-georgia-20-17",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "third-down-extensions",
+      "headline": "Georgia’s third-down throws kept Alabama on the field",
+      "tldr": "The Bulldogs converted seven of 13 third downs, including the late completion to Elyiss Williams. Before Tennessee, watch coverage through the release rather than treating the long down as a finished stop.",
+      "outlet": "BamaCentral",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/alabama-s-third-down-struggles-prove-costly-in-loss-to-georgia",
+      "publishedAt": "2026-10-11T06:00:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "late-personal-foul",
+      "headline": "Lee’s late personal foul closes Alabama’s final chance",
+      "tldr": "The penalty gave Georgia another first down on its last possession. The correction is to finish the play and separate after the whistle; no tackle should give the opponent another set of downs.",
+      "outlet": "BamaCentral",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/no-6-alabama-football-lacks-discipline-loss-no-2-georgia",
+      "publishedAt": "2026-10-11T05:03:43Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "takeaway-points",
+      "headline": "Hubbard’s interception did not become Alabama points",
+      "tldr": "Georgia turned its takeaway into a field goal while Alabama did not score after its interception. Watch the first offensive choice after a takeaway, before trying to make the entire drive with one throw.",
+      "outlet": "1819 News",
+      "tier": "local",
+      "url": "https://1819news.com/news/item/5-takeaways-from-no-6-alabamas-20-17-loss-to-no-2-georgia",
+      "publishedAt": "2026-10-10T22:39:00-05:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tennessee-ground-game",
+      "headline": "Tennessee’s Bishop leads a late comeback at Arkansas",
+      "tldr": "Bishop ran for 138 yards in Tennessee’s 24-17 win. The next Alabama test needs sound run fits and a finished tackle; MacIntyre’s Saturday start is not a confirmed quarterback decision for next week.",
+      "outlet": "Tennessee Athletics",
+      "tier": "official",
+      "url": "https://utsports.com/news/2026/10/10/football-late-score-secures-no-15-14-vols-win-in-fayetteville",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Finish the stop without another flag.",
+      "body": "Georgia kept the final possession alive, and Alabama could not get its offense another chance. At Tennessee, keep the run fit, stay attached to the receiving threat and finish the play before reacting after the whistle.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Earn the ball back",
+      "question": "What should Alabama fix before Tennessee?",
+      "answer": "Make the early-down tackle keep the next down long, then cover the outlet without opening an escape lane. On offense, avoid the negative play that pushes a scoring chance out of field-goal range.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Third-down coverage",
+        "summary": "Stay with the outlet through the release",
+        "detail": "Georgia converted seven of 13 third downs. Watch the underneath assignment and the tackle on the first completion before expecting the pass rush to end the possession.",
+        "state": "watch",
+        "prompt": "Why could Alabama not get off the field against Georgia?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "After the whistle",
+        "summary": "Keep the stop you earned",
+        "detail": "Lee’s personal foul gave Georgia a first down late in the game. Finish the tackle and step away; the offense needs the chance that the defense is trying to earn.",
+        "state": "watch",
+        "prompt": "What should Alabama correct about late-game discipline?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Run fits",
+        "summary": "Keep Bishop in the assigned lane",
+        "detail": "Bishop rushed for 138 yards against Arkansas. Read the block and hold outside leverage before chasing the first motion; keep the tackle attached to the fit.",
+        "state": "watch",
+        "prompt": "What should Alabama watch in Tennessee’s rushing attack?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Scoring-range decisions",
+        "summary": "Avoid the negative play",
+        "detail": "Russell was sacked out of field-goal range on Alabama’s last offensive possession. Against Tennessee, keep the useful throw available and protect the ball when the pocket closes.",
+        "state": "watch",
+        "prompt": "How can Alabama preserve its scoring chances?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Alabama visits Tennessee on October 17 at 2:30 p.m. CT on ABC. Watch third-down coverage, run fits and discipline after the play.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Third-down coverage",
+      "topics": [
+        "third-down coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Georgia converted seven of 13 third downs. Watch the underneath assignment and the tackle on the first completion before expecting the pass rush to end the possession."
+    },
+    {
+      "id": "watch-2",
+      "title": "After the whistle",
+      "topics": [
+        "after the whistle",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Lee’s personal foul gave Georgia a first down late in the game. Finish the tackle and step away; the offense needs the chance that the defense is trying to earn."
+    },
+    {
+      "id": "watch-3",
+      "title": "Run fits",
+      "topics": [
+        "run fits",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Bishop rushed for 138 yards against Arkansas. Read the block and hold outside leverage before chasing the first motion; keep the tackle attached to the fit."
+    },
+    {
+      "id": "watch-4",
+      "title": "Scoring-range decisions",
+      "topics": [
+        "scoring-range decisions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession. Against Tennessee, keep the useful throw available and protect the ball when the pocket closes."
+    }
+  ]
+}

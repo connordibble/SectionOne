@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "georgia-football",
+  "weekOf": "2026-10-11",
+  "publishedAt": "2026-10-11T14:07:12.696370+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 7
+  },
+  "summary": "Georgia won 20-17 at Alabama with Phillips’ rushing production, Stockton’s late completion and four defensive sacks. Auburn comes to Athens next Saturday; review the new availability report before assuming Frazier or Canion will return.",
+  "items": [
+    {
+      "id": "tuscaloosa-final",
+      "headline": "Georgia wins 20-17 with a fourth-quarter field goal",
+      "tldr": "The Bulldogs allowed no fourth-quarter Alabama points. The next test is to keep the defensive assignment intact while the offense earns a drive that can finish the game.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/10/football-no-6-7-alabama-falls-to-no-2-2-georgia-20-17",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "stockton-late-read",
+      "headline": "Stockton’s late throw keeps the final possession alive",
+      "tldr": "The completion to Elyiss Williams extended Georgia’s last drive from deep in its own territory. Keep the useful passing answer available against Auburn rather than settling for a punt by default.",
+      "outlet": "DawgNation",
+      "tier": "local",
+      "url": "https://www.dawgnation.com/football/kalen-deboer-gunner-stockton-was-clutch-georgias-20-17-win-alabama/XJWIJMR7OBGCHB6IBUGOYTDOUQ/",
+      "publishedAt": "2026-10-11T10:00:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "phillips-backfield",
+      "headline": "Phillips runs for 120 yards with Frazier and Bowens absent",
+      "tldr": "His first career start gave Georgia a productive rushing attack at Alabama. Those absences belong to Saturday; check the next report before projecting the Auburn backfield.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/11/football-postgame-notes-georgia-alabama",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "connected-pass-rush",
+      "headline": "Georgia’s coverage and pass rush finish with four sacks",
+      "tldr": "The final sack pushed Alabama out of field-goal range. Keep the pressure connected to coverage against Auburn so a quarterback’s movement does not become an uncovered receiver.",
+      "outlet": "DawgNation",
+      "tier": "local",
+      "url": "https://www.dawgnation.com/football/report-card-georgia-makes-grade-20-17-win-alabama/H7DBDBOR75FW7LNKLNA34K6COA/",
+      "publishedAt": "2026-10-11T13:00:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "auburn-home",
+      "headline": "Auburn is next at Sanford Stadium at 3:30 p.m. ET",
+      "tldr": "The October 17 game returns Georgia to Athens. Keep the backfield and receiver availability check separate from the result in Tuscaloosa; next week’s roles still need a fresh report.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/10/football-woodring-fg-lifts-bulldogs-past-crimson-tide-20-17",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Carry the late-down execution home.",
+      "body": "The offense made the completion that kept the final possession alive, and the defense closed the pocket on Alabama’s last drive. Against Auburn, keep the same clear throwing read and connected defensive pressure.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Win the down without losing the assignment",
+      "question": "What should Georgia carry into the Auburn game?",
+      "answer": "Keep the run game attached to a useful passing answer, including the tight end when a defense loads the box. On defense, close the pocket together and stay in coverage until the quarterback releases the ball.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Backfield roles",
+        "summary": "Check the fresh report before assigning carries",
+        "detail": "Frazier and Bowens missed Alabama, and Phillips ran for 120 yards. Follow the Auburn-week update rather than turning a Saturday absence or a productive start into a guaranteed role.",
+        "state": "watch",
+        "prompt": "What needs checking in Georgia’s Auburn-week backfield?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Third-down passing",
+        "summary": "Keep the useful answer available",
+        "detail": "Stockton found Williams to extend Georgia’s final possession. Watch the tight end reach the throwing lane while the protection holds, even when the defense expects a run.",
+        "state": "watch",
+        "prompt": "What made Georgia’s final offensive possession work?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Connected pressure",
+        "summary": "Close the pocket without losing coverage",
+        "detail": "Georgia recorded four sacks at Alabama. Watch defenders keep the escape lane covered while the secondary stays attached to the route; pressure needs somewhere to send the quarterback.",
+        "state": "watch",
+        "prompt": "What should Georgia carry over from its pass rush?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Punt-return security",
+        "summary": "Secure the next possession first",
+        "detail": "Stewart recovered Georgia’s muffed punt return at Alabama. Catch and secure the ball before pursuing the return lane; the offense needs its next drive more than a forced extra yard.",
+        "state": "watch",
+        "prompt": "What should Georgia clean up on punt returns?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Georgia hosts Auburn on October 17 at 3:30 p.m. ET on ESPN. Watch the backfield update, third-down passing and connected defensive pressure.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Backfield roles",
+      "topics": [
+        "backfield roles",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Frazier and Bowens missed Alabama, and Phillips ran for 120 yards. Follow the Auburn-week update rather than turning a Saturday absence or a productive start into a guaranteed role."
+    },
+    {
+      "id": "watch-2",
+      "title": "Third-down passing",
+      "topics": [
+        "third-down passing",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Stockton found Williams to extend Georgia’s final possession. Watch the tight end reach the throwing lane while the protection holds, even when the defense expects a run."
+    },
+    {
+      "id": "watch-3",
+      "title": "Connected pressure",
+      "topics": [
+        "connected pressure",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Georgia recorded four sacks at Alabama. Watch defenders keep the escape lane covered while the secondary stays attached to the route; pressure needs somewhere to send the quarterback."
+    },
+    {
+      "id": "watch-4",
+      "title": "Punt-return security",
+      "topics": [
+        "punt-return security",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-11T13:55:09.913949Z",
+      "body": "Stewart recovered Georgia’s muffed punt return at Alabama. Catch and secure the ball before pursuing the return lane; the offense needs its next drive more than a forced extra yard."
+    }
+  ]
+}
