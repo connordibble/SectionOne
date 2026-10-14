@@ -4936,5 +4936,1244 @@
         }
       ]
     }
+  },
+  "boise-state-football": {
+    "identity": {
+      "slug": "boise-state-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Pac-12",
+      "displayName": "Boise State football",
+      "shortName": "Boise State",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Denver",
+      "officialScheduleUrl": "https://broncosports.com/sports/football/schedule",
+      "aliases": [
+        "Boise State",
+        "Boise State Broncos",
+        "BOIS"
+      ],
+      "theme": {
+        "hue": 262.51,
+        "chroma": 0.1821,
+        "structuralHue": 262.51,
+        "structuralChroma": 0.1821,
+        "structuralLightness": 37.81,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 37.28,
+          "chroma": 0.1921,
+          "lightness": 86
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Boise State Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "broncosports.com",
+          "247sports.com",
+          "si.com",
+          "ktvb.com",
+          "idahostatesman.com",
+          "wsucougars.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Boise State",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Boise State this week?",
+        "Who does Boise State play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "boise-state-football",
+      "teamName": "Boise State",
+      "teamDisplayName": "Boise State football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://broncosports.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:31:23.268Z",
+      "timeZone": "America/Denver",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://broncosports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T21:16:06.362776Z",
+        "officialVerifiedAt": "2026-10-14T21:26:52.753380Z"
+      },
+      "games": [
+        {
+          "id": "boise-state-football-2026-401858433",
+          "opponent": "Oregon",
+          "site": "away",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T19:30:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "1:30 p.m. MT",
+          "venue": "Autzen Stadium, Eugene, OR",
+          "tv": "CBS",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 2,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858433",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 27,
+            "opponentScore": 34
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860881",
+          "opponent": "Memphis",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T22:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "4:00 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "USA Net",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860881",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860885",
+          "opponent": "South Dakota",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-20T02:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "8:00 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "CBSSN",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860885",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860897",
+          "opponent": "Western Michigan",
+          "site": "away",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T19:30:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "1:30 p.m. MT",
+          "venue": "Waldo Stadium, Kalamazoo, MI",
+          "tv": "ESPN2",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860897",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 32,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860898",
+          "opponent": "Utah State",
+          "site": "home",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T23:30:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "5:30 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "CBSSN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860898",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 37,
+            "opponentScore": 18
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860901",
+          "opponent": "Fresno State",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-11T02:30:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "8:30 p.m. MT",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": "CW",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860901",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 31
+          }
+        },
+        {
+          "id": "boise-state-football-2026-401860907",
+          "opponent": "Washington State",
+          "site": "away",
+          "dateLabel": "Oct 24",
+          "startsAt": "2026-10-24T22:00:00Z",
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "4:00 p.m. MT",
+          "venue": "Martin Stadium, Pullman, WA",
+          "tv": "USA Net",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "boise-state-football-2026-401860908",
+          "opponent": "Texas State",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": "2026-11-01T02:00:00Z",
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "8:00 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "CW",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "boise-state-football-2026-401860911",
+          "opponent": "Colorado State",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": "2026-11-07T23:00:00Z",
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "4:00 p.m. MT",
+          "venue": "Canvas Stadium, Fort Collins, CO",
+          "tv": "USA Net",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "boise-state-football-2026-401860914",
+          "opponent": "Oregon State",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": "2026-11-14T23:00:00Z",
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "4:00 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "USA Net",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "boise-state-football-2026-401860925",
+          "opponent": "San Diego State",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": "2026-11-22T02:30:00Z",
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. MT",
+          "venue": "Albertsons Stadium, Boise, ID",
+          "tv": "USA Net",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "boise-state-football-2026-flex",
+          "opponent": "Flex game — TBD",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "TBD",
+          "tv": null
+        }
+      ]
+    }
+  },
+  "james-madison-football": {
+    "identity": {
+      "slug": "james-madison-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Sun Belt",
+      "displayName": "James Madison football",
+      "shortName": "James Madison",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://jmusports.com/sports/football/schedule",
+      "aliases": [
+        "James Madison",
+        "James Madison Dukes",
+        "JMU"
+      ],
+      "theme": {
+        "hue": 297.48,
+        "chroma": 0.1803,
+        "structuralHue": 297.48,
+        "structuralChroma": 0.1803,
+        "structuralLightness": 33.3,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 91.72,
+          "chroma": 0.0852,
+          "lightness": 77.98
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with James Madison Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "jmusports.com",
+          "breezejmu.org",
+          "jmusportsnews.com",
+          "dnronline.com",
+          "georgiastatesports.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "James Madison",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for James Madison this week?",
+        "Who does James Madison play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "james-madison-football",
+      "teamName": "James Madison",
+      "teamDisplayName": "James Madison football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://jmusports.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:31:23.268Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://jmusports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T21:16:07.026862Z",
+        "officialVerifiedAt": "2026-10-14T21:26:52.753380Z"
+      },
+      "games": [
+        {
+          "id": "james-madison-football-2026-401869960",
+          "opponent": "Liberty",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T16:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869960",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 20,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401867929",
+          "opponent": "Wagner",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T19:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": "ESPN+",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401867929",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 87,
+            "opponentScore": 3
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401860887",
+          "opponent": "San Diego State",
+          "site": "away",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-20T02:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "10:00 p.m. ET",
+          "venue": "Snapdragon Stadium, San Diego, CA",
+          "tv": "CW",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860887",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 26,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401869961",
+          "opponent": "Old Dominion",
+          "site": "away",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T22:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "6:00 p.m. ET",
+          "venue": "S.B. Ballard Stadium, Norfolk, VA",
+          "tv": "ESPN+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869961",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 46,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401869962",
+          "opponent": "Marshall",
+          "site": "home",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T19:45:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "3:45 p.m. ET",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869962",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401869949",
+          "opponent": "Georgia Southern",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-11T00:10:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "8:10 p.m. ET",
+          "venue": "Allen E. Paulson Stadium, Statesboro, GA",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869949",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 27,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "james-madison-football-2026-401869957",
+          "opponent": "Georgia State",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T16:00:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "james-madison-football-2026-401869845",
+          "opponent": "App State",
+          "site": "away",
+          "dateLabel": "Oct 22",
+          "startsAt": "2026-10-22T23:00:00Z",
+          "date": "2026-10-22",
+          "status": "scheduled",
+          "kickoff": "7:00 p.m. ET",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "james-madison-football-2026-401869963",
+          "opponent": "Troy",
+          "site": "home",
+          "dateLabel": "Oct 29",
+          "startsAt": "2026-10-29T23:30:00Z",
+          "date": "2026-10-29",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "james-madison-football-2026-401869964",
+          "opponent": "Southern Miss",
+          "site": "away",
+          "dateLabel": "Nov 5",
+          "startsAt": "2026-11-06T01:00:00Z",
+          "date": "2026-11-05",
+          "status": "scheduled",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "M. M. Roberts Stadium, Hattiesburg, MS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "james-madison-football-2026-401861967",
+          "opponent": "UConn",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": "2026-11-14T17:00:00Z",
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Pratt & Whitney Stadium, East Hartford, CT",
+          "tv": "CBSSN",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "james-madison-football-2026-401869947",
+          "opponent": "Coastal Carolina",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Bridgeforth Stadium, Harrisonburg, VA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "app-state-football": {
+    "identity": {
+      "slug": "app-state-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Sun Belt",
+      "displayName": "App State football",
+      "shortName": "App State",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://appstatesports.com/sports/football/schedule",
+      "aliases": [
+        "App State",
+        "App State Mountaineers",
+        "APP"
+      ],
+      "theme": {
+        "hue": 90.38,
+        "chroma": 0.1768,
+        "structuralHue": 90.38,
+        "structuralChroma": 0,
+        "structuralLightness": 25.2,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 90.38,
+          "chroma": 0.1768,
+          "lightness": 86.52
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with App State Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "appstatesports.com",
+          "theappalachianonline.com",
+          "underdogdynasty.com",
+          "rotowire.com",
+          "goccusports.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "App State",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for App State this week?",
+        "Who does App State play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "app-state-football",
+      "teamName": "App State",
+      "teamDisplayName": "App State football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://appstatesports.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:31:23.268Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://appstatesports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T21:24:32.347759Z",
+        "officialVerifiedAt": "2026-10-14T21:26:52.753380Z"
+      },
+      "games": [
+        {
+          "id": "app-state-football-2026-401866627",
+          "opponent": "Maine",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T19:30:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": "ESPN+",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401866627",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 55,
+            "opponentScore": 3
+          }
+        },
+        {
+          "id": "app-state-football-2026-401864571",
+          "opponent": "East Carolina",
+          "site": "away",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T16:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Dowdy-Ficklen Stadium, Greenville, NC",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401864571",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 27,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "app-state-football-2026-401864574",
+          "opponent": "Charlotte",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-20T01:30:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "9:30 p.m. ET",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": "ESPN+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401864574",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 26,
+            "opponentScore": 21
+          }
+        },
+        {
+          "id": "app-state-football-2026-401864572",
+          "opponent": "NC State",
+          "site": "away",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T23:30:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Carter-Finley Stadium, Raleigh, NC",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401864572",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 31,
+            "opponentScore": 41
+          }
+        },
+        {
+          "id": "app-state-football-2026-401869843",
+          "opponent": "Old Dominion",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T17:00:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "1:00 p.m. ET",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": "ESPN+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869843",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 3,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "app-state-football-2026-401869844",
+          "opponent": "Coastal Carolina",
+          "site": "away",
+          "dateLabel": "Oct 16",
+          "startsAt": "2026-10-17T00:00:00Z",
+          "date": "2026-10-16",
+          "status": "scheduled",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "Brooks Stadium (SC), Conway, SC",
+          "tv": "ESPN2",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869845",
+          "opponent": "James Madison",
+          "site": "home",
+          "dateLabel": "Oct 22",
+          "startsAt": "2026-10-22T23:00:00Z",
+          "date": "2026-10-22",
+          "status": "scheduled",
+          "kickoff": "7:00 p.m. ET",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": "ESPNU",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869846",
+          "opponent": "Georgia Southern",
+          "site": "away",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Allen E. Paulson Stadium, Statesboro, GA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869927",
+          "opponent": "Georgia State",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869928",
+          "opponent": "Marshall",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Joan C. Edwards Stadium, Huntington, WV",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869929",
+          "opponent": "UL Monroe",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Kidd Brewer Stadium, Boone, NC",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "app-state-football-2026-401869930",
+          "opponent": "South Alabama",
+          "site": "away",
+          "dateLabel": "Nov 27",
+          "startsAt": "2026-11-27T20:00:00Z",
+          "date": "2026-11-27",
+          "status": "scheduled",
+          "kickoff": "3:00 p.m. ET",
+          "venue": "Hancock Whitney Stadium, Mobile, AL",
+          "tv": "ESPN+",
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "fresno-state-football": {
+    "identity": {
+      "slug": "fresno-state-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Pac-12",
+      "displayName": "Fresno State football",
+      "shortName": "Fresno State",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Los_Angeles",
+      "officialScheduleUrl": "https://gobulldogs.com/sports/football/schedule",
+      "aliases": [
+        "Fresno State",
+        "Fresno State Bulldogs",
+        "FRES"
+      ],
+      "theme": {
+        "hue": 21.59,
+        "chroma": 0.2,
+        "structuralHue": 21.59,
+        "structuralChroma": 0.2,
+        "structuralLightness": 52.37,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.88,
+          "chroma": 0,
+          "lightness": 100
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Fresno State Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "gobulldogs.com",
+          "fscollegian.com",
+          "fresnobee.com",
+          "goaztecs.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Fresno State",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Fresno State this week?",
+        "Who does Fresno State play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "fresno-state-football",
+      "teamName": "Fresno State",
+      "teamDisplayName": "Fresno State football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://gobulldogs.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:31:23.268Z",
+      "timeZone": "America/Los_Angeles",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://gobulldogs.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T21:16:07.815977Z",
+        "officialVerifiedAt": "2026-10-14T21:26:52.753380Z"
+      },
+      "games": [
+        {
+          "id": "fresno-state-football-2026-401858436",
+          "opponent": "USC",
+          "site": "away",
+          "dateLabel": "Sep 4",
+          "startsAt": "2026-09-05T01:00:00Z",
+          "date": "2026-09-04",
+          "status": "final",
+          "kickoff": "6:00 p.m. PT",
+          "venue": "Los Angeles Memorial Coliseum, Los Angeles, CA",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 14,
+            "gameDate": "2026-09-04",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858436",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 0,
+            "opponentScore": 39
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860883",
+          "opponent": "Sacramento State",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-13T02:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "7:30 p.m. PT",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": "CBSSN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860883",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 49,
+            "opponentScore": 3
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860888",
+          "opponent": "San José State",
+          "site": "away",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-20T03:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "8:00 p.m. PT",
+          "venue": "CEFCU Stadium, San Jose, CA",
+          "tv": "FS1",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860888",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 26,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860891",
+          "opponent": "Rice",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-27T02:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "7:00 p.m. PT",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": "CW",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860891",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860921",
+          "opponent": "Washington State",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-04T01:30:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "6:30 p.m. PT",
+          "venue": "Martin Stadium, Pullman, WA",
+          "tv": "USA Net",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860921",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 26,
+            "opponentScore": 6
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860901",
+          "opponent": "Boise State",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-11T02:30:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "7:30 p.m. PT",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": "CW",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 23,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860901",
+            "checkedAt": "2026-10-14T21:31:23.268Z"
+          },
+          "result": {
+            "teamScore": 31,
+            "opponentScore": 38
+          }
+        },
+        {
+          "id": "fresno-state-football-2026-401860904",
+          "opponent": "San Diego State",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-18T02:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. PT",
+          "venue": "Snapdragon Stadium, San Diego, CA",
+          "tv": "CBSSN",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "fresno-state-football-2026-401860924",
+          "opponent": "Oregon State",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "fresno-state-football-2026-401860913",
+          "opponent": "Utah State",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": "2026-11-08T02:30:00Z",
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "6:30 p.m. PT",
+          "venue": "Maverik Stadium, Logan, UT",
+          "tv": "USA Net",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "fresno-state-football-2026-401860916",
+          "opponent": "Texas State",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": "2026-11-14T21:00:00Z",
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "1:00 p.m. PT",
+          "venue": "UFCU Stadium, San Marcos, TX",
+          "tv": "CW",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "fresno-state-football-2026-401860918",
+          "opponent": "Colorado State",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": "2026-11-22T00:30:00Z",
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "4:30 p.m. PT",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": "CW",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "fresno-state-football-2026-401860927",
+          "opponent": "Flex game — TBD",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Valley Children's Stadium, Fresno, CA",
+          "tv": null
+        }
+      ]
+    }
   }
 }

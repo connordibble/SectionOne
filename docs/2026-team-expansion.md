@@ -8,7 +8,7 @@ package and the public app's shared team and edition contracts.
 | --- | --- | --- |
 | 1 | Notre Dame, Michigan, Penn State, Miami | Activated and verified |
 | 2 | Tennessee, BYU, Texas Tech, Indiana | Activated and verified |
-| 3 | Boise State, James Madison, App State, Fresno State | Pending |
+| 3 | Boise State, James Madison, App State, Fresno State | Activated and verified |
 
 Batch 1 has twelve-game schedules, verified completed scores, sourced AP ranks
 at kickoff, five selected stories per program, four matchup signals, social
@@ -46,7 +46,28 @@ The producer rejected ambiguous defensive “rush” wording; explicit “pass r
 passed fresh review. Availability reporting preserves the difference between a
 coach’s expectation, a dated contingency plan and a confirmed game assignment.
 
-After batch 3, revise the homepage edition directory. The user wants fewer cards
+Batch 3 registers the final 48 games and passes database readback for all twenty
+programs. All 23 newly completed opponents have verified kickoff-day AP status.
+The initial editions pass the same policy-3 source review, with five distinct
+stories and four game watch points each. Maintenance reports no pending actions
+or result checks for any of the twelve additions.
+
+Batch 3 passed 563 unit tests, 296 browser tests, the production build, 26 engine
+tests and 64 rendered-view inspections. The shared Brief heading now follows the
+next game’s calendar day, so App State’s Friday game is labeled Friday. Its black
+stage remains intentionally achromatic, with a separate gold accent; chromatic
+teams retain the established saturation check. Request matching keeps the original
+eight-team fixture and tests additions separately. The unavailable-team browser
+scenario uses Toledo; a new regression verifies App State opens its live edition.
+
+Boise State has a bye this week. Boise and Fresno include the official November
+28 flex-game placeholders without inventing opponents. Unannounced networks remain
+TBD. Sacramento State’s 2026 MAC/FBS membership was verified for Fresno’s schedule.
+App State’s conflicting injury-feed labels remain attributed and do not become
+clearance or a confirmed Friday starter. Tierney’s prior-game absence is not
+presented as a confirmed San Diego State absence.
+
+Next, revise the homepage edition directory. The user wants fewer cards
 presented at once and a clearer way to choose among twenty teams. Preserve the
 card design where useful; evaluate a compact team chooser grouped by conference
 and a small set of quick-access cards. Verify keyboard use, both themes, mobile

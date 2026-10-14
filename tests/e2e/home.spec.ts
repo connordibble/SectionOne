@@ -59,7 +59,8 @@ test("states the honest number of live editions", async ({ page }) => {
 test("requesting a team confirms and replaces the form", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByLabel("Your team").fill("App State");
+  // Exercise an unavailable program; App State now has a live edition.
+  await page.getByLabel("Your team").fill("Toledo");
   await page.getByRole("button", { name: /request this team/i }).click();
 
   // The confirmation replaces the form rather than sitting beside it, so a
@@ -76,6 +77,15 @@ test("a request without an email is still accepted", async ({ page }) => {
   await page.getByRole("button", { name: /request this team/i }).click();
 
   await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
+});
+
+test("a newly enabled program opens its edition without a request", async ({ page }) => {
+  await page.goto("/");
+  await page.getByLabel("Your team").fill("App State");
+  await expect(page.getByText(/App State already has an edition/)).toBeVisible();
+  await page.getByRole("button", { name: "Open App State edition" }).click();
+  await expect(page).toHaveURL(/\/teams\/app-state-football$/);
+  await expect(page.getByTestId("kickoff-lead")).toBeVisible();
 });
 
 test("a malformed email is reported in fan-readable text", async ({ page }) => {

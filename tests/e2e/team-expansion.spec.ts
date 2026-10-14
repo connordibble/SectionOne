@@ -50,6 +50,10 @@ for (const theme of ["light", "dark"] as const) {
       if (next) {
         await expect(lead).toContainText(next.opponent);
         if (next.tv) await expect(lead).toContainText(next.tv);
+        if (next.date) {
+          const weekday = new Date(`${next.date}T12:00:00Z`).toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" });
+          await expect(page.getByRole("heading", { name: `What matters ${weekday}`, exact: true })).toBeVisible();
+        }
       }
       const rgb = await lead.evaluate((node) => {
         const canvas = document.createElement("canvas");

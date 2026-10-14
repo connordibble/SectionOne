@@ -489,6 +489,12 @@ function BriefView({
   teamName: string;
   weekly?: WeeklyEdition;
 }) {
+  const gameDay = game?.date
+    ? new Intl.DateTimeFormat("en-US", { weekday: "long", timeZone: "UTC" }).format(
+        new Date(`${game.date}T12:00:00Z`),
+      )
+    : "this week";
+
   return (
     <div className={styles.briefView}>
       <section className={styles.briefLead} data-testid="kickoff-lead">
@@ -521,7 +527,7 @@ function BriefView({
         <section className={styles.mattersSection}>
           <div className={styles.sectionHeadingRow}>
             <p className={styles.sectionFolio}>01 / The plan</p>
-            <h2>What matters Saturday</h2>
+            <h2>What matters {gameDay}</h2>
           </div>
           <ol className={styles.mattersList}>
             {signals.slice(0, 3).map((signal, index) => (

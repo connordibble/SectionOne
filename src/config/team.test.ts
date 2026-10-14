@@ -102,11 +102,27 @@ describe("team config", () => {
       const dark = deriveTeamPalette(team.theme, "dark");
       const stage = parseOklch(dark.stage);
 
-      expect(stage.chroma, `${slug} dark stage chroma`).toBeGreaterThanOrEqual(0.04);
+      // An intentionally black stage must remain achromatic; its team color
+      // comes from the accent. Chromatic stages retain the existing floor.
+      if (team.theme.structuralChroma === 0) {
+        expect(stage.chroma, `${slug} intentionally achromatic stage`).toBe(0);
+      } else {
+        expect(stage.chroma, `${slug} dark stage chroma`).toBeGreaterThanOrEqual(0.04);
+      }
       expect(
         Math.abs(stage.hue - team.theme.structuralHue),
         `${slug} dark stage hue drift`,
       ).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("keeps App State’s black stage and gold accent in both themes", () => {
+    const team = getTeamConfig("app-state-football")!;
+    for (const mode of ["light", "dark"] as const) {
+      const palette = deriveTeamPalette(team.theme, mode);
+      expect(parseOklch(palette.stage).chroma).toBe(0);
+      expect(parseOklch(palette.accent).hue).toBeCloseTo(90.38, 1);
+      expect(parseOklch(palette.accent).chroma).toBeGreaterThan(0.1);
     }
   });
 

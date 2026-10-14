@@ -2964,5 +2964,737 @@
         "body": "Watch the pass rush reach the quarterback while the coverage stays attached to the route. End the play before trying to create another one."
       }
     ]
+  },
+  "boise-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "boise-state-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:29:09.049Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Use the bye to sharpen the finish. Ahead of Washington State, watch the blocking angle, the safe passing decision and the tackle that ends the play without extending the drive.",
+    "items": [
+      {
+        "id": "line-protection",
+        "headline": "Boise State allows 0.83 sacks per game through six games",
+        "tldr": "Watch the protection pass off a defender without opening the next gap. Give the quarterback a clear first decision before asking him to extend the play.",
+        "outlet": "Boise State Athletics",
+        "tier": "official",
+        "url": "https://broncosports.com/news/2026/10/14/football-boise-state-offensive-line-earns-spot-on-joe-moore-award-midseason-honor-roll",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "riley-rushing",
+        "headline": "Riley ran for 150 yards at Fresno State",
+        "tldr": "Watch the block that opens his first cut and the back secure the ball through contact. A long gain still needs the next assignment to hold up.",
+        "outlet": "Boise State Athletics",
+        "tier": "official",
+        "url": "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "defensive-finish",
+        "headline": "Prater flags tackling and discipline after Fresno State",
+        "tldr": "Watch the defender secure the tackle before trying to make another hit. End the down without a late penalty that gives the offense another chance.",
+        "outlet": "Bronco Nation News",
+        "tier": "local",
+        "url": "https://247sports.com/college/boise-state/article/boise-state-fresno-state-mike-prater-291150694/",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "madsen-decisions",
+        "headline": "Madsen has no turnovers at the season’s midpoint",
+        "tldr": "Watch the safe decision when the first target is covered. Protect the football before treating a scramble or a throw through traffic as the only answer.",
+        "outlet": "Boise State Broncos on SI",
+        "tier": "local",
+        "url": "https://www.si.com/college/boise-state/football/midseason-pac-12-offensive-player-of-the-year-candidates",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "opponent-run-fits",
+        "headline": "Pulalasi broke a 54-yard touchdown run at Utah State",
+        "tldr": "Before the Washington State trip, watch the first run-defense fit and the next defender’s angle. Use the final lineup for assignments; an earlier game does not settle the next rotation.",
+        "outlet": "Washington State Athletics",
+        "tier": "official",
+        "url": "https://wsucougars.com/news/2026/10/10/washington-state-narrowly-falls-to-utah-state-17-16",
+        "publishedAt": "2026-10-09",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Finish the play without a gift.",
+        "body": "Hold the blocking angle until the back commits. On defense, secure the tackle and keep the next down from becoming another chance for the offense.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Keep the gain and end the possession",
+        "question": "What should Boise State emphasize this week?",
+        "answer": "Watch the run blocking, the decision with the ball and the tackling angle. Keep pressure connected to coverage when the quarterback extends the play.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Pass protection",
+          "summary": "Keep the first decision clear",
+          "detail": "Watch the line pass off a defender and preserve the quarterback’s first throwing option. Keep the next gap protected when the pressure changes direction.",
+          "state": "watch",
+          "prompt": "What should I watch for with pass protection?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Run blocking",
+          "summary": "Give the back a first cut",
+          "detail": "Watch the blocking angle hold until the back chooses the lane. Secure the ball through contact before seeking extra yardage.",
+          "state": "watch",
+          "prompt": "What should I watch for with run blocking?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Defensive finish",
+          "summary": "End the down cleanly",
+          "detail": "Watch the tackler keep his leverage and secure the runner. Avoid the extra contact that can give a stopped drive another chance.",
+          "state": "watch",
+          "prompt": "What should I watch for with defensive finish?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Ball decisions",
+          "summary": "Protect the next possession",
+          "detail": "Watch the quarterback take the available completion or end the play safely. A covered target does not require a throw through traffic.",
+          "state": "watch",
+          "prompt": "What should I watch for with ball decisions?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Boise State has a bye this week, then visits Washington State on October 24 at 4 p.m. MT on USA Sports. Watch the blocking and the defensive finish.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Pass protection",
+        "topics": [
+          "pass protection",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the line pass off a defender and preserve the quarterback’s first throwing option. Keep the next gap protected when the pressure changes direction."
+      },
+      {
+        "id": "watch-2",
+        "title": "Run blocking",
+        "topics": [
+          "run blocking",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the blocking angle hold until the back chooses the lane. Secure the ball through contact before seeking extra yardage."
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive finish",
+        "topics": [
+          "defensive finish",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the tackler keep his leverage and secure the runner. Avoid the extra contact that can give a stopped drive another chance."
+      },
+      {
+        "id": "watch-4",
+        "title": "Ball decisions",
+        "topics": [
+          "ball decisions",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the quarterback take the available completion or end the play safely. A covered target does not require a throw through traffic."
+      }
+    ]
+  },
+  "james-madison-football": {
+    "schemaVersion": 1,
+    "teamSlug": "james-madison-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:29:09.049Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Keep a passing answer in short yardage against Georgia State. Watch the active quarterback package, the protection of the first gap and the defender who stays with the route after pressure arrives.",
+    "items": [
+      {
+        "id": "pettaway-blocking",
+        "headline": "Pettaway ran for 151 yards at Georgia Southern",
+        "tldr": "Watch the blocking combination create a first cut. Finish the second assignment before judging whether the next call should change the run direction.",
+        "outlet": "James Madison Athletics",
+        "tier": "official",
+        "url": "https://jmusports.com/news/2026/10/11/football-dukes-grind-out-road-win-at-georgia-southern",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "evans-passing",
+        "headline": "Evans completed two touchdown passes at Georgia Southern",
+        "tldr": "Watch the passing answer when the defense expects a run. Use the actual personnel package rather than assuming a completed-game role guarantees the next start.",
+        "outlet": "The Breeze",
+        "tier": "local",
+        "url": "https://www.breezejmu.org/sports/quick-hits-jmu-pushes-out-a-scrappy-27-24-win-over-georgia-southern/article_f9c089fc-8b38-4ca9-a763-5907ed9f5401.html",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "pressure-finish",
+        "headline": "JMU Sports News flags a sack-free game at Georgia Southern",
+        "tldr": "Watch pressure arrive with coverage still attached to the route. A defender near the quarterback has to finish the play before the ball leaves the pocket.",
+        "outlet": "JMU Sports News",
+        "tier": "local",
+        "url": "https://jmusportsnews.com/2026/10/11/jmu-football-takeaways-first-road-win-georgia-southern/",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "panthers-run-fits",
+        "headline": "Georgia State averages 209.6 rushing yards per game",
+        "tldr": "Watch the first defender hold his gap and the next defender finish the tackle. Keep an early run look from pulling coverage away from the receiver.",
+        "outlet": "Georgia State Athletics",
+        "tier": "official",
+        "url": "https://georgiastatesports.com/news/2026/10/12/football-panthers-continue-conference-play-at-james-madison.aspx",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "homecoming-viewing",
+        "headline": "Georgia State visits at noon ET on ESPNU",
+        "tldr": "Plan for the Homecoming midday window in Harrisonburg. Check the final personnel report before assigning a short-yardage quarterback role.",
+        "outlet": "James Madison Athletics",
+        "tier": "official",
+        "url": "https://jmusports.com/news/2026/10/13/football-dukes-set-for-homecoming-vs-georgia-state",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 5
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Keep another answer available.",
+        "body": "Give the quarterback a receiving option when the defense crowds the run. On defense, finish the pressure without losing the route behind it.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Make the short-yardage decision count",
+        "question": "What should James Madison emphasize this week?",
+        "answer": "Watch the actual quarterback package, the run blocking and the coverage behind pressure. A useful first gain needs a clean next decision.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Run blocking",
+          "summary": "Finish the combination",
+          "detail": "Watch the second blocker reach his assignment before the back makes the cut. Keep the next lane available when the defense closes the first one.",
+          "state": "watch",
+          "prompt": "What should I watch for with run blocking?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Short-yardage options",
+          "summary": "Keep the pass available",
+          "detail": "Watch the actual quarterback package and the receiver’s release when the defense crowds the line. Keep the passing answer attached to the run look.",
+          "state": "watch",
+          "prompt": "What should I watch for with short-yardage options?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Pressure finish",
+          "summary": "Arrive with coverage intact",
+          "detail": "Watch pressure reach the quarterback before a receiver clears the coverage. Keep the assignment after the pocket moves.",
+          "state": "watch",
+          "prompt": "What should I watch for with pressure finish?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Run-defense fits",
+          "summary": "Stay responsible for the gap",
+          "detail": "Watch the first defender hold leverage through the block and the next defender finish the tackle. Do not surrender a lane while chasing the backfield action.",
+          "state": "watch",
+          "prompt": "What should I watch for with run-defense fits?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "James Madison hosts Georgia State on October 17 at noon ET on ESPNU. Watch the short-yardage package and the run-defense fit.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Run blocking",
+        "topics": [
+          "run blocking",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the second blocker reach his assignment before the back makes the cut. Keep the next lane available when the defense closes the first one."
+      },
+      {
+        "id": "watch-2",
+        "title": "Short-yardage options",
+        "topics": [
+          "short-yardage options",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the actual quarterback package and the receiver’s release when the defense crowds the line. Keep the passing answer attached to the run look."
+      },
+      {
+        "id": "watch-3",
+        "title": "Pressure finish",
+        "topics": [
+          "pressure finish",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch pressure reach the quarterback before a receiver clears the coverage. Keep the assignment after the pocket moves."
+      },
+      {
+        "id": "watch-4",
+        "title": "Run-defense fits",
+        "topics": [
+          "run-defense fits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the first defender hold leverage through the block and the next defender finish the tackle. Do not surrender a lane while chasing the backfield action."
+      }
+    ]
+  },
+  "app-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "app-state-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:29:09.049Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Protect the first exchange at Coastal Carolina. Use the active quarterback assignment, keep the snap secure and hold the run-defense gap without losing the route behind it.",
+    "items": [
+      {
+        "id": "quarterback-status",
+        "headline": "RotoWire lists Singleton questionable for Friday",
+        "tldr": "Use the final official report and the opening quarterback assignment. Keep a listed injury status separate from clearance, and protect the ball before extending a broken play.",
+        "outlet": "RotoWire",
+        "tier": "national",
+        "url": "https://www.rotowire.com/cfootball/headlines/malachi-singleton-injury-questionable-for-week-7-234863",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "downfield-coverage",
+        "headline": "The Appalachian flags App State’s downfield coverage",
+        "tldr": "Watch the defender carry the receiver through a coverage handoff. Keep a run look from opening a throw behind the first line of defenders.",
+        "outlet": "The Appalachian",
+        "tier": "local",
+        "url": "https://theappalachianonline.com/app-state-football-earns-strong-grades-on-early-season-report-card/",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "snap-operation",
+        "headline": "An errant snap gave Old Dominion a safety",
+        "tldr": "Watch the center and quarterback secure the exchange before the next decision. A useful opening gain means less if possession ends before the play develops.",
+        "outlet": "Underdog Dynasty",
+        "tier": "local",
+        "url": "https://www.underdogdynasty.com/sun-belt-conference/46782/week-6-sun-belt-recap-2026-odu-mud-slide-rahne-la-tech-rivalry-comeback-louisiana-jmu-survives-coastal",
+        "publishedAt": "2026-10-12T21:49:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "opponent-rushing",
+        "headline": "Lee-Knicely ran for 169 yards at Marshall",
+        "tldr": "Watch the first run-defense fit and the pursuit angle behind it. Close the lane before the back reaches space, then finish the tackle.",
+        "outlet": "Coastal Carolina Athletics",
+        "tier": "official",
+        "url": "https://goccusports.com/news/2026/10/10/football-six-takeaways-lift-coastal-carolina-to-27-21-win-at-marshall",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "friday-viewing",
+        "headline": "The Coastal trip kicks off Friday at 8 p.m. ET on ESPN2",
+        "tldr": "Plan for the Friday broadcast from Conway. Check the final availability report before assigning a quarterback or a workload.",
+        "outlet": "Coastal Carolina Athletics",
+        "tier": "official",
+        "url": "https://goccusports.com/news/2026/10/14/football-know-before-you-go-coastal-carolina-vs-app-state",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 5
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Secure the snap. Keep the answer.",
+        "body": "Get the exchange right before chasing the gain. On defense, follow the receiver through the backfield action and finish the tackle with leverage intact.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Protect possession before extending the play",
+        "question": "What should App State emphasize this week?",
+        "answer": "Watch the actual quarterback assignment, the center’s exchange and the coverage handoff. Keep the first gap covered against the run.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Quarterback assignment",
+          "summary": "Use the final report",
+          "detail": "Watch the active quarterback and the first throwing option. Keep an injury-feed label separate from clearance or a guaranteed start.",
+          "state": "watch",
+          "prompt": "What should I watch for with quarterback assignment?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Snap exchange",
+          "summary": "Protect the opening decision",
+          "detail": "Watch the center and quarterback secure the exchange before the backfield action. Keep possession intact before seeking a bigger gain.",
+          "state": "watch",
+          "prompt": "What should I watch for with snap exchange?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Coverage handoffs",
+          "summary": "Carry the route through",
+          "detail": "Watch the defender stay responsible for the receiver when the formation changes. Keep the next assignment clear before the snap.",
+          "state": "watch",
+          "prompt": "What should I watch for with coverage handoffs?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Run-defense leverage",
+          "summary": "Close the first lane",
+          "detail": "Watch the first defender hold his gap through the block and the next defender finish the tackle. An early missed fit makes the pursuit angle harder.",
+          "state": "watch",
+          "prompt": "What should I watch for with run-defense leverage?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "App State visits Coastal Carolina on October 16 at 8 p.m. ET on ESPN2. Watch the final quarterback report and the first snap exchange.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback assignment",
+        "topics": [
+          "quarterback assignment",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the active quarterback and the first throwing option. Keep an injury-feed label separate from clearance or a guaranteed start."
+      },
+      {
+        "id": "watch-2",
+        "title": "Snap exchange",
+        "topics": [
+          "snap exchange",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the center and quarterback secure the exchange before the backfield action. Keep possession intact before seeking a bigger gain."
+      },
+      {
+        "id": "watch-3",
+        "title": "Coverage handoffs",
+        "topics": [
+          "coverage handoffs",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the defender stay responsible for the receiver when the formation changes. Keep the next assignment clear before the snap."
+      },
+      {
+        "id": "watch-4",
+        "title": "Run-defense leverage",
+        "topics": [
+          "run-defense leverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the first defender hold his gap through the block and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
+      }
+    ]
+  },
+  "fresno-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "fresno-state-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:29:09.049Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Finish the run-defense fit at San Diego State and keep the kicking coverage connected. On offense, give the quarterback a route before asking him to extend the play.",
+    "items": [
+      {
+        "id": "secondary-health",
+        "headline": "Tierney did not return after the first quarter against Boise State",
+        "tldr": "Check the final San Diego State availability report before assigning a replacement. An earlier absence does not establish this week’s role or a teammate’s workload.",
+        "outlet": "The Collegian",
+        "tier": "local",
+        "url": "https://fscollegian.com/2026/10/bulldog-stock-market-whos-rising-and-falling-after-boise-state/",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "run-defense-fits",
+        "headline": "Fresno State allowed 274 rushing yards to Boise State",
+        "tldr": "Watch the first defender hold his gap and the next defender finish the tackle. Do not let a promising initial collision become an open lane behind it.",
+        "outlet": "The Collegian",
+        "tier": "local",
+        "url": "https://fscollegian.com/2026/10/fresno-state-football-falls-to-boise-state-in-shootout/",
+        "publishedAt": "2026-10-11",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "avit-receiving",
+        "headline": "Avit caught touchdowns from Martin and Mandal against Boise State",
+        "tldr": "Watch the receiver become available when the quarterback’s first option is covered. Keep the catch secure before seeking room after it.",
+        "outlet": "Fresno State Athletics",
+        "tier": "official",
+        "url": "https://gobulldogs.com/news/2026/10/10/football-bulldogs-drop-battle-for-the-milk-can",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "kickoff-coverage",
+        "headline": "Hawkins returned a kickoff 97 yards for a touchdown at Oregon State",
+        "tldr": "Watch the coverage unit keep its lanes and finish the first tackle. A defender arriving fast still needs an angle that closes the returner’s exit.",
+        "outlet": "San Diego State Athletics",
+        "tier": "official",
+        "url": "https://goaztecs.com/news/2026/10/10/aztecs-defeated-on-the-road-at-oregon-state",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "oil-can-viewing",
+        "headline": "The San Diego trip starts at 7:30 p.m. PT on CBS Sports Network",
+        "tldr": "Plan for the evening Old Oil Can game at Snapdragon Stadium. Check the final secondary report before treating practice progress as a confirmed role.",
+        "outlet": "Fresno State Athletics",
+        "tier": "official",
+        "url": "https://gobulldogs.com/news/2026/10/12/football-dogs-face-aztecs-for-old-oil-can",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 5
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Close the lane. Carry the route.",
+        "body": "Hold the first gap until the runner commits. Keep the receiver available when pressure changes the quarterback’s decision, and finish the kickoff tackle with leverage intact.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Make the first assignment last through the play",
+        "question": "What should Fresno State emphasize this week?",
+        "answer": "Watch the active secondary, the run-defense fit and the kickoff coverage lanes. Keep a receiving answer available against pressure.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Active secondary",
+          "summary": "Use the final report",
+          "detail": "Watch the active defensive backs and the coverage handoff. Keep an earlier injury absence separate from a confirmed replacement or snap count.",
+          "state": "watch",
+          "prompt": "What should I watch for with active secondary?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Run-defense fits",
+          "summary": "Hold through the block",
+          "detail": "Watch the first defender stay responsible for his gap when the runner changes direction. Finish the tackle before pursuing another collision.",
+          "state": "watch",
+          "prompt": "What should I watch for with run-defense fits?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Receiving answers",
+          "summary": "Keep the route available",
+          "detail": "Watch the receiver clear the contact and become available before pressure changes the throw. Secure the catch before trying to create extra yardage.",
+          "state": "watch",
+          "prompt": "What should I watch for with receiving answers?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Kickoff lanes",
+          "summary": "Close the returner’s exit",
+          "detail": "Watch the coverage unit keep its spacing and the first tackler hold leverage. Avoid chasing the ball toward the same lane.",
+          "state": "watch",
+          "prompt": "What should I watch for with kickoff lanes?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Fresno State visits San Diego State on October 17 at 7:30 p.m. PT on CBS Sports Network. Watch the run-defense fit and kickoff coverage.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Active secondary",
+        "topics": [
+          "active secondary",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the active defensive backs and the coverage handoff. Keep an earlier injury absence separate from a confirmed replacement or snap count."
+      },
+      {
+        "id": "watch-2",
+        "title": "Run-defense fits",
+        "topics": [
+          "run-defense fits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the first defender stay responsible for his gap when the runner changes direction. Finish the tackle before pursuing another collision."
+      },
+      {
+        "id": "watch-3",
+        "title": "Receiving answers",
+        "topics": [
+          "receiving answers",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the receiver clear the contact and become available before pressure changes the throw. Secure the catch before trying to create extra yardage."
+      },
+      {
+        "id": "watch-4",
+        "title": "Kickoff lanes",
+        "topics": [
+          "kickoff lanes",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:26:52.753380Z",
+        "body": "Watch the coverage unit keep its spacing and the first tackler hold leverage. Avoid chasing the ball toward the same lane."
+      }
+    ]
   }
 }
