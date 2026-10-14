@@ -7,7 +7,7 @@ package and the public app's shared team and edition contracts.
 | Batch | Programs | State |
 | --- | --- | --- |
 | 1 | Notre Dame, Michigan, Penn State, Miami | Activated and verified |
-| 2 | Tennessee, BYU, Texas Tech, Indiana | Pending |
+| 2 | Tennessee, BYU, Texas Tech, Indiana | Activated and verified |
 | 3 | Boise State, James Madison, App State, Fresno State | Pending |
 
 Batch 1 has twelve-game schedules, verified completed scores, sourced AP ranks
@@ -31,6 +31,20 @@ and revision-checked publication. No source-policy limit was relaxed.
 The existing eight schedules produce age warnings in the readiness check. Those
 warnings predate this expansion. The new schedules were inspected against live
 official pages; missing future broadcast assignments remain TBD.
+
+Batch 2 registers another 48 games and passes database readback. All 22 newly
+completed opponents have verified kickoff-day AP status, with none missing.
+Each program has five distinct stories across at least three original reporting
+origins and four reviewed game watch points. Maintenance discovers all sixteen
+programs and requests no result checks for the additions.
+
+Batch 2 passed 525 unit tests, 270 browser tests, the production build and 26
+engine tests. Visual inspection covered 64 rendered views in both themes at
+375px and 1280px, including source links, schedule scores and the tall footer.
+Texas Tech uses its white secondary color because black failed masthead contrast.
+The producer rejected ambiguous defensive “rush” wording; explicit “pass rush”
+passed fresh review. Availability reporting preserves the difference between a
+coach’s expectation, a dated contingency plan and a confirmed game assignment.
 
 After batch 3, revise the homepage edition directory. The user wants fewer cards
 presented at once and a clearer way to choose among twenty teams. Preserve the

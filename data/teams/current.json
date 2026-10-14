@@ -3432,9 +3432,9 @@
         "structuralLightness": 38,
         "preserveStageInDark": true,
         "secondary": {
-          "lightness": 84,
+          "hue": 47.27,
           "chroma": 0.18,
-          "hue": 47.27
+          "lightness": 84
         }
       },
       "sourcePolicy": {
@@ -3704,6 +3704,1233 @@
           "status": "scheduled",
           "kickoff": "TBD",
           "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "tennessee-football": {
+    "identity": {
+      "slug": "tennessee-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "SEC",
+      "displayName": "Tennessee football",
+      "shortName": "Tennessee",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://utsports.com/sports/football/schedule",
+      "aliases": [
+        "Tennessee",
+        "Tennessee Volunteers",
+        "TENN"
+      ],
+      "theme": {
+        "hue": 53.83,
+        "chroma": 0.1846,
+        "structuralHue": 53.83,
+        "structuralChroma": 0.16,
+        "structuralLightness": 55,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.88,
+          "chroma": 0,
+          "lightness": 100
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Tennessee Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "utsports.com",
+          "rockytopinsider.com",
+          "knoxnews.com",
+          "si.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Tennessee",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Tennessee this week?",
+        "Who does Tennessee play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "tennessee-football",
+      "teamName": "Tennessee",
+      "teamDisplayName": "Tennessee football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://utsports.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:11:14.157Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://utsports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:58:17.098133Z",
+        "officialVerifiedAt": "2026-10-14T21:07:23.849147Z"
+      },
+      "games": [
+        {
+          "id": "tennessee-football-2026-401856666",
+          "opponent": "Furman",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T19:30:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "SECN+",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856666",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 56,
+            "opponentScore": 9
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856681",
+          "opponent": "Georgia Tech",
+          "site": "away",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T23:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "7:00 p.m. ET",
+          "venue": "Bobby Dodd Stadium, Atlanta, GA",
+          "tv": "ESPN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856681",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856692",
+          "opponent": "Kennesaw State",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T23:45:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "7:45 p.m. ET",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "SECN+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856692",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 42,
+            "opponentScore": 9
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856704",
+          "opponent": "Texas",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T16:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "ABC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 1,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856704",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856710",
+          "opponent": "Auburn",
+          "site": "home",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T19:30:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "ESPN / ERADM",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856710",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 24,
+            "opponentScore": 14
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856713",
+          "opponent": "Arkansas",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T20:15:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "4:15 p.m. ET",
+          "venue": "Donald W. Reynolds Razorback Stadium, Fayetteville, AR",
+          "tv": "SEC Network",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856713",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 24,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "tennessee-football-2026-401856723",
+          "opponent": "Alabama",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T19:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "tennessee-football-2026-401856731",
+          "opponent": "South Carolina",
+          "site": "away",
+          "dateLabel": "Oct 24",
+          "startsAt": "2026-10-24T19:30:00Z",
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Williams-Brice Stadium, Columbia, SC",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "tennessee-football-2026-401856745",
+          "opponent": "Kentucky",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "tennessee-football-2026-401856888",
+          "opponent": "Texas A&M",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Kyle Field, College Station, TX",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "tennessee-football-2026-401856754",
+          "opponent": "LSU",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Neyland Stadium, Knoxville, TN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "tennessee-football-2026-401856765",
+          "opponent": "Vanderbilt",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "FirstBank Stadium, Nashville, TN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "byu-football": {
+    "identity": {
+      "slug": "byu-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big 12",
+      "displayName": "BYU football",
+      "shortName": "BYU",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Denver",
+      "officialScheduleUrl": "https://byucougars.com/sports/football/schedule",
+      "aliases": [
+        "BYU",
+        "BYU Cougars",
+        "BYU"
+      ],
+      "theme": {
+        "hue": 261.04,
+        "chroma": 0.1915,
+        "structuralHue": 261.04,
+        "structuralChroma": 0.1915,
+        "structuralLightness": 44.21,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.88,
+          "chroma": 0,
+          "lightness": 100
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with BYU Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "byucougars.com",
+          "sports.ksl.com",
+          "deseret.com",
+          "sltrib.com",
+          "fightingirish.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "BYU",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for BYU this week?",
+        "Who does BYU play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "byu-football",
+      "teamName": "BYU",
+      "teamDisplayName": "BYU football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://byucougars.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:11:14.157Z",
+      "timeZone": "America/Denver",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://byucougars.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T21:02:51.854430Z",
+        "officialVerifiedAt": "2026-10-14T21:07:23.849147Z"
+      },
+      "games": [
+        {
+          "id": "byu-football-2026-401856775",
+          "opponent": "Utah Tech",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-06T00:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "6:00 p.m. MT",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": "ESPN+",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856775",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 63,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "byu-football-2026-401856810",
+          "opponent": "Arizona",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T19:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "1:30 p.m. MT",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856810",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 28,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "byu-football-2026-401856795",
+          "opponent": "Colorado State",
+          "site": "away",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-20T00:15:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "6:15 p.m. MT",
+          "venue": "Canvas Stadium, Fort Collins, CO",
+          "tv": "CBS",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856795",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 41,
+            "opponentScore": 23
+          }
+        },
+        {
+          "id": "byu-football-2026-401856818",
+          "opponent": "TCU",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T23:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "5:00 p.m. MT",
+          "venue": "Amon G. Carter Stadium, Fort Worth, TX",
+          "tv": "ESPN / Disney+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856818",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "byu-football-2026-401856826",
+          "opponent": "Iowa State",
+          "site": "home",
+          "dateLabel": "Oct 9",
+          "startsAt": "2026-10-10T02:30:00Z",
+          "date": "2026-10-09",
+          "status": "final",
+          "kickoff": "8:30 p.m. MT",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": "ESPN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-09",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856826",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 24,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "byu-football-2026-401856809",
+          "opponent": "Notre Dame",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T23:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "5:30 p.m. MT",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856835",
+          "opponent": "UCF",
+          "site": "away",
+          "dateLabel": "Oct 24",
+          "startsAt": null,
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Acrisure Bounce House, Orlando, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856843",
+          "opponent": "Arizona State",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856849",
+          "opponent": "Utah",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Rice-Eccles Stadium, Salt Lake City, UT",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856858",
+          "opponent": "Baylor",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856866",
+          "opponent": "Kansas",
+          "site": "away",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "byu-football-2026-401856876",
+          "opponent": "Cincinnati",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "texas-tech-football": {
+    "identity": {
+      "slug": "texas-tech-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big 12",
+      "displayName": "Texas Tech football",
+      "shortName": "Texas Tech",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/Chicago",
+      "officialScheduleUrl": "https://texastech.com/sports/football/schedule",
+      "aliases": [
+        "Texas Tech",
+        "Texas Tech Red Raiders",
+        "TTU"
+      ],
+      "theme": {
+        "hue": 29.4,
+        "chroma": 0.2,
+        "structuralHue": 29.4,
+        "structuralChroma": 0.16,
+        "structuralLightness": 45,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.88,
+          "chroma": 0,
+          "lightness": 100
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Texas Tech Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "texastech.com",
+          "lubbockonline.com",
+          "si.com",
+          "arizonasports.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Texas Tech",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Texas Tech this week?",
+        "Who does Texas Tech play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "texas-tech-football",
+      "teamName": "Texas Tech",
+      "teamDisplayName": "Texas Tech football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://texastech.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:11:14.157Z",
+      "timeZone": "America/Chicago",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://texastech.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:58:17.820144Z",
+        "officialVerifiedAt": "2026-10-14T21:07:23.849147Z"
+      },
+      "games": [
+        {
+          "id": "texas-tech-football-2026-401856770",
+          "opponent": "Abilene Christian",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T23:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "6:00 p.m. CT",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": "FS1",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856770",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 33,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "texas-tech-football-2026-401856783",
+          "opponent": "Oregon State",
+          "site": "away",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T23:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "6:30 p.m. CT",
+          "venue": "Reser Stadium, Corvallis, OR",
+          "tv": "CBS",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856783",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 35,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "texas-tech-football-2026-401856811",
+          "opponent": "Houston",
+          "site": "home",
+          "dateLabel": "Sep 18",
+          "startsAt": "2026-09-19T00:00:00Z",
+          "date": "2026-09-18",
+          "status": "final",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 22,
+            "gameDate": "2026-09-18",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856811",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 28,
+            "opponentScore": 26
+          }
+        },
+        {
+          "id": "texas-tech-football-2026-401856805",
+          "opponent": "Sam Houston",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T16:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "11:00 a.m. CT",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": "TNT",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856805",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 49,
+            "opponentScore": 14
+          }
+        },
+        {
+          "id": "texas-tech-football-2026-401856821",
+          "opponent": "Colorado",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T23:30:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "6:30 p.m. CT",
+          "venue": "Folsom Field, Boulder, CO",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856821",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 29,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "texas-tech-football-2026-401856828",
+          "opponent": "Arizona State",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T19:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "2:30 p.m. CT",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": "Fox",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856840",
+          "opponent": "Cincinnati",
+          "site": "away",
+          "dateLabel": "Oct 24",
+          "startsAt": null,
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Nippert Stadium, Cincinnati, OH",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856842",
+          "opponent": "Arizona",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856856",
+          "opponent": "West Virginia",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856863",
+          "opponent": "Oklahoma State",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Boone Pickens Stadium, Stillwater, OK",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856871",
+          "opponent": "Baylor",
+          "site": "away",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "McLane Stadium, Waco, TX",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "texas-tech-football-2026-401856879",
+          "opponent": "TCU",
+          "site": "home",
+          "dateLabel": "Nov 26",
+          "startsAt": "2026-11-27T01:00:00Z",
+          "date": "2026-11-26",
+          "status": "scheduled",
+          "kickoff": "7:00 p.m. CT",
+          "venue": "Galaxy Stadium, Lubbock, TX",
+          "tv": "ESPN",
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "indiana-football": {
+    "identity": {
+      "slug": "indiana-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big Ten",
+      "displayName": "Indiana football",
+      "shortName": "Indiana",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://iuhoosiers.com/sports/football/schedule",
+      "aliases": [
+        "Indiana",
+        "Indiana Hoosiers",
+        "IU"
+      ],
+      "theme": {
+        "hue": 29.23,
+        "chroma": 0.176,
+        "structuralHue": 29.23,
+        "structuralChroma": 0.176,
+        "structuralLightness": 42.89,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 17.2,
+          "chroma": 0.0022,
+          "lightness": 94.16
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Indiana Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "iuhoosiers.com",
+          "thedailyhoosier.com",
+          "idsnews.com",
+          "thehoosiernetwork.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Indiana",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Indiana this week?",
+        "Who does Indiana play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "indiana-football",
+      "teamName": "Indiana",
+      "teamDisplayName": "Indiana football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://iuhoosiers.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T21:11:14.157Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://iuhoosiers.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:58:18.238821Z",
+        "officialVerifiedAt": "2026-10-14T21:07:23.849147Z"
+      },
+      "games": [
+        {
+          "id": "indiana-football-2026-401858425",
+          "opponent": "North Texas",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T16:00:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858425",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 52,
+            "opponentScore": 16
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858439",
+          "opponent": "Howard",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T16:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "BTN",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858439",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 55,
+            "opponentScore": 0
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858449",
+          "opponent": "Western Kentucky",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T20:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "4:00 p.m. ET",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "Peacock",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858449",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 38,
+            "opponentScore": 0
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858461",
+          "opponent": "Northwestern",
+          "site": "home",
+          "dateLabel": "Sep 25",
+          "startsAt": "2026-09-26T00:00:00Z",
+          "date": "2026-09-25",
+          "status": "final",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-25",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858461",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 29,
+            "opponentScore": 23
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858477",
+          "opponent": "Rutgers",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-04T00:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "SHI Stadium, Piscataway, NJ",
+          "tv": "BTN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858477",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 47,
+            "opponentScore": 15
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858481",
+          "opponent": "Nebraska",
+          "site": "away",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T16:00:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Memorial Stadium (Lincoln, NE), Lincoln, NE",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858481",
+            "checkedAt": "2026-10-14T21:11:14.157Z"
+          },
+          "result": {
+            "teamScore": 20,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "indiana-football-2026-401858488",
+          "opponent": "Ohio State",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T16:00:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": "Fox",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "indiana-football-2026-401858496",
+          "opponent": "Michigan",
+          "site": "away",
+          "dateLabel": "Oct 24",
+          "startsAt": "2026-10-24T16:00:00Z",
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "Fox",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "indiana-football-2026-401858501",
+          "opponent": "Minnesota",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "indiana-football-2026-401858518",
+          "opponent": "USC",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "indiana-football-2026-401858535",
+          "opponent": "Washington",
+          "site": "away",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Husky Stadium, Seattle, WA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "indiana-football-2026-401858538",
+          "opponent": "Purdue",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Memorial Stadium (Bloomington, IN), Bloomington, IN",
           "tv": null,
           "opponentClassification": "fbs"
         }

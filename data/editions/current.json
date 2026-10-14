@@ -2232,5 +2232,737 @@
         "body": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle."
       }
     ]
+  },
+  "tennessee-football": {
+    "schemaVersion": 1,
+    "teamSlug": "tennessee-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:10:45.331Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Make the first gain count against Alabama. Watch the run-blocking angle, keep the ball secure and close the defensive gap before chasing the quarterback.",
+    "items": [
+      {
+        "id": "quarterback-plan",
+        "headline": "Heupel left the Alabama quarterback choice open on Monday",
+        "tldr": "Use the final availability report and the opening assignment. Protect the football before trying to extend a broken play; a practice update alone does not settle Saturday’s starter.",
+        "outlet": "Rocky Top Insider",
+        "tier": "local",
+        "url": "https://www.rockytopinsider.com/2026/10/12/everything-josh-heupel-said-to-preview-tennessee-football-vs-alabama/",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "bishop-rushing",
+        "headline": "Bishop ran for 138 yards at Arkansas",
+        "tldr": "Watch the block that creates his first cut. A productive ground game needs the next blocker to finish the assignment as well as the runner to find the opening.",
+        "outlet": "Tennessee Athletics",
+        "tier": "official",
+        "url": "https://utsports.com/news/2026/10/10/football-late-score-secures-no-15-14-vols-win-in-fayetteville",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "gilliam-disruption",
+        "headline": "Gilliam recorded a strip-sack and recovered a fumble at Arkansas",
+        "tldr": "Watch the interior defender finish pressure without opening an escape lane. Once the ball comes loose, securing possession matters more than chasing another hit.",
+        "outlet": "Tennessee Athletics",
+        "tier": "official",
+        "url": "https://utsports.com/news/2026/10/13/football-14-14-vols-focus-on-continued-growth-ahead-of-6-7-alabama-matchup",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "alabama-run-game",
+        "headline": "Stahl points to improved Alabama run blocking",
+        "tldr": "Watch Tennessee’s defenders hold their gap through the block. Do not let a promising first step turn into a lane for the back behind it.",
+        "outlet": "Rocky Top Insider",
+        "tier": "local",
+        "url": "https://www.rockytopinsider.com/2026/10/14/opponent-qna-alabama-reporter-helps-preview-matchup-with-tennessee-football/",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "rivalry-viewing",
+        "headline": "Alabama visits Saturday at 2:30 p.m. CT on ABC",
+        "tldr": "Plan for the afternoon broadcast. Check the final lineup report before using a week-of practice note to assign a quarterback or a snap count.",
+        "outlet": "Alabama Crimson Tide on SI",
+        "tier": "local",
+        "url": "https://www.si.com/college/alabama/football/how-to-watch-no-6-alabama-no-14-tennessee",
+        "publishedAt": "2026-10-11T23:11:09Z",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Keep the lane. Keep the ball.",
+        "body": "Finish the block and protect the next decision. On defense, stay in the gap long enough to make the runner change direction.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Win the space before the collision",
+        "question": "What should Tennessee emphasize this week?",
+        "answer": "Watch the run blocking on both sides, the active quarterback assignment and the defender responsible for the next gap.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Quarterback decisions",
+          "summary": "Use the actual starter",
+          "detail": "Watch the opening assignment, the first read and the decision with the ball when pressure changes the throw. Protect possession before seeking an extra play.",
+          "state": "watch",
+          "prompt": "What should I watch for with quarterback decisions?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Run blocking",
+          "summary": "Finish the first opening",
+          "detail": "Watch the blocker establish an angle and the runner choose the cut. The second block has to arrive before the defense can close the lane.",
+          "state": "watch",
+          "prompt": "What should I watch for with run blocking?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Interior pressure",
+          "summary": "Close the escape lane",
+          "detail": "Watch the interior defender finish the pass rush while the edge stays responsible for the exit. Recover the loose ball before looking for another hit.",
+          "state": "watch",
+          "prompt": "What should I watch for with interior pressure?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Gap integrity",
+          "summary": "Stay through the block",
+          "detail": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded.",
+          "state": "watch",
+          "prompt": "What should I watch for with gap integrity?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Tennessee hosts Alabama on October 17 at 3:30 p.m. ET on ABC. Watch the opening quarterback assignment and the run blocking.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback decisions",
+        "topics": [
+          "quarterback decisions",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the opening assignment, the first read and the decision with the ball when pressure changes the throw. Protect possession before seeking an extra play."
+      },
+      {
+        "id": "watch-2",
+        "title": "Run blocking",
+        "topics": [
+          "run blocking",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the blocker establish an angle and the runner choose the cut. The second block has to arrive before the defense can close the lane."
+      },
+      {
+        "id": "watch-3",
+        "title": "Interior pressure",
+        "topics": [
+          "interior pressure",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the interior defender finish the pass rush while the edge stays responsible for the exit. Recover the loose ball before looking for another hit."
+      },
+      {
+        "id": "watch-4",
+        "title": "Gap integrity",
+        "topics": [
+          "gap integrity",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded."
+      }
+    ]
+  },
+  "byu-football": {
+    "schemaVersion": 1,
+    "teamSlug": "byu-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:10:45.331Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Keep a passing answer available against Notre Dame. Watch the tight ends find space, the quarterback choose the exit safely and the run defense hold its first gap.",
+    "items": [
+      {
+        "id": "backfield-plan",
+        "headline": "Sitake says Martin will be out against Notre Dame",
+        "tldr": "Use the published depth chart as the preparation plan, then check the final report for the active rotation. A possible later return does not establish this week’s availability.",
+        "outlet": "KSL Sports",
+        "tier": "local",
+        "url": "https://sports.ksl.com/ncaa/byu-football/byu-football-depth-chart-notre-dame-week/578125",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "bachmeier-production",
+        "headline": "Bachmeier passed for 329 yards and ran for 109 against Iowa State",
+        "tldr": "Watch the first passing option and the escape lane separately. Keep the ball secure when extending the play rather than treating another big rushing total as the goal.",
+        "outlet": "BYU Athletics",
+        "tier": "official",
+        "url": "https://byucougars.com/news/2026/10/12/honors-roll-in-for-byu-quarterback-bear-bachmeier",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "tight-end-options",
+        "headline": "Jay Drew recommends short passes and BYU’s tight ends",
+        "tldr": "Watch the release behind a linebacker pulled toward the run. Give the quarterback a timely target instead of asking every possession to survive a scramble.",
+        "outlet": "Deseret News",
+        "tier": "local",
+        "url": "https://www.deseret.com/sports/2026/10/14/byu-cougars-notre-dame-defensive-clash/",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "walton-run-fits",
+        "headline": "Walton ran for 181 yards against Stanford",
+        "tldr": "Watch the first run-defense fit and the next defender’s angle. Close the lane before the back reaches open space, then finish the tackle.",
+        "outlet": "Notre Dame Athletics",
+        "tier": "official",
+        "url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "provo-viewing",
+        "headline": "Notre Dame visits at 5:30 p.m. MT on ABC",
+        "tldr": "Plan for the evening window in Provo. Check the final availability report before turning a depth-chart listing into a guaranteed workload.",
+        "outlet": "BYU Athletics",
+        "tier": "official",
+        "url": "https://byucougars.com/news/2026/10/12/byu-football-game-week-2026-notre-dame",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Keep the next answer open.",
+        "body": "Give the quarterback a route before asking him to make a play with his feet. On defense, finish the block confrontation before chasing the runner.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Find space without surrendering possession",
+        "question": "What should BYU emphasize this week?",
+        "answer": "Watch the active backfield, the tight-end release and the run-defense fit. Make the quarterback’s first decision useful.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Active backfield",
+          "summary": "Follow the final report",
+          "detail": "Watch the actual rotation and the first protection assignment. Keep a depth-chart listing separate from a promised number of touches.",
+          "state": "watch",
+          "prompt": "What should I watch for with active backfield?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Quarterback exits",
+          "summary": "Keep a passing option",
+          "detail": "Watch the first read stay available when the pocket changes. Choose the safe exit before trying to turn a broken play into a long run.",
+          "state": "watch",
+          "prompt": "What should I watch for with quarterback exits?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Tight-end releases",
+          "summary": "Find space behind the fit",
+          "detail": "Watch the tight end clear the initial contact and become available to the quarterback. Timing matters before the defender can recover.",
+          "state": "watch",
+          "prompt": "What should I watch for with tight-end releases?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Run-defense fits",
+          "summary": "Close the first lane",
+          "detail": "Watch the first defender hold his gap and the next defender finish the tackle. An early missed fit makes the pursuit angle harder.",
+          "state": "watch",
+          "prompt": "What should I watch for with run-defense fits?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "BYU hosts Notre Dame on October 17 at 5:30 p.m. MT on ABC. Watch the active backfield and the coverage around the tight ends.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Active backfield",
+        "topics": [
+          "active backfield",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the actual rotation and the first protection assignment. Keep a depth-chart listing separate from a promised number of touches."
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback exits",
+        "topics": [
+          "quarterback exits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the first read stay available when the pocket changes. Choose the safe exit before trying to turn a broken play into a long run."
+      },
+      {
+        "id": "watch-3",
+        "title": "Tight-end releases",
+        "topics": [
+          "tight-end releases",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the tight end clear the initial contact and become available to the quarterback. Timing matters before the defender can recover."
+      },
+      {
+        "id": "watch-4",
+        "title": "Run-defense fits",
+        "topics": [
+          "run-defense fits",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the first defender hold his gap and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
+      }
+    ]
+  },
+  "texas-tech-football": {
+    "schemaVersion": 1,
+    "teamSlug": "texas-tech-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:10:45.331Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Keep the receiving answer available against Arizona State. Watch Carter’s release, the short-yardage personnel and the pressure that stays connected to coverage.",
+    "items": [
+      {
+        "id": "carter-receiving",
+        "headline": "Carter caught eight passes for 67 yards at Colorado",
+        "tldr": "Keep a receiving answer available under pressure. Watch the release into space and whether the quarterback can deliver before the defender closes the window.",
+        "outlet": "Texas Tech on SI",
+        "tier": "local",
+        "url": "https://www.si.com/college/texas-tech/football/despite-a-29-7-win-over-the-buffaloes-tech-s-offense-stuck-in-neutral",
+        "publishedAt": "2026-10-04",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 3
+        }
+      },
+      {
+        "id": "coverage-turnovers",
+        "headline": "Tech’s defense intercepted Colorado four times",
+        "tldr": "Watch the coverage finish the play after pressure changes the throw. A chance at the ball needs the defender to secure it before looking for a return.",
+        "outlet": "Texas Tech on SI",
+        "tier": "local",
+        "url": "https://www.si.com/college/texas-tech/football/tech-defense-holds-strong-against-colorado-to-win-29-7",
+        "publishedAt": "2026-10-07",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "short-yardage-planning",
+        "headline": "McGuire planned Monday as if Castellanos would be unavailable",
+        "tldr": "Check the final status update and the actual short-yardage personnel. Monday’s contingency plan does not settle a later eligibility decision or guarantee Saturday’s package.",
+        "outlet": "Lubbock Avalanche-Journal",
+        "tier": "local",
+        "url": "https://sports.yahoo.com/articles/texas-tech-football-preparing-without-175853075.html",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "opponent-protection",
+        "headline": "Dillingham expects Alo-Tupuola and Helton back for ASU",
+        "tldr": "Use the final lineup to identify the protection assignments. Watch the pressure reach its target without losing the receiver when the quarterback extends the play.",
+        "outlet": "Arizona Sports",
+        "tier": "local",
+        "url": "https://arizonasports.com/ncaa/arizona-state/asu-football/asu-get-2-starting-offensive-linemen-back-trip-10-texas-tech",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "homecoming-viewing",
+        "headline": "Arizona State visits at 2:30 p.m. CT on FOX",
+        "tldr": "Plan for the Homecoming afternoon window in Lubbock. Check the final personnel update before assigning a short-yardage role.",
+        "outlet": "Texas Tech Athletics",
+        "tier": "official",
+        "url": "https://texastech.com/news/2026/10/12/football-no-10-texas-tech-hosts-arizona-state-for-homecoming",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Give the throw a place to go.",
+        "body": "Keep the tight end available before the quarterback has to escape. On defense, finish the pressure with coverage still attached to the route.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Make pressure and coverage work together",
+        "question": "What should Texas Tech emphasize this week?",
+        "answer": "Watch the tight-end target, the actual short-yardage package and the opponent’s active offensive line. Take the safe gain when the bigger play is covered.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Tight-end targets",
+          "summary": "Keep the first answer",
+          "detail": "Watch the tight end clear the contact and become available before pressure changes the quarterback’s decision. Take the completion when it is there.",
+          "state": "watch",
+          "prompt": "What should I watch for with tight-end targets?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Pressure and coverage",
+          "summary": "Finish the same play",
+          "detail": "Watch the coverage stay with the route after the pass rush moves the pocket. Secure a loose or deflected ball before trying to advance it.",
+          "state": "watch",
+          "prompt": "What should I watch for with pressure and coverage?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Short-yardage personnel",
+          "summary": "Use the actual package",
+          "detail": "Watch who enters the huddle and how the offense reaches the line. Keep a contingency plan separate from a confirmed Saturday role.",
+          "state": "watch",
+          "prompt": "What should I watch for with short-yardage personnel?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Opponent protection",
+          "summary": "Follow the final lineup",
+          "detail": "Watch the active linemen pass off pressure and the defender keep his path to the quarterback. Keep coverage attached when the throw is delayed.",
+          "state": "watch",
+          "prompt": "What should I watch for with opponent protection?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Texas Tech hosts Arizona State on October 17 at 2:30 p.m. CT on FOX. Watch the tight-end release and the active short-yardage package.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Tight-end targets",
+        "topics": [
+          "tight-end targets",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the tight end clear the contact and become available before pressure changes the quarterback’s decision. Take the completion when it is there."
+      },
+      {
+        "id": "watch-2",
+        "title": "Pressure and coverage",
+        "topics": [
+          "pressure and coverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the coverage stay with the route after the pass rush moves the pocket. Secure a loose or deflected ball before trying to advance it."
+      },
+      {
+        "id": "watch-3",
+        "title": "Short-yardage personnel",
+        "topics": [
+          "short-yardage personnel",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch who enters the huddle and how the offense reaches the line. Keep a contingency plan separate from a confirmed Saturday role."
+      },
+      {
+        "id": "watch-4",
+        "title": "Opponent protection",
+        "topics": [
+          "opponent protection",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the active linemen pass off pressure and the defender keep his path to the quarterback. Keep coverage attached when the throw is delayed."
+      }
+    ]
+  },
+  "indiana-football": {
+    "schemaVersion": 1,
+    "teamSlug": "indiana-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T21:10:45.331Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Make the pressure arrive with coverage intact against Ohio State. Watch the receiver’s alignment, the active backfield and the offensive route that stays available when the defense crowds the run.",
+    "items": [
+      {
+        "id": "marsh-scoring",
+        "headline": "Hoover found Marsh for 75- and 44-yard touchdowns at Nebraska",
+        "tldr": "Watch the passing option when the defense crowds the run. A short-yardage decision needs an available route as well as a sound blocking assignment.",
+        "outlet": "Indiana Athletics",
+        "tier": "official",
+        "url": "https://iuhoosiers.com/news/2026/10/10/football-postgame-notes-at-nebraska",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "backfield-progress",
+        "headline": "Cignetti says Martin is getting close to returning",
+        "tldr": "Check the final availability report before assigning a workload. Progress toward a return does not confirm the next game or the shape of the rotation.",
+        "outlet": "The Daily Hoosier",
+        "tier": "local",
+        "url": "https://www.thedailyhoosier.com/iu-football-rb-khobie-martin-getting-close-to-return-from-injury/",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "smith-alignment",
+        "headline": "Cignetti flags Ohio State moving Jeremiah Smith around",
+        "tldr": "Watch the defender identify the receiver after a formation change. Carry the route through the coverage handoff instead of leaving the next defender to recover late.",
+        "outlet": "The Daily Hoosier",
+        "tier": "local",
+        "url": "https://www.thedailyhoosier.com/a-wow-player-a-freak-iu-football-has-a-special-challenge-against-jeremiah-smith/",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "late-pass-rush",
+        "headline": "Osunsanmi’s fourth-down sack stopped a late Nebraska drive",
+        "tldr": "Watch pressure reach the quarterback while coverage stays attached. Finish the play safely before trying to turn a defensive stop into a return.",
+        "outlet": "Indiana Daily Student",
+        "tier": "local",
+        "url": "https://www.idsnews.com/article/2026/10/indiana-football-win-nebraska-cignetti-bloomington",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "bloomington-viewing",
+        "headline": "Ohio State visits Bloomington Saturday on FOX",
+        "tldr": "Plan for the broadcast from Bloomington. Check the final running-back report and the opening coverage assignments before treating a practice update as a settled role.",
+        "outlet": "Indiana Athletics",
+        "tier": "official",
+        "url": "https://iuhoosiers.com/news/2026/10/12/football-football-gameday-ohio-state-week-7",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Carry the route. Finish the pass rush.",
+        "body": "Keep a receiver available against pressure. On defense, follow the alignment change without opening the throw behind the pass rush.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Stay connected when the formation changes",
+        "question": "What should Indiana emphasize this week?",
+        "answer": "Watch the coverage handoff, the active running-back rotation and the quarterback’s answer against a crowded line.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Receiving answers",
+          "summary": "Keep the route available",
+          "detail": "Watch the quarterback retain a passing answer when the defense crowds the line. Protect the throw before trying to extend the play through pressure.",
+          "state": "watch",
+          "prompt": "What should I watch for with receiving answers?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Running-back rotation",
+          "summary": "Use the final report",
+          "detail": "Watch the active group and its first protection assignment. Keep progress toward a return separate from a promised workload.",
+          "state": "watch",
+          "prompt": "What should I watch for with running-back rotation?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Coverage handoffs",
+          "summary": "Follow the alignment",
+          "detail": "Watch the defender locate the receiver after motion or a formation change. Keep the next coverage assignment clear before the snap.",
+          "state": "watch",
+          "prompt": "What should I watch for with coverage handoffs?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Late pressure",
+          "summary": "Finish without losing coverage",
+          "detail": "Watch the pass rush reach the quarterback while the coverage stays attached to the route. End the play before trying to create another one.",
+          "state": "watch",
+          "prompt": "What should I watch for with late pressure?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Indiana hosts Ohio State on October 17 on FOX. Watch the coverage handoff and the active running-back rotation.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Receiving answers",
+        "topics": [
+          "receiving answers",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the quarterback retain a passing answer when the defense crowds the line. Protect the throw before trying to extend the play through pressure."
+      },
+      {
+        "id": "watch-2",
+        "title": "Running-back rotation",
+        "topics": [
+          "running-back rotation",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the active group and its first protection assignment. Keep progress toward a return separate from a promised workload."
+      },
+      {
+        "id": "watch-3",
+        "title": "Coverage handoffs",
+        "topics": [
+          "coverage handoffs",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the defender locate the receiver after motion or a formation change. Keep the next coverage assignment clear before the snap."
+      },
+      {
+        "id": "watch-4",
+        "title": "Late pressure",
+        "topics": [
+          "late pressure",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T21:07:23.849147Z",
+        "body": "Watch the pass rush reach the quarterback while the coverage stays attached to the route. End the play before trying to create another one."
+      }
+    ]
   }
 }
