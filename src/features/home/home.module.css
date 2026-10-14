@@ -93,7 +93,6 @@
   align-items: center;
 }
 
-.headerCta,
 .themeToggle {
   display: inline-flex;
   min-height: 2.5rem;
@@ -115,7 +114,6 @@
   transition: background-color var(--dur-micro) var(--ease-out);
 }
 
-.headerCta:hover,
 .themeToggle:hover {
   border-color: var(--team-header-accent);
 }
@@ -126,7 +124,6 @@
 }
 
 .nav a:focus-visible,
-.headerCta:focus-visible,
 .themeToggle:focus-visible {
   outline: var(--rule-fine) solid var(--team-header-accent);
   outline-offset: var(--space-3xs);
@@ -942,7 +939,16 @@ summary.conferenceLabel:focus-visible,
 /* ── Small screens ────────────────────────────────────────────────────── */
 
 @media (max-width: 52rem) {
+  .mastheadInner {
+    column-gap: var(--space-2xs);
+  }
+
+  .brandBlock {
+    --wordmark-size: var(--text-xl);
+  }
+
   .nav {
+    gap: var(--space-sm);
     order: 3;
     width: 100%;
     overflow-x: auto;
@@ -956,11 +962,25 @@ summary.conferenceLabel:focus-visible,
     display: none;
   }
 
-  /* The masthead CTA duplicates the hero's secondary action; below the
-     breakpoint the hero is already on screen, so keeping both just crowds the
-     bar. */
-  .headerCta {
+  .themeToggle {
+    width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .themeToggle span {
     display: none;
+  }
+}
+
+@media (max-width: 22rem) {
+  .mastheadInner {
+    column-gap: var(--space-2xs);
+  }
+
+  .brandBlock {
+    --wordmark-size: var(--text-lg);
   }
 }
 

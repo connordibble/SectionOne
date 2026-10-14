@@ -139,6 +139,8 @@ Home page rules:
   aliases come from enabled config. Disclosures remain usable without JavaScript. Search exposes
   matching links directly, announces the result count, and offers a reset and team-request path.
   Keep the directory before the preview on mobile and avoid duplicating every team in the footer.
+- The homepage masthead uses the same native team selector as edition pages, with “Choose team”
+  as its initial value. It remains visible on mobile; only the theme button’s visual label collapses.
 - Anchor targets clear the sticky masthead.
 - House colour comes from `houseTheme`, not from a team. Editions may ship in any hue; the home page
   does not follow them.
@@ -267,8 +269,9 @@ Two rules the second edition established, both of which cost a fix to honour:
 - **No team-shaped assumptions in shared logic.** The question classifier reserved a single word for
   the team's name, which fit Texas and not Utah State. Anywhere a team's name, conference, or zone
   appears in shared code, it comes from `TeamConfig`.
-- **Two editions must not read as one site with two names.** Every edition's accent hue is distinct
-  from every other's.
+- **Use the school’s real colors.** Some programs share a hue or even a primary hex value;
+  never invent a distinct shade to make the catalog unique. Secondary colors and editorial
+  content distinguish those editions.
 - **The structural anchors describe the stage, not the masthead.** Whatever the school's primary
   is — navy, maroon, forest, burnt orange — it goes on the stage at the lightness it actually has.
   The masthead derives a restrained dark from the same hue. An earlier version of this rule sent
@@ -317,8 +320,10 @@ This is the rule the first three attempts at Texas each broke in a different way
 
 - **The stage is the team's colour.** One surface per view wears it: the hero game object on
   Brief, the board on Matchup. `structuralHue`, `structuralChroma`, and `structuralLightness`
-  describe *this*, not the masthead. A school whose primary is bright says so with
-  `structuralLightness`, and burnt orange is then actually burnt orange.
+  describe *this*, not the masthead. Verified `theme.brand` hex anchors and their official source
+  override the stage ramp in both themes. Choose readable stage ink separately: Tennessee orange
+  stays #FF8200 rather than darkening toward Texas #BF5700 to fit white text. Text, chrome,
+  raised surfaces and graphic roles remain contrast-tested derivatives.
 - **The chrome is never the team's colour.** The masthead, issue bar, and colophon are a
   restrained dark that carries the team's hue as a trace. They frame the issue; they are not it.
 - **Chrome and stage must not be the same value.** A header painted the same colour as the

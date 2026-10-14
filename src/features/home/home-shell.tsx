@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { Moon, Sun } from "lucide-react";
-import Link from "next/link";
+import { TeamSwitcher, type TeamOption } from "@/features/navigation/team-switcher";
 import { Wordmark } from "@/features/brand/wordmark";
 import styles from "./home.module.css";
 
@@ -17,15 +17,15 @@ type HomeShellProps = {
   children: ReactNode;
   // Passed in rather than read from config: this is a client component, and
   // importing the team config here would pull every edition's schedule and
-  // notes fixture into the browser bundle to produce one href.
-  editionHref: string;
+  // notes fixture into the browser bundle to produce navigation options.
+  teamOptions: TeamOption[];
   themeStyle: CSSProperties;
 };
 
 // Owns the same light/dark contract as the team workspace, including the
 // storage key, so a fan who picks dark on an edition page does not get flashed
 // back to light when they land on the home page.
-export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps) {
+export function HomeShell({ children, teamOptions, themeStyle }: HomeShellProps) {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
@@ -65,9 +65,7 @@ export function HomeShell({ children, editionHref, themeStyle }: HomeShellProps)
           </nav>
 
           <div className={styles.headerControls}>
-            <Link className={styles.headerCta} href={editionHref}>
-              See a live edition
-            </Link>
+            <TeamSwitcher teamOptions={teamOptions} />
             <button
               aria-label={`Color theme: ${themeLabels[themeMode]}. Change theme.`}
               className={styles.themeToggle}

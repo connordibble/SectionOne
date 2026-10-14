@@ -1,3 +1,5 @@
+import { brandColor, hexToOklch } from "./brand-color";
+import { contrast, contrastAtOpacity } from "./contrast";
 import type { TeamConfig } from "./contract";
 
 // The palette roles every component consumes. Names are stable and match the
@@ -52,7 +54,8 @@ export function deriveTeamPalette(
   mode: "light" | "dark" = "light",
 ): TeamPalette {
   const { hue, chroma, structuralHue, structuralChroma } = theme;
-  const structuralLightness = theme.structuralLightness ?? 23;
+  const official = theme.brand ? hexToOklch(theme.brand.primary) : undefined;
+  const structuralLightness = official?.lightness ?? theme.structuralLightness ?? 23;
   const brightStructural = structuralLightness > 40;
 
   // Surfaces and text carry a trace of the team hue so the page reads warm (or
@@ -83,25 +86,29 @@ export function deriveTeamPalette(
   // grid deliberately sits nearer the surface than the route does, because the
   // route is the element carrying meaning and has to win.
   const stageLightness =
-    mode === "dark" && !theme.preserveStageInDark
+    mode === "dark" && !theme.preserveStageInDark && !official
       ? brightStructural
         ? structuralLightness - 12
         : structuralLightness - 2
       : structuralLightness;
   const stageRaisedLightness =
-    mode === "dark"
+    official
+      ? brightStructural ? structuralLightness - 7 : structuralLightness + 6
+      : mode === "dark"
       ? brightStructural
         ? structuralLightness - 19
         : structuralLightness + 4
       : brightStructural
         ? structuralLightness - 7
         : structuralLightness + 6;
-  // Only a light stage in light mode gets a dark route. After dark the route
-  // always runs brighter than the surface: a dark line on a mid-tone stage on
-  // a dark page has nowhere to go, and chalk-bright reads better anyway.
-  const inkedRoute = mode === "light" && stageLightness >= 45;
+  // Exact bright primaries need dark drawing ink in either theme. UI-only
+  // palettes retain their existing mode-dependent drawing ladder.
+  const inkedRoute = official ? stageLightness >= 65 : mode === "light" && stageLightness >= 45;
   const clamp = (value: number) => Math.min(94, Math.max(8, value));
-  const graphicFaintLightness = clamp(stageLightness + (theme.preserveStageInDark && brightStructural ? -13 : inkedRoute ? 13 : 11));
+  const faintOffset = official
+    ? inkedRoute ? -13 : Math.max(stageLightness < 55 ? 11 : 5, 25 - stageLightness)
+    : theme.preserveStageInDark && brightStructural ? -13 : inkedRoute ? 13 : 11;
+  const graphicFaintLightness = clamp(stageLightness + faintOffset);
   const graphicLightness = clamp(stageLightness + (inkedRoute ? 24 : 23));
   const graphicStrongLightness = clamp(stageLightness + (inkedRoute ? -46 : 47));
   const secondary = theme.secondary
@@ -112,6 +119,38 @@ export function deriveTeamPalette(
   const secondaryRoute = theme.secondary
     ? oklch(Math.max(80, theme.secondary.lightness), theme.secondary.chroma, theme.secondary.hue)
     : undefined;
+
+  const stageChroma = structuralChroma * (mode === "dark" && !theme.preserveStageInDark ? 0.9 : 1);
+  const stage = theme.brand ? brandColor(theme.brand.primary)
+    : oklch(stageLightness, stageChroma, structuralHue);
+  const stageRaised = oklch(stageRaisedLightness, structuralChroma * (mode === "dark" ? 0.82 : 0.94), structuralHue);
+  const stageInk = [oklch(100, 0, structuralHue), oklch(12, 0, structuralHue)]
+    .sort((a, b) => Math.min(contrast(b, stage), contrast(b, stageRaised))
+      - Math.min(contrast(a, stage), contrast(a, stageRaised)))[0];
+  // An official near-black stage needs enough separation from the chrome.
+  const steelLightness = mode === "dark" ? official && structuralLightness < 10 ? 15.5 : 10.5 : 19;
+  const steel = oklch(steelLightness, chromeChroma * (mode === "dark" ? 0.7 : 1), structuralHue);
+  const steelRaised = oklch(mode === "dark" ? 16.5 : 26, chromeChroma * (mode === "dark" ? 0.85 : 1.1), structuralHue);
+  // Preserve secondary hue; lift only UI highlights that cannot clear the
+  // chrome/grid contrast targets. The original hex remains in typed config.
+  let headerAccent = secondary;
+  if (theme.secondary && headerAccent) {
+    for (let lightness = theme.secondary.lightness; lightness <= 100; lightness += 1) {
+      headerAccent = oklch(lightness, theme.secondary.chroma, theme.secondary.hue);
+      if (contrastAtOpacity(headerAccent, steel, 0.68) >= 3 && contrastAtOpacity(headerAccent, steelRaised, 0.68) >= 3) break;
+    }
+  }
+  let route = inkedRoute ? oklch(12, 0, structuralHue) : secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue);
+
+  if (official && !inkedRoute) {
+    const routeHue = theme.secondary?.hue ?? hue;
+    const routeChroma = theme.secondary?.chroma ?? chroma * 0.85;
+    const faint = oklch(graphicFaintLightness, tint * 2.2, hue);
+    for (let lightness = Math.ceil(Math.max(80, theme.secondary?.lightness ?? graphicStrongLightness)); lightness <= 100; lightness += 1) {
+      route = oklch(lightness, routeChroma * Math.min(1, (100 - lightness) / 15), routeHue);
+      if ([stage, stageRaised, faint].every((background) => contrast(route, background) >= 3)) break;
+    }
+  }
 
   if (mode === "dark") {
     return {
@@ -124,23 +163,21 @@ export function deriveTeamPalette(
       accent: oklch(70, chroma * 0.82, hue),
       accentStrong: oklch(80, chroma * 0.68, hue),
       accentSoft: oklch(34, chroma * 0.52, hue),
-      headerAccent: secondary ?? oklch(80, chroma * 0.68, hue),
+      headerAccent: headerAccent ?? oklch(80, chroma * 0.68, hue),
       graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
       graphic: oklch(graphicLightness, chroma * 0.34, hue),
-      graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
-      // Dark mode keeps the team's colour on the stage rather than washing the
-      // whole page to grey. A bright primary is pulled down just enough to sit
-      // under light type; a primary that is already dark is lifted off the
-      // page so it still reads as a surface.
-      stage: oklch(stageLightness, structuralChroma * (theme.preserveStageInDark ? 1 : 0.9), structuralHue),
-      stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.82, structuralHue),
-      onStage: oklch(97, 0.008, structuralHue),
+      graphicStrong: route,
+      // Official stages keep their exact color in both themes. Text switches
+      // between dark ink and white instead of changing the school color.
+      stage,
+      stageRaised,
+      onStage: official ? stageInk : oklch(97, 0.008, structuralHue),
       muted: oklch(70, tint * 0.55, hue),
       border: oklch(29, tint * 0.8, hue),
       borderStrong: oklch(43, tint * 0.9, hue),
       onAccent: oklch(15, tint * 0.8, hue),
-      steel: oklch(10.5, chromeChroma * 0.7, structuralHue),
-      steelRaised: oklch(16.5, chromeChroma * 0.85, structuralHue),
+      steel,
+      steelRaised,
       onSteel: oklch(94, 0.012, structuralHue),
       focus: oklch(84, chroma * 0.58, hue),
     };
@@ -156,22 +193,22 @@ export function deriveTeamPalette(
     accent: oklch(49, chroma, hue),
     accentStrong: oklch(38, chroma * 0.96, hue),
     accentSoft: oklch(82, chroma * 0.54, hue),
-    headerAccent: secondary ?? (brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue)),
+    headerAccent: headerAccent ?? (brightStructural ? oklch(100, 0, structuralHue) : oklch(82, chroma * 0.54, hue)),
     graphicFaint: oklch(graphicFaintLightness, tint * 2.2, hue),
     graphic: oklch(graphicLightness, chroma * 0.34, hue),
-    graphicStrong: secondaryRoute ?? oklch(graphicStrongLightness, chroma * 0.85, hue),
+    graphicStrong: route,
     muted: oklch(43, tint * 1.5, hue),
     border: oklch(86, tint * 1.5, hue),
     borderStrong: oklch(72, tint * 2.5, hue),
     onAccent: oklch(98.5, tint * 0.4, hue),
     // Chrome is always a restrained dark, never the team's signature colour.
     // It is the frame around the issue; the stage below it is the issue.
-    steel: oklch(19, chromeChroma, structuralHue),
-    steelRaised: oklch(26, chromeChroma * 1.1, structuralHue),
+    steel,
+    steelRaised,
     onSteel: oklch(96, 0.012, structuralHue),
-    stage: oklch(stageLightness, structuralChroma, structuralHue),
-    stageRaised: oklch(stageRaisedLightness, structuralChroma * 0.94, structuralHue),
-    onStage: brightStructural ? oklch(100, 0, structuralHue) : oklch(97, 0.01, structuralHue),
+    stage,
+    stageRaised,
+    onStage: official ? stageInk : brightStructural ? oklch(100, 0, structuralHue) : oklch(97, 0.01, structuralHue),
     focus: oklch(34, chroma * 0.88, hue),
   };
 }

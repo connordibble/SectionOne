@@ -7,9 +7,9 @@ import {
   useState,
   type CSSProperties,
   type KeyboardEvent,
-  type PointerEvent,
 } from "react";
-import { ChevronDown, ExternalLink, Moon, Sun } from "lucide-react";
+import { ExternalLink, Moon, Sun } from "lucide-react";
+import { TeamSwitcher } from "@/features/navigation/team-switcher";
 import { SectionMark } from "@/features/brand/section-mark";
 import { Wordmark } from "@/features/brand/wordmark";
 import type { TeamConfig } from "@/config/team";
@@ -62,39 +62,6 @@ const allViews: Array<{ id: WorkspaceView; label: string }> = [
   { id: "schedule", label: "Schedule" },
   { id: "postseason", label: "Postseason" },
 ];
-
-function isTouchLikePointer(event: PointerEvent<HTMLSelectElement>): boolean {
-  if (event.pointerType === "touch" || event.pointerType === "pen") {
-    return true;
-  }
-
-  if (event.pointerType === "mouse") {
-    return false;
-  }
-
-  return window.matchMedia("(hover: none), (pointer: coarse)").matches;
-}
-
-// Tapping an already-open styled picker does not close it, because the picker
-// is in the top layer and the tap lands on the trigger rather than outside it.
-// Native pickers and desktop mouse clicks already close on their own, so this
-// only fills the touch gap and leaves every other path untouched.
-function closeOpenSelectOnTriggerTap(event: PointerEvent<HTMLSelectElement>) {
-  const select = event.currentTarget;
-
-  if (event.target !== select || !isTouchLikePointer(event)) {
-    return;
-  }
-
-  try {
-    if (select.matches(":open")) {
-      event.preventDefault();
-      select.blur();
-    }
-  } catch {
-    // Browsers without :open support keep their native picker behaviour.
-  }
-}
 
 const themeOrder: ThemeMode[] = ["light", "dark"];
 const themeLabels: Record<ThemeMode, string> = {
@@ -279,37 +246,7 @@ export function TeamWorkspace({
           </nav>
 
           <div className={styles.headerControls}>
-            <label className={styles.visuallyHidden} htmlFor="team-switcher">
-              Team
-            </label>
-            <span className={styles.selectField}>
-              <select
-                aria-label="Team"
-                className={styles.teamSwitcher}
-                id="team-switcher"
-                onChange={(event) => {
-                  if (event.currentTarget.value !== team.slug) {
-                    window.location.assign(`/teams/${event.currentTarget.value}`);
-                  }
-                }}
-                onPointerDown={closeOpenSelectOnTriggerTap}
-                value={team.slug}
-              >
-                {[...new Set(teamOptions.map((option) => option.conference))].sort().map((conference) => (
-                  <optgroup key={conference} label={conference}>
-                    {teamOptions
-                      .filter((option) => option.conference === conference)
-                      .sort((a, b) => a.shortName.localeCompare(b.shortName, "en"))
-                      .map((option) => (
-                        <option key={option.slug} value={option.slug}>
-                          {option.shortName}
-                        </option>
-                      ))}
-                  </optgroup>
-                ))}
-              </select>
-              <ChevronDown aria-hidden="true" className={styles.selectChevron} />
-            </span>
+            <TeamSwitcher teamOptions={teamOptions} value={team.slug} />
             <button
               aria-label={`Color theme: ${themeLabels[themeMode]}. Change theme.`}
               className={styles.themeToggle}

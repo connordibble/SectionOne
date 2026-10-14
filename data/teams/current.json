@@ -16,11 +16,22 @@
         "UT Austin"
       ],
       "theme": {
-        "hue": 49.2,
-        "chroma": 0.155,
-        "structuralHue": 49.2,
-        "structuralChroma": 0.1545,
-        "structuralLightness": 57.8
+        "hue": 49.201501,
+        "chroma": 0.154525,
+        "structuralHue": 49.201501,
+        "structuralChroma": 0.154525,
+        "structuralLightness": 57.776661,
+        "brand": {
+          "primary": "#BF5700",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://umac.utexas.edu/brand-center/colors/"
+        },
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 0,
+          "chroma": 0,
+          "lightness": 99.999999
+        }
       },
       "sourcePolicy": {
         "disclaimer": "Independent coverage. Not affiliated with Texas Athletics.",
@@ -319,10 +330,22 @@
         "USU"
       ],
       "theme": {
-        "hue": 250,
-        "chroma": 0.12,
-        "structuralHue": 250,
-        "structuralChroma": 0.06
+        "hue": 237.208367,
+        "chroma": 0.1,
+        "structuralHue": 237.208367,
+        "structuralChroma": 0.055768,
+        "brand": {
+          "primary": "#00263A",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://www.usu.edu/brand/standards/logos/sub-brands/files/USU_Athletics_VIG.pdf"
+        },
+        "structuralLightness": 25.461294,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 0,
+          "chroma": 0,
+          "lightness": 99.999999
+        }
       },
       "sourcePolicy": {
         "disclaimer": "Independent coverage. Not affiliated with Utah State Athletics.",
@@ -632,16 +655,21 @@
         "Buckeyes"
       ],
       "theme": {
-        "hue": 20.61,
-        "chroma": 0.1969,
-        "structuralHue": 20.61,
-        "structuralChroma": 0.1969,
-        "structuralLightness": 50.24,
+        "hue": 20.614274,
+        "chroma": 0.19689,
+        "structuralHue": 20.614274,
+        "structuralChroma": 0.19689,
+        "structuralLightness": 50.244661,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 233.82,
-          "chroma": 0.0142,
-          "lightness": 75.43
+          "hue": 233.816206,
+          "chroma": 0.014169,
+          "lightness": 75.434865
+        },
+        "brand": {
+          "primary": "#BA0C2F",
+          "secondary": "#A7B1B7",
+          "sourceUrl": "https://bux.osu.edu/color/primary-colors/"
         }
       },
       "sourcePolicy": {
@@ -946,16 +974,21 @@
         "Tigers"
       ],
       "theme": {
-        "hue": 297.7,
-        "chroma": 0.1496,
-        "structuralHue": 297.7,
-        "structuralChroma": 0.1496,
-        "structuralLightness": 34.92,
+        "hue": 297.701412,
+        "chroma": 0.149629,
+        "structuralHue": 297.701412,
+        "structuralChroma": 0.149629,
+        "structuralLightness": 34.919093,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 92.24,
-          "chroma": 0.172,
-          "lightness": 87.17
+          "hue": 92.243149,
+          "chroma": 0.172042,
+          "lightness": 87.172746
+        },
+        "brand": {
+          "primary": "#461D7C",
+          "secondary": "#FDD023",
+          "sourceUrl": "https://www.lsu.edu/communications/files/brand-guide.pdf"
         }
       },
       "sourcePolicy": {
@@ -1261,12 +1294,22 @@
         "NU"
       ],
       "theme": {
-        "hue": 300,
-        "chroma": 0.15,
-        "structuralHue": 300,
-        "structuralChroma": 0.15,
-        "structuralLightness": 35,
-        "preserveStageInDark": true
+        "hue": 297.560138,
+        "chroma": 0.143432,
+        "structuralHue": 297.560138,
+        "structuralChroma": 0.143432,
+        "structuralLightness": 38.302627,
+        "preserveStageInDark": true,
+        "brand": {
+          "primary": "#4E2A84",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://www.northwestern.edu/brand/visual-identity/color-palettes/"
+        },
+        "secondary": {
+          "hue": 0,
+          "chroma": 0,
+          "lightness": 99.999999
+        }
       },
       "sourcePolicy": {
         "disclaimer": "Independent coverage. Not affiliated with Northwestern Athletics.",
@@ -1561,16 +1604,21 @@
         "Jayhawks"
       ],
       "theme": {
-        "hue": 264,
-        "chroma": 0.17,
-        "structuralHue": 264,
-        "structuralChroma": 0.17,
-        "structuralLightness": 43,
+        "hue": 259.000487,
+        "chroma": 0.179267,
+        "structuralHue": 259.000487,
+        "structuralChroma": 0.179267,
+        "structuralLightness": 46.246397,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 27,
-          "chroma": 0.18,
-          "lightness": 65
+          "hue": 28.333501,
+          "chroma": 0.2,
+          "lightness": 58.500721
+        },
+        "brand": {
+          "primary": "#0051BA",
+          "secondary": "#E8000D",
+          "sourceUrl": "https://brand.ku.edu/guidelines/design/color"
         }
       },
       "sourcePolicy": {
@@ -1865,12 +1913,22 @@
         "Crimson Tide"
       ],
       "theme": {
-        "hue": 22,
-        "chroma": 0.16,
-        "structuralHue": 22,
-        "structuralChroma": 0.16,
-        "structuralLightness": 40,
-        "preserveStageInDark": true
+        "hue": 18.133141,
+        "chroma": 0.164375,
+        "structuralHue": 18.133141,
+        "structuralChroma": 0.164375,
+        "structuralLightness": 45.655653,
+        "preserveStageInDark": true,
+        "brand": {
+          "primary": "#9E1B32",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://brand.ua.edu/colors/"
+        },
+        "secondary": {
+          "hue": 0,
+          "chroma": 0,
+          "lightness": 99.999999
+        }
       },
       "sourcePolicy": {
         "disclaimer": "Independent coverage. Not affiliated with Alabama Athletics.",
@@ -2177,16 +2235,21 @@
         "Bulldogs"
       ],
       "theme": {
-        "hue": 25,
-        "chroma": 0.19,
-        "structuralHue": 25,
-        "structuralChroma": 0.19,
-        "structuralLightness": 43,
+        "hue": 20.614274,
+        "chroma": 0.19689,
+        "structuralHue": 20.614274,
+        "structuralChroma": 0.19689,
+        "structuralLightness": 50.244661,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 25,
-          "chroma": 0.01,
-          "lightness": 85
+          "hue": 0,
+          "chroma": 0,
+          "lightness": 0
+        },
+        "brand": {
+          "primary": "#BA0C2F",
+          "secondary": "#000000",
+          "sourceUrl": "https://brand.uga.edu/visual-identity/visual-style/"
         }
       },
       "sourcePolicy": {
@@ -2493,16 +2556,21 @@
         "ND"
       ],
       "theme": {
-        "hue": 255.53,
+        "hue": 255.53232,
         "chroma": 0.1,
-        "structuralHue": 255.53,
-        "structuralChroma": 0.0621,
-        "structuralLightness": 25.53,
+        "structuralHue": 255.53232,
+        "structuralChroma": 0.06209,
+        "structuralLightness": 25.526123,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.14,
-          "chroma": 0.1039,
-          "lightness": 66.74
+          "hue": 89.140523,
+          "chroma": 0.103929,
+          "lightness": 66.740114
+        },
+        "brand": {
+          "primary": "#0C2340",
+          "secondary": "#AE9142",
+          "sourceUrl": "https://onmessage.nd.edu/university-branding/colors/"
         }
       },
       "sourcePolicy": {
@@ -2808,16 +2876,21 @@
         "MICH"
       ],
       "theme": {
-        "hue": 251.65,
+        "hue": 251.646587,
         "chroma": 0.1,
-        "structuralHue": 251.65,
-        "structuralChroma": 0.0802,
-        "structuralLightness": 27.08,
+        "structuralHue": 251.646587,
+        "structuralChroma": 0.080217,
+        "structuralLightness": 27.084785,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.84,
-          "chroma": 0.1758,
-          "lightness": 86.33
+          "hue": 89.835235,
+          "chroma": 0.175835,
+          "lightness": 86.333222
+        },
+        "brand": {
+          "primary": "#00274C",
+          "secondary": "#FFCB05",
+          "sourceUrl": "https://cm.engin.umich.edu/our-brand/colors/"
         }
       },
       "sourcePolicy": {
@@ -3111,16 +3184,21 @@
         "PSU"
       ],
       "theme": {
-        "hue": 257.21,
+        "hue": 255.533539,
         "chroma": 0.1,
-        "structuralHue": 257.21,
-        "structuralChroma": 0.0755,
-        "structuralLightness": 23.99,
+        "structuralHue": 255.533539,
+        "structuralChroma": 0.080472,
+        "structuralLightness": 23.977364,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.88,
+          "hue": 0,
           "chroma": 0,
-          "lightness": 100
+          "lightness": 99.999999
+        },
+        "brand": {
+          "primary": "#001E44",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://brand.psu.edu/design-toolkit/design-essentials"
         }
       },
       "sourcePolicy": {
@@ -3425,16 +3503,21 @@
         "MIA"
       ],
       "theme": {
-        "hue": 158.42,
+        "hue": 158.421974,
         "chroma": 0.1,
-        "structuralHue": 158.42,
-        "structuralChroma": 0.0882,
-        "structuralLightness": 38,
+        "structuralHue": 158.421974,
+        "structuralChroma": 0.088246,
+        "structuralLightness": 38.000719,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 47.27,
-          "chroma": 0.18,
-          "lightness": 84
+          "hue": 47.26703,
+          "chroma": 0.179999,
+          "lightness": 69.815084
+        },
+        "brand": {
+          "primary": "#005030",
+          "secondary": "#F47321",
+          "sourceUrl": "https://www.alumni.miami.edu/_assets/pdf/connect/groups/us-canes-communities/group-leader-resources/canes_community_communication_style_guidelines_2024.pdf"
         }
       },
       "sourcePolicy": {
@@ -3727,16 +3810,21 @@
         "TENN"
       ],
       "theme": {
-        "hue": 53.83,
-        "chroma": 0.1846,
-        "structuralHue": 53.83,
-        "structuralChroma": 0.16,
-        "structuralLightness": 55,
+        "hue": 53.83027,
+        "chroma": 0.184585,
+        "structuralHue": 53.83027,
+        "structuralChroma": 0.184585,
+        "structuralLightness": 73.492322,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.88,
+          "hue": 0,
           "chroma": 0,
-          "lightness": 100
+          "lightness": 99.999999
+        },
+        "brand": {
+          "primary": "#FF8200",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://brand.utk.edu/standards/colors/"
         }
       },
       "sourcePolicy": {
@@ -4039,16 +4127,21 @@
         "BYU"
       ],
       "theme": {
-        "hue": 261.04,
-        "chroma": 0.1915,
-        "structuralHue": 261.04,
-        "structuralChroma": 0.1915,
-        "structuralLightness": 44.21,
+        "hue": 261.23872,
+        "chroma": 0.176538,
+        "structuralHue": 261.23872,
+        "structuralChroma": 0.176538,
+        "structuralLightness": 40.237252,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.88,
+          "hue": 0,
           "chroma": 0,
-          "lightness": 100
+          "lightness": 99.999999
+        },
+        "brand": {
+          "primary": "#003DA5",
+          "secondary": "#FFFFFF",
+          "sourceUrl": "https://sclcenter.byu.edu/00000194-9448-d81b-a9be-954e73ad0001/marketing-and-style-guide-logo-color-palette"
         }
       },
       "sourcePolicy": {
@@ -4341,16 +4434,21 @@
         "TTU"
       ],
       "theme": {
-        "hue": 29.4,
+        "hue": 29.397082,
         "chroma": 0.2,
-        "structuralHue": 29.4,
-        "structuralChroma": 0.16,
-        "structuralLightness": 45,
+        "structuralHue": 29.397082,
+        "structuralChroma": 0.2,
+        "structuralLightness": 58.817209,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.88,
+          "hue": 0,
           "chroma": 0,
-          "lightness": 100
+          "lightness": 0
+        },
+        "brand": {
+          "primary": "#E90802",
+          "secondary": "#000000",
+          "sourceUrl": "https://www.ttu.edu/brand/visual-identity/"
         }
       },
       "sourcePolicy": {
@@ -4642,16 +4740,21 @@
         "IU"
       ],
       "theme": {
-        "hue": 29.23,
-        "chroma": 0.176,
-        "structuralHue": 29.23,
-        "structuralChroma": 0.176,
-        "structuralLightness": 42.89,
+        "hue": 29.233885,
+        "chroma": 0.175986,
+        "structuralHue": 29.233885,
+        "structuralChroma": 0.175986,
+        "structuralLightness": 42.886425,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 17.2,
-          "chroma": 0.0022,
-          "lightness": 94.16
+          "hue": 17.196814,
+          "chroma": 0.002156,
+          "lightness": 94.161354
+        },
+        "brand": {
+          "primary": "#990000",
+          "secondary": "#EDEBEB",
+          "sourceUrl": "https://iuhoosiers.com/documents/download/2018/8/28/IUB_athletics_brandguide_TO_PRESS_8_2.pdf"
         }
       },
       "sourcePolicy": {
@@ -4954,16 +5057,21 @@
         "BOIS"
       ],
       "theme": {
-        "hue": 262.51,
-        "chroma": 0.1821,
-        "structuralHue": 262.51,
-        "structuralChroma": 0.1821,
-        "structuralLightness": 37.81,
+        "hue": 262.509948,
+        "chroma": 0.182111,
+        "structuralHue": 262.509948,
+        "structuralChroma": 0.182111,
+        "structuralLightness": 37.807674,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 37.28,
-          "chroma": 0.1921,
-          "lightness": 86
+          "hue": 37.27805,
+          "chroma": 0.192112,
+          "lightness": 58.922469
+        },
+        "brand": {
+          "primary": "#0033A0",
+          "secondary": "#D64309",
+          "sourceUrl": "https://broncosports.com/documents/download/2026/4/16/Boise_State_Athletics_Brand_Standards_RGB_2026.pdf"
         }
       },
       "sourcePolicy": {
@@ -5267,16 +5375,21 @@
         "JMU"
       ],
       "theme": {
-        "hue": 297.48,
-        "chroma": 0.1803,
-        "structuralHue": 297.48,
-        "structuralChroma": 0.1803,
-        "structuralLightness": 33.3,
+        "hue": 297.480801,
+        "chroma": 0.180262,
+        "structuralHue": 297.480801,
+        "structuralChroma": 0.180262,
+        "structuralLightness": 33.296222,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 91.72,
-          "chroma": 0.0852,
-          "lightness": 77.98
+          "hue": 91.715209,
+          "chroma": 0.085235,
+          "lightness": 77.978056
+        },
+        "brand": {
+          "primary": "#450084",
+          "secondary": "#CBB677",
+          "sourceUrl": "https://www.jmu.edu/identity/our-style/color.shtml"
         }
       },
       "sourcePolicy": {
@@ -5580,16 +5693,21 @@
         "APP"
       ],
       "theme": {
-        "hue": 90.38,
-        "chroma": 0.1768,
-        "structuralHue": 90.38,
+        "hue": 90.381556,
+        "chroma": 0.176828,
+        "structuralHue": 0,
         "structuralChroma": 0,
-        "structuralLightness": 25.2,
+        "structuralLightness": 6.720462,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 90.38,
-          "chroma": 0.1768,
-          "lightness": 86.52
+          "hue": 90.381556,
+          "chroma": 0.176828,
+          "lightness": 86.520899
+        },
+        "brand": {
+          "primary": "#010101",
+          "secondary": "#FFCC00",
+          "sourceUrl": "https://uc.appstate.edu/brand-identity-guide/identity-guide/colors"
         }
       },
       "sourcePolicy": {
@@ -5882,16 +6000,21 @@
         "FRES"
       ],
       "theme": {
-        "hue": 21.59,
+        "hue": 21.586573,
         "chroma": 0.2,
-        "structuralHue": 21.59,
+        "structuralHue": 21.586573,
         "structuralChroma": 0.2,
-        "structuralLightness": 52.37,
+        "structuralLightness": 52.373385,
         "preserveStageInDark": true,
         "secondary": {
-          "hue": 89.88,
-          "chroma": 0,
-          "lightness": 100
+          "hue": 260.447595,
+          "chroma": 0.071749,
+          "lightness": 28.100474
+        },
+        "brand": {
+          "primary": "#C41230",
+          "secondary": "#13284C",
+          "sourceUrl": "https://marcomm.fresnostate.edu/color.html"
         }
       },
       "sourcePolicy": {

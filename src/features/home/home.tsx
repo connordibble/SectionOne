@@ -74,7 +74,7 @@ export function Home() {
 
   return (
     <HomeShell
-      editionHref={featuredEdition}
+      teamOptions={editions.map(({ slug, shortName, conference }) => ({ slug, shortName, conference }))}
       themeStyle={createThemeStyle(houseTheme) as CSSProperties}
     >
       <div className={styles.page} id="main" tabIndex={-1}>

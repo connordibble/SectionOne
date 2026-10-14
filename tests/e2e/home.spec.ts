@@ -286,3 +286,23 @@ test("the edition directory remains browsable without JavaScript", async ({ brow
   await expect(page).toHaveURL(/\/teams\/notre-dame-football$/);
   await context.close();
 });
+
+test("the homepage masthead uses the shared team selector", async ({ page }) => {
+  await page.goto("/");
+  const header = page.locator("header");
+  const select = header.getByLabel("Team", { exact: true });
+  await expect(select).toHaveValue("");
+  await expect(select.locator('option[value]:not([value=""])')).toHaveCount(enabledTeamSlugs.length);
+  await expect(header.getByRole("link", { name: "See a live edition" })).toHaveCount(0);
+  for (const width of [320, 375, 768, 832, 833, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(select).toBeVisible();
+    const mark = await header.getByRole("link", { name: "Section One home" }).boundingBox();
+    const control = await select.boundingBox();
+    expect(mark!.x + mark!.width).toBeLessThanOrEqual(control!.x);
+    expect(Math.abs(mark!.y - control!.y)).toBeLessThan(44);
+  }
+  await select.selectOption("tennessee-football");
+  await expect(page).toHaveURL(/\/teams\/tennessee-football$/);
+  await expect(page.getByLabel("Team", { exact: true })).toHaveValue("tennessee-football");
+});

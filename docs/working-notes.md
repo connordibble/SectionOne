@@ -146,3 +146,12 @@ present and continues without it in CI. That flag needs Node 22.9, so the
 
 - Played opponents use saved AP ranks at kickoff; upcoming opponents use the current poll. Refresh game-day ranks after importing final scores (`pnpm ranks:refresh`). Missing historical ranks must never fall back to today’s poll.
 - The unranked standing must size to its rail: at 1024px a viewport-sized display font can extend into the news column without causing page overflow. Check the element bounds, not only document scroll width.
+
+### Compact schedule rows need explicit row placement at 40rem
+
+The full schedule changes to one horizontal row from 40rem. Compact “Next three”
+rows still put the date above the opponent, but inherited the full schedule’s
+`grid-row: 1` on the opponent at that breakpoint. Both cells occupied column two,
+row one at 640–1023px. Compact overrides now place the date in row one and the
+opponent in row two; a browser regression checks their bounds on both sides of
+each layout breakpoint and in both themes.

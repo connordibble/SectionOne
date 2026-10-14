@@ -226,3 +226,20 @@ test("edition composition keeps one owner at responsive breakpoints", async ({ p
 
   expect(problems, problems.join("\n")).toEqual([]);
 });
+
+test("compact schedule dates never overlap the opponent at intermediate widths", async ({ page }) => {
+  for (const theme of ["light", "dark"]) {
+    await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
+    for (const width of [320, 639, 640, 768, 900, 1023, 1024, 1280, 1375, 1376, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/teams/miami-football");
+      const rows = page.locator('[class*=scheduleCompact] [class*=scheduleRow]');
+      await expect(rows).toHaveCount(3);
+      for (const row of await rows.all()) {
+        const date = await row.locator("time").boundingBox();
+        const opponent = await row.locator('[class*=scheduleOpponent]').boundingBox();
+        expect(date!.y + date!.height, `${width}px ${theme} date above opponent`).toBeLessThanOrEqual(opponent!.y);
+      }
+    }
+  }
+});

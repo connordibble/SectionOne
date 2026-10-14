@@ -25,6 +25,13 @@ export const teamConfigSchema = z.object({
   // OKLCH keeps the shared lightness ladder predictable as team identity moves
   // around the hue wheel; every new palette is still contrast-tested in CI.
   theme: z.object({
+    // Official digital anchors and their primary reference. The game stage
+    // uses primary unchanged; UI text and chrome retain accessible derivatives.
+    brand: z.object({
+      primary: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+      secondary: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+      sourceUrl: z.url(),
+    }).optional(),
     // Team colour, in OKLCH degrees. 47 = burnt orange, 145 = forest green,
     // 264 = royal blue.
     hue: z.number().min(0).max(360),

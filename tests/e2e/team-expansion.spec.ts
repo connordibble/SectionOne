@@ -2,7 +2,9 @@ import { expect, test } from "@playwright/test";
 import { enabledTeamSlugs, getTeamConfig } from "../../src/config/team";
 import { getNextGame } from "../../src/server/schedule/schedule";
 const teams = enabledTeamSlugs.map((slug) => getTeamConfig(slug)!);
-const colorAnchors: Record<string, number[]> = { "ohio-state-football": [186, 12, 47], "lsu-football": [70, 29, 124] };
+const colorAnchors = Object.fromEntries(teams.map((team) => [team.slug,
+  [1, 3, 5].map((offset) => Number.parseInt(team.theme.brand!.primary.slice(offset, offset + 2), 16)),
+]));
 
 for (const theme of ["light", "dark"] as const) {
   test(`matchup headlines keep school names whole in ${theme}`, async ({ page }) => {
@@ -62,7 +64,7 @@ for (const theme of ["light", "dark"] as const) {
         context.fillRect(0, 0, 1, 1);
         return [...context.getImageData(0, 0, 1, 1).data].slice(0, 3);
       });
-      if (colorAnchors[team.slug]) rgb.forEach((value, index) => expect(Math.abs(value - colorAnchors[team.slug][index])).toBeLessThanOrEqual(2));
+      if (colorAnchors[team.slug]) rgb.forEach((value, index) => expect(Math.abs(value - colorAnchors[team.slug][index])).toBeLessThanOrEqual(1));
       await page.getByRole("tab", { name: "Schedule", exact: true }).click();
       if (next) await expect(page.getByRole("tabpanel")).toContainText(next.opponent);
       const other = teams.find((candidate) => candidate.slug !== team.slug);
