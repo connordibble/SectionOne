@@ -250,15 +250,15 @@
         }
       },
       {
-        "id": "future-seating",
-        "headline": "Utah State plans field-level suites for the 2027 season",
-        "tldr": "The end-zone suites will have 10-16 seats. Pricing and the number available are still to come; fans interested in next season can use the athletics department’s interest form.",
-        "outlet": "Utah State Athletics",
-        "tier": "official",
-        "url": "https://utahstateaggies.com/news/2026/10/9/football-utah-state-athletics-adds-field-level-suites-at-jim-laub-family-stadium-for-2027-season.aspx",
-        "publishedAt": "2026-10-09",
+        "id": "usu-bye",
+        "headline": "Mendenhall is adjusting practice to protect a worn-down roster",
+        "tldr": "The bye gives Utah State time to recover and clean up the mistakes behind Friday’s comeback. Mendenhall said keeping the best players prepared and healthy is already changing practice; watch whether the offense returns with steadier execution.",
+        "outlet": "KSL Sports",
+        "tier": "local",
+        "url": "https://sports.ksl.com/ncaa/utah-state/bye-week-momentum/578116",
+        "publishedAt": "2026-10-12",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -361,7 +361,8 @@
         "publishedAt": "2026-10-10T13:19:05.291259Z",
         "body": "After the bye, Utah State visits Texas State October 24 at 5:30 p.m. MT on CBS Sports Network. Use the break to improve sustained offense and reduce avoidable penalties."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "ohio-state-football": {
     "schemaVersion": 1,
@@ -403,13 +404,13 @@
         }
       },
       {
-        "id": "houston-interior",
-        "headline": "Houston’s interior work is becoming more consistent",
-        "tldr": "He recorded four tackles in each of the Iowa and Maryland games after a slow start. Against Indiana, watch whether that work disrupts an early down without opening a running lane behind him.",
+        "id": "oh-returns",
+        "headline": "Day hopes to get most of the Maryland absentees back for Indiana",
+        "tldr": "Monday’s update stopped short of promising every starter’s return. Watch the next availability report before treating the receiver room or offensive line as restored.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164510/eddrick-houston-credits-mentality-switch-to-recently-improved-play-i-want-to-be-the-best-3-tech-in-the-nation",
-        "publishedAt": "2026-10-11",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164551/ryan-day-expects-most-of-six-starters-who-missed-maryland-game-to-return-vs-indiana",
+        "publishedAt": "2026-10-12T19:27:29-04:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -544,7 +545,8 @@
         "publishedAt": "2026-10-11T13:55:09.913949Z",
         "body": "Inniss, McCuin, Daniels, Siereveld, Alliegro and Timmons missed the Maryland game. Those are Saturday absences, not confirmed Indiana statuses; check the new report before assigning next week’s roles."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "lsu-football": {
     "schemaVersion": 1,
@@ -600,17 +602,17 @@
         }
       },
       {
-        "id": "state-next-opponent",
-        "headline": "Mississippi State enters off a bye after its Alabama loss",
-        "tldr": "The Bulldogs’ last game was a 56-23 loss to Alabama on October 3. Treat that as the previous result, not a forecast; LSU still needs clean coverage assignments when State uses its receivers.",
-        "outlet": "Mississippi State Athletics",
-        "tier": "official",
-        "url": "https://hailstate.com/news/2026/10/3/football-game-day-state-vs-alabama",
-        "publishedAt": "2026-10-03",
+        "id": "lsu-taylor",
+        "headline": "Kiffin flags Taylor’s running threat before Mississippi State",
+        "tldr": "On Monday, Kiffin called Taylor a problem as a runner when healthy. Watch LSU’s contain assignments and the first run-defense fit; the scouting read does not establish Saturday’s quarterback availability.",
+        "outlet": "WBRZ",
+        "tier": "local",
+        "url": "https://www.wbrz.com/news/kiffin-not-hitting-panic-button-after-kentucky-loss-lsu-shifts-focus-to-mississippi-state",
+        "publishedAt": "2026-10-12",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
@@ -727,7 +729,8 @@
         "publishedAt": "2026-10-11T13:55:09.913949Z",
         "body": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -769,15 +772,15 @@
         }
       },
       {
-        "id": "boundary-corrections",
-        "headline": "The blowout still exposed coverage and tackling work",
-        "tldr": "Inside NU’s film observations flag lost coverage assignments and missed tackles near the boundary. Those are the defensive details to watch when the opponent can turn a short play into another first down.",
+        "id": "nu-road",
+        "headline": "Braun says Northwestern has won one of its last six road games",
+        "tldr": "Monday’s briefing put the road test ahead of the Chiles–Fitzgerald reunion. Watch communication and the response after a stalled drive; Braun said the team has to prove itself in a hostile environment.",
         "outlet": "Inside NU",
         "tier": "local",
-        "url": "https://www.insidenu.com/northwestern-football/72027/stock-up-stock-down-for-northwesterns-blowout-win-over-ball-state",
-        "publishedAt": "2026-10-10T20:06:59+00:00",
+        "url": "https://www.insidenu.com/northwestern-football/72181/michigan-state-game-week-david-braun-presser-notes",
+        "publishedAt": "2026-10-14T17:12:40+00:00",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -920,7 +923,8 @@
         "publishedAt": "2026-10-11T14:09:24.844359+00:00",
         "body": "Inside NU identified receivers and second-level blockers losing blocks against Ball State. Watch the blocker reach the right shoulder and hold that position while the runner chooses the available lane."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:03:01.716785+00:00"
   },
   "kansas-football": {
     "schemaVersion": 1,
@@ -962,13 +966,13 @@
         }
       },
       {
-        "id": "goal-line-finish",
-        "headline": "Two late goal-to-go trips end without Kansas points",
-        "tldr": "A false start moved one chance away from the goal line, and the next ended on an incomplete fourth-down throw. Alignment, the catch and the short-yardage choice all matter when there is less field to work with.",
+        "id": "ku-receivers",
+        "headline": "Kubecka’s early exit left Kansas leaning on three receivers",
+        "tldr": "Leipold said Kubecka left the Utah game early and Nagy was barely available. Watch the receiver rotation against Kansas State; Saturday’s workload does not establish either player’s status for the rivalry.",
         "outlet": "KU Sports",
         "tier": "local",
-        "url": "https://www2.kusports.com/sports/college/football/2026/oct/10/quick-recap-jayhawks-fall-41-24-in-road-battle-with-no-12-utah/",
-        "publishedAt": "2026-10-10",
+        "url": "https://www2.kusports.com/sports/college/football/2026/oct/11/leipold-updates-status-of-pair-of-receivers-after-loss-to-utah/",
+        "publishedAt": "2026-10-11",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1113,7 +1117,8 @@
         "publishedAt": "2026-10-11T14:09:24.844359+00:00",
         "body": "Kansas’s running backs supplied 32 rushing yards at Utah. Watch the blocking and the first-down carry choice before expecting a larger workload; Marshall’s passing production alone does not establish next week’s backfield roles."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "alabama-football": {
     "schemaVersion": 1,
@@ -1155,13 +1160,13 @@
         }
       },
       {
-        "id": "late-personal-foul",
-        "headline": "Lee’s late personal foul closes Alabama’s final chance",
-        "tldr": "The penalty gave Georgia another first down on its last possession. The correction is to finish the play and separate after the whistle; no tackle should give the opponent another set of downs.",
-        "outlet": "BamaCentral",
+        "id": "al-injuries",
+        "headline": "Coleman-Williams is unlikely to play at Tennessee",
+        "tldr": "DeBoer said there is a good chance the receiver will miss Saturday. Delgatty remains day-to-day; watch the receiver rotation and the interior protection assignments as the week’s reports arrive.",
+        "outlet": "Alabama Crimson Tide on SI",
         "tier": "local",
-        "url": "https://www.si.com/college/alabama/football/no-6-alabama-football-lacks-discipline-loss-no-2-georgia",
-        "publishedAt": "2026-10-11T05:03:43Z",
+        "url": "https://www.si.com/college/alabama/football/alabama-football-injury-updates-before-tennessee-game",
+        "publishedAt": "2026-10-12T16:08:12Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1306,7 +1311,8 @@
         "publishedAt": "2026-10-11T14:09:24.844359+00:00",
         "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1362,13 +1368,13 @@
         }
       },
       {
-        "id": "connected-pass-rush",
-        "headline": "Georgia’s coverage and pass rush finish with four sacks",
-        "tldr": "The final sack pushed Alabama out of field-goal range. Keep the pressure connected to coverage against Auburn so a quarterback’s movement does not become an uncovered receiver.",
-        "outlet": "DawgNation",
+        "id": "ga-injuries",
+        "headline": "Smart says Georgia has no one to add at tailback",
+        "tldr": "Georgia is thin at running back before Auburn, and Smart said the group has to work with the players it has. Watch the next official availability report before assuming a return for Frazier or Bowens.",
+        "outlet": "Atlanta Journal-Constitution",
         "tier": "local",
-        "url": "https://www.dawgnation.com/football/report-card-georgia-makes-grade-20-17-win-alabama/H7DBDBOR75FW7LNKLNA34K6COA/",
-        "publishedAt": "2026-10-11T13:00:00Z",
+        "url": "https://www.ajc.com/sports/2026/10/uga-football-injury-report-oct-12/",
+        "publishedAt": "2026-10-12T18:27:40.775Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1499,7 +1505,8 @@
         "publishedAt": "2026-10-11T14:09:24.844359+00:00",
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -2428,13 +2435,13 @@
     "summary": "Keep a passing answer available against Notre Dame. Watch the tight ends find space, the quarterback choose the exit safely and the run defense hold its first gap.",
     "items": [
       {
-        "id": "backfield-plan",
-        "headline": "Sitake says Martin will be out against Notre Dame",
-        "tldr": "Use the published depth chart as the preparation plan, then check the final report for the active rotation. A possible later return does not establish this week’s availability.",
-        "outlet": "KSL Sports",
+        "id": "byu-moa",
+        "headline": "Roderick says Moa is cleared but not certain to play",
+        "tldr": "Moa practiced fully Tuesday, but Roderick said coaches still need to decide if he is ready for Notre Dame. Watch the committee with Martin sidelined; clearance does not guarantee a snap count.",
+        "outlet": "Deseret News",
         "tier": "local",
-        "url": "https://sports.ksl.com/ncaa/byu-football/byu-football-depth-chart-notre-dame-week/578125",
-        "publishedAt": "2026-10-12",
+        "url": "https://www.deseret.com/sports/2026/10/14/byu-football-notre-dame-injury-sione-moa-cougars-sitake-roderick-martin/",
+        "publishedAt": "2026-10-14",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2597,7 +2604,8 @@
         "publishedAt": "2026-10-14T21:07:23.849147Z",
         "body": "Watch the first defender hold his gap and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
   },
   "texas-tech-football": {
     "schemaVersion": 1,
