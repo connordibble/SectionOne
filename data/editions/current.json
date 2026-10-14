@@ -1500,5 +1500,737 @@
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ]
+  },
+  "notre-dame-football": {
+    "schemaVersion": 1,
+    "teamSlug": "notre-dame-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T20:34:23.933Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Make the blocking travel to Provo. Keep Carr’s first decision available, contain Bachmeier when the pocket opens and stay attached to the tight ends after the initial run look.",
+    "items": [
+      {
+        "id": "walton-blocking",
+        "headline": "Walton ran for 181 yards against Stanford",
+        "tldr": "The freshman’s production began with room at the line of scrimmage. Against BYU, watch the block that opens the first cut before looking for another long run.",
+        "outlet": "Notre Dame Athletics",
+        "tier": "official",
+        "url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "traore-versatility",
+        "headline": "Traore added an interception to his strip-sack",
+        "tldr": "His Stanford game showed disruption both at the edge and in coverage. Watch the defender’s assignment when BYU changes the launch point.",
+        "outlet": "Fighting Irish Preview",
+        "tier": "local",
+        "url": "https://fightingirishpreview.com/the-exhibition-season-is-over-bring-on-byu/",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "byu-tight-ends",
+        "headline": "Deseret’s preview puts BYU’s tight ends in focus",
+        "tldr": "Jay Drew argues that short passes and the tight ends can help BYU move the ball. Watch the coverage handoff when a run look draws a linebacker forward.",
+        "outlet": "Deseret News",
+        "tier": "local",
+        "url": "https://www.deseret.com/sports/2026/10/14/byu-cougars-notre-dame-defensive-clash/",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "bachmeier-containment",
+        "headline": "Freeman flags Bachmeier’s running and passing threat",
+        "tldr": "The BYU quarterback makes containment part of the coverage job. Keep a defender responsible for the exit when pressure changes his first read.",
+        "outlet": "The Salt Lake Tribune",
+        "tier": "local",
+        "url": "https://www.sltrib.com/sports/byu-cougars/2026/10/14/what-notre-dame-is-saying-about/",
+        "publishedAt": "2026-10-14",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "provo-kickoff",
+        "headline": "The Provo trip starts at 5:30 p.m. MT on ABC",
+        "tldr": "BYU’s official game page confirms the October 17 viewing plan. Set aside the evening for a road test and check the final availability reports before assigning roles.",
+        "outlet": "BYU Athletics",
+        "tier": "official",
+        "url": "https://byucougars.com/news/2026/10/12/byu-football-game-week-2026-notre-dame",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Make the first step count.",
+        "body": "Win the block without forcing the next decision. On defense, close the escape lane and carry the route through the play.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Control the space around the quarterback",
+        "question": "What should Notre Dame emphasize this week?",
+        "answer": "At BYU, watch the opening blocks, the quarterback’s escape lane and the tight ends working behind the linebackers.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Opening blocks",
+          "summary": "Give the back a first cut",
+          "detail": "Walton ran for 181 yards against Stanford. Watch the blocker establish an angle before the back commits to the lane.",
+          "state": "watch",
+          "prompt": "What should I watch for with opening blocks?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Quarterback containment",
+          "summary": "Keep the exit covered",
+          "detail": "Freeman highlighted Bachmeier’s ability to run and pass. Watch the edge defender close the pocket without surrendering the escape lane.",
+          "state": "watch",
+          "prompt": "What should I watch for with quarterback containment?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Tight-end coverage",
+          "summary": "Carry the route through traffic",
+          "detail": "Deseret’s preview points to BYU’s tight ends as receiving options. Watch the linebacker pass off the route without losing the runner behind him.",
+          "state": "watch",
+          "prompt": "What should I watch for with tight-end coverage?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Defensive assignments",
+          "summary": "Pressure and coverage stay connected",
+          "detail": "Traore intercepted a pass after his opening strip-sack against Stanford. Watch the assignment when a defender drops away from the line.",
+          "state": "watch",
+          "prompt": "What should I watch for with defensive assignments?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Notre Dame visits BYU on October 17 at 5:30 p.m. MT on ABC. Watch the blocking angles and coverage when Bachmeier extends a play.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Opening blocks",
+        "topics": [
+          "opening blocks",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Walton ran for 181 yards against Stanford. Watch the blocker establish an angle before the back commits to the lane."
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback containment",
+        "topics": [
+          "quarterback containment",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Freeman highlighted Bachmeier’s ability to run and pass. Watch the edge defender close the pocket without surrendering the escape lane."
+      },
+      {
+        "id": "watch-3",
+        "title": "Tight-end coverage",
+        "topics": [
+          "tight-end coverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Deseret’s preview points to BYU’s tight ends as receiving options. Watch the linebacker pass off the route without losing the runner behind him."
+      },
+      {
+        "id": "watch-4",
+        "title": "Defensive assignments",
+        "topics": [
+          "defensive assignments",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Traore intercepted a pass after his opening strip-sack against Stanford. Watch the assignment when a defender drops away from the line."
+      }
+    ]
+  },
+  "michigan-football": {
+    "schemaVersion": 1,
+    "teamSlug": "michigan-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T20:34:23.933Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Give the defense a field worth defending. Against Penn State, watch the offensive line finish the block, the returner secure the punt and the coverage account for the tight end.",
+    "items": [
+      {
+        "id": "line-chemistry",
+        "headline": "Guarnera puts the focus on finishing the block",
+        "tldr": "Michigan’s center says the offense is often one block away from a big run. Watch the full blocking combination, rather than treating a useful first step as the finished play.",
+        "outlet": "Maize n Brew",
+        "tier": "local",
+        "url": "https://www.maizenbrew.com/football/125117/michigan-wolverines-football-offensive-line-run-game-jake-guarnera-penn-state-2026",
+        "publishedAt": "2026-10-14T18:00:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "punt-return-change",
+        "headline": "Whittingham plans a change at punt returner",
+        "tldr": "Monday’s update did not name the replacement. Watch who actually fields the first punt, and separate that assignment from Marsh’s offensive availability.",
+        "outlet": "Maize n Brew",
+        "tier": "local",
+        "url": "https://www.maizenbrew.com/football/124929/michigan-football-kyle-whittingham-penn-state-press-conference",
+        "publishedAt": "2026-10-12T16:00:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "defensive-foundation",
+        "headline": "Michigan’s defense allows 241.4 yards per game",
+        "tldr": "The official preview lists that total through five games. Give the unit room to defend by avoiding the turnover that hands Penn State a short field.",
+        "outlet": "Michigan Athletics",
+        "tier": "official",
+        "url": "https://mgoblue.com/sports/2026/10/12/michigan-monday-game-6-vs-penn-state",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "opponent-brahmer",
+        "headline": "Mouser wants Brahmer more involved in Penn State’s offense",
+        "tldr": "The coordinator called his tight end’s limited receiving work against USC unacceptable. Watch the release and the coverage handoff when Penn State tries to free him.",
+        "outlet": "StateCollege.com",
+        "tier": "local",
+        "url": "https://www.statecollege.com/articles/penn-state-football/taylor-mouser-identifies-penn-state-players-needing-more-touches-addresses-rushing-woes/",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "homecoming-kickoff",
+        "headline": "Penn State visits at 3:30 p.m. ET on CBS",
+        "tldr": "The current official game notes confirm the October 17 broadcast. Plan for the afternoon window at Michigan Stadium.",
+        "outlet": "Penn State Athletics",
+        "tier": "official",
+        "url": "https://gopsusports.com/news/2026/10/12/game-notes-penn-state-vs-michigan-2026",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Keep the possession intact.",
+        "body": "A useful early gain means less if the ball changes hands. Finish the block, make the safe return decision and keep the next call available.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Protect the possession before chasing the gain",
+        "question": "What should Michigan emphasize this week?",
+        "answer": "Watch the run blocking, the punt-return decision and the defender responsible for the tight end. Make Penn State drive the field.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Run blocking",
+          "summary": "Finish the combination",
+          "detail": "Guarnera says Michigan is often one block away from a big run. Watch the second blocker reach his assignment before the back makes the cut.",
+          "state": "watch",
+          "prompt": "What should I watch for with run blocking?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Punt returns",
+          "summary": "Use the actual assignment",
+          "detail": "Whittingham plans a different punt returner without naming the replacement. Watch the first return decision and protect the catch before seeking field position.",
+          "state": "watch",
+          "prompt": "What should I watch for with punt returns?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Defensive field position",
+          "summary": "Make the opponent drive",
+          "detail": "Michigan allowed 241.4 yards per game through its first five games. Protect that work by avoiding a giveaway near the team’s own end zone.",
+          "state": "watch",
+          "prompt": "What should I watch for with defensive field position?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Tight-end coverage",
+          "summary": "Track the release",
+          "detail": "Mouser wants Brahmer more involved after the USC game. Watch the defender account for the tight end when the backfield action pulls attention toward the run.",
+          "state": "watch",
+          "prompt": "What should I watch for with tight-end coverage?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Michigan hosts Penn State on October 17 at 3:30 p.m. ET on CBS. Watch the offensive line and the new punt-return assignment.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Run blocking",
+        "topics": [
+          "run blocking",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Guarnera says Michigan is often one block away from a big run. Watch the second blocker reach his assignment before the back makes the cut."
+      },
+      {
+        "id": "watch-2",
+        "title": "Punt returns",
+        "topics": [
+          "punt returns",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Whittingham plans a different punt returner without naming the replacement. Watch the first return decision and protect the catch before seeking field position."
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive field position",
+        "topics": [
+          "defensive field position",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Michigan allowed 241.4 yards per game through its first five games. Protect that work by avoiding a giveaway near the team’s own end zone."
+      },
+      {
+        "id": "watch-4",
+        "title": "Tight-end coverage",
+        "topics": [
+          "tight-end coverage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Mouser wants Brahmer more involved after the USC game. Watch the defender account for the tight end when the backfield action pulls attention toward the run."
+      }
+    ]
+  },
+  "penn-state-football": {
+    "schemaVersion": 1,
+    "teamSlug": "penn-state-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T20:48:35.202003Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Keep the passing options available without abandoning the run blocking. At Michigan, watch the tight end’s release, the active linebacker rotation and the decision that protects the last possession.",
+    "items": [
+      {
+        "id": "offensive-identity",
+        "headline": "Mouser says the run game needs an identity",
+        "tldr": "The coordinator also wants Brahmer more involved after USC. Watch whether the blocking and the receiving options work together, without assuming a promised touch count.",
+        "outlet": "StateCollege.com",
+        "tier": "local",
+        "url": "https://www.statecollege.com/articles/penn-state-football/taylor-mouser-identifies-penn-state-players-needing-more-touches-addresses-rushing-woes/",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "linebacker-depth",
+        "headline": "Tatsch is reported out for the rest of the season",
+        "tldr": "Tuesday evening’s report cites Steve Jones on the Penn State Coaches Show. Check the final Michigan availability report for the rest of the linebacker group; practice participation alone does not confirm a game role.",
+        "outlet": "StateCollege.com",
+        "tier": "local",
+        "url": "https://www.statecollege.com/articles/penn-state-football/penn-state-lb-alex-tatsch-reportedly-out-for-season/",
+        "publishedAt": "2026-10-13",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "possession-finish",
+        "headline": "A late turnover ended Penn State’s chance against USC",
+        "tldr": "The official recap identifies the giveaway that let USC run out the clock. Watch the decision with the football before a potential tying drive becomes the last possession.",
+        "outlet": "Penn State Athletics",
+        "tier": "official",
+        "url": "https://gopsusports.com/news/2026/10/10/penn-state-falls-to-no-1917-usc-in-penn-state-white-out",
+        "publishedAt": "2026-10-10",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "opponent-returner",
+        "headline": "Michigan plans a new punt returner for Saturday",
+        "tldr": "Whittingham did not name the replacement in Monday’s update. Watch the coverage unit’s first assignment and finish the tackle after the catch.",
+        "outlet": "Maize n Brew",
+        "tier": "local",
+        "url": "https://www.maizenbrew.com/football/124929/michigan-football-kyle-whittingham-penn-state-press-conference",
+        "publishedAt": "2026-10-12T16:00:00Z",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "ann-arbor-kickoff",
+        "headline": "The Michigan trip is set for 3:30 p.m. ET on CBS",
+        "tldr": "The current official game notes confirm the October 17 broadcast from Michigan Stadium. Set aside the afternoon and check the final lineup update before kickoff.",
+        "outlet": "Michigan Athletics",
+        "tier": "official",
+        "url": "https://mgoblue.com/sports/2026/10/12/michigan-monday-game-6-vs-penn-state",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Give the next down a chance.",
+        "body": "Finish the block before changing the call. Keep the receiver available, protect the ball through the throw and use the active defenders without assuming a return.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Make the useful play repeatable",
+        "question": "What should Penn State emphasize this week?",
+        "answer": "At Michigan, watch the run blocking, Brahmer’s routes and the active linebacker group. A drive needs a clean finish as well as a first completion.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Run-game identity",
+          "summary": "Make a block repeatable",
+          "detail": "Mouser described Penn State as a run game without an identity. Watch whether the same blocking combination produces a useful gain before judging the next adjustment.",
+          "state": "watch",
+          "prompt": "What should I watch for with run-game identity?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Tight-end usage",
+          "summary": "Keep a receiving answer",
+          "detail": "Mouser wants Brahmer more involved after the USC game. Watch the release into space and whether the quarterback keeps that option available under pressure.",
+          "state": "watch",
+          "prompt": "What should I watch for with tight-end usage?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Linebacker depth",
+          "summary": "Follow the final report",
+          "detail": "Tatsch is reported out for the remainder of the season. Check the active group for Michigan rather than turning a teammate’s return to practice into a confirmed game assignment.",
+          "state": "watch",
+          "prompt": "What should I watch for with linebacker depth?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Late possessions",
+          "summary": "Protect the final chance",
+          "detail": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic.",
+          "state": "watch",
+          "prompt": "What should I watch for with late possessions?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Penn State visits Michigan on October 17 at 3:30 p.m. ET on CBS. Watch the run blocking, tight-end usage and the final availability report.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Run-game identity",
+        "topics": [
+          "run-game identity",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Mouser described Penn State as a run game without an identity. Watch whether the same blocking combination produces a useful gain before judging the next adjustment."
+      },
+      {
+        "id": "watch-2",
+        "title": "Tight-end usage",
+        "topics": [
+          "tight-end usage",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Mouser wants Brahmer more involved after the USC game. Watch the release into space and whether the quarterback keeps that option available under pressure."
+      },
+      {
+        "id": "watch-3",
+        "title": "Linebacker depth",
+        "topics": [
+          "linebacker depth",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Tatsch is reported out for the remainder of the season. Check the active group for Michigan rather than turning a teammate’s return to practice into a confirmed game assignment."
+      },
+      {
+        "id": "watch-4",
+        "title": "Late possessions",
+        "topics": [
+          "late possessions",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic."
+      }
+    ]
+  },
+  "miami-football": {
+    "schemaVersion": 1,
+    "teamSlug": "miami-football",
+    "weekOf": "2026-10-11",
+    "publishedAt": "2026-10-14T20:34:23.933Z",
+    "issue": {
+      "season": 2026,
+      "week": 7
+    },
+    "summary": "Keep the pressure connected to coverage against Florida State. Watch Daniels when he leaves the pocket, the active defensive group and the play-clock operation that keeps a possession moving.",
+    "items": [
+      {
+        "id": "defensive-returns",
+        "headline": "Cristobal says Lightfoot and three defensive teammates are back",
+        "tldr": "Monday’s update also included Lucas, Marcelin and Brown. Use the final game report for Saturday’s roles; the same update left Buchanan’s possible return later in the year uncertain.",
+        "outlet": "State of The U",
+        "tier": "local",
+        "url": "https://www.stateoftheu.com/miami-hurricanes-football/88907/monday-musings-the-bye-week-paid-off-for-the-miami-hurricanes",
+        "publishedAt": "2026-10-12T17:37:00Z",
+        "grade": {
+          "impact": 5,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "offensive-operation",
+        "headline": "Miami’s Clemson win still included six penalties",
+        "tldr": "State of The U also flagged timeouts used as the play clock ran down. Against Florida State, watch the call reach the line before the offense has to spend a timeout.",
+        "outlet": "State of The U",
+        "tier": "local",
+        "url": "https://www.stateoftheu.com/miami-hurricanes-football/88614/the-good-the-bad-and-the-ugly-clemson-tigers-2026-edition",
+        "publishedAt": "2026-10-03",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 3
+        }
+      },
+      {
+        "id": "barkate-explosiveness",
+        "headline": "Barkate’s first-play touchdown opened the Clemson win",
+        "tldr": "His 61-yard catch and run gave Miami an immediate scoring play. Watch the receiver secure the ball and the blocking turn a short throw into space.",
+        "outlet": "Miami Athletics",
+        "tier": "official",
+        "url": "https://miamihurricanes.com/news/2026/10/6/canes-rewind-a-look-back-at-the-win-over-clemson",
+        "publishedAt": "2026-10-06",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "daniels-containment",
+        "headline": "Daniels scored on the ground again at Louisville",
+        "tldr": "Florida State’s quarterback added a rushing touchdown to his passing work in the loss. Keep the escape lane covered when Miami applies pressure.",
+        "outlet": "Florida State Athletics",
+        "tier": "official",
+        "url": "https://seminoles.com/news/2026/10/9/football-florida-state-falls-at-louisville",
+        "publishedAt": "2026-10-09",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 4
+        }
+      },
+      {
+        "id": "rivalry-viewing",
+        "headline": "Florida State visits Saturday for Miami’s Orange Out",
+        "tldr": "The official announcement confirms October 17 at 7 p.m. at Hard Rock Stadium; Florida State confirms ESPN. Plan for the evening window and wear orange if attending.",
+        "outlet": "Miami Athletics",
+        "tier": "official",
+        "url": "https://miamihurricanes.com/news/2026/10/12/orange-out-this-saturday",
+        "publishedAt": "2026-10-12",
+        "grade": {
+          "impact": 3,
+          "echo": 1,
+          "freshness": 4
+        }
+      }
+    ],
+    "editorial": {
+      "lead": {
+        "headline": "Close the lane. Keep the drive.",
+        "body": "Make the quarterback earn the escape. On offense, get the call to the line early enough to keep a useful gain from becoming a wasted possession.",
+        "noteId": "watch-1"
+      },
+      "matchup": {
+        "thesis": "Contain the quarterback without losing the route",
+        "question": "What should Miami emphasize this week?",
+        "answer": "Against Florida State, watch the edge defender’s leverage, the active defensive rotation and the communication before Miami’s snap.",
+        "citationNoteIds": [
+          "watch-1",
+          "watch-2",
+          "watch-3",
+          "watch-4"
+        ]
+      },
+      "signals": [
+        {
+          "id": "watch-1",
+          "title": "Quarterback containment",
+          "summary": "Close the escape lane",
+          "detail": "Daniels scored a rushing touchdown at Louisville. Watch the edge defender keep leverage while the interior pressure moves the pocket.",
+          "state": "watch",
+          "prompt": "What should I watch for with quarterback containment?",
+          "noteId": "watch-1"
+        },
+        {
+          "id": "watch-2",
+          "title": "Defensive rotation",
+          "summary": "Use the final game report",
+          "detail": "Cristobal included Lightfoot in Monday’s return update. Follow the final report before assigning a snap count or treating practice progress as a guaranteed role.",
+          "state": "watch",
+          "prompt": "What should I watch for with defensive rotation?",
+          "noteId": "watch-2"
+        },
+        {
+          "id": "watch-3",
+          "title": "Play-clock operation",
+          "summary": "Get the call to the line",
+          "detail": "State of The U flagged timeouts used as the play clock ran down against Clemson. Watch communication before the snap rather than spending a timeout to rescue a late call.",
+          "state": "watch",
+          "prompt": "What should I watch for with play-clock operation?",
+          "noteId": "watch-3"
+        },
+        {
+          "id": "watch-4",
+          "title": "Receiver blocking",
+          "summary": "Create room after the catch",
+          "detail": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle.",
+          "state": "watch",
+          "prompt": "What should I watch for with receiver blocking?",
+          "noteId": "watch-4"
+        }
+      ]
+    },
+    "nextGameNote": "Miami hosts Florida State on October 17 at 7 p.m. ET on ESPN. Watch quarterback containment and the final availability update.",
+    "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+    "notes": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback containment",
+        "topics": [
+          "quarterback containment",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Daniels scored a rushing touchdown at Louisville. Watch the edge defender keep leverage while the interior pressure moves the pocket."
+      },
+      {
+        "id": "watch-2",
+        "title": "Defensive rotation",
+        "topics": [
+          "defensive rotation",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Cristobal included Lightfoot in Monday’s return update. Follow the final report before assigning a snap count or treating practice progress as a guaranteed role."
+      },
+      {
+        "id": "watch-3",
+        "title": "Play-clock operation",
+        "topics": [
+          "play-clock operation",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "State of The U flagged timeouts used as the play clock ran down against Clemson. Watch communication before the snap rather than spending a timeout to rescue a late call."
+      },
+      {
+        "id": "watch-4",
+        "title": "Receiver blocking",
+        "topics": [
+          "receiver blocking",
+          "matchup"
+        ],
+        "publishedAt": "2026-10-14T20:33:26.185536Z",
+        "body": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle."
+      }
+    ]
   }
 }

@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "penn-state-football",
+  "weekOf": "2026-10-11",
+  "publishedAt": "2026-10-14T20:34:23.933Z",
+  "issue": {
+    "season": 2026,
+    "week": 7
+  },
+  "summary": "Keep the passing options available without abandoning the run blocking. At Michigan, watch the tight end’s release, the active linebacker rotation and the decision that protects the last possession.",
+  "items": [
+    {
+      "id": "offensive-identity",
+      "headline": "Mouser says the run game needs an identity",
+      "tldr": "The coordinator also wants Brahmer more involved after USC. Watch whether the blocking and the receiving options work together, without assuming a promised touch count.",
+      "outlet": "StateCollege.com",
+      "tier": "local",
+      "url": "https://www.statecollege.com/articles/penn-state-football/taylor-mouser-identifies-penn-state-players-needing-more-touches-addresses-rushing-woes/",
+      "publishedAt": "2026-10-13",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "linebacker-depth",
+      "headline": "Tatsch is reported out for the rest of the season",
+      "tldr": "Tuesday evening’s report cites Steve Jones on the Penn State Coaches Show. Check the final Michigan availability report for the rest of the linebacker group; practice participation alone does not confirm a game role.",
+      "outlet": "StateCollege.com",
+      "tier": "local",
+      "url": "https://www.statecollege.com/articles/penn-state-football/penn-state-lb-alex-tatsch-reportedly-out-for-season/",
+      "publishedAt": "2026-10-13",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "possession-finish",
+      "headline": "A late turnover ended Penn State’s chance against USC",
+      "tldr": "The official recap identifies the giveaway that let USC run out the clock. Watch the decision with the football before a potential tying drive becomes the last possession.",
+      "outlet": "Penn State Athletics",
+      "tier": "official",
+      "url": "https://gopsusports.com/news/2026/10/10/penn-state-falls-to-no-1917-usc-in-penn-state-white-out",
+      "publishedAt": "2026-10-10",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "opponent-returner",
+      "headline": "Michigan plans a new punt returner for Saturday",
+      "tldr": "Whittingham did not name the replacement in Monday’s update. Watch the coverage unit’s first assignment and finish the tackle after the catch.",
+      "outlet": "Maize n Brew",
+      "tier": "local",
+      "url": "https://www.maizenbrew.com/football/124929/michigan-football-kyle-whittingham-penn-state-press-conference",
+      "publishedAt": "2026-10-12T16:00:00Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "ann-arbor-kickoff",
+      "headline": "The Michigan trip is set for 3:30 p.m. ET on CBS",
+      "tldr": "The current official game notes confirm the October 17 broadcast from Michigan Stadium. Set aside the afternoon and check the final lineup update before kickoff.",
+      "outlet": "Penn State Athletics",
+      "tier": "official",
+      "url": "https://gopsusports.com/news/2026/10/12/game-notes-penn-state-vs-michigan-2026",
+      "publishedAt": "2026-10-12",
+      "grade": {
+        "impact": 3,
+        "echo": 1,
+        "freshness": 4
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give the next down a chance.",
+      "body": "Finish the block before changing the call. Keep the receiver available, protect the ball through the throw and use the active defenders without assuming a return.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the useful play repeatable",
+      "question": "What should Penn State emphasize this week?",
+      "answer": "At Michigan, watch the run blocking, Brahmer’s routes and the active linebacker group. A drive needs a clean finish as well as a first completion.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Run-game identity",
+        "summary": "Make a block repeatable",
+        "detail": "Mouser described Penn State as a run game without an identity. Watch whether the same blocking combination produces a useful gain before judging the next adjustment.",
+        "state": "watch",
+        "prompt": "What should I watch for with run-game identity?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Tight-end usage",
+        "summary": "Keep a receiving answer",
+        "detail": "Mouser wants Brahmer more involved after the USC game. Watch the release into space and whether the quarterback keeps that option available under pressure.",
+        "state": "watch",
+        "prompt": "What should I watch for with tight-end usage?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Linebacker depth",
+        "summary": "Follow the final report",
+        "detail": "Tatsch is reported out for the remainder of the season. Check the active group for Michigan rather than turning a teammate’s return to practice into a confirmed game assignment.",
+        "state": "watch",
+        "prompt": "What should I watch for with linebacker depth?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Late possessions",
+        "summary": "Protect the final chance",
+        "detail": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic.",
+        "state": "watch",
+        "prompt": "What should I watch for with late possessions?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Penn State visits Michigan on October 17 at 3:30 p.m. ET on CBS. Watch the run blocking, tight-end usage and the final availability report.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Run-game identity",
+      "topics": [
+        "run-game identity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-14T20:33:26.185536Z",
+      "body": "Mouser described Penn State as a run game without an identity. Watch whether the same blocking combination produces a useful gain before judging the next adjustment."
+    },
+    {
+      "id": "watch-2",
+      "title": "Tight-end usage",
+      "topics": [
+        "tight-end usage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-14T20:33:26.185536Z",
+      "body": "Mouser wants Brahmer more involved after the USC game. Watch the release into space and whether the quarterback keeps that option available under pressure."
+    },
+    {
+      "id": "watch-3",
+      "title": "Linebacker depth",
+      "topics": [
+        "linebacker depth",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-14T20:33:26.185536Z",
+      "body": "Tatsch is reported out for the remainder of the season. Check the active group for Michigan rather than turning a teammate’s return to practice into a confirmed game assignment."
+    },
+    {
+      "id": "watch-4",
+      "title": "Late possessions",
+      "topics": [
+        "late possessions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-14T20:33:26.185536Z",
+      "body": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic."
+    }
+  ]
+}

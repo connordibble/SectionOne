@@ -2475,5 +2475,1239 @@
         }
       ]
     }
+  },
+  "notre-dame-football": {
+    "identity": {
+      "slug": "notre-dame-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Independent",
+      "displayName": "Notre Dame football",
+      "shortName": "Notre Dame",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://fightingirish.com/sports/football/schedule",
+      "aliases": [
+        "Notre Dame",
+        "Notre Dame Fighting Irish",
+        "ND"
+      ],
+      "theme": {
+        "hue": 255.53,
+        "chroma": 0.1,
+        "structuralHue": 255.53,
+        "structuralChroma": 0.0621,
+        "structuralLightness": 25.53,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.14,
+          "chroma": 0.1039,
+          "lightness": 66.74
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Notre Dame Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "fightingirish.com",
+          "fightingirishpreview.com",
+          "uhnd.com",
+          "southbendtribune.com",
+          "deseret.com",
+          "sltrib.com",
+          "byucougars.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Notre Dame",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Notre Dame this week?",
+        "Who does Notre Dame play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "notre-dame-football",
+      "teamName": "Notre Dame",
+      "teamDisplayName": "Notre Dame football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://fightingirish.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T20:39:36.981Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://fightingirish.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:26:09.436022Z",
+        "officialVerifiedAt": "2026-10-14T20:33:26.185536Z"
+      },
+      "games": [
+        {
+          "id": "notre-dame-football-2026-401858438",
+          "opponent": "Wisconsin",
+          "site": "neutral",
+          "dateLabel": "Sep 6",
+          "startsAt": "2026-09-06T23:30:00Z",
+          "date": "2026-09-06",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Lambeau Field, Green Bay, WI",
+          "tv": "NBC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-06",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858438",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 41,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401859184",
+          "opponent": "Rice",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T19:30:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401859184",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 52,
+            "opponentScore": 0
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401858453",
+          "opponent": "Michigan State",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T23:30:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858453",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 27,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401858467",
+          "opponent": "Purdue",
+          "site": "away",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T18:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "2:00 p.m. ET",
+          "venue": "Ross-Ade Stadium, West Lafayette, IN",
+          "tv": "Peacock",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858467",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 49,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401858250",
+          "opponent": "North Carolina",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T16:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Kenan Stadium, Chapel Hill, NC",
+          "tv": "ESPN / Disney+",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858250",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 37,
+            "opponentScore": 26
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401858257",
+          "opponent": "Stanford",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T19:30:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858257",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 58,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "notre-dame-football-2026-401856809",
+          "opponent": "BYU",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T23:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "LaVell Edwards Stadium, Provo, UT",
+          "tv": "ABC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "notre-dame-football-2026-401859185",
+          "opponent": "Navy",
+          "site": "neutral",
+          "dateLabel": "Oct 31",
+          "startsAt": "2026-10-31T16:00:00Z",
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Gillette Stadium, Foxborough, MA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "notre-dame-football-2026-401858291",
+          "opponent": "Miami",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": "2026-11-08T00:30:00Z",
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "notre-dame-football-2026-401858294",
+          "opponent": "Boston College",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": "2026-11-14T20:30:00Z",
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "notre-dame-football-2026-401858307",
+          "opponent": "SMU",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": "2026-11-22T00:30:00Z",
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "notre-dame-football-2026-401858314",
+          "opponent": "Syracuse",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "JMA Wireless Dome, Syracuse, NY",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "michigan-football": {
+    "identity": {
+      "slug": "michigan-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big Ten",
+      "displayName": "Michigan football",
+      "shortName": "Michigan",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://mgoblue.com/sports/football/schedule",
+      "aliases": [
+        "Michigan",
+        "Michigan Wolverines",
+        "MICH"
+      ],
+      "theme": {
+        "hue": 251.65,
+        "chroma": 0.1,
+        "structuralHue": 251.65,
+        "structuralChroma": 0.0802,
+        "structuralLightness": 27.08,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.84,
+          "chroma": 0.1758,
+          "lightness": 86.33
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Michigan Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "mgoblue.com",
+          "maizenbrew.com",
+          "michigandaily.com",
+          "mlive.com",
+          "statecollege.com",
+          "gopsusports.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Michigan",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Michigan this week?",
+        "Who does Michigan play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "michigan-football",
+      "teamName": "Michigan",
+      "teamDisplayName": "Michigan football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://mgoblue.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T20:39:36.981Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://mgoblue.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:26:14.154985Z",
+        "officialVerifiedAt": "2026-10-14T20:33:26.185536Z"
+      },
+      "games": [
+        {
+          "id": "michigan-football-2026-401858428",
+          "opponent": "Western Michigan",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T23:30:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "NBC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858428",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 13,
+            "opponentScore": 12
+          }
+        },
+        {
+          "id": "michigan-football-2026-401856679",
+          "opponent": "Oklahoma",
+          "site": "home",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T16:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "Fox / ERADM",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 11,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856679",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 10
+          }
+        },
+        {
+          "id": "michigan-football-2026-401858450",
+          "opponent": "UTEP",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T19:30:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "BTN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858450",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 52,
+            "opponentScore": 17
+          }
+        },
+        {
+          "id": "michigan-football-2026-401858463",
+          "opponent": "Iowa",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T19:30:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "CBS",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 17,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858463",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 19,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "michigan-football-2026-401858474",
+          "opponent": "Minnesota",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T16:00:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Huntington Bank Stadium, Minneapolis, MN",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858474",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 14,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "michigan-football-2026-401858490",
+          "opponent": "Penn State",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T19:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "CBS",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858496",
+          "opponent": "Indiana",
+          "site": "home",
+          "dateLabel": "Oct 24",
+          "startsAt": "2026-10-24T16:00:00Z",
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "Fox",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858507",
+          "opponent": "Rutgers",
+          "site": "away",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "SHI Stadium, Piscataway, NJ",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858511",
+          "opponent": "Michigan State",
+          "site": "home",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858523",
+          "opponent": "Oregon",
+          "site": "away",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Autzen Stadium, Eugene, OR",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858528",
+          "opponent": "UCLA",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "michigan-football-2026-401858540",
+          "opponent": "Ohio State",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": "2026-11-28T17:00:00Z",
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Ohio Stadium, Columbus, OH",
+          "tv": "Fox",
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "penn-state-football": {
+    "identity": {
+      "slug": "penn-state-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "Big Ten",
+      "displayName": "Penn State football",
+      "shortName": "Penn State",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://gopsusports.com/sports/football/schedule",
+      "aliases": [
+        "Penn State",
+        "Penn State Nittany Lions",
+        "PSU"
+      ],
+      "theme": {
+        "hue": 257.21,
+        "chroma": 0.1,
+        "structuralHue": 257.21,
+        "structuralChroma": 0.0755,
+        "structuralLightness": 23.99,
+        "preserveStageInDark": true,
+        "secondary": {
+          "hue": 89.88,
+          "chroma": 0,
+          "lightness": 100
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Penn State Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "gopsusports.com",
+          "statecollege.com",
+          "onwardstate.com",
+          "centredaily.com",
+          "maizenbrew.com",
+          "mgoblue.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Penn State",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Penn State this week?",
+        "Who does Penn State play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "penn-state-football",
+      "teamName": "Penn State",
+      "teamDisplayName": "Penn State football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://gopsusports.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T20:39:36.981Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://gopsusports.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:29:31.052001Z",
+        "officialVerifiedAt": "2026-10-14T20:33:26.185536Z"
+      },
+      "games": [
+        {
+          "id": "penn-state-football-2026-401858434",
+          "opponent": "Marshall",
+          "site": "home",
+          "dateLabel": "Sep 5",
+          "startsAt": "2026-09-05T19:30:00Z",
+          "date": "2026-09-05",
+          "status": "final",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": "FS1",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-05",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858434",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 0
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858442",
+          "opponent": "Temple",
+          "site": "away",
+          "dateLabel": "Sep 12",
+          "startsAt": "2026-09-12T16:00:00Z",
+          "date": "2026-09-12",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Lincoln Financial Field, Philadelphia, PA",
+          "tv": "ESPN2",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-12",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858442",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 27,
+            "opponentScore": 9
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858456",
+          "opponent": "Buffalo",
+          "site": "home",
+          "dateLabel": "Sep 19",
+          "startsAt": "2026-09-19T16:00:00Z",
+          "date": "2026-09-19",
+          "status": "final",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": "BTN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-19",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858456",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 55,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858466",
+          "opponent": "Wisconsin",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T21:00:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "5:00 p.m. ET",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": "Peacock / ERADM",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858466",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 20,
+            "opponentScore": 24
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858476",
+          "opponent": "Northwestern",
+          "site": "away",
+          "dateLabel": "Oct 2",
+          "startsAt": "2026-10-03T00:00:00Z",
+          "date": "2026-10-02",
+          "status": "final",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "Ryan Field, Evanston, IL",
+          "tv": "Fox",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-02",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858476",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 13,
+            "opponentScore": 34
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858485",
+          "opponent": "USC",
+          "site": "home",
+          "dateLabel": "Oct 10",
+          "startsAt": "2026-10-10T23:30:00Z",
+          "date": "2026-10-10",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": "NBC / ERADM",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 19,
+            "gameDate": "2026-10-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858485",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 23,
+            "opponentScore": 31
+          }
+        },
+        {
+          "id": "penn-state-football-2026-401858490",
+          "opponent": "Michigan",
+          "site": "away",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T19:30:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "3:30 p.m. ET",
+          "venue": "Michigan Stadium, Ann Arbor, MI",
+          "tv": "CBS",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "penn-state-football-2026-401858506",
+          "opponent": "Purdue",
+          "site": "home",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "penn-state-football-2026-401858516",
+          "opponent": "Washington",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": null,
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Husky Stadium, Seattle, WA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "penn-state-football-2026-401858524",
+          "opponent": "Minnesota",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "penn-state-football-2026-401858532",
+          "opponent": "Rutgers",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Beaver Stadium, University Park, PA",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "penn-state-football-2026-401858539",
+          "opponent": "Maryland",
+          "site": "away",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "SECU Stadium, College Park, MD",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
+  },
+  "miami-football": {
+    "identity": {
+      "slug": "miami-football",
+      "sport": "football",
+      "league": "college-football",
+      "conference": "ACC",
+      "displayName": "Miami football",
+      "shortName": "Miami",
+      "tagline": "Get the short answer before kickoff.",
+      "timeZone": "America/New_York",
+      "officialScheduleUrl": "https://miamihurricanes.com/sports/football/schedule",
+      "aliases": [
+        "Miami",
+        "Miami Hurricanes",
+        "MIA"
+      ],
+      "theme": {
+        "hue": 158.42,
+        "chroma": 0.1,
+        "structuralHue": 158.42,
+        "structuralChroma": 0.0882,
+        "structuralLightness": 38,
+        "preserveStageInDark": true,
+        "secondary": {
+          "lightness": 84,
+          "chroma": 0.18,
+          "hue": 47.27
+        }
+      },
+      "sourcePolicy": {
+        "disclaimer": "Independent coverage. Not affiliated with Miami Athletics.",
+        "trustedSourceLabels": [
+          "CollegeFootballData",
+          "Official schedule links",
+          "Verified game notes"
+        ],
+        "preferredWebSearchDomains": [
+          "miamihurricanes.com",
+          "stateoftheu.com",
+          "miamiherald.com",
+          "sun-sentinel.com",
+          "seminoles.com"
+        ],
+        "protectedMarksGuidance": [
+          "Do not use official logos or mascot imagery.",
+          "Do not imply official access, sponsorship, or endorsement."
+        ]
+      },
+      "voice": {
+        "posture": "smart fan analyst",
+        "preferredTerms": [
+          "early downs",
+          "line of scrimmage",
+          "pressure",
+          "field position",
+          "explosiveness"
+        ],
+        "bannedPhrases": [
+          "as an AI",
+          "it is important to note",
+          "official partner",
+          "guaranteed lock"
+        ]
+      },
+      "cfbd": {
+        "team": "Miami",
+        "season": 2026
+      },
+      "suggestedPrompts": [
+        "What matters for Miami this week?",
+        "Who does Miami play next?"
+      ]
+    },
+    "schedule": {
+      "teamSlug": "miami-football",
+      "teamName": "Miami",
+      "teamDisplayName": "Miami football",
+      "seasonYear": 2026,
+      "sourceUrl": "https://miamihurricanes.com/sports/football/schedule",
+      "capturedAt": "2026-10-14T20:39:36.981Z",
+      "timeZone": "America/New_York",
+      "provenance": {
+        "provider": "official",
+        "sourceUrl": "https://miamihurricanes.com/sports/football/schedule",
+        "retrievedAt": "2026-10-14T20:29:30.992173Z",
+        "officialVerifiedAt": "2026-10-14T20:33:26.185536Z"
+      },
+      "games": [
+        {
+          "id": "miami-football-2026-401858206",
+          "opponent": "Stanford",
+          "site": "away",
+          "dateLabel": "Sep 4",
+          "startsAt": "2026-09-05T01:00:00Z",
+          "date": "2026-09-04",
+          "status": "final",
+          "kickoff": "9:00 p.m. ET",
+          "venue": "Stanford Stadium, Stanford, CA",
+          "tv": "ESPN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-04",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858206",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 45,
+            "opponentScore": 6
+          }
+        },
+        {
+          "id": "miami-football-2026-401858213",
+          "opponent": "Florida A&M",
+          "site": "home",
+          "dateLabel": "Sep 10",
+          "startsAt": "2026-09-11T00:00:00Z",
+          "date": "2026-09-10",
+          "status": "final",
+          "kickoff": "8:00 p.m. ET",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": "ACC Network",
+          "opponentClassification": "fcs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-10",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858213",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 77,
+            "opponentScore": 7
+          }
+        },
+        {
+          "id": "miami-football-2026-401858226",
+          "opponent": "Wake Forest",
+          "site": "away",
+          "dateLabel": "Sep 18",
+          "startsAt": "2026-09-18T23:30:00Z",
+          "date": "2026-09-18",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Allegacy Federal Credit Union Stadium, Winston-Salem, NC",
+          "tv": "ESPN",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-18",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858226",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 33,
+            "opponentScore": 20
+          }
+        },
+        {
+          "id": "miami-football-2026-401858238",
+          "opponent": "Central Michigan",
+          "site": "home",
+          "dateLabel": "Sep 26",
+          "startsAt": "2026-09-26T22:30:00Z",
+          "date": "2026-09-26",
+          "status": "final",
+          "kickoff": "6:30 p.m. ET",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": "CW",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-09-26",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858238",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 52,
+            "opponentScore": 3
+          }
+        },
+        {
+          "id": "miami-football-2026-401858249",
+          "opponent": "Clemson",
+          "site": "away",
+          "dateLabel": "Oct 3",
+          "startsAt": "2026-10-03T23:30:00Z",
+          "date": "2026-10-03",
+          "status": "final",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Memorial Stadium (Clemson, SC), Clemson, SC",
+          "tv": "ABC",
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-10-03",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858249",
+            "checkedAt": "2026-10-14T20:39:36.981Z"
+          },
+          "result": {
+            "teamScore": 41,
+            "opponentScore": 13
+          }
+        },
+        {
+          "id": "miami-football-2026-401858263",
+          "opponent": "Florida State",
+          "site": "home",
+          "dateLabel": "Oct 17",
+          "startsAt": "2026-10-17T23:00:00Z",
+          "date": "2026-10-17",
+          "status": "scheduled",
+          "kickoff": "7:00 p.m. ET",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": "ESPN / Disney+",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858274",
+          "opponent": "Pittsburgh",
+          "site": "home",
+          "dateLabel": "Oct 24",
+          "startsAt": "2026-10-24T16:00:00Z",
+          "date": "2026-10-24",
+          "status": "scheduled",
+          "kickoff": "12:00 p.m. ET",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858282",
+          "opponent": "North Carolina",
+          "site": "away",
+          "dateLabel": "Oct 31",
+          "startsAt": null,
+          "date": "2026-10-31",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Kenan Stadium, Chapel Hill, NC",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858291",
+          "opponent": "Notre Dame",
+          "site": "away",
+          "dateLabel": "Nov 7",
+          "startsAt": "2026-11-08T00:30:00Z",
+          "date": "2026-11-07",
+          "status": "scheduled",
+          "kickoff": "7:30 p.m. ET",
+          "venue": "Notre Dame Stadium, Notre Dame, IN",
+          "tv": "NBC",
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858296",
+          "opponent": "Duke",
+          "site": "home",
+          "dateLabel": "Nov 14",
+          "startsAt": null,
+          "date": "2026-11-14",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858302",
+          "opponent": "Virginia Tech",
+          "site": "home",
+          "dateLabel": "Nov 21",
+          "startsAt": null,
+          "date": "2026-11-21",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        },
+        {
+          "id": "miami-football-2026-401858311",
+          "opponent": "Boston College",
+          "site": "home",
+          "dateLabel": "Nov 28",
+          "startsAt": null,
+          "date": "2026-11-28",
+          "status": "scheduled",
+          "kickoff": "TBD",
+          "venue": "Hard Rock Stadium, Miami Gardens, FL",
+          "tv": null,
+          "opponentClassification": "fbs"
+        }
+      ]
+    }
   }
 }
