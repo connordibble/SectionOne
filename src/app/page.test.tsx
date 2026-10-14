@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { enabledTeamSlugs } from "@/config/team";
+import { defaultTeamConfig, deriveTeamPalettes, enabledTeamSlugs } from "@/config/team";
 import HomePage from "./page";
 
 vi.mock("next/navigation", () => ({
@@ -54,21 +54,20 @@ describe("Section One home", () => {
     const { container } = render(await HomePage());
 
     expect(screen.getByText(new RegExp(`${enabledTeamSlugs.length} editions live`, "i"))).toBeInTheDocument();
-    expect(container.querySelectorAll('#editions a[href^="/teams/"]')).toHaveLength(
+    expect(container.querySelectorAll('[data-testid="edition-directory"] a[href^="/teams/"]')).toHaveLength(
       enabledTeamSlugs.length,
     );
   });
 
-  it("gives each edition card the accent of its own team", async () => {
-    const { container } = render(await HomePage());
-    const accents = [...container.querySelectorAll<HTMLElement>('#editions a[href^="/teams/"]')].map(
-      (card) => card.style.getPropertyValue("--edition-light-accent"),
+  it("keeps one live preview with its own team accent", async () => {
+    render(await HomePage());
+    const card = screen.getByRole("link", { name: /texas football/i });
+    expect(card.style.getPropertyValue("--edition-light-accent")).toBe(
+      deriveTeamPalettes(defaultTeamConfig.theme).light.accent,
     );
-
-    // The page stays house-coloured; the card carries a sample. Identical
-    // samples would mean the theming is not actually per team.
-    expect(accents.every((accent) => accent.startsWith("oklch("))).toBe(true);
-    expect(new Set(accents).size).toBe(accents.length);
+    expect(card.style.getPropertyValue("--edition-dark-accent")).toBe(
+      deriveTeamPalettes(defaultTeamConfig.theme).dark.accent,
+    );
   });
 
   it("carries the independence disclaimer", async () => {

@@ -134,6 +134,11 @@ Home page rules:
   one edition.
 - The edition card renders real config and schedule data. A picture of the product would drift; the
   product itself cannot.
+- The growing edition catalog uses local search and native conference disclosures, with one
+  live edition card as product proof. Conferences and team names sort alphabetically; counts and
+  aliases come from enabled config. Disclosures remain usable without JavaScript. Search exposes
+  matching links directly, announces the result count, and offers a reset and team-request path.
+  Keep the directory before the preview on mobile and avoid duplicating every team in the footer.
 - Anchor targets clear the sticky masthead.
 - House colour comes from `houseTheme`, not from a team. Editions may ship in any hue; the home page
   does not follow them.

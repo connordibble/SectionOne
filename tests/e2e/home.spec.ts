@@ -53,14 +53,14 @@ test("states the honest number of live editions", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.getByText(new RegExp(`${enabledTeamSlugs.length} editions live`, "i"))).toBeVisible();
-  await expect(page.locator('#editions a[href^="/teams/"]')).toHaveCount(enabledTeamSlugs.length);
+  await expect(page.getByTestId("edition-directory").locator('a[href^="/teams/"]')).toHaveCount(enabledTeamSlugs.length);
 });
 
 test("requesting a team confirms and replaces the form", async ({ page }) => {
   await page.goto("/");
 
   // Exercise an unavailable program; App State now has a live edition.
-  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByLabel("Your team", { exact: true }).fill("Toledo");
   await page.getByRole("button", { name: /request this team/i }).click();
 
   // The confirmation replaces the form rather than sitting beside it, so a
@@ -73,7 +73,7 @@ test("requesting a team confirms and replaces the form", async ({ page }) => {
 test("a request without an email is still accepted", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByLabel("Your team", { exact: true }).fill("Toledo");
   await page.getByRole("button", { name: /request this team/i }).click();
 
   await expect(page.locator("#request").getByRole("status")).toContainText(/got it/i);
@@ -81,7 +81,7 @@ test("a request without an email is still accepted", async ({ page }) => {
 
 test("a newly enabled program opens its edition without a request", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("Your team").fill("App State");
+  await page.getByLabel("Your team", { exact: true }).fill("App State");
   await expect(page.getByText(/App State already has an edition/)).toBeVisible();
   await page.getByRole("button", { name: "Open App State edition" }).click();
   await expect(page).toHaveURL(/\/teams\/app-state-football$/);
@@ -91,7 +91,7 @@ test("a newly enabled program opens its edition without a request", async ({ pag
 test("a malformed email is reported in fan-readable text", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByLabel("Your team").fill("Toledo");
+  await page.getByLabel("Your team", { exact: true }).fill("Toledo");
   await page.getByLabel(/email/i).fill("nope");
   await page.getByRole("button", { name: /request this team/i }).click();
 
@@ -149,10 +149,18 @@ for (const width of [1440, 768, 414, 375, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
 
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-    expect(overflow, `home overflow at ${width}px`).toBeLessThanOrEqual(1);
+    for (const theme of ["light", "dark"]) {
+      if (theme === "dark") {
+        await page.getByRole("button", { name: "Color theme: Light. Change theme." }).click();
+      }
+      for (const query of ["", "State", "No such team"]) {
+        await page.getByLabel("Find your team").fill(query);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, `home overflow at ${width}px in ${theme}, search ${query}`).toBeLessThanOrEqual(1);
+      }
+    }
   });
 }
 
@@ -200,8 +208,8 @@ test("an existing team opens its edition without posting a request", async ({ pa
     if (request.method() === "POST" && request.url().includes("/api/team-requests")) posts.push(request.url());
   });
   await page.goto("/");
-  await expect(page.getByLabel("Your team")).toHaveAttribute("placeholder", "Team name");
-  await page.getByLabel("Your team").fill("  UT Austin  ");
+  await expect(page.getByLabel("Your team", { exact: true })).toHaveAttribute("placeholder", "Team name");
+  await page.getByLabel("Your team", { exact: true }).fill("  UT Austin  ");
   await page.getByLabel(/email/i).fill("nope");
   await expect(page.locator("#request").getByRole("status")).toContainText("Texas already has an edition");
   await page.getByRole("button", { name: "Open Texas edition" }).click();
@@ -211,7 +219,7 @@ test("an existing team opens its edition without posting a request", async ({ pa
 
 test("Enter opens an existing edition and changing the name restores requests", async ({ page }) => {
   await page.goto("/");
-  const name = page.getByLabel("Your team");
+  const name = page.getByLabel("Your team", { exact: true });
   await name.fill("Ohio State");
   await expect(page.getByRole("button", { name: "Open Ohio State edition" })).toBeVisible();
   await name.fill("Ohio");
@@ -230,4 +238,51 @@ test("the API returns live editions instead of accepting duplicate demand", asyn
   });
   expect(response.status()).toBe(200);
   expect(await response.json()).toEqual({ ok: true, teamSlug: "lsu-football" });
+});
+
+
+test("conference groups reveal teams with the keyboard and keep one group open", async ({ page }) => {
+  await page.goto("/");
+  const directory = page.getByTestId("edition-directory");
+  await expect(directory.locator("details[open]")).toHaveCount(0);
+  const bigTen = directory.locator("summary").filter({ hasText: "Big Ten" });
+  await bigTen.focus();
+  await bigTen.press("Enter");
+  await expect(directory.getByRole("link", { name: "Michigan", exact: true })).toBeVisible();
+  await directory.locator("summary").filter({ hasText: "Pac-12" }).click();
+  await expect(directory.locator("details[open]")).toHaveCount(1);
+  await expect(directory.getByRole("link", { name: "Boise State", exact: true })).toBeVisible();
+  await directory.getByRole("link", { name: "Boise State", exact: true }).click();
+  await expect(page).toHaveURL(/\/teams\/boise-state-football$/);
+});
+
+test("edition search supports aliases, conferences, empty results and a focused reset", async ({ page }) => {
+  await page.goto("/");
+  const directory = page.getByTestId("edition-directory");
+  const search = page.getByLabel("Find your team");
+  await search.fill("JMU");
+  await expect(directory.getByRole("link", { name: "James Madison", exact: true })).toBeVisible();
+  await expect(directory.getByRole("status")).toHaveText("1 edition found.");
+  await search.fill("Pac-12");
+  await expect(directory.getByRole("status")).toHaveText("3 editions found.");
+  await expect(directory.getByRole("link", { name: "Fresno State", exact: true })).toBeVisible();
+  await search.fill("No such team");
+  await expect(directory.getByText("No live edition matches that search.")).toBeVisible();
+  await expect(directory.getByRole("link", { name: "Request an edition" })).toHaveAttribute("href", "#request");
+  await directory.getByRole("button", { name: "Show all teams" }).click();
+  await expect(search).toBeFocused();
+  await expect(search).toHaveValue("");
+  await expect(directory.locator("details[open]")).toHaveCount(0);
+  await expect(directory.locator('a[href^="/teams/"]')).toHaveCount(enabledTeamSlugs.length);
+});
+
+test("the edition directory remains browsable without JavaScript", async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(baseURL!);
+  const directory = page.getByTestId("edition-directory");
+  await directory.locator("summary").filter({ hasText: "Independent" }).click();
+  await directory.getByRole("link", { name: "Notre Dame", exact: true }).click();
+  await expect(page).toHaveURL(/\/teams\/notre-dame-football$/);
+  await context.close();
 });

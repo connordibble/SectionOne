@@ -67,9 +67,15 @@ App State’s conflicting injury-feed labels remain attributed and do not become
 clearance or a confirmed Friday starter. Tierney’s prior-game absence is not
 presented as a confirmed San Diego State absence.
 
-Next, revise the homepage edition directory. The user wants fewer cards
-presented at once and a clearer way to choose among twenty teams. Preserve the
-card design where useful; evaluate a compact team chooser grouped by conference
-and a small set of quick-access cards. Verify keyboard use, both themes, mobile
-and desktop layouts, and access to every enabled edition before committing that
-separate UX change.
+The homepage now presents a searchable directory grouped by conference, followed
+by one live edition card. Conference groups and schools sort alphabetically;
+counts and search aliases come from enabled team config. Native disclosures work
+without JavaScript and keep one conference open at a time. Search reveals matches
+directly, announces the result count, and offers a focused reset and request path.
+The footer links back to the directory instead of repeating all twenty schools.
+
+Homepage validation: `pnpm check` passed (563 tests), and `pnpm test:e2e` passed
+(302 browser checks, including the production build). Visual review covered
+48 default, expanded, search and empty states at 320, 375, 414, 768, 1280 and
+1440 pixels in both themes. Keyboard navigation, aliases, conference search,
+empty results and browsing without JavaScript passed. Tokenlock found no drift.

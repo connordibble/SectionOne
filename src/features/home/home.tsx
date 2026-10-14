@@ -21,6 +21,7 @@ import { SectionMark } from "@/features/brand/section-mark";
 import { HomeField } from "./home-field";
 import { HomeShell } from "./home-shell";
 import { RequestForm } from "./request-form";
+import { EditionDirectory } from "./edition-directory";
 import styles from "./home.module.css";
 
 // The three questions are the product's spine, not marketing invention — they
@@ -138,19 +139,11 @@ export function Home() {
             </p>
           </div>
 
-          <div className={styles.editionGrid}>
-            {editions.map((team) => (
-              <EditionCard key={team.slug} team={team} />
-            ))}
-            <div className={styles.editionPlaceholder}>
-              <p className={styles.editionPlaceholderTitle}>Your team here</p>
-              <p>
-                New editions come off the request list. Tell us who you follow and it counts.
-              </p>
-              <a className={styles.inlineAction} href="#request">
-                Request your team
-                <ArrowRight aria-hidden="true" />
-              </a>
+          <div className={styles.editionLayout}>
+            <EditionDirectory teams={editions.map(({ slug, shortName, conference, aliases }) => ({ slug, shortName, conference, aliases }))} />
+            <div className={styles.editionExample}>
+              <p className={styles.editionExampleLabel}>Inside a live edition</p>
+              <EditionCard team={defaultTeamConfig} />
             </div>
           </div>
         </section>
@@ -197,11 +190,7 @@ export function Home() {
             conference, or athletics department.
           </p>
           <p className={styles.footerEditions}>
-            {editions.map((team) => (
-              <Link href={`/teams/${team.slug}`} key={team.slug}>
-                {team.shortName} edition
-              </Link>
-            ))}
+            <a href="#editions">Browse editions</a>
           </p>
         </div>
       </footer>
