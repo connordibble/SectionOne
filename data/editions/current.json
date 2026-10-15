@@ -404,13 +404,13 @@
         }
       },
       {
-        "id": "oh-returns",
-        "headline": "Day hopes to get most of the Maryland absentees back for Indiana",
-        "tldr": "Monday’s update stopped short of promising every starter’s return. Watch the next availability report before treating the receiver room or offensive line as restored.",
+        "id": "oh-report",
+        "headline": "Siereveld and Ja’Kobi Jackson are out for Indiana",
+        "tldr": "Wednesday’s report rules out the lineman and running back. Five starters who missed Maryland are off the report; watch the rebuilt protection and backfield without assuming everyone will carry a full workload.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164551/ryan-day-expects-most-of-six-starters-who-missed-maryland-game-to-return-vs-indiana",
-        "publishedAt": "2026-10-12T19:27:29-04:00",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164584/ohio-state-injury-report-austin-siereveld-ja-kobi-jackson-out-for-buckeyes-top-five-showdown-vs-indiana",
+        "publishedAt": "2026-10-14T20:13:53-04:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -546,7 +546,7 @@
         "body": "Inniss, McCuin, Daniels, Siereveld, Alliegro and Timmons missed the Maryland game. Those are Saturday absences, not confirmed Indiana statuses; check the new report before assigning next week’s roles."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "lsu-football": {
     "schemaVersion": 1,
@@ -602,15 +602,15 @@
         }
       },
       {
-        "id": "lsu-taylor",
-        "headline": "Kiffin flags Taylor’s running threat before Mississippi State",
-        "tldr": "On Monday, Kiffin called Taylor a problem as a runner when healthy. Watch LSU’s contain assignments and the first run-defense fit; the scouting read does not establish Saturday’s quarterback availability.",
-        "outlet": "WBRZ",
+        "id": "lsu-report",
+        "headline": "Singleton, Taylor and Bothwell are questionable for Saturday",
+        "tldr": "The initial SEC report leaves LSU’s linebacker and Mississippi State’s quarterback and leading back uncertain. Watch the final report before projecting the run fits or treating Taylor’s running threat as a confirmed assignment.",
+        "outlet": "And The Valley Shook",
         "tier": "local",
-        "url": "https://www.wbrz.com/news/kiffin-not-hitting-panic-button-after-kentucky-loss-lsu-shifts-focus-to-mississippi-state",
-        "publishedAt": "2026-10-12",
+        "url": "https://www.andthevalleyshook.com/lsu-tigers-football/54263/wednesdays-lsu-vs-mississippi-state-injury-report",
+        "publishedAt": "2026-10-15T01:07:42+00:00",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
           "freshness": 5
         }
@@ -730,7 +730,7 @@
         "body": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -786,13 +786,13 @@
         }
       },
       {
-        "id": "patterson-threat",
-        "headline": "Michigan State’s Patterson scores four times in an overtime loss",
-        "tldr": "The Spartans fell 38-37 to Illinois, but Patterson scored on the ground and as a receiver. Northwestern needs an assignment for the back before the snap and a finished tackle after the catch.",
-        "outlet": "Michigan State Athletics",
-        "tier": "official",
-        "url": "https://msuspartans.com/news/2026/10/10/football-spartans-comeback-comes-up-short-in-overtime-against-illinois-38-37",
-        "publishedAt": "2026-10-10",
+        "id": "nu-report",
+        "headline": "Northwestern safety Robert Fitzgerald is questionable",
+        "tldr": "Northwestern’s leading tackler is uncertain on the initial report. Michigan State has Hall, Pretzlaff and Murawski ruled out; watch the final lineups before projecting the protection matchups or coverage handoffs.",
+        "outlet": "The Detroit News",
+        "tier": "local",
+        "url": "https://www.aol.com/articles/msu-injury-report-spartans-play-004012000.html",
+        "publishedAt": "2026-10-15T00:40:12+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -924,7 +924,7 @@
         "body": "Inside NU identified receivers and second-level blockers losing blocks against Ball State. Watch the blocker reach the right shoulder and hold that position while the runner chooses the available lane."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:03:01.716785+00:00"
+    "storiesUpdatedAt": "2026-10-15T23:37:31.975208Z"
   },
   "kansas-football": {
     "schemaVersion": 1,
@@ -1160,13 +1160,13 @@
         }
       },
       {
-        "id": "al-injuries",
-        "headline": "Coleman-Williams is unlikely to play at Tennessee",
-        "tldr": "DeBoer said there is a good chance the receiver will miss Saturday. Delgatty remains day-to-day; watch the receiver rotation and the interior protection assignments as the week’s reports arrive.",
+        "id": "al-report",
+        "headline": "Coleman-Williams and Green are out for Tennessee",
+        "tldr": "The first SEC report also lists center Racin Delgatty as questionable. Watch the receiver rotation and the interior run defense; neither a replacement’s role nor Delgatty’s workload is settled.",
         "outlet": "Alabama Crimson Tide on SI",
         "tier": "local",
-        "url": "https://www.si.com/college/alabama/football/alabama-football-injury-updates-before-tennessee-game",
-        "publishedAt": "2026-10-12T16:08:12Z",
+        "url": "https://www.si.com/college/alabama/football/three-alabama-starters-featured-availability-report-tennessee-game",
+        "publishedAt": "2026-10-15T00:13:06Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1312,7 +1312,7 @@
         "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1368,13 +1368,13 @@
         }
       },
       {
-        "id": "ga-injuries",
-        "headline": "Smart says Georgia has no one to add at tailback",
-        "tldr": "Georgia is thin at running back before Auburn, and Smart said the group has to work with the players it has. Watch the next official availability report before assuming a return for Frazier or Bowens.",
-        "outlet": "Atlanta Journal-Constitution",
+        "id": "ga-report",
+        "headline": "Bowens is out and Bolden is questionable for Auburn",
+        "tldr": "Frazier is off the initial report, but that does not guarantee he will play. Watch the backfield rotation and the coverage assignments if Georgia’s safety cannot go.",
+        "outlet": "DawgTime",
         "tier": "local",
-        "url": "https://www.ajc.com/sports/2026/10/uga-football-injury-report-oct-12/",
-        "publishedAt": "2026-10-12T18:27:40.775Z",
+        "url": "https://dawgtime.com/georgia-injury-report-kj-bolden-auburn/",
+        "publishedAt": "2026-10-15T11:43:30+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1506,7 +1506,7 @@
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -1534,17 +1534,17 @@
         }
       },
       {
-        "id": "traore-versatility",
-        "headline": "Traore added an interception to his strip-sack",
-        "tldr": "His Stanford game showed disruption both at the edge and in coverage. Watch the defender’s assignment when BYU changes the launch point.",
-        "outlet": "Fighting Irish Preview",
+        "id": "nd-report",
+        "headline": "Freeman expects help from Moore and Onye if progress continues",
+        "tldr": "Thursday’s update keeps their returns conditional. Watch the final availability report before treating Notre Dame’s secondary or interior defensive line as restored for BYU.",
+        "outlet": "Fighting Irish Wire",
         "tier": "local",
-        "url": "https://fightingirishpreview.com/the-exhibition-season-is-over-bring-on-byu/",
-        "publishedAt": "2026-10-12",
+        "url": "https://www.aol.com/articles/marcus-freeman-gives-final-leonard-201945000.html",
+        "publishedAt": "2026-10-15T20:19:45+00:00",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -1689,7 +1689,8 @@
         "publishedAt": "2026-10-14T20:33:26.185536Z",
         "body": "Traore intercepted a pass after his opening strip-sack against Stanford. Watch the assignment when a defender drops away from the line."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "michigan-football": {
     "schemaVersion": 1,
@@ -1703,13 +1704,13 @@
     "summary": "Give the defense a field worth defending. Against Penn State, watch the offensive line finish the block, the returner secure the punt and the coverage account for the tight end.",
     "items": [
       {
-        "id": "line-chemistry",
-        "headline": "Guarnera puts the focus on finishing the block",
-        "tldr": "Michigan’s center says the offense is often one block away from a big run. Watch the full blocking combination, rather than treating a useful first step as the finished play.",
-        "outlet": "Maize n Brew",
+        "id": "mi-report",
+        "headline": "Guarnera and Norton are questionable for Penn State",
+        "tldr": "Michigan’s initial report also rules out Sprague and lists Efobi as probable. Watch the blocking combinations; probable status does not guarantee a full workload.",
+        "outlet": "MLive",
         "tier": "local",
-        "url": "https://www.maizenbrew.com/football/125117/michigan-wolverines-football-offensive-line-run-game-jake-guarnera-penn-state-2026",
-        "publishedAt": "2026-10-14T18:00:00Z",
+        "url": "https://sports.yahoo.com/articles/three-more-starting-michigan-o-003843380.html",
+        "publishedAt": "2026-10-15T00:38:43Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1872,7 +1873,8 @@
         "publishedAt": "2026-10-14T20:33:26.185536Z",
         "body": "Mouser wants Brahmer more involved after the USC game. Watch the defender account for the tight end when the backfield action pulls attention toward the run."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "penn-state-football": {
     "schemaVersion": 1,
@@ -2069,13 +2071,13 @@
     "summary": "Keep the pressure connected to coverage against Florida State. Watch Daniels when he leaves the pocket, the active defensive group and the play-clock operation that keeps a possession moving.",
     "items": [
       {
-        "id": "defensive-returns",
-        "headline": "Cristobal says Lightfoot and three defensive teammates are back",
-        "tldr": "Monday’s update also included Lucas, Marcelin and Brown. Use the final game report for Saturday’s roles; the same update left Buchanan’s possible return later in the year uncertain.",
-        "outlet": "State of The U",
+        "id": "mia-report",
+        "headline": "Moore and Brown are out for Florida State",
+        "tldr": "Wednesday’s report also lists Antoine, Frederique, Buchanan and Gilbert out. No Hurricanes are listed as questionable or probable; watch the receiver and backfield rotation.",
+        "outlet": "Tomahawk Nation",
         "tier": "local",
-        "url": "https://www.stateoftheu.com/miami-hurricanes-football/88907/monday-musings-the-bye-week-paid-off-for-the-miami-hurricanes",
-        "publishedAt": "2026-10-12T17:37:00Z",
+        "url": "https://www.tomahawknation.com/florida-state-football/138755/mike-norvell-mario-cristobal-injury-report-acc",
+        "publishedAt": "2026-10-15T00:52:10+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2238,7 +2240,8 @@
         "publishedAt": "2026-10-14T20:33:26.185536Z",
         "body": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-15T23:37:31.975208Z"
   },
   "tennessee-football": {
     "schemaVersion": 1,
@@ -2252,17 +2255,17 @@
     "summary": "Make the first gain count against Alabama. Watch the run-blocking angle, keep the ball secure and close the defensive gap before chasing the quarterback.",
     "items": [
       {
-        "id": "quarterback-plan",
-        "headline": "Heupel left the Alabama quarterback choice open on Monday",
-        "tldr": "Use the final availability report and the opening assignment. Protect the football before trying to extend a broken play; a practice update alone does not settle Saturday’s starter.",
+        "id": "tn-report",
+        "headline": "Brandon remains questionable for Alabama",
+        "tldr": "The initial SEC report also rules out Alabama receiver Ryan Coleman-Williams and lists center Racin Delgatty as questionable. A questionable designation does not confirm a starter; watch the final report before assigning the first snap.",
         "outlet": "Rocky Top Insider",
         "tier": "local",
-        "url": "https://www.rockytopinsider.com/2026/10/12/everything-josh-heupel-said-to-preview-tennessee-football-vs-alabama/",
-        "publishedAt": "2026-10-12",
+        "url": "https://www.rockytopinsider.com/2026/10/14/tennessee-football-vs-alabama-wednesday-sec-availability-report/",
+        "publishedAt": "2026-10-15T00:15:46+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -2421,7 +2424,8 @@
         "publishedAt": "2026-10-14T21:07:23.849147Z",
         "body": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "byu-football": {
     "schemaVersion": 1,
@@ -2816,13 +2820,13 @@
         }
       },
       {
-        "id": "backfield-progress",
-        "headline": "Cignetti says Martin is getting close to returning",
-        "tldr": "Check the final availability report before assigning a workload. Progress toward a return does not confirm the next game or the shape of the rotation.",
+        "id": "iu-report",
+        "headline": "Martin is doubtful and Barker is questionable for Ohio State",
+        "tldr": "Wednesday’s first report upgrades Martin from out without clearing him to play. Check the final running-back and tight-end report before assigning a role in the rotation.",
         "outlet": "The Daily Hoosier",
         "tier": "local",
-        "url": "https://www.thedailyhoosier.com/iu-football-rb-khobie-martin-getting-close-to-return-from-injury/",
-        "publishedAt": "2026-10-12",
+        "url": "https://www.thedailyhoosier.com/iu-footballs-initial-week-7-injury-report-much-cleaner-than-osu/",
+        "publishedAt": "2026-10-15T00:07:09+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2971,7 +2975,8 @@
         "publishedAt": "2026-10-14T21:07:23.849147Z",
         "body": "Watch the pass rush reach the quarterback while the coverage stays attached to the route. End the play before trying to create another one."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
   },
   "boise-state-football": {
     "schemaVersion": 1,
