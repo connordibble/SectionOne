@@ -602,13 +602,13 @@
         }
       },
       {
-        "id": "lsu-report",
-        "headline": "Singleton, Taylor and Bothwell are questionable for Saturday",
-        "tldr": "The initial SEC report leaves LSU’s linebacker and Mississippi State’s quarterback and leading back uncertain. Watch the final report before projecting the run fits or treating Taylor’s running threat as a confirmed assignment.",
+        "id": "lsu-thursday",
+        "headline": "Singleton is doubtful; Taylor and Bothwell remain questionable",
+        "tldr": "Thursday’s report downgrades LSU’s linebacker while leaving Mississippi State’s quarterback and leading back uncertain. Watch the final lineups before assigning the run fits or projecting Taylor’s workload.",
         "outlet": "And The Valley Shook",
         "tier": "local",
-        "url": "https://www.andthevalleyshook.com/lsu-tigers-football/54263/wednesdays-lsu-vs-mississippi-state-injury-report",
-        "publishedAt": "2026-10-15T01:07:42+00:00",
+        "url": "https://www.andthevalleyshook.com/lsu-tigers-football/54294/thursdays-lsu-vs-mississippi-state-injury-report",
+        "publishedAt": "2026-10-16T01:27:49+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -730,7 +730,7 @@
         "body": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -786,13 +786,13 @@
         }
       },
       {
-        "id": "nu-report",
-        "headline": "Northwestern safety Robert Fitzgerald is questionable",
-        "tldr": "Northwestern’s leading tackler is uncertain on the initial report. Michigan State has Hall, Pretzlaff and Murawski ruled out; watch the final lineups before projecting the protection matchups or coverage handoffs.",
-        "outlet": "The Detroit News",
+        "id": "nu-thursday",
+        "headline": "Northwestern safety Robert Fitzgerald is now doubtful",
+        "tldr": "Thursday’s update downgrades the safety from questionable without ruling him out. Watch the final report and Northwestern’s coverage assignments before projecting the secondary in East Lansing.",
+        "outlet": "Spartans Wire",
         "tier": "local",
-        "url": "https://www.aol.com/articles/msu-injury-report-spartans-play-004012000.html",
-        "publishedAt": "2026-10-15T00:40:12+00:00",
+        "url": "https://staging-aws.sports.yahoo.com/articles/key-northwestern-defensive-back-listed-160423217.html",
+        "publishedAt": "2026-10-16T16:04:23Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -924,7 +924,7 @@
         "body": "Inside NU identified receivers and second-level blockers losing blocks against Ball State. Watch the blocker reach the right shoulder and hold that position while the runner chooses the available lane."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:37:31.975208Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "kansas-football": {
     "schemaVersion": 1,
@@ -966,13 +966,13 @@
         }
       },
       {
-        "id": "ku-receivers",
-        "headline": "Kubecka’s early exit left Kansas leaning on three receivers",
-        "tldr": "Leipold said Kubecka left the Utah game early and Nagy was barely available. Watch the receiver rotation against Kansas State; Saturday’s workload does not establish either player’s status for the rivalry.",
-        "outlet": "KU Sports",
-        "tier": "local",
-        "url": "https://www2.kusports.com/sports/college/football/2026/oct/11/leipold-updates-status-of-pair-of-receivers-after-loss-to-utah/",
-        "publishedAt": "2026-10-11",
+        "id": "ku-out",
+        "headline": "RotoWire lists Kubecka out for the Sunflower Showdown",
+        "tldr": "RotoWire reports the receiver will miss Saturday after an injury last week. Watch Cox’s role alongside McMillan and Pickett; a larger opportunity does not establish a snap count.",
+        "outlet": "RotoWire",
+        "tier": "national",
+        "url": "https://www.rotowire.com/cfootball/headlines/keaton-kubecka-injury-wont-play-saturday-235177",
+        "publishedAt": "2026-10-15T19:04:45-07:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1118,7 +1118,7 @@
         "body": "Kansas’s running backs supplied 32 rushing yards at Utah. Watch the blocking and the first-down carry choice before expecting a larger workload; Marshall’s passing production alone does not establish next week’s backfield roles."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-16T23:21:02.359362Z"
   },
   "alabama-football": {
     "schemaVersion": 1,
@@ -1160,13 +1160,13 @@
         }
       },
       {
-        "id": "al-report",
-        "headline": "Coleman-Williams and Green are out for Tennessee",
-        "tldr": "The first SEC report also lists center Racin Delgatty as questionable. Watch the receiver rotation and the interior run defense; neither a replacement’s role nor Delgatty’s workload is settled.",
-        "outlet": "Alabama Crimson Tide on SI",
+        "id": "al-thursday",
+        "headline": "Delgatty is doubtful for Tennessee; Coleman-Williams and Green are out",
+        "tldr": "Thursday’s report lowers the center’s designation from questionable. Watch the interior protection and run-blocking assignments; doubtful is not a confirmed absence.",
+        "outlet": "Tide 100.9",
         "tier": "local",
-        "url": "https://www.si.com/college/alabama/football/three-alabama-starters-featured-availability-report-tennessee-game",
-        "publishedAt": "2026-10-15T00:13:06Z",
+        "url": "https://tide1009.com/thursday-report-alabama-tennessee-football-2026/",
+        "publishedAt": "2026-10-15T23:31:03.000Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1312,7 +1312,7 @@
         "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1368,13 +1368,13 @@
         }
       },
       {
-        "id": "ga-report",
-        "headline": "Bowens is out and Bolden is questionable for Auburn",
-        "tldr": "Frazier is off the initial report, but that does not guarantee he will play. Watch the backfield rotation and the coverage assignments if Georgia’s safety cannot go.",
-        "outlet": "DawgTime",
+        "id": "ga-thursday",
+        "headline": "Bolden is doubtful and Bowens is out for Auburn",
+        "tldr": "Friday’s report leaves Georgia’s safety unlikely to play and its running back ruled out. Watch the coverage handoffs and the backfield rotation; Frazier’s absence from the report does not establish a workload.",
+        "outlet": "UGA Wire",
         "tier": "local",
-        "url": "https://dawgtime.com/georgia-injury-report-kj-bolden-auburn/",
-        "publishedAt": "2026-10-15T11:43:30+00:00",
+        "url": "https://sports.yahoo.com/articles/georgia-american-likely-vs-auburn-152729047.html",
+        "publishedAt": "2026-10-16T15:27:29Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1506,7 +1506,7 @@
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -1902,13 +1902,13 @@
         }
       },
       {
-        "id": "linebacker-depth",
-        "headline": "Tatsch is reported out for the rest of the season",
-        "tldr": "Tuesday evening’s report cites Steve Jones on the Penn State Coaches Show. Check the final Michigan availability report for the rest of the linebacker group; practice participation alone does not confirm a game role.",
-        "outlet": "StateCollege.com",
+        "id": "psu-thursday",
+        "headline": "Smith is probable with Tatsch out for the season",
+        "tldr": "Thursday’s report upgrades the linebacker from questionable and lists Rosa out. Watch the linebacker rotation before assuming a full workload for Smith.",
+        "outlet": "Onward State",
         "tier": "local",
-        "url": "https://www.statecollege.com/articles/penn-state-football/penn-state-lb-alex-tatsch-reportedly-out-for-season/",
-        "publishedAt": "2026-10-13",
+        "url": "https://onwardstate.com/2026/10/15/penn-state-football-linebacker-cam-smith-upgraded-to-probable-against-michigan-on-thursday-availability-report/",
+        "publishedAt": "2026-10-16T00:12:19+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2057,7 +2057,8 @@
         "publishedAt": "2026-10-14T20:33:26.185536Z",
         "body": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-16T23:21:02.086785Z"
   },
   "miami-football": {
     "schemaVersion": 1,
@@ -2127,17 +2128,17 @@
         }
       },
       {
-        "id": "rivalry-viewing",
-        "headline": "Florida State visits Saturday for Miami’s Orange Out",
-        "tldr": "The official announcement confirms October 17 at 7 p.m. at Hard Rock Stadium; Florida State confirms ESPN. Plan for the evening window and wear orange if attending.",
+        "id": "mia-soldout",
+        "headline": "Miami announces a sellout for Florida State",
+        "tldr": "The athletics department directs fans still looking for tickets to its secondary marketplace. Arrange a ticket before heading to Hard Rock Stadium.",
         "outlet": "Miami Athletics",
         "tier": "official",
-        "url": "https://miamihurricanes.com/news/2026/10/12/orange-out-this-saturday",
-        "publishedAt": "2026-10-12",
+        "url": "https://miamihurricanes.com/news/2026/10/16/miami-vs-fsu-sold-out",
+        "publishedAt": "2026-10-16T14:45:00.000000Z",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       }
     ],
@@ -2241,7 +2242,7 @@
         "body": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:37:31.975208Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "tennessee-football": {
     "schemaVersion": 1,
@@ -2255,13 +2256,13 @@
     "summary": "Make the first gain count against Alabama. Watch the run-blocking angle, keep the ball secure and close the defensive gap before chasing the quarterback.",
     "items": [
       {
-        "id": "tn-report",
-        "headline": "Brandon remains questionable for Alabama",
-        "tldr": "The initial SEC report also rules out Alabama receiver Ryan Coleman-Williams and lists center Racin Delgatty as questionable. A questionable designation does not confirm a starter; watch the final report before assigning the first snap.",
-        "outlet": "Rocky Top Insider",
+        "id": "tn-start",
+        "headline": "Knox News reports MacIntyre will start against Alabama",
+        "tldr": "Brandon remains questionable on Thursday’s report. Watch whether the protection gives MacIntyre a clean first read before he has to extend a play.",
+        "outlet": "Knoxville News Sentinel",
         "tier": "local",
-        "url": "https://www.rockytopinsider.com/2026/10/14/tennessee-football-vs-alabama-wednesday-sec-availability-report/",
-        "publishedAt": "2026-10-15T00:15:46+00:00",
+        "url": "https://www.aol.com/articles/qb-faizon-brandon-remains-questionable-001216000.html",
+        "publishedAt": "2026-10-16T00:12:16+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2425,7 +2426,7 @@
         "body": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "byu-football": {
     "schemaVersion": 1,
@@ -2651,13 +2652,13 @@
         }
       },
       {
-        "id": "short-yardage-planning",
-        "headline": "McGuire planned Monday as if Castellanos would be unavailable",
-        "tldr": "Check the final status update and the actual short-yardage personnel. Monday’s contingency plan does not settle a later eligibility decision or guarantee Saturday’s package.",
+        "id": "tt-eligible",
+        "headline": "Friday’s injunction lets Castellanos return to games",
+        "tldr": "The Avalanche-Journal reports he can play while the temporary order remains in effect. Watch the short-yardage package; eligibility does not establish a snap count.",
         "outlet": "Lubbock Avalanche-Journal",
         "tier": "local",
-        "url": "https://sports.yahoo.com/articles/texas-tech-football-preparing-without-175853075.html",
-        "publishedAt": "2026-10-12",
+        "url": "https://sports.yahoo.com/articles/texas-tech-footballs-thomas-castellanos-211950057.html",
+        "publishedAt": "2026-10-16T21:19:50Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2665,17 +2666,17 @@
         }
       },
       {
-        "id": "opponent-protection",
-        "headline": "Dillingham expects Alo-Tupuola and Helton back for ASU",
-        "tldr": "Use the final lineup to identify the protection assignments. Watch the pressure reach its target without losing the receiver when the quarterback extends the play.",
-        "outlet": "Arizona Sports",
-        "tier": "local",
-        "url": "https://arizonasports.com/ncaa/arizona-state/asu-football/asu-get-2-starting-offensive-linemen-back-trip-10-texas-tech",
-        "publishedAt": "2026-10-12",
+        "id": "asu-helton",
+        "headline": "Helton is available for Arizona State’s trip to Lubbock",
+        "tldr": "RotoWire reports Helton can play after a three-game absence. Watch the interior protection and run-blocking combinations; availability does not establish a snap count.",
+        "outlet": "RotoWire",
+        "tier": "national",
+        "url": "https://www.rotowire.com/cfootball/headlines/wade-helton-news-available-for-week-7-235210",
+        "publishedAt": "2026-10-16T10:41:02-07:00",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -2792,7 +2793,8 @@
         "publishedAt": "2026-10-14T21:07:23.849147Z",
         "body": "Watch the active linemen pass off pressure and the defender keep his path to the quarterback. Keep coverage attached when the throw is delayed."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-16T23:21:01.811811Z"
   },
   "indiana-football": {
     "schemaVersion": 1,
@@ -3201,17 +3203,17 @@
         }
       },
       {
-        "id": "pressure-finish",
-        "headline": "JMU Sports News flags a sack-free game at Georgia Southern",
-        "tldr": "Watch pressure arrive with coverage still attached to the route. A defender near the quarterback has to finish the play before the ball leaves the pocket.",
+        "id": "jmu-preview",
+        "headline": "Dorsey has six touchdown catches entering the JMU trip",
+        "tldr": "Georgia State’s leading receiving threat has 18 catches for 276 yards in the preview’s five-game sample. Watch the coverage handoff and tackle the catch before a completion becomes an explosive gain.",
         "outlet": "JMU Sports News",
         "tier": "local",
-        "url": "https://jmusportsnews.com/2026/10/11/jmu-football-takeaways-first-road-win-georgia-southern/",
-        "publishedAt": "2026-10-11",
+        "url": "https://jmusportsnews.com/2026/10/16/jmu-georgia-state-football-preview-2026/",
+        "publishedAt": "2026-10-16",
         "grade": {
           "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -3342,7 +3344,8 @@
         "publishedAt": "2026-10-14T21:26:52.753380Z",
         "body": "Watch the first defender hold leverage through the block and the next defender finish the tackle. Do not surrender a lane while chasing the backfield action."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "app-state-football": {
     "schemaVersion": 1,
@@ -3356,13 +3359,13 @@
     "summary": "Protect the first exchange at Coastal Carolina. Use the active quarterback assignment, keep the snap secure and hold the run-defense gap without losing the route behind it.",
     "items": [
       {
-        "id": "quarterback-status",
-        "headline": "RotoWire lists Singleton questionable for Friday",
-        "tldr": "Use the final official report and the opening quarterback assignment. Keep a listed injury status separate from clearance, and protect the ball before extending a broken play.",
+        "id": "app-gtd",
+        "headline": "RotoWire lists Singleton as a game-time decision",
+        "tldr": "The latest report leaves Friday’s starter unsettled and projects Hasselbeck if Singleton cannot play. Watch the opening exchange and protect the ball before trying to extend a broken play.",
         "outlet": "RotoWire",
         "tier": "national",
-        "url": "https://www.rotowire.com/cfootball/headlines/malachi-singleton-injury-questionable-for-week-7-234863",
-        "publishedAt": "2026-10-13",
+        "url": "https://www.rotowire.com/cfootball/headlines/malachi-singleton-injury-game-time-decision-for-week-7-235192",
+        "publishedAt": "2026-10-16T07:39:33-07:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -3525,7 +3528,8 @@
         "publishedAt": "2026-10-14T21:26:52.753380Z",
         "body": "Watch the first defender hold his gap through the block and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
   },
   "fresno-state-football": {
     "schemaVersion": 1,
