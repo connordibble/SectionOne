@@ -373,18 +373,18 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Ohio State beat Maryland 45-16, but penalties and turnovers remain the work before Indiana. The trip to Bloomington is October 17 at noon ET on FOX; follow the next availability update rather than assuming Saturday’s absences are resolved.",
+    "summary": "Ohio State won 19-15 at Indiana, but Sayin’s fourth-quarter exit changes the quarterback outlook. Day says he will probably miss several weeks; keep that estimate separate from a confirmed return date.",
     "items": [
       {
-        "id": "maryland-final",
-        "headline": "Ohio State beats Maryland 45-16 before the Indiana trip",
-        "tldr": "Smith caught two touchdowns and Sayin threw four in the Maryland win. The scoring options give Indiana several assignments to cover; the next job is to keep penalties and turnovers from shortening the game.",
+        "id": "osu-indiana-final",
+        "headline": "Ohio State wins 19-15 at Indiana",
+        "tldr": "The Buckeyes forced two fumbles and held on for the road win. Watch the possession after a takeaway: the defense can create the opportunity, but the offense still has to finish it.",
         "outlet": "Ohio State Athletics",
         "tier": "official",
-        "url": "https://ohiostatebuckeyes.com/news/2026/10/10/football-no-5-buckeyes-extends-home-win-streak-to-12-games",
-        "publishedAt": "2026-10-10",
+        "url": "https://ohiostatebuckeyes.com/news/2026/10/17/football-no-4-ohio-state-powers-past-no-5-indiana-on-the-road-earn-second-ranked-road-win-of-season",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -404,13 +404,13 @@
         }
       },
       {
-        "id": "oh-report",
-        "headline": "Siereveld and Ja’Kobi Jackson are out for Indiana",
-        "tldr": "Wednesday’s report rules out the lineman and running back. Five starters who missed Maryland are off the report; watch the rebuilt protection and backfield without assuming everyone will carry a full workload.",
+        "id": "osu-sayin-weeks",
+        "headline": "Day says Sayin will probably be out for several weeks",
+        "tldr": "Sayin left in the fourth quarter, and Fahey finished the Indiana game. Day’s estimate is not a return date; the next quarterback plan needs a fresh report.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164584/ohio-state-injury-report-austin-siereveld-ja-kobi-jackson-out-for-buckeyes-top-five-showdown-vs-indiana",
-        "publishedAt": "2026-10-14T20:13:53-04:00",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164645/julian-sayin-leaves-indiana-game-in-fourth-quarter-with-apparent-shoulder-injury",
+        "publishedAt": "2026-10-17T16:41:37-04:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -432,17 +432,17 @@
         }
       },
       {
-        "id": "bloomington-fox",
-        "headline": "The Indiana trip is set for noon ET on FOX",
-        "tldr": "The October 17 game moves the next test to Bloomington. Plan for the early window, and check the week’s availability updates before treating the Maryland lineup as next Saturday’s lineup.",
-        "outlet": "Ohio State Athletics",
-        "tier": "official",
-        "url": "https://ohiostatebuckeyes.com/news/2026/10/5/football-kickoff-time-against-indiana-announced-for-noon-et-on-fox",
-        "publishedAt": "2026-10-05",
+        "id": "osu-indiana-rundefense",
+        "headline": "Indiana managed 73 rushing yards against Ohio State",
+        "tldr": "The Hoosiers averaged 2.5 yards on 29 carries. Watch the first gap and the pursuit behind it; sound run defense can make the passing downs less forgiving.",
+        "outlet": "The Daily Hoosier",
+        "tier": "local",
+        "url": "https://www.thedailyhoosier.com/three-quick-reasons-why-iu-football-lost-to-ohio-state-highlights-stats/",
+        "publishedAt": "2026-10-17T19:54:24+00:00",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       }
     ],
@@ -546,7 +546,7 @@
         "body": "Inniss, McCuin, Daniels, Siereveld, Alliegro and Timmons missed the Maryland game. Those are Saturday absences, not confirmed Indiana statuses; check the new report before assigning next week’s roles."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-17T23:07:35.493345Z"
   },
   "lsu-football": {
     "schemaVersion": 1,
@@ -741,44 +741,16 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Northwestern beat Ball State 45-14 with an efficient passing game and another fast start. The next work is boundary tackling and coverage before an October 17 trip to Michigan State at 11 a.m. CT on Peacock.",
+    "summary": "Northwestern won 24-21 at Michigan State with a late blocked kick and Kleather’s field goal. The escape leaves protection, coverage and fourth-down decisions to review before Rutgers visits on October 24.",
     "items": [
       {
-        "id": "homecoming-final",
-        "headline": "Northwestern finishes nonconference play with a 45-14 win",
-        "tldr": "The Wildcats scored on five of their first six drives against Ball State. Watch whether that opening execution holds up on the road rather than waiting for a second-half correction.",
+        "id": "nu-msu-final",
+        "headline": "Kleather’s late field goal gives Northwestern a 24-21 win",
+        "tldr": "A blocked Michigan State attempt kept the score tied before Northwestern drove for the winning kick. The finish rewards the final defensive stop and an offense ready to use the remaining clock.",
         "outlet": "Northwestern Athletics",
         "tier": "official",
-        "url": "https://nusports.com/news/2026/10/10/northwestern-takes-down-ball-state-45-14-for-homecoming-win",
-        "publishedAt": "2026-10-10",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "chiles-wilde",
-        "headline": "Chiles and Wilde give the passing game a productive afternoon",
-        "tldr": "Chiles threw for 272 yards and three touchdowns; Wilde caught eight passes for 144 yards. Run action and a clear read can keep that timing useful against Michigan State.",
-        "outlet": "Inside NU",
-        "tier": "local",
-        "url": "https://www.insidenu.com/northwestern-football/72012/rapid-reaction-northwestern-drubs-ball-state-for-a-45-14-homecoming-victory",
-        "publishedAt": "2026-10-10T19:50:26+00:00",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "nu-road",
-        "headline": "Braun says Northwestern has won one of its last six road games",
-        "tldr": "Monday’s briefing put the road test ahead of the Chiles–Fitzgerald reunion. Watch communication and the response after a stalled drive; Braun said the team has to prove itself in a hostile environment.",
-        "outlet": "Inside NU",
-        "tier": "local",
-        "url": "https://www.insidenu.com/northwestern-football/72181/michigan-state-game-week-david-braun-presser-notes",
-        "publishedAt": "2026-10-14T17:12:40+00:00",
+        "url": "https://nusports.com/news/2026/10/17/last-minute-score-lifts-no-25-northwestern-to-24-21-win-at-michigan-state",
+        "publishedAt": "2026-10-17T19:39:02.000000Z",
         "grade": {
           "impact": 4,
           "echo": 1,
@@ -786,31 +758,59 @@
         }
       },
       {
-        "id": "nu-thursday",
-        "headline": "Northwestern safety Robert Fitzgerald is now doubtful",
-        "tldr": "Thursday’s update downgrades the safety from questionable without ruling him out. Watch the final report and Northwestern’s coverage assignments before projecting the secondary in East Lansing.",
-        "outlet": "Spartans Wire",
+        "id": "nu-chiles-pressure",
+        "headline": "Lafaele sacked Chiles twice before halftime",
+        "tldr": "Michigan State’s edge defender forced a fumble on one of those plays and stopped a late first-half drive on the other. The comeback still leaves an edge-protection assignment to review.",
+        "outlet": "Michigan State Spartans on SI",
         "tier": "local",
-        "url": "https://staging-aws.sports.yahoo.com/articles/key-northwestern-defensive-back-listed-160423217.html",
-        "publishedAt": "2026-10-16T16:04:23Z",
+        "url": "https://www.si.com/college/michiganstate/football/three-performances-msu-spartans-heartbreaking-loss-vs-northwestern",
+        "publishedAt": "2026-10-17T19:40:18Z",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "east-lansing-peacock",
-        "headline": "Northwestern–Michigan State is set for 11 a.m. CT on Peacock",
-        "tldr": "The October 17 game is in East Lansing. The offense takes its next test on the road; plan for the streaming broadcast and the early kickoff.",
+        "id": "nu-coverage-breakdown",
+        "headline": "McCray’s 53-yard touchdown extended Michigan State’s lead",
+        "tldr": "A 41-yard punt return helped set up the scoring drive. Keep the coverage handoff intact when the defense has little field behind it.",
         "outlet": "Michigan State Athletics",
         "tier": "official",
-        "url": "https://msuspartans.com/news/2026/10/5/football-michigan-state-northwestern-to-kick-off-at-noon-on-saturday-oct-17",
-        "publishedAt": "2026-10-05",
+        "url": "https://msuspartans.com/news/2026/10/17/football-michigan-state-falls-short-against-northwestern-24-21",
+        "publishedAt": "2026-10-17",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "nu-fake-punt",
+        "headline": "A failed fake punt gave Michigan State the ball at Northwestern’s 28",
+        "tldr": "The incomplete pass left the defense a short field late in the tie game. The eventual escape does not remove the field-position cost of that fourth-down decision.",
+        "outlet": "Detroit Free Press",
+        "tier": "local",
+        "url": "https://sports.yahoo.com/articles/pat-fitzgerald-loses-revenge-game-191859464.html",
+        "publishedAt": "2026-10-17T19:18:59Z",
+        "grade": {
+          "impact": 4,
+          "echo": 1,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "nu-rutgers-next",
+        "headline": "Northwestern’s Rutgers game is set for 11 a.m. CT on October 24",
+        "tldr": "Inside NU’s recap lists the return to Ryan Field for family weekend. Plan for the early window; the Michigan State lineup does not establish next week’s availability.",
+        "outlet": "Inside NU",
+        "tier": "local",
+        "url": "https://www.insidenu.com/northwestern-football/72322/rapid-reaction-northwestern-escapes-michigan-state-with-impossibly-dramatic-24-21-win",
+        "publishedAt": "2026-10-17T20:01:08+00:00",
         "grade": {
           "impact": 3,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       }
     ],
@@ -924,7 +924,7 @@
         "body": "Inside NU identified receivers and second-level blockers losing blocks against Ball State. Watch the blocker reach the right shoulder and hold that position while the runner chooses the available lane."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:12:09.783596Z"
   },
   "kansas-football": {
     "schemaVersion": 1,
@@ -935,18 +935,18 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Kansas lost 41-24 at Utah after getting within three late in the third quarter. Start the passing game sooner and finish the goal-to-go drive; Kansas State is next in Manhattan on October 17 at 11 a.m. CT on FS1.",
+    "summary": "Kansas lost 35-24 at Kansas State after leading 17-7. The end-zone turnover and 359 rushing yards allowed need separate corrections before Baylor comes to Lawrence on October 24.",
     "items": [
       {
-        "id": "utah-final",
-        "headline": "Utah pulls away from Kansas for a 41-24 win",
-        "tldr": "Kansas closed to 27-24 before Utah took the fourth quarter. Marshall threw for 333 yards, but the late scoring chances need a better finish before the rivalry trip.",
+        "id": "ku-kstate-final",
+        "headline": "Kansas loses 35-24 after an early 17-7 lead",
+        "tldr": "The Jayhawks produced only one scoring drive after the first quarter. An opening rhythm helps, but it needs to survive the opponent’s adjustments and the next difficult down.",
         "outlet": "Kansas Athletics",
         "tier": "official",
-        "url": "https://kuathletics.com/news/2026/10/10/football-jayhawks-battle-no-12-utah-fall-41-24",
-        "publishedAt": "2026-10-10",
+        "url": "https://kuathletics.com/news/2026/10/17/football-kansas-falls-at-kansas-state-in-dillons-sunflower-showdown",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -966,13 +966,13 @@
         }
       },
       {
-        "id": "ku-out",
-        "headline": "RotoWire lists Kubecka out for the Sunflower Showdown",
-        "tldr": "RotoWire reports the receiver will miss Saturday after an injury last week. Watch Cox’s role alongside McMillan and Pickett; a larger opportunity does not establish a snap count.",
-        "outlet": "RotoWire",
-        "tier": "national",
-        "url": "https://www.rotowire.com/cfootball/headlines/keaton-kubecka-injury-wont-play-saturday-235177",
-        "publishedAt": "2026-10-15T19:04:45-07:00",
+        "id": "ku-endzone-turnover",
+        "headline": "Marshall’s fourth-quarter end-zone interception stops a Kansas threat",
+        "tldr": "Kansas trailed by one before the turnover, and Jackson broke a 64-yard run on the next play. Protect the scoring chance before asking the defense to take the field again.",
+        "outlet": "KUsports.com",
+        "tier": "local",
+        "url": "https://www2.kusports.com/sports/college/football/2026/oct/17/quick-recap-ku-loses-18th-straight-to-k-state-35-24/",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -980,31 +980,31 @@
         }
       },
       {
-        "id": "wildcats-houston",
-        "headline": "Kansas State loses 35-16 as Houston keeps drives alive",
-        "tldr": "Houston converted all three of its fourth-down attempts in Manhattan. Kansas can study the sustained-drive problem, but it still has to earn its own manageable downs against the Wildcats.",
+        "id": "ku-run-defense",
+        "headline": "Kansas State runs for 359 yards against Kansas",
+        "tldr": "Jackson supplied 159 yards and Johnson added 132. The run-defense review needs to account for the quarterback as well as the back, with the pursuit angle intact after the first cut.",
         "outlet": "Kansas State Athletics",
         "tier": "official",
-        "url": "https://www.kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
-        "publishedAt": "2026-10-10",
+        "url": "https://www.kstatesports.com/news/2026/10/17/football-k-state-extends-streak-over-kansas-to-18-games-in-35-24-win",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "sunflower-fs1",
-        "headline": "The Sunflower Showdown is set for 11 a.m. CT on FS1",
-        "tldr": "Kansas travels to Manhattan on October 17. Plan for the early start and watch whether the offense can establish its rhythm before falling behind again.",
+        "id": "ku-hayes-return",
+        "headline": "Hayes answered Kansas State’s opening score with a 95-yard kickoff return",
+        "tldr": "The return tied the game 7-7 in the first quarter. Special teams created the response; the offense still needed to sustain it.",
         "outlet": "Kansas Athletics",
         "tier": "official",
-        "url": "https://kuathletics.com/news/2026/10/5/football-dillons-sunflower-showdown-set-for-11-am-kickoff-on-fs1",
-        "publishedAt": "2026-10-05",
+        "url": "https://kuathletics.com/sports/football/stats/2026/kansas-state/boxscore/20533",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       }
     ],
@@ -1118,7 +1118,7 @@
         "body": "Kansas’s running backs supplied 32 rushing yards at Utah. Watch the blocking and the first-down carry choice before expecting a larger workload; Marshall’s passing production alone does not establish next week’s backfield roles."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:21:02.359362Z"
+    "storiesUpdatedAt": "2026-10-17T23:12:09.783596Z"
   },
   "alabama-football": {
     "schemaVersion": 1,
@@ -1129,7 +1129,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Alabama lost 20-17 to Georgia after giving up too many third-down extensions and a late personal foul. Tennessee is next in Knoxville on October 17 at 2:30 p.m. CT on ABC; watch the run fits and the decision after the whistle.",
+    "summary": "Alabama lost 20-17 to Georgia. Saturday’s final report lists Delgatty, Coleman-Williams and Green out against Tennessee; watch the interior protection and the run-defense fit.",
     "items": [
       {
         "id": "georgia-final",
@@ -1160,13 +1160,13 @@
         }
       },
       {
-        "id": "al-thursday",
-        "headline": "Delgatty is doubtful for Tennessee; Coleman-Williams and Green are out",
-        "tldr": "Thursday’s report lowers the center’s designation from questionable. Watch the interior protection and run-blocking assignments; doubtful is not a confirmed absence.",
-        "outlet": "Tide 100.9",
+        "id": "al-delgatty-out",
+        "headline": "Delgatty joins Coleman-Williams and Green on the final out list",
+        "tldr": "Saturday’s report confirms the center’s absence against Tennessee. Watch the interior protection and run-blocking combinations before asking a replacement group to sustain a long-developing play.",
+        "outlet": "Rocky Top Insider",
         "tier": "local",
-        "url": "https://tide1009.com/thursday-report-alabama-tennessee-football-2026/",
-        "publishedAt": "2026-10-15T23:31:03.000Z",
+        "url": "https://www.rockytopinsider.com/2026/10/17/tennessee-football-vs-alabama-gameday-availability-report/",
+        "publishedAt": "2026-10-17T18:02:21+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1312,7 +1312,7 @@
         "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:16:29.041051Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1323,7 +1323,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Georgia won 20-17 at Alabama with Phillips’ rushing production, Stockton’s late completion and four defensive sacks. Auburn comes to Athens next Saturday; review the new availability report before assuming Frazier or Canion will return.",
+    "summary": "Georgia beat Alabama 20-17. Saturday’s Auburn report ruled Bolden out; keep that status separate from last week’s backfield production.",
     "items": [
       {
         "id": "tuscaloosa-final",
@@ -1368,13 +1368,13 @@
         }
       },
       {
-        "id": "ga-thursday",
-        "headline": "Bolden is doubtful and Bowens is out for Auburn",
-        "tldr": "Friday’s report leaves Georgia’s safety unlikely to play and its running back ruled out. Watch the coverage handoffs and the backfield rotation; Frazier’s absence from the report does not establish a workload.",
-        "outlet": "UGA Wire",
+        "id": "ga-bolden-out",
+        "headline": "Bolden was ruled out for Auburn",
+        "tldr": "The Athens Banner-Herald reports Bolden had started 20 straight games. Riddle and Dinkins worked with the first unit in pregame warmups; that observation does not establish the next starting lineup.",
+        "outlet": "Athens Banner-Herald",
         "tier": "local",
-        "url": "https://sports.yahoo.com/articles/georgia-american-likely-vs-auburn-152729047.html",
-        "publishedAt": "2026-10-16T15:27:29Z",
+        "url": "https://www.aol.com/articles/georgias-kj-bolden-auburn-game-190740000.html",
+        "publishedAt": "2026-10-17T19:07:40+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1506,7 +1506,7 @@
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:16:29.041051Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -2256,13 +2256,13 @@
     "summary": "Make the first gain count against Alabama. Watch the run-blocking angle, keep the ball secure and close the defensive gap before chasing the quarterback.",
     "items": [
       {
-        "id": "tn-start",
-        "headline": "Knox News reports MacIntyre will start against Alabama",
-        "tldr": "Brandon remains questionable on Thursday’s report. Watch whether the protection gives MacIntyre a clean first read before he has to extend a play.",
-        "outlet": "Knoxville News Sentinel",
+        "id": "tn-macintyre-opened",
+        "headline": "MacIntyre led Tennessee’s opening drive against Alabama",
+        "tldr": "RTI’s live log records a field goal on the first possession. That confirms who opened the game; it does not settle next week’s starting role.",
+        "outlet": "Rocky Top Insider",
         "tier": "local",
-        "url": "https://www.aol.com/articles/qb-faizon-brandon-remains-questionable-001216000.html",
-        "publishedAt": "2026-10-16T00:12:16+00:00",
+        "url": "https://www.rockytopinsider.com/2026/10/17/no-6-alabama-at-no-14-tennessee-live-score-big-moments-scoring-plays/",
+        "publishedAt": "2026-10-17T19:47:33+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2426,7 +2426,7 @@
         "body": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:14:45.222716Z"
   },
   "byu-football": {
     "schemaVersion": 1,
@@ -2805,7 +2805,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Make the pressure arrive with coverage intact against Ohio State. Watch the receiver’s alignment, the active backfield and the offensive route that stays available when the defense crowds the run.",
+    "summary": "Indiana lost 19-15 to Ohio State after two fumbles on its first two second-half possessions. Keep the passing answer available against pressure and secure the catch before chasing extra yards.",
     "items": [
       {
         "id": "marsh-scoring",
@@ -2822,13 +2822,13 @@
         }
       },
       {
-        "id": "iu-report",
-        "headline": "Martin is doubtful and Barker is questionable for Ohio State",
-        "tldr": "Wednesday’s first report upgrades Martin from out without clearing him to play. Check the final running-back and tight-end report before assigning a role in the rotation.",
+        "id": "iu-two-fumbles",
+        "headline": "Indiana fumbled on its first two second-half possessions",
+        "tldr": "Chandler lost the ball after a catch, then Hoover was strip-sacked by an unblocked blitzer. Secure the catch and identify the pressure before trying to recover the entire drive with one play.",
         "outlet": "The Daily Hoosier",
         "tier": "local",
-        "url": "https://www.thedailyhoosier.com/iu-footballs-initial-week-7-injury-report-much-cleaner-than-osu/",
-        "publishedAt": "2026-10-15T00:07:09+00:00",
+        "url": "https://www.thedailyhoosier.com/three-quick-reasons-why-iu-football-lost-to-ohio-state-highlights-stats/",
+        "publishedAt": "2026-10-17T19:54:24+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -2864,17 +2864,17 @@
         }
       },
       {
-        "id": "bloomington-viewing",
-        "headline": "Ohio State visits Bloomington Saturday on FOX",
-        "tldr": "Plan for the broadcast from Bloomington. Check the final running-back report and the opening coverage assignments before treating a practice update as a settled role.",
-        "outlet": "Indiana Athletics",
+        "id": "iu-ohio-state-final",
+        "headline": "Indiana falls 19-15 to Ohio State",
+        "tldr": "The loss ended the Hoosiers’ 22-game winning streak. The late rally kept a win within reach; the next review starts with the empty possessions and missed scoring chances.",
+        "outlet": "Ohio State Athletics",
         "tier": "official",
-        "url": "https://iuhoosiers.com/news/2026/10/12/football-football-gameday-ohio-state-week-7",
-        "publishedAt": "2026-10-12",
+        "url": "https://ohiostatebuckeyes.com/news/2026/10/17/football-no-4-ohio-state-powers-past-no-5-indiana-on-the-road-earn-second-ranked-road-win-of-season",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       }
     ],
@@ -2978,7 +2978,7 @@
         "body": "Watch the pass rush reach the quarterback while the coverage stays attached to the route. End the play before trying to create another one."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-17T23:07:35.493345Z"
   },
   "boise-state-football": {
     "schemaVersion": 1,
@@ -3172,20 +3172,20 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Keep a passing answer in short yardage against Georgia State. Watch the active quarterback package, the protection of the first gap and the defender who stays with the route after pressure arrives.",
+    "summary": "JMU beat Georgia State 49-22 and moved to 7-0. Keep the quarterback package useful without losing coverage discipline; the next trip is Thursday at App State.",
     "items": [
       {
-        "id": "pettaway-blocking",
-        "headline": "Pettaway ran for 151 yards at Georgia Southern",
-        "tldr": "Watch the blocking combination create a first cut. Finish the second assignment before judging whether the next call should change the run direction.",
+        "id": "jmu-gsu-final",
+        "headline": "JMU wins 49-22 over Georgia State",
+        "tldr": "The Dukes produced 515 yards and scored on all six red-zone trips. Watch how the quarterback package creates a passing answer without giving away the next run direction.",
         "outlet": "James Madison Athletics",
         "tier": "official",
-        "url": "https://jmusports.com/news/2026/10/11/football-dukes-grind-out-road-win-at-georgia-southern",
-        "publishedAt": "2026-10-11",
+        "url": "https://jmusports.com/news/2026/10/17/football-dukes-dominate-in-georgia-state-win",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
@@ -3217,13 +3217,13 @@
         }
       },
       {
-        "id": "panthers-run-fits",
-        "headline": "Georgia State averages 209.6 rushing yards per game",
-        "tldr": "Watch the first defender hold his gap and the next defender finish the tackle. Keep an early run look from pulling coverage away from the receiver.",
+        "id": "jmu-gsu-dorsey-score",
+        "headline": "Dorsey’s 32-yard touchdown tests JMU’s downfield coverage",
+        "tldr": "Georgia State’s receiver finished with three catches for 57 yards and a touchdown. The win still leaves a coverage check: carry the route through the handoff and tackle the catch.",
         "outlet": "Georgia State Athletics",
         "tier": "official",
-        "url": "https://georgiastatesports.com/news/2026/10/12/football-panthers-continue-conference-play-at-james-madison.aspx",
-        "publishedAt": "2026-10-12",
+        "url": "https://georgiastatesports.com/news/2026/10/17/football-panthers-come-up-short-in-a-49-22-loss-to-james-madison.aspx",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 4,
           "echo": 1,
@@ -3231,15 +3231,15 @@
         }
       },
       {
-        "id": "homecoming-viewing",
-        "headline": "Georgia State visits at noon ET on ESPNU",
-        "tldr": "Plan for the Homecoming midday window in Harrisonburg. Check the final personnel report before assigning a short-yardage quarterback role.",
-        "outlet": "James Madison Athletics",
+        "id": "jmu-app-rushing",
+        "headline": "App State ran for 253 yards in its win at Coastal Carolina",
+        "tldr": "Hasselbeck supplied 125 rushing yards in the 35-32 comeback. JMU’s run-defense plan needs to account for the quarterback without assuming Friday’s rotation settles the next start.",
+        "outlet": "Coastal Carolina Athletics",
         "tier": "official",
-        "url": "https://jmusports.com/news/2026/10/13/football-dukes-set-for-homecoming-vs-georgia-state",
-        "publishedAt": "2026-10-13",
+        "url": "https://goccusports.com/news/2026/10/17/football-coastal-comes-up-short-against-app-35-32",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -3345,7 +3345,7 @@
         "body": "Watch the first defender hold leverage through the block and the next defender finish the tackle. Do not surrender a lane while chasing the backfield action."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:12:09.783596Z"
   },
   "app-state-football": {
     "schemaVersion": 1,
@@ -3356,16 +3356,16 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Protect the first exchange at Coastal Carolina. Use the active quarterback assignment, keep the snap secure and hold the run-defense gap without losing the route behind it.",
+    "summary": "App State rallied for a 35-32 win at Coastal Carolina with Singleton starting and Hasselbeck taking the second half. Secure the exchange and carry the downfield route before Thursday’s home game against JMU.",
     "items": [
       {
-        "id": "app-gtd",
-        "headline": "RotoWire lists Singleton as a game-time decision",
-        "tldr": "The latest report leaves Friday’s starter unsettled and projects Hasselbeck if Singleton cannot play. Watch the opening exchange and protect the ball before trying to extend a broken play.",
-        "outlet": "RotoWire",
-        "tier": "national",
-        "url": "https://www.rotowire.com/cfootball/headlines/malachi-singleton-injury-game-time-decision-for-week-7-235192",
-        "publishedAt": "2026-10-16T07:39:33-07:00",
+        "id": "app-qb-rotation",
+        "headline": "Singleton starts; Hasselbeck plays the entire second half at Coastal",
+        "tldr": "App State’s notes confirm Singleton completed 12 of 14 passes for 151 yards. Hasselbeck ran for 125 yards, but the completed-game rotation does not confirm the next starter.",
+        "outlet": "App State Athletics",
+        "tier": "official",
+        "url": "https://appstatesports.com/news/2026/10/17/football-postgame-notes-from-app-states-win-at-coastal-carolina.aspx",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -3401,27 +3401,27 @@
         }
       },
       {
-        "id": "opponent-rushing",
-        "headline": "Lee-Knicely ran for 169 yards at Marshall",
-        "tldr": "Watch the first run-defense fit and the pursuit angle behind it. Close the lane before the back reaches space, then finish the tackle.",
+        "id": "app-coastal-final",
+        "headline": "App State wins 35-32 after trailing by ten at halftime",
+        "tldr": "The Mountaineers scored 21 unanswered points and kept the ball for the final 3:11. Protect the exchange and finish the run-blocking assignment when a first down can end the game.",
         "outlet": "Coastal Carolina Athletics",
         "tier": "official",
-        "url": "https://goccusports.com/news/2026/10/10/football-six-takeaways-lift-coastal-carolina-to-27-21-win-at-marshall",
-        "publishedAt": "2026-10-10",
+        "url": "https://goccusports.com/news/2026/10/17/football-coastal-comes-up-short-against-app-35-32",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
         }
       },
       {
-        "id": "friday-viewing",
-        "headline": "The Coastal trip kicks off Friday at 8 p.m. ET on ESPN2",
-        "tldr": "Plan for the Friday broadcast from Conway. Check the final availability report before assigning a quarterback or a workload.",
-        "outlet": "Coastal Carolina Athletics",
+        "id": "app-jmu-next",
+        "headline": "App State hosts JMU Thursday at 7 p.m. ET on ESPNU",
+        "tldr": "JMU’s official recap confirms the October 22 trip to Boone. Plan for the short turnaround and check the new availability report before assigning a quarterback workload.",
+        "outlet": "James Madison Athletics",
         "tier": "official",
-        "url": "https://goccusports.com/news/2026/10/14/football-know-before-you-go-coastal-carolina-vs-app-state",
-        "publishedAt": "2026-10-14",
+        "url": "https://jmusports.com/news/2026/10/17/football-dukes-dominate-in-georgia-state-win",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 3,
           "echo": 1,
@@ -3529,7 +3529,7 @@
         "body": "Watch the first defender hold his gap through the block and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-17T23:07:35.493345Z"
   },
   "fresno-state-football": {
     "schemaVersion": 1,
