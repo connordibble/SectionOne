@@ -557,7 +557,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "LSU lost 35-34 in overtime at Kentucky. A punt-return touchdown, late ball-security trouble and the final quarterback keep leave concrete corrections before Mississippi State visits for an 11 a.m. CT kickoff on ESPN.",
+    "summary": "LSU beat Mississippi State 31-0. Leavitt’s four touchdown passes and the defense’s fourth-down stops give the review a stronger starting point; keep protection and ball security connected.",
     "items": [
       {
         "id": "kentucky-final",
@@ -602,31 +602,31 @@
         }
       },
       {
-        "id": "lsu-thursday",
-        "headline": "Singleton is doubtful; Taylor and Bothwell remain questionable",
-        "tldr": "Thursday’s report downgrades LSU’s linebacker while leaving Mississippi State’s quarterback and leading back uncertain. Watch the final lineups before assigning the run fits or projecting Taylor’s workload.",
+        "id": "lsu-leavitt-four",
+        "headline": "Leavitt throws four touchdowns against Mississippi State",
+        "tldr": "He completed 31 of 38 passes for 289 yards. Keep the short receiving answer available before asking protection to hold for a deeper route.",
         "outlet": "And The Valley Shook",
         "tier": "local",
-        "url": "https://www.andthevalleyshook.com/lsu-tigers-football/54294/thursdays-lsu-vs-mississippi-state-injury-report",
-        "publishedAt": "2026-10-16T01:27:49+00:00",
+        "url": "https://www.andthevalleyshook.com/lsu-tigers-discussion/54415/lsu-gets-dominant-performance-from-offense-shuts-out-mississippi-state",
+        "publishedAt": "2026-10-18T19:55:38+00:00",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
       {
-        "id": "homecoming-espn",
-        "headline": "LSU’s homecoming kickoff is confirmed for 11 a.m. CT on ESPN",
-        "tldr": "Mississippi State comes to Tiger Stadium on October 17. The final network is ESPN, replacing the earlier either-or listing; plan for a morning kickoff in Baton Rouge.",
+        "id": "lsu-msu-final",
+        "headline": "LSU shuts out Mississippi State, 31-0",
+        "tldr": "The defense stopped four consecutive fourth-down attempts. Finish the tackle at the marker before treating a promising defensive series as a stop.",
         "outlet": "LSU Athletics",
         "tier": "official",
-        "url": "https://lsusports.net/news/2026/10/5/lsu-football-homecoming-game-to-air-on-abc-or-espn",
-        "publishedAt": "2026-10-05",
+        "url": "https://lsusports.net/news/2026/10/17/football-completes-shutout-vs-no-16-mississippi-state-31-0",
+        "publishedAt": "2026-10-17T19:56:02.000000Z",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 3
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -730,7 +730,7 @@
         "body": "Against Mississippi State, pass the receiver from one coverage assignment to the next without opening a scramble lane. Make the quarterback take the useful short completion and finish the tackle."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "northwestern-football": {
     "schemaVersion": 1,
@@ -1129,19 +1129,19 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Alabama lost 20-17 to Georgia. Saturday’s final report lists Delgatty, Coleman-Williams and Green out against Tennessee; watch the interior protection and the run-defense fit.",
+    "summary": "Alabama lost 26-10 at Tennessee, finishing with 201 yards and four turnovers. Protect the next possession before expecting one explosive play to repair the offense.",
     "items": [
       {
-        "id": "georgia-final",
-        "headline": "Georgia hands Alabama its first loss, 20-17",
-        "tldr": "Alabama scored only three points after halftime. Keep the offensive drive alive without a negative play, and make the defense’s next stop deliver another possession.",
+        "id": "al-tennessee-final",
+        "headline": "Alabama falls 26-10 at Tennessee",
+        "tldr": "The offense finished with 201 yards and no second-half points. Sustaining a drive starts with a usable first-down play and a safe decision under pressure.",
         "outlet": "Alabama Athletics",
         "tier": "official",
-        "url": "https://rolltide.com/news/2026/10/10/football-no-6-7-alabama-falls-to-no-2-2-georgia-20-17",
-        "publishedAt": "2026-10-10",
+        "url": "https://rolltide.com/news/2026/10/17/football-no-6-7-alabama-drops-26-10-contest-at-no-14-14-tennessee",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
@@ -1160,16 +1160,16 @@
         }
       },
       {
-        "id": "al-delgatty-out",
-        "headline": "Delgatty joins Coleman-Williams and Green on the final out list",
-        "tldr": "Saturday’s report confirms the center’s absence against Tennessee. Watch the interior protection and run-blocking combinations before asking a replacement group to sustain a long-developing play.",
-        "outlet": "Rocky Top Insider",
+        "id": "al-four-turnovers",
+        "headline": "Four Alabama turnovers cut possessions short",
+        "tldr": "Russell lost a fumble on Alabama’s opening possession. Before looking for a long completion, watch the protection and the quarterback secure the ball.",
+        "outlet": "1819 News",
         "tier": "local",
-        "url": "https://www.rockytopinsider.com/2026/10/17/tennessee-football-vs-alabama-gameday-availability-report/",
-        "publishedAt": "2026-10-17T18:02:21+00:00",
+        "url": "https://1819news.com/news/item/5-takeaways-from-no-6-alabamas-26-10-loss-to-no-14-tennessee",
+        "publishedAt": "2026-10-17T18:37:00-05:00",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
@@ -1312,7 +1312,7 @@
         "body": "Russell was sacked out of field-goal range on Alabama’s last offensive possession against Georgia. Watch the right tackle hold the outside path while the quarterback takes the available throw; next week’s lineup still needs a fresh availability report."
       }
     ],
-    "storiesUpdatedAt": "2026-10-17T23:16:29.041051Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1323,7 +1323,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Georgia beat Alabama 20-17. Saturday’s Auburn report ruled Bolden out; keep that status separate from last week’s backfield production.",
+    "summary": "Georgia lost 27-24 to Auburn after a late fumble set up the winning field goal. Finish the possession without turning a defensive stop into another scoring chance for the opponent.",
     "items": [
       {
         "id": "tuscaloosa-final",
@@ -1368,30 +1368,30 @@
         }
       },
       {
-        "id": "ga-bolden-out",
-        "headline": "Bolden was ruled out for Auburn",
-        "tldr": "The Athens Banner-Herald reports Bolden had started 20 straight games. Riddle and Dinkins worked with the first unit in pregame warmups; that observation does not establish the next starting lineup.",
-        "outlet": "Athens Banner-Herald",
-        "tier": "local",
-        "url": "https://www.aol.com/articles/georgias-kj-bolden-auburn-game-190740000.html",
-        "publishedAt": "2026-10-17T19:07:40+00:00",
+        "id": "ga-stockton-turnovers",
+        "headline": "Stockton’s late fumble sets up Auburn’s winning kick",
+        "tldr": "Auburn’s two interceptions yielded no points, but the fourth-quarter fumble supplied the winning field goal. Ball security has to survive the effort to extend a play.",
+        "outlet": "Georgia Athletics",
+        "tier": "official",
+        "url": "https://georgiadogs.com/news/2026/10/17/football-postgame-notes-georgia-vs-auburn",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
       {
-        "id": "auburn-home",
-        "headline": "Auburn is next at Sanford Stadium at 3:30 p.m. ET",
-        "tldr": "The October 17 game returns Georgia to Athens. Keep the backfield and receiver availability check separate from the result in Tuscaloosa; next week’s roles still need a fresh report.",
-        "outlet": "Georgia Athletics",
+        "id": "ga-auburn-final",
+        "headline": "Georgia loses 27-24 on McPherson’s late field goal",
+        "tldr": "Auburn recovered a fumble in the final minute before the 34-yard winner. The defensive stop and the next offensive possession have to work together.",
+        "outlet": "Auburn Athletics",
         "tier": "official",
-        "url": "https://georgiadogs.com/news/2026/10/10/football-woodring-fg-lifts-bulldogs-past-crimson-tide-20-17",
-        "publishedAt": "2026-10-10",
+        "url": "https://auburntigers.com/news/2026/10/17/auburn-knocks-off-no-1-georgia-27-24-on-mcphersons-field-goal",
+        "publishedAt": "2026-10-17T23:15:56.000000Z",
         "grade": {
-          "impact": 3,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       }
@@ -1506,7 +1506,7 @@
         "body": "Alabama’s Brown rushed for 90 yards on nine carries against Georgia. Against Auburn, watch the defender read the block and keep the runner in the assigned lane before pursuing the ball outside."
       }
     ],
-    "storiesUpdatedAt": "2026-10-17T23:16:29.041051Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -1517,7 +1517,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Make the blocking travel to Provo. Keep Carr’s first decision available, contain Bachmeier when the pocket opens and stay attached to the tight ends after the initial run look.",
+    "summary": "Notre Dame lost 28-24 at BYU. The first-half spike and the final red-zone possession leave concrete clock and execution details to review.",
     "items": [
       {
         "id": "walton-blocking",
@@ -1534,16 +1534,16 @@
         }
       },
       {
-        "id": "nd-report",
-        "headline": "Freeman expects help from Moore and Onye if progress continues",
-        "tldr": "Thursday’s update keeps their returns conditional. Watch the final availability report before treating Notre Dame’s secondary or interior defensive line as restored for BYU.",
-        "outlet": "Fighting Irish Wire",
+        "id": "nd-missed-spike",
+        "headline": "Carr’s fumbled spike ends a first-half scoring chance",
+        "tldr": "The Irish reached scoring range before losing possession on the attempted spike. Clock management starts with securing the snap.",
+        "outlet": "Irish Sports Daily",
         "tier": "local",
-        "url": "https://www.aol.com/articles/marcus-freeman-gives-final-leonard-201945000.html",
-        "publishedAt": "2026-10-15T20:19:45+00:00",
+        "url": "https://irishsportsdaily.com/s/28387/notre-dame-falls-to-byu-28-24",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
@@ -1576,17 +1576,17 @@
         }
       },
       {
-        "id": "provo-kickoff",
-        "headline": "The Provo trip starts at 5:30 p.m. MT on ABC",
-        "tldr": "BYU’s official game page confirms the October 17 viewing plan. Set aside the evening for a road test and check the final availability reports before assigning roles.",
-        "outlet": "BYU Athletics",
+        "id": "nd-byu-final",
+        "headline": "Notre Dame falls 28-24 at BYU",
+        "tldr": "The Cougars went ahead with 1:47 remaining, and the Irish finished at BYU’s seven-yard line. Keep a quick passing answer ready when the last drive reaches the red zone.",
+        "outlet": "Notre Dame Athletics",
         "tier": "official",
-        "url": "https://byucougars.com/news/2026/10/12/byu-football-game-week-2026-notre-dame",
-        "publishedAt": "2026-10-12",
+        "url": "https://fightingirish.com/news/2026/10/18/irish-rally-then-fall-late-at-byu-28-24",
+        "publishedAt": "2026-10-18T03:25:37.000000Z",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -1690,7 +1690,7 @@
         "body": "Traore intercepted a pass after his opening strip-sack against Stanford. Watch the assignment when a defender drops away from the line."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "michigan-football": {
     "schemaVersion": 1,
@@ -1701,34 +1701,34 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Give the defense a field worth defending. Against Penn State, watch the offensive line finish the block, the returner secure the punt and the coverage account for the tight end.",
+    "summary": "Michigan beat Penn State 21-18 after turning to Tommy Carr at halftime. Keep the quarterback adjustment separate from the three second-half takeaways that helped change the game.",
     "items": [
       {
-        "id": "mi-report",
-        "headline": "Guarnera and Norton are questionable for Penn State",
-        "tldr": "Michigan’s initial report also rules out Sprague and lists Efobi as probable. Watch the blocking combinations; probable status does not guarantee a full workload.",
-        "outlet": "MLive",
+        "id": "mi-carr-secondhalf",
+        "headline": "Tommy Carr sparks Michigan after a halftime change",
+        "tldr": "Carr completed five of seven passes for 47 yards and ran for 36 yards with a touchdown. That second-half performance does not establish next week’s starter.",
+        "outlet": "Maize n Brew",
         "tier": "local",
-        "url": "https://sports.yahoo.com/articles/three-more-starting-michigan-o-003843380.html",
-        "publishedAt": "2026-10-15T00:38:43Z",
+        "url": "https://www.maizenbrew.com/football/125629/michigan-football-tommy-carr-bryce-underwood-kyle-whittingham-indiana-hoosiers-big-ten-penn-state",
+        "publishedAt": "2026-10-18T22:11:42+00:00",
         "grade": {
           "impact": 5,
-          "echo": 1,
+          "echo": 3,
           "freshness": 5
         }
       },
       {
-        "id": "punt-return-change",
-        "headline": "Whittingham plans a change at punt returner",
-        "tldr": "Monday’s update did not name the replacement. Watch who actually fields the first punt, and separate that assignment from Marsh’s offensive availability.",
-        "outlet": "Maize n Brew",
+        "id": "mi-three-takeaways",
+        "headline": "Michigan takes the ball away three times after halftime",
+        "tldr": "Becht threw two interceptions and lost a late fumble. Watch coverage finish the catch and the pass rush secure the ball when pressure reaches the quarterback.",
+        "outlet": "Onward State",
         "tier": "local",
-        "url": "https://www.maizenbrew.com/football/124929/michigan-football-kyle-whittingham-penn-state-press-conference",
-        "publishedAt": "2026-10-12T16:00:00Z",
+        "url": "https://onwardstate.com/2026/10/17/penn-state-football-mauled-by-michigan-x-x/",
+        "publishedAt": "2026-10-17T23:13:15+00:00",
         "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       },
       {
@@ -1746,31 +1746,31 @@
         }
       },
       {
-        "id": "opponent-brahmer",
-        "headline": "Mouser wants Brahmer more involved in Penn State’s offense",
-        "tldr": "The coordinator called his tight end’s limited receiving work against USC unacceptable. Watch the release and the coverage handoff when Penn State tries to free him.",
-        "outlet": "StateCollege.com",
-        "tier": "local",
-        "url": "https://www.statecollege.com/articles/penn-state-football/taylor-mouser-identifies-penn-state-players-needing-more-touches-addresses-rushing-woes/",
-        "publishedAt": "2026-10-13",
+        "id": "mi-sowell-151",
+        "headline": "Sowell catches 11 passes for 151 yards against Michigan",
+        "tldr": "He also caught Penn State’s late touchdown. Keep the coverage handoff intact even when the defense has forced the offense into a long drive.",
+        "outlet": "Penn State Athletics",
+        "tier": "official",
+        "url": "https://gopsusports.com/news/2026/10/17/penn-state-football-drops-21-18-road-test-at-michigan",
+        "publishedAt": "2026-10-17T23:42:09.000000Z",
         "grade": {
           "impact": 4,
-          "echo": 1,
+          "echo": 3,
           "freshness": 5
         }
       },
       {
-        "id": "homecoming-kickoff",
-        "headline": "Penn State visits at 3:30 p.m. ET on CBS",
-        "tldr": "The current official game notes confirm the October 17 broadcast. Plan for the afternoon window at Michigan Stadium.",
-        "outlet": "Penn State Athletics",
+        "id": "mi-psu-final",
+        "headline": "Michigan beats Penn State, 21-18",
+        "tldr": "The Wolverines scored all 21 points after halftime. Review the offensive adjustment alongside the defense’s work, rather than treating either half as the whole game.",
+        "outlet": "Michigan Athletics",
         "tier": "official",
-        "url": "https://gopsusports.com/news/2026/10/12/game-notes-penn-state-vs-michigan-2026",
-        "publishedAt": "2026-10-12",
+        "url": "https://mgoblue.com/sports/football/stats/2026/penn-state/boxscore/30379",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -1874,7 +1874,7 @@
         "body": "Mouser wants Brahmer more involved after the USC game. Watch the defender account for the tight end when the backfield action pulls attention toward the run."
       }
     ],
-    "storiesUpdatedAt": "2026-10-15T23:36:06.620305Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "penn-state-football": {
     "schemaVersion": 1,
@@ -1885,33 +1885,33 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Keep the passing options available without abandoning the run blocking. At Michigan, watch the tight end’s release, the active linebacker rotation and the decision that protects the last possession.",
+    "summary": "Penn State lost 21-18 at Michigan despite Sowell’s 151 receiving yards. Three second-half turnovers made ball security the first correction.",
     "items": [
       {
-        "id": "offensive-identity",
-        "headline": "Mouser says the run game needs an identity",
-        "tldr": "The coordinator also wants Brahmer more involved after USC. Watch whether the blocking and the receiving options work together, without assuming a promised touch count.",
-        "outlet": "StateCollege.com",
-        "tier": "local",
-        "url": "https://www.statecollege.com/articles/penn-state-football/taylor-mouser-identifies-penn-state-players-needing-more-touches-addresses-rushing-woes/",
-        "publishedAt": "2026-10-13",
+        "id": "psu-sowell-151",
+        "headline": "Sowell supplies 151 receiving yards on 11 catches",
+        "tldr": "His fourth-quarter touchdown cut the deficit to three. Keep a timely receiving option available without asking a late drive to repair every earlier mistake.",
+        "outlet": "Penn State Athletics",
+        "tier": "official",
+        "url": "https://gopsusports.com/news/2026/10/17/penn-state-football-drops-21-18-road-test-at-michigan",
+        "publishedAt": "2026-10-17T23:42:09.000000Z",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
       {
-        "id": "psu-thursday",
-        "headline": "Smith is probable with Tatsch out for the season",
-        "tldr": "Thursday’s report upgrades the linebacker from questionable and lists Rosa out. Watch the linebacker rotation before assuming a full workload for Smith.",
+        "id": "psu-three-turnovers",
+        "headline": "Becht’s three second-half turnovers hand Michigan chances",
+        "tldr": "Two interceptions and a late fumble shortened Penn State’s possessions. Protect the ball when leaving the pocket before trying to extend a broken play.",
         "outlet": "Onward State",
         "tier": "local",
-        "url": "https://onwardstate.com/2026/10/15/penn-state-football-linebacker-cam-smith-upgraded-to-probable-against-michigan-on-thursday-availability-report/",
-        "publishedAt": "2026-10-16T00:12:19+00:00",
+        "url": "https://onwardstate.com/2026/10/17/penn-state-football-mauled-by-michigan-x-x/",
+        "publishedAt": "2026-10-17T23:13:15+00:00",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
@@ -1930,31 +1930,31 @@
         }
       },
       {
-        "id": "opponent-returner",
-        "headline": "Michigan plans a new punt returner for Saturday",
-        "tldr": "Whittingham did not name the replacement in Monday’s update. Watch the coverage unit’s first assignment and finish the tackle after the catch.",
+        "id": "psu-carr-change",
+        "headline": "Michigan turns to Tommy Carr after halftime",
+        "tldr": "The freshman completed five of seven passes for 47 yards and added 36 rushing yards. Separate the quarterback adjustment from Penn State’s own ball-security problems.",
         "outlet": "Maize n Brew",
         "tier": "local",
-        "url": "https://www.maizenbrew.com/football/124929/michigan-football-kyle-whittingham-penn-state-press-conference",
-        "publishedAt": "2026-10-12T16:00:00Z",
+        "url": "https://www.maizenbrew.com/football/125629/michigan-football-tommy-carr-bryce-underwood-kyle-whittingham-indiana-hoosiers-big-ten-penn-state",
+        "publishedAt": "2026-10-18T22:11:42+00:00",
         "grade": {
           "impact": 4,
-          "echo": 1,
-          "freshness": 4
+          "echo": 3,
+          "freshness": 5
         }
       },
       {
-        "id": "ann-arbor-kickoff",
-        "headline": "The Michigan trip is set for 3:30 p.m. ET on CBS",
-        "tldr": "The current official game notes confirm the October 17 broadcast from Michigan Stadium. Set aside the afternoon and check the final lineup update before kickoff.",
+        "id": "psu-mi-final",
+        "headline": "Penn State loses 21-18 at Michigan",
+        "tldr": "A 15-point fourth quarter was not enough after Michigan scored twice in the third. Getting the next possession only helps if the offense keeps the ball.",
         "outlet": "Michigan Athletics",
         "tier": "official",
-        "url": "https://mgoblue.com/sports/2026/10/12/michigan-monday-game-6-vs-penn-state",
-        "publishedAt": "2026-10-12",
+        "url": "https://mgoblue.com/sports/football/stats/2026/penn-state/boxscore/30379",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -2058,7 +2058,7 @@
         "body": "A late turnover let USC run out the clock. Watch the quarterback end a broken play safely before trying to extend a drive through traffic."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:21:02.086785Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "miami-football": {
     "schemaVersion": 1,
@@ -2069,34 +2069,34 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Keep the pressure connected to coverage against Florida State. Watch Daniels when he leaves the pocket, the active defensive group and the play-clock operation that keeps a possession moving.",
+    "summary": "Miami beat Florida State 43-35 in double overtime. The takeaways helped, but downfield coverage still needs attention after Daniels threw four touchdowns.",
     "items": [
       {
-        "id": "mia-report",
-        "headline": "Moore and Brown are out for Florida State",
-        "tldr": "Wednesday’s report also lists Antoine, Frederique, Buchanan and Gilbert out. No Hurricanes are listed as questionable or probable; watch the receiver and backfield rotation.",
-        "outlet": "Tomahawk Nation",
+        "id": "miami-turnover-margin",
+        "headline": "Miami wins the turnover count, 2-1, against Florida State",
+        "tldr": "The defense forced a fumble and intercepted a pass. Secure the takeaway before turning upfield, then give the offense a possession it can use.",
+        "outlet": "State of The U",
         "tier": "local",
-        "url": "https://www.tomahawknation.com/florida-state-football/138755/mike-norvell-mario-cristobal-injury-report-acc",
-        "publishedAt": "2026-10-15T00:52:10+00:00",
+        "url": "https://www.stateoftheu.com/miami-hurricanes-football/89101/film-review-miami-hurricanes-43-fsu-seminoles-35",
+        "publishedAt": "2026-10-18T13:25:35+00:00",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
       },
       {
-        "id": "offensive-operation",
-        "headline": "Miami’s Clemson win still included six penalties",
-        "tldr": "State of The U also flagged timeouts used as the play clock ran down. Against Florida State, watch the call reach the line before the offense has to spend a timeout.",
-        "outlet": "State of The U",
+        "id": "miami-mallory-108",
+        "headline": "Mallory runs for 108 yards and two touchdowns",
+        "tldr": "The freshman carried 13 times against Florida State. Watch the outside blocking create room before the runner turns upfield.",
+        "outlet": "The Miami Hurricane",
         "tier": "local",
-        "url": "https://www.stateoftheu.com/miami-hurricanes-football/88614/the-good-the-bad-and-the-ugly-clemson-tigers-2026-edition",
-        "publishedAt": "2026-10-03",
+        "url": "https://themiamihurricane.com/2026/10/18/were-an-extremely-resilient-team-takeaways-from-miamis-43-35-rivalry-victory-over-fsu/",
+        "publishedAt": "2026-10-18T15:21:15+00:00",
         "grade": {
           "impact": 4,
-          "echo": 1,
-          "freshness": 3
+          "echo": 3,
+          "freshness": 5
         }
       },
       {
@@ -2128,16 +2128,16 @@
         }
       },
       {
-        "id": "mia-soldout",
-        "headline": "Miami announces a sellout for Florida State",
-        "tldr": "The athletics department directs fans still looking for tickets to its secondary marketplace. Arrange a ticket before heading to Hard Rock Stadium.",
-        "outlet": "Miami Athletics",
+        "id": "miami-fsu-final",
+        "headline": "Miami beats Florida State 43-35 in double overtime",
+        "tldr": "Daniels still threw for 298 yards and four touchdowns. Keep the downfield coverage connected to the pressure; the final result does not erase the explosive passing plays.",
+        "outlet": "Florida State Athletics",
         "tier": "official",
-        "url": "https://miamihurricanes.com/news/2026/10/16/miami-vs-fsu-sold-out",
-        "publishedAt": "2026-10-16T14:45:00.000000Z",
+        "url": "https://seminoles.com/news/2026/10/17/football-florida-state-falls-in-double-overtime-at-no-3-miami",
+        "publishedAt": "2026-10-17",
         "grade": {
           "impact": 4,
-          "echo": 1,
+          "echo": 3,
           "freshness": 5
         }
       }
@@ -2242,7 +2242,7 @@
         "body": "Barkate scored on a 61-yard catch and run against Clemson. Watch the receiver secure the ball and the nearby block hold its angle."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:17:08.812336Z"
+    "storiesUpdatedAt": "2026-10-18T23:38:54.564563Z"
   },
   "tennessee-football": {
     "schemaVersion": 1,
@@ -2253,18 +2253,18 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Make the first gain count against Alabama. Watch the run-blocking angle, keep the ball secure and close the defensive gap before chasing the quarterback.",
+    "summary": "Tennessee beat Alabama 26-10, forcing four turnovers and holding the Tide scoreless after halftime. Keep the quick passing answer and the finished defensive possession working together.",
     "items": [
       {
-        "id": "tn-macintyre-opened",
-        "headline": "MacIntyre led Tennessee’s opening drive against Alabama",
-        "tldr": "RTI’s live log records a field goal on the first possession. That confirms who opened the game; it does not settle next week’s starting role.",
+        "id": "tn-macintyre-quick",
+        "headline": "MacIntyre credits quick throws and sustained drives",
+        "tldr": "He said Alabama’s deep coverage made Tennessee keep snapping the ball. Watch the short passing answer and the blocking that lets a drive survive without a big play.",
         "outlet": "Rocky Top Insider",
         "tier": "local",
-        "url": "https://www.rockytopinsider.com/2026/10/17/no-6-alabama-at-no-14-tennessee-live-score-big-moments-scoring-plays/",
-        "publishedAt": "2026-10-17T19:47:33+00:00",
+        "url": "https://www.rockytopinsider.com/2026/10/17/what-tennessee-football-qb-george-macintyre-said-after-leading-vols-to-win-over-alabama/",
+        "publishedAt": "2026-10-18T02:06:53+00:00",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -2312,17 +2312,17 @@
         }
       },
       {
-        "id": "rivalry-viewing",
-        "headline": "Alabama visits Saturday at 2:30 p.m. CT on ABC",
-        "tldr": "Plan for the afternoon broadcast. Check the final lineup report before using a week-of practice note to assign a quarterback or a snap count.",
-        "outlet": "Alabama Crimson Tide on SI",
-        "tier": "local",
-        "url": "https://www.si.com/college/alabama/football/how-to-watch-no-6-alabama-no-14-tennessee",
-        "publishedAt": "2026-10-11T23:11:09Z",
+        "id": "tn-alabama-final",
+        "headline": "Tennessee beats Alabama 26-10 at Neyland",
+        "tldr": "The Vols forced four turnovers and allowed no second-half points. Finish the defensive possession before letting the offense control the next stretch of clock.",
+        "outlet": "Alabama Athletics",
+        "tier": "official",
+        "url": "https://rolltide.com/news/2026/10/17/football-no-6-7-alabama-drops-26-10-contest-at-no-14-14-tennessee",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -2426,7 +2426,7 @@
         "body": "Watch the defender remain responsible for his gap when the back changes direction. Avoid chasing the first movement and leaving the next lane unguarded."
       }
     ],
-    "storiesUpdatedAt": "2026-10-17T23:14:45.222716Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "byu-football": {
     "schemaVersion": 1,
@@ -2437,19 +2437,19 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Keep a passing answer available against Notre Dame. Watch the tight ends find space, the quarterback choose the exit safely and the run defense hold its first gap.",
+    "summary": "BYU beat Notre Dame 28-24 on a late touchdown pass to Lyons. Bachmeier’s passing, rushing and receiving scores gave the offense several ways to finish a drive.",
     "items": [
       {
-        "id": "byu-moa",
-        "headline": "Roderick says Moa is cleared but not certain to play",
-        "tldr": "Moa practiced fully Tuesday, but Roderick said coaches still need to decide if he is ready for Notre Dame. Watch the committee with Martin sidelined; clearance does not guarantee a snap count.",
+        "id": "byu-lyons-late",
+        "headline": "Bachmeier finds Lyons to finish BYU’s winning drive",
+        "tldr": "The late touchdown capped a 10-play, 55-yard possession. The tight end’s release matters most when it gives the quarterback a timely answer with the game on the line.",
         "outlet": "Deseret News",
         "tier": "local",
-        "url": "https://www.deseret.com/sports/2026/10/14/byu-football-notre-dame-injury-sione-moa-cougars-sitake-roderick-martin/",
-        "publishedAt": "2026-10-14",
+        "url": "https://www.deseret.com/sports/2026/10/17/byu-football-upsets-notre-dame-3-takeaways/",
+        "publishedAt": "2026-10-18T04:33:28.739Z",
         "grade": {
-          "impact": 5,
-          "echo": 1,
+          "impact": 4,
+          "echo": 3,
           "freshness": 5
         }
       },
@@ -2496,17 +2496,17 @@
         }
       },
       {
-        "id": "provo-viewing",
-        "headline": "Notre Dame visits at 5:30 p.m. MT on ABC",
-        "tldr": "Plan for the evening window in Provo. Check the final availability report before turning a depth-chart listing into a guaranteed workload.",
+        "id": "byu-nd-final",
+        "headline": "BYU holds off Notre Dame, 28-24",
+        "tldr": "Bachmeier threw one touchdown, ran for two and caught another. Keep those separate roles in view without treating one game’s production as the next game’s plan.",
         "outlet": "BYU Athletics",
         "tier": "official",
-        "url": "https://byucougars.com/news/2026/10/12/byu-football-game-week-2026-notre-dame",
-        "publishedAt": "2026-10-12",
+        "url": "https://byucougars.com/news/2026/10/18/byu-vs-notre-dame",
+        "publishedAt": "2026-10-18T04:05:00.000000Z",
         "grade": {
-          "impact": 3,
-          "echo": 1,
-          "freshness": 4
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -2610,7 +2610,7 @@
         "body": "Watch the first defender hold his gap and the next defender finish the tackle. An early missed fit makes the pursuit angle harder."
       }
     ],
-    "storiesUpdatedAt": "2026-10-14T23:01:59.883482Z"
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   },
   "texas-tech-football": {
     "schemaVersion": 1,
@@ -2621,20 +2621,20 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Keep the receiving answer available against Arizona State. Watch Carter’s release, the short-yardage personnel and the pressure that stays connected to coverage.",
+    "summary": "Texas Tech beat Arizona State 53-25. Williams’ 165 rushing yards and Carter’s short-yardage score show how the rushing attack complemented the receiving options.",
     "items": [
       {
-        "id": "carter-receiving",
-        "headline": "Carter caught eight passes for 67 yards at Colorado",
-        "tldr": "Keep a receiving answer available under pressure. Watch the release into space and whether the quarterback can deliver before the defender closes the window.",
-        "outlet": "Texas Tech on SI",
+        "id": "tt-johnson-career",
+        "headline": "Johnson’s career day gives Tech another receiving answer",
+        "tldr": "The Avalanche-Journal’s recap highlights his career high against Arizona State. Keep the route available before the quarterback has to leave the pocket.",
+        "outlet": "Lubbock Avalanche-Journal",
         "tier": "local",
-        "url": "https://www.si.com/college/texas-tech/football/despite-a-29-7-win-over-the-buffaloes-tech-s-offense-stuck-in-neutral",
-        "publishedAt": "2026-10-04",
+        "url": "https://www.yahoo.com/news/videos/texas-tech-football-writer-don-003213275.html",
+        "publishedAt": "2026-10-18T00:32:13Z",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
@@ -2652,45 +2652,45 @@
         }
       },
       {
-        "id": "tt-eligible",
-        "headline": "Friday’s injunction lets Castellanos return to games",
-        "tldr": "The Avalanche-Journal reports he can play while the temporary order remains in effect. Watch the short-yardage package; eligibility does not establish a snap count.",
-        "outlet": "Lubbock Avalanche-Journal",
-        "tier": "local",
-        "url": "https://sports.yahoo.com/articles/texas-tech-footballs-thomas-castellanos-211950057.html",
-        "publishedAt": "2026-10-16T21:19:50Z",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "asu-helton",
-        "headline": "Helton is available for Arizona State’s trip to Lubbock",
-        "tldr": "RotoWire reports Helton can play after a three-game absence. Watch the interior protection and run-blocking combinations; availability does not establish a snap count.",
-        "outlet": "RotoWire",
-        "tier": "national",
-        "url": "https://www.rotowire.com/cfootball/headlines/wade-helton-news-available-for-week-7-235210",
-        "publishedAt": "2026-10-16T10:41:02-07:00",
-        "grade": {
-          "impact": 5,
-          "echo": 1,
-          "freshness": 5
-        }
-      },
-      {
-        "id": "homecoming-viewing",
-        "headline": "Arizona State visits at 2:30 p.m. CT on FOX",
-        "tldr": "Plan for the Homecoming afternoon window in Lubbock. Check the final personnel update before assigning a short-yardage role.",
+        "id": "tt-carter-wildcat",
+        "headline": "Carter scores his first career rushing touchdown",
+        "tldr": "The tight end lined up at wildcat quarterback and scored from one yard out. Watch how the short-yardage alignment changes the blocking numbers.",
         "outlet": "Texas Tech Athletics",
         "tier": "official",
-        "url": "https://texastech.com/news/2026/10/12/football-no-10-texas-tech-hosts-arizona-state-for-homecoming",
-        "publishedAt": "2026-10-12",
+        "url": "https://texastech.com/news/2026/10/17/football-postgame-notes-texas-tech-vs-arizona-state",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
-          "freshness": 4
+          "freshness": 5
+        }
+      },
+      {
+        "id": "tt-keene-secondhalf",
+        "headline": "Keene throws for 256 yards after Arizona State’s halftime change",
+        "tldr": "He completed 25 of 34 passes with two touchdowns in the second half. Tech’s coverage still has work to review after the early lead.",
+        "outlet": "Arizona State Athletics",
+        "tier": "official",
+        "url": "https://thesundevils.com/news/2026/10/18/no-10-texas-tech-jumps-out-to-early-lead-as-football-falls-in-lubbock",
+        "publishedAt": "2026-10-18T05:15:51.000000Z",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
+        }
+      },
+      {
+        "id": "tt-asu-final",
+        "headline": "Texas Tech beats Arizona State, 53-25",
+        "tldr": "Williams ran for 165 yards and two touchdowns. Watch the blocking open the first lane and the runner secure the ball before the next long gain.",
+        "outlet": "Associated Press",
+        "tier": "national",
+        "url": "https://texastech.com/news/2026/10/17/football-no-10-red-raiders-roll-past-arizona-state-53-25",
+        "publishedAt": "2026-10-17",
+        "grade": {
+          "impact": 4,
+          "echo": 3,
+          "freshness": 5
         }
       }
     ],
@@ -2794,7 +2794,7 @@
         "body": "Watch the active linemen pass off pressure and the defender keep his path to the quarterback. Keep coverage attached when the throw is delayed."
       }
     ],
-    "storiesUpdatedAt": "2026-10-16T23:21:01.811811Z"
+    "storiesUpdatedAt": "2026-10-18T23:38:54.971659Z"
   },
   "indiana-football": {
     "schemaVersion": 1,
@@ -3540,7 +3540,7 @@
       "season": 2026,
       "week": 7
     },
-    "summary": "Finish the run-defense fit at San Diego State and keep the kicking coverage connected. On offense, give the quarterback a route before asking him to extend the play.",
+    "summary": "Fresno State lost 26-23 at San Diego State after a late field goal. The missed extra point and the final possession leave the kicking operation and offensive finish to review.",
     "items": [
       {
         "id": "secondary-health",
@@ -3599,15 +3599,15 @@
         }
       },
       {
-        "id": "oil-can-viewing",
-        "headline": "The San Diego trip starts at 7:30 p.m. PT on CBS Sports Network",
-        "tldr": "Plan for the evening Old Oil Can game at Snapdragon Stadium. Check the final secondary report before treating practice progress as a confirmed role.",
+        "id": "fs-sdsu-final",
+        "headline": "Fresno falls 26-23 at San Diego State",
+        "tldr": "A missed extra point left the game tied before San Diego State’s 53-yard winner. Finish the kicking operation as carefully as the scoring drive.",
         "outlet": "Fresno State Athletics",
         "tier": "official",
-        "url": "https://gobulldogs.com/news/2026/10/12/football-dogs-face-aztecs-for-old-oil-can",
-        "publishedAt": "2026-10-12",
+        "url": "https://gobulldogs.com/news/2026/10/17/football-bulldogs-edged-by-san-diego-state-on-late-field-goal",
+        "publishedAt": "2026-10-17",
         "grade": {
-          "impact": 3,
+          "impact": 4,
           "echo": 1,
           "freshness": 5
         }
@@ -3712,6 +3712,7 @@
         "publishedAt": "2026-10-14T21:26:52.753380Z",
         "body": "Watch the coverage unit keep its spacing and the first tackler hold leverage. Avoid chasing the ball toward the same lane."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-18T23:15:11.160974Z"
   }
 }
