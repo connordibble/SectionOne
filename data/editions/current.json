@@ -25,13 +25,13 @@
         }
       },
       {
-        "id": "tx-offense-evaluation",
-        "headline": "Sarkisian puts the entire offense under review",
-        "tldr": "After the Florida loss, Sarkisian included play-calling, personnel and execution in his evaluation. That statement does not announce a quarterback or coaching change.",
+        "id": "tx-manning-starter",
+        "headline": "Sarkisian keeps Manning as Texas’s starter",
+        "tldr": "Sarkisian confirmed Monday that Manning remains the starter and said he needs to play better. Watch the passing reads and execution before assuming a change at quarterback.",
         "outlet": "Burnt Orange Nation",
         "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/105995/steve-sarkisian-offense-evaluation-texas-florida",
-        "publishedAt": "2026-10-17T22:04:41+00:00",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/106068/arch-manning-starter-steve-sarkisian-texas-longhorns",
+        "publishedAt": "2026-10-19T17:18:27+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -39,13 +39,13 @@
         }
       },
       {
-        "id": "tx-simmons-exit",
-        "headline": "Simmons left the Florida game with a lower-leg injury",
-        "tldr": "Sarkisian said after the game that he did not know the extent of the injury. Keep that report separate from a diagnosis or a confirmed return date.",
-        "outlet": "Burnt Orange Nation",
+        "id": "tx-simmons-sprain",
+        "headline": "Orangebloods reports a high ankle sprain for Simmons",
+        "tldr": "Sarkisian deferred Monday’s injury questions to the SEC availability report. Treat reported absence estimates as projections while waiting for the team’s status update.",
+        "outlet": "Orangebloods via Burnt Orange Nation",
         "tier": "local",
-        "url": "https://www.burntorangenation.com/texas-longhorns-football/105989/colin-simmons-injury-texas-longhorns-florida-gators",
-        "publishedAt": "2026-10-17T21:17:19+00:00",
+        "url": "https://www.burntorangenation.com/texas-longhorns-football/106054/colin-simmons-hollywood-smothers-injuries-texas-longhorns",
+        "publishedAt": "2026-10-19T15:57:52+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -55,7 +55,7 @@
       {
         "id": "tx-fourth-down",
         "headline": "Florida’s fourth-and-12 conversion changed the finish to the half",
-        "tldr": "Jones found Wilson for a 17-yard gain before Florida’s first touchdown. Texas needs coverage to finish the down even when the opponent is well behind the sticks.",
+        "tldr": "Jones found Wilson for a 17-yard gain before Florida’s touchdown just before halftime. Texas needs coverage to finish the down even when the opponent is well behind the sticks.",
         "outlet": "Florida Athletics",
         "tier": "official",
         "url": "https://floridagators.com/news/2026/10/17/football-gators-get-a-texas-sized-lift-jon-sumrall-tramell-jones-arch-manning-kanye-clark",
@@ -180,7 +180,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Texas falls 27-24 after losing a 17-3 lead. Watch the first useful gain after the opening script. A special-teams score helps only if the offense can sustain the next series."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-19T23:14:12.189Z"
   },
   "utah-state-football": {
     "schemaVersion": 1,
@@ -1173,7 +1174,7 @@
       {
         "id": "takeaway-points",
         "headline": "Hubbard’s interception did not become Alabama points",
-        "tldr": "Georgia turned its takeaway into a field goal while Alabama did not score after its interception. Watch the first offensive choice after a takeaway, before trying to make the entire drive with one throw.",
+        "tldr": "Georgia turned its takeaway into a field goal; Alabama failed to capitalize on its own. Watch the first offensive choice after a takeaway, before trying to make the entire drive with one throw.",
         "outlet": "1819 News",
         "tier": "local",
         "url": "https://1819news.com/news/item/5-takeaways-from-no-6-alabamas-20-17-loss-to-no-2-georgia",
@@ -1185,17 +1186,17 @@
         }
       },
       {
-        "id": "tennessee-ground-game",
-        "headline": "Tennessee’s Bishop leads a late comeback at Arkansas",
-        "tldr": "Bishop’s 138 yards belong to the earlier Arkansas game. That earlier rushing sample is context for evaluating Alabama’s run fits, rather than a preview of a game still to be played.",
-        "outlet": "Tennessee Athletics",
-        "tier": "official",
-        "url": "https://utsports.com/news/2026/10/10/football-late-score-secures-no-15-14-vols-win-in-fayetteville",
-        "publishedAt": "2026-10-10",
+        "id": "al-williams-practice",
+        "headline": "DeBoer leaves Coleman-Williams’ return unsettled",
+        "tldr": "DeBoer said Monday he did not expect Coleman-Williams to practice all week and would reassess near week’s end. That is a practice update, not a confirmed game absence.",
+        "outlet": "BamaCentral",
+        "tier": "local",
+        "url": "https://www.si.com/college/alabama/football/alabama-injury-updates-ryan-coleman-williams-zabien-brown-three-more-players",
+        "publishedAt": "2026-10-19T16:32:25Z",
         "grade": {
-          "impact": 3,
+          "impact": 5,
           "echo": 1,
-          "freshness": 2
+          "freshness": 5
         }
       }
     ],
@@ -1308,7 +1309,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Keep the outside path protected while the quarterback takes the available throw. Judge the blocking assignment separately from a future lineup decision."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-19T23:14:12.464Z"
   },
   "georgia-football": {
     "schemaVersion": 1,
@@ -1698,16 +1700,16 @@
     "summary": "Michigan beat Penn State 21-18 after a halftime change to Tommy Carr. Three second-half takeaways and a 65-yard rushing limit belong alongside the offensive adjustment in the review.",
     "items": [
       {
-        "id": "mi-carr-secondhalf",
-        "headline": "Tommy Carr sparks Michigan after a halftime change",
-        "tldr": "Carr completed five of seven passes for 47 yards and ran for 36 yards with a touchdown. That second-half performance does not establish next week’s starter.",
+        "id": "mi-quarterback-plan",
+        "headline": "Whittingham keeps Michigan’s starting quarterback private",
+        "tldr": "The staff chose its plan Sunday, but Whittingham is keeping the starter against Indiana private. Prepare for either Carr or Underwood until the team confirms its choice.",
         "outlet": "Maize n Brew",
         "tier": "local",
-        "url": "https://www.maizenbrew.com/football/125629/michigan-football-tommy-carr-bryce-underwood-kyle-whittingham-indiana-hoosiers-big-ten-penn-state",
-        "publishedAt": "2026-10-18T22:11:42+00:00",
+        "url": "https://www.maizenbrew.com/football/125718/michigan-football-quarterback-tommy-carr-bryce-underwood-kyle-whittingham-indiana",
+        "publishedAt": "2026-10-19T16:06:59+00:00",
         "grade": {
           "impact": 5,
-          "echo": 3,
+          "echo": 1,
           "freshness": 5
         }
       },
@@ -1867,7 +1869,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Sowell catches 11 passes for 151 yards against Michigan. The late receiving production still needs a coverage correction. Carry the route even when the defense has already won earlier downs."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-19T23:14:12.741Z"
   },
   "penn-state-football": {
     "schemaVersion": 1,
