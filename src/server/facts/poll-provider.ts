@@ -1,12 +1,13 @@
 import { z } from "zod";
 import { pollWeekSchema, type PollWeek } from "@/lib/facts/poll";
+import { reportDegradation } from "@/server/observability/report";
 
 export const rankingFeedUrl = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings";
 export const rankingVerificationUrl = "https://www.ncaa.com/rankings/football/fbs/associated-press";
 const espnPoll = z.object({
   type: z.literal("ap"), name: z.literal("AP Top 25"), date: z.string(),
   season: z.object({ year: z.number().int() }), occurrence: z.object({ number: z.number().int(), displayValue: z.string() }),
-  ranks: z.array(z.object({ current: z.number().int(), points: z.number().int(), team: z.object({ location: z.string().min(1) }) })),
+  ranks: z.array(z.object({ current: z.number().int(), points: z.number().int().nonnegative(), team: z.object({ location: z.string().min(1) }) })),
 });
 const aliases: Record<string, string> = { "miami fl": "miami", "southern cal": "usc", "southern california": "usc", "ole miss": "mississippi", "brigham young": "byu" };
 const normalize = (name: string) => {
@@ -16,8 +17,10 @@ const normalize = (name: string) => {
 export const plain = (html: string) => html.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&").replace(/&#0*39;|&apos;/g, "'").replace(/&nbsp;/g, " ").trim();
 
 // Provider parsing never asks a model to supply a rank, date or team name.
-// Two published representations must agree before a new snapshot is admitted.
-export function parseVerifiedPoll(feed: unknown, ncaaHtml: string, season: number, now: Date): PollWeek {
+// Both sources must agree on every published rank and school, with compatible
+// dates. Vote totals are not published; discrepancies are diagnostic only.
+export function parseVerifiedPoll(feed: unknown, ncaaHtml: string, season: number, now: Date,
+  report?: (reason: "poll-points-disagree") => void): PollWeek {
   const rankings = z.object({ rankings: z.array(z.unknown()) }).parse(feed).rankings;
   const candidates = rankings.filter((item) => typeof item === "object" && item !== null && "type" in item && item.type === "ap");
   if (candidates.length !== 1) throw new Error("Expected one AP poll");
@@ -36,16 +39,25 @@ export function parseVerifiedPoll(feed: unknown, ncaaHtml: string, season: numbe
   if (!table) throw new Error("Missing verification table");
   const rows = [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map((match) => [...match[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map((cell) => plain(cell[1]))).filter((row) => row.length);
   if (rows.length !== poll.ranks.length) throw new Error("Partial or mismatched verification table");
+  let pointsDisagree = false;
   for (const [index, entry] of poll.ranks.entries()) {
     const row = rows[index];
-    if (Number(row[0].replace(/^T/i, "")) !== entry.current || normalize(row[1]) !== normalize(entry.team.location) || Number(row[2].replaceAll(",", "")) !== entry.points) throw new Error("Ranking sources disagree");
+    if (Number(row[0].replace(/^T/i, "")) !== entry.current || normalize(row[1]) !== normalize(entry.team.location)) throw new Error("Ranking sources disagree");
+    if (!/^\d+(?:,\d{3})*$/.test(row[2] ?? "")) throw new Error("Invalid verification points");
+    const points = Number(row[2].replaceAll(",", ""));
+    if (!Number.isSafeInteger(points)) throw new Error("Invalid verification points");
+    pointsDisagree ||= points !== entry.points;
   }
-  return pollWeekSchema.parse({
+  const snapshot = pollWeekSchema.parse({
     season, week: poll.occurrence.number, weekLabel: poll.occurrence.displayValue,
     capturedAt: now.toISOString(), pending: [],
     provenance: { provider: "espn", sourceUrl: rankingFeedUrl, retrievedAt: now.toISOString(), verifiedUrl: rankingVerificationUrl, throughDate },
     polls: [{ id: "ap", name: "AP Top 25", releasedAt, sourceUrl: rankingVerificationUrl, ranks: poll.ranks.map((entry) => ({ rank: entry.current, team: entry.team.location })) }],
   });
+  if (pointsDisagree) {
+    try { report?.("poll-points-disagree"); } catch { /* Reporting cannot reject verified ranks. */ }
+  }
+  return snapshot;
 }
 
 // Bounded, redirect-refusing read shared by every ranking source.
@@ -67,5 +79,6 @@ export async function fetchVerifiedPoll(season: number, now = new Date(), fetchI
   const [feed, verification] = await Promise.all([
     readBoundedText(rankingFeedUrl, 2_000_000, fetchImpl), readBoundedText(rankingVerificationUrl, 1_000_000, fetchImpl),
   ]);
-  return parseVerifiedPoll(JSON.parse(feed), verification, season, now);
+  return parseVerifiedPoll(JSON.parse(feed), verification, season, now,
+    (reason) => reportDegradation(reason, { scope: "facts/poll", fingerprint: "facts/poll:points" }));
 }

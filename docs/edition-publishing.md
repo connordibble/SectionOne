@@ -102,9 +102,12 @@ teams' primary color tokens with the published school RGB values.
 ## Facts refresh independently of the briefing
 
 AP rankings use ESPN's structured AP feed cross-checked against NCAA's AP table.
-The adapter requires agreement on every ranked school, rank and point total, plus
-compatible dates and a complete ranking. It does not use an LLM. A failed or
-regressing refresh retains the last verified snapshot.
+The adapter requires agreement on every ranked school and rank, plus compatible
+dates and a complete ranking. Vote totals are not part of the published snapshot;
+a difference in those totals logs a degradation without blocking agreed rankings.
+Malformed source tables, conflicting schools or ranks, and incompatible dates
+still block publication. It does not use an LLM. A failed or regressing refresh
+retains the last verified snapshot.
 
 Pages and chat share a poll snapshot for each request. Refreshes are coalesced per
 process for 15 minutes, with a two-minute retry interval after failure. The
