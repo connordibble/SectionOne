@@ -375,7 +375,7 @@
       "season": 2026,
       "week": 8
     },
-    "summary": "Ohio State won 19-15 at Indiana. The quarterback outlook needs a fresh report after Sayin’s exit, while the bye gives the offense time to address protection and empty possessions.",
+    "summary": "Day expects Sayin to miss at least several weeks while testing continues. The quarterback change makes protection and the first available throw the priority.",
     "items": [
       {
         "id": "osu-indiana-final",
@@ -406,13 +406,13 @@
         }
       },
       {
-        "id": "osu-sayin-weeks",
-        "headline": "Day says Sayin will probably be out for several weeks",
-        "tldr": "Sayin left in the fourth quarter, and Fahey finished the Indiana game. Day’s estimate is not a return date; the next quarterback plan needs a fresh report.",
+        "id": "osu-sayin-minimum",
+        "headline": "Day expects Sayin out for at least several weeks",
+        "tldr": "Day said testing was still ongoing. Fahey is set to take over, with St. Clair next behind him; watch the new quarterback’s first read and protection calls.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164645/julian-sayin-leaves-indiana-game-in-fourth-quarter-with-apparent-shoulder-injury",
-        "publishedAt": "2026-10-17T16:41:37-04:00",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164754/ryan-day-says-julian-sayin-will-be-out-at-least-several-weeks-on-buckeye-roundtable-show",
+        "publishedAt": "2026-10-19T18:56:47-04:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -422,7 +422,7 @@
       {
         "id": "indiana-crossers",
         "headline": "Indiana escapes Nebraska on two Marsh touchdown catches",
-        "tldr": "Marsh’s long catches helped Indiana beat Nebraska in the earlier game. That earlier film remains a reminder to carry crossing routes through the coverage handoff, rather than treating the run look as the whole play.",
+        "tldr": "Marsh caught 75- and 44-yard touchdowns in Indiana’s Nebraska win. That earlier film remains a reminder to carry crossing routes through the coverage handoff, rather than treating the run look as the whole play.",
         "outlet": "Indiana Daily Student",
         "tier": "local",
         "url": "https://www.idsnews.com/article/2026/10/indiana-football-win-nebraska-cignetti-bloomington",
@@ -547,7 +547,8 @@
         "publishedAt": "2026-10-19T12:56:44.255220+00:00",
         "body": "Day calls out eight penalties and the turnovers. The Maryland errors are dated context. Watch the protection assignment and the decision that prevents another negative play."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-20T23:09:09.483Z"
   },
   "lsu-football": {
     "schemaVersion": 1,
@@ -1341,10 +1342,10 @@
         "id": "stockton-late-read",
         "headline": "Stockton’s late throw keeps the final possession alive",
         "tldr": "The earlier completion to Williams extended Georgia’s last drive at Alabama. Compare that safe passing answer with the ball-security problem at the end of the Auburn game.",
-        "outlet": "DawgNation",
+        "outlet": "BamaCentral",
         "tier": "local",
-        "url": "https://www.dawgnation.com/football/kalen-deboer-gunner-stockton-was-clutch-georgias-20-17-win-alabama/XJWIJMR7OBGCHB6IBUGOYTDOUQ/",
-        "publishedAt": "2026-10-11T10:00:00Z",
+        "url": "https://www.si.com/college/alabama/alabama-s-third-down-struggles-prove-costly-in-loss-to-georgia",
+        "publishedAt": "2026-10-11T06:00:00Z",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1352,17 +1353,17 @@
         }
       },
       {
-        "id": "phillips-backfield",
-        "headline": "Phillips runs for 120 yards with Frazier and Bowens absent",
-        "tldr": "Phillips’s first career start supplied 120 rushing yards at Alabama on October 10. Those backfield absences belong to that game; they do not establish the next rotation.",
+        "id": "ga-stockton-stinger",
+        "headline": "Smart says Stockton suffered a shoulder stinger",
+        "tldr": "Smart said Stockton had no concussion symptoms and described a shoulder stinger. Keep that account separate from a confirmed decision about the next starting quarterback.",
         "outlet": "Georgia Athletics",
         "tier": "official",
-        "url": "https://georgiadogs.com/news/2026/10/11/football-postgame-notes-georgia-alabama",
-        "publishedAt": "2026-10-10",
+        "url": "https://georgiadogs.com/news/2026/10/20/football-smart-players-discuss-the-bye-week",
+        "publishedAt": "2026-10-20",
         "grade": {
-          "impact": 5,
+          "impact": 4,
           "echo": 1,
-          "freshness": 2
+          "freshness": 5
         }
       },
       {
@@ -1503,7 +1504,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Read the block, hold the assigned lane and keep pursuit behind the first defender. Do not let a promising first collision open the cutback behind it."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-20T23:09:09.761Z"
   },
   "notre-dame-football": {
     "schemaVersion": 1,
@@ -2447,17 +2449,17 @@
         }
       },
       {
-        "id": "bachmeier-production",
-        "headline": "Bachmeier passed for 329 yards and ran for 109 against Iowa State",
-        "tldr": "Watch the first passing option and the escape lane separately. Keep the ball secure when extending the play rather than treating another big rushing total as the goal.",
-        "outlet": "BYU Athletics",
-        "tier": "official",
-        "url": "https://byucougars.com/news/2026/10/12/honors-roll-in-for-byu-quarterback-bear-bachmeier",
-        "publishedAt": "2026-10-12",
+        "id": "byu-ucf-quarterback",
+        "headline": "Jenkins expected to start for UCF against BYU",
+        "tldr": "ESPN’s Thamel reports Barnett will not start as he recovers from a hamstring injury. Prepare for Jenkins, while keeping his expected start separate from a confirmed lineup.",
+        "outlet": "ESPN via ClutchPoints",
+        "tier": "national",
+        "url": "https://clutchpoints.com/ncaa-football/byu-football-news-break-ucf-qb-injury-update",
+        "publishedAt": "2026-10-20T16:17:03+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
-          "freshness": 2
+          "freshness": 5
         }
       },
       {
@@ -2602,7 +2604,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Notre Dame’s fumbled spike ends a first-half scoring chance. The failed spike was a first-half possession event. Stay with the loose football until the play is secured."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-20T23:09:10.045Z"
   },
   "texas-tech-football": {
     "schemaVersion": 1,
