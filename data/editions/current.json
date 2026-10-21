@@ -375,12 +375,12 @@
       "season": 2026,
       "week": 8
     },
-    "summary": "Day expects Sayin to miss at least several weeks while testing continues. The quarterback change makes protection and the first available throw the priority.",
+    "summary": "Day says Sayin is out indefinitely. Fahey and St. Clair will compete during the bye week, with the starter decision due next week.",
     "items": [
       {
         "id": "osu-indiana-final",
         "headline": "Ohio State wins 19-15 at Indiana",
-        "tldr": "The Buckeyes forced two fumbles and held on for the road win. Watch the possession after a takeaway: the defense can create the opportunity, but the offense still has to finish it.",
+        "tldr": "The Buckeyes forced two fumbles and won on the road. Watch the possession after a takeaway: the defense can create the opportunity, but the offense still has to finish it.",
         "outlet": "Ohio State Athletics",
         "tier": "official",
         "url": "https://ohiostatebuckeyes.com/news/2026/10/17/football-no-4-ohio-state-powers-past-no-5-indiana-on-the-road-earn-second-ranked-road-win-of-season",
@@ -406,13 +406,13 @@
         }
       },
       {
-        "id": "osu-sayin-minimum",
-        "headline": "Day expects Sayin out for at least several weeks",
-        "tldr": "Day said testing was still ongoing. Fahey is set to take over, with St. Clair next behind him; watch the new quarterback’s first read and protection calls.",
+        "id": "osu-sayin-indefinite",
+        "headline": "Day says Sayin is out indefinitely",
+        "tldr": "Fahey and St. Clair will compete during the bye week. Day said he will choose the starter next week; keep that competition separate from the earlier depth chart.",
         "outlet": "Eleven Warriors",
         "tier": "local",
-        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164754/ryan-day-says-julian-sayin-will-be-out-at-least-several-weeks-on-buckeye-roundtable-show",
-        "publishedAt": "2026-10-19T18:56:47-04:00",
+        "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164776/presser-bullets-ryan-day-says-julian-sayin-is-out-indefinitely-reiterates-that-luke-fahey-is-ahead-of-tavien-st",
+        "publishedAt": "2026-10-20T19:57:19-04:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -421,7 +421,7 @@
       },
       {
         "id": "indiana-crossers",
-        "headline": "Indiana escapes Nebraska on two Marsh touchdown catches",
+        "headline": "Indiana escapes Nebraska on Marsh’s touchdown catches",
         "tldr": "Marsh caught 75- and 44-yard touchdowns in Indiana’s Nebraska win. That earlier film remains a reminder to carry crossing routes through the coverage handoff, rather than treating the run look as the whole play.",
         "outlet": "Indiana Daily Student",
         "tier": "local",
@@ -548,7 +548,7 @@
         "body": "Day calls out eight penalties and the turnovers. The Maryland errors are dated context. Watch the protection assignment and the decision that prevents another negative play."
       }
     ],
-    "storiesUpdatedAt": "2026-10-20T23:09:09.483Z"
+    "storiesUpdatedAt": "2026-10-21T23:06:30.377Z"
   },
   "lsu-football": {
     "schemaVersion": 1,
@@ -1702,13 +1702,13 @@
     "summary": "Michigan beat Penn State 21-18 after a halftime change to Tommy Carr. Three second-half takeaways and a 65-yard rushing limit belong alongside the offensive adjustment in the review.",
     "items": [
       {
-        "id": "mi-quarterback-plan",
-        "headline": "Whittingham keeps Michigan’s starting quarterback private",
-        "tldr": "The staff chose its plan Sunday, but Whittingham is keeping the starter against Indiana private. Prepare for either Carr or Underwood until the team confirms its choice.",
-        "outlet": "Maize n Brew",
+        "id": "mi-carr-reported-start",
+        "headline": "247Sports reports Carr will start against Indiana",
+        "tldr": "247Sports reports Carr is set to start against Indiana. Watch his first reads and keep the reported choice separate from a team announcement.",
+        "outlet": "247Sports via Maize n Brew",
         "tier": "local",
-        "url": "https://www.maizenbrew.com/football/125718/michigan-football-quarterback-tommy-carr-bryce-underwood-kyle-whittingham-indiana",
-        "publishedAt": "2026-10-19T16:06:59+00:00",
+        "url": "https://www.maizenbrew.com/football/125661/michigan-wolverines-football-tommy-carr-quarterback-first-start-indiana-kyle-whittingham-bryce-underwood",
+        "publishedAt": "2026-10-21T00:32:19+00:00",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -1872,7 +1872,7 @@
         "body": "Sowell catches 11 passes for 151 yards against Michigan. The late receiving production still needs a coverage correction. Carry the route even when the defense has already won earlier downs."
       }
     ],
-    "storiesUpdatedAt": "2026-10-19T23:14:12.741Z"
+    "storiesUpdatedAt": "2026-10-21T23:06:30.659Z"
   },
   "penn-state-football": {
     "schemaVersion": 1,
@@ -2830,17 +2830,17 @@
         }
       },
       {
-        "id": "smith-alignment",
-        "headline": "Cignetti flags Ohio State moving Jeremiah Smith around",
-        "tldr": "Watch the defender identify the receiver after a formation change. Carry the route through the coverage handoff instead of leaving the next defender to recover late.",
+        "id": "iu-carr-prep",
+        "headline": "Reports point to Carr starting against Indiana",
+        "tldr": "The Daily Hoosier relays reports that Carr will start for Michigan. Keep the quarterback contained while carrying the short routes; the report does not settle every snap in the rotation.",
         "outlet": "The Daily Hoosier",
         "tier": "local",
-        "url": "https://www.thedailyhoosier.com/a-wow-player-a-freak-iu-football-has-a-special-challenge-against-jeremiah-smith/",
-        "publishedAt": "2026-10-13",
+        "url": "https://www.thedailyhoosier.com/reports-michigan-is-going-with-tommy-carr-as-starting-qb-vs-iu/",
+        "publishedAt": "2026-10-21",
         "grade": {
           "impact": 5,
           "echo": 1,
-          "freshness": 3
+          "freshness": 5
         }
       },
       {
@@ -2971,7 +2971,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "Osunsanmi’s fourth-down sack stopped a late Nebraska drive. Keep the pressure lane under control while the route stays covered. Complete the stop before trying to create a return."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-21T23:13:52.229Z"
   },
   "boise-state-football": {
     "schemaVersion": 1,
@@ -3224,15 +3225,15 @@
         }
       },
       {
-        "id": "jmu-app-rushing",
-        "headline": "App State ran for 253 yards in its win at Coastal Carolina",
-        "tldr": "Hasselbeck supplied 125 rushing yards in the 35-32 comeback. JMU’s run-defense plan needs to account for the quarterback without assuming Friday’s rotation settles the next start.",
-        "outlet": "Coastal Carolina Athletics",
+        "id": "jmu-singleton-questionable",
+        "headline": "App State lists Singleton questionable before JMU",
+        "tldr": "App State’s preview cites the initial Sun Belt availability report. JMU still needs a plan for the quarterback run without assuming which passer takes the first snap.",
+        "outlet": "App State Athletics",
         "tier": "official",
-        "url": "https://goccusports.com/news/2026/10/17/football-coastal-comes-up-short-against-app-35-32",
-        "publishedAt": "2026-10-17",
+        "url": "https://appstatesports.com/news/2026/10/21/football-game-day-preview-app-state-hosts-unbeaten-jmu-on-thursday-night.aspx",
+        "publishedAt": "2026-10-21",
         "grade": {
-          "impact": 4,
+          "impact": 5,
           "echo": 1,
           "freshness": 5
         }
@@ -3337,7 +3338,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "App State’s next home game brings JMU on Thursday on ESPNU. The opponent’s recap confirms the next Thursday game. Treat the turnaround as a preparation constraint rather than a reason to guess availability."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-21T23:13:52.771Z"
   },
   "app-state-football": {
     "schemaVersion": 1,
@@ -3351,13 +3353,13 @@
     "summary": "App State won 35-32 at Coastal Carolina after trailing by ten at halftime. The quarterback rotation and the final clock-burning possession lead the review before the Thursday turnaround.",
     "items": [
       {
-        "id": "app-qb-rotation",
-        "headline": "Singleton starts; Hasselbeck plays the entire second half at Coastal",
-        "tldr": "App State’s notes confirm Singleton completed 12 of 14 passes for 151 yards. Hasselbeck ran for 125 yards, but the completed-game rotation does not confirm the next starter.",
+        "id": "app-singleton-questionable",
+        "headline": "App State lists Singleton questionable",
+        "tldr": "App State’s preview cites this week’s initial Sun Belt report. Keep the designation separate from a starter decision, and prepare for both quarterbacks’ running and passing options.",
         "outlet": "App State Athletics",
         "tier": "official",
-        "url": "https://appstatesports.com/news/2026/10/17/football-postgame-notes-from-app-states-win-at-coastal-carolina.aspx",
-        "publishedAt": "2026-10-17",
+        "url": "https://appstatesports.com/news/2026/10/21/football-game-day-preview-app-state-hosts-unbeaten-jmu-on-thursday-night.aspx",
+        "publishedAt": "2026-10-21",
         "grade": {
           "impact": 5,
           "echo": 1,
@@ -3520,7 +3522,8 @@
         "publishedAt": "2026-10-19T12:51:52.182320+00:00",
         "body": "App State hosts JMU Thursday at 7 p.m. ET on ESPNU. Plan for the short preparation week. The game notice does not establish the next quarterback workload."
       }
-    ]
+    ],
+    "storiesUpdatedAt": "2026-10-21T23:13:52.498Z"
   },
   "fresno-state-football": {
     "schemaVersion": 1,
