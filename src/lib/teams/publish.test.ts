@@ -110,7 +110,13 @@ it("keeps an opponent classification on file when a refresh does not carry one",
 
 it("loads an additional program in a separate checkout without modifying source code", async () => {
   const { root, candidate, now } = await fixture();
-  for (const name of ["src", "data", "tsconfig.json"]) await cp(path.join(process.cwd(), name), path.join(root, name), { recursive: true });
+  // This checks a new team's initial import, which needs the current registries
+  // but none of the growing archive of previous editions.
+  const archive = path.join(process.cwd(), "data/editions/archive");
+  for (const name of ["src", "data", "tsconfig.json"]) await cp(path.join(process.cwd(), name), path.join(root, name), {
+    recursive: true,
+    filter: (source) => source !== archive,
+  });
   await symlink(path.join(process.cwd(), "node_modules"), path.join(root, "node_modules"));
   const configFile = path.join(root, "src/config/team.ts");
   const before = await readFile(configFile, "utf8");

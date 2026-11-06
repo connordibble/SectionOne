@@ -276,7 +276,7 @@ test("the Utah State edition renders its own schedule, notes, and accent", async
   await expect(page.getByText(`${utahState.referenceLabel} · ${utahState.conference}`, { exact: false })).toBeVisible();
   await expect(page.getByTestId("kickoff-lead")).toBeVisible();
   await expect(page.getByRole("heading", { name: "What matters Saturday" })).toBeVisible();
-  await expect(page.getByText(utahNext.opponent, { exact: false }).first()).toBeVisible();
+  await expect(page.getByTestId("kickoff-lead").getByRole("heading", { level: 1 })).toContainText(utahNext.opponent);
 
   const aggieAccent = await accentOf();
   expect(aggieAccent).toMatch(/^oklch\(/);

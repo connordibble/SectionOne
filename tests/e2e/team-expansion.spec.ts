@@ -7,10 +7,11 @@ const colorAnchors = Object.fromEntries(teams.map((team) => [team.slug,
 ]));
 
 for (const theme of ["light", "dark"] as const) {
-  test(`matchup headlines keep school names whole in ${theme}`, async ({ page }) => {
-    await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
-    for (const team of teams) {
+  for (const team of teams) {
+    test(`${team.shortName}: matchup headlines keep school names whole in ${theme}`, async ({ page }) => {
+      await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
       await page.goto(`/teams/${team.slug}`);
+      await expect(page.locator("main")).toHaveAttribute("data-theme", theme);
       await page.evaluate(() => document.fonts.ready);
       for (const width of [320, 375, 1280, 1376, 1440, 1920]) {
         await page.setViewportSize({ width, height: 900 });
@@ -28,12 +29,11 @@ for (const theme of ["light", "dark"] as const) {
         });
         expect(brokenWords, `${team.shortName} at ${width}px`).toEqual([]);
       }
-    }
-  });
-  test(`new editions preserve school colors and conference navigation in ${theme}`, async ({ page }) => {
-    await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
-    for (const team of teams) {
+    });
+    test(`${team.shortName}: school colors and conference navigation in ${theme}`, async ({ page }) => {
+      await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
       await page.goto(`/teams/${team.slug}`);
+      await expect(page.locator("main")).toHaveAttribute("data-theme", theme);
       const switcher = page.getByLabel("Team", { exact: true });
       await expect(switcher).toHaveValue(team.slug);
       const conferences = [...new Set(teams.map((team) => team.conference))].sort();
@@ -72,6 +72,6 @@ for (const theme of ["light", "dark"] as const) {
         await switcher.selectOption(other.slug);
         await expect(page).toHaveURL(new RegExp(`/teams/${other.slug}$`));
       }
-    }
-  });
+    });
+  }
 }

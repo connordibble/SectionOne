@@ -227,8 +227,8 @@ test("edition composition keeps one owner at responsive breakpoints", async ({ p
   expect(problems, problems.join("\n")).toEqual([]);
 });
 
-test("compact schedule dates never overlap the opponent at intermediate widths", async ({ page }) => {
-  for (const theme of ["light", "dark"]) {
+for (const theme of ["light", "dark"]) {
+  test(`compact schedule dates never overlap the opponent at intermediate widths in ${theme}`, async ({ page }) => {
     await page.addInitScript((value) => localStorage.setItem("section-one-theme", value), theme);
     for (const width of [320, 639, 640, 768, 900, 1023, 1024, 1280, 1375, 1376, 1440]) {
       await page.setViewportSize({ width, height: 900 });
@@ -241,5 +241,5 @@ test("compact schedule dates never overlap the opponent at intermediate widths",
         expect(date!.y + date!.height, `${width}px ${theme} date above opponent`).toBeLessThanOrEqual(opponent!.y);
       }
     }
-  }
-});
+  });
+}
