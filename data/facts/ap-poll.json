@@ -1,13 +1,13 @@
 {
   "season": 2026,
-  "week": 9,
-  "weekLabel": "Week 9",
-  "capturedAt": "2026-10-26T19:50:16.537Z",
+  "week": 10,
+  "weekLabel": "Week 10",
+  "capturedAt": "2026-11-06T16:37:28.040Z",
   "polls": [
     {
       "id": "ap",
       "name": "AP Top 25",
-      "releasedAt": "2026-10-25",
+      "releasedAt": "2026-11-01",
       "sourceUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
       "ranks": [
         {
@@ -16,43 +16,43 @@
         },
         {
           "rank": 2,
-          "team": "Ohio State"
-        },
-        {
-          "rank": 3,
           "team": "Georgia"
         },
         {
-          "rank": 4,
-          "team": "Indiana"
-        },
-        {
-          "rank": 5,
-          "team": "Notre Dame"
-        },
-        {
-          "rank": 6,
+          "rank": 3,
           "team": "Utah"
         },
         {
-          "rank": 7,
+          "rank": 4,
+          "team": "Notre Dame"
+        },
+        {
+          "rank": 5,
           "team": "UCLA"
         },
         {
-          "rank": 8,
+          "rank": 6,
+          "team": "Indiana"
+        },
+        {
+          "rank": 7,
           "team": "BYU"
         },
         {
-          "rank": 9,
+          "rank": 8,
           "team": "Kentucky"
         },
         {
-          "rank": 10,
+          "rank": 9,
           "team": "Alabama"
         },
         {
-          "rank": 11,
+          "rank": 10,
           "team": "Texas"
+        },
+        {
+          "rank": 11,
+          "team": "Ohio State"
         },
         {
           "rank": 12,
@@ -76,39 +76,39 @@
         },
         {
           "rank": 17,
-          "team": "Florida"
-        },
-        {
-          "rank": 18,
           "team": "Houston"
         },
         {
+          "rank": 18,
+          "team": "USC"
+        },
+        {
           "rank": 19,
-          "team": "SMU"
+          "team": "Missouri"
         },
         {
           "rank": 20,
           "team": "Boise State"
         },
         {
-          "rank": 20,
-          "team": "Northwestern"
+          "rank": 21,
+          "team": "Iowa"
         },
         {
           "rank": 22,
-          "team": "Arizona"
+          "team": "New Mexico"
         },
         {
           "rank": 23,
-          "team": "Missouri"
+          "team": "South Carolina"
         },
         {
           "rank": 24,
-          "team": "Oklahoma State"
+          "team": "Arizona"
         },
         {
           "rank": 25,
-          "team": "Wisconsin"
+          "team": "Florida"
         }
       ]
     }
@@ -117,8 +117,8 @@
   "provenance": {
     "provider": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings",
-    "retrievedAt": "2026-10-26T19:50:16.537Z",
+    "retrievedAt": "2026-11-06T16:37:28.040Z",
     "verifiedUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
-    "throughDate": "2026-10-24"
+    "throughDate": "2026-10-31"
   }
 }
