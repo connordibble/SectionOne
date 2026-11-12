@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "boise-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:19.554416+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Boise State beat Washington State 31-10 with a 21-0 fourth quarter. Jones earned a conference honor, while punt handling and penalty discipline remain work before Texas State visits Saturday night.",
+  "items": [
+    {
+      "id": "boise-result",
+      "headline": "Boise State pulls away for a 31-10 win",
+      "tldr": "The Broncos scored 21 unanswered fourth-quarter points. Watch whether the offense can establish the same rushing rhythm before the game reaches its final period.",
+      "outlet": "Boise State Athletics",
+      "tier": "official",
+      "url": "https://broncosports.com/news/2026/10/24/football-dominant-fourth-quarter-propels-no-21-22-broncos-past-cougars",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "boise-jones",
+      "headline": "Jones earns Pac-12 freshman of the week",
+      "tldr": "The receiver returned to the offense against Washington State and received the conference honor Monday. Watch how his routes keep a passing answer available alongside the ground game.",
+      "outlet": "Boise State Athletics",
+      "tier": "official",
+      "url": "https://broncosports.com/news/2026/10/26/football-jones-named-pac-12-freshman-of-the-week",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "boise-discipline",
+      "headline": "Punt handling and penalties leave avoidable risks",
+      "tldr": "The On SI game report describes a muff recovered by a teammate and costly pass-interference flags. Keep possession security and coverage technique in view despite the comfortable final margin.",
+      "outlet": "Boise State Broncos On SI via Yahoo",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/game-recap-analysis-no-21-214657000.html",
+      "publishedAt": "2026-10-24T21:46:57Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "boise-finish",
+      "headline": "Danielson credits the response after a difficult start",
+      "tldr": "The postgame discussion focuses on how Boise State stayed in the game. Look for the repeatable blocking and decisions that can make the next opening possessions cleaner.",
+      "outlet": "Boise State Broncos On SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/boise-state/football/head-coach-spencer-danielson-praises-boise-state-resilience-in-dominant-finish-against-washington-state",
+      "publishedAt": "2026-10-25T02:23:08Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "boise-defense",
+      "headline": "Boise State shuts out Washington State in the fourth",
+      "tldr": "The Cougars could not answer the late scoring run. Watch the defensive pursuit and coverage finish that keep a pressured quarterback from extending the possession.",
+      "outlet": "Washington State Athletics",
+      "tier": "official",
+      "url": "https://wsucougars.com/news/2026/10/25/washington-state-falls-in-battle-with-boise-state-31-10",
+      "publishedAt": "2026-10-25T01:46:44.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Bring the finish to the opening drive.",
+      "body": "Make the first rushing lane and quick receiving answer work together. Preserve those possessions with secure punt handling, while the defense carries routes without giving away a flag.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep the ordinary play under control",
+      "question": "What should fans watch in the next game?",
+      "answer": "Take the blocked running lane or the clean first throw before extending the down. Finish defensive coverage with leverage and disciplined contact so a stop remains a stop.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Rushing rhythm",
+        "summary": "Create the crease early",
+        "detail": "Watch the block at the point of attack and the runner’s first cut. Establish a reliable carry before asking the offense to wait for the long breakaway.",
+        "state": "watch",
+        "prompt": "What should I watch for with rushing rhythm?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving outlets",
+        "summary": "Keep the first throw available",
+        "detail": "Use the receiver’s release and route spacing to offer a quick completion. A useful passing answer should support the run game when the defense crowds the line.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiving outlets?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Punt handling",
+        "summary": "Secure the change of possession",
+        "detail": "Set the returner’s decision and communication before the catch. A safe possession is the first job when the coverage closes the return lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with punt handling?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage technique",
+        "summary": "Keep the stop legal",
+        "detail": "Carry the receiver with controlled leverage and locate the ball before contact. Do not let a difficult third down become an automatic first down through a flag.",
+        "state": "watch",
+        "prompt": "What should I watch for with coverage technique?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the opening drives against Texas State for settled blocking and secure returns. The fourth-quarter standard is most useful when it also survives the first quarter.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Rushing rhythm",
+      "topics": [
+        "rushing rhythm",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the block at the point of attack and the runner’s first cut. Establish a reliable carry before asking the offense to wait for the long breakaway."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving outlets",
+      "topics": [
+        "receiving outlets",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Use the receiver’s release and route spacing to offer a quick completion. A useful passing answer should support the run game when the defense crowds the line."
+    },
+    {
+      "id": "watch-3",
+      "title": "Punt handling",
+      "topics": [
+        "punt handling",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Set the returner’s decision and communication before the catch. A safe possession is the first job when the coverage closes the return lane."
+    },
+    {
+      "id": "watch-4",
+      "title": "Coverage technique",
+      "topics": [
+        "coverage technique",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Carry the receiver with controlled leverage and locate the ball before contact. Do not let a difficult third down become an automatic first down through a flag."
+    }
+  ]
+}

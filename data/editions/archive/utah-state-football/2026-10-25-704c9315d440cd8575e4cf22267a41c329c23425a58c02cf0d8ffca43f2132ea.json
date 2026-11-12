@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "utah-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:16.360864+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Utah State lost 20-17 at Texas State. The offense’s long quiet stretch and a kickoff-return touchdown left little room for error. Colorado State visits Saturday afternoon.",
+  "items": [
+    {
+      "id": "usu-result",
+      "headline": "Utah State falls 20-17 at Texas State",
+      "tldr": "The Aggies tied it in the fourth quarter but missed a late field-goal attempt. Look earlier in the game for possessions that could have eased the final drive.",
+      "outlet": "Utah State Athletics",
+      "tier": "official",
+      "url": "https://utahstateaggies.com/news/2026/10/24/aggie-football-drops-20-17-heartbreaker-at-texas-state.aspx",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "usu-stall",
+      "headline": "The offense goes quiet through the middle quarters",
+      "tldr": "Deseret News traces a long stretch with little offensive production. Watch whether the first-down passing answer can keep the next drive out of a predictable third down.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/10/24/utah-states-offense-disappoints-in-3-point-loss-to-texas-state/",
+      "publishedAt": "2026-10-25T04:31:06.081Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "usu-return",
+      "headline": "A 100-yard kickoff return gives Texas State a touchdown",
+      "tldr": "Coverage surrendered a score immediately after an Aggie field goal. Track lane spacing and the last line of pursuit as closely as the kicking distance.",
+      "outlet": "Texas State Athletics",
+      "tier": "official",
+      "url": "https://txst.com/sports/football/stats/2026/utah-state/boxscore/11176",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "usu-trick",
+      "headline": "Garcia’s touchdown pass helps tie the game late",
+      "tldr": "Garcia found Watson for a six-yard score before the tying two-point conversion. The receiver’s passing threat is useful when the ordinary offense can move the chains, too.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/utah-state-football/20-17-loss/578426",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "usu-watch",
+      "headline": "Colorado State visits at 1:30 p.m. MT on USA Sports",
+      "tldr": "Saturday’s Halloween game is in Logan. Set the afternoon viewing window before judging whether Utah State can turn another close finish into a win.",
+      "outlet": "Fort Collins Coloradoan via Yahoo",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/know-colorado-state-football-vs-103122772.html",
+      "publishedAt": "2026-10-26T10:31:22Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Find the next first down.",
+      "body": "Build an ordinary drive before reaching for the surprise play. Give the quarterback a quick outlet, make the first carry useful and keep special teams from erasing the defense’s work.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Move the chains between the highlights",
+      "question": "What should fans watch in the next game?",
+      "answer": "Start with the protection and the first read. A short completion that earns another set of downs matters more than waiting for a trick play to rescue a stalled possession.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Passing rhythm",
+        "summary": "Give the quarterback an early answer",
+        "detail": "Watch the release and the nearest receiving option when pressure arrives. Take the available completion before the pocket forces an improvised throw.",
+        "state": "watch",
+        "prompt": "What should I watch for with passing rhythm?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Run game and early-down running",
+        "summary": "Leave a manageable third down",
+        "detail": "Judge the run blocking by the space it creates at the first cut. A modest gain can keep the next call from becoming an obvious passing situation.",
+        "state": "watch",
+        "prompt": "What should I watch for with run game and early-down running?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Kickoff coverage",
+        "summary": "Protect the points just earned",
+        "detail": "Keep the coverage lanes connected and preserve a safety behind the first wave. Make the returner work through a tackle rather than an open crease.",
+        "state": "watch",
+        "prompt": "What should I watch for with kickoff coverage?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Late-drive operation",
+        "summary": "Save time before the last kick",
+        "detail": "Get the call, substitution and snap organized before the clock becomes urgent. Give the offense time to improve the kicking position.",
+        "state": "watch",
+        "prompt": "What should I watch for with late-drive operation?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the drives between the opening script and the final possession. Consistent first downs would make the late-game operation a less desperate test.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Passing rhythm",
+      "topics": [
+        "passing rhythm",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the release and the nearest receiving option when pressure arrives. Take the available completion before the pocket forces an improvised throw."
+    },
+    {
+      "id": "watch-2",
+      "title": "Run game and early-down running",
+      "topics": [
+        "run game and early-down running",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:40:16.360864+00:00",
+      "body": "Judge the run blocking by the space it creates at the first cut. A modest gain can keep the next call from becoming an obvious passing situation."
+    },
+    {
+      "id": "watch-3",
+      "title": "Kickoff coverage",
+      "topics": [
+        "kickoff coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the coverage lanes connected and preserve a safety behind the first wave. Make the returner work through a tackle rather than an open crease."
+    },
+    {
+      "id": "watch-4",
+      "title": "Late-drive operation",
+      "topics": [
+        "late-drive operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Get the call, substitution and snap organized before the clock becomes urgent. Give the offense time to improve the kicking position."
+    }
+  ]
+}

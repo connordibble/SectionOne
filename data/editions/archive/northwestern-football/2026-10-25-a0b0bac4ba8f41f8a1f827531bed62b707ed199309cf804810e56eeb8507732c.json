@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "northwestern-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:17.001575+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Northwestern beat Rutgers 42-14. Chiles and the rushing attack powered the offense, and takeaways helped the defense. Oregon changed offensive coordinators before Saturday’s matchup.",
+  "items": [
+    {
+      "id": "nu-result",
+      "headline": "Northwestern beats Rutgers 42-14",
+      "tldr": "The Wildcats earned their sixth win with a fast start. Watch whether the opening script can keep creating useful downs when the next defense adjusts.",
+      "outlet": "Northwestern Athletics",
+      "tier": "official",
+      "url": "https://nusports.com/news/2026/10/24/no-24-cats-start-fast-knock-off-rutgers-42-14",
+      "publishedAt": "2026-10-24T19:23:19.000000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nu-chiles",
+      "headline": "Chiles accounts for five touchdowns against Rutgers",
+      "tldr": "Three passing scores and two rushing scores gave the offense different ways to finish. Watch how the quarterback’s run threat changes the edge defender’s assignment.",
+      "outlet": "Inside NU",
+      "tier": "local",
+      "url": "https://www.insidenu.com/northwestern-football/72748/rapid-reaction-no-24-northwestern-trounces-rutgers-in-a-42-14-home-win",
+      "publishedAt": "2026-10-24T19:21:21+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nu-ground",
+      "headline": "The rushing attack produces 283 yards",
+      "tldr": "Inside NU traces the ground game’s role in the win. Keep the blocking, quarterback read and runner’s first cut connected before looking for the breakaway.",
+      "outlet": "Inside NU",
+      "tier": "local",
+      "url": "https://www.insidenu.com/northwestern-football/72797/three-takeaways-from-northwesterns-42-14-squashing-of-rutgers",
+      "publishedAt": "2026-10-26T14:50:36+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nu-turnovers",
+      "headline": "Raymond’s 46-yard touchdown leaves run-defense work",
+      "tldr": "Rutgers cut the margin to 28-14 on the long carry and a two-point conversion. Keep the edge and pursuit connected before the next runner reaches open space.",
+      "outlet": "Rutgers Athletics",
+      "tier": "official",
+      "url": "https://scarletknights.com/news/2026/10/24/football-loses-to-no-24-23-northwestern",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nu-oregon",
+      "headline": "Oregon dismisses offensive coordinator Drew Mehringer",
+      "tldr": "The Ducks announced the change Sunday before hosting Northwestern. Prepare for possible adjustments without assuming a new play-caller will change every formation.",
+      "outlet": "Oregon Athletics",
+      "tier": "official",
+      "url": "https://goducks.com/news/2026/10/25/football-oregon-relieves-offensive-coordinator-mehringer-of-duties",
+      "publishedAt": "2026-10-25",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the quarterback’s choices open.",
+      "body": "Make the edge defender account for the handoff, keeper and pass. On defense, get lined up early and preserve assignments while Oregon works through its offensive change.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Trust the read and the assignment",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep the run action convincing without making every down depend on a quarterback escape. Defend what the formation shows, then communicate through motion before the snap.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback run threat",
+        "summary": "Make the edge defender choose",
+        "detail": "Watch the mesh point and the outside defender’s first step. A clean read should leave either the runner or the quarterback a usable lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback run threat?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Blocking continuity",
+        "summary": "Create the first crease",
+        "detail": "Follow the block at the point of attack and the runner’s first cut. Keep an ordinary gain available when the defense takes away the long carry.",
+        "state": "watch",
+        "prompt": "What should I watch for with blocking continuity?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive preparation",
+        "summary": "Recognize changes before the snap",
+        "detail": "Watch Oregon’s personnel and motion without guessing at a complete offensive overhaul. Communicate the coverage and edge responsibility before chasing the ball.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive preparation?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Takeaway discipline",
+        "summary": "Make pressure produce a hard throw",
+        "detail": "Close the pocket while preserving coverage behind it. Finish a sound defensive down even when the chance for an interception does not arrive.",
+        "state": "watch",
+        "prompt": "What should I watch for with takeaway discipline?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Use the opening possessions to identify Oregon’s adjustments. Keep the defensive assignment intact before reacting to a new tendency.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback run threat",
+      "topics": [
+        "quarterback run threat",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the mesh point and the outside defender’s first step. A clean read should leave either the runner or the quarterback a usable lane."
+    },
+    {
+      "id": "watch-2",
+      "title": "Blocking continuity",
+      "topics": [
+        "blocking continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Follow the block at the point of attack and the runner’s first cut. Keep an ordinary gain available when the defense takes away the long carry."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive preparation",
+      "topics": [
+        "defensive preparation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch Oregon’s personnel and motion without guessing at a complete offensive overhaul. Communicate the coverage and edge responsibility before chasing the ball."
+    },
+    {
+      "id": "watch-4",
+      "title": "Takeaway discipline",
+      "topics": [
+        "takeaway discipline",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Close the pocket while preserving coverage behind it. Finish a sound defensive down even when the chance for an interception does not arrive."
+    }
+  ]
+}

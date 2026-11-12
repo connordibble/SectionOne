@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "app-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:19.984942+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "App State beat JMU 34-31 in overtime on London’s field goal. Singleton played after being listed questionable, and Phares’s interception created a late lead. Georgia Southern is next Saturday evening.",
+  "items": [
+    {
+      "id": "app-result",
+      "headline": "London’s 40-yard overtime field goal beats JMU",
+      "tldr": "The 34-31 win was App State’s second straight comeback victory. The next trip is to Georgia Southern Saturday at 6:30 p.m. ET on ESPN+.",
+      "outlet": "App State Athletics",
+      "tier": "official",
+      "url": "https://appstatesports.com/news/2026/10/23/football-londons-ot-kick-caps-dramatic-app-state-win-over-jmu.aspx",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "app-singleton",
+      "headline": "Singleton plays and throws for 271 yards against JMU",
+      "tldr": "The quarterback appeared after the earlier questionable designation. Keep his completed outing separate from any assumption about the next availability report.",
+      "outlet": "App State Athletics",
+      "tier": "official",
+      "url": "https://appstatesports.com/sports/football/stats/2026/james-madison/boxscore/9919",
+      "publishedAt": "2026-10-22",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "app-phare",
+      "headline": "Phares’s interception sets up the go-ahead touchdown",
+      "tldr": "Hasselbeck found Douglas for the score after the takeaway. Watch the coverage discipline that lets the defense turn a passing read into an extra possession.",
+      "outlet": "The Appalachian",
+      "tier": "local",
+      "url": "https://theappalachianonline.com/undefeated-no-more-mountaineers-knock-off-dukes/",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "app-coverage",
+      "headline": "Wisloski’s 70-yard score exposes a coverage cost",
+      "tldr": "JMU’s long touchdown was a reminder to carry the route and finish the first tackle. Keep that correction visible while reviewing the overtime win.",
+      "outlet": "JMU Athletics",
+      "tier": "official",
+      "url": "https://jmusports.com/news/2026/10/23/football-dukes-fall-to-app-state-in-overtime",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "app-possessions",
+      "headline": "App State forces four straight early three-and-outs",
+      "tldr": "JMU Sports News details the Dukes’ stalled possessions after their opening score. Watch whether App State can pair another defensive stretch with more sustained offense.",
+      "outlet": "JMU Sports News",
+      "tier": "local",
+      "url": "https://jmusportsnews.com/2026/10/23/jmu-football-app-state-loss-takeaways/",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the stop survive the next play.",
+      "body": "Carry the receiver through the break and finish the tackle before the pursuit separates. On offense, protect the exchange and give the quarterback a receiving answer that can sustain a drive.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep pressure, coverage and possession connected",
+      "question": "What should fans watch in the next game?",
+      "answer": "Close the pocket without abandoning the deeper route. When the offense gets another chance, take the clean first gain before asking a late comeback to supply the whole scoring plan.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback continuity",
+        "summary": "Follow confirmed availability",
+        "detail": "Watch the next report and the opening workload rather than recycling the earlier questionable label. A completed game establishes participation, not automatic clearance for every later game.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback continuity?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Downfield coverage",
+        "summary": "Carry the route to the tackle",
+        "detail": "Keep the safety’s help connected to the receiver’s path. Close under control so a completion cannot turn one missed tackle into a long touchdown.",
+        "state": "watch",
+        "prompt": "What should I watch for with downfield coverage?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Takeaway opportunities",
+        "summary": "Keep the assignment before chasing the ball",
+        "detail": "Read the quarterback from a sound coverage position. A chance for an interception should come from the assignment rather than an abandoned receiver.",
+        "state": "watch",
+        "prompt": "What should I watch for with takeaway opportunities?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Drive continuity",
+        "summary": "Make the first gain repeatable",
+        "detail": "Keep the snap and first read settled through personnel changes. A reliable short gain can make the next possession useful before the closing minutes.",
+        "state": "watch",
+        "prompt": "What should I watch for with drive continuity?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Confirm the quarterback update, then watch the early passing rhythm at Georgia Southern. On defense, keep the deep route and first tackle intact even when the pass rush arrives.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback continuity",
+      "topics": [
+        "quarterback continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the next report and the opening workload rather than recycling the earlier questionable label. A completed game establishes participation, not automatic clearance for every later game."
+    },
+    {
+      "id": "watch-2",
+      "title": "Downfield coverage",
+      "topics": [
+        "downfield coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the safety’s help connected to the receiver’s path. Close under control so a completion cannot turn one missed tackle into a long touchdown."
+    },
+    {
+      "id": "watch-3",
+      "title": "Takeaway opportunities",
+      "topics": [
+        "takeaway opportunities",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Read the quarterback from a sound coverage position. A chance for an interception should come from the assignment rather than an abandoned receiver."
+    },
+    {
+      "id": "watch-4",
+      "title": "Drive continuity",
+      "topics": [
+        "drive continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the snap and first read settled through personnel changes. A reliable short gain can make the next possession useful before the closing minutes."
+    }
+  ]
+}

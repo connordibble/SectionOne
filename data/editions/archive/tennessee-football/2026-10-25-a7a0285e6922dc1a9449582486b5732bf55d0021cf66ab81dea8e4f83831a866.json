@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "tennessee-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:18.705742+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Tennessee lost 27-24 at South Carolina after a late turnaround. Penalties and possession security lead the corrections; the Vols have an open date before Kentucky’s November 7 visit.",
+  "items": [
+    {
+      "id": "ten-result",
+      "headline": "Tennessee loses 27-24 on a last-second field goal",
+      "tldr": "South Carolina tied the game late and won after a strip sack. Keep the final-possession lesson tied to ball security and field position.",
+      "outlet": "Associated Press via Laredo Morning Times",
+      "tier": "national",
+      "url": "https://www.lmtonline.com/sports/article/lanorris-sellers-has-three-tds-and-south-carolina-22492883.php",
+      "publishedAt": "2026-10-25T00:48:00Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ten-penalties",
+      "headline": "Penalties erase three potential touchdown passes",
+      "tldr": "Rocky Top Insider details scores nullified by flags. Watch pre-snap alignment and blocking discipline before treating the passing stat line as the whole offensive story.",
+      "outlet": "Rocky Top Insider",
+      "tier": "local",
+      "url": "https://www.rockytopinsider.com/2026/10/24/four-quick-takeaways-tennessee-football-collapses-down-the-stretch-at-south-carolina/",
+      "publishedAt": "2026-10-24T23:17:21+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ten-bishop",
+      "headline": "Bishop runs 32 times for 120 yards and a touchdown",
+      "tldr": "The running back helped Tennessee recover from an early deficit. Watch the next availability update after RTI reported that he was hurt late; a return timeline is not established.",
+      "outlet": "Tennessee Athletics",
+      "tier": "official",
+      "url": "https://utsports.com/news/2026/10/24/football-postgame-notes-south-carolina-27-11-11-tennessee-24",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ten-defense",
+      "headline": "Tennessee records five second-half sacks",
+      "tldr": "Pressure helped the defense work back into the game. The next test is to close the quarterback’s escape lane and finish the late scoring possession.",
+      "outlet": "Tennessee Athletics",
+      "tier": "official",
+      "url": "https://utsports.com/news/2026/10/24/football-11-11-vols-fall-in-columbia-after-late-gamecocks-rally",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ten-tv",
+      "headline": "Kentucky visits November 7 at 6:15 p.m. ET on ESPN",
+      "tldr": "Both teams have an open date first. The confirmed homecoming window gives fans an evening at Neyland to plan around.",
+      "outlet": "Rocky Top Insider",
+      "tier": "local",
+      "url": "https://www.rockytopinsider.com/2026/10/26/kickoff-time-broadcast-details-announced-for-tennessee-vs-kentucky-in-neyland-stadium/",
+      "publishedAt": "2026-10-26T17:55:35+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the points you earn.",
+      "body": "Get aligned before the snap and keep the block legal through the throw. Secure the football when pressure arrives, while the defense finishes pursuit instead of letting the quarterback turn contact into a score.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the whole scoring play count",
+      "question": "What should fans watch in the next game?",
+      "answer": "Pair the first read with disciplined protection. A completed touchdown only helps when the formation, timing and blocks all survive the same down.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Penalty discipline",
+        "summary": "Set the formation before the snap",
+        "detail": "Watch shifts, alignment and the line’s path through the play. Keep the offense from giving back the space its route design creates.",
+        "state": "watch",
+        "prompt": "What should I watch for with penalty discipline?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Late-possession security",
+        "summary": "Give pressure a safe answer",
+        "detail": "Keep the receiving outlet available and the ball protected when the pocket narrows. End the down deliberately before contact decides the next field position.",
+        "state": "watch",
+        "prompt": "What should I watch for with late-possession security?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Running-back workload",
+        "summary": "Follow the next availability update",
+        "detail": "Separate the last game’s production from the next game’s clearance. Watch confirmed personnel before deciding how the carries should be distributed.",
+        "state": "watch",
+        "prompt": "What should I watch for with running-back workload?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Defensive pursuit",
+        "summary": "Close the escape lane",
+        "detail": "Bring the pass rush with a clear edge and a second tackler. Finish through the quarterback’s hips rather than allowing the first missed contact to extend the drive.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive pursuit?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Follow the running-back update through the open date. On the field, judge whether legal alignment and secure possessions let the offense keep the gains it creates.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Penalty discipline",
+      "topics": [
+        "penalty discipline",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch shifts, alignment and the line’s path through the play. Keep the offense from giving back the space its route design creates."
+    },
+    {
+      "id": "watch-2",
+      "title": "Late-possession security",
+      "topics": [
+        "late-possession security",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the receiving outlet available and the ball protected when the pocket narrows. End the down deliberately before contact decides the next field position."
+    },
+    {
+      "id": "watch-3",
+      "title": "Running-back workload",
+      "topics": [
+        "running-back workload",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Separate the last game’s production from the next game’s clearance. Watch confirmed personnel before deciding how the carries should be distributed."
+    },
+    {
+      "id": "watch-4",
+      "title": "Defensive pursuit",
+      "topics": [
+        "defensive pursuit",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Bring the pass rush with a clear edge and a second tackler. Finish through the quarterback’s hips rather than allowing the first missed contact to extend the drive."
+    }
+  ]
+}

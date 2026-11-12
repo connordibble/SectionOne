@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "ohio-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:16.573587+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Ohio State returns from its bye to visit USC. Sayin remains out indefinitely in Day’s reported update; the quarterback plan, pass protection and USC’s downfield threats lead the week.",
+  "items": [
+    {
+      "id": "osu-status",
+      "headline": "Day says Sayin is out indefinitely",
+      "tldr": "Day put Fahey ahead of St. Clair while leaving room for competition during the bye. Treat the next starter and the length of Sayin’s absence as separate questions.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164776/presser-bullets-ryan-day-says-julian-sayin-is-out-indefinitely-reiterates-that-luke-fahey-is-ahead-of-tavien-st",
+      "publishedAt": "2026-10-20",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "osu-scout",
+      "headline": "USC’s passing threats lead the opponent preview",
+      "tldr": "Eleven Warriors examines Maiava and the Trojans’ receivers. Watch how Ohio State carries routes beyond the first break without opening a scramble lane.",
+      "outlet": "Eleven Warriors",
+      "tier": "local",
+      "url": "https://www.elevenwarriors.com/ohio-state-football/2026/10/164870/five-things-to-know-about-usc-trojans-enter-saturday-with-college-football-playoff-hopes-on-the-line-talented-quarterback-freshmen",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "osu-result",
+      "headline": "Ohio State’s last outing was a 19-15 win at Indiana",
+      "tldr": "The Buckeyes return from an open date after a close road win. The next offense needs a protection plan that makes its quarterback’s first decision usable.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/10/17/football-no-4-ohio-state-powers-past-no-5-indiana-on-the-road-earn-second-ranked-road-win-of-season",
+      "publishedAt": "2026-10-17",
+      "grade": {
+        "impact": 4,
+        "echo": 2,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "osu-tv",
+      "headline": "Ohio State–USC kicks at 7:30 p.m. ET on NBC",
+      "tldr": "Saturday’s trip to Los Angeles has an evening Eastern viewing window. Keep the travel-day clock separate from the local kickoff time.",
+      "outlet": "Ohio State Athletics",
+      "tier": "official",
+      "url": "https://ohiostatebuckeyes.com/news/2026/10/19/football-kickoff-time-at-usc-announced-for-7-30-pm-et-on-nbc",
+      "publishedAt": "2026-10-19",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "osu-usc",
+      "headline": "USC falls 24-7 at Wisconsin before hosting Ohio State",
+      "tldr": "The Trojans enter the matchup after a difficult offensive outing. Use the film to inspect protection and rushing lanes, without assuming the next game will follow the same script.",
+      "outlet": "Associated Press via USC Athletics",
+      "tier": "national",
+      "url": "https://usctrojans.com/news/2026/10/24/usc-trojans-football-game-recap-associated-press-ap-wisconsin-badgers-jayden-maiava-taniela-tupou",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 2,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the first read usable.",
+      "body": "Give the next quarterback a clear throw and a protected launch point. Pair that with a run game that earns useful downs, while the defense keeps USC’s receivers in front of its help.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Simplify the decision without surrendering ambition",
+      "question": "What should fans watch in the next game?",
+      "answer": "Let protection, route spacing and the release work together. Take the clean completion, then choose the downfield shot when the pocket and coverage actually permit it.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback plan",
+        "summary": "Separate preparation from a final call",
+        "detail": "Watch the confirmed starter, the opening formations and the first pressure answer. Do not turn a reported depth-chart edge into a season-long personnel decision.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback plan?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Up front: pass protection",
+        "summary": "Give the first read time",
+        "detail": "Keep the pocket’s width and the receiving outlet connected. A free rusher should produce an immediate answer rather than an extended retreat.",
+        "state": "watch",
+        "prompt": "What should I watch up front in pass protection?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Rushing efficiency",
+        "summary": "Keep the playbook open",
+        "detail": "Watch the block at the point of attack and the runner’s first cut. Useful early carries should make the passing plan easier to execute.",
+        "state": "watch",
+        "prompt": "What should I watch for with rushing efficiency?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Downfield coverage",
+        "summary": "Carry the route through the break",
+        "detail": "Keep leverage on the outside receiver while the safety tracks the deeper route. Close the pocket without letting the quarterback buy an uncovered throw.",
+        "state": "watch",
+        "prompt": "What should I watch for with downfield coverage?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Confirm the quarterback announcement before kickoff. Then judge whether the opening plan gives him a quick answer and a safe way out of pressure.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback plan",
+      "topics": [
+        "quarterback plan",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the confirmed starter, the opening formations and the first pressure answer. Do not turn a reported depth-chart edge into a season-long personnel decision."
+    },
+    {
+      "id": "watch-2",
+      "title": "Up front: pass protection",
+      "topics": [
+        "up front: pass protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:40:16.573587+00:00",
+      "body": "Keep the pocket’s width and the receiving outlet connected. A free rusher should produce an immediate answer rather than an extended retreat."
+    },
+    {
+      "id": "watch-3",
+      "title": "Rushing efficiency",
+      "topics": [
+        "rushing efficiency",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the block at the point of attack and the runner’s first cut. Useful early carries should make the passing plan easier to execute."
+    },
+    {
+      "id": "watch-4",
+      "title": "Downfield coverage",
+      "topics": [
+        "downfield coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep leverage on the outside receiver while the safety tracks the deeper route. Close the pocket without letting the quarterback buy an uncovered throw."
+    }
+  ]
+}

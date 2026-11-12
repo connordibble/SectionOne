@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "michigan-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:18.064962+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Michigan lost 13-6 to Indiana in overtime. The defense kept it close, while turnovers and missed kicks made the offense’s limited scoring costly. Rutgers is next at 12:30 p.m. ET Saturday.",
+  "items": [
+    {
+      "id": "um-result",
+      "headline": "Michigan loses 13-6 to Indiana in overtime",
+      "tldr": "The game stayed tied through regulation before Indiana scored in overtime. The offense needs a repeatable scoring answer while the defense keeps another game within reach.",
+      "outlet": "Indiana Athletics",
+      "tier": "official",
+      "url": "https://iuhoosiers.com/news/2026/10/24/football-b1g-win-at-the-big-house-PETE",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "um-carr",
+      "headline": "Carr’s first start includes two lost possessions",
+      "tldr": "A fumbled pitch and an interception gave Indiana opportunities. Watch the exchange and first passing decision before judging how far the offense can stretch the field.",
+      "outlet": "Maize n Brew",
+      "tier": "local",
+      "url": "https://www.maizenbrew.com/football/126119/michigan-football-winners-losers-indiana-michigan-tommy-carr-jason-beck-2026",
+      "publishedAt": "2026-10-25T12:00:00+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "um-kicking",
+      "headline": "Butkowski makes two of four field-goal attempts",
+      "tldr": "Maize n Brew notes misses from 53 and 32 yards. Inspect the entire kicking operation when a low-scoring game makes every attempt consequential.",
+      "outlet": "Maize n Brew",
+      "tier": "local",
+      "url": "https://www.maizenbrew.com/football/126140/michigan-football-indiana-hoosiers-takeaways-kyle-whittingham-jason-beck-tommy-carr",
+      "publishedAt": "2026-10-24T20:45:00+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "um-defense",
+      "headline": "Michigan holds Indiana to 212 total yards",
+      "tldr": "The Hoosiers managed 81 passing yards in the overtime win. Keep the coverage and defensive pressure connected while asking the offense to make those stops count.",
+      "outlet": "Michigan Athletics",
+      "tier": "official",
+      "url": "https://mgoblue.com/news/2026/10/24/football-u-m-falls-to-no-6-hoosiers-in-overtime",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "um-rutgers",
+      "headline": "Michigan visits Rutgers at 12:30 p.m. ET on BTN",
+      "tldr": "Saturday’s game is at SHI Stadium. The Monday preview confirms an afternoon Eastern start and the Big Ten Network broadcast.",
+      "outlet": "Michigan Athletics",
+      "tier": "official",
+      "url": "https://mgoblue.com/news/2026/10/26/football-michigan-monday-wolverines-set-for-afternoon-matchup-at-rutgers",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give the defense a scoring answer.",
+      "body": "Secure the exchange and get the first receiving option into space. Make a red-zone possession produce a deliberate finish, with the kicking operation ready when the touchdown is unavailable.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Turn a protected possession into points",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep the quarterback’s first read and the blocking assignment simple enough to execute together. Take the clean gain, then choose the next scoring call from the field position actually earned.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback decisions",
+        "summary": "Protect the first exchange",
+        "detail": "Watch the pitch, snap and first read before the extended play. Make a secure ordinary gain the starting point for the next possession.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback decisions?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Red-zone execution",
+        "summary": "Create a usable first option",
+        "detail": "Get the route or run lane into space before adding another wrinkle. Judge the call by the clean decision it gives the quarterback near the goal line.",
+        "state": "watch",
+        "prompt": "What should I watch for with red-zone execution?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive continuity",
+        "summary": "Keep the pressure and coverage connected",
+        "detail": "Carry the route through the break while the front closes the pocket. A disciplined finish should keep the opponent from turning a stalled down into an escape completion.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive continuity?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Field-goal operation",
+        "summary": "Repeat the whole sequence",
+        "detail": "Watch the snap, hold, protection and contact as one operation. Give the kicker the same settled setup regardless of the previous attempt.",
+        "state": "watch",
+        "prompt": "What should I watch for with field-goal operation?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the offense’s first scoring opportunity at Rutgers. A clean exchange and usable first read will say more than another elaborate formation.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback decisions",
+      "topics": [
+        "quarterback decisions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the pitch, snap and first read before the extended play. Make a secure ordinary gain the starting point for the next possession."
+    },
+    {
+      "id": "watch-2",
+      "title": "Red-zone execution",
+      "topics": [
+        "red-zone execution",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Get the route or run lane into space before adding another wrinkle. Judge the call by the clean decision it gives the quarterback near the goal line."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive continuity",
+      "topics": [
+        "defensive continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Carry the route through the break while the front closes the pocket. A disciplined finish should keep the opponent from turning a stalled down into an escape completion."
+    },
+    {
+      "id": "watch-4",
+      "title": "Field-goal operation",
+      "topics": [
+        "field-goal operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the snap, hold, protection and contact as one operation. Give the kicker the same settled setup regardless of the previous attempt."
+    }
+  ]
+}

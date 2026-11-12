@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "georgia-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:17.638397+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Georgia returns from its bye to face Florida in Atlanta. Ball security and secondary availability remain central after the Auburn loss. The following trip to Ole Miss now has a 7:30 p.m. ET kickoff.",
+  "items": [
+    {
+      "id": "uga-florida",
+      "headline": "Georgia–Florida moves to Atlanta for Saturday’s game",
+      "tldr": "The teams meet at Mercedes-Benz Stadium at 3:30 p.m. ET on ABC. Plan for Atlanta’s venue and travel details rather than the usual Jacksonville trip.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/26/football-georgia-takes-on-florida-in-atlanta-for-the-first-time",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "uga-bolden",
+      "headline": "Bolden’s availability remains a question after Auburn",
+      "tldr": "DawgNation’s bye-week report described his absence and Georgia’s safety depth. Watch the next availability report; the earlier update did not establish a return date.",
+      "outlet": "DawgNation",
+      "tier": "local",
+      "url": "https://www.dawgnation.com/football/around-the-dawghouse/georgia-football-injury-report-latest-kj-bolden-georgia-rb-room/5UVJI4B6QRHSPMJQKNTLJMJUPE/",
+      "publishedAt": "2026-10-20T17:58:54.4Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "uga-stockton",
+      "headline": "Smart identifies Stockton’s injury as a shoulder stinger",
+      "tldr": "The bye-week explanation distinguished the injury from a concussion. Keep that diagnosis separate from a guarantee about contact or workload in the next game.",
+      "outlet": "Georgia Athletics",
+      "tier": "official",
+      "url": "https://georgiadogs.com/news/2026/10/20/football-smart-players-discuss-the-bye-week",
+      "publishedAt": "2026-10-20",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "uga-auburn",
+      "headline": "The late Auburn loss puts ball security in focus",
+      "tldr": "Georgia lost 27-24 on October 17 after a late turnover gave Auburn another chance. Carry the possession lesson forward without treating a bye week as proof it is fixed.",
+      "outlet": "Auburn Athletics",
+      "tier": "official",
+      "url": "https://auburntigers.com/news/2026/10/17/auburn-knocks-off-no-1-georgia-27-24-on-mcphersons-field-goal",
+      "publishedAt": "2026-10-17T23:15:56.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 2,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "uga-ole",
+      "headline": "Georgia–Ole Miss is set for 7:30 p.m. ET on ABC",
+      "tldr": "The November 7 trip follows this week’s Florida game. The new television window gives fans an evening Eastern start to plan around.",
+      "outlet": "DawgNation",
+      "tier": "local",
+      "url": "https://www.dawgnation.com/football/georgia-football-ole-miss-game-time-tv-network-announced-week-10-game/MDEQEEBS7ZHE3BDMAU53CPU42Q/",
+      "publishedAt": "2026-10-26T17:01:38.586Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Finish the possession you have.",
+      "body": "Secure the football through pressure and contact before looking for extra yards. On defense, communicate the safety assignment early and make the next quarterback throw through a complete coverage.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make ball security part of the play",
+      "question": "What should fans watch in the next game?",
+      "answer": "Give the quarterback a usable outlet and a clear decision about when the down is over. Keep the back end aligned so defensive pressure does not create an uncovered escape throw.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Possession security",
+        "summary": "Know when to end the down",
+        "detail": "Watch the ball through the exchange, pocket movement and first contact. Take the available gain before an extra step puts the possession at risk.",
+        "state": "watch",
+        "prompt": "What should I watch for with possession security?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback protection",
+        "summary": "Keep the release available",
+        "detail": "Give the quarterback an immediate receiving answer when the pocket narrows. Judge the plan by the decision it permits rather than the contact he can absorb.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback protection?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Safety communication",
+        "summary": "Set the coverage before motion",
+        "detail": "Confirm the available personnel, then watch how the safeties exchange routes and run support. Keep a substitute’s assignment clear before the ball is snapped.",
+        "state": "watch",
+        "prompt": "What should I watch for with safety communication?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Run fits and safety support",
+        "summary": "Close the cutback before pursuing",
+        "detail": "Hold the edge while the inside defender closes the cutback. Keep the fit connected to safety support before committing to the first ball fake.",
+        "state": "watch",
+        "prompt": "What should I watch for with run fits and safety support?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Check the next availability report for the secondary and quarterback updates. The game-day plan should follow confirmed personnel, with ball security built into every extension of a play.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Possession security",
+      "topics": [
+        "possession security",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the ball through the exchange, pocket movement and first contact. Take the available gain before an extra step puts the possession at risk."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback protection",
+      "topics": [
+        "quarterback protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Give the quarterback an immediate receiving answer when the pocket narrows. Judge the plan by the decision it permits rather than the contact he can absorb."
+    },
+    {
+      "id": "watch-3",
+      "title": "Safety communication",
+      "topics": [
+        "safety communication",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Confirm the available personnel, then watch how the safeties exchange routes and run support. Keep a substitute’s assignment clear before the ball is snapped."
+    },
+    {
+      "id": "watch-4",
+      "title": "Run fits and safety support",
+      "topics": [
+        "run fits and safety support",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:37:10.725260+00:00",
+      "body": "Hold the edge while the inside defender closes the cutback. Keep the fit connected to safety support before committing to the first ball fake."
+    }
+  ]
+}

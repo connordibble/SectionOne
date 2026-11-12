@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "fresno-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:20.201805+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Fresno State returns from its bye to host Oregon State at 8 p.m. PT Saturday. Pass protection and a steady rushing answer remain priorities after San Diego State; the Beavers bring a productive passing game.",
+  "items": [
+    {
+      "id": "fresno-preview",
+      "headline": "Oregon State visits Fresno at 8 p.m. PT on USA Sports",
+      "tldr": "Both teams return from open dates for Saturday’s Halloween game. Plan for the late Pacific viewing window at Valley Children’s Stadium.",
+      "outlet": "Fresno State Athletics",
+      "tier": "official",
+      "url": "https://gobulldogs.com/news/2026/10/26/football-bulldogs-host-oregon-state-on-halloween-night",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "fresno-protection",
+      "headline": "Six sacks at San Diego State set the protection task",
+      "tldr": "The October 17 loss ended with the final possession under pressure. Watch the quick outlet and pass sets after the bye rather than assuming the break resolved them.",
+      "outlet": "The Collegian",
+      "tier": "local",
+      "url": "https://fscollegian.com/2026/10/fresno-state-footballs-losing-streak-continues-as-aztecs-reclaim-the-old-oil-can/",
+      "publishedAt": "2026-10-18",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "fresno-donelson",
+      "headline": "Donelson’s 62 rushing yards supplied an offensive answer",
+      "tldr": "The Collegian’s review of the San Diego State game highlights his 13 carries and touchdown. Keep a useful first carry available when the passing pocket becomes crowded.",
+      "outlet": "The Collegian",
+      "tier": "local",
+      "url": "https://fscollegian.com/2026/10/bulldog-stock-market-whos-rising-and-falling-after-san-diego-state-university/",
+      "publishedAt": "2026-10-18",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "fresno-redzone",
+      "headline": "Fresno State turns all three red-zone trips into touchdowns",
+      "tldr": "The postgame notes identify the finishing work against San Diego State. The next offense needs enough sustained drives to make that execution matter again.",
+      "outlet": "Fresno State Athletics",
+      "tier": "official",
+      "url": "https://gobulldogs.com/sports/2026/10/18/fresno-state-san-diego-state-postgame-notes",
+      "publishedAt": "2026-10-18",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "fresno-scout",
+      "headline": "Oregon State brings a long run of 300-yard passing games",
+      "tldr": "The Beavers’ preview says Atkinson has passed for more than 300 yards in seven consecutive games. Watch receiver leverage and tackling before relying on pressure alone.",
+      "outlet": "Oregon State Athletics",
+      "tier": "official",
+      "url": "https://osubeavers.com/news/2026/10/26/football-oregon-state-returns-from-bye-week-visits-fresno-state-halloween-night",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give the next drive a clean answer.",
+      "body": "Keep a quick receiving outlet available when protection tightens. Pair it with a useful first carry, while the defense carries deeper routes and closes on the catch under control.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the protection and outlet arrive together",
+      "question": "What should fans watch in the next game?",
+      "answer": "Choose routes the quarterback can reach before the pocket changes shape. On defense, keep the safety’s help connected to the receiver and make each completion finish through a tackle.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Pass protection",
+        "summary": "Give pressure an immediate answer",
+        "detail": "Watch the tackle’s pass set and the nearest receiving outlet together. Do not ask the quarterback to wait through another hitch without a clean throwing lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with pass protection?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Rushing continuity",
+        "summary": "Find a dependable first carry",
+        "detail": "Follow the first block and the runner’s decision through the crease. A useful ordinary gain can keep the passing game out of an obvious pressure down.",
+        "state": "watch",
+        "prompt": "What should I watch for with rushing continuity?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Red-zone execution",
+        "summary": "Create enough chances to finish",
+        "detail": "Get the first option into space near the goal line. Preserve the possession so a stalled opening read does not erase the work that reached scoring range.",
+        "state": "watch",
+        "prompt": "What should I watch for with red-zone execution?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Downfield defense",
+        "summary": "Carry the route through the catch",
+        "detail": "Keep leverage on the receiver while the safety tracks the deeper throw. Close under control and make the first tackle before the pursuit loses its shape.",
+        "state": "watch",
+        "prompt": "What should I watch for with downfield defense?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the first pass-protection series and the first defensive tackle in space. Those ordinary plays will show whether the open week improved the next possession.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Pass protection",
+      "topics": [
+        "pass protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the tackle’s pass set and the nearest receiving outlet together. Do not ask the quarterback to wait through another hitch without a clean throwing lane."
+    },
+    {
+      "id": "watch-2",
+      "title": "Rushing continuity",
+      "topics": [
+        "rushing continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Follow the first block and the runner’s decision through the crease. A useful ordinary gain can keep the passing game out of an obvious pressure down."
+    },
+    {
+      "id": "watch-3",
+      "title": "Red-zone execution",
+      "topics": [
+        "red-zone execution",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Get the first option into space near the goal line. Preserve the possession so a stalled opening read does not erase the work that reached scoring range."
+    },
+    {
+      "id": "watch-4",
+      "title": "Downfield defense",
+      "topics": [
+        "downfield defense",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep leverage on the receiver while the safety tracks the deeper throw. Close under control and make the first tackle before the pursuit loses its shape."
+    }
+  ]
+}

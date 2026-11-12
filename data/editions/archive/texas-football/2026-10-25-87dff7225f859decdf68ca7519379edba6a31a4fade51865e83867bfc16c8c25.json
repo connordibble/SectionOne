@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:16.142820+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Texas beat Ole Miss 34-27. ESPN reports Goosby is out for the season, while Mississippi State is still evaluating Taylor. Protection and quarterback preparation lead the next week.",
+  "items": [
+    {
+      "id": "tx-goosby-season",
+      "headline": "ESPN reports Goosby will miss the rest of the season",
+      "tldr": "Cojoe replaced Goosby against Ole Miss. Watch the left tackle’s pass sets and the help Texas gives him before asking the passing game to hold the ball.",
+      "outlet": "ESPN via Burnt Orange Nation",
+      "tier": "national",
+      "url": "https://www.burntorangenation.com/general/106338/trevor-goosby-injury-texas-longhorns-ole-miss",
+      "publishedAt": "2026-10-25T20:51:59+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tx-taylor-status",
+      "headline": "Mississippi State is still evaluating Taylor’s injury",
+      "tldr": "Lebby said Monday that the staff needs more time to evaluate Taylor. Prepare for both quarterbacks; the next availability report should guide the matchup plan.",
+      "outlet": "Burnt Orange Nation",
+      "tier": "local",
+      "url": "https://www.burntorangenation.com/texas-longhorns-football/106409/kamario-taylor-injury-texas-longhorns-mississippi-state-bulldogs",
+      "publishedAt": "2026-10-26T18:53:06+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tx-ole-result",
+      "headline": "Texas beats Ole Miss, 34-27",
+      "tldr": "Brown ran for 157 yards. Carry that ground-game production forward while cleaning up possessions that let a game get tight again.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/10/24/no-19-18-football-prevails-against-no-7-7-ole-miss-34-27",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 3,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tx-biles-defense",
+      "headline": "Biles earns SEC co-defensive player of the week",
+      "tldr": "Biles intercepted a pass on fourth-and-goal against Ole Miss. Watch how linebacker pressure and coverage work together when the offense reaches the red zone.",
+      "outlet": "Texas Athletics",
+      "tier": "official",
+      "url": "https://texaslonghorns.com/news/2026/10/26/no-11-11-footballs-biles-named-sec-co-defensive-player-of-the-week",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tx-msu-kick",
+      "headline": "Mississippi State visits Texas at 6:30 p.m. CT Saturday",
+      "tldr": "The October 31 kickoff is set. Plan for another evening in Austin; use the schedule panel for the updated broadcast assignment.",
+      "outlet": "Southeastern Conference",
+      "tier": "official",
+      "url": "https://www.secsports.com/news/2026/10/sec-football-on-tv-oct-31",
+      "publishedAt": "2026-10-19",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Protect the next possession.",
+      "body": "Start with the blind side. Build quick passing answers and a dependable run game before asking the quarterback to rescue a broken down. On defense, make the pocket close without surrendering the escape lane.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Win the down before extending the play",
+      "question": "How should Texas approach Mississippi State?",
+      "answer": "Make protection and the first read work together. Take the available gain, keep the quarterback out of avoidable contact and force the opponent to sustain a drive against disciplined pursuit.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Blind-side protection",
+        "summary": "Give the tackle a usable answer",
+        "detail": "Watch the first pass set, the chip help and the quarterback’s release. Judge the protection plan by whether it creates a clean decision.",
+        "state": "watch",
+        "prompt": "What should I watch for with blind-side protection?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback preparation",
+        "summary": "Build both versions of the plan",
+        "detail": "Keep quarterback availability separate from assumptions about mobility. Set the edge, close the escape lane and make the throw come from a controlled pocket.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback preparation?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Early downs and ground-game continuity",
+        "summary": "Make the ordinary carry useful",
+        "detail": "Watch the block at the point of attack and the runner’s decision through the crease. A reliable early-down gain should leave the passing game an easier job.",
+        "state": "watch",
+        "prompt": "What should I watch for with early downs and ground-game continuity?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Pressure and coverage",
+        "summary": "Finish the red-zone assignment",
+        "detail": "Pair the pass rush with coverage that survives the quarterback’s first escape. Finish the tackle and defend the goal line without giving away a free completion.",
+        "state": "watch",
+        "prompt": "What should I watch for with pressure and coverage?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Prepare for both quarterback possibilities. Let the availability report settle the personnel question, then judge the protection and pursuit on the field.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Blind-side protection",
+      "topics": [
+        "blind-side protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T19:56:41.922480+00:00",
+      "body": "Watch the first pass set, the chip help and the quarterback’s release. Judge the protection plan by whether it creates a clean decision."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback preparation",
+      "topics": [
+        "quarterback preparation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T19:56:41.922480+00:00",
+      "body": "Keep quarterback availability separate from assumptions about mobility. Set the edge, close the escape lane and make the throw come from a controlled pocket."
+    },
+    {
+      "id": "watch-3",
+      "title": "Early downs and ground-game continuity",
+      "topics": [
+        "early downs and ground-game continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:40:16.142820+00:00",
+      "body": "Watch the block at the point of attack and the runner’s decision through the crease. A reliable early-down gain should leave the passing game an easier job."
+    },
+    {
+      "id": "watch-4",
+      "title": "Pressure and coverage",
+      "topics": [
+        "pressure and coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T19:56:41.922480+00:00",
+      "body": "Pair the pass rush with coverage that survives the quarterback’s first escape. Finish the tackle and defend the goal line without giving away a free completion."
+    }
+  ]
+}

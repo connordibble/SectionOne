@@ -90,13 +90,13 @@
       "teamDisplayName": "Texas football",
       "seasonYear": 2026,
       "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "sourceUrl": "https://texaslonghorns.com/sports/football/schedule/2026",
+        "retrievedAt": "2026-11-12T00:48:40.640Z",
+        "officialVerifiedAt": "2026-11-12T00:48:40.640Z"
       },
       "games": [
         {
@@ -298,21 +298,32 @@
           "dateLabel": "Saturday, November 7",
           "startsAt": "2026-11-07T11:00:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "11 a.m. CT",
           "venue": "Faurot Field at Memorial Stadium, Columbia, Mo.",
           "tv": "ESPN",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 18,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856743",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 34,
+            "opponentScore": 20
+          }
         },
         {
           "id": "2026-texas-lsu",
           "opponent": "LSU",
           "site": "away",
           "dateLabel": "Saturday, November 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T18:30:00-06:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "2:30 or 6:30 p.m. CT (time TBD)",
+          "kickoff": "6:30 p.m. CT",
           "venue": "Tiger Stadium, Baton Rouge, La.",
           "tv": "ABC",
           "opponentClassification": "fbs"
@@ -322,12 +333,12 @@
           "opponent": "Arkansas",
           "site": "home",
           "dateLabel": "Saturday, November 21",
-          "startsAt": null,
+          "startsAt": "2026-11-21T14:30:00-06:00",
           "date": "2026-11-21",
           "status": "scheduled",
-          "kickoff": "Afternoon start time (2:30-3:30 p.m. CT)",
+          "kickoff": "2:30 p.m. CT",
           "venue": "DKR-Texas Memorial Stadium, Austin, Texas",
-          "tv": null,
+          "tv": "ABC or ESPN",
           "opponentClassification": "fbs"
         },
         {
@@ -436,14 +447,14 @@
       "teamName": "Utah State",
       "teamDisplayName": "Utah State football",
       "seasonYear": 2026,
-      "sourceUrl": "https://utahstateaggies.com/news/2026/11/1/football-aggie-defense-leads-the-way-in-31-14-win-over-colorado-state.aspx",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "sourceUrl": "https://utahstateaggies.com/sports/football/schedule/2026",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://utahstateaggies.com/news/2026/11/1/football-aggie-defense-leads-the-way-in-31-14-win-over-colorado-state.aspx",
-        "retrievedAt": "2026-11-06T16:43:15.159Z",
-        "officialVerifiedAt": "2026-11-06T16:43:15.159Z"
+        "sourceUrl": "https://utahstateaggies.com/news/2026/11/8/aggie-football-staves-off-fresno-state-for-17-10-victory.aspx",
+        "retrievedAt": "2026-11-12T00:54:29.224Z",
+        "officialVerifiedAt": "2026-11-12T00:54:29.224Z"
       },
       "games": [
         {
@@ -645,11 +656,22 @@
           "dateLabel": "Saturday, November 7",
           "startsAt": "2026-11-07T19:30:00-07:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7:30 p.m. MT",
           "venue": "Maverik Stadium, Logan, Utah",
           "tv": "USA Network",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860913",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 17,
+            "opponentScore": 10
+          }
         },
         {
           "id": "2026-utah-state-san-diego-state",
@@ -777,13 +799,13 @@
       "teamDisplayName": "Ohio State football",
       "seasonYear": 2026,
       "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/2026",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://ohiostatebuckeyes.com/sports/football/schedule/2026",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:41.783Z",
+        "officialVerifiedAt": "2026-11-12T00:48:41.783Z"
       },
       "games": [
         {
@@ -985,11 +1007,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T15:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "3:30 p.m. ET",
           "venue": "Columbus, Ohio · Ohio Stadium",
           "tv": "CBS",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 23,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858514",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 28,
+            "opponentScore": 41
+          }
         },
         {
           "id": "ohio-state-football-2026-10",
@@ -1119,13 +1152,13 @@
       "teamDisplayName": "LSU football",
       "seasonYear": 2026,
       "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-      "capturedAt": "2026-11-06T16:37:42.127Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://lsusports.net/sports/fb/schedule/season/2026",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:43.009Z",
+        "officialVerifiedAt": "2026-11-12T00:48:43.009Z"
       },
       "games": [
         {
@@ -1327,21 +1360,32 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T14:30:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "2:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 5,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856740",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 13,
+            "opponentScore": 31
+          }
         },
         {
           "id": "lsu-football-2026-10",
           "opponent": "Texas",
           "site": "home",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T18:30:00-06:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "2:30 or 6:30 p.m. CT (time TBD)",
+          "kickoff": "6:30 p.m. CT",
           "venue": "Baton Rouge, La. (Tiger Stadium)",
           "tv": "ABC",
           "opponentClassification": "fbs"
@@ -1462,13 +1506,13 @@
       "teamDisplayName": "Northwestern football",
       "seasonYear": 2026,
       "sourceUrl": "https://nusports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://nusports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:44.035Z",
+        "officialVerifiedAt": "2026-11-12T00:48:44.035Z"
       },
       "games": [
         {
@@ -1670,11 +1714,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T18:30:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:30 p.m. CT",
           "venue": "Ryan Field, Evanston, IL",
           "tv": "FOX",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 19,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858513",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 10,
+            "opponentScore": 24
+          }
         },
         {
           "id": "northwestern-football-2026-401858522",
@@ -1804,14 +1859,14 @@
       "teamName": "Kansas",
       "teamDisplayName": "Kansas football",
       "seasonYear": 2026,
-      "sourceUrl": "https://kuathletics.com/news/2026/11/1/football-kansas-vs-ucf-to-kickoff-at-2-45-pm-on-espn2",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "sourceUrl": "https://kuathletics.com/sports/football/schedule",
+      "capturedAt": "2026-11-12T00:58:01.920Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://kuathletics.com/news/2026/11/1/football-kansas-vs-ucf-to-kickoff-at-2-45-pm-on-espn2",
-        "retrievedAt": "2026-11-06T16:41:05.134Z",
-        "officialVerifiedAt": "2026-11-06T16:41:05.134Z"
+        "sourceUrl": "https://kuathletics.com/news/2026/11/8/football-kansas-at-west-virginia-set-for-4-30-pm-kickoff-on-espnu",
+        "retrievedAt": "2026-11-12T00:58:01.920Z",
+        "officialVerifiedAt": "2026-11-12T00:58:01.920Z"
       },
       "games": [
         {
@@ -2013,23 +2068,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T14:45:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "2:45 p.m. CT",
           "venue": "David Booth Kansas Memorial Stadium, Lawrence, KS",
           "tv": "ESPN2",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856850",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 32,
+            "opponentScore": 33
+          }
         },
         {
           "id": "kansas-football-2026-401856861",
           "opponent": "West Virginia",
           "site": "away",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T16:30:00-06:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "4:30 p.m. CT",
           "venue": "Milan Puskar Stadium, Morgantown, WV",
-          "tv": null,
+          "tv": "ESPNU",
           "opponentClassification": "fbs"
         },
         {
@@ -2148,13 +2214,13 @@
       "teamDisplayName": "Alabama football",
       "seasonYear": 2026,
       "sourceUrl": "https://rolltide.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:37:42.127Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://rolltide.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:45.229Z",
+        "officialVerifiedAt": "2026-11-12T00:48:45.229Z"
       },
       "games": [
         {
@@ -2356,11 +2422,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T14:30:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "2:30 p.m. CT",
           "venue": "Tiger Stadium (LA), Baton Rouge, LA",
           "tv": "ABC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 14,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856740",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 31,
+            "opponentScore": 13
+          }
         },
         {
           "id": "alabama-football-2026-401856889",
@@ -2492,13 +2569,13 @@
       "teamDisplayName": "Georgia football",
       "seasonYear": 2026,
       "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://georgiadogs.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:45.604Z",
+        "officialVerifiedAt": "2026-11-12T00:48:45.604Z"
       },
       "games": [
         {
@@ -2700,23 +2777,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T19:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7:30 p.m. ET",
           "venue": "Vaught-Hemingway Stadium, Oxford, MS",
           "tv": "ABC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 10,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856741",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 42,
+            "opponentScore": 7
+          }
         },
         {
           "id": "georgia-football-2026-401856883",
           "opponent": "Missouri",
           "site": "home",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T15:30:00-05:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "3:30 p.m. ET",
           "venue": "Sanford Stadium, Athens, GA",
-          "tv": null,
+          "tv": "ABC",
           "opponentClassification": "fbs"
         },
         {
@@ -2724,12 +2812,12 @@
           "opponent": "South Carolina",
           "site": "away",
           "dateLabel": "Nov 21",
-          "startsAt": null,
+          "startsAt": "2026-11-21T19:30:00-05:00",
           "date": "2026-11-21",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "7:30 p.m. ET",
           "venue": "Williams-Brice Stadium, Columbia, SC",
-          "tv": null,
+          "tv": "ABC",
           "opponentClassification": "fbs"
         },
         {
@@ -2833,14 +2921,14 @@
       "teamName": "Notre Dame",
       "teamDisplayName": "Notre Dame football",
       "seasonYear": 2026,
-      "sourceUrl": "https://fightingirish.com/news/2026/10/31/irish-catapult-past-navy-with-dominating-second-half",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "sourceUrl": "https://fightingirish.com/sports/football/schedule",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://fightingirish.com/news/2026/10/31/irish-catapult-past-navy-with-dominating-second-half",
-        "retrievedAt": "2026-11-06T16:43:17.702Z",
-        "officialVerifiedAt": "2026-11-06T16:43:17.702Z"
+        "sourceUrl": "https://fightingirish.com/news/2026/11/7/irish-triumph-over-miami-fl-31-24",
+        "retrievedAt": "2026-11-12T00:54:31.818Z",
+        "officialVerifiedAt": "2026-11-12T00:54:31.818Z"
       },
       "games": [
         {
@@ -3042,11 +3130,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-08T00:30:00Z",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7:30 p.m. ET",
           "venue": "Notre Dame Stadium, Notre Dame, IN",
           "tv": "NBC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 1,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858291",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 31,
+            "opponentScore": 24
+          }
         },
         {
           "id": "notre-dame-football-2026-401858294",
@@ -3175,13 +3274,13 @@
       "teamDisplayName": "Michigan football",
       "seasonYear": 2026,
       "sourceUrl": "https://mgoblue.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://mgoblue.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:46.360Z",
+        "officialVerifiedAt": "2026-11-12T00:48:46.360Z"
       },
       "games": [
         {
@@ -3383,11 +3482,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T19:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7:30 p.m. ET",
           "venue": "Michigan Stadium, Ann Arbor, MI",
           "tv": "Peacock",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858511",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 6,
+            "opponentScore": 15
+          }
         },
         {
           "id": "michigan-football-2026-401858523",
@@ -3516,13 +3626,13 @@
       "teamDisplayName": "Penn State football",
       "seasonYear": 2026,
       "sourceUrl": "https://gopsusports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://gopsusports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:47.090Z",
+        "officialVerifiedAt": "2026-11-12T00:48:47.090Z"
       },
       "games": [
         {
@@ -3724,23 +3834,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T15:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "3:30 p.m. ET",
           "venue": "Husky Stadium, Seattle, WA",
           "tv": "FS1",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858516",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 28,
+            "opponentScore": 25
+          }
         },
         {
           "id": "penn-state-football-2026-401858524",
           "opponent": "Minnesota",
           "site": "home",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T19:00:00-05:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "7 p.m. ET",
           "venue": "Beaver Stadium, University Park, PA",
-          "tv": null,
+          "tv": "FS1",
           "opponentClassification": "fbs"
         },
         {
@@ -3856,13 +3977,13 @@
       "teamDisplayName": "Miami football",
       "seasonYear": 2026,
       "sourceUrl": "https://miamihurricanes.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
-        "sourceUrl": "https://miamihurricanes.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "sourceUrl": "https://miamihurricanes.com/news/2026/11/10/mensah-toney-named-maxwell-award-semifinalists",
+        "retrievedAt": "2026-11-12T00:54:33.889Z",
+        "officialVerifiedAt": "2026-11-12T00:54:33.889Z"
       },
       "games": [
         {
@@ -4064,11 +4185,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T19:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "7:30 p.m. ET",
           "venue": "Notre Dame Stadium, Notre Dame, IN",
           "tv": "NBC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 11,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401858291",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 24,
+            "opponentScore": 31
+          }
         },
         {
           "id": "miami-football-2026-401858296",
@@ -4080,7 +4212,7 @@
           "status": "scheduled",
           "kickoff": "12 p.m. ET",
           "venue": "Hard Rock Stadium, Miami Gardens, FL",
-          "tv": null,
+          "tv": "ABC",
           "opponentClassification": "fbs"
         },
         {
@@ -4195,13 +4327,13 @@
       "teamDisplayName": "Tennessee football",
       "seasonYear": 2026,
       "sourceUrl": "https://utsports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:37:42.127Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://utsports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:48.697Z",
+        "officialVerifiedAt": "2026-11-12T00:48:48.697Z"
       },
       "games": [
         {
@@ -4403,23 +4535,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T18:15:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:15 p.m. ET",
           "venue": "Neyland Stadium, Knoxville, TN",
           "tv": "ESPN",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 6,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856745",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 34,
+            "opponentScore": 6
+          }
         },
         {
           "id": "tennessee-football-2026-401856888",
           "opponent": "Texas A&M",
           "site": "away",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T15:00:00-05:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "3–4:15 p.m. ET (time TBD)",
+          "kickoff": "3 p.m. ET",
           "venue": "Kyle Field, College Station, TX",
-          "tv": "ESPN or SEC Network",
+          "tv": "ESPN",
           "opponentClassification": "fbs"
         },
         {
@@ -4427,12 +4570,12 @@
           "opponent": "LSU",
           "site": "home",
           "dateLabel": "Nov 21",
-          "startsAt": null,
+          "startsAt": "2026-11-21T15:30:00-05:00",
           "date": "2026-11-21",
           "status": "scheduled",
-          "kickoff": "Flex window (3:30–4:30 or 6–8 p.m. ET)",
+          "kickoff": "3:30 p.m. ET",
           "venue": "Neyland Stadium, Knoxville, TN",
-          "tv": null,
+          "tv": "ABC or ESPN",
           "opponentClassification": "fbs"
         },
         {
@@ -4535,13 +4678,13 @@
       "teamDisplayName": "BYU football",
       "seasonYear": 2026,
       "sourceUrl": "https://byucougars.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://byucougars.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:49.193Z",
+        "officialVerifiedAt": "2026-11-12T00:48:49.193Z"
       },
       "games": [
         {
@@ -4743,23 +4886,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T10:00:00-07:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "10 a.m. MT",
           "venue": "Rice-Eccles Stadium, Salt Lake City, UT",
           "tv": "ABC",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": 3,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856849",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 20,
+            "opponentScore": 28
+          }
         },
         {
           "id": "byu-football-2026-401856858",
           "opponent": "Baylor",
           "site": "home",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T13:30:00-07:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "1:30 p.m. MT",
           "venue": "LaVell Edwards Stadium, Provo, UT",
-          "tv": null,
+          "tv": "FOX",
           "opponentClassification": "fbs"
         },
         {
@@ -4874,13 +5028,13 @@
       "teamDisplayName": "Texas Tech football",
       "seasonYear": 2026,
       "sourceUrl": "https://texastech.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Chicago",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://texastech.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:50.398Z",
+        "officialVerifiedAt": "2026-11-12T00:48:50.398Z"
       },
       "games": [
         {
@@ -5082,23 +5236,34 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T20:30:00-06:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "8:30 p.m. CT",
           "venue": "Galaxy Stadium, Lubbock, TX",
           "tv": "ESPN",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856856",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 53,
+            "opponentScore": 48
+          }
         },
         {
           "id": "texas-tech-football-2026-401856863",
           "opponent": "Oklahoma State",
           "site": "away",
           "dateLabel": "Nov 14",
-          "startsAt": null,
+          "startsAt": "2026-11-14T20:30:00-06:00",
           "date": "2026-11-14",
           "status": "scheduled",
-          "kickoff": "TBD",
+          "kickoff": "8:30 p.m. CT",
           "venue": "Boone Pickens Stadium, Stillwater, OK",
-          "tv": null,
+          "tv": "ESPN",
           "opponentClassification": "fbs"
         },
         {
@@ -5213,13 +5378,13 @@
       "teamDisplayName": "Indiana football",
       "seasonYear": 2026,
       "sourceUrl": "https://iuhoosiers.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:48:50.946Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://iuhoosiers.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:50.946Z",
+        "officialVerifiedAt": "2026-11-12T00:48:50.946Z"
       },
       "games": [
         {
@@ -5565,13 +5730,13 @@
       "teamDisplayName": "Boise State football",
       "seasonYear": 2026,
       "sourceUrl": "https://broncosports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Denver",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://broncosports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:51.350Z",
+        "officialVerifiedAt": "2026-11-12T00:48:51.350Z"
       },
       "games": [
         {
@@ -5773,11 +5938,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T23:00:00Z",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "4 p.m. MT",
           "venue": "Canvas Stadium, Fort Collins, CO",
           "tv": "USA Network",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860911",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 64,
+            "opponentScore": 38
+          }
         },
         {
           "id": "boise-state-football-2026-401860914",
@@ -5904,13 +6080,13 @@
       "teamDisplayName": "James Madison football",
       "seasonYear": 2026,
       "sourceUrl": "https://jmusports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:48:51.912Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://jmusports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:51.912Z",
+        "officialVerifiedAt": "2026-11-12T00:48:51.912Z"
       },
       "games": [
         {
@@ -6266,13 +6442,13 @@
       "teamDisplayName": "App State football",
       "seasonYear": 2026,
       "sourceUrl": "https://appstatesports.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/New_York",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://appstatesports.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:52.762Z",
+        "officialVerifiedAt": "2026-11-12T00:48:52.762Z"
       },
       "games": [
         {
@@ -6474,11 +6650,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-07T14:30:00-05:00",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "2:30 p.m. ET",
           "venue": "Kidd Brewer Stadium, Boone, NC",
           "tv": "ESPN+",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401869927",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 23,
+            "opponentScore": 39
+          }
         },
         {
           "id": "app-state-football-2026-401869928",
@@ -6605,13 +6792,13 @@
       "teamDisplayName": "Fresno State football",
       "seasonYear": 2026,
       "sourceUrl": "https://gobulldogs.com/sports/football/schedule",
-      "capturedAt": "2026-11-06T16:45:30.248Z",
+      "capturedAt": "2026-11-12T00:55:51.632Z",
       "timeZone": "America/Los_Angeles",
       "provenance": {
         "provider": "official",
         "sourceUrl": "https://gobulldogs.com/sports/football/schedule",
-        "retrievedAt": "2026-11-06T16:37:42.127Z",
-        "officialVerifiedAt": "2026-11-06T16:37:42.127Z"
+        "retrievedAt": "2026-11-12T00:48:54.124Z",
+        "officialVerifiedAt": "2026-11-12T00:48:54.124Z"
       },
       "games": [
         {
@@ -6813,11 +7000,22 @@
           "dateLabel": "Nov 7",
           "startsAt": "2026-11-08T02:30:00Z",
           "date": "2026-11-07",
-          "status": "scheduled",
+          "status": "final",
           "kickoff": "6:30 p.m. PT",
           "venue": "Maverik Stadium, Logan, UT",
           "tv": "USA Sports",
-          "opponentClassification": "fbs"
+          "opponentClassification": "fbs",
+          "opponentRankAtKickoff": {
+            "pollId": "ap",
+            "rank": null,
+            "gameDate": "2026-11-07",
+            "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401860913",
+            "checkedAt": "2026-11-12T00:55:51.632Z"
+          },
+          "result": {
+            "teamScore": 10,
+            "opponentScore": 17
+          }
         },
         {
           "id": "fresno-state-football-2026-401860916",

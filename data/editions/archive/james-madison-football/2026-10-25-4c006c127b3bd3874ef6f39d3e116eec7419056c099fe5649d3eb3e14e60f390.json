@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "james-madison-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:19.771482+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "JMU’s first loss came 34-31 in overtime at App State. Wasted field position, offensive rhythm and underneath coverage lead the response before Thursday’s home game against Troy.",
+  "items": [
+    {
+      "id": "jmu-result",
+      "headline": "JMU loses 34-31 in overtime at App State",
+      "tldr": "The Dukes return to Bridgeforth Stadium Thursday at 7:30 p.m. ET on ESPN2. Watch whether the short turnaround produces cleaner ordinary possessions.",
+      "outlet": "JMU Athletics",
+      "tier": "official",
+      "url": "https://jmusports.com/news/2026/10/23/football-dukes-fall-to-app-state-in-overtime",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "jmu-fieldposition",
+      "headline": "Short fields go unused after the opening touchdown",
+      "tldr": "JMU Sports News traces four consecutive three-and-outs. The offense needs an available first-down answer before another strong defensive series ends without points.",
+      "outlet": "JMU Sports News",
+      "tier": "local",
+      "url": "https://jmusportsnews.com/2026/10/23/jmu-football-app-state-loss-takeaways/",
+      "publishedAt": "2026-10-23",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "jmu-rhythm",
+      "headline": "The quarterback rotation needs a steadier offensive rhythm",
+      "tldr": "The Breeze’s Sunday review examines how the offense lost continuity. Watch the package’s purpose and the exchange rather than assuming a change under center creates an advantage.",
+      "outlet": "The Breeze",
+      "tier": "local",
+      "url": "https://www.breezejmu.org/sports/sunday-notebook-discombobulated-offense-hurts-jmu-at-app-state/article_18f5273e-2dac-4775-9475-cc2a1950c4ee.html",
+      "publishedAt": "2026-10-25T16:05:00Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "jmu-coverage",
+      "headline": "Napier calls for tighter underneath coverage",
+      "tldr": "The coach said JMU needed to affect the quarterback and make its coverage matches tighter. Watch the receiver’s release and the space before the first tackle.",
+      "outlet": "The Breeze",
+      "tier": "local",
+      "url": "https://www.breezejmu.org/sports/jmu-football-unable-to-complete-in-overtime-suffers-first-loss-of-season-to-app-state/article_742d0618-363e-4a41-b091-deec8a07125b.html",
+      "publishedAt": "2026-10-23T05:15:00Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "jmu-parking",
+      "headline": "Thursday game-day parking opens at 4:30 p.m. ET",
+      "tldr": "JMU’s campus-operations notice says vehicles may not queue on campus before lots open. Plan the arrival separately from the 7:30 p.m. kickoff.",
+      "outlet": "JMU Athletics",
+      "tier": "official",
+      "url": "https://jmusports.com/news/2026/10/20/impacts-to-game-day-and-campus-operations-for-thursday-night-jmu-football-game-oct-29",
+      "publishedAt": "2026-10-20",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Use the field position you earn.",
+      "body": "Get the opening run and quick throw into a workable rhythm. Keep the quarterback exchange settled, and defend the underneath route closely enough that pressure has time to finish the down.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Turn the next short field into a real drive",
+      "question": "What should fans watch in the next game?",
+      "answer": "Give each quarterback package a clear purpose and a clean snap. Take the first available gain before another third down asks the offense to invent a solution under pressure.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Drive continuity",
+        "summary": "Make the first gain available",
+        "detail": "Watch the first-down protection and nearest receiving option. Keep a short field from becoming another predictable third-and-long.",
+        "state": "watch",
+        "prompt": "What should I watch for with drive continuity?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Quarterback packages",
+        "summary": "Make the substitution serve the call",
+        "detail": "Keep the formation, snap and first read settled through a quarterback change. Judge the package by the space it creates rather than the novelty of the personnel.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback packages?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Underneath coverage",
+        "summary": "Tighten the first route match",
+        "detail": "Carry the receiver through his break and close on the catch under control. Make a short completion earn its yards through a tackle.",
+        "state": "watch",
+        "prompt": "What should I watch for with underneath coverage?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Scoring decisions",
+        "summary": "Finish the possession deliberately",
+        "detail": "Know the down, clock and available scoring choice before the snap. Give the final play of a drive a practiced operation rather than a rushed repair.",
+        "state": "watch",
+        "prompt": "What should I watch for with scoring decisions?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the first drive after a defensive stop against Troy. The useful correction is an offense that can turn that opportunity into another set of downs.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Drive continuity",
+      "topics": [
+        "drive continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the first-down protection and nearest receiving option. Keep a short field from becoming another predictable third-and-long."
+    },
+    {
+      "id": "watch-2",
+      "title": "Quarterback packages",
+      "topics": [
+        "quarterback packages",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the formation, snap and first read settled through a quarterback change. Judge the package by the space it creates rather than the novelty of the personnel."
+    },
+    {
+      "id": "watch-3",
+      "title": "Underneath coverage",
+      "topics": [
+        "underneath coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Carry the receiver through his break and close on the catch under control. Make a short completion earn its yards through a tackle."
+    },
+    {
+      "id": "watch-4",
+      "title": "Scoring decisions",
+      "topics": [
+        "scoring decisions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Know the down, clock and available scoring choice before the snap. Give the final play of a drive a practiced operation rather than a rushed repair."
+    }
+  ]
+}

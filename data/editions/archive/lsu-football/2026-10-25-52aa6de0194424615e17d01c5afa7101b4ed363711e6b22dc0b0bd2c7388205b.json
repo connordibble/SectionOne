@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "lsu-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:16.787097+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "LSU beat Auburn 38-17 and enters an open week. Green returned, Harris supplied the downfield plays and Ross earned an SEC honor. Alabama visits November 7 in the afternoon.",
+  "items": [
+    {
+      "id": "lsu-result",
+      "headline": "LSU beats Auburn 38-17 before its open date",
+      "tldr": "A strong first half put LSU in control on the road. Use the break to keep the passing game’s timing and protection working together.",
+      "outlet": "LSU Athletics",
+      "tier": "official",
+      "url": "https://lsusports.net/news/2026/10/24/football-rolls-past-auburn-38-17-behind-big-offensive-day",
+      "publishedAt": "2026-10-24T19:52:27.000000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "lsu-green",
+      "headline": "Green returns and scores against Auburn",
+      "tldr": "The Daily Advertiser reports that the tight end returned from a knee injury and caught a touchdown. Watch how his routes give the quarterback an answer over the middle.",
+      "outlet": "The Daily Advertiser via Yahoo",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/lsu-football-report-card-grading-194235639.html",
+      "publishedAt": "2026-10-24T19:42:35Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "lsu-ross",
+      "headline": "Ross earns SEC defensive lineman of the week",
+      "tldr": "Ross recorded two sacks as LSU’s front disrupted Auburn. Carry the pressure plan forward with disciplined pursuit when the quarterback tries to escape.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://www.wbrz.com/news/lsu-s-sam-leavitt-jordan-ross-earn-sec-player-of-the-week-honors",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "lsu-harris",
+      "headline": "Harris catches nine passes for 178 yards",
+      "tldr": "His two touchdowns included a 70-yard score. Watch how route spacing and protection create the chance for a receiver to turn a completion into a long gain.",
+      "outlet": "Auburn Athletics",
+      "tier": "official",
+      "url": "https://auburntigers.com/news/2026/10/24/auburns-falls-at-home-38-17-to-no-18-lsu",
+      "publishedAt": "2026-10-24T19:48:40.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "lsu-tv",
+      "headline": "Alabama–LSU is set for 2:30 p.m. CT on ABC",
+      "tldr": "The November 7 game follows LSU’s open date. Plan for an afternoon at Tiger Stadium rather than leaving the television window unresolved.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://www.wbrz.com/news/lsu-alabama-set-for-afternoon-kickoff-on-wbrz",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the passing answers connected.",
+      "body": "Preserve the space between the underneath route and the downfield threat. Give the quarterback time to choose, and make the defensive pressure arrive with the escape lane covered.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Carry the timing through the open week",
+      "question": "What should fans watch in the next game?",
+      "answer": "Use the break to refine protection and route landmarks. A dependable inside option should make the deeper throw available when the defense commits to closing the middle.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Tight-end routes",
+        "summary": "Keep an inside answer available",
+        "detail": "Watch the tight end’s release against contact and the quarterback’s timing over the middle. Get the route into space before pressure changes the throwing lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with tight-end routes?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Downfield spacing",
+        "summary": "Create room after the catch",
+        "detail": "Separate the underneath route from the deeper target. Make the safety choose before asking the receiver to win the throw and the first tackle.",
+        "state": "watch",
+        "prompt": "What should I watch for with downfield spacing?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Up front: defensive pressure",
+        "summary": "Close the pocket with control",
+        "detail": "Keep the edge and interior pass rush working toward the same escape point. Finish the tackle once the quarterback leaves his first read.",
+        "state": "watch",
+        "prompt": "How should I read the defensive pressure up front?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Possession management",
+        "summary": "Keep a long drive useful",
+        "detail": "Take the available gain and protect the football through contact. A drive should end with a deliberate scoring decision rather than an avoidable lost possession.",
+        "state": "watch",
+        "prompt": "What should I watch for with possession management?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "The next game follows an open date. Watch whether the protection and receiving landmarks stay precise when Alabama changes the pressure picture.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Tight-end routes",
+      "topics": [
+        "tight-end routes",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the tight end’s release against contact and the quarterback’s timing over the middle. Get the route into space before pressure changes the throwing lane."
+    },
+    {
+      "id": "watch-2",
+      "title": "Downfield spacing",
+      "topics": [
+        "downfield spacing",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Separate the underneath route from the deeper target. Make the safety choose before asking the receiver to win the throw and the first tackle."
+    },
+    {
+      "id": "watch-3",
+      "title": "Up front: defensive pressure",
+      "topics": [
+        "up front: defensive pressure",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:40:16.787097+00:00",
+      "body": "Keep the edge and interior pass rush working toward the same escape point. Finish the tackle once the quarterback leaves his first read."
+    },
+    {
+      "id": "watch-4",
+      "title": "Possession management",
+      "topics": [
+        "possession management",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Take the available gain and protect the football through contact. A drive should end with a deliberate scoring decision rather than an avoidable lost possession."
+    }
+  ]
+}

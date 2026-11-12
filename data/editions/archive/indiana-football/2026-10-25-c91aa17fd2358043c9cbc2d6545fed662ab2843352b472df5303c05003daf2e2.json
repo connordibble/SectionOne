@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "indiana-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:19.341268+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Indiana won 13-6 at Michigan in overtime. Cignetti expects Hoover to be better this week, while the defense and field position remain central before Minnesota visits at 3:30 p.m. ET on CBS.",
+  "items": [
+    {
+      "id": "iu-result",
+      "headline": "Indiana wins 13-6 at Michigan in overtime",
+      "tldr": "Hoover’s four-yard touchdown run supplied the winning score. The next offense needs more sustainable possessions around a defense that kept the game within reach.",
+      "outlet": "Indiana Athletics",
+      "tier": "official",
+      "url": "https://iuhoosiers.com/news/2026/10/24/football-b1g-win-at-the-big-house-PETE",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "iu-hoover",
+      "headline": "Cignetti expects Hoover to be better for Minnesota",
+      "tldr": "Monday’s update follows the quarterback’s injury-limited week. It is an expectation, not a guarantee; watch the next availability report and the opening passing rhythm.",
+      "outlet": "The Daily Hoosier",
+      "tier": "local",
+      "url": "https://www.thedailyhoosier.com/iu-football-notebook-josh-hoover-expected-to-be-fine-for-minnesota/",
+      "publishedAt": "2026-10-26T15:14:30-04:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "iu-defense",
+      "headline": "The defense keeps Michigan out of the end zone",
+      "tldr": "Michigan’s recap shows how its scoring chances ended short of touchdowns. Carry the red-zone assignments forward without asking the defense to erase every stalled offensive drive.",
+      "outlet": "Michigan Athletics",
+      "tier": "official",
+      "url": "https://mgoblue.com/news/2026/10/24/football-u-m-falls-to-no-6-hoosiers-in-overtime",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "iu-punting",
+      "headline": "Gowers lands three of seven punts inside the 20",
+      "tldr": "The official notes show how the punting unit helped control field position at Michigan. Watch the coverage finish as well as the distance on the next exchange.",
+      "outlet": "Indiana Athletics",
+      "tier": "official",
+      "url": "https://iuhoosiers.com/news/2026/10/24/football-postgame-notes-at-michigan",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "iu-tv",
+      "headline": "Minnesota visits Indiana at 3:30 p.m. ET on CBS",
+      "tldr": "Saturday’s homecoming game fills the afternoon Eastern window. Confirm the viewing plan before following the quarterback and offensive updates.",
+      "outlet": "The Daily Hoosier",
+      "tier": "local",
+      "url": "https://www.thedailyhoosier.com/kick-time-and-television-designation-set-for-iu-footballs-halloween-game-vs-minnesota/",
+      "publishedAt": "2026-10-19T16:48:27-04:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Give the defense room to breathe.",
+      "body": "Create a usable passing answer and sustain the first set of downs. Pair that offensive work with controlled punting coverage and the same red-zone discipline that protects a narrow lead.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make another possession before needing another stop",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep protection and receiver separation connected to the quarterback’s release. Take a clean gain early so the next defensive series does not have to carry the whole game.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Quarterback readiness",
+        "summary": "Follow the confirmed update",
+        "detail": "Separate the coach’s expectation from a guaranteed workload. Watch the release, movement and first pressure answer once the offense takes the field.",
+        "state": "watch",
+        "prompt": "What should I watch for with quarterback readiness?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiver separation",
+        "summary": "Open the first throwing lane",
+        "detail": "Watch the release against contact and the spacing between routes. Give the quarterback a receiver he can reach before the pocket narrows.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiver separation?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Red-zone defense",
+        "summary": "Finish the assignment near the goal line",
+        "detail": "Keep the run fit and underneath coverage connected. Force the next throw through a defender who has held his leverage through the route break.",
+        "state": "watch",
+        "prompt": "What should I watch for with red-zone defense?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Punting coverage",
+        "summary": "Make the landing point useful",
+        "detail": "Match the punt’s placement with controlled pursuit downfield. Finish the first tackle so the field position survives the return.",
+        "state": "watch",
+        "prompt": "What should I watch for with punting coverage?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the passing game’s first sustained drive against Minnesota. Clean separation and a usable first read would reduce how much another defensive stand has to solve.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Quarterback readiness",
+      "topics": [
+        "quarterback readiness",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Separate the coach’s expectation from a guaranteed workload. Watch the release, movement and first pressure answer once the offense takes the field."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiver separation",
+      "topics": [
+        "receiver separation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the release against contact and the spacing between routes. Give the quarterback a receiver he can reach before the pocket narrows."
+    },
+    {
+      "id": "watch-3",
+      "title": "Red-zone defense",
+      "topics": [
+        "red-zone defense",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the run fit and underneath coverage connected. Force the next throw through a defender who has held his leverage through the route break."
+    },
+    {
+      "id": "watch-4",
+      "title": "Punting coverage",
+      "topics": [
+        "punting coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Match the punt’s placement with controlled pursuit downfield. Finish the first tackle so the field position survives the return."
+    }
+  ]
+}

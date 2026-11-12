@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "kansas-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:17.213620+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Kansas rallied past Baylor 25-24 behind Edwards and a late blocked field goal. Fourth-down execution now meets a demanding TCU defense, with Saturday’s kickoff set for 2:30 p.m. CT.",
+  "items": [
+    {
+      "id": "ku-result",
+      "headline": "Herold’s blocked field goal seals a 25-24 win",
+      "tldr": "Kansas scored 15 fourth-quarter points to beat Baylor. The next step is to make earlier possessions count before another finish demands a special-teams rescue.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/24/football-jayhawks-rally-past-baylor-on-homecoming-25-24",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ku-fourth",
+      "headline": "Kansas converts five of eight fourth-down attempts",
+      "tldr": "KU Sports details how formation and timing helped keep drives alive. Watch the alignment before the snap as closely as the final yard gained.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/weblogs/henry-huddle/2026/oct/24/what-we-learned-from-kus-win-over-baylor/",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ku-edwards",
+      "headline": "Edwards carries 30 times for 156 yards",
+      "tldr": "The running back gave Kansas a dependable way to move the chains. Watch whether the line can create the same first crease against TCU.",
+      "outlet": "KU Sports",
+      "tier": "local",
+      "url": "https://www2.kusports.com/sports/college/football/2026/oct/24/quick-recap-ku-blocks-last-minute-field-goal-to-beat-baylor-25-24/",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "ku-run-defense",
+      "headline": "The Kansas State loss remains a run-defense warning",
+      "tldr": "Kansas allowed 359 rushing yards in the October 17 game. Keep the lesson dated to that outing: hold the edge and close the cutback before pursuing the next tackle.",
+      "outlet": "Kansas State Athletics",
+      "tier": "official",
+      "url": "https://www.kstatesports.com/news/2026/10/17/football-k-state-extends-streak-over-kansas-to-18-games-in-35-24-win",
+      "publishedAt": "2026-10-17",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "ku-tcu",
+      "headline": "Kansas visits TCU at 2:30 p.m. CT on FS1",
+      "tldr": "The Horned Frogs’ defense leads the Big 12 in yards allowed per game, according to Kansas’s preview. Expect sustained execution to matter more than one surprise call.",
+      "outlet": "Kansas Athletics",
+      "tier": "official",
+      "url": "https://kuathletics.com/news/2026/10/26/football-jayhawks-travel-to-tcu-to-take-on-horned-frogs",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Earn the next manageable down.",
+      "body": "Make the first carry and the quick completion useful before reaching fourth down. Carry that discipline to defense: close the cutback lane and tackle through the runner’s hips.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Keep the offense ahead of the decision",
+      "question": "What should fans watch in the next game?",
+      "answer": "Build a drive that leaves a real choice on the next down. Use formation and tempo deliberately, with the line and quarterback aligned on the same answer.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Backfield workload and early-down rushing",
+        "summary": "Make the carries sustain the drive",
+        "detail": "Watch the first block and Edwards’s path through the crease. Judge the workload by whether the next carry remains useful when the defense narrows the inside lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with backfield workload and early-down rushing?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Fourth-down operation",
+        "summary": "Make the alignment part of the call",
+        "detail": "Get the formation, snap and blocking assignment settled before the ball moves. Aggression only helps when every player is executing the same play.",
+        "state": "watch",
+        "prompt": "What should I watch for with fourth-down operation?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Run-defense fits",
+        "summary": "Close the lane behind the first tackle",
+        "detail": "Hold the edge while the inside pursuit closes the cutback. Do not let a failed first tackle turn the whole defense toward the wrong gap.",
+        "state": "watch",
+        "prompt": "What should I watch for with run-defense fits?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Scoring possessions",
+        "summary": "Finish before the last chance",
+        "detail": "Take the clean completion and protect the ball through contact. Make the red-zone call serve the available space rather than the hoped-for highlight.",
+        "state": "watch",
+        "prompt": "What should I watch for with scoring possessions?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch how often Kansas reaches a manageable third down. That will show whether the offense can make its fourth-down choices deliberate against TCU.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Backfield workload and early-down rushing",
+      "topics": [
+        "backfield workload and early-down rushing",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:37:09.863207+00:00",
+      "body": "Watch the first block and Edwards’s path through the crease. Judge the workload by whether the next carry remains useful when the defense narrows the inside lane."
+    },
+    {
+      "id": "watch-2",
+      "title": "Fourth-down operation",
+      "topics": [
+        "fourth-down operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Get the formation, snap and blocking assignment settled before the ball moves. Aggression only helps when every player is executing the same play."
+    },
+    {
+      "id": "watch-3",
+      "title": "Run-defense fits",
+      "topics": [
+        "run-defense fits",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Hold the edge while the inside pursuit closes the cutback. Do not let a failed first tackle turn the whole defense toward the wrong gap."
+    },
+    {
+      "id": "watch-4",
+      "title": "Scoring possessions",
+      "topics": [
+        "scoring possessions",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Take the clean completion and protect the ball through contact. Make the red-zone call serve the available space rather than the hoped-for highlight."
+    }
+  ]
+}

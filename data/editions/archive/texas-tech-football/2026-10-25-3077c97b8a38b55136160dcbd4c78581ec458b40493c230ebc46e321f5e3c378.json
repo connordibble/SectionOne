@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "texas-tech-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:19.130060+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Texas Tech lost 37-24 at Cincinnati. Run defense, red-zone finishing and penalties lead the corrections before Arizona visits Saturday in the early television window.",
+  "items": [
+    {
+      "id": "tt-result",
+      "headline": "Texas Tech takes its first loss, 37-24 at Cincinnati",
+      "tldr": "The Red Raiders return home after a difficult road outing. Use the next possessions to judge the corrections rather than treating the unbeaten start as a complete description of the team.",
+      "outlet": "Associated Press via Texas Tech Athletics",
+      "tier": "national",
+      "url": "https://texastech.com/news/2026/10/24/football-no-8-texas-tech-falls-on-the-road-to-cincinnati",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tt-run-defense",
+      "headline": "Tabb runs for 173 yards against Texas Tech",
+      "tldr": "Cincinnati’s backfield kept the offense moving. Watch the edge and cutback fits before judging whether another defensive pass rush can rescue a long down.",
+      "outlet": "Cincinnati Bearcats On SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/cincinnati/football/instant-takeaways-from-cincinnati-bearcats-37-24-upset-of-no-8-texas-tech-01m5qndtz31d",
+      "publishedAt": "2026-10-24T19:47:28Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tt-redzone",
+      "headline": "Cincinnati finishes its red-zone chances with touchdowns",
+      "tldr": "The Bearcats’ four red-zone visits produced four passing scores. Texas Tech needs coverage that survives the route break when the field narrows.",
+      "outlet": "Cincinnati Bearcats On SI",
+      "tier": "local",
+      "url": "https://www.si.com/college/cincinnati/news/2-winners-and-1-loser-from-bearcats-upset-win-over-no-8-texas-tech-01m5rpp86pgb",
+      "publishedAt": "2026-10-25T14:42:25Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tt-penalties",
+      "headline": "Texas Tech commits 12 penalties for 80 yards",
+      "tldr": "The official postgame notes put discipline alongside the three turnovers as costs of the loss. Keep the formation, snap and contact legal before chasing the next explosive play.",
+      "outlet": "Texas Tech Athletics",
+      "tier": "official",
+      "url": "https://texastech.com/news/2026/10/24/football-postgame-notes-texas-tech-at-cincinnati",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "tt-tv",
+      "headline": "Arizona visits Texas Tech at 11 a.m. CT Saturday",
+      "tldr": "The October 31 kickoff is set. Use the schedule panel for the updated ESPN assignment after the original announcement left the network open.",
+      "outlet": "Texas Tech Athletics",
+      "tier": "official",
+      "url": "https://texastech.com/news/2026/10/19/football-texas-tech-arizona-picked-for-early-tv-window",
+      "publishedAt": "2026-10-19",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Close the lane before chasing the play.",
+      "body": "Hold the edge and keep the cutback fit connected to the inside pursuit. On offense, protect the possession with legal alignment and a first receiving answer that does not require another extended down.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the next down earned, not donated",
+      "question": "What should fans watch in the next game?",
+      "answer": "Defend the run with clear gap responsibility and carry red-zone routes through their breaks. Keep offensive penalties from undoing a clean gain before the next call arrives.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Run-defense fits",
+        "summary": "Keep the cutback covered",
+        "detail": "Watch the edge defender and the next inside gap together. Pursuit should close behind the first tackle rather than open a new lane across the formation.",
+        "state": "watch",
+        "prompt": "What should I watch for with run-defense fits?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Red-zone coverage",
+        "summary": "Stay attached through the break",
+        "detail": "Keep leverage when the receiver changes direction near the goal line. Make the quarterback throw through coverage that lasts the whole down.",
+        "state": "watch",
+        "prompt": "What should I watch for with red-zone coverage?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Penalty discipline",
+        "summary": "Make the full play legal",
+        "detail": "Get the alignment and snap settled, then keep blocks controlled through contact. A well-designed play needs every assignment to survive the officials’ view.",
+        "state": "watch",
+        "prompt": "What should I watch for with penalty discipline?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Ball security",
+        "summary": "Preserve the next scoring chance",
+        "detail": "Give pressure a quick outlet and secure the ball through the exchange. Do not let one difficult down donate another possession to the opponent.",
+        "state": "watch",
+        "prompt": "What should I watch for with ball security?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the first defensive series against Arizona for connected run fits. On offense, a secure and legal ordinary gain is the first correction to establish.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Run-defense fits",
+      "topics": [
+        "run-defense fits",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the edge defender and the next inside gap together. Pursuit should close behind the first tackle rather than open a new lane across the formation."
+    },
+    {
+      "id": "watch-2",
+      "title": "Red-zone coverage",
+      "topics": [
+        "red-zone coverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep leverage when the receiver changes direction near the goal line. Make the quarterback throw through coverage that lasts the whole down."
+    },
+    {
+      "id": "watch-3",
+      "title": "Penalty discipline",
+      "topics": [
+        "penalty discipline",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Get the alignment and snap settled, then keep blocks controlled through contact. A well-designed play needs every assignment to survive the officials’ view."
+    },
+    {
+      "id": "watch-4",
+      "title": "Ball security",
+      "topics": [
+        "ball security",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Give pressure a quick outlet and secure the ball through the exchange. Do not let one difficult down donate another possession to the opponent."
+    }
+  ]
+}

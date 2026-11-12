@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "byu-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:18.918724+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "BYU’s first loss came 39-31 in double overtime at UCF. Tackling and drive continuity lead the response before Arizona State; the November 7 rivalry game now has a 10 a.m. MT kickoff.",
+  "items": [
+    {
+      "id": "byu-result",
+      "headline": "BYU loses 39-31 at UCF in double overtime",
+      "tldr": "The Cougars return home to face Arizona State at 1:30 p.m. MT Saturday on FOX. Watch the response in ordinary possessions before another finish becomes the whole game.",
+      "outlet": "BYU Athletics",
+      "tier": "official",
+      "url": "https://byucougars.com/news/2026/10/24/byu-vs-ucf-2026",
+      "publishedAt": "2026-10-24T20:18:25.000000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "byu-defense",
+      "headline": "Missed tackles put the defense under pressure",
+      "tldr": "Deseret News examines UCF’s production after the catch and on the ground. Johnson’s late injury was still being evaluated in the report; avoid assuming a return date.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/10/26/byu-football-ucf-asu-arizona-state-devils-knights-bachmeier-bear-big-12/",
+      "publishedAt": "2026-10-26T10:00:01Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "byu-execution",
+      "headline": "Four three-and-outs limit BYU’s scoring chances",
+      "tldr": "Deseret News counts four empty three-play possessions in the loss. The offense needs a dependable first-down answer alongside its longer completions.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/10/24/byu-cougars-lose-ucf-2026-3-takeaways/",
+      "publishedAt": "2026-10-25T01:02:10.974Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "byu-moa",
+      "headline": "Moa returns for his first game since the opener",
+      "tldr": "KSL reports 13 carries for 36 yards and a touchdown. Watch how the backfield’s available personnel can support the rushing attack without assuming Martin is cleared.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/byu-football/takeaways-ucf-double-overtime/578416",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "byu-utah",
+      "headline": "BYU–Utah will kick at 10 a.m. MT on November 7",
+      "tldr": "The rivalry game will air on ABC or ESPN, with the network still to be selected. Arizona State comes first; the new window helps fans plan the following weekend.",
+      "outlet": "KSL Sports",
+      "tier": "local",
+      "url": "https://sports.ksl.com/ncaa/byu-utah-kickoff-time-tv-info-2026/578490",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Finish the tackle, sustain the drive.",
+      "body": "Close the space after the catch with a balanced first tackle and connected pursuit. On offense, make the first carry and quick throw useful enough to keep the next possession alive.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Give both units a repeatable answer",
+      "question": "What should fans watch in the next game?",
+      "answer": "Use protection and route spacing to earn another set of downs. Defend the catch with leverage and a second tackler so a short completion does not become the opponent’s easiest long gain.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Tackling in space",
+        "summary": "Close under control",
+        "detail": "Watch the defender’s approach and the help arriving behind him. Keep the runner inside the pursuit before committing to the tackle.",
+        "state": "watch",
+        "prompt": "What should I watch for with tackling in space?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Drive continuity",
+        "summary": "Find the first available gain",
+        "detail": "Give the quarterback a quick receiving answer and a useful running option. Keep one lost down from making the entire possession predictable.",
+        "state": "watch",
+        "prompt": "What should I watch for with drive continuity?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Backfield roles",
+        "summary": "Use confirmed availability",
+        "detail": "Watch the active backs and their opening workload. Build the running plan around players who are cleared rather than a hoped-for return date.",
+        "state": "watch",
+        "prompt": "What should I watch for with backfield roles?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Defensive depth",
+        "summary": "Communicate before the snap",
+        "detail": "Follow the next secondary update and confirm who takes the field. Keep the coverage exchange and tackling support clear when personnel changes.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive depth?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Follow Johnson’s evaluation and the next availability report. Judge the Arizona State response through tackles in space and drives that survive their first difficult down.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Tackling in space",
+      "topics": [
+        "tackling in space",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the defender’s approach and the help arriving behind him. Keep the runner inside the pursuit before committing to the tackle."
+    },
+    {
+      "id": "watch-2",
+      "title": "Drive continuity",
+      "topics": [
+        "drive continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Give the quarterback a quick receiving answer and a useful running option. Keep one lost down from making the entire possession predictable."
+    },
+    {
+      "id": "watch-3",
+      "title": "Backfield roles",
+      "topics": [
+        "backfield roles",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the active backs and their opening workload. Build the running plan around players who are cleared rather than a hoped-for return date."
+    },
+    {
+      "id": "watch-4",
+      "title": "Defensive depth",
+      "topics": [
+        "defensive depth",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Follow the next secondary update and confirm who takes the field. Keep the coverage exchange and tackling support clear when personnel changes."
+    }
+  ]
+}

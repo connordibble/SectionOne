@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "penn-state-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:18.283305+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Penn State returns from its bye to host Purdue. Sowell’s receiving production needs cleaner possession management around it, while the defensive pass rush remains a central matchup concern.",
+  "items": [
+    {
+      "id": "psu-purdue",
+      "headline": "Purdue visits at 4:15 p.m. ET as Penn State seeks pressure",
+      "tldr": "PennLive identifies nine Penn State sacks through seven games. Watch whether the front can disrupt Purdue’s passing rhythm without asking the secondary to cover indefinitely.",
+      "outlet": "PennLive via Yahoo",
+      "tier": "local",
+      "url": "https://sports.yahoo.com/articles/penn-state-purdue-storylines-lions-100257758.html",
+      "publishedAt": "2026-10-26T18:03:54Z",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "psu-manske",
+      "headline": "Becht discusses Manske’s growth during the bye",
+      "tldr": "StateCollege.com reports on the backup quarterback’s development. The discussion describes preparation and future potential; it does not announce a change of starter.",
+      "outlet": "StateCollege.com",
+      "tier": "local",
+      "url": "https://www.statecollege.com/articles/penn-state-football/penn-states-rocco-becht-on-backup-qb-alex-manske-im-excited-about-his-future/",
+      "publishedAt": "2026-10-22T23:27:12+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "psu-bye",
+      "headline": "Campbell uses the open week to work on team identity",
+      "tldr": "Onward State describes practice review and recruiting work during the break. Judge the on-field response through blocking, decisions and possession security rather than the week’s language.",
+      "outlet": "Onward State",
+      "tier": "local",
+      "url": "https://onwardstate.com/2026/10/20/matt-campbell-using-bye-week-to-take-10000-foot-view-of-penn-state-football/",
+      "publishedAt": "2026-10-20T21:14:28+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 4
+      }
+    },
+    {
+      "id": "psu-turnovers",
+      "headline": "Becht’s three second-half turnovers cost chances at Michigan",
+      "tldr": "The October 17 loss supplied the clearest possession lesson before the bye. Secure the ball through pressure before asking a late drive to erase the damage.",
+      "outlet": "Onward State",
+      "tier": "local",
+      "url": "https://onwardstate.com/2026/10/17/penn-state-football-mauled-by-michigan-x-x/",
+      "publishedAt": "2026-10-17T23:13:15+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "psu-sowell",
+      "headline": "Sowell caught 11 passes for 151 yards at Michigan",
+      "tldr": "The receiver gave the offense a dependable target in its last game. Watch whether protection and ball security let that receiving production survive to the end of the next drive.",
+      "outlet": "Penn State Athletics",
+      "tier": "official",
+      "url": "https://gopsusports.com/news/2026/10/17/penn-state-football-drops-21-18-road-test-at-michigan",
+      "publishedAt": "2026-10-17T23:42:09.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the chance you create.",
+      "body": "Give the receiving route time to develop without letting pressure decide the possession. On defense, close the pocket with coordinated pursuit so the secondary does not have to cover an extended down alone.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make protection and pressure serve the next down",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep the offensive outlet available when the pocket narrows. Bring defensive pressure with an escape plan, and finish the tackle before looking for the turnover.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Possession security",
+        "summary": "End the down with the ball",
+        "detail": "Watch the quarterback’s grip and decision through pressure. Accept a limited gain when extending the play would put the entire possession at risk.",
+        "state": "watch",
+        "prompt": "What should I watch for with possession security?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving continuity",
+        "summary": "Keep the outlet in view",
+        "detail": "Use route spacing that gives the quarterback a clean first answer. A productive receiver needs a throw delivered before the pocket changes its shape.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiving continuity?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Defensive pass rush",
+        "summary": "Make the pocket close together",
+        "detail": "Coordinate the inside and outside rush so the quarterback cannot escape through an abandoned lane. Coverage and pressure need to finish the same down.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive pass rush?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Bye-week response",
+        "summary": "Look for the repeatable assignment",
+        "detail": "Judge the first possessions by settled protection, secure exchanges and sound tackling. Extra practice only matters when those details hold against an opponent.",
+        "state": "watch",
+        "prompt": "What should I watch for with bye-week response?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the protection and defensive pass rush on ordinary downs. Those repeated assignments will show more about the bye-week response than one isolated long completion.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Possession security",
+      "topics": [
+        "possession security",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the quarterback’s grip and decision through pressure. Accept a limited gain when extending the play would put the entire possession at risk."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving continuity",
+      "topics": [
+        "receiving continuity",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Use route spacing that gives the quarterback a clean first answer. A productive receiver needs a throw delivered before the pocket changes its shape."
+    },
+    {
+      "id": "watch-3",
+      "title": "Defensive pass rush",
+      "topics": [
+        "defensive pass rush",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Coordinate the inside and outside rush so the quarterback cannot escape through an abandoned lane. Coverage and pressure need to finish the same down."
+    },
+    {
+      "id": "watch-4",
+      "title": "Bye-week response",
+      "topics": [
+        "bye-week response",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Judge the first possessions by settled protection, secure exchanges and sound tackling. Extra practice only matters when those details hold against an opponent."
+    }
+  ]
+}

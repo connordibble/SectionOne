@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "notre-dame-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:17.851040+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Notre Dame returns from its bye after the 28-24 loss at BYU. Clock operation and ball security remain lessons from that game; Greathouse’s receiving role carries into Saturday’s noon ET meeting with Navy.",
+  "items": [
+    {
+      "id": "nd-navy",
+      "headline": "Notre Dame meets Navy at noon ET on ABC",
+      "tldr": "Saturday’s neutral-site game is at Gillette Stadium in Foxborough. Plan for the Massachusetts venue and the early Eastern television window.",
+      "outlet": "Navy Athletics",
+      "tier": "official",
+      "url": "https://navysports.com/news/2026/10/26/football-navy-and-5-6-notre-dame-set-for-99th-meeting-saturday-at-gillette-stadium.aspx",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nd-greathouse",
+      "headline": "Greathouse earns a comeback player of the week honor",
+      "tldr": "He caught eight passes for 125 yards at BYU. Watch how his routes give the offense an answer when the defense closes the first throwing lane.",
+      "outlet": "Notre Dame Athletics",
+      "tier": "official",
+      "url": "https://fightingirish.com/news/2026/10/20/greathouse-recognized-as-a-comeback-player-of-the-week",
+      "publishedAt": "2026-10-20T15:59:56.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "nd-clock",
+      "headline": "Big 12 acknowledges a replay error in the BYU finish",
+      "tldr": "The conference said one second should have remained after the final play. The October 17 result still stands; keep the officiating correction separate from a changed outcome.",
+      "outlet": "Deseret News",
+      "tier": "local",
+      "url": "https://www.deseret.com/sports/2026/10/18/big-12-statement-replay-crew-erred-should-have-put-1-second-back-on-clock-in-byus-28-24-win-over-notre-dame/",
+      "publishedAt": "2026-10-18T07:56:49.996Z",
+      "grade": {
+        "impact": 4,
+        "echo": 2,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "nd-possession",
+      "headline": "A failed spike costs Notre Dame a first-half chance",
+      "tldr": "Irish Sports Daily recounts Carr’s fumble before halftime at BYU. Watch the exchange and clock operation before asking the offense to manufacture another late scoring chance.",
+      "outlet": "Irish Sports Daily",
+      "tier": "local",
+      "url": "https://irishsportsdaily.com/s/28387/notre-dame-falls-to-byu-28-24",
+      "publishedAt": "2026-10-17",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 3
+      }
+    },
+    {
+      "id": "nd-result",
+      "headline": "Notre Dame resumes after a 28-24 loss at BYU",
+      "tldr": "The Irish had an open date October 24. Use the next game to judge the response on the field rather than assuming the extra practice has resolved the close-game errors.",
+      "outlet": "Notre Dame Athletics",
+      "tier": "official",
+      "url": "https://fightingirish.com/news/2026/10/18/irish-rally-then-fall-late-at-byu-28-24",
+      "publishedAt": "2026-10-18T03:25:37.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 2,
+        "freshness": 3
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Make the next possession count.",
+      "body": "Get the snap, timing and first read settled before chasing extra yards. Defend Navy with clear run assignments and coverage that remains intact when the formation invites the secondary forward.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Stay disciplined through the whole down",
+      "question": "What should fans watch in the next game?",
+      "answer": "On offense, make the receiving outlet and protection work together. On defense, identify the ball carrier without abandoning the deeper assignment before the play declares itself.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Clock operation",
+        "summary": "Secure the snap before the next decision",
+        "detail": "Know the clock, down and intended finish before the exchange. Give a hurry-up possession a practiced operation rather than a series of improvised reactions.",
+        "state": "watch",
+        "prompt": "What should I watch for with clock operation?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving options",
+        "summary": "Give the quarterback a clean outlet",
+        "detail": "Watch the release against contact and the space between routes. A dependable inside completion can keep the quarterback from holding the ball into pressure.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiving options?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Run assignments",
+        "summary": "Make the first read reliable",
+        "detail": "Identify the ball before pursuing across the formation. Keep the edge and inside fits connected so one wrong step does not open a second lane.",
+        "state": "watch",
+        "prompt": "What should I watch for with run assignments?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Coverage patience",
+        "summary": "Carry the route behind run action",
+        "detail": "Keep eyes and leverage on the receiver until the assignment changes. Do not let the urge to join a tackle leave the deeper throw undefended.",
+        "state": "watch",
+        "prompt": "What should I watch for with coverage patience?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch defensive eyes and assignments through Navy’s run action. On offense, make the snap and clock operation as dependable as the receiving plan.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Clock operation",
+      "topics": [
+        "clock operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Know the clock, down and intended finish before the exchange. Give a hurry-up possession a practiced operation rather than a series of improvised reactions."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving options",
+      "topics": [
+        "receiving options",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the release against contact and the space between routes. A dependable inside completion can keep the quarterback from holding the ball into pressure."
+    },
+    {
+      "id": "watch-3",
+      "title": "Run assignments",
+      "topics": [
+        "run assignments",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Identify the ball before pursuing across the formation. Keep the edge and inside fits connected so one wrong step does not open a second lane."
+    },
+    {
+      "id": "watch-4",
+      "title": "Coverage patience",
+      "topics": [
+        "coverage patience",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep eyes and leverage on the receiver until the assignment changes. Do not let the urge to join a tackle leave the deeper throw undefended."
+    }
+  ]
+}

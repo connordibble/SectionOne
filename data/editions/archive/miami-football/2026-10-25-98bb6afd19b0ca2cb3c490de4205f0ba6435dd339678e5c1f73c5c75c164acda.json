@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "miami-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:18.495108+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Miami beat Pittsburgh 52-23 behind Toney’s record receiving day. Protection, coverage and red-zone execution lead the review before the road trip to North Carolina.",
+  "items": [
+    {
+      "id": "mia-result",
+      "headline": "Miami beats Pittsburgh 52-23",
+      "tldr": "The Hurricanes stayed unbeaten with another productive offensive outing. Carry the scoring plan forward while checking the protection and defensive plays hidden by the margin.",
+      "outlet": "Miami Athletics",
+      "tier": "official",
+      "url": "https://miamihurricanes.com/news/2026/10/24/no-1-miami-rolls-in-52-23-win-over-pitt",
+      "publishedAt": "2026-10-24T19:45:00.000000Z",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mia-toney",
+      "headline": "Toney sets Miami’s single-game record with 16 catches",
+      "tldr": "He finished with 194 receiving yards and three touchdowns. Watch the space created before the catch and the block that helps the next gain continue.",
+      "outlet": "The Miami Hurricane",
+      "tier": "local",
+      "url": "https://themiamihurricane.com/2026/10/24/no-1-miami-steamrolls-pitt-52-23-as-toney-erupts-for-record-breaking-stat-line/",
+      "publishedAt": "2026-10-24T16:59:16-04:00",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mia-protection",
+      "headline": "Pass protection remains a concern after the win",
+      "tldr": "State of The U flags pressure reaching Mensah despite the large margin. Match the quarterback’s release and receiving outlet to the protection before the next road test.",
+      "outlet": "State of The U",
+      "tier": "local",
+      "url": "https://www.stateoftheu.com/miami-hurricanes-football/89375/5-up-5-down-from-miami-hurricanes-52-23-win-over-pitt-panthers",
+      "publishedAt": "2026-10-26T15:00:22+00:00",
+      "grade": {
+        "impact": 5,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mia-coverage",
+      "headline": "Film review points to downfield coverage work",
+      "tldr": "Pittsburgh still found long receiving plays. Keep the route in front of the safety help and finish the tackle instead of letting a completion become another open-field problem.",
+      "outlet": "State of The U",
+      "tier": "local",
+      "url": "https://www.stateoftheu.com/miami-hurricanes-football/89319/film-review-miami-hurricanes-52-pitt-panthers-23",
+      "publishedAt": "2026-10-25T18:41:17+00:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "mia-rewind",
+      "headline": "Miami scores on all seven red-zone trips against Pitt",
+      "tldr": "The official review counts six touchdowns and a field goal. Watch whether the offense keeps creating a usable first option as the field narrows.",
+      "outlet": "Miami Athletics",
+      "tier": "official",
+      "url": "https://miamihurricanes.com/news/2026/10/25/fb-2026-canes-rewind-a-look-back-at-the-win-over-pittsburgh",
+      "publishedAt": "2026-10-25T23:02:09.000000Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Keep the clean throw available.",
+      "body": "Give the quarterback time and a receiving answer before asking the play to stretch. Carry that patience to the secondary, where leverage and a finished tackle must survive the first route break.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the protection match the route",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep an immediate outlet available when the defense sends pressure. Take the space underneath, then choose the deeper throw when the blocking and coverage create a real opening.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Pass protection",
+        "summary": "Connect the block and release",
+        "detail": "Watch how long the route asks the line to hold and where the quick outlet appears. Keep the quarterback from waiting through another hitch without an answer.",
+        "state": "watch",
+        "prompt": "What should I watch for with pass protection?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving space",
+        "summary": "Win before the first tackle",
+        "detail": "Watch the receiver’s release, the nearby block and the defender’s leverage. Create a clean catch before expecting the runner to turn it into a long gain.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiving space?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Secondary leverage",
+        "summary": "Carry the deeper route",
+        "detail": "Keep the safety’s help connected to the receiver’s path. Close on the catch under control so one missed tackle does not erase the coverage work.",
+        "state": "watch",
+        "prompt": "What should I watch for with secondary leverage?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Red-zone execution",
+        "summary": "Keep the first option usable",
+        "detail": "Create space with the formation and route timing. Take the available score rather than letting a stalled first read turn into a desperate late throw.",
+        "state": "watch",
+        "prompt": "What should I watch for with red-zone execution?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "Watch the pass sets and receiving outlets at North Carolina. A fast, available answer should protect the possession while the secondary works to limit long completions.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Pass protection",
+      "topics": [
+        "pass protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch how long the route asks the line to hold and where the quick outlet appears. Keep the quarterback from waiting through another hitch without an answer."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving space",
+      "topics": [
+        "receiving space",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the receiver’s release, the nearby block and the defender’s leverage. Create a clean catch before expecting the runner to turn it into a long gain."
+    },
+    {
+      "id": "watch-3",
+      "title": "Secondary leverage",
+      "topics": [
+        "secondary leverage",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the safety’s help connected to the receiver’s path. Close on the catch under control so one missed tackle does not erase the coverage work."
+    },
+    {
+      "id": "watch-4",
+      "title": "Red-zone execution",
+      "topics": [
+        "red-zone execution",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Create space with the formation and route timing. Take the available score rather than letting a stalled first read turn into a desperate late throw."
+    }
+  ]
+}

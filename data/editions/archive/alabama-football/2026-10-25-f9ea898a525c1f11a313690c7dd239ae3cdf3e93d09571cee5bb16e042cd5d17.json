@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "teamSlug": "alabama-football",
+  "weekOf": "2026-10-25",
+  "publishedAt": "2026-10-26T20:40:17.426379+00:00",
+  "issue": {
+    "season": 2026,
+    "week": 9
+  },
+  "summary": "Alabama beat Texas A&M 31-20 with a decisive fourth quarter. Henry’s pressure and Scott’s receiving production lead the review; the kicking operation remains a concern before the open week and LSU.",
+  "items": [
+    {
+      "id": "bama-result",
+      "headline": "Alabama closes with a 14-0 fourth quarter to win 31-20",
+      "tldr": "The defense held Texas A&M to 15 yards in the final period. Carry that control into earlier possessions rather than relying on another late takeover.",
+      "outlet": "Alabama Athletics",
+      "tier": "official",
+      "url": "https://rolltide.com/news/2026/10/24/football-fourth-quarter-performance-guides-no-13-13-alabama-past-texas-am-31-20",
+      "publishedAt": "2026-10-24",
+      "grade": {
+        "impact": 5,
+        "echo": 2,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "bama-pressure",
+      "headline": "Henry supplies two fourth-quarter sacks",
+      "tldr": "BamaCentral traces the defensive finish after Alabama trailed. Watch the pass rush’s spacing as well as its speed when the quarterback tries to extend the down.",
+      "outlet": "BamaCentral",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/late-defensive-takeover-powers-13-alabama-comeback-win-over-texas-am",
+      "publishedAt": "2026-10-24T23:08:24Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "bama-scott",
+      "headline": "Scott catches six passes for 156 yards",
+      "tldr": "The receiving production gave Russell a way to move the offense. Watch the route spacing that creates a clean throw before asking for yards after the catch.",
+      "outlet": "BamaCentral",
+      "tier": "local",
+      "url": "https://www.si.com/college/alabama/football/what-we-learned-from-alabamas-comeback-victory-over-texas-a-m-tide-takeaways",
+      "publishedAt": "2026-10-25T11:00:04Z",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "bama-kicking",
+      "headline": "Talty misses from 36 and 42 yards against Texas A&M",
+      "tldr": "He made one of three field-goal attempts. Use the open week to inspect the whole operation: snap, hold, protection and contact.",
+      "outlet": "1819 News",
+      "tier": "local",
+      "url": "https://1819news.com/news/item/5-takeaways-from-no-13-alabamas-31-20-win-over-texas-a-m",
+      "publishedAt": "2026-10-24T18:20:00-05:00",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    },
+    {
+      "id": "bama-tv",
+      "headline": "Alabama visits LSU November 7 at 2:30 p.m. CT",
+      "tldr": "ABC will carry the game after Alabama’s open date. Set the afternoon viewing window and use the break to follow personnel updates.",
+      "outlet": "WBRZ",
+      "tier": "local",
+      "url": "https://www.wbrz.com/news/lsu-alabama-set-for-afternoon-kickoff-on-wbrz",
+      "publishedAt": "2026-10-26",
+      "grade": {
+        "impact": 4,
+        "echo": 1,
+        "freshness": 5
+      }
+    }
+  ],
+  "editorial": {
+    "lead": {
+      "headline": "Carry the finish into the first drive.",
+      "body": "Pair the pass rush with coverage that survives the first escape. On offense, give the quarterback a clear receiving answer and make the kicking operation dependable when a drive stops short.",
+      "noteId": "watch-1"
+    },
+    "matchup": {
+      "thesis": "Make the ordinary possession dependable",
+      "question": "What should fans watch in the next game?",
+      "answer": "Keep protection and route spacing connected. Finish defensive downs with controlled pursuit, and give the kicking unit an organized opportunity when the offense cannot reach the end zone.",
+      "citationNoteIds": [
+        "watch-1",
+        "watch-2",
+        "watch-3",
+        "watch-4"
+      ]
+    },
+    "signals": [
+      {
+        "id": "watch-1",
+        "title": "Defensive pass rush",
+        "summary": "Close the pocket together",
+        "detail": "Keep the edge and inside pressure aimed at the same escape point. A fast arrival matters when the rest of the front can finish the quarterback’s next move.",
+        "state": "watch",
+        "prompt": "What should I watch for with defensive pass rush?",
+        "noteId": "watch-1"
+      },
+      {
+        "id": "watch-2",
+        "title": "Receiving answers",
+        "summary": "Separate the routes",
+        "detail": "Watch the space between the underneath option and the deeper target. Give the quarterback a clean first decision before the pocket tightens.",
+        "state": "watch",
+        "prompt": "What should I watch for with receiving answers?",
+        "noteId": "watch-2"
+      },
+      {
+        "id": "watch-3",
+        "title": "Kicking operation",
+        "summary": "Make every step repeatable",
+        "detail": "Inspect the snap, hold and protection before judging the flight. Keep the operation calm when the drive ends with a field-goal attempt.",
+        "state": "watch",
+        "prompt": "What should I watch for with kicking operation?",
+        "noteId": "watch-3"
+      },
+      {
+        "id": "watch-4",
+        "title": "Right-tackle protection",
+        "summary": "Keep the edge block connected",
+        "detail": "Watch the right tackle’s first step and the quarterback’s nearest outlet. Give late edge pressure a quick receiving answer before the pocket narrows.",
+        "state": "watch",
+        "prompt": "What should I watch for with right-tackle protection?",
+        "noteId": "watch-4"
+      }
+    ]
+  },
+  "nextGameNote": "The open week gives the kicking operation and protection plan time to settle. Follow the next availability update before treating any absent receiver as cleared.",
+  "notesDisclaimer": "Independent matchup analysis based on linked reporting. Watch points are interpretations, not confirmed outcomes.",
+  "notes": [
+    {
+      "id": "watch-1",
+      "title": "Defensive pass rush",
+      "topics": [
+        "defensive pass rush",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Keep the edge and inside pressure aimed at the same escape point. A fast arrival matters when the rest of the front can finish the quarterback’s next move."
+    },
+    {
+      "id": "watch-2",
+      "title": "Receiving answers",
+      "topics": [
+        "receiving answers",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Watch the space between the underneath option and the deeper target. Give the quarterback a clean first decision before the pocket tightens."
+    },
+    {
+      "id": "watch-3",
+      "title": "Kicking operation",
+      "topics": [
+        "kicking operation",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:31:29.781232+00:00",
+      "body": "Inspect the snap, hold and protection before judging the flight. Keep the operation calm when the drive ends with a field-goal attempt."
+    },
+    {
+      "id": "watch-4",
+      "title": "Right-tackle protection",
+      "topics": [
+        "right-tackle protection",
+        "matchup"
+      ],
+      "publishedAt": "2026-10-26T20:37:10.296358+00:00",
+      "body": "Watch the right tackle’s first step and the quarterback’s nearest outlet. Give late edge pressure a quick receiving answer before the pocket narrows."
+    }
+  ]
+}
